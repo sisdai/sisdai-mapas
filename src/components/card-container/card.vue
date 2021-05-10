@@ -24,7 +24,7 @@ export default {
         },
         collapsedHeight:{
             type:String,
-            default:"50vh"
+            default:"80vh"
         }
     },
     data:function(){
@@ -42,7 +42,7 @@ export default {
             return this.hasFooter && this.collapsed_;
         },
         collapsingHeight:function(){
-            return this.hasFooter && this.collapsed_ ? this.collapsedHeight : "1000vh"
+            return this.hasFooter && this.collapsed_ ? this.collapsedHeight : "250vh"
         }
     },
     mounted:function(){
@@ -76,7 +76,7 @@ export default {
     border: 1px solid black;
     overflow-y: clip;
     position: relative;
-    transition: max-height 0.95s ease;
+    transition: max-height 0.30s ease-in;
     &.without-footer{
         padding-bottom: 5px;
         
@@ -89,7 +89,8 @@ export default {
     .card-map-footer{
         padding-bottom: 1.8rem;
         .collapsable-button{
-            width: calc(100% + 1rem);
+            width: 100%;
+            //width: calc(100% + 1rem);
             background-color: black;
             color: white;
             margin-left: -.5rem;
