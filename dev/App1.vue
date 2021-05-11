@@ -109,7 +109,7 @@ export default {
     padding: 1rem;
     
     max-width: 900px;
-    background-color: lightgray;
+    background-color: #f4f4f4;
     margin-right: auto;
     margin-left: auto;
     margin-top: 1rem;

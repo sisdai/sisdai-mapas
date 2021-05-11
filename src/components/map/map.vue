@@ -8,7 +8,7 @@
 import Map from 'ol/Map';
 import View from 'ol/View';
 //import { defaults as defaultControls} from 'ol/control';
-import CustomZoomControl from "./_zoom-control"
+import CustomZoomControl, {ResetControl} from "./_zoom-control"
 export default {
     name:"DaiMap",
     props:{
@@ -58,7 +58,7 @@ export default {
                 maxZoom: this.maxZoom,
                 minZoom: this.minZoom
             }),
-            controls:[new CustomZoomControl]
+            controls:[new CustomZoomControl,new ResetControl]
         });
 
         //verificar si hay un card contaiener
@@ -103,5 +103,6 @@ export default {
     width: 100%;
     height: 100%;
     position: absolute;
+    background-color: #E9E9E9;
 }
 </style>

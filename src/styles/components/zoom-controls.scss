@@ -15,26 +15,12 @@
         box-shadow: 1px 1px 8px 3px #00000026;
         &:hover,&:focus{
             background-color: var(--hover-color);
+            border: 1px var(--accent-color) solid;
         }
     }
 }
 
 //botones + y -
-
-.ol-zoom{
-    left:auto;
-    right: .5em;
-    .ol-zoom-in{
-        border-radius: 20%;
-        margin-bottom: 5px;
-        font-size: 30px;
-    }
-
-    .ol-zoom-out{
-        border-radius: 20%;
-        font-size: 30px;
-    }
-}
 
 .dai-zoom{
     right: .5rem;
@@ -72,4 +58,25 @@
         }
     }
     
+}
+
+.dai-reset{
+    left: .5rem;
+    bottom: .5rem;
+    .dai-reset-button{
+        margin-top: 5px;
+        span.reset{
+            &:before{
+                display: inline-block;
+                top: 0px;
+                left: 0px;
+                content: '';
+                width: 25px;
+                height: 25px;
+                background-image: url('~@/assets/icons/centrar.svg');
+                background-size: 25px 25px;
+                background-repeat: no-repeat;
+            }
+        }
+    }
 }

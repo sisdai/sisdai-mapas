@@ -32,13 +32,58 @@ const CustomZoomControl = /*@__PURE__*/(function (Control) {
     CustomZoomControl.prototype.constructor = CustomZoomControl;
   
     CustomZoomControl.prototype.handleZoomIn = function handleZoomIn () {
-      this.getMap().getView().setZoom(this.getMap().getView().getZoom()+1)
+        this.getMap().getView().animate({zoom:this.getMap().getView().getZoom()+1,duration:250})
+        
     };
     CustomZoomControl.prototype.handleZoomOut = function handleZoomOut () {
-        this.getMap().getView().setZoom(this.getMap().getView().getZoom()-1)
+        this.getMap().getView().animate({zoom:this.getMap().getView().getZoom()-1,duration:250})
+        
     };
   
     return CustomZoomControl;
   }(Control));
 
+  const ResetControl = /*@__PURE__*/(function (Control) {
+    function ResetControl(opt_options) {
+      var options = opt_options || {};
+  
+      var button = document.createElement('button');
+      button.className = "dai-reset-button"
+      button.innerHTML = '<span class="reset"></span>'//'<img src="icons/acercar.svg" height="25px" width="25px"/>';
+
+      
+  
+      var element = document.createElement('div');
+      element.className = 'dai-reset ol-unselectable ol-control';
+      element.appendChild(button);
+      
+  
+      Control.call(this, {
+        element: element,
+        target: options.target,
+      });
+  
+      button.addEventListener('click', this.handleReset.bind(this), false);
+    }
+  
+    if ( Control ) ResetControl.__proto__ = Control;
+    ResetControl.prototype = Object.create( Control && Control.prototype );
+    ResetControl.prototype.constructor = ResetControl;
+  
+    ResetControl.prototype.handleReset = function handleReset () {
+        //this.getMap().getView().animate({zoom:this.getMap().getView().getZoom()+1,duration:250})
+        let view_options = this.getMap().get("_reset_view");
+        if(view_options.type == "extent"){
+            this.getMap().getView().fit(view_options.value,{duration:500})
+        }else{
+            this.getMap().getView().animate(view_options.value)
+        }
+        
+    };
+    
+  
+    return ResetControl;
+  }(Control));
+
   export default CustomZoomControl;
+  export {ResetControl}
