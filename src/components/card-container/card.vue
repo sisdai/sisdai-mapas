@@ -84,6 +84,7 @@ export default {
     .dai-map-container{
         margin-left: -.5rem;
         margin-right: -.5rem;
+        margin-top: .5rem;
     }
 
     .card-map-footer{

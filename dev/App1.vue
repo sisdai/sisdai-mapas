@@ -7,6 +7,10 @@
             <dai-card-map-container :collapsed="false">
                 <template v-slot:header>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus eveniet quod dolorum sint error deserunt voluptates aliquid cupiditate numquam, pariatur rerum placeat omnis corrupti? Aut delectus velit labore hic cum.</p>
+                    <dai-map-selector>
+                        <option value="a">assszs</option>
+                        <option value="b">sd</option>
+                    </dai-map-selector>
                 </template>
                 <dai-map :zoom="3" ref="mapa4">
                     <dai-xyz-layer-osm id="osm_mapa4" />
@@ -81,12 +85,12 @@
 import {DaiMap} from "../src/components/map"
 import {DaiXyzLayerOsm} from "../src/components/xyz-layer-osm"
 import {DaiCardMapContainer} from "../src/components/card-container"
-import {DaiLegend} from "../src/components"
+import {DaiLegend,DaiMapSelector} from "../src/components"
 export default {
     name:"App",
     components:{
         DaiMap,DaiXyzLayerOsm,DaiCardMapContainer,
-        DaiLegend
+        DaiLegend,DaiMapSelector
     },
     data:function(){
         return{
