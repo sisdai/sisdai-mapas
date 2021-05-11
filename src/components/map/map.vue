@@ -7,7 +7,8 @@
 <script>
 import Map from 'ol/Map';
 import View from 'ol/View';
-import {Attribution, defaults as defaultControls} from 'ol/control';
+//import { defaults as defaultControls} from 'ol/control';
+import CustomZoomControl from "./_zoom-control"
 export default {
     name:"DaiMap",
     props:{
@@ -43,9 +44,7 @@ export default {
     },
     
     mounted:function(){
-        var attribution = new Attribution({
-            collapsible: false,
-        });
+        
         if(this.extent[0]!=0 && this.extent[3]!=0){
             this.hasInitialExtent = true;
         }
@@ -59,7 +58,7 @@ export default {
                 maxZoom: this.maxZoom,
                 minZoom: this.minZoom
             }),
-            controls:defaultControls({attribution: false}).extend([attribution])
+            controls:[new CustomZoomControl]
         });
 
         //verificar si hay un card contaiener
