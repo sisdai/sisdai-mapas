@@ -72,7 +72,7 @@ export default {
 .card-map-container{
     border-radius: 8px;
     background-color: white;
-    padding: 1rem .5rem 0rem .5rem;
+    padding: .6rem .3rem 0rem .3rem;
     border: 1px solid black;
     overflow-y: clip;
     position: relative;
@@ -85,6 +85,14 @@ export default {
         margin-left: -.5rem;
         margin-right: -.5rem;
         margin-top: .5rem;
+    }
+    .card-map-header{
+        display: flex;
+        flex-wrap: wrap;
+        *{
+            margin: .3rem;
+            flex-grow: 1;
+        }
     }
 
     .card-map-footer{

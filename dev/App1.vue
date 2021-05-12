@@ -4,12 +4,20 @@
         <div class="another-map">
             <p><strong>Mapa4</strong> Empezando a probar los controles </p>
             
-            <dai-card-map-container :collapsed="false">
+            <dai-card-map-container :collapsed="false" >
                 <template v-slot:header>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus eveniet quod dolorum sint error deserunt voluptates aliquid cupiditate numquam, pariatur rerum placeat omnis corrupti? Aut delectus velit labore hic cum.</p>
-                    <dai-map-selector>
-                        <option value="a">assszs</option>
-                        <option value="b">sd</option>
+                    <dai-map-selector >
+                        <option value="a">opcion a</option>
+                        <option value="b">opcion b</option>
+                    </dai-map-selector>
+                    <dai-map-selector v-width-control="'200px'"  class="control-large">
+                        <option value="a">opcion a</option>
+                        <option value="b">opcion b</option>
+                    </dai-map-selector>
+                    <dai-map-selector v-width-control="{mobile:'100%',desktop:'10%'}">
+                        <option value="a">opcion a</option>
+                        <option value="b">opcion b</option>
                     </dai-map-selector>
                 </template>
                 <dai-map :zoom="3" ref="mapa4">
@@ -86,6 +94,7 @@ import {DaiMap} from "../src/components/map"
 import {DaiXyzLayerOsm} from "../src/components/xyz-layer-osm"
 import {DaiCardMapContainer} from "../src/components/card-container"
 import {DaiLegend,DaiMapSelector} from "../src/components"
+import {WidthControl} from "@/directives"
 export default {
     name:"App",
     components:{
@@ -103,6 +112,9 @@ export default {
             let layer = mapa.cmpLayers["osm_mapa3"]
             layer.olLayer.setVisible(!layer.olLayer.getVisible())
         }
+    },
+    directives:{
+        "width-control":WidthControl
     }
 
 }
