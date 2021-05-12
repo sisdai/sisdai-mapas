@@ -1,6 +1,6 @@
 <template>
     <div class="dai-map-container">
-        <div class="map" ref="map"></div>
+        <div class="dai-map " :class="[darkControls ? 'dark-controls': 'light-controls']" ref="map"></div>
         <slot></slot>
     </div>
 </template>
@@ -35,6 +35,10 @@ export default {
             default:function(){
                 return [0,0,0,0]
             }
+        },
+        darkControls:{
+            type:Boolean,
+            default: false
         }
     },
     data:function(){
@@ -99,7 +103,7 @@ export default {
     height: 40vh;
     position: relative;
 }
-.map{
+.dai-map{
     width: 100%;
     height: 100%;
     position: absolute;

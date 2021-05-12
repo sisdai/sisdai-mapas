@@ -7,11 +7,11 @@ const CustomZoomControl = /*@__PURE__*/(function (Control) {
   
       var button = document.createElement('button');
       button.className = "dai-zoom-button"
-      button.innerHTML = '<span class="zoom-in"></span>'//'<img src="icons/acercar.svg" height="25px" width="25px"/>';
+      button.innerHTML = '<span class="dai-acercar"></span>'//'<img src="icons/acercar.svg" height="25px" width="25px"/>';
 
       var button2 = document.createElement('button');
       button2.className = "dai-zoom-button"
-      button2.innerHTML = '<span class="zoom-out"></span>'
+      button2.innerHTML = '<span class="dai-alejar"></span>'
   
       var element = document.createElement('div');
       element.className = 'dai-zoom ol-unselectable ol-control';
@@ -49,7 +49,7 @@ const CustomZoomControl = /*@__PURE__*/(function (Control) {
   
       var button = document.createElement('button');
       button.className = "dai-reset-button"
-      button.innerHTML = '<span class="reset"></span>'//'<img src="icons/acercar.svg" height="25px" width="25px"/>';
+      button.innerHTML = '<span class="dai-centrar"></span>'//'<img src="icons/acercar.svg" height="25px" width="25px"/>';
 
       
   

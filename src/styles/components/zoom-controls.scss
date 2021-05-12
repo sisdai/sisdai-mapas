@@ -19,6 +19,15 @@
         }
     }
 }
+.dai-map.dark-controls .ol-control button{
+    background-color: var(--dark-control-bg-color);
+    color: var(--dark-control-color);
+}
+
+.dai-map.light-controls .ol-control button{
+    background-color: var(--light-control-bg-color);
+    color: var(--light-control-color);
+}
 
 //botones + y -
 
@@ -28,33 +37,8 @@
 
     .dai-zoom-button{
         margin-bottom: 5px;
-        span.zoom-in{
-            margin-left: 2px;
-            &:before{
-                display: inline-block;
-                top: 0px;
-                left: 0px;
-                content: '';
-                width: 25px;
-                height: 25px;
-                background-image: url('~@/assets/icons/acercar.svg');
-                background-size: 25px 25px;
-                background-repeat: no-repeat;
-            }
-        }
-        span.zoom-out{
-            margin-left: 2px;
-            &:before{
-                display: inline-block;
-                top: 0px;
-                left: 0px;
-                content: '';
-                width: 25px;
-                height: 25px;
-                background-image: url('~@/assets/icons/alejar.svg');
-                background-size: 25px 25px;
-                background-repeat: no-repeat;
-            }
+        span{
+            font-size: 28px;
         }
     }
     
@@ -64,19 +48,9 @@
     left: .5rem;
     bottom: .5rem;
     .dai-reset-button{
-        margin-top: 5px;
-        span.reset{
-            &:before{
-                display: inline-block;
-                top: 0px;
-                left: 0px;
-                content: '';
-                width: 30px;
-                height: 30px;
-                background-image: url('~@/assets/icons/centrar.svg');
-                background-size: 30px 30px;
-                background-repeat: no-repeat;
-            }
+        
+        span{
+            font-size: 28px;
         }
     }
 }

@@ -1,6 +1,6 @@
 <template>
     <div class="select">
-        <select >
+        <select @change="change" ref="selector_nativo" v-bind="$attrs">
             <slot></slot>
         </select>
     </div>
@@ -11,8 +11,31 @@ import control from "../../mixins/control"
 export default {
     name:"DaiMapSelector",
     mixins:[control],
-    
+    data:function(){
+        return{
+            value_:null
+        }
+    },
+    props:["value"],
+    mounted:function(){
+        this.value_ = this.$refs.selector_nativo.value
+    },
+    methods:{
+        change:function(e){
+            
+            this.value_= e.target.value
+            this.$emit("change",e.target.value)
+            this._emitAccesorEvents("change",e.target.value)
+            //this.$emit("change:#map",this.cmpMap)
+        }
+    },
+    model:{
+        prop:"value",
+        event:"change"
+    }
 }
+
+
 </script>
 
 <style lang="scss" scoped>
@@ -26,16 +49,27 @@ export default {
     vertical-align: top;
     box-sizing: inherit;
     font-size: 13px;
+
+    &.dark-control{
+        &:after{
+            border-bottom: 3px solid var(--dark-control-color);    
+            border-left: 3px solid var(--dark-control-color);    
+        }
+        select{
+            background-color: var(--dark-control-bg-color);
+            color: var(--dark-control-color);
+        }
+    }
     
 
     &:after{
         //border-color: #485fc7;
         right: 1.125em;
         z-index: 4;
-        border: 3px solid var(--accent-color);
+        border: 3px solid var(--light-control-color);
         border-radius: 2px;
-        border-right: 0;
-        border-top: 0;
+        border-right: none;
+        border-top: none;
         content: " ";
         display: block;
         height: .625em;
@@ -56,7 +90,8 @@ export default {
         box-shadow: 1px 1px 8px 3px #00000026;
         height: 2.5em;
         cursor: pointer;
-        background-color: var(--main-bg-color);
+        background-color: var(--light-control-bg-color);
+        color: var(    --light-control-color);
         display: block;
         padding-bottom: calc(.5em - 1px);
         padding-top: calc(.5em - 1px);

@@ -4,9 +4,10 @@ import OSM from 'ol/source/OSM';
 
 import layer from "../../mixins/layer"
 export default {
+    name:"DaiXyZLayerOsm",
     mixins:[layer],
     methods:{
-        createLayerObject:function(){
+        _createLayerObject:function(){
             this.olLayer = new TileLayer({
                 source: new OSM()
             })

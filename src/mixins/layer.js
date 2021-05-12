@@ -15,20 +15,20 @@ export default{
         this.getMap(function(olMap){
             //console.log(olMap)
             vm.olMap = olMap
-            vm.createLayerObject()
-            vm.setInitialPropsToLayer()
-            vm.addLayerToMap()
+            vm._createLayerObject()
+            vm._setInitialPropsToLayer()
+            vm._addLayerToMap()
         })
     },
     methods:{
-        createLayerObject:function(){
+        _createLayerObject:function(){
             console.log("Not implemented yet")
             //do nothing
         },
-        addLayerToMap:function(){
+        _addLayerToMap:function(){
             this.olMap.addLayer(this.olLayer)
         },
-        setInitialPropsToLayer:function(){
+        _setInitialPropsToLayer:function(){
             this.olLayer.set("id",this.id)
             this.olLayer.setVisible(this.visible)
             this.olLayer.setZIndex(this.zIndex)

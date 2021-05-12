@@ -7,15 +7,17 @@
             <dai-card-map-container :collapsed="false" >
                 <template v-slot:header>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus eveniet quod dolorum sint error deserunt voluptates aliquid cupiditate numquam, pariatur rerum placeat omnis corrupti? Aut delectus velit labore hic cum.</p>
-                    <dai-map-selector >
+                    <dai-map-selector  v-model="model_selector1_mapa4" @change:#layer[osm_mapa4]="escuchando_evento_mapa4_1" @change="escuchando_evento_mapa4">
                         <option value="a">opcion a</option>
                         <option value="b">opcion b</option>
+                        <option value="c">opcion c</option>
+                        <option value="d">opcion d</option>
                     </dai-map-selector>
-                    <dai-map-selector v-width-control="'200px'"  class="control-large">
+                    <dai-map-selector v-width-control="'200px'"  class="control-large" >
                         <option value="a">opcion a</option>
-                        <option value="b">opcion b</option>
+                        <option value="b" selected>opcion b</option>
                     </dai-map-selector>
-                    <dai-map-selector v-width-control="{mobile:'100%',desktop:'10%'}">
+                    <dai-map-selector v-width-control="{mobile:'100%',desktop:'10%'}" class="control-small">
                         <option value="a">opcion a</option>
                         <option value="b">opcion b</option>
                     </dai-map-selector>
@@ -25,6 +27,10 @@
                 </dai-map>
                 <template v-slot:footer>
                     <dai-legend for="estados_mapa4"/>
+                    <dai-map-selector class="dark-control" >
+                        <option value="a">opcion a</option>
+                        <option value="b">opcion b</option>
+                    </dai-map-selector>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus eveniet quod dolorum sint error deserunt voluptates aliquid cupiditate numquam, pariatur rerum placeat omnis corrupti? Aut delectus velit labore hic cum.</p>
                     
                 </template>
@@ -103,7 +109,8 @@ export default {
     },
     data:function(){
         return{
-            visible_mapa3_1 :false
+            visible_mapa3_1 :false,
+            model_selector1_mapa4:"b"
         }
     },
     methods:{
@@ -111,6 +118,12 @@ export default {
             let mapa = this.$refs.mapa3
             let layer = mapa.cmpLayers["osm_mapa3"]
             layer.olLayer.setVisible(!layer.olLayer.getVisible())
+        },
+        escuchando_evento_mapa4:function(valor){
+            console.log(valor,"ffff")
+        },
+        escuchando_evento_mapa4_1:function(valor){
+            console.log(valor,"el valor desde otro")
         }
     },
     directives:{

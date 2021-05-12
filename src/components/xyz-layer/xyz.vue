@@ -16,7 +16,7 @@ export default {
         }
     },
     methods:{
-        createLayerObject:function(){
+        _createLayerObject:function(){
             this.olLayer = new TileLayer({
                 source: new XYZ({
                     url: this.url,

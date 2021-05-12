@@ -7,7 +7,10 @@
         </div>
         <slot></slot>
         <div class="card-map-footer" v-if="hasFooter">
-            <slot name="footer"></slot>
+            <div class="card-map-footer-container">
+                <slot name="footer"></slot>
+            </div>
+            
             <button class="collapsable-button" @click="collapsed_=!collapsed_">
                 {{collapsed_? '+' : '-'}}
             </button>
@@ -71,7 +74,8 @@ export default {
 <style lang="scss">
 .card-map-container{
     border-radius: 8px;
-    background-color: white;
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
     padding: .6rem .3rem 0rem .3rem;
     border: 1px solid black;
     overflow-y: clip;
@@ -97,9 +101,18 @@ export default {
 
     .card-map-footer{
         padding-bottom: 1.8rem;
+        .card-map-footer-container{
+            display: flex;
+            flex-wrap: wrap;
+            width: calc(100% - .3rem);
+            *{
+                margin: .3rem;
+                flex-grow: 1;
+            }
+        }
         .collapsable-button{
-            width: 100%;
-            //width: calc(100% + 1rem);
+            //width: 100%;
+            width: calc(100% + .6rem);
             background-color: black;
             color: white;
             margin-left: -.5rem;
