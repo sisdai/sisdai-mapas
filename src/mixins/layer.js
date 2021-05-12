@@ -3,7 +3,8 @@ export default{
     data:function(){
         return {
             olMap : null,
-            olLayer : null
+            olLayer : null,
+            VM_id:null
         }
     },
     render:function(){
@@ -11,6 +12,7 @@ export default{
     },
     created:function(){
         let vm = this;
+        this.VM_id = this.id != "_default_" ? this.id : Math.random().toString(36).substring(7)
         this.registerLayer(this)
         this.getMap(function(olMap){
             //console.log(olMap)
@@ -29,7 +31,8 @@ export default{
             this.olMap.addLayer(this.olLayer)
         },
         _setInitialPropsToLayer:function(){
-            this.olLayer.set("id",this.id)
+            
+            this.olLayer.set("id",this.VM_id)
             this.olLayer.setVisible(this.visible)
             this.olLayer.setZIndex(this.zIndex)
             this.olLayer.setOpacity(this.opacity)
@@ -48,7 +51,7 @@ export default{
     props:{
         id:{
             type: String,
-            default: Math.random().toString(36).substring(7)
+            default: "_default_"
         },
         visible:{
             type:Boolean,

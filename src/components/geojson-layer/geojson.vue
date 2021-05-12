@@ -11,11 +11,12 @@ export default {
     name:"DaiGeojsonLayer",
     mixins:[layer,vector_any],
     methods:{
-        _createLayeObject:function(){
+        _createLayerObject:function(){
             let vectorSource = this.source != undefined ? createGeojsonSourceFromObjectJs(this.source) : createGeojsonSourceFromUrl(this.url)
             this.olLayer = new VectorLayer({
                 source: vectorSource
             })
+            this._setStyle()
         }
     }
 }

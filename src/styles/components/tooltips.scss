@@ -1,0 +1,130 @@
+    //tooltip mapa
+.ol-tooltip {
+    min-width: 110px;
+    max-width: 450px;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,.3);
+    border-radius: 4px;
+    font: normal normal 400 12px/14px "Montserrat",sans-serif;
+    padding: .75rem;
+    position: absolute;
+    
+    .botones{
+        height: .5rem;
+        width: 100%;
+        .boton-cerrar{
+            float: right;
+            font-weight: 600;
+            cursor: pointer;
+            //margin: -.5rem -.5rem -.5rem auto;
+            opacity: .6;
+        }
+    }
+}
+.ol-tooltip-right {
+    left: -50px;
+}
+.ol-tooltip-left {
+    right: -50px;
+}
+.ol-tooltip-top {
+    bottom: 15px;
+}
+.ol-tooltip-bottom {
+    //top: -3px;
+}
+
+@media screen and (min-width:1200px) {
+    .ol-tooltip {
+        white-space: nowrap;
+    }
+}
+
+
+
+    //tooltipmov mapa
+    .ol-tooltipmov {
+        min-width: 110px;
+        background: #fff;
+        box-shadow: 0 2px 4px rgba(0,0,0,.3);
+        border-radius: 4px;
+        font: normal normal 400 12px/14px "Montserrat",sans-serif;
+        padding: .75rem;
+        position: absolute;
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+        .botones{
+            height: .5rem;
+            width: 100%;
+            .boton-cerrar{
+                float: right;
+                font-weight: 600;
+                cursor: pointer;
+                //margin: -.5rem -.5rem -.5rem auto;
+                opacity: .6;
+            }
+        }
+    }
+    .ol-tooltipmov-right {
+        left: -50px;
+    }
+    .ol-tooltipmov-left {
+        right: -50px;
+    }
+    .ol-tooltipmov-top {
+        bottom: 15px;
+    }
+    .ol-tooltipmov-bottom {
+        top: 25px;
+    }
+    .ol-tooltipmov.ol-tooltipmov-right {
+        &::before {
+            left: 36px;
+        }
+        &::after {
+            left: 37px;
+        }
+    }
+    .ol-tooltipmov.ol-tooltipmov-left {
+        &::before {
+            right: 36px;
+        }
+        &::after {
+            right: 37px;
+        }
+    }
+    .ol-tooltipmov.ol-tooltipmov-top {
+        &::before{
+            border-width: 13px 11px 0 11px;
+            border-color: rgba(0,0,0,.1) transparent transparent;
+            bottom: -14px;
+        }
+        &::after {
+            border-width: 12px 10px 0 10px;
+            border-color: #fff transparent transparent;
+            bottom: -10px;
+        }
+    }
+    .ol-tooltipmov.ol-tooltipmov-bottom {
+        &::before{
+            border-width: 0 11px 13px 11px;
+            border-color: transparent transparent rgba(0,0,0,.1);
+            top: -12px;
+        }
+        &::after {
+            border-width: 0 10px 12px 10px;
+            border-color: transparent transparent #fff;
+            top: -10px;
+        }
+    }
+    @media screen and (min-width:1200px) {
+        .ol-tooltipmov {
+            white-space: nowrap;
+        }
+    }

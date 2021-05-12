@@ -1,3 +1,5 @@
+import generateOlStyle, {serializedStyleIfHighlight,fixSerializedStyleIfIncomplete} from "./_json2olstyle"
+
 export default{
     props:{
         /**  Url de la fuente de datos, sea csv, geojson o kml por ejemplo */
@@ -13,10 +15,12 @@ export default{
             type:[Array,Object],
             default: undefined
         },
+        /** contenido del tooltip al pasar el hover, puede ser una funcion que accede a las propiedades del feature o un texto estatico */
         tooltipContent:{
             type:[Function,String],
             default:"none"
         },
+        /** contenido del popup al clickear el feature, puede ser una funcion que accede a las propiedades del feature o un texto estatico */
         popupContent:{
             type:[Function,String],
             default:"none"
@@ -25,9 +29,63 @@ export default{
             type:Boolean,
             default: false
         },
-        fixdedTooltipTop:{
+        fixedTooltipTop:{
             type: Number,
             default: 0
+        },
+        zoomOnClickFeature:{
+            type: Boolean,
+            default:true
+        },
+        mapStyle:{
+            type: [Function,Object],
+            default:function(){
+                return {
+                    fill:{
+                        color:"gray"
+                    },
+                    stroke:{
+                        width:1,
+                        color:"white" // "scale["color"]"
+                    }
+                }
+            }
+        },
+        highlightStyle: {
+            type : Object,
+            default:function(){
+                return {
+                    style:{
+                        stroke:{
+                            color: "black",
+                            width: 3
+                        },
+                        zIndex:3
+                    }
+                }
+            }
+        }
+    },
+    methods:{
+        _setStyle:function(){
+            let style;
+            let vm = this;
+            if (typeof vm.mapStyle == "function"){
+                style= function(feature){
+                    let serializes= fixSerializedStyleIfIncomplete( vm.mapStyle(feature) )
+                    serializes = feature.get("_hightlight") == true ? serializedStyleIfHighlight(serializes,vm.highlightStyle): serializes ;
+                    let olstyles=generateOlStyle(serializes)["style"]
+                    return olstyles
+                }
+            }else{
+                style= function(feature){
+                    let serializes= vm.mapStyle
+                    serializes = feature.get("_hightlight") == true ? serializedStyleIfHighlight(serializes): serializes ;
+                    let olstyles=generateOlStyle(serializes)["style"]
+                    return olstyles
+                }
+            }
+            this.olLayer.setStyle(style)
         }
     }
 }
