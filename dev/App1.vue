@@ -96,6 +96,7 @@
 </template>
 
 <script>
+import "./styles.csss"
 import {DaiMap} from "../src/components/map"
 import {DaiXyzLayerOsm} from "../src/components/xyz-layer-osm"
 import {DaiCardMapContainer} from "../src/components/card-container"
@@ -133,17 +134,3 @@ export default {
 }
 </script>
 
-<style>
-.another-map{
-    padding: 1rem;
-    
-    max-width: 900px;
-    background-color: #f4f4f4;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 1rem;
-}
-html,body{
-    margin: 0;
-}
-</style>
