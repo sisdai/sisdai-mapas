@@ -74,10 +74,11 @@ const CustomZoomControl = /*@__PURE__*/(function (Control) {
         //this.getMap().getView().animate({zoom:this.getMap().getView().getZoom()+1,duration:250})
         let view_options = this.getMap().get("_reset_view");
         if(view_options.type == "extent"){
-            this.getMap().getView().fit(view_options.value,{duration:500})
+            this.getMap().getView().fit(view_options.value,{duration:500,padding:[10,10,10,10]})
         }else{
             this.getMap().getView().animate(view_options.value)
         }
+        this.dispatchEvent("reset")
         
     };
     

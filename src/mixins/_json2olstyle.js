@@ -49,7 +49,7 @@ const serializedStyleIfHighlight=function(originalSerializedStyle,newStyle){
     let newStyle2  = JSON.parse(JSON.stringify(newStyle))
 
     let output = { style:{...originalStyle2.style,...newStyle2.style}}
-    console.log(output,"el nuevoooo")
+    
     /*
     if("stroke" in originalStyle["style"]){
         originalStyle["style"]["stroke"]["color"] = "gray"

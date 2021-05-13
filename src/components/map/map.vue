@@ -57,15 +57,25 @@ export default {
         return {
             cmpLayers:{},
             VM_highlight_feature:undefined,
-            VM_hover_feature:undefined
+            VM_hover_feature:undefined,
+            VM_reset_view:undefined
         }
+    },
+    created:function(){
+        this.VM_reset_view = this.extent[0] == 0 && this.extent[3] ==0 
+            ? {type:"center",value:{zoom:this.zoom,center:this.center}} 
+            : {type:"extent",value:this.extent};
     },
     
     mounted:function(){
         
-        if(this.extent[0]!=0 && this.extent[3]!=0){
-            this.hasInitialExtent = true;
-        }
+        let resetcontrol = new ResetControl();
+        resetcontrol.on("reset",()=>{
+            if (this.VM_highlight_feature) {
+                this.VM_highlight_feature.set("_hightlight", false);
+            }
+            this.$emit("resetView",this.map)
+        })
         this.map = new Map({
             target: this.$refs.map,
             layers: [],
@@ -76,8 +86,12 @@ export default {
                 maxZoom: this.maxZoom,
                 minZoom: this.minZoom
             }),
-            controls:[new CustomZoomControl,new ResetControl]
+            controls:[new CustomZoomControl(),resetcontrol]
         });
+        this.map.set("_reset_view",this.VM_reset_view)
+        if(this.VM_reset_view.type=="extent"){
+            this.map.getView().fit(this.extent,{duration:500,padding: [10, 10, 10, 10]})
+        }
 
         //verificar si hay un card contaiener
         if(this.$parent.$options.name == "DaiCardMapContainer"){
