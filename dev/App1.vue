@@ -96,7 +96,7 @@
 </template>
 
 <script>
-import "./styles.csss"
+import "./styles.css"
 import {DaiMap} from "../src/components/map"
 import {DaiXyzLayerOsm} from "../src/components/xyz-layer-osm"
 import {DaiCardMapContainer} from "../src/components/card-container"
