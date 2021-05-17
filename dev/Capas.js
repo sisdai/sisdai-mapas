@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import App from './Simbologias.vue'
+import App from './Capas.vue'
 import "../src/styles/main.scss"
 
 let div = document.createElement("div")

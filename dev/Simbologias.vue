@@ -22,7 +22,7 @@ import "./styles.css"
 
 import {DaiMap} from "../src/components/map"
 import {DaiCardMapContainer} from "../src/components/card-container"
-import {DaiGeojsonLayer} from "../src/components"
+import {DaiGeojsonLayer} from "../src/components/geojson-layer"
 import {WidthControl} from "@/directives"
 export default {
     name:"App",

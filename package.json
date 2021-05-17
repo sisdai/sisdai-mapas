@@ -2,12 +2,15 @@
   "name": "dai-maps",
   "version": "0.1.0",
   "private": true,
+  "files":["dist/*"],
+  "main": "./dist/dai-maps.umd.js",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --target lib src/index.js",
     "lint": "vue-cli-service lint",
     "dev": "VUE_CLI_SERVICE_CONFIG_PATH=$PWD/dev/vue.config.js vue-cli-service serve  dev/main1.js",
-    "dev-simbologias": "vue-cli-service serve  dev/Simbologias.js"
+    "dev-simbologias": "vue-cli-service serve  dev/Simbologias.js",
+    "dev-capas": "vue-cli-service serve  dev/Capas.js"
   },
   "dependencies": {
     "core-js": "^3.6.5",

@@ -1,16 +1,18 @@
-import {DaiMap} from "./map"
+import * as DaiMap from "./map"
+import * as DaiCardMapContainer from "./card-container"
 
 //layers
-import {DaiXyzLayerOsm} from "./xyz-layer-osm"
-import {DaiXyzLayer} from "./xyz-layer"
-import { DaiGeojsonLayer } from "./geojson-layer"
+import * as DaiXyzLayerOsm from "./xyz-layer-osm"
+import * as DaiXyzLayer from "./xyz-layer"
+import * as  DaiGeojsonLayer  from "./geojson-layer"
 
 //controles
-import {DaiLegend} from "./legend-control"
-import {DaiMapSelector} from "./selector-control"
+import * as DaiLegend from "./legend-control"
+import * as DaiMapSelector from "./selector-control"
 
 export{
     DaiMap,
+    DaiCardMapContainer,
 
     DaiXyzLayer,
     DaiXyzLayerOsm,

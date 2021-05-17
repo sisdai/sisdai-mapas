@@ -4,6 +4,7 @@ import { XYZ } from 'ol/source';
 
 import layer from "../../mixins/layer"
 export default {
+    name:"DaiXyzLayer",
     mixins:[layer],
     props:{
         url:{

@@ -1,17 +1,17 @@
-import DaiCardMapContainer from "./card.vue"
+import DaiWmsLayer from "./wms.vue"
 
 function plugin(Vue){
     if(plugin.installed){
         return
     }
     plugin.installed = true;
-    Vue.component(DaiCardMapContainer.name,DaiCardMapContainer)
+    Vue.component(DaiWmsLayer.name,DaiWmsLayer)
 }
 
 export default plugin;
 
 
-export {
+export { 
     plugin as install,
-    DaiCardMapContainer
+    DaiWmsLayer
 }
