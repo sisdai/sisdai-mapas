@@ -1,12 +1,12 @@
 <template>
     <div class="card-map-container" 
-        :class="{'without-footer': !hasFooter,'collapsed':collapsingClass}"
+        :class="{'without-footer': !VM_hasFooter,'collapsed':collapsingClass}"
         :style="{'max-height':collapsingHeight}">
         <div class="card-map-header">
             <slot name="header"></slot>
         </div>
         <slot></slot>
-        <div class="card-map-footer" v-if="hasFooter">
+        <div class="card-map-footer" v-if="VM_hasFooter" :class="{'collapsing':allowCollapsing}">
             <div class="card-map-footer-container">
                 <slot name="footer"></slot>
             </div>
@@ -32,12 +32,16 @@ export default {
         collapsedHeight:{
             type:String,
             default:"60vh"
+        },
+        fillContainer:{
+            type:Boolean,
+            default:false
         }
     },
     data:function(){
         return {
             cmpMap:null,
-            hasFooter:false,
+            VM_hasFooter:false,
             VM_collapsed:true
         }
     },
@@ -46,14 +50,14 @@ export default {
     },
     computed:{
         collapsingClass:function(){
-            return this.hasFooter && this.VM_collapsed && this.allowCollapsing;
+            return this.VM_hasFooter && this.VM_collapsed && this.allowCollapsing;
         },
         collapsingHeight:function(){
-            return this.hasFooter && this.VM_collapsed && this.allowCollapsing ? this.collapsedHeight : "250vh"
+            return this.VM_hasFooter && this.VM_collapsed && this.allowCollapsing ? this.collapsedHeight : "250vh"
         }
     },
     mounted:function(){
-        this.hasFooter = this.hasFooterSlot()
+        this.VM_hasFooter = this.hasFooterSlot()
     },
     methods:{
         hasFooterSlot() {
@@ -104,7 +108,10 @@ export default {
     }
 
     .card-map-footer{
-        padding-bottom: 1.8rem;
+        &.collapsing{
+            padding-bottom: 1.8rem;
+        }
+        
         .card-map-footer-container{
             display: flex;
             flex-wrap: wrap;
@@ -130,5 +137,7 @@ export default {
             bottom: 0px;
         }
     }
+
+    
 }
 </style>
