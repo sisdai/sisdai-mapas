@@ -10,7 +10,9 @@
     "lint": "vue-cli-service lint",
     "dev": "VUE_CLI_SERVICE_CONFIG_PATH=$PWD/dev/vue.config.js vue-cli-service serve  dev/main1.js",
     "dev-simbologias": "vue-cli-service serve  dev/Simbologias.js",
-    "dev-capas": "vue-cli-service serve  dev/Capas.js"
+    "dev-capas": "vue-cli-service serve  dev/Capas.js",
+    "dev-fullpage": "vue-cli-service serve  dev/FullPage.js"
+
   },
   "dependencies": {
     "core-js": "^3.6.5",

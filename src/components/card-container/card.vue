@@ -11,8 +11,8 @@
                 <slot name="footer"></slot>
             </div>
             
-            <button class="collapsable-button" @click="collapsed_=!collapsed_">
-                {{collapsed_? '+' : '-'}}
+            <button v-if="allowCollapsing" class="collapsable-button" @click="VM_collapsed=!VM_collapsed">
+                {{VM_collapsed? '+' : '-'}}
             </button>
         </div>
     </div>
@@ -21,31 +21,35 @@
 export default {
     name:"DaiCardMapContainer",
     props:{
+        allowCollapsing:{
+            type:Boolean,
+            default:true
+        },
         collapsed:{
             type: Boolean,
             default:true
         },
         collapsedHeight:{
             type:String,
-            default:"80vh"
+            default:"60vh"
         }
     },
     data:function(){
         return {
             cmpMap:null,
             hasFooter:false,
-            collapsed_:true
+            VM_collapsed:true
         }
     },
     created:function(){
-        this.collapsed_ = this.collapsed;
+        this.VM_collapsed = this.collapsed;
     },
     computed:{
         collapsingClass:function(){
-            return this.hasFooter && this.collapsed_;
+            return this.hasFooter && this.VM_collapsed && this.allowCollapsing;
         },
         collapsingHeight:function(){
-            return this.hasFooter && this.collapsed_ ? this.collapsedHeight : "250vh"
+            return this.hasFooter && this.VM_collapsed && this.allowCollapsing ? this.collapsedHeight : "250vh"
         }
     },
     mounted:function(){
