@@ -181,7 +181,7 @@ export default {
 
 <style lang="scss" >
 .dai-map-container{
-    min-height: 300px;
+    min-height: 200px;
     min-width: 200px;
     height: 40vh;
     position: relative;

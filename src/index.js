@@ -14,6 +14,7 @@ import {
     WidthControl
 } from "./directives"
 
+import "./styles/main.scss"
 export default function plugin(Vue){
     if (plugin.installed) {
         return

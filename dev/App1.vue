@@ -22,7 +22,7 @@
                         <option value="b">opcion b</option>
                     </dai-map-selector>
                 </template>
-                <dai-map :zoom="3" ref="mapa4">
+                <dai-map :zoom="3" ref="mapa4" class="custom-size2">
                     <dai-xyz-layer-osm id="osm_mapa4" />
                 </dai-map>
                 <template v-slot:footer>
@@ -79,7 +79,7 @@
 
         <div class="another-map">
             <p><strong>Mapa1</strong> Mapa simple sin contenedor card </p>
-            <dai-map :zoom="2">
+            <dai-map :zoom="2" class="custom-size">
                 <dai-xyz-layer-osm/>
             </dai-map>
         </div>
@@ -135,3 +135,12 @@ export default {
 }
 </script>
 
+<style>
+.custom-size{
+    height: 200px;
+}
+
+.custom-size2{
+    height: 70vh;
+}
+</style>

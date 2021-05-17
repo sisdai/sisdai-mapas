@@ -4,7 +4,7 @@ import OSM from 'ol/source/OSM';
 
 import layer from "../../mixins/layer"
 export default {
-    name:"DaiXyZLayerOsm",
+    name:"DaiXyzLayerOsm",
     mixins:[layer],
     methods:{
         _createLayerObject:function(){

@@ -1,6 +1,6 @@
 <template>
     <div class="card-map-container" 
-        :class="{'without-footer': !VM_hasFooter,'collapsed':collapsingClass}"
+        :class="{'without-footer': !VM_hasFooter,'collapsed':collapsingClass,'flex':mapFillAvailableSpace}"
         :style="{'max-height':collapsingHeight}">
         <div class="card-map-header">
             <slot name="header"></slot>
@@ -33,7 +33,7 @@ export default {
             type:String,
             default:"60vh"
         },
-        fillContainer:{
+        mapFillAvailableSpace:{
             type:Boolean,
             default:false
         }
@@ -42,7 +42,8 @@ export default {
         return {
             cmpMap:null,
             VM_hasFooter:false,
-            VM_collapsed:true
+            VM_collapsed:true,
+
         }
     },
     created:function(){
@@ -81,6 +82,7 @@ export default {
 
 <style lang="scss">
 .card-map-container{
+    
     border-radius: 8px;
     background-color: var(--main-bg-color);
     color: var(--main-text-color);
@@ -89,11 +91,19 @@ export default {
     overflow-y: clip;
     position: relative;
     transition: max-height 0.30s ease-in;
+    &.flex{
+        display: flex;
+        flex-direction: column;
+        .dai-map-container{
+            flex-grow: 1;
+        }
+    }
     &.without-footer{
         padding-bottom: 5px;
         
     }
     .dai-map-container{
+        
         margin-left: -.5rem;
         margin-right: -.5rem;
         margin-top: .5rem;
