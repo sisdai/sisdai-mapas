@@ -5,6 +5,7 @@ import {
     DaiXyzLayer,
     DaiXyzLayerOsm,
     DaiGeojsonLayer,
+    DaiWmsLayer,
 
     DaiLegend,
     DaiMapSelector
@@ -26,6 +27,7 @@ export default function plugin(Vue){
     Vue.use(DaiXyzLayer)
     Vue.use(DaiXyzLayerOsm)
     Vue.use(DaiGeojsonLayer)
+    Vue.use(DaiWmsLayer)
 
     Vue.use(DaiLegend)
     Vue.use(DaiMapSelector)
@@ -44,6 +46,7 @@ export {
     DaiXyzLayer,
     DaiXyzLayerOsm,
     DaiGeojsonLayer,
+    DaiWmsLayer,
 
     DaiLegend,
     DaiMapSelector,

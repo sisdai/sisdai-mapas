@@ -5,6 +5,7 @@ import * as DaiCardMapContainer from "./card-container"
 import * as DaiXyzLayerOsm from "./xyz-layer-osm"
 import * as DaiXyzLayer from "./xyz-layer"
 import * as  DaiGeojsonLayer  from "./geojson-layer"
+import * as DaiWmsLayer from "./wms-layer"
 
 //controles
 import * as DaiLegend from "./legend-control"
@@ -17,6 +18,7 @@ export{
     DaiXyzLayer,
     DaiXyzLayerOsm,
     DaiGeojsonLayer,
+    DaiWmsLayer,
 
     DaiLegend,
     DaiMapSelector
