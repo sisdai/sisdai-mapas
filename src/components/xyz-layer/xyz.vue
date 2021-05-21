@@ -25,6 +25,11 @@ export default {
                 }),
             })
         }
+    },
+    watch:{
+        url:function(newValue){
+            this.olLayer.getSource().setUrl(newValue)
+        }
     }
 }
 </script>
