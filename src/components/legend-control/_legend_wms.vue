@@ -2,7 +2,7 @@
     
     <div class="legend-wms">
         
-        <label ><checkbox v-model="visible"/> {{params.content.title}}</label>
+        <label ><checkbox v-model="visible" @change="_toggle_visible"/> {{params.content.title}}</label>
         <div class="image">
             <img :src="params.content.image" alt="">
         </div>
@@ -13,15 +13,11 @@
 
 <script>
 import checkbox from "../utils/checkbox"
+import legend_item_child  from "../../mixins/legend-item-child"
 export default {
-    props:["params"],
+    mixins:[legend_item_child],
     components:{
         checkbox
-    },
-    data:function(){
-        return{
-            visible:false
-        }
     }
 }
 </script>
@@ -34,7 +30,7 @@ export default {
         justify-content: flex-start;
         .image{
             //flex-grow: 1;
-            padding-left: 1rem;
+            padding-left: 20px;
             img{
                 max-width:150px
             }

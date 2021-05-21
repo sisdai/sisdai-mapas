@@ -1,7 +1,7 @@
 <template>
     <div>
         <p class="title">{{title}}</p>
-        <legend-item v-for="leg in VM_legends" :key="leg.id" :layerId="leg"></legend-item>
+        <legend-item v-for="leg in VM_legends" :key="leg" :layerId="leg"></legend-item>
     </div>
 </template>
 
