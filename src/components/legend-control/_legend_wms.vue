@@ -32,7 +32,8 @@ export default {
             //flex-grow: 1;
             padding-left: 20px;
             img{
-                max-width:150px
+                max-width:150px;
+                width: initial;
             }
         }
 
