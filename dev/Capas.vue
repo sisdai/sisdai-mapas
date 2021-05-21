@@ -4,13 +4,15 @@
             <dai-card-map-container>
                 <template v-slot:header>
                     <p>Creando capas wms</p>
-                    <button @click="agregar_1mas_map2">agregar una capa mas</button>
+                    <button @click="agregar_1mas_map2">agregar/quitar una capa mas</button>
+                    <button @click="visibilidad_estados_map2=!visibilidad_estados_map2">toggle visibilidad estados</button>
                 </template>
                 <dai-map  
                     :extent="[-118.365119934082,14.5320978164673,-86.7104034423828,32.7186546325684]"
                     >
                  
                     <dai-wms-layer id="estados" url="https://geo.crip.conacyt.mx/geoserver/estados_inegi_2019/wms" 
+                        :visible.sync="visibilidad_estados_map2"
                         :params="{'LAYERS':'estados_inegi_2019'}"/>
                     <dai-wms-layer id="centros" url="https://geo.crip.conacyt.mx/geoserver/centros_de_acondicionamiento_fisico/wms" 
                         :params="{'LAYERS':'centros_de_acondicionamiento_fisico'}" title="Centros de acondicionamiento fisico"/>
@@ -64,7 +66,8 @@ export default {
     },
     data:function(){
         return{
-            capas_map2:[]
+            capas_map2:[],
+            visibilidad_estados_map2:true
         }
     },
     methods:{
@@ -75,7 +78,7 @@ export default {
             else{
                 this.capas_map2.shift()
             }
-        }
+        },
     }
 }
 </script>
