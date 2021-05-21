@@ -3,17 +3,24 @@
         <div class="another-map">
             <dai-card-map-container>
                 <template v-slot:header>
-                    <p>Creando capa wms</p>
+                    <p>Creando capas wms</p>
+                    <button @click="agregar_1mas_map2">agregar una capa mas</button>
                 </template>
                 <dai-map  
                     :extent="[-118.365119934082,14.5320978164673,-86.7104034423828,32.7186546325684]"
                     >
                  
-                    <dai-wms-layer url="https://geo.crip.conacyt.mx/geoserver/estados_inegi_2019/wms" 
+                    <dai-wms-layer id="estados" url="https://geo.crip.conacyt.mx/geoserver/estados_inegi_2019/wms" 
                         :params="{'LAYERS':'estados_inegi_2019'}"/>
-                    <dai-wms-layer url="https://geo.crip.conacyt.mx/geoserver/centros_de_acondicionamiento_fisico/wms" 
-                        :params="{'LAYERS':'centros_de_acondicionamiento_fisico'}"/>
+                    <dai-wms-layer id="centros" url="https://geo.crip.conacyt.mx/geoserver/centros_de_acondicionamiento_fisico/wms" 
+                        :params="{'LAYERS':'centros_de_acondicionamiento_fisico'}" title="Centros de acondicionamiento fisico"/>
+                    <dai-wms-layer v-for="capa in capas_map2" :key="capa" :id="capa" :url="'https://geo.crip.conacyt.mx/geoserver/'+capa+'/wms'" 
+                        :params="{'LAYERS':capa}"/>
                 </dai-map>
+                <template v-slot:footer>
+                    <p>la leyenda va aqui</p>
+                    <dai-legend :for="['estados','centros','a_conabio_areas_natur_protegidas_2009']" title="Capas wms"></dai-legend>
+                </template>
             </dai-card-map-container>
         </div>
         <div class="another-map">
@@ -40,6 +47,7 @@ import {DaiMap} from "../src/components/map"
 import {DaiCardMapContainer} from "../src/components/card-container"
 import {DaiGeojsonLayer} from "../src/components/geojson-layer"
 import {DaiWmsLayer} from "../src/components/wms-layer"
+import {DaiLegend} from "../src/components/legend-control"
 import {WidthControl} from "@/directives"
 
 export default {
@@ -48,10 +56,26 @@ export default {
         DaiMap,DaiCardMapContainer,
         DaiGeojsonLayer,
         DaiWmsLayer,
+        DaiLegend
         //DaiLegend,DaiMapSelector
     },
     directives:{
         "width-control":WidthControl
+    },
+    data:function(){
+        return{
+            capas_map2:[]
+        }
+    },
+    methods:{
+        agregar_1mas_map2:function(){
+            if(this.capas_map2.length==0){
+                this.capas_map2.push("a_conabio_areas_natur_protegidas_2009")
+            }
+            else{
+                this.capas_map2.shift()
+            }
+        }
     }
 }
 </script>

@@ -4,7 +4,17 @@ export default{
         return {
             olMap : null,
             olLayer : null,
-            VM_id:null
+            VM_id:null,
+            VM_title:"",
+            /**
+             *  informacion de la leyenda de esta capa, para que otros componentes puedan obtenerla
+             */
+            VM_legend_info:undefined,
+            /**
+             * Estado de la informacion de la leyenda, para que otros 
+             * componentes que quieran acceder a la leyenda de esta capa sepan que status tiene
+             */
+            VM_legend_info_status:"unready" //"ready","loading"
         }
     },
     render:function(){
@@ -13,6 +23,7 @@ export default{
     created:function(){
         let vm = this;
         this.VM_id = this.id != "_default_" ? this.id : Math.random().toString(36).substring(7)
+        this.VM_title = this.title != "" ? this.title: this.VM_id
         this.registerLayer(this)
         this.getMap(function(olMap){
             //console.log(olMap)
@@ -64,6 +75,10 @@ export default{
         opacity:{
             type:Number,
             default:1
+        },
+        title:{
+            type:String,
+            default:""
         }
     },
     watch:{
@@ -77,5 +92,12 @@ export default{
         zIndex:function(newValue){
             this.olLayer.setZIndex(newValue)
         }
-    }
+    },
+    destroyed:function(){
+        //eliminar del mapa el layer
+        this.olMap.removeLayer(this.olLayer)
+        //console.log("removiendo",this.VM_id)
+        
+    },
+    
 }

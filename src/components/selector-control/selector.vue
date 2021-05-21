@@ -25,6 +25,7 @@ export default {
             
             this.value_= e.target.value
             this.$emit("change",e.target.value)
+            //emitir los eventos que accesan a propiedades o componentes si hay
             this._emitAccesorEvents("change",e.target.value)
             //this.$emit("change:#map",this.cmpMap)
         }

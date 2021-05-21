@@ -149,6 +149,17 @@ export default {
             
         })
 
+        this.map.getLayers().on("add",()=>{
+            this.$emit("add-layer")
+        })
+        this.map.getLayers().on("remove",(evento)=>{
+            
+            let id_layer=evento.element.get("id")
+            this.cmpLayers[id_layer] = undefined
+            delete this.cmpLayers[id_layer]
+            this.$emit("remove-layer")
+        })
+
     },
     methods:{
         _getMap:function(found){
