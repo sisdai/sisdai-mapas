@@ -48,7 +48,7 @@ export default{
         this.VM_r_class = this.renderClassification
         this.VM_r_colors = this.renderColors
         this.VM_r_column = this.renderColumn
-        
+
         
     
     },
@@ -68,6 +68,8 @@ export default{
                     .toLocaleString("en")} a ${Math.floor(limits[1]).toLocaleString("en")}`
                 return { d: label, val: limits, c: color };
             })
+
+            console.log("Ahora si a poner el estilo, segun la coropleta")
         }
     }
 }
