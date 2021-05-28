@@ -118,6 +118,7 @@ export default {
     .card-map-header{
         display: flex;
         flex-wrap: wrap;
+        align-items: center;
         >*{
             margin: .3rem;
             flex-grow: 1;
@@ -133,6 +134,7 @@ export default {
             display: flex;
             flex-wrap: wrap;
             width: calc(100% - .3rem);
+            align-items: center;
             >*{
                 margin: .3rem;
                 flex-grow: 1;
