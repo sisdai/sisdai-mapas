@@ -2,6 +2,7 @@
 <script>
 import LegendWms from "./_legend_wms.vue"
 import LegendLoading from "./_legend_loading.vue"
+import LegendCoropleta from "./_legend_coropleta.vue"
 export default {
     props:["layerId"],
     created:function(){
@@ -19,7 +20,7 @@ export default {
 
     },
     components:{
-        LegendWms,LegendLoading
+        LegendWms,LegendLoading,LegendCoropleta
     },
     data:function(){
         return {

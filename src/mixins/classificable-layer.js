@@ -70,6 +70,39 @@ export default{
             })
 
             console.log("Ahora si a poner el estilo, segun la coropleta")
+
+            //agregando informacion para la leyenda
+            this.VM_legend_info = {
+                type: "legend-coropleta",
+                content:{
+                    cortes: this.VM_r_cortes,
+                    title:this.VM_title
+                }
+            }
+            this.VM_legend_info_status = "ready"
+            this.$emit("legend_info_ready",this.VM_legend_info)
+        },
+        _set_style_class:function(){
+            let style= (feature)=>{
+                let color= "black"
+                this.VM_r_cortes.forEach((item,i)=>{
+                    let min_value = i==0?item.val[0]-1 : item.val[0];
+                    if(feature.getProperties()[this.VM_r_column] > min_value && feature.getProperties()[this.VM_r_column]<= item.val[1]){
+                        color= item.c                        
+                    }
+                })
+                return {
+                    fill:{
+                        color:color
+                    },
+                    stroke:{
+                        width:1,
+                        color:"white" // "scale["color"]"
+                    }
+                }
+            }
+            this.VM_mapStyle = style;
+            //this.$emit("update:mapStyle",style)
         }
     }
 }

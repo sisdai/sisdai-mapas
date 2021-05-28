@@ -20,6 +20,7 @@ export default {
             if(this.VM_is_classified){
                 vectorSource.on("change",()=>{
                     this._clasificar();
+                    this._set_style_class()
                     this._setStyle()
                 })
             }

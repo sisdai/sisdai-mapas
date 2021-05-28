@@ -45,7 +45,7 @@ export default {
             if(this.extent!=undefined){
                 this.olLayer.setExtent(this.extent)
             }
-
+            //agregando informacion para la leyenda
             this.VM_legend_info = {
                 type: "legend-wms",
                 content:{

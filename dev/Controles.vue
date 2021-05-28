@@ -44,13 +44,13 @@
                     <dai-geojson-layer 
                     id="estados" 
                     render-classification="quantile"
-                    :render-colors="['red','gray','yellow']"
-                    :render-classes="3"
+                    :render-colors="['#eff3ff','#bdd7e7','#6baed6','#3182bd','#08519c']"
+                    :render-classes="5"
                     :render-column="'pob18ymas'"
                     url="https://dadsigvisgeo.conacyt.mx/geoserver/vacunacion/wms?service=WMS&version=1.1.0&request=GetMap&layers=vacunacion:estados&bbox=-118.365119934082%2C14.5320978164673%2C-86.7104034423828%2C32.7186546325684&width=768&height=441&srs=EPSG%3A404000&format=geojson" />
                 </dai-map>
                 <template v-slot:footer>
-                    <dai-legend for="estados"></dai-legend>
+                    <dai-legend  title="Titulo de la coropleta" for="estados" v-width-control="'100%'"></dai-legend>
                 </template>
             </dai-card-map-container>
             

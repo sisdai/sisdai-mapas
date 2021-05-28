@@ -66,20 +66,30 @@ export default{
             }
         }
     },
+    data:function(){
+        return {
+            VM_mapStyle:undefined
+        }
+    },
+    created:function(){
+
+        //console.log("llgamos aqui")
+        this.VM_mapStyle = this.mapStyle
+    },
     methods:{
         _setStyle:function(){
             let style;
             let vm = this;
-            if (typeof vm.mapStyle == "function"){
+            if (typeof vm.VM_mapStyle == "function"){
                 style= function(feature){
-                    let serializes= fixSerializedStyleIfIncomplete( vm.mapStyle(feature) )
+                    let serializes= fixSerializedStyleIfIncomplete( vm.VM_mapStyle(feature) )
                     serializes = feature.get("_hightlight") == true ? serializedStyleIfHighlight(serializes,vm.highlightStyle): serializes ;
                     let olstyles=generateOlStyle(serializes)["style"]
                     return olstyles
                 }
             }else{
                 style= function(feature){
-                    let serializes= vm.mapStyle
+                    let serializes= vm.VM_mapStyle
                     serializes = feature.get("_hightlight") == true ? serializedStyleIfHighlight(serializes): serializes ;
                     let olstyles=generateOlStyle(serializes)["style"]
                     return olstyles
