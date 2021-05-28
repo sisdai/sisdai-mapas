@@ -8,7 +8,8 @@ import {
     DaiWmsLayer,
 
     DaiLegend,
-    DaiMapSelector
+    DaiMapSelector,
+    DaiOpacityControl
 } from "./components"
 
 import {
@@ -31,6 +32,7 @@ export default function plugin(Vue){
 
     Vue.use(DaiLegend)
     Vue.use(DaiMapSelector)
+    Vue.use(DaiOpacityControl)
 
     //directivas
     Vue.directive(WidthControl.name,WidthControl);
@@ -50,6 +52,7 @@ export {
 
     DaiLegend,
     DaiMapSelector,
+    DaiOpacityControl,
 
     //directivas
     WidthControl

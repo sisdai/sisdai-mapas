@@ -1,9 +1,27 @@
 <template>
     <div>
+        
+
+        <!--MAPA 1-->
         <div class="another-map">
             <dai-card-map-container>
                 <template v-slot:header>
-                    <p>Creando capas wms</p>
+                    <p>Agregando un simple recurso de capa geojson</p>
+                </template>
+                <dai-map  
+                    :extent="[-118.365119934082,14.5320978164673,-86.7104034423828,32.7186546325684]"
+                    >
+                 
+                    <dai-geojson-layer url="https://dadsigvisgeo.conacyt.mx/geoserver/vacunacion/wms?service=WMS&version=1.1.0&request=GetMap&layers=vacunacion:estados&bbox=-118.365119934082%2C14.5320978164673%2C-86.7104034423828%2C32.7186546325684&width=768&height=441&srs=EPSG%3A404000&format=geojson" />
+                </dai-map>
+            </dai-card-map-container>
+        </div>
+
+        <!--MAPA 2-->
+        <div class="another-map">
+            <dai-card-map-container>
+                <template v-slot:header>
+                    <p>Creando capas wms, probando la reactividad de las propiedades</p>
                     <button @click="agregar_1mas_map2">agregar/quitar una capa mas</button>
                     <button @click="visibilidad_estados_map2=!visibilidad_estados_map2">toggle visibilidad estados</button>
                 </template>
@@ -23,19 +41,6 @@
                     <p>la leyenda va aqui</p>
                     <dai-legend :for="['estados','centros','a_conabio_areas_natur_protegidas_2009']" title="Capas wms"></dai-legend>
                 </template>
-            </dai-card-map-container>
-        </div>
-        <div class="another-map">
-            <dai-card-map-container>
-                <template v-slot:header>
-                    <p>Creando capa geojson</p>
-                </template>
-                <dai-map  
-                    :extent="[-118.365119934082,14.5320978164673,-86.7104034423828,32.7186546325684]"
-                    >
-                 
-                    <dai-geojson-layer url="https://dadsigvisgeo.conacyt.mx/geoserver/vacunacion/wms?service=WMS&version=1.1.0&request=GetMap&layers=vacunacion:estados&bbox=-118.365119934082%2C14.5320978164673%2C-86.7104034423828%2C32.7186546325684&width=768&height=441&srs=EPSG%3A404000&format=geojson" />
-                </dai-map>
             </dai-card-map-container>
         </div>
 

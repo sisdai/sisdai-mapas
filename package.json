@@ -11,7 +11,9 @@
     "dev-varios": "VUE_CLI_SERVICE_CONFIG_PATH=$PWD/dev/vue.config.js vue-cli-service serve  dev/varios.js",
     "dev-simbologias": "vue-cli-service serve  dev/Simbologias.js",
     "dev-capas": "vue-cli-service serve  dev/Capas.js",
-    "dev-fullpage": "vue-cli-service serve  dev/FullPage.js"
+    "dev-fullpage": "vue-cli-service serve  dev/FullPage.js",
+    "dev-controles": "vue-cli-service serve  dev/Controles.js"
+
 
   },
   "dependencies": {
