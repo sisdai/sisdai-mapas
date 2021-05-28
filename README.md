@@ -95,5 +95,27 @@ Para usarlos se implementa el componente `dai-card-map-container` y dentro de el
 
 #### el tamaño minimo de la card-container
 
+[redactar esta y otras propiedades]
 
+#### subcomponentes - controles
+
+[redactar como se usa la leyenda, dropdowns, etc]
 ## Contribuir
+
+
+
+Por el momento, y antes de implementar las pruebas unitarias, si contribuyes al desarrollo de este componente hay algunos scrips que debes conocer:
+
+todos se ejecutan desde `npm run [nombre del scrip]`
+
+- dev-varios 
+- dev-capas
+- dev-fullpage
+- dev-simbologias
+
+Todos los anteriores para probar y revisar las caracteristicas que se esten desarrollando desde un servicio web de vue-cli.
+
+
+
+
+[redactar organizacion de las ramas y convencion de nombres de subcomponentes]
