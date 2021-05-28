@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import App from './App1.vue'
+import App from './Varios.vue'
 import "../src/styles/main.scss"
 
 let div = document.createElement("div")

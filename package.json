@@ -8,7 +8,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib src/index.js",
     "lint": "vue-cli-service lint",
-    "dev": "VUE_CLI_SERVICE_CONFIG_PATH=$PWD/dev/vue.config.js vue-cli-service serve  dev/main1.js",
+    "dev-varios": "VUE_CLI_SERVICE_CONFIG_PATH=$PWD/dev/vue.config.js vue-cli-service serve  dev/varios.js",
     "dev-simbologias": "vue-cli-service serve  dev/Simbologias.js",
     "dev-capas": "vue-cli-service serve  dev/Capas.js",
     "dev-fullpage": "vue-cli-service serve  dev/FullPage.js"
