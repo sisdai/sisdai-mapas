@@ -26,7 +26,7 @@
                     <dai-xyz-layer-osm id="osm_mapa4" />
                 </dai-map>
                 <template v-slot:footer>
-                    <dai-legend for="estados_mapa4"/>
+                    
                     <dai-map-selector class="dark-control" >
                         <option value="a">opcion a</option>
                         <option value="b">opcion b</option>
@@ -101,13 +101,14 @@ import {DaiMap} from "../src/components/map"
 import {DaiXyzLayerOsm} from "../src/components/xyz-layer-osm"
 import {DaiCardMapContainer} from "../src/components/card-container"
 import {DaiMapSelector} from "../src/components/selector-control"
-import {DaiLegend} from "../src/components/legend-control"
+//import {DaiLegend} from "../src/components/legend-control"
 import {WidthControl} from "@/directives"
 export default {
     name:"App",
     components:{
         DaiMap,DaiXyzLayerOsm,DaiCardMapContainer,
-        DaiLegend,DaiMapSelector
+        //DaiLegend,
+        DaiMapSelector
     },
     data:function(){
         return{
