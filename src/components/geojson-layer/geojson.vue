@@ -26,6 +26,16 @@ export default {
             }
             
             this._setStyle()
+
+            if(this.tooltipContent!="none"){
+                
+                this.olLayer.set("_tooltip",this.tooltipContent)
+                this.olLayer.set("_tooltip_mov",true)
+                this.olLayer.set("_tooltip_top",'10px')
+                
+            }
+            
+
         }
     }
 }

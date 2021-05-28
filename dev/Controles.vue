@@ -30,7 +30,7 @@
 
         <!--MAPA 2-->
         <div class="another-map">
-            <dai-card-map-container >
+            <dai-card-map-container :collapsed="false" >
                 <template v-slot:header>
                     <p>Agregando una capa geoson con un control de transparencia</p>
                     <dai-map-selector>
@@ -47,6 +47,8 @@
                     :render-colors="['#eff3ff','#bdd7e7','#6baed6','#3182bd','#08519c']"
                     :render-classes="5"
                     :render-column="'pob18ymas'"
+
+                    :tooltipContent="(f)=>f['abre']+' <br> Poblacion '+f['pob18ymas']"
                     url="https://dadsigvisgeo.conacyt.mx/geoserver/vacunacion/wms?service=WMS&version=1.1.0&request=GetMap&layers=vacunacion:estados&bbox=-118.365119934082%2C14.5320978164673%2C-86.7104034423828%2C32.7186546325684&width=768&height=441&srs=EPSG%3A404000&format=geojson" />
                 </dai-map>
                 <template v-slot:footer>

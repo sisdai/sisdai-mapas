@@ -56,7 +56,7 @@ export default{
         _clasificar:function(){
             let features = this.olLayer.getSource().getFeatures();
             let todos_valores = features.map((f=>f.getProperties()[this.VM_r_column]))
-            console.log(features)
+            //console.log(features)
 
             let quantile0 = d3.scaleQuantile()
             .domain(todos_valores)
