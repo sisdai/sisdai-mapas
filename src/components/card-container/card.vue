@@ -5,7 +5,7 @@
         <div class="card-map-header">
             <slot name="header"></slot>
         </div>
-        <slot></slot>
+        <slot ></slot>
         <div class="card-map-footer" v-if="VM_hasFooter" :class="{'collapsing':allowCollapsing}">
             <div class="card-map-footer-container">
                 <slot name="footer"></slot>
@@ -99,7 +99,11 @@ export default {
         }
     }
     &.without-footer{
-        padding-bottom: 5px;
+        padding-bottom: 0px;
+        .dai-map-container{
+            margin-bottom: 0px;
+        }
+        
         
     }
     .dai-map-container{
@@ -107,6 +111,9 @@ export default {
         margin-left: -.5rem;
         margin-right: -.5rem;
         margin-top: .5rem;
+        
+        margin-bottom: .5rem;
+        
     }
     .card-map-header{
         display: flex;
