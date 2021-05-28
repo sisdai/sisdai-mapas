@@ -2,7 +2,9 @@
   "name": "dai-maps",
   "version": "0.1.0",
   "private": true,
-  "files":["dist/*"],
+  "files": [
+    "dist/*"
+  ],
   "main": "./dist/dai-maps.umd.js",
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -13,8 +15,6 @@
     "dev-capas": "vue-cli-service serve  dev/Capas.js",
     "dev-fullpage": "vue-cli-service serve  dev/FullPage.js",
     "dev-controles": "vue-cli-service serve  dev/Controles.js"
-
-
   },
   "dependencies": {
     "core-js": "^3.6.5",
@@ -26,6 +26,7 @@
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "babel-eslint": "^10.1.0",
+    "d3": "^6.7.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "node-sass": "^5.0.0",

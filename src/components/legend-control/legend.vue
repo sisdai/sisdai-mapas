@@ -13,7 +13,7 @@ export default {
     mixins:[control],
     props:{
         for:{
-            type:Array,
+            type:[Array,String],
             default:function(){
                 return []
             }
@@ -45,7 +45,7 @@ export default {
     methods:{
         _draw_legends_from_layers:function(){
             let layers_in_map = Object.keys( this.cmpMap.cmpLayers)
-            let layers_in_params = this.for;
+            let layers_in_params = Array.isArray( this.for ) ? this.for : [this.for];
 
             let interseccion_layers = layers_in_params.filter(value=>layers_in_map.includes(value))
             this.VM_legends = []

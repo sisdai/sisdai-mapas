@@ -1,11 +1,13 @@
 <template>
     <div>
-        cargando ...
+        cargando leyenda para {{layerId}}
     </div>
 </template>
 
 <script>
+import legend_item_child  from "../../mixins/legend-item-child"
 export default {
+    mixins:[legend_item_child],
     props:["params"]
 }
 </script>
