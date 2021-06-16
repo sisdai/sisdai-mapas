@@ -74,6 +74,18 @@
     content: "\64";
   }
 
+//colores de los controles
+$control-bg-color: #fff;
+$control-color: #000;
+$control-bg-color-hover:lightgray;
+$control-bg-color-accent:#000; //color para acentuar o resaltar. por ejemplo en un switch, la opcion seleccionada
+$control-color-accent:#fff; //color dentro de las cosas realtadas, por ejemplo el color de texto dentro de un switch seleccionado
+
+$invert-control-bg-color: invert($control-bg-color);
+$invert-control-color: invert($control-color);
+$invert-control-bg-color-hover:invert($control-bg-color-hover);
+$invert-control-bg-color-accent:invert($control-bg-color-accent);
+$invert-control-color-accent:invert($control-color-accent);
 
 :root{
     --main-bg-color:white;
@@ -87,5 +99,22 @@
     --dark-control-bg-color: black;
     --dark-control-color: white;
     --dark-control-hover-color: lightgray;
+
+    //colores en los controles
+    --control-bg-color: #{$control-bg-color};
+    --control-color: #{$control-color};
+    --control-bg-color-hover:#{$control-bg-color-hover};
+    --control-bg-color-accent:#{$control-bg-color-accent};
+    --control-color-accent:#{$control-color-accent};
+    --inverted-control-bg-color: #{$invert-control-bg-color};
+    --inverted-control-color: #{$invert-control-color};
+    --inverted-control-bg-color-hover: #{$invert-control-bg-color-hover};
+    --inverted-control-bg-color-accent: #{$invert-control-bg-color-accent};
+    --inverted-control-color-accent: #{$invert-control-color-accent};
+    //--inverted-control-bg-color: $control-color;
+    //--inverted-control-color: $control-bg-color;
+    //--inverted-control-bg-color-hover: $control-color;
+    //--inverted-control-bg-color-accent: $control-color;
+
 
 }

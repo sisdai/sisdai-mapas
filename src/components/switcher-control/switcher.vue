@@ -75,12 +75,14 @@ export default {
         border: 1px solid red;
         padding: 3px 5px;
         flex-grow: 1;
+        background-color: var(--control-bg-color);
+        color: var(--control-color);
         &:not(:last-child){
             margin-right: -1px;
         }
         &.active{
-            background-color: black;
-            color: white;
+            background-color: var(--control-bg-color-accent);
+            color: var(--control-color-accent);
         }
         
         label{
