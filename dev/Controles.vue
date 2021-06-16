@@ -36,6 +36,8 @@
                     <dai-map-selector>
                         <option value="una opcion">una opcion</option>
                     </dai-map-selector>
+
+                    <dai-map-switch :options="['t','p','o']" :optionsLabels="['Total','porcentaje','otr']" ></dai-map-switch>
                 </template>
                 <dai-map  
                     :extent="[-118.365119934082,14.5320978164673,-86.7104034423828,32.7186546325684]"
@@ -74,6 +76,7 @@ import {DaiGeojsonLayer} from "../src/components/geojson-layer"
 import {DaiLegend} from "../src/components/legend-control"
 import {DaiOpacityControl} from "../src/components/opacity-control"
 import {DaiMapSelector} from "../src/components/selector-control"
+import {DaiMapSwitch} from "../src/components/switcher-control"
 import {WidthControl} from "@/directives"
 
 export default {
@@ -84,7 +87,8 @@ export default {
         DaiOpacityControl,
         DaiMapSelector,
         //DaiWmsLayer,
-        DaiLegend
+        DaiLegend,
+        DaiMapSwitch
         //DaiLegend,DaiMapSelector
     },
     directives:{
