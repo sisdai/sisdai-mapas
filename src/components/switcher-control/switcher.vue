@@ -1,12 +1,12 @@
 <template>
     <div class="switches">
-        <div v-for="(option,index) in optionsAndLabels" :key="option[0]" 
+        <label v-for="(option,index) in optionsAndLabels" :key="option[0]" 
         class="option" :class="{'active':option[0]==value_}">
-            <label  :for="id+'_'+index">
+            
                 <input type="radio" :value="option[0]" :name="id" :id="id+'_'+index" v-model="value_">
                 {{option[1]}}
         </label>
-        </div>
+        
         
         
     </div>
@@ -69,31 +69,53 @@ export default {
 <style lang="scss">
 .switches{
     display: flex; 
+    box-shadow:1px 1px 8px 3px #00000026;
+    margin: 2px;
+    border-radius: .375em;
     
     .option{
         position: relative;
-        border: 1px solid red;
-        padding: 3px 5px;
+        //border: 1px solid red;
+        //padding: 6px 6px;
+        padding-top: calc(.6em - 1px);
+        padding-bottom: calc(.6em - 1px);
+        
+        
         flex-grow: 1;
         background-color: var(--control-bg-color);
         color: var(--control-color);
+        text-align: center;
+        font-weight: 500;
+        font-size: 1em;
+        line-height: 1.5;
+        
+        &:first-child{
+            border-top-left-radius: .375em;
+            border-bottom-left-radius: .375em;
+        }
+        &:last-child{
+            border-top-right-radius: .375em;
+            border-bottom-right-radius: .375em;
+        }
+
         &:not(:last-child){
-            margin-right: -1px;
+            border-right: 1px solid var(--control-bg-color-accent);
+            //margin-right: -1px;
         }
         &.active{
             background-color: var(--control-bg-color-accent);
             color: var(--control-color-accent);
         }
         
-        label{
-            cursor: pointer;
+        user-select: none;
+        cursor: pointer;
             input{
                 position: absolute;
                 left: 0;
                 opacity: 0;
                 z-index: -1;
             }
-        } 
+        
     }
     
 }

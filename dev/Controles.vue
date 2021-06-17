@@ -38,6 +38,8 @@
                     </dai-map-selector>
 
                     <dai-map-switch :options="['t','p','o']" :optionsLabels="['Total','porcentaje','otr']" ></dai-map-switch>
+
+                    <dai-map-switch :options="['t','p']" :optionsLabels="['Total','porcentaje']" ></dai-map-switch>
                 </template>
                 <dai-map  
                     :extent="[-118.365119934082,14.5320978164673,-86.7104034423828,32.7186546325684]"
