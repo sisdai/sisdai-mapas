@@ -32,7 +32,7 @@ export default function plugin(Vue){
 
     Vue.use(DaiLegend)
     Vue.use(DaiMapSelector)
-    Vue.use(DaiOpacityControl)
+    Vue.use(DaiMapOpacity)
 
     //directivas
     Vue.directive(WidthControl.name,WidthControl);
@@ -52,7 +52,7 @@ export {
 
     DaiLegend,
     DaiMapSelector,
-    DaiOpacityControl,
+    DaiMapOpacity,
 
     //directivas
     WidthControl

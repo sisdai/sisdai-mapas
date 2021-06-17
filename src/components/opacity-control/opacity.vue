@@ -11,7 +11,7 @@
 <script>
 import control from "../../mixins/control" 
 export default {
-    name:"DaiOpacityControl",
+    name:"DaiMapOpacity",
     mixins:[control],
     props:{
         /**valor de la opacidad de 0 a 1 */

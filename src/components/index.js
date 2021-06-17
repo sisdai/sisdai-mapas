@@ -10,7 +10,7 @@ import * as DaiWmsLayer from "./wms-layer"
 //controles
 import * as DaiLegend from "./legend-control"
 import * as DaiMapSelector from "./selector-control"
-import * as DaiOpacityControl from "./opacity-control"
+import * as DaiMapOpacity from "./opacity-control"
 import * as DaiMapSwitch from "./switcher-control"
 
 export{
@@ -24,6 +24,6 @@ export{
 
     DaiLegend,
     DaiMapSelector,
-    DaiOpacityControl,
+    DaiMapOpacity,
     DaiMapSwitch
 }

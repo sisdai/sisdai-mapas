@@ -2,13 +2,9 @@
     <div class="switches">
         <label v-for="(option,index) in optionsAndLabels" :key="option[0]" 
         class="option" :class="{'active':option[0]==value_}">
-            
-                <input type="radio" :value="option[0]" :name="id" :id="id+'_'+index" v-model="value_">
-                {{option[1]}}
-        </label>
-        
-        
-        
+            <input type="radio" :value="option[0]" :name="id" :id="id+'_'+index" v-model="value_" @change="change">
+            {{option[1]}}
+        </label>        
     </div>
 </template>
 
@@ -41,6 +37,15 @@ export default {
             type:String
         }
     },
+    methods:{
+        change:function(e){
+            //this.value_= e.target.value
+            this.$emit("change",e.target.value)
+            //emitir los eventos que accesan a propiedades o componentes si hay
+            this._emitAccesorEvents("change",e.target.value)
+            //this.$emit("change:#map",this.cmpMap)
+        }
+    },
     created:function(){
         this.id = Math.random().toString(36).substring(7)
         this.value_ = this.value!=undefined ? this.value : this.options[0]
@@ -70,15 +75,16 @@ export default {
 .switches{
     display: flex; 
     box-shadow:1px 1px 8px 3px #00000026;
-    margin: 2px;
+    //margin: 2px;
     border-radius: .375em;
+    font-size: 13px;
     
     .option{
         position: relative;
         //border: 1px solid red;
         //padding: 6px 6px;
-        padding-top: calc(.6em - 1px);
-        padding-bottom: calc(.6em - 1px);
+        padding-top: calc(.5em - 0px);
+        padding-bottom: calc(.5em - 0px);
         
         
         flex-grow: 1;
@@ -86,7 +92,7 @@ export default {
         color: var(--control-color);
         text-align: center;
         font-weight: 500;
-        font-size: 1em;
+        
         line-height: 1.5;
         
         &:first-child{

@@ -1,11 +1,11 @@
-import DaiOpacityControl from "./opacity.vue"
+import DaiMapOpacity from "./opacity.vue"
 
 function plugin(Vue){
     if(plugin.installed){
         return
     }
     plugin.installed = true;
-    Vue.component(DaiOpacityControl.name,DaiOpacityControl)
+    Vue.component(DaiMapOpacity.name,DaiMapOpacity)
 }
 
 export default plugin;
@@ -13,5 +13,5 @@ export default plugin;
 
 export { 
     plugin as install,
-    DaiOpacityControl
+    DaiMapOpacity
 }
