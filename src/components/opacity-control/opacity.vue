@@ -81,5 +81,6 @@ export default {
     .title-opacity{
         text-align: center;
         margin-block-start: 3px;
+        margin-block-end: .4em;
     }
 </style>

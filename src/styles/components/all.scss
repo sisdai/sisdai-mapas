@@ -5,7 +5,12 @@
 .card-map-container{
     font-family: "Montserrat", sans-serif;
     font-size: 12px;
-    //line-height: 15px;
+    line-height: 1.45;
+
+    p{
+        margin-block-start: .9em;
+        margin-block-end: .9em;
+    }
 }
 
 .control-flex-grow-0{
@@ -30,3 +35,74 @@
 .control-large{
     font-size: 18px !important;
 }
+
+.dai-map-separator{
+    width: 100%;
+    border-bottom-color: var(--control-bg-color-accent);
+
+    border-bottom-style: solid;
+    border-bottom-width: 1.5px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    margin-bottom: -1px !important;
+    &.thin{
+        border-width: .7px;
+        
+    }
+    &.thick{
+        border-width: 2.5px;
+    }
+    
+}
+
+.dai-map-notes{
+    p{
+        margin-block-start: .7em;
+        margin-block-end: .7em;
+        &:first-child{
+            margin-block-start: .0em;
+        }
+    }
+    .dai-map-separator{
+        opacity: .3;
+    }
+    h1,h2,h3,h4{
+        margin-block-start: 0em;
+        margin-block-end: .3em;
+    }
+}
+
+
+.dai-map-button{
+    background-color: var(--control-bg-color-accent);
+    color: var(--control-color-accent);
+    border: none;
+    border-radius: 5px;
+    padding: .4em .3em;
+    line-height: 1;
+    font-size: 12px;
+    max-width: 130px;
+    &.download{
+        padding-top: 0px;
+        margin-top: 1rem !important;
+        margin-bottom: 1rem !important;
+        &:after{
+            font-size: 1.3em;
+            font-family: "dai-icons" !important;
+            font-style: normal !important;
+            font-weight: normal !important;
+            font-variant: normal !important;
+            text-transform: none !important;
+            speak: none;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            content: "\68";
+            position: relative;
+            top: .3em;
+            bottom: -.3em;
+        }
+    }
+}
+

@@ -137,6 +137,7 @@ export default {
             flex-wrap: wrap;
             width: calc(100% - .3rem);
             align-items: center;
+            justify-content: center;
             >*{
                 margin: .3rem;
                 flex-grow: 1;

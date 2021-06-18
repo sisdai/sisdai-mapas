@@ -40,7 +40,23 @@
                 <template v-slot:footer>
                     <dai-map-legend  title="Titulo de la leyenda 1" for="estados" :showButtonToggleAll="true" v-width-control="'100%'"></dai-map-legend>
                     <dai-map-opacity layerId="estados" v-width-control="'100%'" />
+                    <hr class="dai-map-separator ">
                     <div><p>Leyenda multivariable en una sola capa, aun pendiente</p></div>
+                    <hr class="dai-map-separator thick">
+                    <div class="dai-map-notes">
+                        <h4>Notas</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, voluptates non esse accusamus eius unde obcaecati explicabo tenetur</p>
+                        <hr class="dai-map-separator thin">
+                        <p>
+                            <strong>Fuente</strong> ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis ex unde asperiores ab, esse quas nihil, 
+                        </p>
+                        <p><strong>Marco Geoestadistico</strong> ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis ex unde asperiores ab, esse quas nihil, </p>
+                    </div>
+                    <hr class="dai-map-separator thick">
+                    
+                        <button class="dai-map-button download">Descargar datos </button>
+                    
+                    
                 </template>
             </dai-card-map-container>
         </div>
