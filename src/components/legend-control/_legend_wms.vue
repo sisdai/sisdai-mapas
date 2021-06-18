@@ -2,7 +2,9 @@
     
     <div class="legend-wms">
         
-        <label ><checkbox v-model="visible" @change="_toggle_visible"/> {{params.content.title}}</label>
+        <checkbox v-model="visible" @change="_toggle_visible"> 
+            {{params.content.title}}
+        </checkbox>
         <div class="image">
             <img :src="params.content.image" alt="">
         </div>
@@ -30,7 +32,7 @@ export default {
         justify-content: flex-start;
         .image{
             //flex-grow: 1;
-            padding-left: 20px;
+            padding-left: 2.4rem;
             img{
                 max-width:150px;
                 width: initial;
