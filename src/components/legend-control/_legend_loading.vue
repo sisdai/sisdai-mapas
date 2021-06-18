@@ -1,6 +1,6 @@
 <template>
-    <div>
-        cargando leyenda para {{layerId}}
+    <div class="texto-cargando">
+        cargando leyenda para {{layerId}} ...
     </div>
 </template>
 
@@ -11,3 +11,9 @@ export default {
     props:["params"]
 }
 </script>
+
+<style lang="scss" scoped>
+    .texto-cargando{
+        font-style: italic;
+    }
+</style>

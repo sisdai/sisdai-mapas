@@ -3,6 +3,7 @@
 import LegendWms from "./_legend_wms.vue"
 import LegendLoading from "./_legend_loading.vue"
 import LegendCoropleta from "./_legend_coropleta.vue"
+import LegendNormalVector  from "./_legend_normal_vector.vue"
 export default {
     props:["layerId"],
     created:function(){
@@ -20,7 +21,7 @@ export default {
 
     },
     components:{
-        LegendWms,LegendLoading,LegendCoropleta
+        LegendWms,LegendLoading,LegendCoropleta,LegendNormalVector
     },
     data:function(){
         return {

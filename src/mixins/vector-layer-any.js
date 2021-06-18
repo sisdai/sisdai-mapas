@@ -80,6 +80,7 @@ export default{
         _setStyle:function(){
             let style;
             let vm = this;
+            let colorsLegend={fill:"gray", stroke:"gray"}
             if (typeof vm.VM_mapStyle == "function"){
                 style= function(feature){
                     let serializes= fixSerializedStyleIfIncomplete( vm.VM_mapStyle(feature) )
@@ -88,14 +89,40 @@ export default{
                     return olstyles
                 }
             }else{
+                let serializes= fixSerializedStyleIfIncomplete( vm.VM_mapStyle )
+                console.log("//AQUI VERIFICAR TAMBIEN QUE SHAPE SE VA A LA LEYENDA",serializes)
+                colorsLegend.fill = serializes["style"].fill !=undefined ? serializes["style"].fill.color : 'gray'
+                colorsLegend.stroke = serializes["style"].stroke != undefined ? serializes["style"].stroke.color : 'gray'
                 style= function(feature){
-                    let serializes= vm.VM_mapStyle
-                    serializes = feature.get("_hightlight") == true ? serializedStyleIfHighlight(serializes): serializes ;
-                    let olstyles=generateOlStyle(serializes)["style"]
+                    
+                    let serializes2 = feature.get("_hightlight") == true ? serializedStyleIfHighlight(serializes): serializes ;
+                    let olstyles=generateOlStyle(serializes2)["style"]
+                    
+                    
                     return olstyles
                 }
             }
             this.olLayer.setStyle(style)
+
+            /**
+             * poner informacion en la leyenda cuando no es clasificable el layer
+             */
+            if(!this.VM_is_classified){
+                //agregando informacion para la leyenda
+                this.VM_legend_info = {
+                    type: "legend-normal-vector",
+                    content:{
+                        fill_color: colorsLegend.fill,
+                        stroke_color: colorsLegend.stroke,
+                        shape: "circle", // circle, square,  triangle, line, etc,  tambien el url del svg que se desee insertar
+                        //shape: "svg:ruta/alsvg",
+                        title:this.VM_title
+                    }
+                }
+                this.VM_legend_info_status = "ready"
+                this.$emit("legend_info_ready",this.VM_legend_info)    
+            }
+            
         }
     }
 }

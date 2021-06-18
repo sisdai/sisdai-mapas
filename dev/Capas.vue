@@ -19,7 +19,7 @@
 
         <!--MAPA 2-->
         <div class="another-map">
-            <dai-card-map-container>
+            <dai-card-map-container :collapsed="false">
                 <template v-slot:header>
                     <p>Creando capas wms, probando la reactividad de las propiedades</p>
                     <button @click="agregar_1mas_map2">agregar/quitar una capa mas</button>
@@ -28,7 +28,12 @@
                 <dai-map  
                     :extent="[-118.365119934082,14.5320978164673,-86.7104034423828,32.7186546325684]"
                     >
-                 
+
+                    <dai-geojson-layer id="edos_1" 
+                    title="Estados con un estilo verde"
+                    :map-style="{fill:{color:'green'},stroke:{width:1,color:'red'}}"
+                    url="https://dadsigvisgeo.conacyt.mx/geoserver/vacunacion/wms?service=WMS&version=1.1.0&request=GetMap&layers=vacunacion:estados&bbox=-118.365119934082%2C14.5320978164673%2C-86.7104034423828%2C32.7186546325684&width=768&height=441&srs=EPSG%3A404000&format=geojson" />
+                    <dai-geojson-layer id="edos_2" url="https://dadsigvisgeo.conacyt.mx/geoserver/vacunacion/wms?service=WMS&version=1.1.0&request=GetMap&layers=vacunacion:estados&bbox=-118.365119934082%2C14.5320978164673%2C-86.7104034423828%2C32.7186546325684&width=768&height=441&srs=EPSG%3A404000&format=geojson" />
                     <dai-wms-layer id="estados" url="https://geo.crip.conacyt.mx/geoserver/estados_inegi_2019/wms" 
                         :visible.sync="visibilidad_estados_map2"
                         :params="{'LAYERS':'estados_inegi_2019'}"/>
@@ -39,7 +44,7 @@
                 </dai-map>
                 <template v-slot:footer>
                     <p>la leyenda va aqui</p>
-                    <dai-map-legend :for="['estados','centros','a_conabio_areas_natur_protegidas_2009']" title="Capas wms"></dai-map-legend>
+                    <dai-map-legend :for="['edos_1','edos_2','estados','centros','a_conabio_areas_natur_protegidas_2009']" title="Capas de este mapa"></dai-map-legend>
                 </template>
             </dai-card-map-container>
         </div>
