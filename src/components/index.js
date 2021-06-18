@@ -1,6 +1,7 @@
 import * as DaiMap from "./map"
 import * as DaiCardMapContainer from "./card-container"
 
+
 //layers
 import * as DaiXyzLayerOsm from "./xyz-layer-osm"
 import * as DaiXyzLayer from "./xyz-layer"
@@ -13,6 +14,7 @@ import * as DaiMapSelector from "./selector-control"
 import * as DaiMapOpacity from "./opacity-control"
 import * as DaiMapSwitch from "./switcher-control"
 import * as DaiMapSearcher from "./searcher-control"
+import * as DaiMapInfo from "./info-control"
 
 export{
     DaiMap,
@@ -27,5 +29,6 @@ export{
     DaiMapSelector,
     DaiMapOpacity,
     DaiMapSwitch,
-    DaiMapSearcher
+    DaiMapSearcher,
+    DaiMapInfo
 }

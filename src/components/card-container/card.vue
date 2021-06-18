@@ -12,7 +12,9 @@
             </div>
             
             <button v-if="allowCollapsing" class="collapsable-button" @click="VM_collapsed=!VM_collapsed">
-                {{VM_collapsed? '+' : '-'}}
+                <span class="dai-icon-acercar" v-if="VM_collapsed"></span>
+                <span class="dai-icon-alejar" v-if="!VM_collapsed"></span>
+                
             </button>
         </div>
     </div>
@@ -143,14 +145,14 @@ export default {
         .collapsable-button{
             //width: 100%;
             width: calc(100% + .6rem);
-            background-color: black;
-            color: white;
+            background-color: var(--control-bg-color-accent);
+            color: var(--control-color-accent);
             margin-left: -.5rem;
             margin-right: -.5rem;
             border-style: none;
             border-radius: 0 0 8px 8px;
             cursor: pointer;
-            font-size: 18px;
+            font-size: 28px;
             height: 1.8rem;
             position: absolute;
             bottom: 0px;

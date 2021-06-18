@@ -1,7 +1,10 @@
 <template>
     <div class="dai-map-container">
-        <div class="dai-map " :class="[darkControls ? 'dark-controls': 'light-controls']" ref="map"></div>
+        
+
+        <div class="dai-map " :class="[invertedControls ? 'inverted-controls': 'default-controls']" ref="map"></div>
         <slot></slot>
+        
         <div ref="tooltip" class="ol-tooltip ol-tooltip-bottom">
             <div class="content"></div>
         </div>
@@ -48,7 +51,7 @@ export default {
                 return [0,0,0,0]
             }
         },
-        darkControls:{
+        invertedControls:{
             type:Boolean,
             default: false
         }
@@ -177,6 +180,7 @@ export default {
         _registerLayer:function(component_layer){
             this.cmpLayers[component_layer.VM_id] = component_layer;
         },
+        
         _cerrarPopup:function(){
             let popup_overlay = this.map.getOverlayById("popup")
             popup_overlay.setPosition(undefined)

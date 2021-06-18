@@ -14,7 +14,8 @@
     "dev-simbologias": "vue-cli-service serve  dev/Simbologias.js",
     "dev-capas": "vue-cli-service serve  dev/Capas.js",
     "dev-fullpage": "vue-cli-service serve  dev/FullPage.js",
-    "dev-controles": "vue-cli-service serve  dev/Controles.js"
+    "dev-controles": "vue-cli-service serve  dev/Controles.js",
+    "dev-replica-diseno": "vue-cli-service serve  dev/ReplicaDiseno.js"
   },
   "dependencies": {
     "core-js": "^3.6.5",

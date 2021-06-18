@@ -37,6 +37,7 @@
     font-style: normal;
   
   }
+ 
   
   [data-icon]:before {
     font-family: "dai-icons" !important;
@@ -51,29 +52,40 @@
     -moz-osx-font-smoothing: grayscale;
   }
   
-  [class^="dai-"]:before,
-  [class*=" dai-"]:before {
-    font-family: "dai-icons" !important;
-    font-style: normal !important;
-    font-weight: normal !important;
-    font-variant: normal !important;
-    text-transform: none !important;
-    speak: none;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  .dai-acercar:before {
-    content: "\62";
-  }
-  .dai-centrar:before {
-    content: "\63";
-  }
-  .dai-alejar:before {
-    content: "\64";
-  }
+[class^="dai-icon-"]:before,
+[class*=" dai-icon-"]:before {
+  font-family: "dai-icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
+.dai-icon-acercar:before {
+  content: "\62";
+}
+.dai-icon-centrar:before {
+  content: "\63";
+}
+.dai-icon-alejar:before {
+  content: "\64";
+}
+.dai-icon-regresar:before {
+  content: "\61";
+}
+.dai-icon-check:before {
+  content: "\65";
+}
+.dai-icon-cerrar:before {
+  content: "\66";
+}
+.dai-icon-info:before {
+  content: "\67";
+}
 //colores de los controles
 $control-bg-color: #fff;
 $control-color: #000;
