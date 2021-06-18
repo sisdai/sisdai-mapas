@@ -39,7 +39,7 @@
                 </dai-map>
                 <template v-slot:footer>
                     <p>la leyenda va aqui</p>
-                    <dai-legend :for="['estados','centros','a_conabio_areas_natur_protegidas_2009']" title="Capas wms"></dai-legend>
+                    <dai-map-legend :for="['estados','centros','a_conabio_areas_natur_protegidas_2009']" title="Capas wms"></dai-map-legend>
                 </template>
             </dai-card-map-container>
         </div>
@@ -54,7 +54,7 @@ import {DaiMap} from "../src/components/map"
 import {DaiCardMapContainer} from "../src/components/card-container"
 import {DaiGeojsonLayer} from "../src/components/geojson-layer"
 import {DaiWmsLayer} from "../src/components/wms-layer"
-import {DaiLegend} from "../src/components/legend-control"
+import {DaiMapLegend} from "../src/components/legend-control"
 import {WidthControl} from "@/directives"
 
 export default {
@@ -63,7 +63,7 @@ export default {
         DaiMap,DaiCardMapContainer,
         DaiGeojsonLayer,
         DaiWmsLayer,
-        DaiLegend
+        DaiMapLegend
         //DaiLegend,DaiMapSelector
     },
     directives:{
