@@ -3,11 +3,14 @@
     <div class="legend-wms">
         
         <checkbox v-model="visible" @change="_toggle_visible"> 
-            {{params.content.title}}
+            <div class="label-content">
+                <span>{{params.content.title}}</span>
+                <div class="image">
+                    <img :src="params.content.image" alt="">
+                </div>
+            </div>
         </checkbox>
-        <div class="image">
-            <img :src="params.content.image" alt="">
-        </div>
+        
         
         
     </div>
@@ -32,19 +35,20 @@ export default {
         justify-content: flex-start;
         .image{
             //flex-grow: 1;
-            padding-left: 2.4rem;
+            //padding-left: 2.4rem;
+            padding-right: .4em;
             img{
                 max-width:150px;
                 width: initial;
             }
         }
 
-        label{
-            //flex-grow: 1;
-            cursor: pointer;
-            font-size: 1.1em;
-            
+        .label-content{
+                display: flex;
+            flex-direction: row-reverse;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            align-items: center;
         }
-        
     }
 </style>
