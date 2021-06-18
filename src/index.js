@@ -7,7 +7,7 @@ import {
     DaiGeojsonLayer,
     DaiWmsLayer,
 
-    DaiLegend,
+    DaiMapLegend,
     DaiMapSelector,
     DaiMapOpacity,
     DaiMapSwitch,
@@ -33,7 +33,7 @@ export default function plugin(Vue){
     Vue.use(DaiGeojsonLayer)
     Vue.use(DaiWmsLayer)
 
-    Vue.use(DaiLegend)
+    Vue.use(DaiMapLegend)
     Vue.use(DaiMapSelector)
     Vue.use(DaiMapOpacity)
     Vue.use(DaiMapSwitch)
@@ -56,13 +56,13 @@ export {
     DaiGeojsonLayer,
     DaiWmsLayer,
 
-    DaiLegend,
+    DaiMapLegend,
     DaiMapSelector,
     DaiMapOpacity,
     DaiMapSwitch,
     DaiMapSearcher,
     DaiMapInfo,
-    
+
     //directivas
     WidthControl
 

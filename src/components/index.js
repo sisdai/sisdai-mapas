@@ -9,7 +9,7 @@ import * as  DaiGeojsonLayer  from "./geojson-layer"
 import * as DaiWmsLayer from "./wms-layer"
 
 //controles
-import * as DaiLegend from "./legend-control"
+import * as DaiMapLegend from "./legend-control"
 import * as DaiMapSelector from "./selector-control"
 import * as DaiMapOpacity from "./opacity-control"
 import * as DaiMapSwitch from "./switcher-control"
@@ -25,7 +25,7 @@ export{
     DaiGeojsonLayer,
     DaiWmsLayer,
 
-    DaiLegend,
+    DaiMapLegend,
     DaiMapSelector,
     DaiMapOpacity,
     DaiMapSwitch,

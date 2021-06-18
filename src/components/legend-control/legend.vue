@@ -1,6 +1,10 @@
 <template>
     <div>
-        <p class="title">{{title}}</p>
+        <div class="header-legend">
+            <p class="title">{{title}}</p>
+            <button class="toggle-all" v-if="showButtonToggleAll">Quitar todos</button>
+        </div>
+        
         <legend-item v-for="leg in VM_legends" :key="leg" :layerId="leg"></legend-item>
     </div>
 </template>
@@ -9,7 +13,7 @@
 import control from "../../mixins/control"
 import LegendItem from "./legend-item.vue"
 export default {
-    name:"DaiLegend",
+    name:"DaiMapLegend",
     mixins:[control],
     props:{
         for:{
@@ -21,6 +25,13 @@ export default {
         title:{
             type:String,
             default:""
+        },
+        /**
+         * Asignar alguna accion para este boton desde las propiedades
+         */
+        showButtonToggleAll:{
+            type:Boolean,
+            default:false
         }
     },
     components:{
@@ -60,8 +71,26 @@ export default {
 
 <style lang="scss" scoped>
     p.title{
-        font-size: 1.2em;
+        font-size: 12px;
         font-weight: 600;
         margin-block-end: .5em;
     }
+
+    .header-legend{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        button.toggle-all{
+            height: 1.6em;
+            border: 1px solid var(--control-color);
+            background-color: var(--control-bg-color);
+            color: var(--control-color);
+            text-align: center;
+            white-space: nowrap;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 11px;
+        }
+    }
+    
 </style>

@@ -38,7 +38,9 @@
 
                 </dai-map>
                 <template v-slot:footer>
-                    <dai-legend  title="Titulo de la leyenda 1" for="estados" v-width-control="'100%'"></dai-legend>
+                    <dai-map-legend  title="Titulo de la leyenda 1" for="estados" :showButtonToggleAll="true" v-width-control="'100%'"></dai-map-legend>
+                    <dai-map-opacity layerId="estados" v-width-control="'100%'" />
+                    <div><p>Leyenda multivariable en una sola capa, aun pendiente</p></div>
                 </template>
             </dai-card-map-container>
         </div>
@@ -54,8 +56,8 @@ import {DaiXyzLayerOsm} from "../src/components/xyz-layer-osm"
 import {DaiCardMapContainer} from "../src/components/card-container"
 import {DaiGeojsonLayer} from "../src/components/geojson-layer"
 //import {DaiWmsLayer} from "../src/components/wms-layer"
-import {DaiLegend} from "../src/components/legend-control"
-//import {DaiMapOpacity} from "../src/components/opacity-control"
+import {DaiMapLegend} from "../src/components/legend-control"
+import {DaiMapOpacity} from "../src/components/opacity-control"
 import {DaiMapSelector} from "../src/components/selector-control"
 import {DaiMapSwitch} from "../src/components/switcher-control"
 import {DaiMapInfo} from "../src/components/info-control"
@@ -65,10 +67,10 @@ export default {
     components:{
         DaiMap,DaiCardMapContainer,DaiXyzLayerOsm,
         DaiGeojsonLayer,
-        //DaiMapOpacity,
+        DaiMapOpacity,
         DaiMapSelector,
         //DaiWmsLayer,
-        DaiLegend,
+        DaiMapLegend,
         DaiMapSwitch,
         DaiMapInfo
         //DaiMapSearcher

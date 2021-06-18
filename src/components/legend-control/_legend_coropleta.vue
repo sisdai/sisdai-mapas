@@ -29,12 +29,13 @@ export default {
 .map-legends{
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     .map-legend-item{
         flex: 1 0 20%;
         margin: 10px auto;
         .map-legends-item-color{
-                border: 1px solid var(--accent-color);
-                border-radius: 5px;
+                //border: 1px solid var(--accent-color);
+                border-radius: 10px;
                 height: 2.5rem;
                 width: 2.5rem;
                 margin: auto;
@@ -42,9 +43,9 @@ export default {
         }
 
         .map-legends-item-text{
-                font-size: 12px;
+                font-size: 10px;
                 line-height: 1em;
-                color: var(--accent-color);
+                color: var(--main-text-color);
                 margin: 5px auto 0;
                 text-align: center;
         }
