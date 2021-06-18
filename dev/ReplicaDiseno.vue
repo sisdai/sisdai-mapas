@@ -31,6 +31,17 @@
                     :tooltipContent="(f)=>f['abre']+' <br> Poblacion '+f['pob18ymas']"
                     url="https://dadsigvisgeo.conacyt.mx/geoserver/vacunacion/wms?service=WMS&version=1.1.0&request=GetMap&layers=vacunacion:estados&bbox=-118.365119934082%2C14.5320978164673%2C-86.7104034423828%2C32.7186546325684&width=768&height=441&srs=EPSG%3A404000&format=geojson" />
 
+                    <dai-geojson-layer id="edos_1" 
+                    title="Estados con un estilo verde"
+                    :map-style="{fill:{color:'green'},stroke:{width:1,color:'red'}}"
+                    :visible="true"
+                    url="https://dadsigvisgeo.conacyt.mx/geoserver/vacunacion/wms?service=WMS&version=1.1.0&request=GetMap&layers=vacunacion:estados&bbox=-118.365119934082%2C14.5320978164673%2C-86.7104034423828%2C32.7186546325684&width=768&height=441&srs=EPSG%3A404000&format=geojson" />
+                    
+                    <dai-geojson-layer id="edos_2"
+                    :visible="false"
+                     url="https://dadsigvisgeo.conacyt.mx/geoserver/vacunacion/wms?service=WMS&version=1.1.0&request=GetMap&layers=vacunacion:estados&bbox=-118.365119934082%2C14.5320978164673%2C-86.7104034423828%2C32.7186546325684&width=768&height=441&srs=EPSG%3A404000&format=geojson" />
+                    
+
                     <dai-map-info>
                         <p><strong>Valores totales seleccionados</strong></p>
                         <p>Variable 1: 100,000,000,000<br>Variable 2: 100,000,000,000</p>
@@ -41,7 +52,10 @@
                     <dai-map-legend  title="Titulo de la leyenda 1" for="estados" :showButtonToggleAll="true" v-width-control="'100%'"></dai-map-legend>
                     <dai-map-opacity layerId="estados" v-width-control="'100%'" />
                     <hr class="dai-map-separator ">
-                    <div><p>Leyenda multivariable en una sola capa, aun pendiente</p></div>
+                    
+                    <div><p>Leyenda multivariable en una sola capa, cargando...</p></div>
+                    <hr class="dai-map-separator ">
+                    <dai-map-legend :for="['edos_1','edos_2']" title="Titulo de la leyenda 3" :showButtonToggleAll="true"/>
                     <hr class="dai-map-separator thick">
                     <div class="dai-map-notes">
                         <h4>Notas</h4>

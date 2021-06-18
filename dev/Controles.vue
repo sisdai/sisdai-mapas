@@ -119,7 +119,7 @@
                     url="https://dadsigvisgeo.conacyt.mx/geoserver/vacunacion/wms?service=WMS&version=1.1.0&request=GetMap&layers=vacunacion:estados&bbox=-118.365119934082%2C14.5320978164673%2C-86.7104034423828%2C32.7186546325684&width=768&height=441&srs=EPSG%3A404000&format=geojson" />
                 </dai-map>
                 <template v-slot:footer>
-                    <dai-legend  title="Titulo de la coropleta" for="estados" v-width-control="'100%'"></dai-legend>
+                    <dai-map-legend  title="Titulo de la coropleta" for="estados" v-width-control="'100%'"></dai-map-legend>
                 </template>
             </dai-card-map-container>
             
@@ -138,7 +138,7 @@ import {DaiXyzLayerOsm} from "../src/components/xyz-layer-osm"
 import {DaiCardMapContainer} from "../src/components/card-container"
 import {DaiGeojsonLayer} from "../src/components/geojson-layer"
 //import {DaiWmsLayer} from "../src/components/wms-layer"
-import {DaiLegend} from "../src/components/legend-control"
+import {DaiMapLegend} from "../src/components/legend-control"
 import {DaiMapOpacity} from "../src/components/opacity-control"
 import {DaiMapSelector} from "../src/components/selector-control"
 import {DaiMapSwitch} from "../src/components/switcher-control"
@@ -153,7 +153,7 @@ export default {
         DaiMapOpacity,
         DaiMapSelector,
         //DaiWmsLayer,
-        DaiLegend,
+        DaiMapLegend,
         DaiMapSwitch,
         DaiMapSearcher
         //DaiLegend,DaiMapSelector
