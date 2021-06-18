@@ -12,6 +12,7 @@ import * as DaiLegend from "./legend-control"
 import * as DaiMapSelector from "./selector-control"
 import * as DaiMapOpacity from "./opacity-control"
 import * as DaiMapSwitch from "./switcher-control"
+import * as DaiMapSearcher from "./searcher-control"
 
 export{
     DaiMap,
@@ -25,5 +26,6 @@ export{
     DaiLegend,
     DaiMapSelector,
     DaiMapOpacity,
-    DaiMapSwitch
+    DaiMapSwitch,
+    DaiMapSearcher
 }

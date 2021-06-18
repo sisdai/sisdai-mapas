@@ -38,6 +38,11 @@
                     
                     <p v-width-control="{mobile:'100%',desktop:'33%'}" class="control-large">with class control-large</p>
                     
+                    <dai-map-searcher placeholder="sfdsdfg" v-width-control="'100%'" />
+
+                    <dai-map-searcher v-width-control="{mobile:'50%',desktop:'33%'}" placeholder="sfdsdfg" for="estados"/>
+
+                    <dai-map-searcher v-width-control="{mobile:'50%',desktop:'33%'}" placeholder="sfdsdfg"/>
 
                 </template>
                 <dai-map  
@@ -133,6 +138,7 @@ import {DaiLegend} from "../src/components/legend-control"
 import {DaiMapOpacity} from "../src/components/opacity-control"
 import {DaiMapSelector} from "../src/components/selector-control"
 import {DaiMapSwitch} from "../src/components/switcher-control"
+import {DaiMapSearcher} from "../src/components/searcher-control"
 import {WidthControl} from "@/directives"
 
 export default {
@@ -144,7 +150,8 @@ export default {
         DaiMapSelector,
         //DaiWmsLayer,
         DaiLegend,
-        DaiMapSwitch
+        DaiMapSwitch,
+        DaiMapSearcher
         //DaiLegend,DaiMapSelector
     },
     directives:{
