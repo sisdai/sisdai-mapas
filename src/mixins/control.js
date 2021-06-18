@@ -5,6 +5,10 @@ export default{
         //this.cmpMap = this.getComponentMap()
         this._getMapComponentFromParent((mapComponent)=>{
             this.cmpMap = mapComponent
+            setTimeout(()=>{
+                this.$emit("readyCmpMap", this.cmpMap)
+            },100)
+            
         })
         
     },

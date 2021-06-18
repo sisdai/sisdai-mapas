@@ -51,14 +51,14 @@ export default {
     box-sizing: inherit;
     font-size: 13px;
 
-    &.dark-control{
+    &.inverted{
         &:after{
-            border-bottom: 3px solid var(--dark-control-color);    
-            border-left: 3px solid var(--dark-control-color);    
+            border-bottom: 3px solid var(--inverted-control-color);    
+            border-left: 3px solid var(--inverted-control-color);    
         }
         select{
-            background-color: var(--dark-control-bg-color);
-            color: var(--dark-control-color);
+            background-color: var(--inverted-control-bg-color);
+            color: var(--inverted-control-color);
         }
     }
     
@@ -67,7 +67,7 @@ export default {
         //border-color: #485fc7;
         right: 1.125em;
         z-index: 4;
-        border: 3px solid var(--light-control-color);
+        border: 3px solid var(--control-color);
         border-radius: 2px;
         border-right: none;
         border-top: none;
@@ -91,8 +91,8 @@ export default {
         box-shadow: 1px 1px 8px 3px #00000026;
         height: 2.5em;
         cursor: pointer;
-        background-color: var(--light-control-bg-color);
-        color: var(    --light-control-color);
+        background-color: var(--control-bg-color);
+        color: var(    --control-color);
         display: block;
         padding-bottom: calc(.5em - 1px);
         padding-top: calc(.5em - 1px);

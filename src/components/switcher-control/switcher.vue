@@ -105,7 +105,7 @@ export default {
         }
 
         &:not(:last-child){
-            border-right: 1px solid var(--control-bg-color-accent);
+            border-right: 1px solid var(--control-bg-color-hover);
             //margin-right: -1px;
         }
         &.active{
@@ -124,5 +124,20 @@ export default {
         
     }
     
+
+    &.inverted{
+        .option{
+            background-color: var(--inverted-control-bg-color);
+            color: var(--inverted-control-color);
+            &.active{
+                background-color: var(--inverted-control-bg-color-accent);
+                color: var(--inverted-control-color-accent);
+            }
+            &:not(:last-child){
+                border-right: 1px solid var(--inverted-control-bg-color-hover);
+                //margin-right: -1px;
+            }
+        }
+    }
 }
 </style>

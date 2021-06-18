@@ -58,7 +58,8 @@ export default {
             cmpLayers:{},
             VM_highlight_feature:undefined,
             VM_hover_feature:undefined,
-            VM_reset_view:undefined
+            VM_reset_view:undefined,
+            map:undefined
         }
     },
     created:function(){

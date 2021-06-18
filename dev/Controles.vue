@@ -6,7 +6,7 @@
                 <template v-slot:header>
                     <p v-width-control="'100%'">Estilos y tamaños</p>
                     
-                    <dai-map-selector v-width-control="{mobile:'100%',desktop:'33%'}" class="control-small">
+                    <dai-map-selector v-width-control="{mobile:'100%',desktop:'33%'}" class="control-small inverted">
                         <option value="una opcion">small control</option>
                     </dai-map-selector>
 
@@ -34,15 +34,19 @@
                         <option value="una opcion">large control</option>
                     </dai-map-selector>
 
-                    <dai-map-switch :options="['t','p']" :optionsLabels="['large','control']" v-width-control="{mobile:'100%',desktop:'33%'}" class="control-large"></dai-map-switch>
+                    <dai-map-switch :options="['t','p']" :optionsLabels="['large','control']" v-width-control="{mobile:'100%',desktop:'33%'}" class="control-large inverted"></dai-map-switch>
                     
                     <p v-width-control="{mobile:'100%',desktop:'33%'}" class="control-large">with class control-large</p>
                     
-                    <dai-map-searcher placeholder="sfdsdfg" v-width-control="'100%'" />
+                    <dai-map-searcher placeholder="sfdsdfg" v-width-control="'100%'" class="control-large" />
 
-                    <dai-map-searcher v-width-control="{mobile:'50%',desktop:'33%'}" placeholder="sfdsdfg" for="estados"/>
+                    <dai-map-searcher v-width-control="{mobile:'50%',desktop:'33%'}" placeholder="Buscador de estados" 
+                    for="estados"
+                    :accesorOptions="(f)=>f.nom_edo"
+                    />
 
-                    <dai-map-searcher v-width-control="{mobile:'50%',desktop:'33%'}" placeholder="sfdsdfg"/>
+                    <dai-map-searcher v-width-control="{mobile:'50%',desktop:'33%'}" placeholder="sfdsdfg" class="control-small inverted"/>
+                    <dai-map-searcher v-width-control="{mobile:'50%',desktop:'33%'}" placeholder="sfdsdfg" class="control-medium"/>
 
                 </template>
                 <dai-map  
