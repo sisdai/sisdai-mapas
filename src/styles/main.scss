@@ -108,12 +108,12 @@ $invert-control-color-accent:invert($control-color-accent);
     --main-text-color:black;
     --hover-color:lightgray;
     //diferenciacion entre controles claros o oscuros
-    --light-control-bg-color:white;
-    --light-control-color: black;
-    --light-control-hover-color: lightgray;
-    --dark-control-bg-color: black;
-    --dark-control-color: white;
-    --dark-control-hover-color: lightgray;
+    //--light-control-bg-color:white;
+    //--light-control-color: black;
+    //--light-control-hover-color: lightgray;
+    //--dark-control-bg-color: black;
+    //--dark-control-color: white;
+    //--dark-control-hover-color: lightgray;
 
     //colores en los controles
     --control-bg-color: #{$control-bg-color};

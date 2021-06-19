@@ -1,6 +1,6 @@
 <template>
-    <div class="dai-map-info" :class="{'is-expanded':expanded}">
-        <button class="info-control button-open" @click="expanded = !expanded">
+    <div class="dai-map-info" :class="{'is-expanded':is_expanded}">
+        <button class="info-control button-open" @click="updateExpanded">
             <span class="dai-icon-info"></span>
         </button>
 
@@ -9,7 +9,7 @@
             <div class="contenido">
                 <slot></slot>
             </div>
-            <button class="info-control button-close" @click="expanded = !expanded">
+            <button class="info-control button-close" @click="updateExpanded">
                 <span class="dai-icon-cerrar"></span>
             </button>
         </div>
@@ -27,6 +27,28 @@ export default {
         expanded:{
             type:Boolean,
             default:false
+        }
+    },
+    data:function(){
+        return{
+            VM_expanded:false
+        }
+    },
+    created:function(){
+        this.VM_expanded=this.expanded;
+    },
+    methods:{
+        updateExpanded:function(){
+            //console.log("expander...")
+            
+            
+            this.$emit('update:expanded',!this.VM_expanded)
+            this.VM_expanded=!this.VM_expanded
+            console.log("No sirve el update de la propiedad")
+        }
+    },computed:{
+        is_expanded:function(){
+            return this.VM_expanded
         }
     }
 }

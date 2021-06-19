@@ -149,6 +149,7 @@ export default {
             invoke_tooltips(this.map, evento)
         })
         this.map.on("click",(e)=>{
+            this.$emit("click",e)
             invoke_clicks(this.map,e,this)
             
         })
