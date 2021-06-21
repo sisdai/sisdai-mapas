@@ -83,6 +83,8 @@
     line-height: 1;
     font-size: 12px;
     max-width: 130px;
+    text-align: center;
+    font-family: "Montserrat";
     &.download{
         padding-top: 0px;
         margin-top: 1rem !important;
@@ -106,3 +108,14 @@
     }
 }
 
+
+.map-project-title{
+    text-align: right;
+    width: stretch;
+    padding-right: 1em;
+}
+
+.map-update-title{
+    font-size: .8em;
+    font-weight: 600;
+}

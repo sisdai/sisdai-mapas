@@ -168,8 +168,8 @@ const hightlight_on_click = (feature,mapComponent) => {
             //width: -webkit-fill-available;
             //width: -moz-available;
             //width: calc(100% - 1.2rem);
-            padding-bottom: calc(.5em - 1px);
-            padding-top: calc(.5em - 1px);
+            padding-bottom: calc(.6em - 1px);
+            padding-top: calc(.6em - 1px);
             line-height: 1.5;
             padding-left: .75em;
             padding-right: .75em;
