@@ -11,9 +11,7 @@
                 <slot name="footer"></slot>
             </div>
             
-            <button v-if="allowCollapsing" class="collapsable-button" @click="VM_collapsed=!VM_collapsed">
-                <span class="dai-icon-acercar" v-if="VM_collapsed"></span>
-                <span class="dai-icon-alejar" v-if="!VM_collapsed"></span>
+            <button v-if="allowCollapsing" class="collapsable-button" @click="VM_collapsed=!VM_collapsed" v-html=" VM_collapsed ? collapsedText : uncollapsedText">
                 
             </button>
         </div>
@@ -38,6 +36,14 @@ export default {
         mapFillAvailableSpace:{
             type:Boolean,
             default:false
+        },
+        collapsedText:{
+            type:String,
+            default: '<span class="dai-icon-collapsed size-font-25rem-x7"></span>'
+        },
+        uncollapsedText:{
+            type:String,
+            default:'<span class="dai-icon-uncollapsed size-font-25rem-x7"></span>'
         }
     },
     data:function(){
@@ -153,13 +159,25 @@ export default {
             border-style: none;
             border-radius: 0 0 8px 8px;
             cursor: pointer;
-            font-size: 28px;
+            //font-size: 28px;
             height: 1.8rem;
             position: absolute;
             bottom: 0px;
+
+            
         }
     }
 
     
+
+}
+
+$sizes:20;
+
+@for $i  from 1 through $sizes {
+    
+    .size-font-25rem-x#{$i} {
+        font-size: $i * .25rem;
+    }
 }
 </style>

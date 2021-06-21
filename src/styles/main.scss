@@ -65,13 +65,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.dai-icon-acercar:before {
+.dai-icon-acercar:before , .dai-icon-collapsed:before {
   content: "\62";
 }
 .dai-icon-centrar:before {
   content: "\63";
 }
-.dai-icon-alejar:before {
+.dai-icon-alejar:before , .dai-icon-uncollapsed:before {
   content: "\64";
 }
 .dai-icon-regresar:before {
