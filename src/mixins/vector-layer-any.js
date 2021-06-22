@@ -59,7 +59,7 @@ export default{
                             color: DEFAULT_STROKE_COLOR,
                             width: 1
                         },
-                        radius: 9
+                        radius: 7
                     }
                 }
             }
@@ -73,7 +73,13 @@ export default{
                             color: "black",
                             width: 3
                         },
-                        zIndex:3
+                        zIndex:3,
+                        _simple_point:{
+                            stroke: {
+                                color: "black",
+                                width: 2
+                            }
+                        }
                     }
                 }
             }

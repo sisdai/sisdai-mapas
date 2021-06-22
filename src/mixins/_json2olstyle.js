@@ -47,9 +47,10 @@ const convertirNode = (key,node)=>{
 const serializedStyleIfHighlight=function(originalSerializedStyle,newStyle){
     let originalStyle2 = JSON.parse(JSON.stringify(originalSerializedStyle))
     let newStyle2  = JSON.parse(JSON.stringify(newStyle))
-
+    //console.log(originalStyle2)
+    prepareSimplePointVectors(originalStyle2,newStyle2)
     let output = { style:{...originalStyle2.style,...newStyle2.style}}
-    
+    //console.log(output)
     /*
     if("stroke" in originalStyle["style"]){
         originalStyle["style"]["stroke"]["color"] = "gray"
@@ -59,6 +60,21 @@ const serializedStyleIfHighlight=function(originalSerializedStyle,newStyle){
     //console.log(originalSerializedStyle,originalStyle)
     */
     return output
+}
+
+const prepareSimplePointVectors=function(originalStyle,newStyle){
+    if("circle" in originalStyle.style ){
+        originalStyle.style["circle"] = { ... originalStyle.style["circle"], ...newStyle.style["_simple_point"]}
+        return
+    }
+    if("square" in originalStyle.style ){
+        originalStyle.style["square"] = { ... originalStyle.style["square"], ...newStyle.style["_simple_point"]}
+        return
+    }
+    if("triangle" in originalStyle.style ){
+        originalStyle.style["triangle"] = { ... originalStyle.style["triangle"], ...newStyle.style["_simple_point"]}
+        return
+    }
 }
 
 const fixSerializedStyleIfIncomplete = function(serializedStyle){

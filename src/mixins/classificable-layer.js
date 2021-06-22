@@ -1,5 +1,15 @@
 import * as d3 from "d3"
 
+const defaultsValuesRule = {
+    classification:"categorical", //linear, quantile, log , custom
+    classes: 5,
+    column: '',
+    colors: "Blues",
+    sizes: [],
+    targetProperty: 'fill'
+
+};
+
 export default{
     props:{
         render_type:{
@@ -37,23 +47,35 @@ export default{
     data:function(){
         return {
             VM_is_classified:false,
+            /** 
             VM_r_class:"",
             VM_r_colors:[],
             VM_r_labels:[],
             VM_r_column:"",
             VM_r_cortes : []
+            */
+           VM_rules:[]
         }
     },
     created:function(){
-
-    },
-    mounted:function(){
-        if(this.renderClassification!=""){
+        
+        if(this.mapStyleRule!= undefined){
             this.VM_is_classified = true;
+            if(Array.isArray(this.mapStyleRule)){
+                this.VM_rules = this.mapStyleRule.map(item=>Object.assign(defaultsValuesRule,item));
+            }else{
+                this.VM_rules = [ Object.assign(defaultsValuesRule,this.mapStyleRule)]
+            }
         }
+
+        /** 
         this.VM_r_class = this.renderClassification
         this.VM_r_colors = this.renderColors
         this.VM_r_column = this.renderColumn
+        */
+    },
+    mounted:function(){
+        
 
         
     
