@@ -25,6 +25,12 @@ export default{
         renderColumn:{
             type:String,
             default:""
+        },
+        mapStyleRule:{
+            type:[Object,Array],
+            default:function (){
+                return undefined;
+            }
         }
 
     },
