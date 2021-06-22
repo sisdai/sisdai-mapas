@@ -1,5 +1,8 @@
 import generateOlStyle, {serializedStyleIfHighlight,fixSerializedStyleIfIncomplete} from "./_json2olstyle"
 
+const DEFAULT_FILL_COLOR="gray"
+const DEFAULT_STROKE_COLOR="white"
+
 export default{
     props:{
         /**  Url de la fuente de datos, sea csv, geojson o kml por ejemplo */
@@ -42,11 +45,21 @@ export default{
             default:function(){
                 return {
                     fill:{
-                        color:"gray"
+                        color:DEFAULT_FILL_COLOR
                     },
                     stroke:{
                         width:1,
-                        color:"white" // "scale["color"]"
+                        color:DEFAULT_STROKE_COLOR // "scale["color"]"
+                    },
+                    circle:{
+                        fill: {
+                            color: DEFAULT_FILL_COLOR
+                        },
+                        stroke: {
+                            color: DEFAULT_STROKE_COLOR,
+                            width: 1
+                        },
+                        radius: 9
                     }
                 }
             }
