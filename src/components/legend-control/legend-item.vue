@@ -4,6 +4,7 @@ import LegendWms from "./_legend_wms.vue"
 import LegendLoading from "./_legend_loading.vue"
 import LegendCoropleta from "./_legend_coropleta.vue"
 import LegendNormalVector  from "./_legend_normal_vector.vue"
+import LegendListChecksColors from "./_legend_list_checks_colors.vue"
 export default {
     props:["layerId"],
     created:function(){
@@ -21,7 +22,8 @@ export default {
 
     },
     components:{
-        LegendWms,LegendLoading,LegendCoropleta,LegendNormalVector
+        LegendWms,LegendLoading,LegendCoropleta,LegendNormalVector,
+        LegendListChecksColors
     },
     data:function(){
         return {

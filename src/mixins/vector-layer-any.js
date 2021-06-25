@@ -1,7 +1,7 @@
 import generateOlStyle, {serializedStyleIfHighlight,fixSerializedStyleIfIncomplete} from "./_json2olstyle"
 
-const DEFAULT_FILL_COLOR="gray"
-const DEFAULT_STROKE_COLOR="white"
+export const DEFAULT_FILL_COLOR="gray"
+export const DEFAULT_STROKE_COLOR="white"
 
 export default{
     props:{

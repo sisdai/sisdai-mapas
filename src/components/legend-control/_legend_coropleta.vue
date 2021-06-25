@@ -1,8 +1,8 @@
 <template>
     <div class="map-legends">
-        <div class="map-legend-item" v-for="corte in params.content.cortes" :key="corte.c">
+        <div class="map-legend-item" v-for="corte in params.content.cortes.cortes" :key="corte.c">
             <div class="map-legends-item-color" 
-            :style="{'background-color': corte.c}">
+            :style="{'background-color': corte.v}">
             </div>
             <div class="map-legends-item-text">{{corte.d}}</div>
         </div>

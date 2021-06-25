@@ -18,11 +18,18 @@ export default {
                 source: vectorSource
             })
             if(this.VM_is_classified){
-                vectorSource.on("change",()=>{
-                    this._clasificar();
-                    this._set_style_class()
-                    this._setStyle()
-                })
+                if(vectorSource.getFeatures().length>0){
+                    this._clasificar_v2();
+                    this._set_style_class_v2()
+                }else{
+                    vectorSource.on("change",()=>{
+                        console.log("cambio el source del layer")
+                        this._clasificar_v2();
+                        this._set_style_class_v2()
+                        this._setStyle()
+                    })
+                }
+                
             }
             
             this._setStyle()
