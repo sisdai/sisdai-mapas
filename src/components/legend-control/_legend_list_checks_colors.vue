@@ -1,28 +1,55 @@
 <template>
     <div class="legend-list-checks-colors">
-        <div v-for="corte in params.content.cortes.cortes" :key="corte.c">
-            {{corte.d}}
+        <div class="list-item-check" v-for="(corte,i) in params.content.cortes.cortes" :key="corte.v">
+            <checkbox-color v-model="list_filter[i]" :color="corte.v" @change="_filtrarCapa">
+                {{corte.d}}
+            </checkbox-color>
+            
         </div>
     </div>
 </template>
 
 <script>
 //import checkbox from "../utils/checkbox"
+import CheckboxColor from "../utils/checkbox-color.vue"
 import legend_item_child  from "../../mixins/legend-item-child"
 export default {
     mixins:[legend_item_child],
+    data:function(){
+        return{
+            list_filter:[]
+        }
+    },
     components:{
         //checkbox
+        CheckboxColor
     },
     created:function(){
         this.$on("update:legend_info_ready",function(){
             console.log("esta la leyenda esta lista")
         })
+        this.list_filter = this.params.content.cortes.cortes.map(()=>true)
+    },methods:{
+        _filtrarCapa:function(){
+            let fnCompare = (feature)=>{
+                if(this.list_filter.every(item=>item)){
+                    return true
+                }
+                let valores = this.params.content.cortes.cortes.map((corte)=>corte["val"]).filter((valor,i)=>valor && this.list_filter[i])
+                
+                //comparar el feature que pueda ser cada uno de estos valores
+                return valores.some(valor=>{
+                    return valor == feature.getProperties()[this.params.content.cortes.args.column]
+                })
+
+            }
+            this._filter_features(fnCompare)
+        }
     }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     .legend-list-checks-colors{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;

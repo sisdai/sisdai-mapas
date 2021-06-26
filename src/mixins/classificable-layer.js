@@ -127,6 +127,7 @@ export default{
                 let todos_valores = features.map((f=>f.getProperties()[rule.column]))
                 let cortes =  dataClassification(todos_valores,rule.classification, 
                     rule.classes,rule.colors,rule.sizes,rule.targetProperty,features[0].getGeometry().getType())
+                    cortes.args["column"] = rule.column;
                 this.VM_rules_cortes.push(cortes)
             })
 

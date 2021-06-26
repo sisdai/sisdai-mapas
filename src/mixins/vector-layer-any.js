@@ -1,5 +1,7 @@
 import generateOlStyle, {serializedStyleIfHighlight,fixSerializedStyleIfIncomplete} from "./_json2olstyle"
 
+import GeoJSON from 'ol/format/GeoJSON';
+
 export const DEFAULT_FILL_COLOR="gray"
 export const DEFAULT_STROKE_COLOR="white"
 
@@ -87,7 +89,8 @@ export default{
     },
     data:function(){
         return {
-            VM_mapStyle:undefined
+            VM_mapStyle:undefined,
+            VM_allFeatures:[]
         }
     },
     created:function(){
@@ -142,6 +145,18 @@ export default{
                 this.$emit("legend_info_ready",this.VM_legend_info)    
             }
             
+        },
+        _saveAllFeaturesFromSource:function(vectorSource){
+            let geojsonFormat = new GeoJSON()
+            if(vectorSource.getFeatures().length>1){
+                this.VM_allFeatures = geojsonFormat.writeFeatures( vectorSource.getFeatures() )
+                return
+            }
+            console.log("---AQUI ESPERAR LAS FEATURES EN VM_allfeatures")
+            let listenerFn = (evento)=>{
+                console.log(evento,"---AQUI GUARDAR LAS FEATURES EN VM_allfeatures")
+            }
+            vectorSource.on("featuresloadend",listenerFn)
         }
     }
 }
