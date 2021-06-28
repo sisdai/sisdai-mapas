@@ -52,7 +52,7 @@ export default {
 <style lang="scss" scoped>
     .legend-list-checks-colors{
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-gap: 4px 5px;
+        grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
+        grid-gap: 9px 5px;
     }
 </style>
