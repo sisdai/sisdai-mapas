@@ -2,7 +2,7 @@
     <div>
         <div class="header-legend">
             <p class="title">{{title}}</p>
-            <button class="toggle-all" v-if="showButtonToggleAll">Quitar todos</button>
+            <button class="toggle-all" v-if="showButtonToggleAll" @click="toogleAll">Quitar todos</button>
         </div>
         
         <legend-item v-for="leg in VM_legends" :key="leg" :layerId="leg"></legend-item>
@@ -64,6 +64,9 @@ export default {
                 
                 this.VM_legends.push(layer_name)
             });
+        },
+        toogleAll:function(){
+            console.log(this.VM_legends)
         }
     }
 }

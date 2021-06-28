@@ -14,7 +14,7 @@
                     />
                 </dai-map>
                 <template v-slot:footer>
-                    <dai-map-legend :for="'cultivos'" title="Capas de este mapa"></dai-map-legend>
+                    <dai-map-legend :for="'cultivos'" title="Capas de este mapa" :showButtonToggleAll="true"></dai-map-legend>
                 </template>
             </dai-card-map-container>
         </div>
