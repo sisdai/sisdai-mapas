@@ -21,6 +21,7 @@ export default {
         this.$on("update:legend_info_ready",function(){
             console.log("la leyenda esta lista")
         })
+        this.hasSubfilters = true;
     }
 }
 </script>

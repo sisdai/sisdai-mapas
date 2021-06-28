@@ -3,7 +3,7 @@
     <div class="legend-normal-vector">
         
         <!--TOdo lo que va adentro de checkbox es el label del mismo -->
-        <checkbox v-model="visible" @change="_toggle_visible">
+        <checkbox v-model="visible" @change="toggle_visible">
                 <span v-if="classShape!=''" class="simbologia" 
                     :class="classShape" 
                     :style="{'background-color':params.content.fill_color,'border-color':params.content.stroke_color}" ></span>

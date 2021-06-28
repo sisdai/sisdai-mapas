@@ -2,7 +2,7 @@
     <div>
         <div class="header-legend">
             <p class="title">{{title}}</p>
-            <button class="toggle-all" v-if="showButtonToggleAll" @click="toogleAll">Quitar todos</button>
+            <button class="toggle-all" v-if="showButtonToggleAll" @click="toogleAll">{{labelToogleAll}}</button>
         </div>
         
         <legend-item v-for="leg in VM_legends" :key="leg" :layerId="leg"></legend-item>
@@ -39,7 +39,8 @@ export default {
     },
     data:function(){
         return{
-            VM_legends:[]
+            VM_legends:[],
+            labelToogleAll:"Quitar todos",  
         }
     },
     mounted:function(){
@@ -66,7 +67,21 @@ export default {
             });
         },
         toogleAll:function(){
-            console.log(this.VM_legends)
+            let legendas = this.$children;
+            //console.log(legendas)
+            if(legendas.length==1 && legendas[0].$children[0].hasSubfilters){
+                //solo aplicar el apagar prender a la leyenda de esa capa
+                this._toogle_all_subfilters(legendas[0].$children[0])
+                return
+            }
+
+            //aplicar a todas las leyendas
+
+
+        },
+        _toogle_all_subfilters:function(children_legend){
+            children_legend.toggle_allSubFilters()
+            //console.log(children_legend)
         }
     }
 }

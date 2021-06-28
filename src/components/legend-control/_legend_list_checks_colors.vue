@@ -29,6 +29,14 @@ export default {
             console.log("esta la leyenda esta lista")
         })
         this.list_filter = this.params.content.cortes.cortes.map(()=>true)
+        this.hasSubfilters = true;
+        this.visibleStatusFilters = [...this.list_filter];
+
+        //estar atentos al evento de apagar/prender todos
+        this.$on("toogle_allsubfilters",(apagar_todos)=>{
+            this.list_filter = this.list_filter.map(()=>!apagar_todos)
+            this._filtrarCapa()
+        })
     },methods:{
         _filtrarCapa:function(){
             let fnCompare = (feature)=>{
@@ -44,6 +52,7 @@ export default {
 
             }
             this._filter_features(fnCompare)
+            this.visibleStatusFilters = [...this.list_filter];
         }
     }
 }
