@@ -1,8 +1,8 @@
 <template>
     <div>
         <div class="header-legend">
-            <p class="title">{{title}}</p>
-            <button class="toggle-all" v-if="showButtonToggleAll" @click="toogleAll">{{labelToogleAll}}</button>
+            <p class="title">{{titulo}}</p>
+            <button class="toggle-all" v-if="mostrarBotonAlternaTodos" @click="toogleAll">{{labelToogleAll}}</button>
         </div>
         
         <legend-item v-for="leg in VM_legends" :key="leg" :layerId="leg"></legend-item>
@@ -13,23 +13,23 @@
 import control from "../../mixins/control"
 import LegendItem from "./legend-item.vue"
 export default {
-    name:"DaiMapLegend",
+    name:"DaiLeyendaMapa",
     mixins:[control],
     props:{
-        for:{
+        para:{
             type:[Array,String],
             default:function(){
                 return []
             }
         },
-        title:{
+        titulo:{
             type:String,
             default:""
         },
         /**
          * Asignar alguna accion para este boton desde las propiedades
          */
-        showButtonToggleAll:{
+        mostrarBotonAlternaTodos:{
             type:Boolean,
             default:false
         }
@@ -57,7 +57,7 @@ export default {
     methods:{
         _draw_legends_from_layers:function(){
             let layers_in_map = Object.keys( this.cmpMap.cmpLayers)
-            let layers_in_params = Array.isArray( this.for ) ? this.for : [this.for];
+            let layers_in_params = Array.isArray( this.para ) ? this.para : [this.para];
 
             let interseccion_layers = layers_in_params.filter(value=>layers_in_map.includes(value))
             this.VM_legends = []

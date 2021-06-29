@@ -44,8 +44,12 @@ export default {
         })
     },
     watch:{
-        "visible":function(){
+        "visible":function(newerValue){
             this.$parent.$parent.checkLabelToggleAll();
+            if(this.hasSubfilters){
+                let apagar_todos = !newerValue
+                this.$emit("toogle_allsubfilters",apagar_todos)
+            }
         },
         "visibleStatusFilters":function(newerValue){
             //console.log(newerValue,console.log(this.$parent))

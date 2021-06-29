@@ -6,14 +6,14 @@ import {fixSerializedStyleIfIncomplete,joinDefaultValuesWithNewValuesInPoints} f
 import { DEFAULT_FILL_COLOR,DEFAULT_STROKE_COLOR } from "./vector-layer-any";
 
 const defaultsValuesRule = {
-    classification:"qualitative", //linear, quantile, log , custom
-    classes: 5,
-    column: '',
-    colors: "Blues", //lo que se pueda poner como prefijo para d3 o un array de colores
-    sizes: [],
-    targetProperty: 'fill', // o size , solo esas dos
-    shape: "default", // solo se ocupa si es geometria punto, tambien puede ser un url a un svg, si es svg el color no le aplicaria,
-    variableTitle: "__columnname__"
+    clasificacion:"categorias", //linear, quantile, log , custom
+    clases: 5,
+    columna: '',
+    colores: "Blues", //lo que se pueda poner como prefijo para d3 o un array de colores
+    proporciones: [],
+    propiedadObjetivo: 'relleno', // o proporcion , solo esas dos
+    forma: "default", // solo se ocupa si es geometria punto, tambien puede ser un url a un svg, si es svg el color no le aplicaria,
+    tituloVariable: "__columnname__"
 };
 
 export default{
@@ -30,13 +30,7 @@ export default{
     data:function(){
         return {
             VM_is_classified:false,
-            /** 
-            VM_r_class:"",
-            VM_r_colors:[],
-            VM_r_labels:[],
-            VM_r_column:"",
-            VM_r_cortes : []
-            */
+            
            VM_rules:[],
            VM_rules_cortes:[],
            VM_geometryType:"",
@@ -54,7 +48,7 @@ export default{
                 this.VM_rules = this.mapStyleRule.map(rule=>{
                     let defaults = {...defaultsValuesRule}
                     let obj=Object.assign(defaults,rule) 
-                    console.log(this.id,obj)
+                    //console.log(this.id,obj)
                     return {...obj}
                 });
             }else{
@@ -63,11 +57,7 @@ export default{
             }
         }
 
-        /** 
-        this.VM_r_class = this.renderClassification
-        this.VM_r_colors = this.renderColors
-        this.VM_r_column = this.renderColumn
-        */
+        
     },
     mounted:function(){
         
@@ -112,17 +102,17 @@ export default{
             this.VM_geometryType = features[0].getGeometry().getType()
             this.VM_rules.forEach(rule=>{
                 
-                let todos_valores = features.map((f=>f.getProperties()[rule.column]))
-                let cortes =  dataClassification(todos_valores,rule.classification, 
-                    rule.classes,rule.colors,rule.sizes,rule.targetProperty,features[0].getGeometry().getType())
+                let todos_valores = features.map((f=>f.getProperties()[rule.columna]))
+                let cortes =  dataClassification(todos_valores,rule.clasificacion, 
+                    rule.clases,rule.colores,rule.proporciones,rule.propiedadObjetivo,features[0].getGeometry().getType())
                 
-                cortes.args["column"] = rule.column;
-                cortes.args["variableTitle"] = rule.variableTitle ==="__columnname__" ? rule.column : rule.variableTitle;
+                cortes.args["column"] = rule.columna;
+                cortes.args["variableTitle"] = rule.tituloVariable ==="__columnname__" ? rule.columna : rule.tituloVariable;
                 this.VM_rules_cortes.push(cortes)
             })
 
-            this.VM_default_shape = this.VM_rules.map(rule=>rule.shape).some(element=>element!="default") 
-                ? this.VM_rules.map(rule2=>rule2.shape).filter(element2=>element2!="default")[0] :"circle"
+            this.VM_default_shape = this.VM_rules.map(rule=>rule.forma).some(element=>element!="default") 
+                ? this.VM_rules.map(rule2=>rule2.forma).filter(element2=>element2!="default")[0] :"circle"
 
             //agregar la informacion para la leyenda
             this._set_legend_info()
@@ -188,9 +178,9 @@ export default{
                         let value = corte.val
                         if(Array.isArray(value)){
                             let min_value = h==0?value[0]-1 : value[0];
-                            if(feature.getProperties()[rule.column] > min_value 
-                                && feature.getProperties()[rule.column]<= value[1]){
-                                    if(rule.targetProperty=="fill"){
+                            if(feature.getProperties()[rule.columna] > min_value 
+                                && feature.getProperties()[rule.columna]<= value[1]){
+                                    if(rule.propiedadObjetivo=="relleno"){
                                         if(geomType.includes("Polygon") ) { default_style.style["fill"]["color"] = corte.v  }
                                         if(geomType.includes("Point") ) { default_style.style[this.VM_default_shape]["fill"]["color"] = corte.v  }
                                         if(geomType.includes("LineString") ) { default_style.style["stroke"]["color"] = corte.v  }
@@ -204,8 +194,8 @@ export default{
                             }
 
                         }else{
-                            if(feature.getProperties()[rule.column] == value){
-                                if(rule.targetProperty=="fill"){
+                            if(feature.getProperties()[rule.columna] == value){
+                                if(rule.propiedadObjetivo=="relleno"){
                                     if(geomType.includes("Polygon") ) { default_style.style["fill"]["color"] = corte.v  }
                                     if(geomType.includes("Point") ) { default_style.style[this.VM_default_shape]["fill"]["color"] = corte.v  }
                                     if(geomType.includes("LineString") ) { default_style.style["stroke"]["color"] = corte.v  }
@@ -252,7 +242,7 @@ export default{
             this.$emit("legend_info_ready",this.VM_legend_info)
         },
         _check_persistent_color:function(){
-            if(this.VM_rules.length == 1 && this.VM_rules[0].targetProperty =='size' && typeof this.mapStyle !="function"){
+            if(this.VM_rules.length == 1 && this.VM_rules[0].propiedadObjetivo =='proporcion' && typeof this.mapStyle !="function"){
                 let style = fixSerializedStyleIfIncomplete(this.mapStyle)
                 if(this.VM_geometryType==="Point" || this.VM_geometryType==="MultiPoint"){
                     this.VM_persistentFill= style.style?.[this.VM_default_shape]?.fill || {color:'gray'};

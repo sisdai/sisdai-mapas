@@ -2,6 +2,9 @@ import Vue from 'vue'
 import App from './Simbologias.vue'
 import "../src/styles/main.scss"
 
+import  DaiMaps from "../src/index.js"
+Vue.use(DaiMaps)
+
 let div = document.createElement("div")
 div.setAttribute("id","app")
 document.body.appendChild(div)

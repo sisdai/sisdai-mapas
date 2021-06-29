@@ -8,17 +8,17 @@ import * as d3 from "d3"
 const dataClassification = (data,classType,clases,colors,sizes,targetProperty,geomType,defaultShapeType="circle")=>{
     let valores_clases = []
     //aqui ir agregando las demas clasificaciones
-    valores_clases = classType==="qualitative" ? qualitativeClassification(data) : valores_clases;
-    valores_clases = classType==="quantile" ? quantileClassification(data,clases) : valores_clases;
+    valores_clases = classType==="categorias" ? qualitativeClassification(data) : valores_clases;
+    valores_clases = classType==="cuantiles" ? quantileClassification(data,clases) : valores_clases;
 
 
     let valueRamp = []
-    if (targetProperty=="fill"){
+    if (targetProperty=="relleno"){
         valueRamp = getParsedColorRamp(colors,valores_clases.length)
     }else{
         valueRamp = sizes;
     }
-    let labels = classType === "qualitative" ? valores_clases.map(item=>item) 
+    let labels = classType === "categorias" ? valores_clases.map(item=>item) 
         : valores_clases.map((numeric_item,i)=>{
             let label = `${Math.floor((numeric_item[0]===0||i===0)?numeric_item[0]:numeric_item[0]+1)
             .toLocaleString("en")} a ${Math.floor(numeric_item[1]).toLocaleString("en")}`
@@ -30,7 +30,7 @@ const dataClassification = (data,classType,clases,colors,sizes,targetProperty,ge
     })
         
     let tipo = "list-checks-values"; //lista de valores para activar desactivar
-    if(targetProperty ==="fill"){
+    if(targetProperty ==="relleno"){
         if(geomType ==="Polygon" || geomType ==="MultiPolygon"){
             tipo = "coropleta"
         }else{

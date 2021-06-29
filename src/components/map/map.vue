@@ -25,9 +25,9 @@ import CustomZoomControl, {ResetControl} from "./_zoom-control"
 import {invoke_tooltips} from "./_invokeTooltips";
 import {invoke_clicks} from "./_invokeClicks";
 export default {
-    name:"DaiMap",
+    name:"DaiMapa",
     props:{
-        center:{
+        centro:{
             type:Array,
             default:function(){
                 return [0,0]
@@ -45,7 +45,7 @@ export default {
             type:Number,
             default:1
         },
-        extent:{
+        extension:{
             type:Array,
             default:function(){
                 return [0,0,0,0]
@@ -66,9 +66,9 @@ export default {
         }
     },
     created:function(){
-        this.VM_reset_view = this.extent[0] == 0 && this.extent[3] ==0 
-            ? {type:"center",value:{zoom:this.zoom,center:this.center}} 
-            : {type:"extent",value:this.extent};
+        this.VM_reset_view = this.extension[0] == 0 && this.extension[3] ==0 
+            ? {type:"center",value:{zoom:this.zoom,center:this.centro}} 
+            : {type:"extent",value:this.extension};
     },
     
     mounted:function(){
@@ -84,7 +84,7 @@ export default {
             target: this.$refs.map,
             layers: [],
             view: new View({
-                center: this.center,
+                center: this.centro,
                 zoom: this.zoom,
                 projection: 'EPSG:4326',
                 maxZoom: this.maxZoom,
@@ -94,7 +94,7 @@ export default {
         });
         this.map.set("_reset_view",this.VM_reset_view)
         if(this.VM_reset_view.type=="extent"){
-            this.map.getView().fit(this.extent,{duration:500,padding: [10, 10, 10, 10]})
+            this.map.getView().fit(this.extension,{duration:500,padding: [10, 10, 10, 10]})
         }
 
         //verificar si hay un card contaiener

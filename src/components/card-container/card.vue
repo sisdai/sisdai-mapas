@@ -19,7 +19,7 @@
 </template>
 <script>
 export default {
-    name:"DaiCardMapContainer",
+    name:"DaiTarjetaContenedorMapa",
     props:{
         allowCollapsing:{
             type:Boolean,

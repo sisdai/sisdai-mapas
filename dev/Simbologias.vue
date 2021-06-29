@@ -1,54 +1,54 @@
 <template>
     <div>
         <div class="another-map">
-            <dai-card-map-container :collapsed="false">
+            <dai-tarjeta-contenedor-mapa :collapsed="false">
                 <template v-slot:header>
                     <p>Agregando estilo simple a las capas</p>
                 </template>
-                <dai-map  
-                    :extent="[-118.365119934082,14.5320978164673,-86.7104034423828,32.7186546325684]"
+                <dai-mapa  
+                    :extension="[-118.365119934082,14.5320978164673,-86.7104034423828,32.7186546325684]"
                     >
                  
                     <dai-geojson-layer :source="datos_cultivos"  id="cultivos"
                         :map-style-rule="[
-                        {column:'cultivo',colors:'Category10'},
-                        {column:'cultivo_tot',classification:'quantile',classes:4,sizes:[4,6,12,16],targetProperty:'size',variableTitle:'Cantidad de cultivos'}
+                        {columna:'cultivo',colores:'Category10'},
+                        {columna:'cultivo_tot',clasificacion:'cuantiles',clases:4,proporciones:[4,6,12,16],propiedadObjetivo:'proporcion',tituloVariable:'Cantidad de cultivos'}
                         ]"
                     />
                     <dai-geojson-layer :source="datos_cultivos"  id="cultivos2"
                         :map-style-rule="[
-                        {column:'cultivo_tot',classification:'quantile',classes:3,sizes:[1,2,3],targetProperty:'size',variableTitle:'Cantidad de cultivos leyenda 2'}
+                        {columna:'cultivo_tot',clasificacion:'cuantiles',clases:3,proporciones:[1,2,3],propiedadObjetivo:'proporcion',tituloVariable:'Cantidad de cultivos leyenda 2'}
                         ]"
                         :map-style="{style:{circle:{'fill':{color:'red'},stroke:{color:'black',width:1}}}}"
                     />
-                </dai-map>
+                </dai-mapa>
                 <template v-slot:footer>
-                    <dai-map-legend :for="['cultivos','cultivos2']" title="Capas de este mapa" :showButtonToggleAll="true"></dai-map-legend>
+                    <dai-leyenda-mapa :para="['cultivos','cultivos2']" titulo="Capas de este mapa" :mostrar-boton-alterna-todos="true"></dai-leyenda-mapa>
                 </template>
-            </dai-card-map-container>
+            </dai-tarjeta-contenedor-mapa>
         </div>
 
         <div class="another-map">
-            <dai-card-map-container :collapsed="false">
+            <dai-tarjeta-contenedor-mapa :collapsed="false">
                 <template v-slot:header>
                     <p>Agregando estilo simple a las capas</p>
                 </template>
-                <dai-map  
-                    :extent="[-118.365119934082,14.5320978164673,-86.7104034423828,32.7186546325684]"
+                <dai-mapa  
+                    :extension="[-118.365119934082,14.5320978164673,-86.7104034423828,32.7186546325684]"
                     >
                  
                     <dai-geojson-layer :source="datos_cultivos"  id="cultivos3"
                         :map-style-rule="[
-                        {column:'cultivo_tot',colors:'Blues',classification:'quantile',classes:6},
-                        {column:'cultivo_tot',classification:'quantile',classes:4,sizes:[4,6,12,20],targetProperty:'size',variableTitle:'Cantidad de cultivos'}
+                        {columna:'cultivo_tot',colores:'Blues',clasificacion:'cuantiles',clases:6},
+                        {columna:'cultivo_tot',clasificacion:'cuantiles',clases:4,proporciones:[4,6,12,20],propiedadObjetivo:'proporcion',tituloVariable:'Cantidad de cultivos'}
                         ]"
                     />
                     
-                </dai-map>
+                </dai-mapa>
                 <template v-slot:footer>
-                    <dai-map-legend :for="['cultivos3']" title="Capas de este mapa 2" :showButtonToggleAll="true"></dai-map-legend>
+                    <dai-leyenda-mapa :para="['cultivos3']" titulo="Capas de este mapa 2" :mostrar-boton-alterna-todos="true"></dai-leyenda-mapa>
                 </template>
-            </dai-card-map-container>
+            </dai-tarjeta-contenedor-mapa>
         </div>
     </div>
 </template>
@@ -56,21 +56,14 @@
 <script>
 import "./styles.css"
 
-import {DaiMap} from "../src/components/map"
-import {DaiCardMapContainer} from "../src/components/card-container"
-import {DaiGeojsonLayer} from "../src/components/geojson-layer"
-import {WidthControl} from "@/directives"
-import {DaiMapLegend} from "../src/components/legend-control"
+
 
 import datos from "./data/circulos-sample.json"
 
 export default {
     name:"App",
     components:{
-        DaiMap,DaiCardMapContainer,
-        DaiGeojsonLayer,
-        DaiMapLegend
-        //DaiLegend,DaiMapSelector
+        
     },
     data:function(){
         return {
@@ -78,7 +71,7 @@ export default {
         }
     },
     directives:{
-        "width-control":WidthControl
+        
     }
 }
 </script>
