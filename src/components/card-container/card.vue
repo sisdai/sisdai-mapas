@@ -1,17 +1,17 @@
 <template>
     <div class="card-map-container" 
-        :class="{'without-footer': !VM_hasFooter,'collapsed':collapsingClass,'flex':mapFillAvailableSpace}"
+        :class="{'without-footer': !VM_hasFooter,'collapsed':collapsingClass,'flex':llenarEspacioDisponibleConMapa}"
         :style="{'max-height':collapsingHeight}">
         <div class="card-map-header">
             <slot name="header"></slot>
         </div>
         <slot ></slot>
-        <div class="card-map-footer" v-if="VM_hasFooter" :class="{'collapsing':allowCollapsing}">
+        <div class="card-map-footer" v-if="VM_hasFooter" :class="{'collapsing':permitirColapso}">
             <div class="card-map-footer-container">
                 <slot name="footer"></slot>
             </div>
             
-            <button v-if="allowCollapsing" class="collapsable-button" @click="VM_collapsed=!VM_collapsed" v-html=" VM_collapsed ? collapsedText : uncollapsedText">
+            <button v-if="permitirColapso" class="collapsable-button" @click="VM_collapsed=!VM_collapsed" v-html=" VM_collapsed ? etiquetaColapso : etiquetaNoColapso">
                 
             </button>
         </div>
@@ -21,27 +21,27 @@
 export default {
     name:"DaiTarjetaContenedorMapa",
     props:{
-        allowCollapsing:{
+        permitirColapso:{
             type:Boolean,
             default:true
         },
-        collapsed:{
+        colapsada:{
             type: Boolean,
             default:true
         },
-        collapsedHeight:{
+        alturaColapsada:{
             type:String,
             default:"60vh"
         },
-        mapFillAvailableSpace:{
+        llenarEspacioDisponibleConMapa:{
             type:Boolean,
             default:false
         },
-        collapsedText:{
+        etiquetaColapso:{
             type:String,
             default: '<span class="dai-icon-collapsed size-font-25rem-x7"></span>'
         },
-        uncollapsedText:{
+        etiquetaNoColapso:{
             type:String,
             default:'<span class="dai-icon-uncollapsed size-font-25rem-x7"></span>'
         }
@@ -55,14 +55,14 @@ export default {
         }
     },
     created:function(){
-        this.VM_collapsed = this.collapsed;
+        this.VM_collapsed = this.colapsada;
     },
     computed:{
         collapsingClass:function(){
-            return this.VM_hasFooter && this.VM_collapsed && this.allowCollapsing;
+            return this.VM_hasFooter && this.VM_collapsed && this.permitirColapso;
         },
         collapsingHeight:function(){
-            return this.VM_hasFooter && this.VM_collapsed && this.allowCollapsing ? this.collapsedHeight : "250vh"
+            return this.VM_hasFooter && this.VM_collapsed && this.permitirColapso ? this.alturaColapsada : "250vh"
         }
     },
     mounted:function(){

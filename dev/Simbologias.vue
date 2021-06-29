@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="another-map">
-            <dai-tarjeta-contenedor-mapa :collapsed="false">
+            <dai-tarjeta-contenedor-mapa :colapsada="false">
                 <template v-slot:header>
                     <p>Agregando estilo simple a las capas</p>
                 </template>
@@ -29,7 +29,7 @@
         </div>
 
         <div class="another-map">
-            <dai-tarjeta-contenedor-mapa :collapsed="false">
+            <dai-tarjeta-contenedor-mapa :colapsada="false">
                 <template v-slot:header>
                     <p>Agregando estilo simple a las capas</p>
                 </template>
