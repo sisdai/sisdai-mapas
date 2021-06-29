@@ -10,7 +10,8 @@ const defaultsValuesRule = {
     colors: "Blues", //lo que se pueda poner como prefijo para d3 o un array de colores
     sizes: [],
     targetProperty: 'fill', // o size , solo esas dos
-    shape: "default" // solo se ocupa si es geometria punto, tambien puede ser un url a un svg, si es svg el color no le aplicaria
+    shape: "default", // solo se ocupa si es geometria punto, tambien puede ser un url a un svg, si es svg el color no le aplicaria,
+    variableTitle: "__columnname__"
 };
 
 export default{
@@ -60,7 +61,7 @@ export default{
            VM_rules:[],
            VM_rules_cortes:[],
            VM_geometryType:"",
-           VM_default_shape:"cricle"
+           VM_default_shape:"circle"
         }
     },
     created:function(){
@@ -69,7 +70,10 @@ export default{
             
             this.VM_is_classified = true;
             if(Array.isArray(this.mapStyleRule)){
-                this.VM_rules = this.mapStyleRule.map(item=>Object.assign(defaultsValuesRule,item));
+                this.VM_rules = this.mapStyleRule.map(rule=>{
+                    let obj=Object.assign(defaultsValuesRule,rule) 
+                    return {...obj}
+                });
             }else{
                 this.VM_rules = [ Object.assign(defaultsValuesRule,this.mapStyleRule)]
             }
@@ -127,7 +131,9 @@ export default{
                 let todos_valores = features.map((f=>f.getProperties()[rule.column]))
                 let cortes =  dataClassification(todos_valores,rule.classification, 
                     rule.classes,rule.colors,rule.sizes,rule.targetProperty,features[0].getGeometry().getType())
-                    cortes.args["column"] = rule.column;
+                
+                cortes.args["column"] = rule.column;
+                cortes.args["variableTitle"] = rule.variableTitle ==="__columnname__" ? rule.column : rule.variableTitle;
                 this.VM_rules_cortes.push(cortes)
             })
 

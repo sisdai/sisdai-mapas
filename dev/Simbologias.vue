@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="another-map">
-            <dai-card-map-container>
+            <dai-card-map-container :collapsed="false">
                 <template v-slot:header>
                     <p>Agregando estilo simple a las capas</p>
                 </template>
@@ -10,7 +10,10 @@
                     >
                  
                     <dai-geojson-layer :source="datos_cultivos"  id="cultivos"
-                        :map-style-rule="{column:'cultivo',colors:'Category10'}"
+                        :map-style-rule="[
+                        {column:'cultivo',colors:'Category10'},
+                        {column:'cultivo_tot',classification:'quantile',classes:4,sizes:[4,6,12,16],targetProperty:'size',variableTitle:'Cantidad de cultivos'}
+                        ]"
                     />
                 </dai-map>
                 <template v-slot:footer>
