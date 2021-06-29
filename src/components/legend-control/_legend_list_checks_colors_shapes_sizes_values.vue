@@ -100,5 +100,11 @@ export default {
                 margin-bottom: 6px;
             }
         }
+        
+    }
+    .title-shapes{
+        text-align: center;
+        font-weight: 600;
+        margin-top: .5em;
     }
 </style>
