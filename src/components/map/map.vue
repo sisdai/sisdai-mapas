@@ -2,7 +2,7 @@
     <div class="dai-map-container">
         
 
-        <div class="dai-map " :class="[invertedControls ? 'inverted-controls': 'default-controls']" ref="map"></div>
+        <div class="dai-map " :class="[colorControlesInvertidos ? 'inverted-controls': 'default-controls']" ref="map"></div>
         <slot></slot>
         
         <div ref="tooltip" class="ol-tooltip ol-tooltip-bottom">
@@ -51,7 +51,7 @@ export default {
                 return [0,0,0,0]
             }
         },
-        invertedControls:{
+        colorControlesInvertidos:{
             type:Boolean,
             default: false
         }
