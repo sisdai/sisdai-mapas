@@ -11,7 +11,7 @@ export default {
         }
     },
     methods:{
-        toggle_visible:function(){
+        set_visible_to_layer:function(){
             this.$parent.$parent.cmpMap.cmpLayers[this.layerId].olLayer.setVisible(this.visible)
             this.$emit("toogle_visible",this.visible)
         },
@@ -44,8 +44,8 @@ export default {
         })
     },
     watch:{
-        "visible":function(older,newer){
-            console.log(older,newer)
+        "visible":function(){
+            this.$parent.$parent.checkLabelToggleAll();
         },
         "visibleStatusFilters":function(newerValue){
             //console.log(newerValue,console.log(this.$parent))

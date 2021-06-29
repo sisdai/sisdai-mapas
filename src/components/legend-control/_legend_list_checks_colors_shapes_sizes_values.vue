@@ -61,8 +61,14 @@ export default {
                     return true
                 }
                 let valores = this.cortes_colores.cortes.map((corte)=>corte["val"]).filter((valor,i)=>valor && this.list_filter[i])
-                
+                //console.log(valores)
                 //comparar el feature que pueda ser cada uno de estos valores
+                if(valores.length >0 && Array.isArray(valores[0])){
+                    return valores.some(valor=>{
+                        return feature.getProperties()[this.cortes_colores.args.column] > valor[0] && feature.getProperties()[this.cortes_colores.args.column] <= valor[1]
+                    })
+                }
+
                 return valores.some(valor=>{
                     return valor == feature.getProperties()[this.cortes_colores.args.column]
                 })

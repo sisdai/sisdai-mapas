@@ -5,7 +5,10 @@
         :style="{
             'width':`${size[0]}${sizeUnits}`,
             'height':`${size[1]}${sizeUnits}`,
-            'backgroundColor':backgroundColor
+            'backgroundColor':backgroundColor,
+            'borderWidth':`${strokeWidth}px`,
+            'borderColor':strokeColor
+
             }" ></div>
     </div>
     
@@ -40,6 +43,14 @@ export default {
         imageSrc:{
             default:"",
             type:String
+        },
+        strokeColor:{
+            default:'white',
+            type:String
+        },
+        strokeWidth:{
+            default:1,
+            type:Number
         }
     }
 }
@@ -49,7 +60,7 @@ export default {
 .dai-map-shape{
     display: inline-block;
     .circle,.square,.triangle{
-        border: 1px solid black;
+        border-style: solid;
     }
     .circle{
         border-radius: 50%;

@@ -43,7 +43,7 @@ export default{
             default:true
         },
         mapStyle:{
-            type: [Function,Object],
+            type: [Object,Function],
             default:function(){
                 return {
                     fill:{

@@ -62,19 +62,29 @@ const serializedStyleIfHighlight=function(originalSerializedStyle,newStyle){
     return output
 }
 
-const prepareSimplePointVectors=function(originalStyle,newStyle){
-    if("circle" in originalStyle.style ){
-        originalStyle.style["circle"] = { ... originalStyle.style["circle"], ...newStyle.style["_simple_point"]}
+const prepareSimplePointVectors=function(targetStyle,sourceStyle){
+    if("circle" in targetStyle.style ){
+        targetStyle.style["circle"] = { ... targetStyle.style["circle"], ...sourceStyle.style["_simple_point"]}
         return
     }
-    if("square" in originalStyle.style ){
-        originalStyle.style["square"] = { ... originalStyle.style["square"], ...newStyle.style["_simple_point"]}
+    if("square" in targetStyle.style ){
+        targetStyle.style["square"] = { ... targetStyle.style["square"], ...sourceStyle.style["_simple_point"]}
         return
     }
-    if("triangle" in originalStyle.style ){
-        originalStyle.style["triangle"] = { ... originalStyle.style["triangle"], ...newStyle.style["_simple_point"]}
+    if("triangle" in targetStyle.style ){
+        targetStyle.style["triangle"] = { ... targetStyle.style["triangle"], ...sourceStyle.style["_simple_point"]}
         return
     }
+}
+
+const joinDefaultValuesWithNewValuesInPoints=function(targetStyle,sourceStyle,keyShape){
+    
+    if(keyShape in targetStyle.style ){
+        targetStyle.style[keyShape] = { ... targetStyle.style[keyShape], ...sourceStyle.style[keyShape]}
+        
+        return
+    }
+    
 }
 
 const fixSerializedStyleIfIncomplete = function(serializedStyle){
@@ -91,4 +101,4 @@ export default function (serializedStyle){
     return style
 }
 
-export {serializedStyleIfHighlight,fixSerializedStyleIfIncomplete};
+export {serializedStyleIfHighlight,fixSerializedStyleIfIncomplete,prepareSimplePointVectors,joinDefaultValuesWithNewValuesInPoints};

@@ -6,7 +6,6 @@ import * as d3 from "d3"
  * @param {*} clases 
  */
 const dataClassification = (data,classType,clases,colors,sizes,targetProperty,geomType,defaultShapeType="circle")=>{
-    //console.log(geomType,clases,colors)
     let valores_clases = []
     //aqui ir agregando las demas clasificaciones
     valores_clases = classType==="qualitative" ? qualitativeClassification(data) : valores_clases;

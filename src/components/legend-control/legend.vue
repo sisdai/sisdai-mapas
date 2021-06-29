@@ -76,12 +76,39 @@ export default {
             }
 
             //aplicar a todas las leyendas
+            let estadoTodas = legendas.map(legend=>{
+                return legend.$children[0].visible;
+            })
+            let apagarTodos = estadoTodas.some(item=>item)
+            legendas.forEach(leyenda=>{
+                let legendItemChild = leyenda.$children[0]
+                
+                let  esvisible = legendItemChild.visible
+                if(apagarTodos && esvisible){
+                    legendItemChild.visible = false
+                    legendItemChild.set_visible_to_layer()
+                }else if (!apagarTodos && !esvisible){
+                    legendItemChild.visible = true
+                    legendItemChild.set_visible_to_layer()
+                }
+            })
 
 
         },
         _toogle_all_subfilters:function(children_legend){
             children_legend.toggle_allSubFilters()
             //console.log(children_legend)
+        },
+        checkLabelToggleAll:function(){
+            let legendas = this.$children;
+            
+            if(legendas.length==1 && legendas[0].$children[0].hasSubfilters){  
+                return
+            }
+            let estadoTodas = legendas.map(legend=>{
+                return legend.$children[0].visible;
+            })
+            this.labelToogleAll = estadoTodas.some(item=>item) ? "Quitar todos" : "Mostrar todos";
         }
     }
 }

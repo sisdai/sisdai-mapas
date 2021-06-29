@@ -53,7 +53,7 @@ const createGeojsonSourceFromObjectJs= (JsObject)=>{
     }
     
     return new VectorSource({
-            features: new GeoJSON().readFeatures(JsObject)
+            features: new GeoJSON().readFeatures({...JsObject})
         })
 }
 

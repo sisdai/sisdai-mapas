@@ -2,7 +2,7 @@
     
     <div class="legend-wms">
         
-        <checkbox v-model="visible" @change="toggle_visible"> 
+        <checkbox v-model="visible" @change="set_visible_to_layer"> 
             <div class="label-content">
                 <span>{{params.content.title}}</span>
                 <div class="image">

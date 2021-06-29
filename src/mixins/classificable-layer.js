@@ -1,6 +1,8 @@
 import * as d3 from "d3"
 import { dataClassification } from "./_clasificacion_datos";
 
+import {fixSerializedStyleIfIncomplete,joinDefaultValuesWithNewValuesInPoints} from "./_json2olstyle"
+
 import { DEFAULT_FILL_COLOR,DEFAULT_STROKE_COLOR } from "./vector-layer-any";
 
 const defaultsValuesRule = {
@@ -61,7 +63,9 @@ export default{
            VM_rules:[],
            VM_rules_cortes:[],
            VM_geometryType:"",
-           VM_default_shape:"circle"
+           VM_default_shape:"circle",
+           VM_persistentFill:{},
+           VM_persistentStroke:{}
         }
     },
     created:function(){
@@ -71,11 +75,14 @@ export default{
             this.VM_is_classified = true;
             if(Array.isArray(this.mapStyleRule)){
                 this.VM_rules = this.mapStyleRule.map(rule=>{
-                    let obj=Object.assign(defaultsValuesRule,rule) 
+                    let defaults = {...defaultsValuesRule}
+                    let obj=Object.assign(defaults,rule) 
+                    console.log(this.id,obj)
                     return {...obj}
                 });
             }else{
-                this.VM_rules = [ Object.assign(defaultsValuesRule,this.mapStyleRule)]
+                let defaults = {...defaultsValuesRule}
+                this.VM_rules = [ Object.assign(defaults,this.mapStyleRule)]
             }
         }
 
@@ -167,9 +174,11 @@ export default{
             //this.$emit("update:mapStyle",style)
         },
         _set_style_class_v2:function(){
+            
+            let originalMapStyleFromParams = {...this.VM_mapStyle}
              let style = (feature)=>{
                  let geomType = feature.getGeometry().getType()
-                 let default_style = {
+                 let default_style = {style:{
                      fill:{
                          color:DEFAULT_FILL_COLOR
                      },
@@ -178,7 +187,8 @@ export default{
                         color :DEFAULT_STROKE_COLOR 
                      }
                  }
-                 default_style[this.VM_default_shape] = {
+                }
+                 default_style.style[this.VM_default_shape] = {
                     fill: {
                         color: DEFAULT_FILL_COLOR
                     },
@@ -188,6 +198,13 @@ export default{
                     },
                     radius: 7
                 }
+                let estilos_normales_desde_parametros={...originalMapStyleFromParams}
+                
+                estilos_normales_desde_parametros = fixSerializedStyleIfIncomplete(estilos_normales_desde_parametros)
+                
+                joinDefaultValuesWithNewValuesInPoints(default_style,estilos_normales_desde_parametros,this.VM_default_shape)
+                Object.assign(default_style.style,estilos_normales_desde_parametros.style)
+                
                 this.VM_rules.forEach((rule,i)=>{
                     let rule_cortes = this.VM_rules_cortes[i]
                     rule_cortes.cortes.forEach((corte,h)=>{
@@ -197,14 +214,14 @@ export default{
                             if(feature.getProperties()[rule.column] > min_value 
                                 && feature.getProperties()[rule.column]<= value[1]){
                                     if(rule.targetProperty=="fill"){
-                                        if(geomType.includes("Polygon") ) { default_style["fill"]["color"] = corte.v  }
-                                        if(geomType.includes("Point") ) { default_style[this.VM_default_shape]["fill"]["color"] = corte.v  }
-                                        if(geomType.includes("LineString") ) { default_style["stroke"]["color"] = corte.v  }
+                                        if(geomType.includes("Polygon") ) { default_style.style["fill"]["color"] = corte.v  }
+                                        if(geomType.includes("Point") ) { default_style.style[this.VM_default_shape]["fill"]["color"] = corte.v  }
+                                        if(geomType.includes("LineString") ) { default_style.style["stroke"]["color"] = corte.v  }
 
                                     }else{
                                         //es un size
-                                        if(geomType.includes("Point") ) { default_style[this.VM_default_shape]["radius"] = corte.v  }
-                                        if(geomType.includes("LineString") ) { default_style["stroke"]["width"] = corte.v  }
+                                        if(geomType.includes("Point") ) { default_style.style[this.VM_default_shape]["radius"] = corte.v  }
+                                        if(geomType.includes("LineString") ) { default_style.style["stroke"]["width"] = corte.v  }
                                     }
                                 
                             }
@@ -212,14 +229,14 @@ export default{
                         }else{
                             if(feature.getProperties()[rule.column] == value){
                                 if(rule.targetProperty=="fill"){
-                                    if(geomType.includes("Polygon") ) { default_style["fill"]["color"] = corte.v  }
-                                    if(geomType.includes("Point") ) { default_style[this.VM_default_shape]["fill"]["color"] = corte.v  }
-                                    if(geomType.includes("LineString") ) { default_style["stroke"]["color"] = corte.v  }
+                                    if(geomType.includes("Polygon") ) { default_style.style["fill"]["color"] = corte.v  }
+                                    if(geomType.includes("Point") ) { default_style.style[this.VM_default_shape]["fill"]["color"] = corte.v  }
+                                    if(geomType.includes("LineString") ) { default_style.style["stroke"]["color"] = corte.v  }
 
                                 }else{
                                     //es un size
-                                    if(geomType.includes("Point") ) { default_style[this.VM_default_shape]["radius"] = corte.v  }
-                                    if(geomType.includes("LineString") ) { default_style["stroke"]["width"] = corte.v  }
+                                    if(geomType.includes("Point") ) { default_style.style[this.VM_default_shape]["radius"] = corte.v  }
+                                    if(geomType.includes("LineString") ) { default_style.style["stroke"]["width"] = corte.v  }
                                 }
                             }
                         }
@@ -232,6 +249,7 @@ export default{
              this.VM_mapStyle = style;
         },
         _set_legend_info:function(){
+            this._check_persistent_color()
             let type = ""
             let content = undefined
             if(this.VM_rules.length==1){
@@ -240,6 +258,8 @@ export default{
                 content = {
                     cortes : cortes,
                 }
+                content["cortes"]["args"]["persistentFill"] = this.VM_persistentFill
+                content["cortes"]["args"]["persistentStroke"] = this.VM_persistentStroke
             }else{
                 let nombre_tipo =this.VM_rules_cortes.map(rule_corte=>rule_corte.type).sort().join("-")
                 type = `legend-${nombre_tipo}`
@@ -248,10 +268,28 @@ export default{
                 }
             }
             content["title"] = this.VM_title;
+            
 
             this.VM_legend_info = {type,content}
             this.VM_legend_info_status = "ready"
             this.$emit("legend_info_ready",this.VM_legend_info)
+        },
+        _check_persistent_color:function(){
+            if(this.VM_rules.length == 1 && this.VM_rules[0].targetProperty =='size' && typeof this.mapStyle !="function"){
+                let style = fixSerializedStyleIfIncomplete(this.mapStyle)
+                if(this.VM_geometryType==="Point" || this.VM_geometryType==="MultiPoint"){
+                    this.VM_persistentFill= style.style?.[this.VM_default_shape]?.fill || {color:'gray'};
+                    this.VM_persistentStroke= style.style?.[this.VM_default_shape]?.stroke || {color:'white',width:1};
+                    return
+                }
+
+                if(this.VM_geometryType==="Polygon" || this.VM_geometryType==="MultiPolygon"){
+                    this.VM_persistentFill= style.style?.fill || {color:DEFAULT_FILL_COLOR};
+                    this.VM_persistentStroke= style.style?.stroke || {color:DEFAULT_STROKE_COLOR,width:1};
+                    return
+                }
+                
+            }
         }
     }
 }
