@@ -18,30 +18,7 @@ const defaultsValuesRule = {
 
 export default{
     props:{
-        render_type:{
-            type:String,
-            default:"choropleth"
-        },
-        renderClassification:{
-            type:String,
-            default:""
-        },
-        renderColors:{
-            type:Array,
-            default:function(){
-                return ["black","gray","lightgray"]
-            }
-        },
-        renderLabels:{
-            type:Array,
-            default:function(){
-                return []
-            }
-        },
-        renderColumn:{
-            type:String,
-            default:""
-        },
+        
         mapStyleRule:{
             type:[Object,Array],
             default:function (){
