@@ -9,11 +9,11 @@ import GeoJSON from 'ol/format/GeoJSON';
 
 
 export default {
-    name:"DaiGeojsonLayer",
+    name:"DaiCapaGeojson",
     mixins:[layer,vector_any,classificable_layer],
     methods:{
         _createLayerObject:function(){
-            let vectorSource = this.source != undefined ? createGeojsonSourceFromObjectJs(this.source) : createGeojsonSourceFromUrl(this.url)
+            let vectorSource = this.datos != undefined ? createGeojsonSourceFromObjectJs(this.datos) : createGeojsonSourceFromUrl(this.url)
             this.olLayer = new VectorLayer({
                 source: vectorSource
             })
@@ -34,9 +34,9 @@ export default {
             
             this._setStyle()
 
-            if(this.tooltipContent!="none"){
+            if(this.contenidoTooltip!="none"){
                 
-                this.olLayer.set("_tooltip",this.tooltipContent)
+                this.olLayer.set("_tooltip",this.contenidoTooltip)
                 this.olLayer.set("_tooltip_mov",true)
                 this.olLayer.set("_tooltip_top",'10px')
                 

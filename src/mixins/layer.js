@@ -23,7 +23,7 @@ export default{
     created:function(){
         let vm = this;
         this.VM_id = this.id != "_default_" ? this.id : Math.random().toString(36).substring(7)
-        this.VM_title = this.title != "" ? this.title: this.VM_id
+        this.VM_title = this.titulo != "" ? this.titulo: this.VM_id
         this.registerLayer(this)
         this.getMap(function(olMap){
             //console.log(olMap)
@@ -46,7 +46,7 @@ export default{
             this.olLayer.set("id",this.VM_id)
             this.olLayer.setVisible(this.visible)
             this.olLayer.setZIndex(this.zIndex)
-            this.olLayer.setOpacity(this.opacity)
+            this.olLayer.setOpacity(this.opacidad)
 
             //observando estas propiedades para two way binding
             // solo las que se necesiten
@@ -72,11 +72,11 @@ export default{
             type:Number,
             default:undefined
         },
-        opacity:{
+        opacidad:{
             type:Number,
             default:1
         },
-        title:{
+        titulo:{
             type:String,
             default:""
         }
@@ -86,7 +86,7 @@ export default{
             //revisar si esto no cae en un loop tardado
             this.olLayer.setVisible(newValue)
         },
-        opacity: function(newValue){
+        opacidad: function(newValue){
             this.olLayer.setOpacity(newValue)
         },
         zIndex:function(newValue){

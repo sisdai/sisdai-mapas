@@ -16,33 +16,33 @@ export default{
          * Objetos que se convertiran en feature, dependera del tipo de capa la estructura que estos deben tener 
          * (si esta definido source, url se ignora )
          * */
-        source:{
+        datos:{
             type:[Array,Object],
             default: undefined
         },
         /** contenido del tooltip al pasar el hover, puede ser una funcion que accede a las propiedades del feature o un texto estatico */
-        tooltipContent:{
+        contenidoTooltip:{
             type:[Function,String],
             default:"none"
         },
         /** contenido del popup al clickear el feature, puede ser una funcion que accede a las propiedades del feature o un texto estatico */
-        popupContent:{
+        contenidoPopup:{
             type:[Function,String],
             default:"none"
         },
-        fixdedTooltip:{
+        tooltipEstatico:{
             type:Boolean,
             default: false
         },
-        fixedTooltipTop:{
+        tooltipEstaticoMargenSuperior:{
             type: Number,
             default: 0
         },
-        zoomOnClickFeature:{
+        zoomAlDarClick:{
             type: Boolean,
             default:true
         },
-        mapStyle:{
+        estiloCapa:{
             type: [Object,Function],
             default:function(){
                 return {
@@ -66,7 +66,7 @@ export default{
                 }
             }
         },
-        highlightStyle: {
+        estiloRealce: {
             type : Object,
             default:function(){
                 return {
@@ -96,7 +96,7 @@ export default{
     created:function(){
 
         //console.log("llgamos aqui")
-        this.VM_mapStyle = this.mapStyle
+        this.VM_mapStyle = this.estiloCapa
     },
     methods:{
         _setStyle:function(){
@@ -106,7 +106,7 @@ export default{
             if (typeof vm.VM_mapStyle == "function"){
                 style= function(feature){
                     let serializes= fixSerializedStyleIfIncomplete( vm.VM_mapStyle(feature) )
-                    serializes = feature.get("_hightlight") == true ? serializedStyleIfHighlight(serializes,vm.highlightStyle): serializes ;
+                    serializes = feature.get("_hightlight") == true ? serializedStyleIfHighlight(serializes,vm.estiloRealce): serializes ;
                     let olstyles=generateOlStyle(serializes)["style"]
                     return olstyles
                 }
@@ -117,7 +117,7 @@ export default{
                 colorsLegend.stroke = serializes["style"].stroke != undefined ? serializes["style"].stroke.color : 'gray'
                 style= function(feature){
                     
-                    let serializes2 = feature.get("_hightlight") == true ? serializedStyleIfHighlight(serializes): serializes ;
+                    let serializes2 = feature.get("_hightlight") == true ? serializedStyleIfHighlight(serializes,vm.estiloRealce): serializes ;
                     let olstyles=generateOlStyle(serializes2)["style"]
                     
                     

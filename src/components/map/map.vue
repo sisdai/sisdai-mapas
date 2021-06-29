@@ -98,7 +98,7 @@ export default {
         }
 
         //verificar si hay un card contaiener
-        if(this.$parent.$options.name == "DaiCardMapContainer"){
+        if(this.$parent.$options.name == "DaiTarjetaContenedorMapa"){
             this.$parent._registerMap(this)
         }
         //los overlays 

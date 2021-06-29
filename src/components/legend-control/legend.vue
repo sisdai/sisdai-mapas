@@ -44,15 +44,27 @@ export default {
         }
     },
     mounted:function(){
-        //console.log(this.cmpMap)
-        this.cmpMap.$on("add-layer",()=>{
+        let iniciarRegistroMapa=()=>{
+            this.cmpMap.$on("add-layer",()=>{
+                this._draw_legends_from_layers()
+            })
+            this.cmpMap.$on("remove-layer",()=>{
+                //console.log("removiendo layer....")
+                this._draw_legends_from_layers()
+            })
             this._draw_legends_from_layers()
-        })
-        this.cmpMap.$on("remove-layer",()=>{
-            //console.log("removiendo layer....")
-            this._draw_legends_from_layers()
-        })
-        this._draw_legends_from_layers()
+        }
+
+        
+        if(!this.cmpMap){
+            
+            this.$on("readyCmpMap",()=>{
+                
+                iniciarRegistroMapa()
+            })
+            return
+        }
+        iniciarRegistroMapa()
     },
     methods:{
         _draw_legends_from_layers:function(){

@@ -9,17 +9,17 @@
                     :extension="[-118.365119934082,14.5320978164673,-86.7104034423828,32.7186546325684]"
                     >
                  
-                    <dai-geojson-layer :source="datos_cultivos"  id="cultivos"
-                        :map-style-rule="[
+                    <dai-capa-geojson :datos="datos_cultivos"  id="cultivos"
+                        :reglas-estilo-capa="[
                         {columna:'cultivo',colores:'Category10'},
                         {columna:'cultivo_tot',clasificacion:'cuantiles',clases:4,proporciones:[4,6,12,16],propiedadObjetivo:'proporcion',tituloVariable:'Cantidad de cultivos'}
                         ]"
                     />
-                    <dai-geojson-layer :source="datos_cultivos"  id="cultivos2"
-                        :map-style-rule="[
+                    <dai-capa-geojson :datos="datos_cultivos"  id="cultivos2"
+                        :reglas-estilo-capa="[
                         {columna:'cultivo_tot',clasificacion:'cuantiles',clases:3,proporciones:[1,2,3],propiedadObjetivo:'proporcion',tituloVariable:'Cantidad de cultivos leyenda 2'}
                         ]"
-                        :map-style="{style:{circle:{'fill':{color:'red'},stroke:{color:'black',width:1}}}}"
+                        :estilo-capa="{style:{circle:{'fill':{color:'red'},stroke:{color:'black',width:1}}}}"
                     />
                 </dai-mapa>
                 <template v-slot:footer>
@@ -37,8 +37,8 @@
                     :extension="[-118.365119934082,14.5320978164673,-86.7104034423828,32.7186546325684]"
                     >
                  
-                    <dai-geojson-layer :source="datos_cultivos"  id="cultivos3"
-                        :map-style-rule="[
+                    <dai-capa-geojson :datos="datos_cultivos"  id="cultivos3"
+                        :reglas-estilo-capa="[
                         {columna:'cultivo_tot',colores:'Blues',clasificacion:'cuantiles',clases:6},
                         {columna:'cultivo_tot',clasificacion:'cuantiles',clases:4,proporciones:[4,6,12,20],propiedadObjetivo:'proporcion',tituloVariable:'Cantidad de cultivos'}
                         ]"

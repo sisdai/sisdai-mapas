@@ -19,7 +19,7 @@ const defaultsValuesRule = {
 export default{
     props:{
         
-        mapStyleRule:{
+        reglasEstiloCapa:{
             type:[Object,Array],
             default:function (){
                 return undefined;
@@ -41,11 +41,11 @@ export default{
     },
     created:function(){
         
-        if(this.mapStyleRule!= undefined){
+        if(this.reglasEstiloCapa != undefined){
             
             this.VM_is_classified = true;
-            if(Array.isArray(this.mapStyleRule)){
-                this.VM_rules = this.mapStyleRule.map(rule=>{
+            if(Array.isArray(this.reglasEstiloCapa)){
+                this.VM_rules = this.reglasEstiloCapa.map(rule=>{
                     let defaults = {...defaultsValuesRule}
                     let obj=Object.assign(defaults,rule) 
                     //console.log(this.id,obj)
@@ -53,7 +53,7 @@ export default{
                 });
             }else{
                 let defaults = {...defaultsValuesRule}
-                this.VM_rules = [ Object.assign(defaults,this.mapStyleRule)]
+                this.VM_rules = [ Object.assign(defaults,this.reglasEstiloCapa)]
             }
         }
 
@@ -242,8 +242,8 @@ export default{
             this.$emit("legend_info_ready",this.VM_legend_info)
         },
         _check_persistent_color:function(){
-            if(this.VM_rules.length == 1 && this.VM_rules[0].propiedadObjetivo =='proporcion' && typeof this.mapStyle !="function"){
-                let style = fixSerializedStyleIfIncomplete(this.mapStyle)
+            if(this.VM_rules.length == 1 && this.VM_rules[0].propiedadObjetivo =='proporcion' && typeof this.estiloCapa !="function"){
+                let style = fixSerializedStyleIfIncomplete(this.estiloCapa)
                 if(this.VM_geometryType==="Point" || this.VM_geometryType==="MultiPoint"){
                     this.VM_persistentFill= style.style?.[this.VM_default_shape]?.fill || {color:'gray'};
                     this.VM_persistentStroke= style.style?.[this.VM_default_shape]?.stroke || {color:'white',width:1};
