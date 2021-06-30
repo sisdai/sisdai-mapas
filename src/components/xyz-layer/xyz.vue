@@ -4,14 +4,14 @@ import { XYZ } from 'ol/source';
 
 import layer from "../../mixins/layer"
 export default {
-    name:"DaiXyzLayer",
+    name:"DaiCapaXyz",
     mixins:[layer],
     props:{
         url:{
             type:String,
             default:"https://{a-c}.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}.png"
         },
-        attributions:{
+        atribuciones:{
             type:String,
             default:' &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, © <a href="https://carto.com/">Carto</a>'
         }
