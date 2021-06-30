@@ -5,7 +5,7 @@ import ImageWMS from 'ol/source/ImageWMS';
 import layer from "../../mixins/layer";
 import image_layer from "../../mixins/image-layer"
 export default {
-    name:"DaiWmsLayer",
+    name:"DaiCapaWms",
     mixins:[layer,image_layer],
     props:{
         /**
@@ -18,7 +18,7 @@ export default {
         /**
          * parametros del servicio wms, layers, cql, styles, etc
          */
-        params:{
+        parametros:{
             type:Object,
             default:function(){
                 return {}
@@ -37,7 +37,7 @@ export default {
             this.olLayer = new ImageLayer({
                 source: new ImageWMS({
                     url: this.url,
-                    params:this.params,
+                    params:this.parametros,
                     serverType:this.serverType
                 })
             })

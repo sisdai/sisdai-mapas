@@ -24,7 +24,7 @@ export default {
             let allFeatureslayer = geojsonFormat.readFeatures( this.$parent.$parent.cmpMap.cmpLayers[this.layerId].VM_allFeatures);
             let source = this.$parent.$parent.cmpMap.cmpLayers[this.layerId].olLayer.getSource()
             let nuevosFeatures= allFeatureslayer.filter(fnCompare)
-            //console.log(nuevosFeatures)
+            console.log(nuevosFeatures)
             source.clear()
             source.addFeatures(nuevosFeatures)
         }

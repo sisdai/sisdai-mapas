@@ -5,7 +5,7 @@
                 <shape class="shape-this-legend" 
                     shape-type="circle" 
                     :backgroundColor="params.content.cortes.args.persistentFill.color || 'gray'" 
-                    :strokeColor="params.content.cortes.args.persistentStroke.color || 'black'"
+                    :strokeColor="params.content.cortes.args.persistentStroke.color || 'white'"
                     :strokeWidth="params.content.cortes.args.persistentStroke.width || 1"
                     :size="[corte_s.v*2,corte_s.v*2]" />
                 <div>{{corte_s.d}}</div>

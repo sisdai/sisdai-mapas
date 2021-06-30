@@ -23,7 +23,7 @@ export default {
             type:String,
             required:true,
             validator:function(value){
-                return ['circle', 'square', 'triangle',"image"].indexOf(value) !== -1
+                return ['circle', 'square', 'triangle','rounded-square',"image"].indexOf(value) !== -1
             }
         },
         size:{
@@ -59,11 +59,15 @@ export default {
 <style lang="scss" scoped>
 .dai-map-shape{
     display: inline-block;
-    .circle,.square,.triangle{
+    .circle,.square,.triangle,.rounded-square{
         border-style: solid;
     }
     .circle{
         border-radius: 50%;
+    }
+
+    .rounded-square{
+        border-radius: 20%;
     }
 }
 </style>

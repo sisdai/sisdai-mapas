@@ -99,6 +99,7 @@ export default{
             
             //darle estilo segun cada una de las reglas
             let features = this.olLayer.getSource().getFeatures();
+            //console.log(features)
             this.VM_geometryType = features[0].getGeometry().getType()
             this.VM_rules.forEach(rule=>{
                 
@@ -242,7 +243,7 @@ export default{
             this.$emit("legend_info_ready",this.VM_legend_info)
         },
         _check_persistent_color:function(){
-            if(this.VM_rules.length == 1 && this.VM_rules[0].propiedadObjetivo =='proporcion' && typeof this.estiloCapa !="function"){
+            if(this.VM_rules.length == 1  && typeof this.estiloCapa !="function"){
                 let style = fixSerializedStyleIfIncomplete(this.estiloCapa)
                 if(this.VM_geometryType==="Point" || this.VM_geometryType==="MultiPoint"){
                     this.VM_persistentFill= style.style?.[this.VM_default_shape]?.fill || {color:'gray'};

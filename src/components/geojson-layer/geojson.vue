@@ -22,11 +22,15 @@ export default {
                     this._clasificar_v2();
                     this._set_style_class_v2()
                 }else{
-                    vectorSource.on("change",()=>{
-                        console.log("cambio el source del layer, evento cachado, geojson.vue")
-                        this._clasificar_v2();
-                        this._set_style_class_v2()
-                        this._setStyle()
+                    vectorSource.on("featuresloadend",()=>{
+                        setTimeout(()=>{
+                            //console.log(evento.target.getFeatures())
+                            //console.log("cambio el source del layer, evento cachado, geojson.vue")
+                            this._clasificar_v2();
+                            this._set_style_class_v2()
+                            this._setStyle()
+                        },50)
+                        
                     })
                 }
                 

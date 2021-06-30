@@ -152,9 +152,10 @@ export default{
                 this.VM_allFeatures = geojsonFormat.writeFeatures( vectorSource.getFeatures() )
                 return
             }
-            console.log("---AQUI ESPERAR LAS FEATURES EN VM_allfeatures")
+            //console.log("---AQUI ESPERAR LAS FEATURES EN VM_allfeatures")
             let listenerFn = (evento)=>{
-                console.log(evento,"---AQUI GUARDAR LAS FEATURES EN VM_allfeatures")
+                this.VM_allFeatures = geojsonFormat.writeFeatures(evento.features)
+                //console.log(evento,"---AQUI GUARDAR LAS FEATURES EN VM_allfeatures")
             }
             vectorSource.on("featuresloadend",listenerFn)
         }
