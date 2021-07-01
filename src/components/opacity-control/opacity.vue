@@ -3,7 +3,7 @@
         <div class="range-container" >
             <input type="range" class="dai-range" step="1" max="100" min="0" @change="_cambio_input" v-model="VM_value">
         </div>
-        <h4 class="title-opacity">{{title}}</h4>
+        <h4 class="title-opacity">{{titulo}}</h4>
     </div>
     
 </template>
@@ -11,7 +11,7 @@
 <script>
 import control from "../../mixins/control" 
 export default {
-    name:"DaiMapOpacity",
+    name:"DaiOpacidadMapa",
     mixins:[control],
     props:{
         /**valor de la opacidad de 0 a 1 */
@@ -20,12 +20,12 @@ export default {
             default:1
         },
         /** id del layer al que se afectara */
-        layerId:{
+        capaId:{
             type:String,
             default:"undefined"    
         },
         /**Titulo del control de transparencia */
-        title:{
+        titulo:{
             default:"Opacidad",
             type:String
         }
@@ -50,8 +50,8 @@ export default {
         _register_layer:function(){
             this.VM_layer = undefined;
             let layers_in_map = Object.keys( this.cmpMap.cmpLayers)
-            if(layers_in_map.includes(this.layerId)){
-                this.VM_layer = this.cmpMap.cmpLayers[this.layerId]
+            if(layers_in_map.includes(this.capaId)){
+                this.VM_layer = this.cmpMap.cmpLayers[this.capaId]
             }
         }
     },
@@ -63,7 +63,7 @@ export default {
         event:"change"
     },
     watch:{
-        layerId:function(){
+        capaId:function(){
             this._register_layer()
         }
     }

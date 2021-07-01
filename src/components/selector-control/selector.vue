@@ -9,7 +9,7 @@
 <script>
 import control from "../../mixins/control" 
 export default {
-    name:"DaiMapSelector",
+    name:"DaiSelectorMapa",
     mixins:[control],
     data:function(){
         return{

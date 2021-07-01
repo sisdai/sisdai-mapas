@@ -12,7 +12,7 @@
 import control from "../../mixins/control" 
 
 export default {
-    name:"DaiMapSwitch",
+    name:"DaiInterruptorMapa",
     mixins:[control],
     data:function(){
         return{
