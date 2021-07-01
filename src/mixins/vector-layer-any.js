@@ -1,4 +1,4 @@
-import generateOlStyle, {serializedStyleIfHighlight,fixSerializedStyleIfIncomplete} from "./_json2olstyle"
+import generateOlStyle, {serializedStyleIfHighlight,fixSerializedStyleIfIncomplete, checkPointShapeFromStyle} from "./_json2olstyle"
 
 import GeoJSON from 'ol/format/GeoJSON';
 
@@ -90,7 +90,9 @@ export default{
     data:function(){
         return {
             VM_mapStyle:undefined,
-            VM_allFeatures:[]
+            VM_allFeatures:[],
+            VM_geometryType:"",
+            VM_defaultShapePoint:"circle"
         }
     },
     created:function(){
@@ -103,6 +105,7 @@ export default{
             let style;
             let vm = this;
             let colorsLegend={fill:"gray", stroke:"gray"}
+            let shapeLegend = "square"
             if (typeof vm.VM_mapStyle == "function"){
                 style= function(feature){
                     let serializes= fixSerializedStyleIfIncomplete( vm.VM_mapStyle(feature) )
@@ -112,9 +115,21 @@ export default{
                 }
             }else{
                 let serializes= fixSerializedStyleIfIncomplete( vm.VM_mapStyle )
+                //let geometry_type = this.olLayer.getSource().getFeatures()[0].getGeometry().getType()
                 console.log("//AQUI VERIFICAR TAMBIEN QUE SHAPE SE VA A LA LEYENDA",serializes)
-                colorsLegend.fill = serializes["style"].fill !=undefined ? serializes["style"].fill.color : 'gray'
-                colorsLegend.stroke = serializes["style"].stroke != undefined ? serializes["style"].stroke.color : 'gray'
+                if(this.VM_geometryType.includes("Point") ){
+
+                    this.VM_defaultShapePoint= checkPointShapeFromStyle(serializes)
+                    shapeLegend = this.VM_defaultShapePoint;
+                    colorsLegend.fill = serializes.style?.[shapeLegend]?.fill?.color || 'gray';
+                    colorsLegend.stroke = serializes.style?.[shapeLegend]?.stroke?.color || 'white';
+                }else{
+                    colorsLegend.fill = serializes.style?.fill?.color || 'gray';
+                    colorsLegend.stroke = serializes.style?.stroke?.color || 'white';
+                    //colorsLegend.fill = serializes["style"].fill !=undefined ? serializes["style"].fill.color : 'gray'
+                    //colorsLegend.stroke = serializes["style"].stroke != undefined ? serializes["style"].stroke.color : 'gray'
+                }
+                
                 style= function(feature){
                     
                     let serializes2 = feature.get("_hightlight") == true ? serializedStyleIfHighlight(serializes,vm.estiloRealce): serializes ;
@@ -136,7 +151,7 @@ export default{
                     content:{
                         fill_color: colorsLegend.fill,
                         stroke_color: colorsLegend.stroke,
-                        shape: "circle", // circle, square,  triangle, line, etc,  tambien el url del svg que se desee insertar
+                        shape: shapeLegend, // circle, square,  triangle, line, etc,  tambien el url del svg que se desee insertar
                         //shape: "svg:ruta/alsvg",
                         title:this.VM_title
                     }
@@ -150,11 +165,26 @@ export default{
             let geojsonFormat = new GeoJSON()
             if(vectorSource.getFeatures().length>1){
                 this.VM_allFeatures = geojsonFormat.writeFeatures( vectorSource.getFeatures() )
+                this.VM_geometryType = vectorSource.getFeatures()[0].getGeometry().getType()
+                
                 return
             }
             //console.log("---AQUI ESPERAR LAS FEATURES EN VM_allfeatures")
             let listenerFn = (evento)=>{
                 this.VM_allFeatures = geojsonFormat.writeFeatures(evento.features)
+                this.VM_geometryType = evento.features[0].getGeometry().getType()
+                let serializes= fixSerializedStyleIfIncomplete( this.VM_mapStyle )
+                if(this.VM_geometryType.includes("Point")){
+                    
+                    this.VM_defaultShapePoint= checkPointShapeFromStyle(serializes)    
+                    if(this.VM_legend_info.type === "legend-normal-vector"){
+                        this.VM_legend_info.content.shape = this.VM_defaultShapePoint
+                        //this.VM_legend_info.content.shape = this.VM_geometryType.includes("Point") ? 'square' :this.VM_legend_info.content.shape
+                    }
+                    
+                }
+                
+                
                 //console.log(evento,"---AQUI GUARDAR LAS FEATURES EN VM_allfeatures")
             }
             vectorSource.on("featuresloadend",listenerFn)

@@ -36,7 +36,7 @@ export default {
                 
             }
             
-            this._setStyle()
+            
 
             if(this.contenidoTooltip!="none"){
                 
@@ -47,6 +47,7 @@ export default {
             }
             
             this._saveAllFeaturesFromSource(vectorSource)
+            this._setStyle()
         }
     }
 }

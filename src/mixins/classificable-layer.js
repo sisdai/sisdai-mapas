@@ -33,7 +33,7 @@ export default{
             
            VM_rules:[],
            VM_rules_cortes:[],
-           VM_geometryType:"",
+           
            VM_default_shape:"circle",
            VM_persistentFill:{},
            VM_persistentStroke:{}

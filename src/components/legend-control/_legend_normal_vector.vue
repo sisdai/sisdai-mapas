@@ -4,10 +4,15 @@
         
         <!--TOdo lo que va adentro de checkbox es el label del mismo -->
         <checkbox v-model="visible" @change="set_visible_to_layer">
-                <span v-if="classShape!=''" class="simbologia" 
-                    :class="classShape" 
-                    :style="{'background-color':params.content.fill_color,'border-color':params.content.stroke_color}" ></span>
-                <span>{{params.content.title}}</span>
+            <shape class="simbologia"
+                :shapeType="classShape"
+                :backgroundColor="params.content.fill_color || 'gray'" 
+                :strokeColor="params.content.stroke_color || 'white'"
+                :strokeWidth=" 1"
+                :size="[25,25]" 
+            />
+                
+            <span>{{params.content.title}}</span>
         </checkbox>
         
     </div>
@@ -15,11 +20,12 @@
 
 <script>
 import checkbox from "../utils/checkbox"
+import shape from "../utils/shape.vue"
 import legend_item_child  from "../../mixins/legend-item-child"
 export default {
     mixins:[legend_item_child],
     components:{
-        checkbox
+        checkbox,shape
     },computed:{
         classShape:function(){
             return this.params.content.shape.startsWith("svg:") ? '' : this.params.content.shape  
@@ -31,15 +37,9 @@ export default {
 <style lang="scss" scoped>
     .legend-normal-vector{
       .simbologia{
-          width: 25px;
-          height: 25px;
+          
           margin-right: .4em;
-          border-width: 1px;
-          border-style: solid;
-          &.circle{
-              
-              border-radius: 50%;
-          }
+          
       }  
         
     }

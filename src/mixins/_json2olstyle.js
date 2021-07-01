@@ -77,6 +77,22 @@ const prepareSimplePointVectors=function(targetStyle,sourceStyle){
     }
 }
 
+const checkPointShapeFromStyle = function(style){
+    if("circle" in style.style ){
+        return "circle"
+    }
+    if("square" in style.style ){
+        return "square"
+    }
+    if("triangle" in style.style ){
+
+        return "triangle"
+    }
+
+    console.log("BUG:::estilo para punto no esperado")
+    return "none"
+}
+
 const joinDefaultValuesWithNewValuesInPoints=function(targetStyle,sourceStyle,keyShape){
     
     if(keyShape in targetStyle.style ){
@@ -101,4 +117,10 @@ export default function (serializedStyle){
     return style
 }
 
-export {serializedStyleIfHighlight,fixSerializedStyleIfIncomplete,prepareSimplePointVectors,joinDefaultValuesWithNewValuesInPoints};
+export {
+    serializedStyleIfHighlight,
+    fixSerializedStyleIfIncomplete,
+    prepareSimplePointVectors,
+    joinDefaultValuesWithNewValuesInPoints,
+    checkPointShapeFromStyle
+};
