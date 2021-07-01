@@ -8,7 +8,7 @@
                 :shapeType="classShape"
                 :backgroundColor="params.content.fill_color || 'gray'" 
                 :strokeColor="params.content.stroke_color || 'white'"
-                :strokeWidth=" 1"
+                :strokeWidth="params.content.stroke_width || 1"
                 :size="[25,25]" 
             />
                 

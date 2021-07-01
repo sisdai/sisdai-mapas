@@ -104,7 +104,7 @@ export default{
         _setStyle:function(){
             let style;
             let vm = this;
-            let colorsLegend={fill:"gray", stroke:"gray"}
+            let colorsLegend={fill:"gray", stroke:"gray",stroke_width:1}
             let shapeLegend = "square"
             if (typeof vm.VM_mapStyle == "function"){
                 style= function(feature){
@@ -123,9 +123,11 @@ export default{
                     shapeLegend = this.VM_defaultShapePoint;
                     colorsLegend.fill = serializes.style?.[shapeLegend]?.fill?.color || 'gray';
                     colorsLegend.stroke = serializes.style?.[shapeLegend]?.stroke?.color || 'white';
+                    colorsLegend.stroke_width = serializes.style?.[shapeLegend]?.stroke?.width || 1;
                 }else{
                     colorsLegend.fill = serializes.style?.fill?.color || 'gray';
                     colorsLegend.stroke = serializes.style?.stroke?.color || 'white';
+                    colorsLegend.stroke_width = serializes.style?.stroke?.width || 1;
                     //colorsLegend.fill = serializes["style"].fill !=undefined ? serializes["style"].fill.color : 'gray'
                     //colorsLegend.stroke = serializes["style"].stroke != undefined ? serializes["style"].stroke.color : 'gray'
                 }
@@ -179,10 +181,13 @@ export default{
                     this.VM_defaultShapePoint= checkPointShapeFromStyle(serializes)    
                     if(this.VM_legend_info.type === "legend-normal-vector"){
                         this.VM_legend_info.content.shape = this.VM_defaultShapePoint
+                        this.VM_legend_info.content.fill_color = serializes.style?.[this.VM_defaultShapePoint]?.fill?.color || 'gray'
+                        this.VM_legend_info.content.stroke_color = serializes.style?.[this.VM_defaultShapePoint]?.stroke?.color || 'white'
+                        this.VM_legend_info.content.stroke_width = serializes.style?.[this.VM_defaultShapePoint]?.stroke?.width || 1
                         //this.VM_legend_info.content.shape = this.VM_geometryType.includes("Point") ? 'square' :this.VM_legend_info.content.shape
                     }
                     
-                }
+                }   
                 
                 
                 //console.log(evento,"---AQUI GUARDAR LAS FEATURES EN VM_allfeatures")
