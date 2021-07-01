@@ -10,7 +10,7 @@
             class="map-legends-item-color"
             />
             
-            <div class="map-legends-item-text"> {{list_filter[i]}}  {{corte.d}}</div>
+            <div class="map-legends-item-text">{{corte.d}}</div>
         </div>
     </div>
 </template>
