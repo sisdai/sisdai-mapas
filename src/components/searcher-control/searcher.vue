@@ -15,7 +15,7 @@ import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
 
 export default {
-    name:"DaiMapSearcher",
+    name:"DaiBuscadorMapa",
     mixins:[control],
     data:function(){
         return{
@@ -38,7 +38,7 @@ export default {
         /**
          * lista de arrays a los que se les aplicara el buscador
          */
-        for:{
+        para:{
             type:[Array,String],
             default:function(){
                 return []
@@ -77,7 +77,7 @@ export default {
         _register_layers:function(){
             
             let layers_in_map = Object.keys( this.cmpMap.cmpLayers)
-            let layers_in_params = Array.isArray( this.for ) ? this.for : [this.for];
+            let layers_in_params = Array.isArray( this.para ) ? this.para : [this.para];
             console.log("registrando layers",layers_in_map,layers_in_params)
             let interseccion_layers = layers_in_params.filter(value=>layers_in_map.includes(value))
             this.searchers = []
