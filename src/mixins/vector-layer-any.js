@@ -173,13 +173,16 @@ export default{
             }
             //console.log("---AQUI ESPERAR LAS FEATURES EN VM_allfeatures")
             let listenerFn = (evento)=>{
+                //console.log(0,this.id)
                 this.VM_allFeatures = geojsonFormat.writeFeatures(evento.features)
+                //console.log(evento.features[0].getGeometry(),1,this.id)
                 this.VM_geometryType = evento.features[0].getGeometry().getType()
+                //console.log(evento.features[0].getGeometry(),2,this.id)
                 let serializes= fixSerializedStyleIfIncomplete( this.VM_mapStyle )
                 if(this.VM_geometryType.includes("Point")){
                     
                     this.VM_defaultShapePoint= checkPointShapeFromStyle(serializes)    
-                    if(this.VM_legend_info.type === "legend-normal-vector"){
+                    if(this.VM_legend_info?.type === "legend-normal-vector"){
                         this.VM_legend_info.content.shape = this.VM_defaultShapePoint
                         this.VM_legend_info.content.fill_color = serializes.style?.[this.VM_defaultShapePoint]?.fill?.color || 'gray'
                         this.VM_legend_info.content.stroke_color = serializes.style?.[this.VM_defaultShapePoint]?.stroke?.color || 'white'

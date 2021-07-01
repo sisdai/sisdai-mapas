@@ -5,12 +5,20 @@ import * as d3 from "d3"
  * @param {*} classType 
  * @param {*} clases 
  */
-const dataClassification = (data,classType,clases,colors,sizes,targetProperty,geomType,defaultShapeType="circle")=>{
+const dataClassification = (data,classType,clases,colors,sizes,targetProperty,
+    geomType,defaultShapeType="circle",acomodoCategorias=[])=>{
     let valores_clases = []
     //aqui ir agregando las demas clasificaciones
     valores_clases = classType==="categorias" ? qualitativeClassification(data) : valores_clases;
     valores_clases = classType==="cuantiles" ? quantileClassification(data,clases) : valores_clases;
+    
 
+    if(classType==="categorias" && acomodoCategorias.length>1){
+        valores_clases = [...valores_clases].sort((a,b)=>{
+            return acomodoCategorias.indexOf(a) - acomodoCategorias.indexOf(b)
+        })
+        //console.log(valores_clases)
+    }
 
     let valueRamp = []
     if (targetProperty=="relleno"){
@@ -73,7 +81,7 @@ const getParsedColorRamp = (colors, steps)=>{
     if (typeof colors === 'string'){
         //es una rampa ya establecida
         let d3ramp = d3[`scheme${colors}`]
-        console.log(d3ramp,colors)
+        //console.log(d3ramp,colors)
         let colores=[]
         if(d3ramp){
             if(Array.isArray(d3ramp[3])){

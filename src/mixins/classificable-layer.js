@@ -13,7 +13,8 @@ const defaultsValuesRule = {
     proporciones: [],
     propiedadObjetivo: 'relleno', // o proporcion , solo esas dos
     forma: "default", // solo se ocupa si es geometria punto, tambien puede ser un url a un svg, si es svg el color no le aplicaria,
-    tituloVariable: "__columnname__"
+    tituloVariable: "__columnname__",
+    acomodoCategorias:[]
 };
 
 export default{
@@ -101,19 +102,23 @@ export default{
             let features = this.olLayer.getSource().getFeatures();
             //console.log(features)
             this.VM_geometryType = features[0].getGeometry().getType()
+
+            this.VM_default_shape = this.VM_rules.map(rule=>rule.forma).some(element=>element!="default") 
+                ? this.VM_rules.map(rule2=>rule2.forma).filter(element2=>element2!="default")[0] :"circle"
+
             this.VM_rules.forEach(rule=>{
                 
                 let todos_valores = features.map((f=>f.getProperties()[rule.columna]))
                 let cortes =  dataClassification(todos_valores,rule.clasificacion, 
-                    rule.clases,rule.colores,rule.proporciones,rule.propiedadObjetivo,features[0].getGeometry().getType())
+                    rule.clases,rule.colores,rule.proporciones,rule.propiedadObjetivo,
+                    this.VM_geometryType,this.VM_default_shape,rule.acomodoCategorias)
                 
                 cortes.args["column"] = rule.columna;
                 cortes.args["variableTitle"] = rule.tituloVariable ==="__columnname__" ? rule.columna : rule.tituloVariable;
                 this.VM_rules_cortes.push(cortes)
             })
 
-            this.VM_default_shape = this.VM_rules.map(rule=>rule.forma).some(element=>element!="default") 
-                ? this.VM_rules.map(rule2=>rule2.forma).filter(element2=>element2!="default")[0] :"circle"
+            
 
             //agregar la informacion para la leyenda
             this._set_legend_info()
