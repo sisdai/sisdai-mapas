@@ -21,14 +21,14 @@ export default {
         }
     },
     props:{
-        options:{
+        opciones:{
             type:Array,
             default:function(){
                 return ["on","off"]
             },
             required:true   
         },
-        optionsLabels:{
+        opcionesEtiquetas:{
             type:Array,
             default:function(){
                 return undefined
@@ -48,7 +48,7 @@ export default {
     },
     created:function(){
         this.id = Math.random().toString(36).substring(7)
-        this.value_ = this.value!=undefined ? this.value : this.options[0]
+        this.value_ = this.value!=undefined ? this.value : this.opciones[0]
     },
     computed:{
         /**
@@ -56,11 +56,11 @@ export default {
          * regresa un array como [ [opcion1,etiqueta1], [opcion2,etiqueta2] ]
          */
         optionsAndLabels:function(){
-            if (this.optionsLabels && this.optionsLabels.length>=this.options.length){
-                return this.options.map((option,i)=>[option,this.optionsLabels[i]])
+            if (this.opcionesEtiquetas && this.opcionesEtiquetas.length>=this.opciones.length){
+                return this.opciones.map((option,i)=>[option,this.opcionesEtiquetas[i]])
             }
 
-            return this.options.map(option=>[option,option])
+            return this.opciones.map(option=>[option,option])
         }
     },
     model:{
