@@ -11,6 +11,9 @@ const dataClassification = (data,classType,clases,colors,sizes,targetProperty,
     //aqui ir agregando las demas clasificaciones
     valores_clases = classType==="categorias" ? qualitativeClassification(data) : valores_clases;
     valores_clases = classType==="cuantiles" ? quantileClassification(data,clases) : valores_clases;
+    valores_clases = classType==="linear" ? linearClassification(data,clases) : valores_clases;
+    valores_clases = classType==="exponencial" ? powClassification(data,clases) : valores_clases;
+    valores_clases = classType==="logarimica" ? logClassification(data,clases) : valores_clases;
     
 
     if(classType==="categorias" && acomodoCategorias.length>1){
@@ -67,6 +70,45 @@ const qualitativeClassification = (data)=>{
 const quantileClassification = (data,noClases)=>{
     let espacios = Array.from(Array(noClases).keys())
     let quantile_fn = d3.scaleQuantile().domain(data).range(espacios)
+
+    return espacios.map((item)=>{
+        let limits = quantile_fn.invertExtent(item);
+        return limits
+    })
+
+}
+
+const linearClassification = (data,noClases)=>{
+    //let espacios = Array.from(Array(noClases).keys())
+    let espacios = noClases
+    let minMax = d3.extent(data)
+    let linear_fn = d3.scaleLinear().domain(minMax).range([0,espacios])
+
+    let limits = []
+    for(let i=0;i< espacios  ;i++){
+        limits.push([ linear_fn.invert(i), linear_fn.invert(i+1) ])
+    }
+    //console.log(limits)
+    return limits
+
+}
+
+const powClassification = (data,noClases)=>{
+    let espacios = Array.from(Array(noClases).keys())
+    let minMax = d3.extent(data)
+    let quantile_fn = d3.scalePow().exponent(.5).domain(minMax).range(espacios)
+
+    return espacios.map((item)=>{
+        let limits = quantile_fn.invertExtent(item);
+        return limits
+    })
+
+}
+
+const logClassification = (data,noClases)=>{
+    let espacios = Array.from(Array(noClases).keys())
+    let minMax = d3.extent(data)
+    let quantile_fn = d3.scaleLog().domain(minMax).range(espacios)
 
     return espacios.map((item)=>{
         let limits = quantile_fn.invertExtent(item);
