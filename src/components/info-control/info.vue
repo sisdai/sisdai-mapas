@@ -26,7 +26,7 @@ export default {
     props:{
         colapsado:{
             type:Boolean,
-            default:false
+            default:true
         }
     },
     data:function(){
@@ -39,8 +39,6 @@ export default {
     },
     methods:{
         updateExpanded:function(){
-            //console.log("expander...")
-            
             
             this.$emit('update:expanded',!this.VM_expanded)
             this.VM_expanded=!this.VM_expanded
@@ -64,6 +62,7 @@ export default {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     transition: all .3s ease-in-out;
+    max-width: 80%;
 
     button.info-control{
         background-color: var(--control-bg-color);
@@ -91,7 +90,8 @@ export default {
         .contenido{
             padding: .5em;
             max-height: 40vh;
-            max-width: 40vw;
+            word-wrap: break-word;
+            //max-width: 70%;
             p{
                 margin-block-start: .8em;
                 margin-block-end: .8em;
