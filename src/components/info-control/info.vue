@@ -22,9 +22,9 @@
 
 <script>
 export default {
-    name:"DaiMapInfo",
+    name:"DaiInfoMapa",
     props:{
-        expanded:{
+        colapsado:{
             type:Boolean,
             default:false
         }
@@ -35,7 +35,7 @@ export default {
         }
     },
     created:function(){
-        this.VM_expanded=this.expanded;
+        this.VM_expanded = !this.colapsado;
     },
     methods:{
         updateExpanded:function(){

@@ -47,7 +47,7 @@ export default {
         /**
          * las opciones a llenar en el datalist, asegurarse de que son unicas, eso lo debe hacer quien implementa la lib
          */
-        accesorOptions:{
+        accesoOpciones:{
             type:[Function,Array,String],
             default:"none"
         }
@@ -114,7 +114,7 @@ export default {
         },
         _fill_options_layer:function(layer){
             layer.olLayer.getSource().forEachFeature(feature=>{
-                let opcion = this.accesorOptions( feature.getProperties() );
+                let opcion = this.accesoOpciones( feature.getProperties() );
                 if(this.options.indexOf(opcion)==-1){
                     this.options.push(opcion)
                     this.options_values[opcion] = feature;
