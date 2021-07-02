@@ -42,8 +42,8 @@ export default {
                 })
             })
 
-            if(this.extent!=undefined){
-                this.olLayer.setExtent(this.extent)
+            if(this.extension!=undefined){
+                this.olLayer.setExtent(this.extension)
             }
             //agregando informacion para la leyenda
             this.VM_legend_info = {
