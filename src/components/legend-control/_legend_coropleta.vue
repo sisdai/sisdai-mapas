@@ -35,7 +35,7 @@ export default {
     created:function(){
         this.colorsCortes = this.params.content.cortes.cortes;
         this.$on("update:legend_info_ready",function(){
-            console.log("la leyenda esta lista")
+            //console.log("la leyenda esta lista")
         })
         this.list_filter = this.params.content.cortes.cortes.map(()=>true)
         this.hasSubfilters = true;

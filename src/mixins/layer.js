@@ -51,7 +51,7 @@ export default{
             //observando estas propiedades para two way binding
             // solo las que se necesiten
             this.olLayer.on("change:visible",(eventoLayer)=>{
-                console.log(eventoLayer,"cambio visible!!")
+                //console.log(eventoLayer,"cambio visible!!")
                 this.$emit("update:visible",eventoLayer.target.getVisible())
             })
 

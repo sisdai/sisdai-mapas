@@ -26,7 +26,7 @@ export default {
     },
     created:function(){
         this.$on("update:legend_info_ready",function(){
-            console.log("esta la leyenda esta lista")
+            //console.log("esta la leyenda esta lista")
         })
         this.list_filter = this.params.content.cortes.cortes.map(()=>true)
         this.hasSubfilters = true;

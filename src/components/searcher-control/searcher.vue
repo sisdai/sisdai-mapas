@@ -78,7 +78,7 @@ export default {
             
             let layers_in_map = Object.keys( this.cmpMap.cmpLayers)
             let layers_in_params = Array.isArray( this.para ) ? this.para : [this.para];
-            console.log("registrando layers",layers_in_map,layers_in_params)
+            //console.log("registrando layers",layers_in_map,layers_in_params)
             let interseccion_layers = layers_in_params.filter(value=>layers_in_map.includes(value))
             this.searchers = []
             interseccion_layers.forEach(layer_name => {
@@ -92,11 +92,11 @@ export default {
             this.searchers.forEach((layerid)=>{
                 let layer=this.cmpMap.cmpLayers[layerid]
                 if(layer.olLayer instanceof VectorLayer && layer.olLayer.getSource() instanceof VectorSource){
-                    console.log( layer.olLayer.getSource().getFeatures(),"todas")
+                    //console.log( layer.olLayer.getSource().getFeatures(),"todas")
                     if (layer.olLayer.getSource().getFeatures().length==0){
-                        console.log("se esperara el evento")
+                        //console.log("se esperara el evento")
                         layer.olLayer.getSource().on("change",(event)=>{
-                            console.log(event)
+                            //console.log(event)
                             if(layer.olLayer.getSource().getState()=="ready"){
                                 this._fill_options_layer(layer)
                                 

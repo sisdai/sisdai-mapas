@@ -6,7 +6,7 @@ const directives = [
 
 
 const install = Vue => {
-    console.log("se esta instalando la directiva")
+    //console.log("se esta instalando la directiva")
     if (install.installed) return
     install.installed = true
     directives.forEach(directive => {

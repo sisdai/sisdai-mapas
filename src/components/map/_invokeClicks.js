@@ -35,7 +35,7 @@
             var feature = f_l[0];
 
             let id = layer.get("id")
-            console.log(id,"el layer id")
+            //console.log(id,"el layer id")
             component.cmpLayers[id].$emit("click_feature",f_l)
             hightlight_on_click(feature)
             if(feature.getGeometry().getType()=="Point"){
@@ -68,7 +68,7 @@
                     popup_overlay.setPosition([e.coordinate[0], e.coordinate[1]])
                 }
                 
-                console.log(feature.getGeometry().getType())
+                //console.log(feature.getGeometry().getType())
                 //popup_overlay.setPosition(feature.getGeometryName())
                         //console.log(x3,e.coordinate[0])
                 if (e.coordinate[0] > x3) {
