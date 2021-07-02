@@ -78,7 +78,7 @@ export default {
             if (this.VM_highlight_feature) {
                 this.VM_highlight_feature.set("_hightlight", false);
             }
-            this.$emit("resetView",this.map)
+            this.$emit("reset_view",this.map)
         })
         this.map = new Map({
             target: this.$refs.map,
