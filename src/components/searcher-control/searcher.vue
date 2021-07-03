@@ -95,7 +95,7 @@ export default {
                     //console.log( layer.olLayer.getSource().getFeatures(),"todas")
                     if (layer.olLayer.getSource().getFeatures().length==0){
                         //console.log("se esperara el evento")
-                        layer.olLayer.getSource().on("change",(event)=>{
+                        layer.olLayer.getSource().on("change",()=>{
                             //console.log(event)
                             if(layer.olLayer.getSource().getState()=="ready"){
                                 this._fill_options_layer(layer)
