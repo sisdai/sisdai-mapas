@@ -60,7 +60,16 @@ export default {
                 if(this.list_filter.every(item=>item)){
                     return true
                 }
-                let valores = this.cortes_colores.cortes.map((corte)=>corte["val"]).filter((valor,i)=>valor && this.list_filter[i])
+                //let valores = this.cortes_colores.cortes.map((corte)=>corte["val"]).filter((valor,i)=>valor && this.list_filter[i])
+                let valores = this.params.content.cortes.cortes.map((corte,idx)=>{
+                        let val= [...corte["val"]]
+                        if(Array.isArray(val) && idx===0){
+                            val[0] = val[0] - 1
+                        }
+                        
+                        return val
+                    })
+                    .filter((valor,i)=>valor && this.list_filter[i])
                 //console.log(valores)
                 //comparar el feature que pueda ser cada uno de estos valores
                 if(valores.length >0 && Array.isArray(valores[0])){
