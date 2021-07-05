@@ -3,8 +3,8 @@
         
 
         <!--MAPA 1-->
-        <div class="another-map">
-            <dai-tarjeta-contenedor-mapa>
+        <div class="another-map-v-desktop">
+            <dai-tarjeta-contenedor-mapa :es-version-escritorio-en-pantalla-larga="true">
                 <template v-slot:header>
                     <p>Agregando un simple recurso de capa geojson</p>
                 </template>
@@ -98,3 +98,12 @@ export default {
     }
 }
 </script>
+
+<style>
+.another-map-v-desktop{
+    padding: 1rem;
+    background-color: #f4f4f4;
+    
+    margin-top: 1rem;
+}
+</style>

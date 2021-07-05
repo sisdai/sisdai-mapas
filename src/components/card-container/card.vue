@@ -1,6 +1,11 @@
 <template>
     <div class="card-map-container" 
-        :class="{'without-footer': !VM_hasFooter,'collapsed':collapsingClass,'flex':llenarEspacioDisponibleConMapa}"
+        :class="{
+            'without-footer': !VM_hasFooter,
+            'collapsed':collapsingClass,
+            'flex':llenarEspacioDisponibleConMapa,
+            'desktop-version':esVersionEscritorioEnPantallaLarga
+            }"
         :style="{'max-height':collapsingHeight}">
         <div class="card-map-header">
             <slot name="header"></slot>
@@ -18,6 +23,7 @@
     </div>
 </template>
 <script>
+
 export default {
     name:"DaiTarjetaContenedorMapa",
     props:{
@@ -44,6 +50,10 @@ export default {
         etiquetaNoColapso:{
             type:String,
             default:'<span class="dai-icon-uncollapsed size-font-25rem-x7"></span>'
+        },
+        esVersionEscritorioEnPantallaLarga:{
+            type:Boolean,
+            default:false
         }
     },
     data:function(){
@@ -51,22 +61,31 @@ export default {
             cmpMap:null,
             VM_hasFooter:false,
             VM_collapsed:true,
+            VM_screenIsMobile:false,
+            
 
         }
     },
     created:function(){
         this.VM_collapsed = this.colapsada;
+        
     },
     computed:{
         collapsingClass:function(){
             return this.VM_hasFooter && this.VM_collapsed && this.permitirColapso;
         },
         collapsingHeight:function(){
+            if(this.esVersionEscritorioEnPantallaLarga && !this.VM_screenIsMobile){
+                return 'initial';
+            }
             return this.VM_hasFooter && this.VM_collapsed && this.permitirColapso ? this.alturaColapsada : "250vh"
         }
     },
     mounted:function(){
         this.VM_hasFooter = this.hasFooterSlot()
+        let mediaquery=window.matchMedia("(max-width: 976px)")
+        this._fn_matchMediaQueryMobile(mediaquery)
+        mediaquery.addEventListener("change",this._fn_matchMediaQueryMobile)
     },
     methods:{
         hasFooterSlot() {
@@ -77,6 +96,14 @@ export default {
         },
         _getComponentMap:function(){
             return this.cmpMap
+        },
+        _fn_matchMediaQueryMobile:function(media){
+            console.log(media.matches)
+            if(media.matches){
+                this.VM_screenIsMobile = true
+            }else{
+                this.VM_screenIsMobile = false
+            }
         }
         
     },
@@ -84,6 +111,9 @@ export default {
         return{
             getComponentMap:this._getComponentMap
         }
+    },
+    destroyed:function(){
+
     }
 }
 </script>
@@ -168,7 +198,35 @@ export default {
         }
     }
 
-    
+    &.desktop-version{
+        @media screen and (min-width:976px) {
+            display: grid;
+            grid-template-areas:"head map" 
+                                "foot map" ;
+            //grid-template-rows: 1fr 1fr;
+            grid-template-columns: 1fr 2fr;
+            padding-top: 0;
+            //flex-direction: row;
+            .card-map-header{
+                grid-area: head;
+                padding-top: .6rem;
+            }
+            .card-map-footer{
+                grid-area: foot;
+
+                .collapsable-button{
+                    display: none;
+                }
+            }
+            .dai-map-container{
+                grid-area: map;
+                height: 100%;
+                margin-top: 0;
+                margin-bottom: 0;
+                margin-left: 0;
+            }
+        }
+    }
 
 }
 
