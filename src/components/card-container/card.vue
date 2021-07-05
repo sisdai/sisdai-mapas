@@ -68,7 +68,9 @@ export default {
     },
     created:function(){
         this.VM_collapsed = this.colapsada;
-        
+        let mediaquery=window.matchMedia("(max-width: 976px)")
+        this._fn_matchMediaQueryMobile(mediaquery)
+        mediaquery.addEventListener("change",this._fn_matchMediaQueryMobile)
     },
     computed:{
         collapsingClass:function(){
@@ -83,9 +85,7 @@ export default {
     },
     mounted:function(){
         this.VM_hasFooter = this.hasFooterSlot()
-        let mediaquery=window.matchMedia("(max-width: 976px)")
-        this._fn_matchMediaQueryMobile(mediaquery)
-        mediaquery.addEventListener("change",this._fn_matchMediaQueryMobile)
+        
     },
     methods:{
         hasFooterSlot() {
@@ -93,17 +93,22 @@ export default {
         },
         _registerMap(mapComponent){
             this.cmpMap = mapComponent;
+            if(!this.VM_screenIsMobile){
+                this.cmpMap.forceResizeMap(true)
+                
+            }
         },
         _getComponentMap:function(){
             return this.cmpMap
         },
         _fn_matchMediaQueryMobile:function(media){
-            console.log(media.matches)
+            
             if(media.matches){
                 this.VM_screenIsMobile = true
             }else{
                 this.VM_screenIsMobile = false
             }
+            
         }
         
     },
@@ -210,10 +215,11 @@ export default {
             .card-map-header{
                 grid-area: head;
                 padding-top: .6rem;
+                padding-right: .3rem;
             }
             .card-map-footer{
                 grid-area: foot;
-
+                padding-right: .3rem;
                 .collapsable-button{
                     display: none;
                 }

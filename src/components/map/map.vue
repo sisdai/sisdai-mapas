@@ -185,6 +185,23 @@ export default {
         _cerrarPopup:function(){
             let popup_overlay = this.map.getOverlayById("popup")
             popup_overlay.setPosition(undefined)
+        },
+        forceResizeMap:function(forceResetView=false){
+            setTimeout(()=>{
+                //console.log("se esta forzando el resize")
+                this.map.updateSize()
+                if(forceResetView){
+                    this.external_force_reset_view()
+                }
+            },500)
+
+        },
+        external_force_reset_view:function(){
+            if(this.VM_reset_view.type == "extent"){
+                this.map.getView().fit(this.VM_reset_view.value,{duration:500,padding:[10,10,10,10]})
+            }else{
+                this.map.getView().animate(this.VM_reset_view.value)
+            }
         }
     },
     provide:function(){
