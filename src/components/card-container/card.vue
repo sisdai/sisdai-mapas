@@ -68,9 +68,8 @@ export default {
     },
     created:function(){
         this.VM_collapsed = this.colapsada;
-        let mediaquery=window.matchMedia("(max-width: 976px)")
-        this._fn_matchMediaQueryMobile(mediaquery)
-        mediaquery.addEventListener("change",this._fn_matchMediaQueryMobile)
+        
+        
     },
     computed:{
         collapsingClass:function(){
@@ -85,6 +84,10 @@ export default {
     },
     mounted:function(){
         this.VM_hasFooter = this.hasFooterSlot()
+
+        let mediaquery=window.matchMedia("(max-width: 976px)")
+        this._fn_matchMediaQueryMobile(mediaquery)
+        mediaquery.addEventListener("change",this._fn_matchMediaQueryMobile)
         
     },
     methods:{
