@@ -168,7 +168,7 @@ export default{
             if(vectorSource.getFeatures().length>1){
                 this.VM_allFeatures = geojsonFormat.writeFeatures( vectorSource.getFeatures() )
                 this.VM_geometryType = vectorSource.getFeatures()[0].getGeometry().getType()
-                
+                this.$emit("saved_features",this.VM_allFeatures)
                 return
             }
             //console.log("---AQUI ESPERAR LAS FEATURES EN VM_allfeatures")
@@ -191,7 +191,7 @@ export default{
                     }
                     
                 }   
-                
+                this.$emit("saved_features",this.VM_allFeatures)
                 
                 //console.log(evento,"---AQUI GUARDAR LAS FEATURES EN VM_allfeatures")
             }
