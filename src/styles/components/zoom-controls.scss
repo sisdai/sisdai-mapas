@@ -15,6 +15,10 @@
         width: 35px;
         height: 35px;
         box-shadow: 1px 1px 8px 3px #00000026;
+        line-height: .4em;
+        *{
+            line-height: inherit;
+        }
         &:hover,&:focus{
             background-color: var(--hover-color);
             border: 1px var(--accent-color) solid;
@@ -29,6 +33,7 @@
 .dai-map.default-controls .ol-control button{
     background-color: var(--control-bg-color);
     color: var(--control-color);
+    
 }
 
 //botones + y -
