@@ -9,21 +9,29 @@
     var hit = map.hasFeatureAtPixel(pixel);
 
     let capas_con_tooltip = map.getLayers().getArray().filter(item=>item.get("_tooltip")!=undefined).map(item2=>item2.get("id"))
-    
+    //console.log(capas_con_tooltip,"AQUIIII",hit)
     let tooltip_overlay_nomov = map.getOverlayById("tooltip");
     let tooltip_overlay_mov = map.getOverlayById("tooltipmov");
     //let tooltipelement = document.getElementById("fixed-tooltip-content");
     if (hit) {
+        //let contador=0
         var f_l = map.forEachFeatureAtPixel(pixel, function (feature, layer) {
-            return [feature, layer];
+            //console.log("REgresando",layer.get("id"),layer.get("_tooltip"),layer.get("_tooltip_mov"),"----",contador)
+            //contador++
+            if(layer.get("_tooltip")!=undefined){
+                return [feature,layer]
+            }
+            //return [feature, layer];
         });
         map.getTargetElement().style.cursor = 'pointer';
         if (f_l) {
             var layer = f_l[1];
             var feature = f_l[0];
+            //console.log(!layer.get("_tooltip_mov"))
             if(map.hover_feature == feature && !layer.get("_tooltip_mov") ){
                 return 
             }
+            //console.log(layer.get("id"),layer.get("_tooltip"))
             if (capas_con_tooltip.includes(layer.get("id")) &&  layer.get("_tooltip")!=undefined ) {
                 //hightlight_on_hover(f_l[0]);
                 //if (layers[layer.get("name")].highlight_accessor != undefined) {
