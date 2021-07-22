@@ -61,8 +61,8 @@ export default {
                     return true
                 }
                 //let valores = this.cortes_colores.cortes.map((corte)=>corte["val"]).filter((valor,i)=>valor && this.list_filter[i])
-                let valores = this.params.content.cortes.cortes.map((corte,idx)=>{
-                        let val= [...corte["val"]]
+                let valores = this.cortes_colores.cortes.map((corte,idx)=>{
+                        let val= Array.isArray( corte?.val ) ? [...corte["val"]] : corte["val"] ;
                         if(Array.isArray(val) && idx===0){
                             val[0] = val[0] - 1
                         }
@@ -77,6 +77,8 @@ export default {
                         return feature.getProperties()[this.cortes_colores.args.column] > valor[0] && feature.getProperties()[this.cortes_colores.args.column] <= valor[1]
                     })
                 }
+
+                
 
                 return valores.some(valor=>{
                     return valor == feature.getProperties()[this.cortes_colores.args.column]
