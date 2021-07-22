@@ -7,7 +7,7 @@ import ss from "./_cortes_naturales.js"
  * @param {*} clases 
  */
 const dataClassification = (data,classType,clases,colors,sizes,targetProperty,
-    geomType,defaultShapeType="circle",acomodoCategorias=[])=>{
+    geomType,defaultShapeType="circle",acomodoCategorias=[], clasificacion_custom=[])=>{
     let valores_clases = []
     //aqui ir agregando las demas clasificaciones
     valores_clases = classType==="categorias" ? qualitativeClassification(data) : valores_clases;
@@ -17,7 +17,8 @@ const dataClassification = (data,classType,clases,colors,sizes,targetProperty,
     valores_clases = classType==="logarimica" ? logClassification(data,clases) : valores_clases;
 
     valores_clases = classType==="cortes-naturales" ? naturalBreaksClassificaction(data,clases) : valores_clases;
-    
+    valores_clases = classType==="perzonalizada" ? clasificacion_custom : valores_clases;
+    //console.log(valores_clases)
 
     if(classType==="categorias" && acomodoCategorias.length>1){
         valores_clases = [...valores_clases].sort((a,b)=>{
