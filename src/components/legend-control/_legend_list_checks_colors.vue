@@ -45,7 +45,7 @@ export default {
                 }
                 //let valores = this.params.content.cortes.cortes.map((corte)=>corte["val"]).filter((valor,i)=>valor && this.list_filter[i])
                 let valores = this.params.content.cortes.cortes.map((corte,idx)=>{
-                        let val= [...corte["val"]]
+                        let val= Array.isArray( corte?.val ) ? [...corte["val"]] : corte["val"] ;
                         if(Array.isArray(val) && idx===0){
                             val[0] = val[0] - 1
                         }
