@@ -43,9 +43,13 @@ export default {
     render:function(createElement){
         return createElement(this.VM_params.type,{
             props:{
-                params: this.VM_params
-            }
-            });
+                params: this.VM_params,
+                
+            },
+            attrs:{
+                "data-layer": this.layerId
+            },
+        });
     }
 
 
