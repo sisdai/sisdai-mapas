@@ -1,4 +1,5 @@
 import * as d3 from "d3"
+import ss from "./_cortes_naturales.js"
 /**
  *  obtiene los cortes para la leyenda y la funcion de estilo de openlayers
  * @param {*} data 
@@ -14,6 +15,8 @@ const dataClassification = (data,classType,clases,colors,sizes,targetProperty,
     valores_clases = classType==="linear" ? linearClassification(data,clases) : valores_clases;
     valores_clases = classType==="exponencial" ? powClassification(data,clases) : valores_clases;
     valores_clases = classType==="logarimica" ? logClassification(data,clases) : valores_clases;
+
+    valores_clases = classType==="cortes-naturales" ? naturalBreaksClassificaction(data,clases) : valores_clases;
     
 
     if(classType==="categorias" && acomodoCategorias.length>1){
@@ -117,6 +120,25 @@ const logClassification = (data,noClases)=>{
 
 }
 
+const naturalBreaksClassificaction = (data,noClases)=>{
+    //console.log(data)
+    const clases = ss.jenks(data,noClases)
+    let clases_to_d3= [...clases]
+    clases_to_d3.shift()
+
+    //const scale_fn = d3.scaleThreshold().domain(clases_to_d3).range([0,noClases])
+    //console.log(clases_to_d3)
+
+    let cortes = clases.map((item,i)=>{
+        let corte_inferior = item //(i==0) ? Math.round(item): Math.round(item)+ 1
+        return [corte_inferior,Math.round(clases[i+1])]
+    })
+    cortes.pop()
+    //console.log(cortes)
+    return cortes
+
+    
+}   
 
 const getParsedColorRamp = (colors, steps)=>{
 

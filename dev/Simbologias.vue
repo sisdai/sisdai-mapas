@@ -12,7 +12,7 @@
                     <dai-capa-geojson :datos="datos_cultivos"  id="cultivos"
                         :reglas-estilo-capa="[
                         {columna:'cultivo',colores:'Category10'},
-                        {columna:'cultivo_tot',clasificacion:'cuantiles',clases:4,proporciones:[4,6,12,16],propiedadObjetivo:'proporcion',tituloVariable:'Cantidad de cultivos'}
+                        {columna:'cultivo_tot',clasificacion:'cortes-naturales',clases:4,proporciones:[4,6,12,16],propiedadObjetivo:'proporcion',tituloVariable:'Cantidad de cultivos'}
                         ]"
                     />
                     <dai-capa-geojson :datos="datos_cultivos"  id="cultivos2"

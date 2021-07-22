@@ -108,7 +108,12 @@ export default{
 
             this.VM_rules.forEach(rule=>{
                 
-                let todos_valores = features.map((f=>f.getProperties()[rule.columna]))
+                let todos_valores = features.map(
+                    (f=>(rule.clasificacion==="categorias" || rule.clasificacion==="personalizada" ) 
+                        ? f.getProperties()[rule.columna] 
+                        : parseFloat( f.getProperties()[rule.columna])  ) 
+                )
+
                 let cortes =  dataClassification(todos_valores,rule.clasificacion, 
                     rule.clases,rule.colores,rule.proporciones,rule.propiedadObjetivo,
                     this.VM_geometryType,this.VM_default_shape,rule.acomodoCategorias)
