@@ -43,10 +43,17 @@
                         {columna:'cultivo_tot',clasificacion:'cuantiles',clases:4,proporciones:[4,6,12,20],propiedadObjetivo:'proporcion',tituloVariable:'Cantidad de cultivos'}
                         ]"
                     />
+
+                    <dai-capa-geojson :datos="datos_cultivos"  id="cultivos4"
+                    />
+                    <dai-capa-geojson :datos="datos_cultivos"  id="cultivos5"
+                    />
+
                     
                 </dai-mapa>
                 <template v-slot:footer>
                     <dai-leyenda-mapa :para="['cultivos3']" titulo="Capas de este mapa 2" :mostrar-boton-alterna-todos="true"></dai-leyenda-mapa>
+                    <dai-leyenda-mapa :para="['cultivos4','cultivos5']" titulo="segunda leyenda"/>
                 </template>
             </dai-tarjeta-contenedor-mapa>
         </div>
