@@ -6,7 +6,7 @@ import {fixSerializedStyleIfIncomplete,joinDefaultValuesWithNewValuesInPoints} f
 import { DEFAULT_FILL_COLOR,DEFAULT_STROKE_COLOR } from "./vector-layer-any";
 
 const defaultsValuesRule = {
-    clasificacion:"categorias", //linear, quantile, log , custom
+    clasificacion:"categorias", //linear, cuantiles, personalizada
     clases: 5,
     columna: '',
     colores: "Blues", //lo que se pueda poner como prefijo para d3 o un array de colores
@@ -14,7 +14,8 @@ const defaultsValuesRule = {
     propiedadObjetivo: 'relleno', // o proporcion , solo esas dos
     forma: "default", // solo se ocupa si es geometria punto, tambien puede ser un url a un svg, si es svg el color no le aplicaria,
     tituloVariable: "__columnname__",
-    acomodoCategorias:[]
+    acomodoCategorias:[],
+    clasificacionPersonalizada: []
 };
 
 export default{
@@ -116,7 +117,8 @@ export default{
 
                 let cortes =  dataClassification(todos_valores,rule.clasificacion, 
                     rule.clases,rule.colores,rule.proporciones,rule.propiedadObjetivo,
-                    this.VM_geometryType,this.VM_default_shape,rule.acomodoCategorias)
+                    this.VM_geometryType,this.VM_default_shape,rule.acomodoCategorias,
+                    rule.clasificacionPersonalizada)
                 
                 cortes.args["column"] = rule.columna;
                 cortes.args["variableTitle"] = rule.tituloVariable ==="__columnname__" ? rule.columna : rule.tituloVariable;
