@@ -40666,20 +40666,23 @@ var invoke_clicks = function invoke_clicks(map, e, component) {
       var feature = f_l[0];
       var id = layer.get("id"); //console.log(id,"el layer id")
 
-      component.cmpLayers[id].$emit("click_feature", f_l);
-      hightlight_on_click(feature);
+      component.cmpLayers[id].$emit("click_feature", f_l); //Si es necesario acercar cuando el usuario da click
 
-      if (feature.getGeometry().getType() == "Point") {
-        map.getView().animate({
-          center: feature.getGeometry().getCoordinates(),
-          zoom: 13.5,
-          duration: 500
-        });
-      } else {
-        map.getView().fit(feature.getGeometry(), {
-          duration: 500,
-          padding: [25, 25, 25, 25]
-        });
+      if (component.cmpLayers[id].zoomAlDarClick) {
+        hightlight_on_click(feature);
+
+        if (feature.getGeometry().getType() == "Point") {
+          map.getView().animate({
+            center: feature.getGeometry().getCoordinates(),
+            zoom: 13.5,
+            duration: 500
+          });
+        } else {
+          map.getView().fit(feature.getGeometry(), {
+            duration: 500,
+            padding: [25, 25, 25, 25]
+          });
+        }
       }
 
       if (capas_con_popup.includes(layer.get("id")) && layer.get("_popup") != undefined) {
