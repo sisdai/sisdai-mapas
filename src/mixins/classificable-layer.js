@@ -15,7 +15,8 @@ const defaultsValuesRule = {
     forma: "default", // solo se ocupa si es geometria punto, tambien puede ser un url a un svg, si es svg el color no le aplicaria,
     tituloVariable: "__columnname__",
     acomodoCategorias:[],
-    clasificacionPersonalizada: []
+    clasificacionPersonalizada: [],
+    clasesVisiblesInicial:[]
 };
 
 export default{
