@@ -86,5 +86,54 @@ const CustomZoomControl = /*@__PURE__*/(function (Control) {
     return ResetControl;
   }(Control));
 
+
+  const NivelControl = /*@__PURE__*/(function (Control) {
+    function NivelControl(opt_options) {
+      var options = opt_options || {};
+  
+      var button = document.createElement('button');
+      button.className = "dai-nivel-button"
+      button.innerHTML = '<span class="dai-icon-regresar"></span>'//'<img src="icons/acercar.svg" height="25px" width="25px"/>';
+
+      
+  
+      var element = document.createElement('div');
+      element.className = 'dai-nivel-map ol-unselectable ol-control';
+      element.appendChild(button);
+      
+  
+      Control.call(this, {
+        element: element,
+        target: options.target,
+      });
+  
+      button.addEventListener('click', this.handleNivel.bind(this), false);
+    }
+  
+    if ( Control ) NivelControl.__proto__ = Control;
+    NivelControl.prototype = Object.create( Control && Control.prototype );
+    NivelControl.prototype.constructor = NivelControl;
+  
+    NivelControl.prototype.handleNivel = function handleNivel () {
+        //console.log(this.element)
+        this.dispatchEvent("click_control")
+        
+    };
+    NivelControl.prototype.visible = true
+    NivelControl.prototype.setVisible = function(visible){
+        
+        this.visible = visible
+        if(visible ){
+            this.element.classList.remove("hidden")
+        }else{
+            this.element.classList.add("hidden")
+        }
+    }
+    
+  
+    return NivelControl;
+  }(Control));
+
+
   export default CustomZoomControl;
-  export {ResetControl}
+  export {ResetControl,NivelControl}

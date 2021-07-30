@@ -7,7 +7,8 @@ export default {
             visible:false,
             layerId:"",
             hasSubfilters:false,
-            visibleStatusFilters:[]
+            visibleStatusFilters:[],
+            VM_skip_first_toogle :false
         }
     },
     methods:{
@@ -47,9 +48,21 @@ export default {
         "visible":function(newerValue){
             this.$parent.$parent.checkLabelToggleAll();
             if(this.hasSubfilters){
-                let apagar_todos = !newerValue
-                this.$emit("toogle_allsubfilters",apagar_todos)
+                if(!this.VM_skip_first_toogle && paramsIncludeInitialFilters(this.params)[0] ){
+                    this.list_filter = paramsIncludeInitialFilters(this.params)[1]
+                    //console.log(this.list_filter,"a poner inicialmente")
+                    this._filtrarCapa()
+                }
+
+                if(this.VM_skip_first_toogle){
+                    let apagar_todos = !newerValue;
+                    this.$emit("toogle_allsubfilters",apagar_todos)
+                }
+                
+
             }
+
+            this.VM_skip_first_toogle = true;
         },
         "visibleStatusFilters":function(newerValue){
             //console.log(newerValue,console.log(this.$parent))
@@ -60,4 +73,25 @@ export default {
             
         }
     }
+}
+
+const paramsIncludeInitialFilters=(params)=>{
+    //console.log(params)
+    let cortes = params.content.cortes
+    if(Array.isArray(cortes)){
+        //buscar dentro de los elementos
+        const clases_inicial= cortes.find(corte=>corte.args.clasesVisiblesInicial.length>0);
+        let hayclases= clases_inicial != undefined
+        let clasesReturn = hayclases ? cortes.cortes.map((item,idx)=>{
+            return clasesInicial[idx]!=undefined  ? clasesInicial[idx] : true
+        }) : []
+        return [hayclases,clasesReturn]
+    }
+
+    let clasesInicial  = cortes.args.clasesVisiblesInicial
+    let hayclases= clasesInicial.length ==0 ? false : true
+    let clasesReturn = hayclases ? cortes.cortes.map((item,idx)=>{
+        return clasesInicial[idx] !=undefined ? clasesInicial[idx] : true
+    }) : []
+    return [hayclases,clasesReturn]
 }
