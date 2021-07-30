@@ -61,3 +61,17 @@
         }
     }
 }
+
+.dai-nivel-map{
+    left: .5rem;
+    bottom: calc(.5rem + 42px);
+    &.hidden{
+        display: none;
+    }
+    .dai-nivel-button{
+        
+        span{
+            font-size: 28px;
+        }
+    }
+}

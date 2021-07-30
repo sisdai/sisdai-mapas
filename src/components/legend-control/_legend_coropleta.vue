@@ -1,6 +1,6 @@
 <template>
     <div class="map-legends">
-        <div class="map-legend-item" v-for="(corte,i) in cortesToRender" :key="corte.c" @click="_filterLayer(i)">
+        <div class="map-legend-item" v-for="(corte,i) in cortesToRender" :key="corte.c" @click="_filtrarCapa(i)">
             <shape 
             shapeType="rounded-square"
             :size="[40,40]"
@@ -43,11 +43,11 @@ export default {
 
         this.$on("toogle_allsubfilters",(apagar_todos)=>{
             this.list_filter = this.list_filter.map(()=>!apagar_todos)
-            this._filterLayer()
+            this._filtrarCapa()
         })
     },
     methods:{
-        _filterLayer:function(idxCorte=-1){
+        _filtrarCapa:function(idxCorte=-1){
             //console.log("se le dio click",idxCorte)
             //this.list_filter[idxCorte] = ! this.list_filter[idxCorte]
             if(idxCorte> -1){
