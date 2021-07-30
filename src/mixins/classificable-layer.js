@@ -15,7 +15,8 @@ const defaultsValuesRule = {
     forma: "default", // solo se ocupa si es geometria punto, tambien puede ser un url a un svg, si es svg el color no le aplicaria,
     tituloVariable: "__columnname__",
     acomodoCategorias:[],
-    clasificacionPersonalizada: []
+    clasificacionPersonalizada: [],
+    clasesVisiblesInicial:[]
 };
 
 export default{
@@ -118,7 +119,7 @@ export default{
                 let cortes =  dataClassification(todos_valores,rule.clasificacion, 
                     rule.clases,rule.colores,rule.proporciones,rule.propiedadObjetivo,
                     this.VM_geometryType,this.VM_default_shape,rule.acomodoCategorias,
-                    rule.clasificacionPersonalizada)
+                    rule.clasificacionPersonalizada,rule.clasesVisiblesInicial)
                 
                 cortes.args["column"] = rule.columna;
                 cortes.args["variableTitle"] = rule.tituloVariable ==="__columnname__" ? rule.columna : rule.tituloVariable;

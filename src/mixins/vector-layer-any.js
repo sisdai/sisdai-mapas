@@ -196,6 +196,17 @@ export default{
                 //console.log(evento,"---AQUI GUARDAR LAS FEATURES EN VM_allfeatures")
             }
             vectorSource.on("featuresloadend",listenerFn)
+        },
+        filtrarDatos:function(fn_comparacion){
+            //console.log("se filtraran los datos :)")
+            let sourceLayer=this.olLayer.getSource()
+            let geojsonFormat = new GeoJSON()
+            let allFeatureslayer = geojsonFormat.readFeatures( this.VM_allFeatures);
+            let nuevosFeatures= allFeatureslayer.filter(fn_comparacion)
+            //console.log(nuevosFeatures)
+            sourceLayer.clear()
+            sourceLayer.addFeatures(nuevosFeatures)
+            //console.log("decirle que hay un filtro")
         }
     }
 }

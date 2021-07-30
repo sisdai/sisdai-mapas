@@ -7,7 +7,8 @@ import ss from "./_cortes_naturales.js"
  * @param {*} clases 
  */
 const dataClassification = (data,classType,clases,colors,sizes,targetProperty,
-    geomType,defaultShapeType="circle",acomodoCategorias=[], clasificacion_custom=[])=>{
+    geomType,defaultShapeType="circle",acomodoCategorias=[], clasificacion_custom=[],
+    clasesVisiblesInicial=[])=>{
     let valores_clases = []
     //aqui ir agregando las demas clasificaciones
     valores_clases = classType==="categorias" ? qualitativeClassification(data) : valores_clases;
@@ -63,7 +64,7 @@ const dataClassification = (data,classType,clases,colors,sizes,targetProperty,
     
     
 
-    return {type:tipo,args:{defaultShapeType},cortes:cortes}
+    return {type:tipo,args:{defaultShapeType,clasesVisiblesInicial},cortes:cortes}
 }
 
 const qualitativeClassification = (data)=>{

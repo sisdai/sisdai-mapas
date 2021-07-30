@@ -21,7 +21,7 @@ import Map from 'ol/Map';
 import View from 'ol/View';
 import Overlay from 'ol/Overlay';
 //import { defaults as defaultControls} from 'ol/control';
-import CustomZoomControl, {ResetControl} from "./_zoom-control"
+import CustomZoomControl, {ResetControl,NivelControl} from "./_zoom-control"
 import {invoke_tooltips} from "./_invokeTooltips";
 import {invoke_clicks} from "./_invokeClicks";
 export default {
@@ -54,6 +54,16 @@ export default {
         colorControlesInvertidos:{
             type:Boolean,
             default: false
+        },
+        niveles:{
+            type:Array,
+            default:function(){
+                return []
+            }
+        },
+        nivelActual:{
+            type:String,
+            default: ""
         }
     },
     data:function(){
@@ -62,13 +72,18 @@ export default {
             VM_highlight_feature:undefined,
             VM_hover_feature:undefined,
             VM_reset_view:undefined,
-            map:undefined
+            map:undefined,
+            VM_has_niveles:false,
+            VM_nivel_actual :"",
+            VM_nivel_control : undefined
         }
     },
     created:function(){
         this.VM_reset_view = this.extension[0] == 0 && this.extension[3] ==0 
             ? {type:"center",value:{zoom:this.zoom,center:this.centro}} 
             : {type:"extent",value:this.extension};
+        this.VM_has_niveles = this.niveles.length > 0;
+        this.VM_nivel_actual = this.nivelActual
     },
     
     mounted:function(){
@@ -78,8 +93,17 @@ export default {
             if (this.VM_highlight_feature) {
                 this.VM_highlight_feature.set("_hightlight", false);
             }
+            if(this.VM_has_niveles){
+                this.setNivel(this.niveles[0])
+            }
             this.$emit("reset_view",this.map)
         })
+
+        this.VM_nivel_control = new NivelControl();
+        this.VM_nivel_control.on("click_control",()=>{
+            this.setNivelRetroceso()
+        })
+        this.VM_nivel_control.setVisible( this.VM_has_niveles && this.niveles.indexOf(this.VM_nivel_actual) > 0 )
         this.map = new Map({
             target: this.$refs.map,
             layers: [],
@@ -90,7 +114,7 @@ export default {
                 maxZoom: this.maxZoom,
                 minZoom: this.minZoom
             }),
-            controls:[new CustomZoomControl(),resetcontrol]
+            controls:[new CustomZoomControl(),resetcontrol,this.VM_nivel_control]
         });
         this.map.set("_reset_view",this.VM_reset_view)
         if(this.VM_reset_view.type=="extent"){
@@ -202,12 +226,44 @@ export default {
             }else{
                 this.map.getView().animate(this.VM_reset_view.value)
             }
+        },
+        setNivel:function(newNivel){
+            
+            if (this.niveles.includes(newNivel) ){
+                //console.log(newNivel,"bind inverso deberia")
+                this.$emit("update:nivelActual",newNivel)
+                this.VM_nivel_actual = newNivel;
+            }
+        },
+        setNivelRetroceso:function(){
+            const idx = this.niveles.indexOf(this.VM_nivel_actual)
+            let newIndex = idx - 1
+            //console.log(newIndex,idx)
+            if (newIndex> -1){
+                this.setNivel(this.niveles[newIndex])
+            }
+            
         }
     },
     provide:function(){
         return {
             getMap:this._getMap,
             registerLayer: this._registerLayer
+        }
+    },watch:{
+        nivelActual:function(newNIvel){
+            if (this.niveles.includes(newNIvel) ){
+                this.VM_nivel_actual = newNIvel
+                
+            }
+            
+        },
+        VM_nivel_actual:function(newValue){
+            this.$emit("cambioNivel",newValue)
+            this.VM_nivel_control.setVisible( this.VM_has_niveles && this.niveles.indexOf(this.VM_nivel_actual) > 0 )
+        },
+        niveles:function(newNiveles){
+            this.VM_has_niveles = newNiveles.length > 0;
         }
     }
 }
