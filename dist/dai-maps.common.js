@@ -44594,13 +44594,17 @@ var es_regexp_to_string = __webpack_require__("25f0");
     this.registerLayer(this);
     this.getMap(function (olMap) {
       //console.log(olMap)
-      vm.olMap = olMap;
+      vm.olMap = olMap; //se pone un time out porque si ya esta cargado el mapa estos metodos se cargan antes de cargarse otros 
 
-      vm._createLayerObject();
+      setTimeout(function () {
+        console.log("DEBUG: carga y dibuja layer");
 
-      vm._setInitialPropsToLayer();
+        vm._createLayerObject();
 
-      vm._addLayerToMap();
+        vm._setInitialPropsToLayer();
+
+        vm._addLayerToMap();
+      }, 20);
     });
   },
   methods: {
@@ -45157,18 +45161,13 @@ var DEFAULT_STROKE_COLOR = "white";
     };
   },
   created: function created() {
-    //console.log("llgamos aqui")
+    console.log("DEBUG: carga vm_mapstyle");
     this.VM_mapStyle = this.estiloCapa;
   },
   methods: {
     _setStyle: function _setStyle() {
       var style;
       var vm = this;
-
-      if (vm.VM_mapStyle == undefined) {
-        vm.VM_mapStyle = this.estiloCapa;
-      }
-
       var colorsLegend = {
         fill: "gray",
         stroke: "gray",
@@ -67035,6 +67034,7 @@ var defaultsValuesRule = {
   },
   created: function created() {
     if (this.reglasEstiloCapa != undefined) {
+      console.log("DEBUG: carga reglas estilo");
       this.VM_is_classified = true;
 
       if (Array.isArray(this.reglasEstiloCapa)) {
