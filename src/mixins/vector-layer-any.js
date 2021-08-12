@@ -102,6 +102,9 @@ export default{
     },
     methods:{
         _setStyle:function(){
+            if(vm.VM_mapStyle==undefined){
+                vm.VM_mapStyle = this.estiloCapa
+            }
             let style;
             let vm = this;
             let colorsLegend={fill:"gray", stroke:"gray",stroke_width:1}
@@ -114,6 +117,7 @@ export default{
                     return olstyles
                 }
             }else{
+                
                 let serializes= fixSerializedStyleIfIncomplete( vm.VM_mapStyle )
                 //let geometry_type = this.olLayer.getSource().getFeatures()[0].getGeometry().getType()
                 console.log("//AQUI VERIFICAR TAMBIEN QUE SHAPE SE VA A LA LEYENDA",serializes)
