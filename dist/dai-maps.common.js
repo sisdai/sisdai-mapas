@@ -45162,12 +45162,13 @@ var DEFAULT_STROKE_COLOR = "white";
   },
   methods: {
     _setStyle: function _setStyle() {
+      var style;
+      var vm = this;
+
       if (vm.VM_mapStyle == undefined) {
         vm.VM_mapStyle = this.estiloCapa;
       }
 
-      var style;
-      var vm = this;
       var colorsLegend = {
         fill: "gray",
         stroke: "gray",
