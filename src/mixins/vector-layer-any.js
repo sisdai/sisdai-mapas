@@ -102,11 +102,12 @@ export default{
     },
     methods:{
         _setStyle:function(){
+            
+            let style;
+            let vm = this;
             if(vm.VM_mapStyle==undefined){
                 vm.VM_mapStyle = this.estiloCapa
             }
-            let style;
-            let vm = this;
             let colorsLegend={fill:"gray", stroke:"gray",stroke_width:1}
             let shapeLegend = "square"
             if (typeof vm.VM_mapStyle == "function"){
