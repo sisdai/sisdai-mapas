@@ -28,9 +28,14 @@ export default{
         this.getMap(function(olMap){
             //console.log(olMap)
             vm.olMap = olMap
-            vm._createLayerObject()
-            vm._setInitialPropsToLayer()
-            vm._addLayerToMap()
+            //se pone un time out porque si ya esta cargado el mapa estos metodos se cargan antes de cargarse otros 
+            setTimeout(()=>{
+                console.log("DEBUG: carga y dibuja layer")    
+                vm._createLayerObject()
+                vm._setInitialPropsToLayer()
+                vm._addLayerToMap()
+            },20)
+            
         })
     },
     methods:{

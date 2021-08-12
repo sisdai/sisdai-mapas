@@ -45,7 +45,7 @@ export default{
     created:function(){
         
         if(this.reglasEstiloCapa != undefined){
-            
+            console.log("DEBUG: carga reglas estilo")    
             this.VM_is_classified = true;
             if(Array.isArray(this.reglasEstiloCapa)){
                 this.VM_rules = this.reglasEstiloCapa.map(rule=>{
