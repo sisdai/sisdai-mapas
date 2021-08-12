@@ -96,8 +96,7 @@ export default{
         }
     },
     created:function(){
-
-        //console.log("llgamos aqui")
+        console.log("DEBUG: carga vm_mapstyle")
         this.VM_mapStyle = this.estiloCapa
     },
     methods:{
@@ -105,9 +104,7 @@ export default{
             
             let style;
             let vm = this;
-            if(vm.VM_mapStyle==undefined){
-                vm.VM_mapStyle = this.estiloCapa
-            }
+            
             let colorsLegend={fill:"gray", stroke:"gray",stroke_width:1}
             let shapeLegend = "square"
             if (typeof vm.VM_mapStyle == "function"){
