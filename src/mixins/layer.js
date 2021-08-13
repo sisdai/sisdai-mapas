@@ -30,7 +30,7 @@ export default{
             vm.olMap = olMap
             //se pone un time out porque si ya esta cargado el mapa estos metodos se cargan antes de cargarse otros 
             setTimeout(()=>{
-                console.log("DEBUG: carga y dibuja layer")    
+                //console.log("DEBUG: carga y dibuja layer")    
                 vm._createLayerObject()
                 vm._setInitialPropsToLayer()
                 vm._addLayerToMap()
