@@ -96,7 +96,7 @@ export default{
         }
     },
     created:function(){
-        console.log("DEBUG: carga vm_mapstyle")
+        //console.log("DEBUG: carga vm_mapstyle")
         this.VM_mapStyle = this.estiloCapa
     },
     methods:{
@@ -118,7 +118,7 @@ export default{
                 
                 let serializes= fixSerializedStyleIfIncomplete( vm.VM_mapStyle )
                 //let geometry_type = this.olLayer.getSource().getFeatures()[0].getGeometry().getType()
-                console.log("//AQUI VERIFICAR TAMBIEN QUE SHAPE SE VA A LA LEYENDA",serializes)
+                //console.log("//AQUI VERIFICAR TAMBIEN QUE SHAPE SE VA A LA LEYENDA",serializes)
                 if(this.VM_geometryType.includes("Point") ){
 
                     this.VM_defaultShapePoint= checkPointShapeFromStyle(serializes)

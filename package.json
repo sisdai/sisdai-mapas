@@ -1,6 +1,6 @@
 {
   "name": "dai-maps",
-  "version": "0.1.6-debug",
+  "version": "0.1.7",
   "private": true,
   "files": [
     "dist/*"
