@@ -44597,8 +44597,7 @@ var es_regexp_to_string = __webpack_require__("25f0");
       vm.olMap = olMap; //se pone un time out porque si ya esta cargado el mapa estos metodos se cargan antes de cargarse otros 
 
       setTimeout(function () {
-        console.log("DEBUG: carga y dibuja layer");
-
+        //console.log("DEBUG: carga y dibuja layer")    
         vm._createLayerObject();
 
         vm._setInitialPropsToLayer();
@@ -45161,7 +45160,7 @@ var DEFAULT_STROKE_COLOR = "white";
     };
   },
   created: function created() {
-    console.log("DEBUG: carga vm_mapstyle");
+    //console.log("DEBUG: carga vm_mapstyle")
     this.VM_mapStyle = this.estiloCapa;
   },
   methods: {
@@ -45184,8 +45183,7 @@ var DEFAULT_STROKE_COLOR = "white";
         };
       } else {
         var serializes = fixSerializedStyleIfIncomplete(vm.VM_mapStyle); //let geometry_type = this.olLayer.getSource().getFeatures()[0].getGeometry().getType()
-
-        console.log("//AQUI VERIFICAR TAMBIEN QUE SHAPE SE VA A LA LEYENDA", serializes);
+        //console.log("//AQUI VERIFICAR TAMBIEN QUE SHAPE SE VA A LA LEYENDA",serializes)
 
         if (this.VM_geometryType.includes("Point")) {
           var _serializes$style, _serializes$style$sha, _serializes$style$sha2, _serializes$style2, _serializes$style2$sh, _serializes$style2$sh2, _serializes$style3, _serializes$style3$sh, _serializes$style3$sh2;
@@ -67034,7 +67032,7 @@ var defaultsValuesRule = {
   },
   created: function created() {
     if (this.reglasEstiloCapa != undefined) {
-      console.log("DEBUG: carga reglas estilo");
+      //console.log("DEBUG: carga reglas estilo")    
       this.VM_is_classified = true;
 
       if (Array.isArray(this.reglasEstiloCapa)) {
