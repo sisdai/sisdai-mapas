@@ -17,6 +17,7 @@ export default {
             this.olLayer = new VectorLayer({
                 source: vectorSource
             })
+            this.olLayer.set("_realce_hover",this.realceAlPasarMouse)
             if(this.VM_is_classified){
                 if(vectorSource.getFeatures().length>0){
                     this._clasificar_v2();

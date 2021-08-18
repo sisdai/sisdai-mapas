@@ -5,6 +5,19 @@
  * @param {*} e evento
  */
  export const invoke_tooltips = (map, e) => {
+    
+    const hightlight_on_hover = (the_map,feature) => {
+        if (feature !== the_map.get("hover_feature")) {
+            if (the_map.get("hover_feature")) {
+                the_map.get("hover_feature").set("_hightlight", false);
+            }
+            if (feature) {
+                feature.set("_hightlight", true);
+            }
+            the_map.set("hover_feature", feature );
+        }
+    }
+
     var pixel = map.getEventPixel(e.originalEvent);
     var hit = map.hasFeatureAtPixel(pixel);
 
@@ -23,12 +36,30 @@
             }
             //return [feature, layer];
         });
+        var f_l_pRealce = map.forEachFeatureAtPixel(pixel, function (feature2, layer2) {
+            //console.log("REgresando",layer.get("id"),layer.get("_tooltip"),layer.get("_tooltip_mov"),"----",contador)
+            //contador++
+            //console.log(layer2.get("_realce_hover"))
+            if(layer2.get("_realce_hover")){
+                return [feature2,layer2]
+            }
+            //return [feature, layer];
+        });
         map.getTargetElement().style.cursor = 'pointer';
+        if(f_l_pRealce){
+            var feature_pRealce = f_l_pRealce[0];
+            feature_pRealce.set("_hightlight", true)
+            hightlight_on_hover(map,feature_pRealce)
+        }
         if (f_l) {
             var layer = f_l[1];
             var feature = f_l[0];
+
+            
+            //remplazando la hover_feature del mapa
+            
             //console.log(!layer.get("_tooltip_mov"))
-            if(map.hover_feature == feature && !layer.get("_tooltip_mov") ){
+            if(map.get("hover_feature") == feature && !layer.get("_tooltip_mov") ){
                 return 
             }
             //console.log(layer.get("id"),layer.get("_tooltip"))
@@ -103,7 +134,7 @@
                 tooltip_overlay_mov.setPosition(undefined)
                 //tooltipelement.classList.remove("show")
             }
-            map.hover_feature = feature;
+            
         } else {
 
             tooltip_overlay_nomov.setPosition(undefined)
@@ -115,6 +146,10 @@
         tooltip_overlay_nomov.setPosition(undefined)
         tooltip_overlay_mov.setPosition(undefined)
         //tooltipelement.classList.remove("show")
-        map.hover_feature = undefined;
+        let feature_ya_guardada= map.get("hover_feature")
+        if(feature_ya_guardada){
+            feature_ya_guardada.set("_hightlight", false)
+        }
+        //map.set("hover_feature", undefined);
     }
 }
