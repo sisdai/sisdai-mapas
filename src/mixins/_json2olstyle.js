@@ -63,15 +63,16 @@ const serializedStyleIfHighlight=function(originalSerializedStyle,newStyle){
 }
 
 const prepareSimplePointVectors=function(targetStyle,sourceStyle){
-    if("circle" in targetStyle.style ){
+    //console.log(targetStyle,sourceStyle)
+    if("circle" in targetStyle.style && "_simple_point" in sourceStyle.style ){
         targetStyle.style["circle"] = { ... targetStyle.style["circle"], ...sourceStyle.style["_simple_point"]}
         return
     }
-    if("square" in targetStyle.style ){
+    if("square" in targetStyle.style && "_simple_point" in sourceStyle.style ){
         targetStyle.style["square"] = { ... targetStyle.style["square"], ...sourceStyle.style["_simple_point"]}
         return
     }
-    if("triangle" in targetStyle.style ){
+    if("triangle" in targetStyle.style && "_simple_point" in sourceStyle.style ){
         targetStyle.style["triangle"] = { ... targetStyle.style["triangle"], ...sourceStyle.style["_simple_point"]}
         return
     }
