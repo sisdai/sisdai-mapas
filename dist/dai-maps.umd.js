@@ -40581,6 +40581,20 @@ var es_array_filter = __webpack_require__("4de4");
  * @param {*} e evento
  */
 var invoke_tooltips = function invoke_tooltips(map, e) {
+  var hightlight_on_hover = function hightlight_on_hover(the_map, feature) {
+    if (feature !== the_map.get("hover_feature")) {
+      if (the_map.get("hover_feature")) {
+        the_map.get("hover_feature").set("_hightlight", false);
+      }
+
+      if (feature) {
+        feature.set("_hightlight", true);
+      }
+
+      the_map.set("hover_feature", feature);
+    }
+  };
+
   var pixel = map.getEventPixel(e.originalEvent);
   var hit = map.hasFeatureAtPixel(pixel);
   var capas_con_tooltip = map.getLayers().getArray().filter(function (item) {
@@ -40602,13 +40616,29 @@ var invoke_tooltips = function invoke_tooltips(map, e) {
       } //return [feature, layer];
 
     });
+    var f_l_pRealce = map.forEachFeatureAtPixel(pixel, function (feature2, layer2) {
+      //console.log("REgresando",layer.get("id"),layer.get("_tooltip"),layer.get("_tooltip_mov"),"----",contador)
+      //contador++
+      //console.log(layer2.get("_realce_hover"))
+      if (layer2.get("_realce_hover")) {
+        return [feature2, layer2];
+      } //return [feature, layer];
+
+    });
     map.getTargetElement().style.cursor = 'pointer';
+
+    if (f_l_pRealce) {
+      var feature_pRealce = f_l_pRealce[0];
+      feature_pRealce.set("_hightlight", true);
+      hightlight_on_hover(map, feature_pRealce);
+    }
 
     if (f_l) {
       var layer = f_l[1];
-      var feature = f_l[0]; //console.log(!layer.get("_tooltip_mov"))
+      var feature = f_l[0]; //remplazando la hover_feature del mapa
+      //console.log(!layer.get("_tooltip_mov"))
 
-      if (map.hover_feature == feature && !layer.get("_tooltip_mov")) {
+      if (map.get("hover_feature") == feature && !layer.get("_tooltip_mov")) {
         return;
       } //console.log(layer.get("id"),layer.get("_tooltip"))
 
@@ -40686,8 +40716,6 @@ var invoke_tooltips = function invoke_tooltips(map, e) {
         tooltip_overlay_nomov.setPosition(undefined);
         tooltip_overlay_mov.setPosition(undefined); //tooltipelement.classList.remove("show")
       }
-
-      map.hover_feature = feature;
     } else {
       tooltip_overlay_nomov.setPosition(undefined);
       tooltip_overlay_mov.setPosition(undefined); //tooltipelement.classList.remove("show")
@@ -40697,7 +40725,12 @@ var invoke_tooltips = function invoke_tooltips(map, e) {
     tooltip_overlay_nomov.setPosition(undefined);
     tooltip_overlay_mov.setPosition(undefined); //tooltipelement.classList.remove("show")
 
-    map.hover_feature = undefined;
+    var feature_ya_guardada = map.get("hover_feature");
+
+    if (feature_ya_guardada) {
+      feature_ya_guardada.set("_hightlight", false);
+    } //map.set("hover_feature", undefined);
+
   }
 };
 // CONCATENATED MODULE: ./src/components/map/_invokeClicks.js
@@ -45005,17 +45038,18 @@ var _json2olstyle_serializedStyleIfHighlight = function serializedStyleIfHighlig
 };
 
 var _json2olstyle_prepareSimplePointVectors = function prepareSimplePointVectors(targetStyle, sourceStyle) {
-  if ("circle" in targetStyle.style) {
+  //console.log(targetStyle,sourceStyle)
+  if ("circle" in targetStyle.style && "_simple_point" in sourceStyle.style) {
     targetStyle.style["circle"] = _objectSpread2(_objectSpread2({}, targetStyle.style["circle"]), sourceStyle.style["_simple_point"]);
     return;
   }
 
-  if ("square" in targetStyle.style) {
+  if ("square" in targetStyle.style && "_simple_point" in sourceStyle.style) {
     targetStyle.style["square"] = _objectSpread2(_objectSpread2({}, targetStyle.style["square"]), sourceStyle.style["_simple_point"]);
     return;
   }
 
-  if ("triangle" in targetStyle.style) {
+  if ("triangle" in targetStyle.style && "_simple_point" in sourceStyle.style) {
     targetStyle.style["triangle"] = _objectSpread2(_objectSpread2({}, targetStyle.style["triangle"]), sourceStyle.style["_simple_point"]);
     return;
   }
@@ -45114,6 +45148,10 @@ var DEFAULT_STROKE_COLOR = "white";
       type: Boolean,
       default: true
     },
+    realceAlPasarMouse: {
+      type: Boolean,
+      default: false
+    },
     estiloCapa: {
       type: [Object, Function],
       default: function _default() {
@@ -45186,12 +45224,15 @@ var DEFAULT_STROKE_COLOR = "white";
       if (typeof vm.VM_mapStyle == "function") {
         style = function style(feature) {
           var serializes = fixSerializedStyleIfIncomplete(vm.VM_mapStyle(feature));
-          serializes = feature.get("_hightlight") == true ? _json2olstyle_serializedStyleIfHighlight(serializes, vm.estiloRealce) : serializes;
+          var estilo_realce = fixSerializedStyleIfIncomplete(vm.estiloRealce);
+          serializes = feature.get("_hightlight") == true ? _json2olstyle_serializedStyleIfHighlight(serializes, estilo_realce) : serializes;
           var olstyles = _json2olstyle(serializes)["style"];
           return olstyles;
         };
       } else {
         var serializes = fixSerializedStyleIfIncomplete(vm.VM_mapStyle); //let geometry_type = this.olLayer.getSource().getFeatures()[0].getGeometry().getType()
+
+        /******************************************************************************** */
         //console.log("//AQUI VERIFICAR TAMBIEN QUE SHAPE SE VA A LA LEYENDA",serializes)
 
         if (this.VM_geometryType.includes("Point")) {
@@ -45212,7 +45253,8 @@ var DEFAULT_STROKE_COLOR = "white";
         }
 
         style = function style(feature) {
-          var serializes2 = feature.get("_hightlight") == true ? _json2olstyle_serializedStyleIfHighlight(serializes, vm.estiloRealce) : serializes;
+          var estilo_realce = fixSerializedStyleIfIncomplete(vm.estiloRealce);
+          var serializes2 = feature.get("_hightlight") == true ? _json2olstyle_serializedStyleIfHighlight(serializes, estilo_realce) : serializes;
           var olstyles = _json2olstyle(serializes2)["style"];
           return olstyles;
         };
@@ -67340,6 +67382,7 @@ var source_Vector = __webpack_require__("5831");
       this.olLayer = new Vector["a" /* default */]({
         source: vectorSource
       });
+      this.olLayer.set("_realce_hover", this.realceAlPasarMouse);
 
       if (this.VM_is_classified) {
         if (vectorSource.getFeatures().length > 0) {
