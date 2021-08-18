@@ -42,6 +42,10 @@ export default{
             type: Boolean,
             default:true
         },
+        realceAlPasarMouse:{
+            type: Boolean,
+            default:false
+        },
         estiloCapa:{
             type: [Object,Function],
             default:function(){
@@ -110,7 +114,8 @@ export default{
             if (typeof vm.VM_mapStyle == "function"){
                 style= function(feature){
                     let serializes= fixSerializedStyleIfIncomplete( vm.VM_mapStyle(feature) )
-                    serializes = feature.get("_hightlight") == true ? serializedStyleIfHighlight(serializes,vm.estiloRealce): serializes ;
+                    const estilo_realce = fixSerializedStyleIfIncomplete(vm.estiloRealce)
+                    serializes = feature.get("_hightlight") == true ? serializedStyleIfHighlight(serializes,estilo_realce): serializes ;
                     let olstyles=generateOlStyle(serializes)["style"]
                     return olstyles
                 }
@@ -118,6 +123,7 @@ export default{
                 
                 let serializes= fixSerializedStyleIfIncomplete( vm.VM_mapStyle )
                 //let geometry_type = this.olLayer.getSource().getFeatures()[0].getGeometry().getType()
+                /******************************************************************************** */
                 //console.log("//AQUI VERIFICAR TAMBIEN QUE SHAPE SE VA A LA LEYENDA",serializes)
                 if(this.VM_geometryType.includes("Point") ){
 
@@ -136,7 +142,8 @@ export default{
                 
                 style= function(feature){
                     
-                    let serializes2 = feature.get("_hightlight") == true ? serializedStyleIfHighlight(serializes,vm.estiloRealce): serializes ;
+                    const estilo_realce = fixSerializedStyleIfIncomplete(vm.estiloRealce)
+                    let serializes2 = feature.get("_hightlight") == true ? serializedStyleIfHighlight(serializes,estilo_realce): serializes ;
                     let olstyles=generateOlStyle(serializes2)["style"]
                     
                     

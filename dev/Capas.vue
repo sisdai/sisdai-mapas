@@ -20,11 +20,21 @@
                         colores:'Reds',
                         clases:6
                     }"
+                    :realceAlPasarMouse="true"
+                    :estilo-realce="{
+                        stroke:{color:'green',width:5},
+                        zIndex:3,
+                    }"
                     :contenido-tooltip="f=>f['personal_salud']"
                     url="https://dadsigvisgeo.conacyt.mx/geoserver/vacunacion/wms?service=WMS&version=1.1.0&request=GetMap&layers=vacunacion:estados&bbox=-118.365119934082%2C14.5320978164673%2C-86.7104034423828%2C32.7186546325684&width=768&height=441&srs=EPSG%3A404000&format=geojson" />
                     <dai-capa-geojson 
                     id="estados12"
                     :visible="false"
+                    :estilo-realce="{
+                        stroke:{color:'red',width:5},
+                        zIndex:3,
+                    }"
+                    :realceAlPasarMouse="true"
                     url="https://dadsigvisgeo.conacyt.mx/geoserver/vacunacion/wms?service=WMS&version=1.1.0&request=GetMap&layers=vacunacion:estados&bbox=-118.365119934082%2C14.5320978164673%2C-86.7104034423828%2C32.7186546325684&width=768&height=441&srs=EPSG%3A404000&format=geojson" />
                     <dai-capa-geojson 
                     id="estados13"
