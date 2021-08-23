@@ -39837,12 +39837,12 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
 var es_function_name = __webpack_require__("b0c0");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"41eeeddf-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/map.vue?vue&type=template&id=86466136&
-var mapvue_type_template_id_86466136_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"dai-map-container"},[_c('div',{ref:"map",staticClass:"dai-map ",class:[_vm.colorControlesInvertidos ? 'inverted-controls': 'default-controls']}),_vm._t("default"),_c('div',{ref:"tooltip",staticClass:"ol-tooltip ol-tooltip-bottom"},[_c('div',{staticClass:"content"})]),_c('div',{ref:"tooltipmov",staticClass:"ol-tooltipmov "},[_c('div',{staticClass:"content"})]),_c('div',{ref:"popup",staticClass:"ol-popup"},[_c('div',{staticClass:"botones"},[_c('a',{staticClass:"boton-cerrar",on:{"click":_vm._cerrarPopup}},[_vm._v("x")])]),_c('div',{staticClass:"content"})])],2)}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"41eeeddf-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/map.vue?vue&type=template&id=2fdc3854&
+var mapvue_type_template_id_2fdc3854_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"dai-map-container"},[_c('div',{ref:"map",staticClass:"dai-map ",class:[_vm.colorControlesInvertidos ? 'inverted-controls': 'default-controls']}),_vm._t("default"),_c('div',{ref:"tooltip",staticClass:"ol-tooltip ol-tooltip-bottom"},[_c('div',{staticClass:"content"})]),_c('div',{ref:"tooltipmov",staticClass:"ol-tooltipmov "},[_c('div',{staticClass:"content"})]),_c('div',{ref:"popup",staticClass:"ol-popup"},[_c('div',{staticClass:"botones"},[_c('a',{staticClass:"boton-cerrar",on:{"click":_vm._cerrarPopup}},[_vm._v("x")])]),_c('div',{staticClass:"content"})])],2)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/map/map.vue?vue&type=template&id=86466136&
+// CONCATENATED MODULE: ./src/components/map/map.vue?vue&type=template&id=2fdc3854&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.number.constructor.js
 var es_number_constructor = __webpack_require__("a9e3");
@@ -41081,7 +41081,30 @@ var invoke_clicks = function invoke_clicks(map, e, component) {
         }
       }, 500);
     },
+    resetMap: function resetMap() {
+      this.external_force_reset_view();
+
+      if (this.VM_highlight_feature) {
+        this.VM_highlight_feature.set("_hightlight", false);
+      }
+
+      if (this.VM_has_niveles) {
+        this.setNivel(this.niveles[0]);
+      }
+
+      this.$emit("reset_view", this.map);
+    },
     external_force_reset_view: function external_force_reset_view() {
+      if (this.VM_highlight_feature) {
+        this.VM_highlight_feature.set("_hightlight", false);
+      }
+
+      if (this.VM_has_niveles) {
+        this.setNivel(this.niveles[0]);
+      }
+
+      this.$emit("reset_view", this.map);
+
       if (this.VM_reset_view.type == "extent") {
         this.map.getView().fit(this.VM_reset_view.value, {
           duration: 500,
@@ -41244,7 +41267,7 @@ function normalizeComponent (
 
 var component = normalizeComponent(
   map_mapvue_type_script_lang_js_,
-  mapvue_type_template_id_86466136_render,
+  mapvue_type_template_id_2fdc3854_render,
   staticRenderFns,
   false,
   null,
