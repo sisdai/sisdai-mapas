@@ -8,7 +8,7 @@ import ss from "./_cortes_naturales.js"
  */
 const dataClassification = (data,classType,clases,colors,sizes,targetProperty,
     geomType,defaultShapeType="circle",acomodoCategorias=[], clasificacion_custom=[],
-    clasesVisiblesInicial=[])=>{
+    clasesVisiblesInicial=[],clasesEtiquetasLimitesDecimales=0)=>{
     let valores_clases = []
     //aqui ir agregando las demas clasificaciones
     valores_clases = classType==="categorias" ? qualitativeClassification(data) : valores_clases;
@@ -34,10 +34,32 @@ const dataClassification = (data,classType,clases,colors,sizes,targetProperty,
     }else{
         valueRamp = sizes;
     }
-    let labels = classType === "categorias" ? valores_clases.map(item=>item) 
-        : valores_clases.map((numeric_item,i)=>{
-            let label = `${Math.floor((numeric_item[0]===0||i===0)?numeric_item[0]:numeric_item[0]+1)
-            .toLocaleString("en")} a ${Math.floor(numeric_item[1]).toLocaleString("en")}`
+    let labels = classType === "categorias" 
+        ? valores_clases.map(item=>item) 
+        : valores_clases.map((numeric_item,i,originalArray)=>{
+            //dar formato a los labels si son numericas, 
+            //si son iguales, no deberia haber el a
+            if(numeric_item[0] === numeric_item[1]){
+                return numeric_item[0].toLocaleString("en")
+            }
+            // si es el primero que inicia los rangos
+            // o si esta despues de un valor que no es un rango
+            // no deberia sumar uno a la clase inicial
+            let sumar1unidad = i > 0;
+            if(originalArray[i-1] ){
+                if(originalArray[i-1][0] === originalArray[i-1][1]){
+                    sumar1unidad = false;
+                }
+            }
+            
+            
+            const numero_to_inicial = sumar1unidad 
+                ? LABEL_numeroendecimalmas1unidad(numeric_item[0],clasesEtiquetasLimitesDecimales)
+                : LABEL_numeroendecimal(numeric_item[0],clasesEtiquetasLimitesDecimales)
+            const numero_to_final = LABEL_numeroendecimal(numeric_item[1],clasesEtiquetasLimitesDecimales)
+            
+            
+            let label = `${numero_to_inicial.toLocaleString("en")} a ${numero_to_final.toLocaleString("en")}`
             return label
         })
     let cortes = valores_clases.map( (item,i)=>{
@@ -177,6 +199,18 @@ const getParsedColorRamp = (colors, steps)=>{
     }
 
     return colors
+}
+
+
+function LABEL_numeroendecimalmas1unidad(numero,decimales){
+    const log1 = 10**decimales;
+  
+    return Math.floor((numero *log1)+1) / log1
+}
+function LABEL_numeroendecimal(numero,decimales){
+    const log1 = 10**decimales;
+  
+    return Math.floor((numero *log1)) / log1
 }
 
 export {dataClassification}
