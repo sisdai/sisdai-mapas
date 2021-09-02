@@ -192,15 +192,18 @@ export default{
                     rule_cortes.cortes.forEach((corte,h,originalArray)=>{
                         let value = corte.val
                         if(Array.isArray(value)){
-                            let quitar1unidad = h === 0;
-                            if(originalArray[i-1] ){
+                            let quitar1unidad = h === 0 ? (value[0] === value[1] ? false: true): false ;
+                            if(originalArray[h-1] ){
                                 if(originalArray[h-1].val[0] === originalArray[h-1].val[1]){
                                     quitar1unidad = true
                                 }
                             }
                             let min_value = quitar1unidad ? value[0]-1 : value[0];
+                            
                             if(feature.getProperties()[rule.columna] > min_value 
                                 && feature.getProperties()[rule.columna]<= value[1]){
+                                    
+
                                     if(rule.propiedadObjetivo=="relleno"){
                                         if(geomType.includes("Polygon") ) { default_style.style["fill"]["color"] = corte.v  }
                                         if(geomType.includes("Point") ) { default_style.style[this.VM_default_shape]["fill"]["color"] = corte.v  }
@@ -212,6 +215,19 @@ export default{
                                         if(geomType.includes("LineString") ) { default_style.style["stroke"]["width"] = corte.v  }
                                     }
                                 
+                            }
+
+                            if(value[0] === value[1] && feature.getProperties()[rule.columna]=== value[0]){
+                                if(rule.propiedadObjetivo=="relleno"){
+                                    if(geomType.includes("Polygon") ) { default_style.style["fill"]["color"] = corte.v  }
+                                    if(geomType.includes("Point") ) { default_style.style[this.VM_default_shape]["fill"]["color"] = corte.v  }
+                                    if(geomType.includes("LineString") ) { default_style.style["stroke"]["color"] = corte.v  }
+
+                                }else{
+                                    //es un size
+                                    if(geomType.includes("Point") ) { default_style.style[this.VM_default_shape]["radius"] = corte.v  }
+                                    if(geomType.includes("LineString") ) { default_style.style["stroke"]["width"] = corte.v  }
+                                }
                             }
 
                         }else{
