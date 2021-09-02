@@ -189,10 +189,16 @@ export default{
                 
                 this.VM_rules.forEach((rule,i)=>{
                     let rule_cortes = this.VM_rules_cortes[i]
-                    rule_cortes.cortes.forEach((corte,h)=>{
+                    rule_cortes.cortes.forEach((corte,h,originalArray)=>{
                         let value = corte.val
                         if(Array.isArray(value)){
-                            let min_value = h==0?value[0]-1 : value[0];
+                            let quitar1unidad = h === 0;
+                            if(originalArray[i-1] ){
+                                if(originalArray[h-1].val[0] === originalArray[h-1].val[1]){
+                                    quitar1unidad = true
+                                }
+                            }
+                            let min_value = quitar1unidad ? value[0]-1 : value[0];
                             if(feature.getProperties()[rule.columna] > min_value 
                                 && feature.getProperties()[rule.columna]<= value[1]){
                                     if(rule.propiedadObjetivo=="relleno"){
