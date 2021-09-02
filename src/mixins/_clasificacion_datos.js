@@ -213,4 +213,6 @@ function LABEL_numeroendecimal(numero,decimales){
     return Math.floor((numero *log1)) / log1
 }
 
-export {dataClassification}
+
+
+export {dataClassification, }
