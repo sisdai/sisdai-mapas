@@ -231,14 +231,6 @@ export default {
             this.$emit("reset_view",this.map)
         },
         external_force_reset_view:function(){
-            if (this.VM_highlight_feature) {
-                this.VM_highlight_feature.set("_hightlight", false);
-            }
-            if(this.VM_has_niveles){
-                this.setNivel(this.niveles[0])
-            }
-            this.$emit("reset_view",this.map);
-
             if(this.VM_reset_view.type == "extent"){
                 this.map.getView().fit(this.VM_reset_view.value,{duration:500,padding:[10,10,10,10]})
             }else{
