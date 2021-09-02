@@ -67272,11 +67272,19 @@ var defaultsValuesRule = {
 
         _this4.VM_rules.forEach(function (rule, i) {
           var rule_cortes = _this4.VM_rules_cortes[i];
-          rule_cortes.cortes.forEach(function (corte, h) {
+          rule_cortes.cortes.forEach(function (corte, h, originalArray) {
             var value = corte.val;
 
             if (Array.isArray(value)) {
-              var min_value = h == 0 ? value[0] - 1 : value[0];
+              var quitar1unidad = h === 0;
+
+              if (originalArray[i - 1]) {
+                if (originalArray[h - 1].val[0] === originalArray[h - 1].val[1]) {
+                  quitar1unidad = true;
+                }
+              }
+
+              var min_value = quitar1unidad ? value[0] - 1 : value[0];
 
               if (feature.getProperties()[rule.columna] > min_value && feature.getProperties()[rule.columna] <= value[1]) {
                 if (rule.propiedadObjetivo == "relleno") {
