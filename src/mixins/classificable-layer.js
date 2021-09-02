@@ -16,7 +16,8 @@ const defaultsValuesRule = {
     tituloVariable: "__columnname__",
     acomodoCategorias:[],
     clasificacionPersonalizada: [],
-    clasesVisiblesInicial:[]
+    clasesVisiblesInicial:[],
+    clasesEtiquetasLimitesDecimales:0,  // no muestra ningun decimal para las etiquetas
 };
 
 export default{
@@ -119,7 +120,7 @@ export default{
                 let cortes =  dataClassification(todos_valores,rule.clasificacion, 
                     rule.clases,rule.colores,rule.proporciones,rule.propiedadObjetivo,
                     this.VM_geometryType,this.VM_default_shape,rule.acomodoCategorias,
-                    rule.clasificacionPersonalizada,rule.clasesVisiblesInicial)
+                    rule.clasificacionPersonalizada,rule.clasesVisiblesInicial,rule.clasesEtiquetasLimitesDecimales)
                 
                 cortes.args["column"] = rule.columna;
                 cortes.args["variableTitle"] = rule.tituloVariable ==="__columnname__" ? rule.columna : rule.tituloVariable;
