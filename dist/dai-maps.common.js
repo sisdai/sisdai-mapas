@@ -66875,6 +66875,7 @@ var _clasificacion_datos_dataClassification = function dataClassification(data, 
   var acomodoCategorias = arguments.length > 8 && arguments[8] !== undefined ? arguments[8] : [];
   var clasificacion_custom = arguments.length > 9 && arguments[9] !== undefined ? arguments[9] : [];
   var clasesVisiblesInicial = arguments.length > 10 && arguments[10] !== undefined ? arguments[10] : [];
+  var clasesEtiquetasLimitesDecimales = arguments.length > 11 && arguments[11] !== undefined ? arguments[11] : 0;
   var valores_clases = []; //aqui ir agregando las demas clasificaciones
 
   valores_clases = classType === "categorias" ? _clasificacion_datos_qualitativeClassification(data) : valores_clases;
@@ -66901,8 +66902,27 @@ var _clasificacion_datos_dataClassification = function dataClassification(data, 
 
   var labels = classType === "categorias" ? valores_clases.map(function (item) {
     return item;
-  }) : valores_clases.map(function (numeric_item, i) {
-    var label = "".concat(Math.floor(numeric_item[0] === 0 || i === 0 ? numeric_item[0] : numeric_item[0] + 1).toLocaleString("en"), " a ").concat(Math.floor(numeric_item[1]).toLocaleString("en"));
+  }) : valores_clases.map(function (numeric_item, i, originalArray) {
+    //dar formato a los labels si son numericas, 
+    //si son iguales, no deberia haber el a
+    if (numeric_item[0] === numeric_item[1]) {
+      return numeric_item[0].toLocaleString("en");
+    } // si es el primero que inicia los rangos
+    // o si esta despues de un valor que no es un rango
+    // no deberia sumar uno a la clase inicial
+
+
+    var sumar1unidad = i > 0;
+
+    if (originalArray[i - 1]) {
+      if (originalArray[i - 1][0] === originalArray[i - 1][1]) {
+        sumar1unidad = false;
+      }
+    }
+
+    var numero_to_inicial = sumar1unidad ? LABEL_numeroendecimalmas1unidad(numeric_item[0], clasesEtiquetasLimitesDecimales) : LABEL_numeroendecimal(numeric_item[0], clasesEtiquetasLimitesDecimales);
+    var numero_to_final = LABEL_numeroendecimal(numeric_item[1], clasesEtiquetasLimitesDecimales);
+    var label = "".concat(numero_to_inicial.toLocaleString("en"), " a ").concat(numero_to_final.toLocaleString("en"));
     return label;
   });
   var cortes = valores_clases.map(function (item, i) {
@@ -67043,6 +67063,16 @@ var _clasificacion_datos_getParsedColorRamp = function getParsedColorRamp(colors
   return colors;
 };
 
+function LABEL_numeroendecimalmas1unidad(numero, decimales) {
+  var log1 = Math.pow(10, decimales);
+  return Math.floor(numero * log1 + 1) / log1;
+}
+
+function LABEL_numeroendecimal(numero, decimales) {
+  var log1 = Math.pow(10, decimales);
+  return Math.floor(numero * log1) / log1;
+}
+
 
 // CONCATENATED MODULE: ./src/mixins/classificable-layer.js
 
@@ -67074,7 +67104,9 @@ var defaultsValuesRule = {
   tituloVariable: "__columnname__",
   acomodoCategorias: [],
   clasificacionPersonalizada: [],
-  clasesVisiblesInicial: []
+  clasesVisiblesInicial: [],
+  clasesEtiquetasLimitesDecimales: 0 // no muestra ningun decimal para las etiquetas
+
 };
 /* harmony default export */ var classificable_layer = ({
   props: {
@@ -67167,7 +67199,7 @@ var defaultsValuesRule = {
         var todos_valores = features.map(function (f) {
           return rule.clasificacion === "categorias" || rule.clasificacion === "personalizada" ? f.getProperties()[rule.columna] : parseFloat(f.getProperties()[rule.columna]);
         });
-        var cortes = _clasificacion_datos_dataClassification(todos_valores, rule.clasificacion, rule.clases, rule.colores, rule.proporciones, rule.propiedadObjetivo, _this2.VM_geometryType, _this2.VM_default_shape, rule.acomodoCategorias, rule.clasificacionPersonalizada, rule.clasesVisiblesInicial);
+        var cortes = _clasificacion_datos_dataClassification(todos_valores, rule.clasificacion, rule.clases, rule.colores, rule.proporciones, rule.propiedadObjetivo, _this2.VM_geometryType, _this2.VM_default_shape, rule.acomodoCategorias, rule.clasificacionPersonalizada, rule.clasesVisiblesInicial, rule.clasesEtiquetasLimitesDecimales);
         cortes.args["column"] = rule.columna;
         cortes.args["variableTitle"] = rule.tituloVariable === "__columnname__" ? rule.columna : rule.tituloVariable;
 
