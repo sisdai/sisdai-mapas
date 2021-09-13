@@ -13,7 +13,7 @@
                 
                 <dai-capa-geojson 
                 id="estados2" 
-                url="/sample-edos.geojson"
+                :url="$withBase('/sample-edos.geojson')"
                 :reglas-estilo-capa="{
                     clasificacion:'linear',
                     columna : 'pob18ymas',

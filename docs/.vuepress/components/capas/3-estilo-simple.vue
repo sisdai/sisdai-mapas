@@ -8,7 +8,7 @@
                 <dai-capa-geojson 
                 id="estados_poligonos"
                 titulo="Estados, poligonos"
-                url="/sample-edos.geojson"
+                :url="$withBase('/sample-edos.geojson')"
                 :estilo-capa="{
                     fill:{color:'#a0a0f7'},
                     stroke:{ color: 'black'}
@@ -17,7 +17,7 @@
                 <dai-capa-geojson 
                 id="estados_centroides"
                 titulo="Estados, centroides"
-                url="/centroides-estados.geojson"
+                :url="$withBase('/centroides-estados.geojson')"
                 :estilo-capa="{
                     circle:{
                         fill:{color:'red'},

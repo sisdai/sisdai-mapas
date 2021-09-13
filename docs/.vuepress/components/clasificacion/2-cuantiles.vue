@@ -13,7 +13,7 @@
                 
                 <dai-capa-geojson 
                 id="estados2" 
-                url="/centroides-estados.geojson"
+                :url="$withBase('/centroides-estados.geojson')"
                 :reglas-estilo-capa="{
                     clasificacion:'cuantiles',
                     columna : 'estados_pob18ymas',

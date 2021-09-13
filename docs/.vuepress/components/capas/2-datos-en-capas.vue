@@ -7,7 +7,7 @@
                 
                 <dai-capa-geojson 
                 id="estados_poligonos"
-                url="/sample-edos.geojson"
+                :url="$withBase('/sample-edos.geojson')"
                 />
                 <dai-capa-geojson 
                 id="estados_centroides"

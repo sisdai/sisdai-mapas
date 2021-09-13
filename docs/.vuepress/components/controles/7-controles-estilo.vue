@@ -1,6 +1,6 @@
 <template>
     <div class="another-map">
-        <dai-tarjeta-contenedor-mapa :colapsada="false">
+        <dai-tarjeta-contenedor-mapa :colapsada="false" altura-colapsada="70vh">
             <template v-slot:header>
                 <dai-selector-mapa class="control-large" v-width-control="'100%'">
                     <option value="o">Titulo de visualizacion dropdown</option>
@@ -18,7 +18,7 @@
             >
                 <dai-capa-geojson 
                 id="estados" 
-                url="/sample-edos.geojson"
+                :url="$withBase('/sample-edos.geojson')"
                 :reglas-estilo-capa="{
                     clasificacion:'cuantiles',
                     columna:'pob18ymas',
@@ -29,7 +29,7 @@
 
                 <dai-capa-geojson 
                 id="estados_centroides"
-                url="/centroides-estados.geojson"
+                :url="$withBase('/centroides-estados.geojson')"
                 :reglas-estilo-capa="[
                     {
                         clasificacion:'categorias',
@@ -51,13 +51,13 @@
                 <dai-capa-geojson 
                 id="puntos_simple"
                 titulo="Titulo para puntos simples 1"
-                url="/centroides-estados.geojson"
+                :url="$withBase('/centroides-estados.geojson')"
                 :estilo-capa="{circle:{fill:{color:'orange'},radius:4}}"
                 />
                 <dai-capa-geojson 
                 id="puntos_simple2"
                 titulo="Titulo para puntos simples 2"
-                url="/centroides-estados.geojson"
+                :url="$withBase('/centroides-estados.geojson')"
                 :estilo-capa="{circle:{fill:{color:'black'},radius:2}}"
                 />
 

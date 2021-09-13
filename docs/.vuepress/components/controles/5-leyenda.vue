@@ -14,16 +14,16 @@
             >
                 <dai-capa-geojson 
                 id="estados" 
-                url="/sample-edos.geojson"
+                :url="$withBase('/sample-edos.geojson')"
                 />
                 <dai-capa-geojson 
                 id="estados2" 
                 titulo="Estados con titulo"
-                url="/centroides-estados.geojson"
+                :url="$withBase('/centroides-estados.geojson')"
                 />
                 <dai-capa-geojson 
                 id="estados3" 
-                url="/centroides-estados.geojson"
+                :url="$withBase('/centroides-estados.geojson')"
                 :estilo-capa="{circle:{fill:{color:'purple'},radius:3}}"
                 />
             </dai-mapa>

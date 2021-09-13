@@ -14,7 +14,7 @@
                 <dai-capa-geojson 
                 id="estados2" 
                 titulo="Estados con titulo"
-                url="/centroides-estados.geojson"
+                :url="$withBase('/centroides-estados.geojson')"
                 :reglas-estilo-capa="{
                     clasificacion:'categorias',
                     columna : 'estados_grado_marg',

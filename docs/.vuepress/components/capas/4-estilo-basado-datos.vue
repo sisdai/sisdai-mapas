@@ -7,7 +7,7 @@
                 
                 <dai-capa-geojson 
                 id="estados_poligonos"
-                url="/sample-edos.geojson"
+                :url="$withBase('/sample-edos.geojson')"
                 :reglas-estilo-capa="{
                     clasificacion:'cuantiles',
                     columna:'pob18ymas',
@@ -17,7 +17,7 @@
                 />
                 <dai-capa-geojson 
                 id="estados_centroides"
-                url="/centroides-estados.geojson"
+                :url="$withBase('/centroides-estados.geojson')"
                 :reglas-estilo-capa="[
                     {
                         clasificacion:'categorias',

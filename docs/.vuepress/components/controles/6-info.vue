@@ -11,7 +11,7 @@
             >
                 <dai-capa-geojson 
                 id="estados" 
-                url="/sample-edos.geojson"
+                :url="$withBase('/sample-edos.geojson')"
                 @click_feature="click_estados"
                 />
 

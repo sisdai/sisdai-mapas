@@ -241,7 +241,7 @@ Hay elementos dentro del mapa que no necesariamente son componentes como titulos
 <controles-7-controles-estilo />
 
 ```html
-<dai-tarjeta-contenedor-mapa :colapsada="false">
+<dai-tarjeta-contenedor-mapa :colapsada="false" altura-colapsada="70vh">
     <template v-slot:header>
         <dai-selector-mapa class="control-large" v-width-control="'100%'">
             <option value="o">Titulo de visualizacion dropdown</option>

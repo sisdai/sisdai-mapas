@@ -56,7 +56,7 @@
                 <dai-capa-geojson 
                 id="capa_estados"
                 :z-index="capa_estados_zindex"
-                url="/sample-edos.geojson"
+                :url="$withBase('/sample-edos.geojson')"
                 />
 
                 <dai-capa-xyz-osm 
