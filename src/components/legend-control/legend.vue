@@ -128,7 +128,7 @@ export default {
 
 <style lang="scss" scoped>
     p.title{
-        font-size: 12px;
+        font-size: 14px;
         font-weight: 600;
         margin-block-end: .5em;
     }
@@ -146,7 +146,8 @@ export default {
             white-space: nowrap;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 11px;
+            font-size: 12px;
+            font-family: "Montserrat";
         }
     }
     

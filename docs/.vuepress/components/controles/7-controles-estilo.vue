@@ -62,7 +62,7 @@
                 />
 
                 <dai-info-mapa>
-                    <p><strong>Valores totales seleccionados</strong></p>
+                    <h4>Valores totales seleccionados</h4>
                     <p>Variable 1: 100,000,000,000<br>Variable 2: 100,000,000,000</p>
                 </dai-info-mapa>
             </dai-mapa>
@@ -72,7 +72,12 @@
                 para="estados" 
                 :mostrar-boton-alterna-todos="true" 
                 v-width-control="'100%'" />
-                <dai-opacidad-mapa capa-id="estados" v-width-control="'100%'" />
+                <!--Para poner dentro del titulo del control de opacidad el porcentaje-->
+                <dai-opacidad-mapa 
+                capa-id="estados" 
+                v-width-control="'100%'" 
+                :value.sync="opacidad_capa" 
+                :titulo="`Opacidad ${(opacidad_capa*100).toLocaleString('en-US')}%`"/>
                 <hr class="dai-map-separator ">
                     
                 <dai-leyenda-mapa  
@@ -106,3 +111,13 @@
         
     </div>
 </template>
+
+<script>
+export default {
+    data: function(){
+        return {
+            opacidad_capa:1
+        }
+    }
+}
+</script>

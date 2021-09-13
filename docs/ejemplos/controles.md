@@ -313,7 +313,12 @@ Hay elementos dentro del mapa que no necesariamente son componentes como titulos
         para="estados" 
         :mostrar-boton-alterna-todos="true" 
         v-width-control="'100%'" />
-        <dai-opacidad-mapa capa-id="estados" v-width-control="'100%'" />
+        <!--Para poner dentro del titulo del control de opacidad el porcentaje-->
+        <dai-opacidad-mapa 
+        capa-id="estados" 
+        v-width-control="'100%'" 
+        :value.sync="opacidad_capa" 
+        :titulo="`Opacidad ${(opacidad_capa*100).toLocaleString('en-US')}%`"/>
         <hr class="dai-map-separator ">
             
         <dai-leyenda-mapa  
@@ -344,4 +349,16 @@ Hay elementos dentro del mapa que no necesariamente son componentes como titulos
         <button class="dai-map-button download">Descargar datos </button>
     </template>
 </dai-tarjeta-contenedor-mapa>
+```
+
+```javascript
+<script>
+export default {
+    data: function(){
+        return {
+            opacidad_capa:1
+        }
+    }
+}
+</script>
 ```

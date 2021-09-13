@@ -154,8 +154,8 @@ export default {
     }
     .dai-map-container{
         
-        margin-left: -.5rem;
-        margin-right: -.5rem;
+        margin-left: -.3rem;
+        margin-right: -.3rem;
         margin-top: .5rem;
         
         margin-bottom: .5rem;
@@ -188,12 +188,12 @@ export default {
             }
         }
         .collapsable-button{
-            //width: 100%;
-            width: calc(100% + .6rem);
+            width: 100%;
+            //width: calc(100% + .6rem);
             background-color: var(--control-bg-color-accent);
             color: var(--control-color-accent);
-            margin-left: -.5rem;
-            margin-right: -.5rem;
+            margin-left: -.3rem;
+            margin-right: -.3rem;
             border-style: none;
             border-radius: 0 0 8px 8px;
             cursor: pointer;

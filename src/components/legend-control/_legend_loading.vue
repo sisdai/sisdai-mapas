@@ -15,5 +15,7 @@ export default {
 <style lang="scss" scoped>
     .texto-cargando{
         font-style: italic;
+        font-size: 12px;
+        line-height: 1.16em;
     }
 </style>
