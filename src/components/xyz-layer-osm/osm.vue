@@ -1,5 +1,5 @@
 <script>
-import { Tile as TileLayer} from 'ol/layer';
+import TileLayer from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
 
 import layer from "../../mixins/layer"

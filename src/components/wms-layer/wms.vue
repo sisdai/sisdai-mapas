@@ -1,5 +1,5 @@
 <script>
-import { Image as ImageLayer} from 'ol/layer';
+import ImageLayer from 'ol/layer/Image';
 import ImageWMS from 'ol/source/ImageWMS';
 
 import layer from "../../mixins/layer";
