@@ -41,6 +41,19 @@ Tener en cuenta que si la propiedad `extension` se define, esta propiedad se igo
 
 La extensión de coordenadas maximas y minimas para centrar el mapa. Debe contar con la siguiente estrucura `[minx, miny, maxx, maxy]`.
 
+#### max-zoom
+
+- Type: `Number`
+- Default: `20`
+
+Nivel de acercamiento maximo del mapa, va de *0* a *28* donde *0* es el nivel donde se ve todo el mundo y *28* es el nivel mas cerca.
+
+#### min-zoom
+
+- Type: `Number`
+- Default: `1`
+
+Nivel de acercamiento maximo del mapa, va de *0* a *28* donde *0* es el nivel donde se ve todo el mundo y *28* es el nivel mas cerca.
 
 ### Eventos
 #### @click

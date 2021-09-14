@@ -44,3 +44,8 @@ Para mayor precisión en el acercamiento a una zona en algunos casos convendra u
 ```
 
 <uso-basico-3-extension/>
+
+
+## Botones y controles dentro del mapa invertidos
+
+<uso-basico-4-controles-invertidos/>
