@@ -1,6 +1,6 @@
 {
   "name": "dai-maps",
-  "version": "0.1.13",
+  "version": "0.2.0",
   "private": true,
   "files": [
     "dist/*"
@@ -19,23 +19,23 @@
     "dev-replica-diseno": "vue-cli-service serve  dev/ReplicaDiseno.js"
   },
   "dependencies": {
-    "core-js": "3.17.3",
-    "ol": "6.5.0",
-    "simple-statistics": "7.7.0",
-    "vue": "2.6.14"
+    "core-js": "^3.17.3",
+    "ol": "^6.7.0",
+    "simple-statistics": "^7.7.0",
+    "vue": "^2.6.14"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "4.5.13",
-    "@vue/cli-plugin-eslint": "4.5.13",
-    "@vue/cli-service": "4.5.13",
-    "babel-eslint": "10.1.0",
-    "d3": "6.7.0",
-    "eslint": "6.7.2",
-    "eslint-plugin-vue": "6.2.2",
-    "node-sass": "4.12.0",
-    "sass-loader": "8.0.2",
-    "vue-template-compiler": "2.6.14",
-    "vuepress": "1.8.2"
+    "@vue/cli-plugin-babel": "^4.5.13",
+    "@vue/cli-plugin-eslint": "^4.5.13",
+    "@vue/cli-service": "^4.5.13",
+    "babel-eslint": "^10.1.0",
+    "d3": "6.5.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^8.0.2",
+    "vue-template-compiler": "^2.6.14",
+    "vuepress": "^1.8.2"
   },
   "eslintConfig": {
     "root": true,
