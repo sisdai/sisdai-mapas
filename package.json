@@ -1,6 +1,6 @@
 {
   "name": "dai-maps",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "private": true,
   "files": [
     "dist/*"
@@ -31,8 +31,8 @@
     "d3": "^6.7.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
-    "node-sass": "^4.12.0",
-    "sass-loader": "^8.0.2",
+    "sass": "^1.40.1",
+    "sass-loader": "^10",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
