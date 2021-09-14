@@ -55,6 +55,48 @@ Nivel de acercamiento maximo del mapa, va de *0* a *28* donde *0* es el nivel do
 
 Nivel de acercamiento maximo del mapa, va de *0* a *28* donde *0* es el nivel donde se ve todo el mundo y *28* es el nivel mas cerca.
 
+#### niveles
+
+- Type: `Array<String>`
+- Default: `[]`
+
+Lista de los niveles que tendra el mapa. Servira para que todo el componente en general tenga un status general de en que nivel esta actualmente el mapa.
+
+Los niveles mas usados son `nacional`,`estatal`,`municipal`, pero puede ser cualquier valor.
+
+#### nivel-actual
+
+- Type: `String`
+- Default: `undefined`
+
+Nivel actual que toma el mapa. Cuando `niveles` esta definido por default toma el valor del primer elemento. El objetivo de esta propiedad es poder asignar rapidamente el varlo de nivel al componente. 
+
+Pensemos en un caso como el siguiente. Al ejecutar el metodo `cambiarDeNivel` el mapa inmediatamente cambiaria de nivel. y con el evento `@cambioNivel` se podra escuchar cuando cambie. Recuerda que el boton reset del mapa regresa al primer nivel, en tal caso sera muy util usar .sync para que se reasigne la variable
+
+```html
+<dai-mapa :niveles="['nacional','estatal']" :nivel-actual.sync="nivel" @cambioNivel="metodoCambioNivel" >
+    ...capas
+</dai-mapa>
+```
+```javascript
+export default {
+    data: function() {
+        return {
+            nivel:"estatal"
+        }
+    },
+    methods:{
+        cambiarDeNivel: function (){
+            this.nivel = "nacional"
+        },
+        metodoCambioNivel: function (){
+            // hacer todo lo que necesitemos 
+        }
+    }
+}
+```
+
+
 ### Eventos
 #### @click
 Reacciona cuando se da click en cualquier parte del mapa. retorna una obecto evento que contiene la coordenada en la que se clickeo. `{coordinate:[x,y],target:...}`

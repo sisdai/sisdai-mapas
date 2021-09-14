@@ -56,7 +56,7 @@ export default {
 .dai-map-info{
     position: absolute;
     top: 5px;
-    left: 3px;
+    left: 0;
     background-color: var(--control-bg-color-accent);
     padding: 3px 3px 3px 5px;
     border-top-right-radius: 5px;

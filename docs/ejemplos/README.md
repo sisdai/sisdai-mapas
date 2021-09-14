@@ -48,4 +48,23 @@ Para mayor precisión en el acercamiento a una zona en algunos casos convendra u
 
 ## Botones y controles dentro del mapa invertidos
 
+Cuando se requiera que los controles internos del mapa tengan el color invertido, con la propiedad `color-controles-invertidos`
+
+```html
+<template>
+    <div class="another-map">
+        <dai-mapa 
+        :extension="[-118.365119934082,14.5320978164673,-86.7104034423828,32.7186546325684]" 
+        :color-controles-invertidos="true"
+        >
+            <dai-capa-xyz-osm/>
+        </dai-mapa>
+    </div>
+    
+</template>
+
+```
+
 <uso-basico-4-controles-invertidos/>
+
+
