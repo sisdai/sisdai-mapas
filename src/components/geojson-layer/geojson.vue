@@ -19,7 +19,7 @@ export default {
             })
             this.olLayer.set("_realce_hover",this.realceAlPasarMouse)
             if(this.VM_is_classified){
-                if(vectorSource.getFeatures().length>0){
+                if(vectorSource.getUrl()===undefined){
                     this._clasificar_v2();
                     this._set_style_class_v2()
                 }else{
@@ -49,6 +49,30 @@ export default {
             
             this._saveAllFeaturesFromSource(vectorSource)
             this._setStyle()
+        }
+    },
+    watch:{
+        datos:function(newDatos){
+            if( newDatos !== undefined && this.olLayer.getSource()!==undefined){
+                
+                let vectorSource = this.olLayer.getSource()
+                let features = new GeoJSON().readFeatures({...newDatos})
+                
+                vectorSource.clear()
+                if(features.length>0){
+
+                    //console.log("se esta escuchando el cambio de datos, BORRAR ESTE LOG")
+                    vectorSource.addFeatures(features);
+                    if(this.VM_is_classified){
+                        this._clasificar_v2();
+                        this._set_style_class_v2()
+                    }
+                }
+                this._saveAllFeaturesFromSource(vectorSource)
+                this._setStyle()
+                
+                
+            }  
         }
     }
 }

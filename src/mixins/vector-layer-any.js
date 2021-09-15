@@ -47,7 +47,7 @@ export default{
             default:false
         },
         estiloCapa:{
-            type: [Object,Function],
+            type: [Object],
             default:function(){
                 return {
                     fill:{
@@ -94,7 +94,7 @@ export default{
     data:function(){
         return {
             VM_mapStyle:undefined,
-            VM_allFeatures:[],
+            VM_allFeatures:"",
             VM_geometryType:"",
             VM_defaultShapePoint:"circle"
         }
@@ -174,7 +174,8 @@ export default{
         },
         _saveAllFeaturesFromSource:function(vectorSource){
             let geojsonFormat = new GeoJSON()
-            if(vectorSource.getFeatures().length>1){
+            //if(vectorSource.getFeatures().length>1){
+            if(vectorSource.getUrl()===undefined){
                 this.VM_allFeatures = geojsonFormat.writeFeatures( vectorSource.getFeatures() )
                 this.VM_geometryType = vectorSource.getFeatures()[0].getGeometry().getType()
                 this.$emit("saved_features",this.VM_allFeatures)

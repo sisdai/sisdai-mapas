@@ -57,6 +57,14 @@ export default {
             this.$emit("legend_info_ready",this.VM_legend_info)
 
         }
+    },
+    watch:{
+        parametros:function(nValue){
+            if(this.olLayer){
+                this.olLayer.getSource().updateParams(nValue)
+            }
+            
+        }
     }   
 }
 </script>

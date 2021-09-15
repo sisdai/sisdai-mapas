@@ -89,13 +89,19 @@ export default{
     watch:{
         visible: function(newValue){
             //revisar si esto no cae en un loop tardado
-            this.olLayer.setVisible(newValue)
+            if(this.olLayer && this.olLayer.getVisible()!==newValue){
+                this.olLayer.setVisible(newValue)
+            }
+            
         },
         opacidad: function(newValue){
             this.olLayer.setOpacity(newValue)
         },
         zIndex:function(newValue){
-            this.olLayer.setZIndex(newValue)
+            if(this.olLayer && this.olLayer.getZIndex()!==newValue){
+                this.olLayer.setZIndex(newValue)
+            }
+            
         }
     },
     destroyed:function(){
