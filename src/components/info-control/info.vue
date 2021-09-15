@@ -56,13 +56,14 @@ export default {
 .dai-map-info{
     position: absolute;
     top: 5px;
-    left: 3px;
+    left: 0;
     background-color: var(--control-bg-color-accent);
     padding: 3px 3px 3px 5px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     transition: all .3s ease-in-out;
     max-width: 80%;
+    font-family: "Montserrat";
 
     button.info-control{
         background-color: var(--control-bg-color);
@@ -93,8 +94,15 @@ export default {
             word-wrap: break-word;
             //max-width: 70%;
             p{
-                margin-block-start: .8em;
-                margin-block-end: .8em;
+                font-size: 14px;
+                margin-block-start: .7em;
+                margin-block-end: .7em;
+            }
+            h1, h2, h3,h4, h5, h6{
+                font-size: 12px;
+                margin-block-start: .7em;
+                margin-block-end: .7em;
+                font-weight: 600;
             }
         }
     }

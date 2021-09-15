@@ -49,7 +49,8 @@ export default {
     margin: .3rem; //3px .3rem;
     vertical-align: top;
     box-sizing: inherit;
-    font-size: 13px;
+    font-size: 14px;
+    
 
     &.inverted{
         &:after{
@@ -106,6 +107,7 @@ export default {
         -webkit-appearance: none;
         width: 100%;
         font-weight: 600;
+        font-family: 'Montserrat';
     }
 }
 </style>

@@ -11,7 +11,7 @@
         <div class="shapes">
             <div class="shape-item" v-for=" corte_s in cortes_sizes.cortes" :key="corte_s.v">
                 <shape class="shape-this-legend" shape-type="circle" backgroundColor="gray" :size="[corte_s.v*2,corte_s.v*2]" />
-                <div>{{corte_s.d}}</div>
+                <div class="shape-text-this-legend">{{corte_s.d}}</div>
             </div>
             
         </div>
@@ -97,6 +97,9 @@ export default {
         display: grid;
         grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
         grid-gap: 9px 5px;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 1.16em;
     }
 
     .shapes{
@@ -115,6 +118,11 @@ export default {
             padding: 0 3px;
             .shape-this-legend{
                 margin-bottom: 6px;
+            }
+            .shape-text-this-legend{
+                font-size: 12px;
+                line-height: 1.16em;
+                font-weight: 500;
             }
         }
         

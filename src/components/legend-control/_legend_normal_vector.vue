@@ -36,6 +36,9 @@ export default {
 
 <style lang="scss" scoped>
     .legend-normal-vector{
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 1.16em;
       .simbologia{
           
           margin-right: .4em;

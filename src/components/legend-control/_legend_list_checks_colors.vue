@@ -77,5 +77,8 @@ export default {
         display: grid;
         grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
         grid-gap: 9px 5px;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 1.16em;
     }
 </style>

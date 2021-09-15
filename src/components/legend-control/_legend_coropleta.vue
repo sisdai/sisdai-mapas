@@ -125,8 +125,9 @@ export default {
         }
 
         .map-legends-item-text{
-                font-size: 10px;
-                line-height: 1em;
+                font-size: 12px;
+                line-height: 1.16em;
+                font-weight: 500;
                 color: var(--main-text-color);
                 margin: 5px auto 0;
                 text-align: center;
