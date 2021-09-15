@@ -10,7 +10,7 @@
                     <dai-map-selector class="control-large" v-width-control="'100%'">
                         <option value="o">Titulo de visualizacion dropdown</option>
                     </dai-map-selector>
-                    <p v-width-control="'100%'">Lorem ipsum dolor, sit amet consectetur adipisicing elit. A sapiente repellat ea iusto ab, esse autem placeat mollitia sint natus labore cupiditate ipsum perspiciatis, reiciendis ad, aspernatur omnis facere aliquam!</p>
+                    <p  v-width-control="'100%'">Lorem ipsum dolor, sit amet consectetur adipisicing elit. A sapiente repellat ea iusto ab, esse autem placeat mollitia sint natus labore cupiditate ipsum perspiciatis, reiciendis ad, aspernatur omnis facere aliquam!</p>
 
                     <dai-map-selector  v-width-control="'60%'">
                         <option value="o">Selector</option>

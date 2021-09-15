@@ -8,7 +8,7 @@
                     :strokeColor="params.content.cortes.args.persistentStroke.color || 'white'"
                     :strokeWidth="params.content.cortes.args.persistentStroke.width || 1"
                     :size="[corte_s.v*2,corte_s.v*2]" />
-                <div>{{corte_s.d}}</div>
+                <div class="shape-text-this-legend">{{corte_s.d}}</div>
             </div>
             
         </div>
@@ -45,6 +45,11 @@ export default {
             padding: 0 3px;
             .shape-this-legend{
                 margin-bottom: 6px;
+            }
+            .shape-text-this-legend{
+                font-size: 12px;
+                line-height: 1.16em;
+                font-weight: 500;
             }
         }
         

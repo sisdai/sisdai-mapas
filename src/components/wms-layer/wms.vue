@@ -1,5 +1,5 @@
 <script>
-import { Image as ImageLayer} from 'ol/layer';
+import ImageLayer from 'ol/layer/Image';
 import ImageWMS from 'ol/source/ImageWMS';
 
 import layer from "../../mixins/layer";
@@ -56,6 +56,14 @@ export default {
             this.VM_legend_info_status = "ready"
             this.$emit("legend_info_ready",this.VM_legend_info)
 
+        }
+    },
+    watch:{
+        parametros:function(nValue){
+            if(this.olLayer){
+                this.olLayer.getSource().updateParams(nValue)
+            }
+            
         }
     }   
 }

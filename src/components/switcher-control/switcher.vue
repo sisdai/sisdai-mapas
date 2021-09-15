@@ -77,7 +77,7 @@ export default {
     box-shadow:1px 1px 8px 3px #00000026;
     //margin: 2px;
     border-radius: .375em;
-    font-size: 13px;
+    font-size: 14px;
     
     .option{
         position: relative;

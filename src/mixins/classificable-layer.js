@@ -131,6 +131,7 @@ export default{
 
             //agregar la informacion para la leyenda
             this._set_legend_info()
+            //console.log("ya esta la nueva clasificacion")
 
         },
         _set_style_class:function(){
@@ -157,7 +158,7 @@ export default{
         },
         _set_style_class_v2:function(){
             
-            let originalMapStyleFromParams = {...this.VM_mapStyle}
+            let originalMapStyleFromParams = {...this.estiloCapa}
              let style = (feature)=>{
                  let geomType = feature.getGeometry().getType()
                  let default_style = {style:{
