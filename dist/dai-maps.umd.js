@@ -6009,12 +6009,12 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
 var es_function_name = __webpack_require__("b0c0");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1b162dd7-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/map.vue?vue&type=template&id=e4b122fc&
-var mapvue_type_template_id_e4b122fc_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"dai-map-container"},[_c('div',{ref:"map",staticClass:"dai-map ",class:[_vm.colorControlesInvertidos ? 'inverted-controls': 'default-controls']}),_vm._t("default"),_c('div',{ref:"tooltip",staticClass:"ol-tooltip ol-tooltip-bottom"},[_c('div',{staticClass:"content"})]),_c('div',{ref:"tooltipmov",staticClass:"ol-tooltipmov "},[_c('div',{staticClass:"content"})]),_c('div',{ref:"popup",staticClass:"ol-popup"},[_c('div',{staticClass:"botones"},[_c('a',{staticClass:"boton-cerrar",on:{"click":_vm._cerrarPopup}},[_vm._v("x")])]),_c('div',{staticClass:"content"})])],2)}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1b162dd7-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/map.vue?vue&type=template&id=388c14aa&
+var mapvue_type_template_id_388c14aa_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"dai-map-container"},[_c('div',{ref:"map",staticClass:"dai-map ",class:[_vm.colorControlesInvertidos ? 'inverted-controls': 'default-controls']}),_vm._t("default"),_c('div',{ref:"tooltip",staticClass:"ol-tooltip ol-tooltip-bottom"},[_c('div',{staticClass:"content"})]),_c('div',{ref:"tooltipmov",staticClass:"ol-tooltipmov "},[_c('div',{staticClass:"content"})]),_c('div',{ref:"popup",staticClass:"ol-popup"},[_c('div',{staticClass:"botones"},[_c('a',{staticClass:"boton-cerrar",on:{"click":_vm._cerrarPopup}},[_vm._v("x")])]),_c('div',{staticClass:"content"})])],2)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/map/map.vue?vue&type=template&id=e4b122fc&
+// CONCATENATED MODULE: ./src/components/map/map.vue?vue&type=template&id=388c14aa&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.number.constructor.js
 var es_number_constructor = __webpack_require__("a9e3");
@@ -25060,9 +25060,14 @@ var invoke_clicks = function invoke_clicks(map, e, component) {
 //
 //
 //
+//
+//
+//
 
 
  //import { defaults as defaultControls} from 'ol/control';
+
+
 
 
 
@@ -25107,6 +25112,10 @@ var invoke_clicks = function invoke_clicks(map, e, component) {
     nivelActual: {
       type: String,
       default: ""
+    },
+    zoomOnScroll: {
+      type: Boolean,
+      default: true
     }
   },
   data: function data() {
@@ -25118,7 +25127,8 @@ var invoke_clicks = function invoke_clicks(map, e, component) {
       map: undefined,
       VM_has_niveles: false,
       VM_nivel_actual: "",
-      VM_nivel_control: undefined
+      VM_nivel_control: undefined,
+      VM_scrollZoomInteraction: undefined
     };
   },
   created: function created() {
@@ -25165,8 +25175,16 @@ var invoke_clicks = function invoke_clicks(map, e, component) {
         maxZoom: this.maxZoom,
         minZoom: this.minZoom
       }),
-      controls: [new _zoom_control(), resetcontrol, this.VM_nivel_control]
-    });
+      controls: [new _zoom_control(), resetcontrol, this.VM_nivel_control],
+      interactions: interaction_defaults({
+        mouseWheelZoom: false,
+        altShiftDragRotate: false
+      })
+    }); //definir si la interaccion de scrool esta encendida
+
+    this.VM_scrollZoomInteraction = new interaction_MouseWheelZoom({});
+    this.VM_scrollZoomInteraction.setActive(this.zoomOnScroll);
+    this.map.addInteraction(this.VM_scrollZoomInteraction);
     this.map.set("_reset_view", this.VM_reset_view);
 
     if (this.VM_reset_view.type == "extent") {
@@ -25264,6 +25282,9 @@ var invoke_clicks = function invoke_clicks(map, e, component) {
       var popup_overlay = this.map.getOverlayById("popup");
       popup_overlay.setPosition(undefined);
     },
+    cerrarPopup: function cerrarPopup() {
+      this._cerrarPopup();
+    },
     forceResizeMap: function forceResizeMap() {
       var _this2 = this;
 
@@ -25334,6 +25355,11 @@ var invoke_clicks = function invoke_clicks(map, e, component) {
     },
     niveles: function niveles(newNiveles) {
       this.VM_has_niveles = newNiveles.length > 0;
+    },
+    zoomOnScroll: function zoomOnScroll(_zoomOnScroll) {
+      if (this.VM_scrollZoomInteraction) {
+        this.VM_scrollZoomInteraction.setActive(_zoomOnScroll);
+      }
     }
   }
 });
@@ -25453,7 +25479,7 @@ function normalizeComponent (
 
 var component = normalizeComponent(
   map_mapvue_type_script_lang_js_,
-  mapvue_type_template_id_e4b122fc_render,
+  mapvue_type_template_id_388c14aa_render,
   staticRenderFns,
   false,
   null,
