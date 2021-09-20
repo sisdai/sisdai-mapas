@@ -95,7 +95,12 @@ export default {
     }
 }
 ```
+#### zoom-on-scroll
 
+- Type: `Boolean`
+- Default: `true`
+
+Define si el zoom  del mapa reacciona al scroll,
 
 ### Eventos
 #### @click
