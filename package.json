@@ -1,6 +1,6 @@
 {
   "name": "dai-maps",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
   "files": [
     "dist/*"
@@ -55,5 +55,9 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/conacyt-dai/dai-maps"
+  }
 }

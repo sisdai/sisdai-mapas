@@ -2,7 +2,10 @@
     <div class="dai-map-container">
         
 
-        <div class="dai-map " :class="[colorControlesInvertidos ? 'inverted-controls': 'default-controls']" ref="map"></div>
+        <div class="dai-map " 
+        :class="[colorControlesInvertidos ? 'inverted-controls': 'default-controls']" 
+        ref="map"
+        ></div>
         <slot></slot>
         
         <div ref="tooltip" class="ol-tooltip ol-tooltip-bottom">
@@ -24,6 +27,9 @@ import Overlay from 'ol/Overlay';
 import CustomZoomControl, {ResetControl,NivelControl} from "./_zoom-control"
 import {invoke_tooltips} from "./_invokeTooltips";
 import {invoke_clicks} from "./_invokeClicks";
+import {defaults as defaultInteractions} from 'ol/interaction';
+import MouseWheelZoom from 'ol/interaction/MouseWheelZoom';
+
 export default {
     name:"DaiMapa",
     props:{
@@ -64,6 +70,10 @@ export default {
         nivelActual:{
             type:String,
             default: ""
+        },
+        zoomOnScroll:{
+            type: Boolean,
+            default: true
         }
     },
     data:function(){
@@ -75,7 +85,9 @@ export default {
             map:undefined,
             VM_has_niveles:false,
             VM_nivel_actual :"",
-            VM_nivel_control : undefined
+            VM_nivel_control : undefined,
+
+            VM_scrollZoomInteraction: undefined
         }
     },
     created:function(){
@@ -114,8 +126,17 @@ export default {
                 maxZoom: this.maxZoom,
                 minZoom: this.minZoom
             }),
-            controls:[new CustomZoomControl(),resetcontrol,this.VM_nivel_control]
+            controls:[new CustomZoomControl(),resetcontrol,this.VM_nivel_control],
+            interactions: defaultInteractions({
+                mouseWheelZoom: false,
+                altShiftDragRotate:false
+                })
         });
+        //definir si la interaccion de scrool esta encendida
+        this.VM_scrollZoomInteraction = new MouseWheelZoom({})
+        this.VM_scrollZoomInteraction.setActive(this.zoomOnScroll)
+        this.map.addInteraction(this.VM_scrollZoomInteraction)
+
         this.map.set("_reset_view",this.VM_reset_view)
         if(this.VM_reset_view.type=="extent"){
             this.map.getView().fit(this.extension,{duration:500,padding: [10, 10, 10, 10]})
@@ -210,6 +231,9 @@ export default {
             let popup_overlay = this.map.getOverlayById("popup")
             popup_overlay.setPosition(undefined)
         },
+        cerrarPopup:function(){
+            this._cerrarPopup()
+        },
         forceResizeMap:function(forceResetView=false){
             setTimeout(()=>{
                 //console.log("se esta forzando el resize")
@@ -274,6 +298,11 @@ export default {
         },
         niveles:function(newNiveles){
             this.VM_has_niveles = newNiveles.length > 0;
+        },
+        zoomOnScroll: function(zoomOnScroll){
+            if(this.VM_scrollZoomInteraction){
+                this.VM_scrollZoomInteraction.setActive(zoomOnScroll)
+            }
         }
     }
 }
