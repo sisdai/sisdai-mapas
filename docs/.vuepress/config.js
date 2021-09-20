@@ -1,4 +1,4 @@
-const { description } = require('../../package')
+const { description,version ,repository} = require('../../package')
 
 module.exports = {
   /**
@@ -29,7 +29,8 @@ module.exports = {
    * ref：https://v1.vuepress.vuejs.org/theme/default-theme-config.html
    */
   themeConfig: {
-    repo: '',
+    version:version,
+    repo: repository['url'],
     editLinks: false,
     docsDir: '',
     editLinkText: '',
@@ -46,10 +47,6 @@ module.exports = {
       {
         text: 'Ejemplos',
         link: '/ejemplos/',
-      },
-      {
-        text: 'Github',
-        link: 'https://github.com/conacyt-dai/dai-maps'
       }
     ],
     sidebar: {

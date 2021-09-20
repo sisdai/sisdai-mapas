@@ -210,6 +210,9 @@ export default {
             let popup_overlay = this.map.getOverlayById("popup")
             popup_overlay.setPosition(undefined)
         },
+        cerrarPopup:function(){
+            this._cerrarPopup()
+        },
         forceResizeMap:function(forceResetView=false){
             setTimeout(()=>{
                 //console.log("se esta forzando el resize")
