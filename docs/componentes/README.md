@@ -95,7 +95,12 @@ export default {
     }
 }
 ```
+#### zoom-on-scroll
 
+- Type: `Boolean`
+- Default: `true`
+
+Define si el zoom  del mapa reacciona al scroll,
 
 ### Eventos
 #### @click
@@ -104,6 +109,36 @@ Reacciona cuando se da click en cualquier parte del mapa. retorna una obecto eve
 #### @reset_view
 
 Reacciona cuando se da click en el boton de centrar al mapa, util cuando se necesita resetar, apagar, prender capas al accionar este boton.
+
+#### @cambioNivel
+Se emite cuando el nivel del mapa cambio, ideal para definir acciones cuando el usuario cambia de nivel
+
+### Metodos
+
+#### cerrarPopup() 
+Forza el cierre del popup actual si es que esta activo
+
+#### forceResizeMap(vistaInicial)
+
+Redefine las dimensiones del mapa, ideal cuando el contenedor el mapa cambia de tamaño y el area del mapa necesite hacer lo mismo.
+NOTA: cuando la pantalla se redimenciona , el mapa ya cuenta con la funcionalidad de redimensionarse.
+
+Parametros 
+- **vistaInicial**  boolean (default false) . Define si al redismensionar el mapa se debera regresar a la vista inicial del mapa.
+
+
+#### resetMap()
+Emite y acciona el evento de resetear el mapa, equivalente a dar click en el boton reset del mapa <span class="dai-icon-centrar"></span>
+
+
+#### setNivel(nivel)
+Le define el nivel al mapa
+
+Parametros
+- **nivel** string (default undefined) nombre del nivel que se desea asignar al mapa, si no existe dentro de los niveles disponibles del mapa no se efectua ninguna accion
+
+#### setNivelRetroceso()
+Retrocede una nivel hacia atras 
 
 ## dai-tarjeta-contenedor-mapa
 

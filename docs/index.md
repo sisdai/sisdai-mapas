@@ -13,3 +13,5 @@ actionLink: /guia/
 #  details: Feature 3 Description
 footer: Made by DAI - CONACYT with ❤️
 ---
+
+v{{ $themeConfig.version }}

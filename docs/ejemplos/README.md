@@ -51,20 +51,40 @@ Para mayor precisión en el acercamiento a una zona en algunos casos convendra u
 Cuando se requiera que los controles internos del mapa tengan el color invertido, con la propiedad `color-controles-invertidos`
 
 ```html
-<template>
-    <div class="another-map">
-        <dai-mapa 
-        :extension="[-118.365119934082,14.5320978164673,-86.7104034423828,32.7186546325684]" 
-        :color-controles-invertidos="true"
-        >
-            <dai-capa-xyz-osm/>
-        </dai-mapa>
-    </div>
-    
-</template>
+
+<dai-mapa 
+:extension="[-118.365119934082,14.5320978164673,-86.7104034423828,32.7186546325684]" 
+:color-controles-invertidos="true"
+>
+    <dai-capa-xyz-osm/>
+</dai-mapa>
+
 
 ```
 
 <uso-basico-4-controles-invertidos/>
 
 
+## Desabilitando el zoom al dar scroll
+
+```html{3}
+<button @click="permiteScroll= !permiteScroll">Permitir/desactivar scroll</button> 
+{{permiteScroll}}
+<dai-mapa :zoom-on-scroll="permiteScroll"
+:extension="[-118.365119934082,14.5320978164673,-86.7104034423828,32.7186546325684]" 
+>
+    <dai-capa-xyz/>
+</dai-mapa>
+```
+
+```javascript
+export default {
+    data:function(){
+        return {
+            permiteScroll:true
+        }
+    }
+}
+```
+
+<uso-basico-5-desabilita-scroll />
