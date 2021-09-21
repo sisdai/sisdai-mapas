@@ -16,7 +16,7 @@ sidebar: auto
 1.- *Por el momento* v{{ $themeConfig.version }}
 
 
-`npm install git+https://devtemp-invitado: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@github.com/conacyt-dai/dai-maps.git#v{{$themeConfig.version}}`
+`npm install git+https://devtemp-invitado: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@github.com/conacyt-dai/dai-maps.git#v{{$themeConfig.version}}`
 
 
 ### Registro en la app de vue
