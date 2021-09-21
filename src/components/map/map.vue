@@ -28,6 +28,7 @@ import CustomZoomControl, {ResetControl,NivelControl} from "./_zoom-control"
 import {invoke_tooltips} from "./_invokeTooltips";
 import {invoke_clicks} from "./_invokeClicks";
 import {defaults as defaultInteractions} from 'ol/interaction';
+import Attribution from 'ol/control/Attribution';
 import MouseWheelZoom from 'ol/interaction/MouseWheelZoom';
 
 export default {
@@ -116,6 +117,10 @@ export default {
             this.setNivelRetroceso()
         })
         this.VM_nivel_control.setVisible( this.VM_has_niveles && this.niveles.indexOf(this.VM_nivel_actual) > 0 )
+        const attributionControl = new Attribution({
+            collapsible:false
+        })
+
         this.map = new Map({
             target: this.$refs.map,
             layers: [],
@@ -126,7 +131,7 @@ export default {
                 maxZoom: this.maxZoom,
                 minZoom: this.minZoom
             }),
-            controls:[new CustomZoomControl(),resetcontrol,this.VM_nivel_control],
+            controls:[new CustomZoomControl(),resetcontrol,this.VM_nivel_control,attributionControl],
             interactions: defaultInteractions({
                 mouseWheelZoom: false,
                 altShiftDragRotate:false

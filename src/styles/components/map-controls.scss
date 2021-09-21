@@ -75,3 +75,15 @@
         }
     }
 }
+
+.ol-control.ol-attribution {
+    
+    font: normal normal 400 10px/12px "Montserrat",sans-serif;
+    a{
+        color: #236EF0;
+    }
+
+    &:hover{
+        background-color: white;
+    }
+}
