@@ -21,7 +21,7 @@ export default {
             this.olLayer = new TileLayer({
                 source: new XYZ({
                     url: this.url,
-                    attributions:this.attributions
+                    attributions:this.atribuciones
                 }),
             })
         }
