@@ -6009,12 +6009,12 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
 var es_function_name = __webpack_require__("b0c0");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1b162dd7-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/map.vue?vue&type=template&id=388c14aa&
-var mapvue_type_template_id_388c14aa_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"dai-map-container"},[_c('div',{ref:"map",staticClass:"dai-map ",class:[_vm.colorControlesInvertidos ? 'inverted-controls': 'default-controls']}),_vm._t("default"),_c('div',{ref:"tooltip",staticClass:"ol-tooltip ol-tooltip-bottom"},[_c('div',{staticClass:"content"})]),_c('div',{ref:"tooltipmov",staticClass:"ol-tooltipmov "},[_c('div',{staticClass:"content"})]),_c('div',{ref:"popup",staticClass:"ol-popup"},[_c('div',{staticClass:"botones"},[_c('a',{staticClass:"boton-cerrar",on:{"click":_vm._cerrarPopup}},[_vm._v("x")])]),_c('div',{staticClass:"content"})])],2)}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1b162dd7-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/map.vue?vue&type=template&id=56fe2a42&
+var mapvue_type_template_id_56fe2a42_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"dai-map-container"},[_c('div',{ref:"map",staticClass:"dai-map ",class:[_vm.colorControlesInvertidos ? 'inverted-controls': 'default-controls']}),_vm._t("default"),_c('div',{ref:"tooltip",staticClass:"ol-tooltip ol-tooltip-bottom"},[_c('div',{staticClass:"content"})]),_c('div',{ref:"tooltipmov",staticClass:"ol-tooltipmov "},[_c('div',{staticClass:"content"})]),_c('div',{ref:"popup",staticClass:"ol-popup"},[_c('div',{staticClass:"botones"},[_c('a',{staticClass:"boton-cerrar",on:{"click":_vm._cerrarPopup}},[_vm._v("x")])]),_c('div',{staticClass:"content"})])],2)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/map/map.vue?vue&type=template&id=388c14aa&
+// CONCATENATED MODULE: ./src/components/map/map.vue?vue&type=template&id=56fe2a42&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.number.constructor.js
 var es_number_constructor = __webpack_require__("a9e3");
@@ -25072,6 +25072,7 @@ var invoke_clicks = function invoke_clicks(map, e, component) {
 
 
 
+
 /* harmony default export */ var mapvue_type_script_lang_js_ = ({
   name: "DaiMapa",
   props: {
@@ -25165,6 +25166,9 @@ var invoke_clicks = function invoke_clicks(map, e, component) {
       _this.setNivelRetroceso();
     });
     this.VM_nivel_control.setVisible(this.VM_has_niveles && this.niveles.indexOf(this.VM_nivel_actual) > 0);
+    var attributionControl = new control_Attribution({
+      collapsible: false
+    });
     this.map = new ol_Map({
       target: this.$refs.map,
       layers: [],
@@ -25175,7 +25179,7 @@ var invoke_clicks = function invoke_clicks(map, e, component) {
         maxZoom: this.maxZoom,
         minZoom: this.minZoom
       }),
-      controls: [new _zoom_control(), resetcontrol, this.VM_nivel_control],
+      controls: [new _zoom_control(), resetcontrol, this.VM_nivel_control, attributionControl],
       interactions: interaction_defaults({
         mouseWheelZoom: false,
         altShiftDragRotate: false
@@ -25479,7 +25483,7 @@ function normalizeComponent (
 
 var component = normalizeComponent(
   map_mapvue_type_script_lang_js_,
-  mapvue_type_template_id_388c14aa_render,
+  mapvue_type_template_id_56fe2a42_render,
   staticRenderFns,
   false,
   null,
@@ -31496,7 +31500,7 @@ function xyz_layer_osm_plugin(Vue) {
       this.olLayer = new layer_Tile({
         source: new source_XYZ({
           url: this.url,
-          attributions: this.attributions
+          attributions: this.atribuciones
         })
       });
     }
