@@ -59,7 +59,7 @@ export default {
                 let features = new GeoJSON().readFeatures({...newDatos})
                 
                 vectorSource.clear()
-                if(features.length>0){
+                //if(features.length>0){
 
                     //console.log("se esta escuchando el cambio de datos, BORRAR ESTE LOG")
                     vectorSource.addFeatures(features);
@@ -67,7 +67,7 @@ export default {
                         this._clasificar_v2();
                         this._set_style_class_v2()
                     }
-                }
+                //}
                 this._saveAllFeaturesFromSource(vectorSource)
                 this._setStyle()
                 
