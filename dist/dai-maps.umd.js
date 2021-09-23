@@ -37256,7 +37256,7 @@ var DEFAULT_STROKE_COLOR = "white";
 
       if (vectorSource.getUrl() === undefined) {
         this.VM_allFeatures = geojsonFormat.writeFeatures(vectorSource.getFeatures());
-        this.VM_geometryType = vectorSource.getFeatures()[0].getGeometry().getType();
+        this.VM_geometryType = vectorSource.getFeatures().length > 0 ? vectorSource.getFeatures()[0].getGeometry().getType() : "";
         this.$emit("saved_features", this.VM_allFeatures);
         return;
       } //console.log("---AQUI ESPERAR LAS FEATURES EN VM_allfeatures")
@@ -37266,7 +37266,7 @@ var DEFAULT_STROKE_COLOR = "white";
         //console.log(0,this.id)
         _this.VM_allFeatures = geojsonFormat.writeFeatures(evento.features); //console.log(evento.features[0].getGeometry(),1,this.id)
 
-        _this.VM_geometryType = evento.features[0].getGeometry().getType(); //console.log(evento.features[0].getGeometry(),2,this.id)
+        _this.VM_geometryType = evento.features.length > 0 ? evento.features[0].getGeometry().getType() : ""; //console.log(evento.features[0].getGeometry(),2,this.id)
 
         var serializes = fixSerializedStyleIfIncomplete(_this.VM_mapStyle);
 
@@ -58869,7 +58869,7 @@ var _clasificacion_datos_dataClassification = function dataClassification(data, 
     //dar formato a los labels si son numericas, 
     //si son iguales, no deberia haber el a
     if (numeric_item[0] === numeric_item[1]) {
-      return numeric_item[0].toLocaleString("en");
+      return numeric_item[0] ? numeric_item[0].toLocaleString("en") : '';
     } // si es el primero que inicia los rangos
     // o si esta despues de un valor que no es un rango
     // no deberia sumar uno a la clase inicial
@@ -59146,10 +59146,11 @@ var defaultsValuesRule = {
     _clasificar_v2: function _clasificar_v2() {
       var _this2 = this;
 
-      //darle estilo segun cada una de las reglas
-      var features = this.olLayer.getSource().getFeatures(); //console.log(features)
+      this.VM_rules_cortes = []; //darle estilo segun cada una de las reglas
 
-      this.VM_geometryType = features[0].getGeometry().getType();
+      var features = this.olLayer.getSource().getFeatures(); //console.log(this.VM_geometryType,"el tipo de geometria")
+
+      this.VM_geometryType = features.length > 0 ? features[0].getGeometry().getType() : '';
       this.VM_default_shape = this.VM_rules.map(function (rule) {
         return rule.forma;
       }).some(function (element) {
@@ -59168,7 +59169,8 @@ var defaultsValuesRule = {
         cortes.args["variableTitle"] = rule.tituloVariable === "__columnname__" ? rule.columna : rule.tituloVariable;
 
         _this2.VM_rules_cortes.push(cortes);
-      }); //agregar la informacion para la leyenda
+      }); //console.log(this.VM_rules_cortes,"HERERRR")
+      //agregar la informacion para la leyenda
 
       this._set_legend_info(); //console.log("ya esta la nueva clasificacion")
 
@@ -59359,7 +59361,8 @@ var defaultsValuesRule = {
         };
       }
 
-      content["title"] = this.VM_title;
+      content["title"] = this.VM_title; //console.log(type,"HERE --lll")
+
       this.VM_legend_info = {
         type: type,
         content: content
@@ -66563,18 +66566,17 @@ var Vector_VectorSource = /** @class */ (function (_super) {
       if (newDatos !== undefined && this.olLayer.getSource() !== undefined) {
         var vectorSource = this.olLayer.getSource();
         var features = new format_GeoJSON().readFeatures(_objectSpread2({}, newDatos));
-        vectorSource.clear();
+        vectorSource.clear(); //if(features.length>0){
+        //console.log("se esta escuchando el cambio de datos, BORRAR ESTE LOG")
 
-        if (features.length > 0) {
-          //console.log("se esta escuchando el cambio de datos, BORRAR ESTE LOG")
-          vectorSource.addFeatures(features);
+        vectorSource.addFeatures(features);
 
-          if (this.VM_is_classified) {
-            this._clasificar_v2();
+        if (this.VM_is_classified) {
+          this._clasificar_v2();
 
-            this._set_style_class_v2();
-          }
-        }
+          this._set_style_class_v2();
+        } //}
+
 
         this._saveAllFeaturesFromSource(vectorSource);
 
@@ -68852,6 +68854,44 @@ var _legend_shapes_sizes_values_component = normalizeComponent(
 )
 
 /* harmony default export */ var _legend_shapes_sizes_values = (_legend_shapes_sizes_values_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"d6e2a6ec-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend-list-checks-values.vue?vue&type=template&id=22aa6607&
+var _legend_list_checks_valuesvue_type_template_id_22aa6607_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('em',[_vm._v(_vm._s(_vm.params.content.title)+" sin datos")])])}
+var _legend_list_checks_valuesvue_type_template_id_22aa6607_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/legend-control/_legend-list-checks-values.vue?vue&type=template&id=22aa6607&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend-list-checks-values.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+
+/* harmony default export */ var _legend_list_checks_valuesvue_type_script_lang_js_ = ({
+  mixins: [legend_item_child]
+});
+// CONCATENATED MODULE: ./src/components/legend-control/_legend-list-checks-values.vue?vue&type=script&lang=js&
+ /* harmony default export */ var legend_control_legend_list_checks_valuesvue_type_script_lang_js_ = (_legend_list_checks_valuesvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/legend-control/_legend-list-checks-values.vue
+
+
+
+
+
+/* normalize component */
+
+var _legend_list_checks_values_component = normalizeComponent(
+  legend_control_legend_list_checks_valuesvue_type_script_lang_js_,
+  _legend_list_checks_valuesvue_type_template_id_22aa6607_render,
+  _legend_list_checks_valuesvue_type_template_id_22aa6607_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var _legend_list_checks_values = (_legend_list_checks_values_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"d6e2a6ec-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_list_checks_colors_shapes_sizes_values.vue?vue&type=template&id=e29af378&scoped=true&
 var _legend_list_checks_colors_shapes_sizes_valuesvue_type_template_id_e29af378_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',{staticClass:"legend-list-checks-colors"},_vm._l((_vm.cortes_colores.cortes),function(corte,i){return _c('div',{key:corte.v,staticClass:"list-item-check"},[_c('checkbox-color',{attrs:{"color":corte.v},on:{"change":_vm._filtrarCapa},model:{value:(_vm.list_filter[i]),callback:function ($$v) {_vm.$set(_vm.list_filter, i, $$v)},expression:"list_filter[i]"}},[_vm._v(" "+_vm._s(corte.d)+" ")])],1)}),0),_c('div',{staticClass:"shapes"},_vm._l((_vm.cortes_sizes.cortes),function(corte_s){return _c('div',{key:corte_s.v,staticClass:"shape-item"},[_c('shape',{staticClass:"shape-this-legend",attrs:{"shape-type":"circle","backgroundColor":"gray","size":[corte_s.v*2,corte_s.v*2]}}),_c('div',{staticClass:"shape-text-this-legend"},[_vm._v(_vm._s(corte_s.d))])],1)}),0),_c('div',{staticClass:"title-shapes"},[_vm._v(_vm._s(_vm.cortes_sizes.args.variableTitle))])])}
 var _legend_list_checks_colors_shapes_sizes_valuesvue_type_template_id_e29af378_scoped_true_staticRenderFns = []
@@ -69002,6 +69042,7 @@ var _legend_list_checks_colors_shapes_sizes_values_component = normalizeComponen
 
 
 
+
 /* harmony default export */ var legend_itemvue_type_script_lang_js_ = ({
   props: ["layerId"],
   created: function created() {
@@ -69024,7 +69065,8 @@ var _legend_list_checks_colors_shapes_sizes_values_component = normalizeComponen
     LegendNormalVector: _legend_normal_vector,
     LegendListChecksColors: _legend_list_checks_colors,
     LegendShapesSizesValues: _legend_shapes_sizes_values,
-    LegendListChecksColorsShapesSizesValues: _legend_list_checks_colors_shapes_sizes_values
+    LegendListChecksColorsShapesSizesValues: _legend_list_checks_colors_shapes_sizes_values,
+    LegendListChecksValues: _legend_list_checks_values
   },
   data: function data() {
     return {
