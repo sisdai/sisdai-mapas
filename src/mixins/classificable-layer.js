@@ -100,11 +100,12 @@ export default{
             this.$emit("legend_info_ready",this.VM_legend_info)
         },
         _clasificar_v2:function(){
-            
+
+            this.VM_rules_cortes = [];
             //darle estilo segun cada una de las reglas
             let features = this.olLayer.getSource().getFeatures();
-            //console.log(features)
-            this.VM_geometryType = features[0].getGeometry().getType()
+            //console.log(this.VM_geometryType,"el tipo de geometria")
+            this.VM_geometryType = features.length>0 ? features[0].getGeometry().getType() : ''
 
             this.VM_default_shape = this.VM_rules.map(rule=>rule.forma).some(element=>element!="default") 
                 ? this.VM_rules.map(rule2=>rule2.forma).filter(element2=>element2!="default")[0] :"circle"
@@ -126,8 +127,8 @@ export default{
                 cortes.args["variableTitle"] = rule.tituloVariable ==="__columnname__" ? rule.columna : rule.tituloVariable;
                 this.VM_rules_cortes.push(cortes)
             })
-
             
+            //console.log(this.VM_rules_cortes,"HERERRR")
 
             //agregar la informacion para la leyenda
             this._set_legend_info()
@@ -274,7 +275,7 @@ export default{
             }
             content["title"] = this.VM_title;
             
-
+            //console.log(type,"HERE --lll")
             this.VM_legend_info = {type,content}
             this.VM_legend_info_status = "ready"
             this.$emit("legend_info_ready",this.VM_legend_info)
