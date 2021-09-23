@@ -177,7 +177,9 @@ export default{
             //if(vectorSource.getFeatures().length>1){
             if(vectorSource.getUrl()===undefined){
                 this.VM_allFeatures = geojsonFormat.writeFeatures( vectorSource.getFeatures() )
-                this.VM_geometryType = vectorSource.getFeatures()[0].getGeometry().getType()
+                this.VM_geometryType = vectorSource.getFeatures().length > 0 
+                    ? vectorSource.getFeatures()[0].getGeometry().getType() 
+                    : ""
                 this.$emit("saved_features",this.VM_allFeatures)
                 return
             }
@@ -186,7 +188,7 @@ export default{
                 //console.log(0,this.id)
                 this.VM_allFeatures = geojsonFormat.writeFeatures(evento.features)
                 //console.log(evento.features[0].getGeometry(),1,this.id)
-                this.VM_geometryType = evento.features[0].getGeometry().getType()
+                this.VM_geometryType = evento.features.length > 0 ? evento.features[0].getGeometry().getType() : ""
                 //console.log(evento.features[0].getGeometry(),2,this.id)
                 let serializes= fixSerializedStyleIfIncomplete( this.VM_mapStyle )
                 if(this.VM_geometryType.includes("Point")){

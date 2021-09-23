@@ -71,7 +71,8 @@ module.exports = {
             'tarjeta-contenedor',
             'capas',
             'controles',
-            'clasificacion-datos'
+            'clasificacion-datos',
+            'manejo-datos'
           ]
         }
       ],
