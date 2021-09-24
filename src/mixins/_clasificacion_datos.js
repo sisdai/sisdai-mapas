@@ -11,14 +11,17 @@ const dataClassification = (data,classType,clases,colors,sizes,targetProperty,
     clasesVisiblesInicial=[],clasesEtiquetasLimitesDecimales=0)=>{
     let valores_clases = []
     //aqui ir agregando las demas clasificaciones
-    valores_clases = classType==="categorias" ? qualitativeClassification(data) : valores_clases;
-    valores_clases = classType==="cuantiles" ? quantileClassification(data,clases) : valores_clases;
-    valores_clases = classType==="linear" ? linearClassification(data,clases) : valores_clases;
-    valores_clases = classType==="exponencial" ? powClassification(data,clases) : valores_clases;
-    valores_clases = classType==="logarimica" ? logClassification(data,clases) : valores_clases;
+    if (data.length>0){
+        valores_clases = classType==="categorias" ? qualitativeClassification(data) : valores_clases;
+        valores_clases = classType==="cuantiles" ? quantileClassification(data,clases) : valores_clases;
+        valores_clases = classType==="linear" ? linearClassification(data,clases) : valores_clases;
+        valores_clases = classType==="exponencial" ? powClassification(data,clases) : valores_clases;
+        valores_clases = classType==="logarimica" ? logClassification(data,clases) : valores_clases;
 
-    valores_clases = classType==="cortes-naturales" ? naturalBreaksClassificaction(data,clases) : valores_clases;
-    valores_clases = classType==="personalizada" ? clasificacion_custom : valores_clases;
+        valores_clases = classType==="cortes-naturales" ? naturalBreaksClassificaction(data,clases) : valores_clases;
+        valores_clases = classType==="personalizada" ? clasificacion_custom : valores_clases;
+    }
+    
     //console.log(valores_clases)
 
     if(classType==="categorias" && acomodoCategorias.length>1){

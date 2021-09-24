@@ -15,7 +15,7 @@
                 id="centroides"
                 :datos="centroidesComputados"
                 :reglas-estilo-capa="{
-                    clasificacion:'cuantiles',
+                    clasificacion:'cortes-naturales',
                     columna : 'estados_pob18ymas',
                     propiedadObjetivo: 'proporcion',
                     clases:4,
