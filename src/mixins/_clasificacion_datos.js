@@ -158,7 +158,8 @@ const naturalBreaksClassificaction = (data,noClases)=>{
 
     let cortes = clases.map((item,i)=>{
         let corte_inferior = item //(i==0) ? Math.round(item): Math.round(item)+ 1
-        return [corte_inferior,Math.round(clases[i+1])]
+        //return [corte_inferior,Math.round(clases[i+1])]
+        return [corte_inferior,clases[i+1]]
     })
     cortes.pop()
     //console.log(cortes)
