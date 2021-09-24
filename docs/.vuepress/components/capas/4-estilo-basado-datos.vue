@@ -27,11 +27,11 @@
                         colores:'GnBu'
                     },
                     {
-                        clasificacion:'cuantiles',
+                        clasificacion:'cortes-naturales',
                         columna:'estados_pob18ymas_rural',
                         propiedadObjetivo:'proporcion',
-                        proporciones:[5,8,12,15,20],
-                        clases:5,
+                        proporciones:[8,12,15,20],
+                        clases:4,
                         tituloVariable:'Cantidad de problación'
                     }
                 ]"
