@@ -89,6 +89,14 @@ export default{
                     }
                 }
             }
+        },
+        usarTexturasEnRelleno:{
+            type:Boolean,
+            default:False
+        },
+        estiloTexturaRelleno:{
+            type:String,
+            default:"circle" //definir un catalogo
         }
     },
     data:function(){
