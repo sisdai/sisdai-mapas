@@ -1,4 +1,4 @@
-import generateOlStyle, {serializedStyleIfHighlight,fixSerializedStyleIfIncomplete, checkPointShapeFromStyle} from "./_json2olstyle"
+import generateOlStyle, {serializedStyleIfHighlight,fixSerializedStyleIfIncomplete, checkPointShapeFromStyle, serializedStyleSetTexture, removeFillStyle} from "./_json2olstyle"
 
 import GeoJSON from 'ol/format/GeoJSON';
 
@@ -47,7 +47,7 @@ export default{
             default:false
         },
         estiloCapa:{
-            type: [Object],
+            type: Object,
             default:function(){
                 return {
                     fill:{
@@ -92,11 +92,19 @@ export default{
         },
         usarTexturasEnRelleno:{
             type:Boolean,
-            default:False
+            default:false
         },
         estiloTexturaRelleno:{
-            type:String,
-            default:"circle" //definir un catalogo
+            type:Object,
+            default:function(){
+                return {
+                    pattern:"hatch",
+                    angle:45,
+                    spacing:5,
+                    color:'gray',
+                    size:1
+                }
+            } //definir un catalogo
         }
     },
     data:function(){
@@ -104,12 +112,15 @@ export default{
             VM_mapStyle:undefined,
             VM_allFeatures:"",
             VM_geometryType:"",
-            VM_defaultShapePoint:"circle"
+            VM_defaultShapePoint:"circle",
+
+            
+            
         }
     },
     created:function(){
         //console.log("DEBUG: carga vm_mapstyle")
-        this.VM_mapStyle = this.estiloCapa
+        this.VM_mapStyle = {...this.estiloCapa}
     },
     methods:{
         _setStyle:function(){
@@ -119,17 +130,24 @@ export default{
             
             let colorsLegend={fill:"gray", stroke:"gray",stroke_width:1}
             let shapeLegend = "square"
-            if (typeof vm.VM_mapStyle == "function"){
+            if (typeof vm.VM_mapStyle === "function"){
                 style= function(feature){
-                    let serializes= fixSerializedStyleIfIncomplete( vm.VM_mapStyle(feature) )
+                    let serializes= JSON.parse(JSON.stringify(fixSerializedStyleIfIncomplete( vm.VM_mapStyle(feature) ) ))
                     const estilo_realce = fixSerializedStyleIfIncomplete(vm.estiloRealce)
-                    serializes = feature.get("_hightlight") == true ? serializedStyleIfHighlight(serializes,estilo_realce): serializes ;
-                    let olstyles=generateOlStyle(serializes)["style"]
+                    let serializes2 = feature.get("_hightlight") == true ? serializedStyleIfHighlight(serializes,estilo_realce): JSON.parse(JSON.stringify(serializes)) ;
+                    if(vm.usarTexturasEnRelleno){
+                        serializes2 =removeFillStyle(serializes2,'fill',vm.VM_defaultShapePoint)
+                    }else{
+                        serializes2 =removeFillStyle(serializes2,'fillPattern',vm.VM_defaultShapePoint)
+                    }
+                    //console.log(JSON.stringify( serializes2),">>SALIO DE FUNCION<<",vm.VM_id)
+                    let olstyles=generateOlStyle(serializes2)["style"]
                     return olstyles
                 }
             }else{
                 
-                let serializes= fixSerializedStyleIfIncomplete( vm.VM_mapStyle )
+                let serializes= JSON.parse(JSON.stringify({...fixSerializedStyleIfIncomplete( vm.VM_mapStyle )}))
+                
                 //let geometry_type = this.olLayer.getSource().getFeatures()[0].getGeometry().getType()
                 /******************************************************************************** */
                 //console.log("//AQUI VERIFICAR TAMBIEN QUE SHAPE SE VA A LA LEYENDA",serializes)
@@ -151,7 +169,23 @@ export default{
                 style= function(feature){
                     
                     const estilo_realce = fixSerializedStyleIfIncomplete(vm.estiloRealce)
-                    let serializes2 = feature.get("_hightlight") == true ? serializedStyleIfHighlight(serializes,estilo_realce): serializes ;
+                    
+                    let serializes2 = feature.get("_hightlight") == true ? serializedStyleIfHighlight(serializes,estilo_realce): JSON.parse(JSON.stringify(serializes)) ;
+                    
+                    
+                    if(vm.usarTexturasEnRelleno 
+                        && ( 
+                         ( vm.VM_geometryType.includes('Polygon') && !("fillPattern" in serializes2.style) ) 
+                         || ( vm.VM_geometryType.includes('Point') && !("fillPattern" in serializes2.style[vm.VM_defaultShapePoint]) ) 
+                        )
+                    ){ //una condicion mas
+                           serializes2 = serializedStyleSetTexture(
+                               serializes2,
+                               vm.VM_defaultShapePoint,
+                               vm.estiloTexturaRelleno)
+                           //console.log(serializes2,"setTExtureINStyle",vm.VM_geometryType)
+                    }
+                    
                     let olstyles=generateOlStyle(serializes2)["style"]
                     
                     
@@ -227,6 +261,22 @@ export default{
             sourceLayer.clear()
             sourceLayer.addFeatures(nuevosFeatures)
             //console.log("decirle que hay un filtro")
+        }
+    },
+    watch:{
+        usarTexturasEnRelleno:function(nv){
+            if(this.olLayer){
+                this._setStyle()
+            }
+        },
+        estiloCapa:function(nv){
+            //si es una capa clasificable, reinvocar la funcion de clasificar con estilo
+            if(typeof this.VM_mapStyle === "function" && this.VM_is_classified){
+                this._set_style_class_v2()
+            }else{
+                this.VM_mapStyle = nv
+                this._setStyle()
+            }
         }
     }
 }

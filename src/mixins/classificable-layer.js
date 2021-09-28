@@ -1,5 +1,6 @@
 import * as d3 from "d3"
 import { dataClassification } from "./_clasificacion_datos";
+import  prepararTexturesfromCortes from "./_prepareClassificableTextures"
 
 import {fixSerializedStyleIfIncomplete,joinDefaultValuesWithNewValuesInPoints} from "./_json2olstyle"
 
@@ -33,10 +34,11 @@ export default{
     },
     data:function(){
         return {
-            VM_is_classified:false,
+           VM_is_classified:false,
             
            VM_rules:[],
            VM_rules_cortes:[],
+           VM_rules_textures:[],
            
            VM_default_shape:"circle",
            VM_persistentFill:{},
@@ -102,6 +104,7 @@ export default{
         _clasificar_v2:function(){
 
             this.VM_rules_cortes = [];
+            this.VM_rules_textures= [];
             //darle estilo segun cada una de las reglas
             let features = this.olLayer.getSource().getFeatures();
             //console.log(this.VM_geometryType,"el tipo de geometria")
@@ -122,9 +125,16 @@ export default{
                     rule.clases,rule.colores,rule.proporciones,rule.propiedadObjetivo,
                     this.VM_geometryType,this.VM_default_shape,rule.acomodoCategorias,
                     rule.clasificacionPersonalizada,rule.clasesVisiblesInicial,rule.clasesEtiquetasLimitesDecimales)
+
+                let rule_textures = []
+                if(rule.propiedadObjetivo==='relleno'){
+                    rule_textures = prepararTexturesfromCortes(cortes,rule,this.estiloTexturaRelleno)
+                }
+                this.VM_rules_textures.push(rule_textures)
                 
                 cortes.args["column"] = rule.columna;
                 cortes.args["variableTitle"] = rule.tituloVariable ==="__columnname__" ? rule.columna : rule.tituloVariable;
+                cortes.args["textures"] = rule_textures;
                 this.VM_rules_cortes.push(cortes)
             })
             
@@ -160,6 +170,7 @@ export default{
         _set_style_class_v2:function(){
             
             let originalMapStyleFromParams = {...this.estiloCapa}
+            
              let style = (feature)=>{
                  let geomType = feature.getGeometry().getType()
                  let default_style = {style:{
@@ -191,6 +202,8 @@ export default{
                 
                 this.VM_rules.forEach((rule,i)=>{
                     let rule_cortes = this.VM_rules_cortes[i]
+                    
+                    const rule_textures = this.VM_rules_textures[i]
                     rule_cortes.cortes.forEach((corte,h,originalArray)=>{
                         let value = corte.val
                         if(Array.isArray(value)){
@@ -207,8 +220,14 @@ export default{
                                     
 
                                     if(rule.propiedadObjetivo=="relleno"){
-                                        if(geomType.includes("Polygon") ) { default_style.style["fill"]["color"] = corte.v  }
-                                        if(geomType.includes("Point") ) { default_style.style[this.VM_default_shape]["fill"]["color"] = corte.v  }
+                                        if(geomType.includes("Polygon") ) { 
+                                            default_style.style["fill"]["color"] = corte.v  
+                                            default_style.style["fillPattern"] = rule_textures[h]
+                                        }
+                                        if(geomType.includes("Point") ) { 
+                                            default_style.style[this.VM_default_shape]["fill"]["color"] = corte.v  
+                                            default_style.style[this.VM_default_shape]["fillPattern"] = rule_textures[h]
+                                        }
                                         if(geomType.includes("LineString") ) { default_style.style["stroke"]["color"] = corte.v  }
 
                                     }else{
@@ -221,8 +240,14 @@ export default{
 
                             if(value[0] === value[1] && feature.getProperties()[rule.columna]=== value[0]){
                                 if(rule.propiedadObjetivo=="relleno"){
-                                    if(geomType.includes("Polygon") ) { default_style.style["fill"]["color"] = corte.v  }
-                                    if(geomType.includes("Point") ) { default_style.style[this.VM_default_shape]["fill"]["color"] = corte.v  }
+                                    if(geomType.includes("Polygon") ) { 
+                                        default_style.style["fill"]["color"] = corte.v  
+                                        default_style.style["fillPattern"] = rule_textures[h]
+                                    }
+                                    if(geomType.includes("Point") ) { 
+                                        default_style.style[this.VM_default_shape]["fill"]["color"] = corte.v  
+                                        default_style.style[this.VM_default_shape]["fillPattern"] = rule_textures[h]
+                                    }
                                     if(geomType.includes("LineString") ) { default_style.style["stroke"]["color"] = corte.v  }
 
                                 }else{
@@ -235,8 +260,14 @@ export default{
                         }else{
                             if(feature.getProperties()[rule.columna] == value){
                                 if(rule.propiedadObjetivo=="relleno"){
-                                    if(geomType.includes("Polygon") ) { default_style.style["fill"]["color"] = corte.v  }
-                                    if(geomType.includes("Point") ) { default_style.style[this.VM_default_shape]["fill"]["color"] = corte.v  }
+                                    if(geomType.includes("Polygon") ) { 
+                                        default_style.style["fill"]["color"] = corte.v  
+                                        default_style.style["fillPattern"] = rule_textures[h]
+                                    }
+                                    if(geomType.includes("Point") ) { 
+                                        default_style.style[this.VM_default_shape]["fill"]["color"] = corte.v  
+                                        default_style.style[this.VM_default_shape]["fillPattern"] = rule_textures[h]
+                                    }
                                     if(geomType.includes("LineString") ) { default_style.style["stroke"]["color"] = corte.v  }
 
                                 }else{
