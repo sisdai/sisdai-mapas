@@ -164,5 +164,6 @@ export {
     joinDefaultValuesWithNewValuesInPoints,
     checkPointShapeFromStyle,
     serializedStyleSetTexture,
-    removeFillStyle
+    removeFillStyle,
+    convertirNode
 };

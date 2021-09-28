@@ -15,3 +15,7 @@
 ### Simbolos graduados
 
 <accesibilidad-4-relleno-texturas-puntos/>
+
+### Simbolos con colores
+
+<accesibilidad-5-relleno-categorias-puntos/>
