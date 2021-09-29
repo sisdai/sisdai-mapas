@@ -3,7 +3,7 @@
         <input type="checkbox" :checked="value" @change="cambio">
         <span class="color-square">
             <span class="custom-checkbox " :class="{'dai-icon-check':value}"></span>
-            <span class="color" :style="{'backgroundColor':color}"></span>
+            <span class="color" :style="{'backgroundColor':color,'backgroundImage':backgroundImage}"></span>
         </span>
         
         <slot></slot>
@@ -12,7 +12,19 @@
 
 <script>
 export default {
-    props:["value","color"],
+    props:{
+        value:{
+            type:Boolean
+        },
+        color:{
+            default:"black",
+            type:String
+        },
+        backgroundImage:{
+            default:'none',
+            type:String
+        }
+    },
     model:{
         prop:"value",
         event:"change"
