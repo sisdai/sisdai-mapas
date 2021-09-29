@@ -1,6 +1,6 @@
 {
   "name": "dai-maps",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "private": true,
   "files": [
     "dist/*"
@@ -10,17 +10,12 @@
     "build": "vue-cli-service build --target lib src/index.js",
     "lint": "vue-cli-service lint",
     "docs:serve": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
-    "dev-varios": "VUE_CLI_SERVICE_CONFIG_PATH=$PWD/dev/vue.config.js vue-cli-service serve  dev/varios.js",
-    "dev-simbologias": "vue-cli-service serve  dev/Simbologias.js",
-    "dev-capas": "vue-cli-service serve  dev/Capas.js",
-    "dev-fullpage": "vue-cli-service serve  dev/FullPage.js",
-    "dev-controles": "vue-cli-service serve  dev/Controles.js",
-    "dev-replica-diseno": "vue-cli-service serve  dev/ReplicaDiseno.js"
+    "docs:build": "vuepress build docs"
   },
   "dependencies": {
     "core-js": "^3.17.3",
     "ol": "6.5.0",
+    "ol-ext": "^3.2.6",
     "simple-statistics": "^7.7.0",
     "vue": "^2.6.14"
   },
