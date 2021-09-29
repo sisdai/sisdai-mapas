@@ -207,7 +207,7 @@ export default{
                 
                 Object.assign(default_style.style,estilos_normales_desde_parametros.style)
                 
-                console.log(estilos_normales_desde_parametros,default_style,this.VM_id)
+                //console.log(estilos_normales_desde_parametros,default_style,this.VM_id)
 
                 this.VM_rules.forEach((rule,i)=>{
                     let rule_cortes = this.VM_rules_cortes[i]
