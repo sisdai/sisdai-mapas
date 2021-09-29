@@ -4,7 +4,8 @@
             <shape 
             shapeType="rounded-square"
             :size="[40,40]"
-            :backgroundColor="corte.activo ? corte.v: 'white'"
+            :backgroundColor="corte.activo ? (usarTexturas?'white': corte.v): 'white'"
+            :backgroundImage="corte.activo ? backgroundImage[i] : 'none'"
             :strokeColor=" corte.activo ?  (params.content.cortes.args.persistentStroke.color || 'white') : 'black '"
             :strokeWidth="params.content.cortes.args.persistentStroke.width || 1"
             class="map-legends-item-color"
@@ -20,6 +21,8 @@
 import Shape from "../utils/shape.vue"
 import legend_item_child  from "../../mixins/legend-item-child"
 import Vue from 'vue'
+import {convertirNode} from "../../mixins/_json2olstyle"
+
 export default {
     mixins:[legend_item_child],
     components:{
@@ -100,6 +103,19 @@ export default {
                 return corte2
             })
             
+        },
+        
+        backgroundImage:function(){
+            return this.$parent.$parent.cmpMap.cmpLayers[this.layerId].usarTexturasEnRelleno
+                ? this.params.content.cortes.args.textures.map(textura=>{
+                    let fillStyle = convertirNode("fillPattern",{...textura})
+                    let pattern = fillStyle.fill
+                    return `url('${pattern.getImage().toDataURL()}'`
+                })
+                :this.params.content.cortes.cortes.map(item=>'none')
+        },
+        usarTexturas:function(){
+            return this.$parent.$parent.cmpMap.cmpLayers[this.layerId].usarTexturasEnRelleno
         }
     }
 }

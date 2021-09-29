@@ -11,14 +11,17 @@ const dataClassification = (data,classType,clases,colors,sizes,targetProperty,
     clasesVisiblesInicial=[],clasesEtiquetasLimitesDecimales=0)=>{
     let valores_clases = []
     //aqui ir agregando las demas clasificaciones
-    valores_clases = classType==="categorias" ? qualitativeClassification(data) : valores_clases;
-    valores_clases = classType==="cuantiles" ? quantileClassification(data,clases) : valores_clases;
-    valores_clases = classType==="linear" ? linearClassification(data,clases) : valores_clases;
-    valores_clases = classType==="exponencial" ? powClassification(data,clases) : valores_clases;
-    valores_clases = classType==="logarimica" ? logClassification(data,clases) : valores_clases;
+    if (data.length>0){
+        valores_clases = classType==="categorias" ? qualitativeClassification(data) : valores_clases;
+        valores_clases = classType==="cuantiles" ? quantileClassification(data,clases) : valores_clases;
+        valores_clases = classType==="linear" ? linearClassification(data,clases) : valores_clases;
+        valores_clases = classType==="exponencial" ? powClassification(data,clases) : valores_clases;
+        valores_clases = classType==="logarimica" ? logClassification(data,clases) : valores_clases;
 
-    valores_clases = classType==="cortes-naturales" ? naturalBreaksClassificaction(data,clases) : valores_clases;
-    valores_clases = classType==="personalizada" ? clasificacion_custom : valores_clases;
+        valores_clases = classType==="cortes-naturales" ? naturalBreaksClassificaction(data,clases) : valores_clases;
+        valores_clases = classType==="personalizada" ? clasificacion_custom : valores_clases;
+    }
+    
     //console.log(valores_clases)
 
     if(classType==="categorias" && acomodoCategorias.length>1){
@@ -155,7 +158,8 @@ const naturalBreaksClassificaction = (data,noClases)=>{
 
     let cortes = clases.map((item,i)=>{
         let corte_inferior = item //(i==0) ? Math.round(item): Math.round(item)+ 1
-        return [corte_inferior,Math.round(clases[i+1])]
+        //return [corte_inferior,Math.round(clases[i+1])]
+        return [corte_inferior,clases[i+1]]
     })
     cortes.pop()
     //console.log(cortes)

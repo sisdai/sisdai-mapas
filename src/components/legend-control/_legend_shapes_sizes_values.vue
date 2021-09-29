@@ -4,7 +4,8 @@
             <div class="shape-item" v-for=" corte_s in params.content.cortes.cortes" :key="corte_s.v">
                 <shape class="shape-this-legend" 
                     shape-type="circle" 
-                    :backgroundColor="params.content.cortes.args.persistentFill.color || 'gray'" 
+                    :backgroundColor=" usarTexturas? 'transparent': params.content.cortes.args.persistentFill.color  "
+                    :backgroundImage="backgroundImage" 
                     :strokeColor="params.content.cortes.args.persistentStroke.color || 'white'"
                     :strokeWidth="params.content.cortes.args.persistentStroke.width || 1"
                     :size="[corte_s.v*2,corte_s.v*2]" />
@@ -19,10 +20,22 @@
 <script>
 import Shape from "../utils/shape.vue";
 import legend_item_child  from "../../mixins/legend-item-child";
+import {convertirNode} from "../../mixins/_json2olstyle"
+
 export default {
     mixins:[legend_item_child],
     components:{
         Shape
+    },
+    computed:{
+        backgroundImage:function(){
+            return this.$parent.$parent.cmpMap.cmpLayers[this.layerId].usarTexturasEnRelleno
+                ? `url('${convertirNode("fillPattern",{...this.params.content.cortes.args.persistentTexture}).fill.getImage().toDataURL()}'`
+                : 'none'
+        },
+        usarTexturas:function(){
+            return this.$parent.$parent.cmpMap.cmpLayers[this.layerId].usarTexturasEnRelleno
+        }
     }
 }
 </script>

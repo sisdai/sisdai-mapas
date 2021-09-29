@@ -6,8 +6,12 @@ import LegendCoropleta from "./_legend_coropleta.vue"
 import LegendNormalVector  from "./_legend_normal_vector.vue"
 import LegendListChecksColors from "./_legend_list_checks_colors.vue"
 import LegendShapesSizesValues from "./_legend_shapes_sizes_values.vue";
-import LegendListChecksValues from "./_legend-list-checks-values.vue"
 import LegendListChecksColorsShapesSizesValues from "./_legend_list_checks_colors_shapes_sizes_values.vue";
+
+//leyendas de datos vacios
+import LegendListChecksValues from "./_legend-list-checks-values.vue"
+import LegendListChecksColorsListChecksValues from "./_legend_list_checks_colors_list_checks_values.vue"
+
 export default {
     props:["layerId"],
     created:function(){
@@ -29,7 +33,8 @@ export default {
         LegendListChecksColors,
         LegendShapesSizesValues,
         LegendListChecksColorsShapesSizesValues,
-        LegendListChecksValues
+        LegendListChecksValues,
+        LegendListChecksColorsListChecksValues
     },
     data:function(){
         return {

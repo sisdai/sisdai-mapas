@@ -158,18 +158,18 @@ El titulo que se le asigna a la capa, puede ser util cuando algunos controles ac
 
 ```json
 {
-    "fill":{
-        "color": "gray"
+    "fill":{  //relleno
+        "color": "gray" // representacion string del color o hexadecimal
     },
-    "stroke":{
-        "color": "white",
-        "width": 1
+    "stroke":{ //contorno
+        "color": "white", // representacion string del color o hexadecimal
+        "width": 1  // tamaño en pixeles del contorno
     },
-    "circle":{
-        "fill":{
+    "circle":{ //figura (solo aplica a geometrias punto)
+        "fill":{ // relleno 
             "color": "gray"
         },
-        "stroke":{
+        "stroke":{ // contorno
             "color": "white",
             "width": 1
         }
@@ -199,6 +199,42 @@ El estilo persistente de la capa, es decir el estilo que no esta enlazado a los 
 }
 ```
 El estilo que se le asignara al seleccionar el poligono, punto o linea que el usuario de click, casi simpre va centrada a contornos pero puede aplicarse a cualquier propiedad del estilo
+
+
+
+#### usar-texturas-en-relleno
+- Type `Boolean`
+- Default `false`
+
+Se define si el relleno de las geometrias en el estilo tomaran la textura definida en el parametro `estilo-textura-relleno`
+
+#### estilo-textura-relleno
+- Type `Object` (Opciones de textura)
+- Default 
+
+```json
+{
+    "pattern":"hatch",
+    "angle":45,
+    "spacing":5,
+    "color":"gray",
+    "size":1
+}
+```
+
+Las opciones para la textura que tomara si `usar-texturas-en-relleno = true`.  Se debe tener en cuenta que algunas propieades se reescriben si la capa usa una clasificacion de datos en la simbologia.
+
+**Opciones disponibles**
+- **pattern** : string. cualquiera de los siguientes valores hatch, cross, dot, circle, square, tile, woven, crosses, caps, nylon, hexagon, cementery, sand, brick, wave, clay
+- **angle** : number. Angulo de inclinacion de la textura, en grados para `hatch` y 0-1 para ` cross, dot, circle, square, tile,` (solo los inclina en 45)
+- **size**: number.  El tamaño de la unidad de la textura, solo aplica para *hatch, cross, dot, circle, square, tile*
+- **spacing**: number.  Espaciado la unidad de la textura, solo aplica para *hatch, cross, dot, circle, square, tile*
+- **color**: string. El color de la textura
+- **fill**: object. el fondo de la textura , regularmente algo como `{"color":"red"}`
+- **scale** number. Escala del patron (hacerlo mas grande o mas pequeño)
+
+[Ejemplos](../ejemplos/texturas.md).
+
 
 #### contenido-tooltip 
 - Type `String`, `Function`

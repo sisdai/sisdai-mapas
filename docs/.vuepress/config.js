@@ -72,7 +72,8 @@ module.exports = {
             'capas',
             'controles',
             'clasificacion-datos',
-            'manejo-datos'
+            'manejo-datos',
+            'texturas'
           ]
         }
       ],

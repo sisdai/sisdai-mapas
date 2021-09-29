@@ -53,8 +53,8 @@ export default {
     },
     watch:{
         datos:function(newDatos){
-            if( newDatos !== undefined && this.olLayer.getSource()!==undefined){
-                
+            if( newDatos !== undefined && this.olLayer !== null && this.olLayer !== undefined ){
+                //console.log(this.olLayer,this.olLayer.getSource())
                 let vectorSource = this.olLayer.getSource()
                 let features = new GeoJSON().readFeatures({...newDatos})
                 

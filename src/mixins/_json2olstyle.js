@@ -1,4 +1,5 @@
 import {Fill, Stroke, Circle, Style, Icon} from 'ol/style';
+import FillPattern from "ol-ext/style/FillPattern"
 
 const equivalencias = {
     "fill":{
@@ -20,6 +21,10 @@ const equivalencias = {
     "style":{
         class:Style,
         key:"style"
+    },
+    "fillPattern":{
+        class:FillPattern,
+        key:"fill"
     }
 }
 
@@ -59,7 +64,7 @@ const serializedStyleIfHighlight=function(originalSerializedStyle,newStyle){
     } 
     //console.log(originalSerializedStyle,originalStyle)
     */
-    return output
+    return JSON.parse(JSON.stringify( output))
 }
 
 const prepareSimplePointVectors=function(targetStyle,sourceStyle){
@@ -111,6 +116,40 @@ const fixSerializedStyleIfIncomplete = function(serializedStyle){
     return {style:serializedStyle}
 }
 
+/**
+ * 
+ * @param {*} serializedStyle 
+ * @param {*} posibleShapePoint 
+ * @param {*} textureOptions 
+ * @returns 
+ */
+const serializedStyleSetTexture = function(serializedStyle,posibleShapePoint,textureOptions){
+    const fillPatternOptions = {...textureOptions}
+    //remover el fill de donde estaba
+    if(serializedStyle.style.fill){
+        delete serializedStyle.style.fill
+        serializedStyle.style.fillPattern = fillPatternOptions
+    }
+    if(serializedStyle.style[posibleShapePoint] && serializedStyle.style[posibleShapePoint].fill){
+        delete serializedStyle.style[posibleShapePoint].fill 
+        serializedStyle.style[posibleShapePoint].fillPattern = fillPatternOptions
+    }
+
+    return serializedStyle
+}
+
+
+const removeFillStyle= function(serializedStyle, remove="fill",posibleShapePoint="circle"){
+    if(serializedStyle.style[remove]){
+        delete serializedStyle.style[remove]
+        
+    }
+    if(serializedStyle.style[posibleShapePoint] && serializedStyle.style[posibleShapePoint][remove]){
+        delete serializedStyle.style[posibleShapePoint][remove]
+    }
+    return serializedStyle
+}
+
 
 export default function (serializedStyle){
     //console.log(serializedStyle)
@@ -123,5 +162,8 @@ export {
     fixSerializedStyleIfIncomplete,
     prepareSimplePointVectors,
     joinDefaultValuesWithNewValuesInPoints,
-    checkPointShapeFromStyle
+    checkPointShapeFromStyle,
+    serializedStyleSetTexture,
+    removeFillStyle,
+    convertirNode
 };
