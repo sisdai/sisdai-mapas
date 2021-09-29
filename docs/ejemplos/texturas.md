@@ -2,6 +2,8 @@
 
 ## Relleno simple
 
+Documentacion: [Mixin Vector Layer](../componentes/capas.md#mixin-vector-layer).
+
 <texturas-1-relleno-texturas/>
 
 ```html
@@ -297,7 +299,7 @@
         }"
         :usar-texturas-en-relleno="usarTexturas"
         />
-        
+
     </dai-mapa>
 </dai-tarjeta-contenedor-mapa>
 ```
