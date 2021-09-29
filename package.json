@@ -10,13 +10,7 @@
     "build": "vue-cli-service build --target lib src/index.js",
     "lint": "vue-cli-service lint",
     "docs:serve": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
-    "dev-varios": "VUE_CLI_SERVICE_CONFIG_PATH=$PWD/dev/vue.config.js vue-cli-service serve  dev/varios.js",
-    "dev-simbologias": "vue-cli-service serve  dev/Simbologias.js",
-    "dev-capas": "vue-cli-service serve  dev/Capas.js",
-    "dev-fullpage": "vue-cli-service serve  dev/FullPage.js",
-    "dev-controles": "vue-cli-service serve  dev/Controles.js",
-    "dev-replica-diseno": "vue-cli-service serve  dev/ReplicaDiseno.js"
+    "docs:build": "vuepress build docs"
   },
   "dependencies": {
     "core-js": "^3.17.3",
