@@ -73,7 +73,7 @@ module.exports = {
             'controles',
             'clasificacion-datos',
             'manejo-datos',
-            'accesibilidad'
+            'texturas'
           ]
         }
       ],

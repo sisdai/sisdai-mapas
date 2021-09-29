@@ -206,7 +206,8 @@ export default{
                         stroke_color: colorsLegend.stroke,
                         shape: shapeLegend, // circle, square,  triangle, line, etc,  tambien el url del svg que se desee insertar
                         //shape: "svg:ruta/alsvg",
-                        title:this.VM_title
+                        title:this.VM_title,
+                        texture:JSON.parse(JSON.stringify(this.estiloTexturaRelleno))
                     }
                 }
                 this.VM_legend_info_status = "ready"
@@ -273,6 +274,7 @@ export default{
             //si es una capa clasificable, reinvocar la funcion de clasificar con estilo
             if(typeof this.VM_mapStyle === "function" && this.VM_is_classified){
                 this._set_style_class_v2()
+                this._set_legend_info()
             }else{
                 this.VM_mapStyle = nv
                 this._setStyle()

@@ -3,7 +3,7 @@
         <dai-tarjeta-contenedor-mapa>
             <template v-slot:header>  
                 <dai-leyenda-mapa
-                :para="['estados2']"
+                :para="['estados_c']"
                 :mostrar-boton-alterna-todos="true"
                 />
                 <button @click="usarTexturas=!usarTexturas">alternar textura</button>
@@ -13,7 +13,7 @@
             >
                 
                 <dai-capa-geojson 
-                id="estados2" 
+                id="estados_c" 
                 titulo="Estados con titulo"
                 :url="$withBase('/centroides-estados.geojson')"
                 :reglas-estilo-capa="{
@@ -22,6 +22,11 @@
                     acomodoCategorias:['Muy bajo','Bajo','Medio','Alto','Muy alto'],
                     propiedadObjetivo: 'relleno',
                     colores:'Reds'
+                }"
+                :estilo-capa="{
+                    circle:{
+                        radius:10
+                    }
                 }"
                 :usar-texturas-en-relleno="usarTexturas"
                 :estiloTexturaRelleno="{

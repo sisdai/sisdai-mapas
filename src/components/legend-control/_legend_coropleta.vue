@@ -21,7 +21,7 @@
 import Shape from "../utils/shape.vue"
 import legend_item_child  from "../../mixins/legend-item-child"
 import Vue from 'vue'
-import FillPattern from "ol-ext/style/FillPattern"
+import {convertirNode} from "../../mixins/_json2olstyle"
 
 export default {
     mixins:[legend_item_child],
@@ -104,10 +104,12 @@ export default {
             })
             
         },
+        
         backgroundImage:function(){
             return this.$parent.$parent.cmpMap.cmpLayers[this.layerId].usarTexturasEnRelleno
                 ? this.params.content.cortes.args.textures.map(textura=>{
-                    let pattern = new FillPattern({...textura})
+                    let fillStyle = convertirNode("fillPattern",{...textura})
+                    let pattern = fillStyle.fill
                     return `url('${pattern.getImage().toDataURL()}'`
                 })
                 :this.params.content.cortes.cortes.map(item=>'none')

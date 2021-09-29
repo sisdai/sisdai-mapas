@@ -1,9 +1,15 @@
 <template>
     <div class="another-map">
         <dai-tarjeta-contenedor-mapa>
-            <template v-slot:header>  
+            <template v-slot:header>
+                <div>
+                    <p>Da lick en el boton para alternar la textura</p>
+                    <button @click="usarTexturas=!usarTexturas" class="dai-map-button">
+                        {{usarTexturas?'quitar texturas':'poner texturas'}}
+                    </button>
+                </div>
                 <dai-leyenda-mapa
-                :para="['estados2']"
+                :para="['estados_tamanos']"
                 :mostrar-boton-alterna-todos="true"
                 />
             </template>
@@ -12,16 +18,9 @@
             >
                 <dai-capa-xyz/>
                 <dai-capa-geojson 
-                id="estados2" 
+                id="estados_tamanos" 
                 :url="$withBase('/centroides-estados.geojson')"
                 :reglas-estilo-capa="[
-                    {
-                        clasificacion:'categorias',
-                        columna : 'estados_grado_marg',
-                        acomodoCategorias:['Muy bajo','Bajo','Medio','Alto','Muy alto'],
-                        propiedadObjetivo: 'relleno',
-                        colores:'Reds'
-                    },
                     {
                         clasificacion:'cuantiles',
                         columna:'estados_pob18ymas_rural',
@@ -33,15 +32,25 @@
                 ]"
                 :estilo-capa="{
                     circle:{
-                        stroke:{color:'black',width:1},
+                        stroke:{color:usarTexturas?'black':'white',width:1},
                         radius:1,
-                        fill:{color:'white'}
+                        fill:{color:'#4285f4'},
                     }
                 }"
-                :usar-texturas-en-relleno="true"
+                :usar-texturas-en-relleno="usarTexturas"
                 />
                 
             </dai-mapa>
         </dai-tarjeta-contenedor-mapa>
     </div>
 </template>
+
+<script>
+export default {
+    data:function(){
+        return{
+            usarTexturas:true
+        }
+    }
+}
+</script>

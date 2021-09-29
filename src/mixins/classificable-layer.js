@@ -180,7 +180,8 @@ export default{
                      stroke:{
                         width:1,
                         color :DEFAULT_STROKE_COLOR 
-                     }
+                     },
+                     fillPattern:JSON.parse(JSON.stringify(this.estiloTexturaRelleno))
                  }
                 }
                  default_style.style[this.VM_default_shape] = {
@@ -191,15 +192,23 @@ export default{
                         color: DEFAULT_STROKE_COLOR,
                         width: 1
                     },
-                    radius: 7
+                    radius: 7,
+                    fillPattern:JSON.parse(JSON.stringify(this.estiloTexturaRelleno))
                 }
                 let estilos_normales_desde_parametros={...originalMapStyleFromParams}
                 
                 estilos_normales_desde_parametros = fixSerializedStyleIfIncomplete(estilos_normales_desde_parametros)
                 
                 joinDefaultValuesWithNewValuesInPoints(default_style,estilos_normales_desde_parametros,this.VM_default_shape)
+                if(this.VM_default_shape in estilos_normales_desde_parametros.style){
+                    Object.assign(default_style.style[this.VM_default_shape],estilos_normales_desde_parametros.style[this.VM_default_shape])
+                    estilos_normales_desde_parametros.style[this.VM_default_shape] = JSON.parse(JSON.stringify(default_style.style[this.VM_default_shape]))
+                }
+                
                 Object.assign(default_style.style,estilos_normales_desde_parametros.style)
                 
+                console.log(estilos_normales_desde_parametros,default_style,this.VM_id)
+
                 this.VM_rules.forEach((rule,i)=>{
                     let rule_cortes = this.VM_rules_cortes[i]
                     
@@ -225,6 +234,7 @@ export default{
                                             default_style.style["fillPattern"] = rule_textures[h]
                                         }
                                         if(geomType.includes("Point") ) { 
+                                            //console.log(default_style.style[this.VM_default_shape])
                                             default_style.style[this.VM_default_shape]["fill"]["color"] = corte.v  
                                             default_style.style[this.VM_default_shape]["fillPattern"] = rule_textures[h]
                                         }
@@ -232,7 +242,9 @@ export default{
 
                                     }else{
                                         //es un size
-                                        if(geomType.includes("Point") ) { default_style.style[this.VM_default_shape]["radius"] = corte.v  }
+                                        if(geomType.includes("Point") ) { 
+                                            default_style.style[this.VM_default_shape]["radius"] = corte.v  
+                                        }
                                         if(geomType.includes("LineString") ) { default_style.style["stroke"]["width"] = corte.v  }
                                     }
                                 
@@ -245,6 +257,7 @@ export default{
                                         default_style.style["fillPattern"] = rule_textures[h]
                                     }
                                     if(geomType.includes("Point") ) { 
+                                        
                                         default_style.style[this.VM_default_shape]["fill"]["color"] = corte.v  
                                         default_style.style[this.VM_default_shape]["fillPattern"] = rule_textures[h]
                                     }
@@ -297,6 +310,7 @@ export default{
                 }
                 content["cortes"]["args"]["persistentFill"] = this.VM_persistentFill
                 content["cortes"]["args"]["persistentStroke"] = this.VM_persistentStroke
+                content["cortes"]["args"]["persistentTexture"] = {...this.estiloTexturaRelleno}
             }else{
                 let nombre_tipo =this.VM_rules_cortes.map(rule_corte=>rule_corte.type).sort().join("-")
                 type = `legend-${nombre_tipo}`

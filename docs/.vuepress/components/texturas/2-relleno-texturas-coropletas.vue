@@ -4,7 +4,9 @@
             <template #header>
                 <div>
                     <p>Da lick en el boton para alternar la textura</p>
-                    <button @click="usarTexturas=!usarTexturas">{{usarTexturas?'quitar texturas':'poner texturas'}}</button>
+                    <button @click="usarTexturas=!usarTexturas" class="dai-map-button">
+                        {{usarTexturas?'quitar texturas':'poner texturas'}}
+                    </button>
                 </div>
                 
 
