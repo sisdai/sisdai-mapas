@@ -43,7 +43,8 @@ const dataClassification = (data,classType,clases,colors,sizes,targetProperty,
             //dar formato a los labels si son numericas, 
             //si son iguales, no deberia haber el a
             if(numeric_item[0] === numeric_item[1]){
-                return numeric_item[0]? numeric_item[0].toLocaleString("en") : '';
+                return numeric_item[0]!=undefined && numeric_item[0]!=null 
+                ? numeric_item[0].toLocaleString("en") : `${numeric_item[0]}`;
             }
             // si es el primero que inicia los rangos
             // o si esta despues de un valor que no es un rango
