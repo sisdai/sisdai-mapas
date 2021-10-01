@@ -1,6 +1,6 @@
 {
   "name": "dai-maps",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "private": true,
   "files": [
     "dist/*"
@@ -10,7 +10,9 @@
     "build": "vue-cli-service build --target lib src/index.js",
     "lint": "vue-cli-service lint",
     "docs:serve": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:build": "vuepress build docs",
+    "docs:build-nossr": "vuepress buildnossr docs"
+
   },
   "dependencies": {
     "core-js": "^3.17.3",
