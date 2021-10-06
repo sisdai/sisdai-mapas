@@ -6009,12 +6009,12 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
 var es_function_name = __webpack_require__("b0c0");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2b914e88-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/map.vue?vue&type=template&id=56fe2a42&
-var mapvue_type_template_id_56fe2a42_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"dai-map-container"},[_c('div',{ref:"map",staticClass:"dai-map ",class:[_vm.colorControlesInvertidos ? 'inverted-controls': 'default-controls']}),_vm._t("default"),_c('div',{ref:"tooltip",staticClass:"ol-tooltip ol-tooltip-bottom"},[_c('div',{staticClass:"content"})]),_c('div',{ref:"tooltipmov",staticClass:"ol-tooltipmov "},[_c('div',{staticClass:"content"})]),_c('div',{ref:"popup",staticClass:"ol-popup"},[_c('div',{staticClass:"botones"},[_c('a',{staticClass:"boton-cerrar",on:{"click":_vm._cerrarPopup}},[_vm._v("x")])]),_c('div',{staticClass:"content"})])],2)}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2b914e88-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/map.vue?vue&type=template&id=1b7d1b00&
+var mapvue_type_template_id_1b7d1b00_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"dai-map-container"},[_c('div',{ref:"map",staticClass:"dai-map ",class:[_vm.colorControlesInvertidos ? 'inverted-controls': 'default-controls']}),_vm._t("default"),_c('div',{ref:"tooltip",staticClass:"ol-tooltip ol-tooltip-bottom"},[_c('div',{staticClass:"content"})]),_c('div',{ref:"tooltipmov",staticClass:"ol-tooltipmov "},[_c('div',{staticClass:"content"})]),_c('div',{ref:"popup",staticClass:"ol-popup"},[_c('div',{staticClass:"botones"},[_c('button',{staticClass:"boton-cerrar",on:{"click":_vm._cerrarPopup}},[_c('span',{staticClass:"dai-icon-cerrar"})])]),_c('div',{staticClass:"content"})])],2)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/map/map.vue?vue&type=template&id=56fe2a42&
+// CONCATENATED MODULE: ./src/components/map/map.vue?vue&type=template&id=1b7d1b00&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.number.constructor.js
 var es_number_constructor = __webpack_require__("a9e3");
@@ -25063,6 +25063,10 @@ var invoke_clicks = function invoke_clicks(map, e, component) {
 //
 //
 //
+//
+//
+//
+//
 
 
  //import { defaults as defaultControls} from 'ol/control';
@@ -25483,7 +25487,7 @@ function normalizeComponent (
 
 var component = normalizeComponent(
   map_mapvue_type_script_lang_js_,
-  mapvue_type_template_id_56fe2a42_render,
+  mapvue_type_template_id_1b7d1b00_render,
   staticRenderFns,
   false,
   null,
@@ -34029,9 +34033,12 @@ function defaultGeometryFunction(feature) {
 /** @namespace  ol.ext
  */
 /*global ol*/
-if (window.ol && !ol.ext) {
-  ol.ext = {};
+if(typeof window !== "undefined"){
+    if (window.ol && !ol.ext) {
+        ol.ext = {};
+      }
 }
+
 
 /** Inherit the prototype methods from one constructor into another.
  * replace deprecated ol method
@@ -34045,6 +34052,9 @@ var ol_ext_inherits = function(child,parent) {
   child.prototype = Object.create(parent.prototype);
   child.prototype.constructor = child;
 };
+
+
+if(typeof window !== "undefined"){
 
 // Compatibilty with ol > 5 to be removed when v6 is out
 if (window.ol) {
@@ -34063,6 +34073,7 @@ if (window.Element && !Element.prototype.remove) {
   }
 }
 /* End Polyfill */
+}
 
 
 /* harmony default export */ var ext = (ol_ext_inherits);
@@ -37786,7 +37797,7 @@ var DEFAULT_STROKE_COLOR = "white";
     },
     tooltipEstaticoMargenSuperior: {
       type: Number,
-      default: 0
+      default: 5
     },
     zoomAlDarClick: {
       type: Boolean,
@@ -67377,8 +67388,12 @@ var Vector_VectorSource = /** @class */ (function (_super) {
 
       if (this.contenidoTooltip != "none") {
         this.olLayer.set("_tooltip", this.contenidoTooltip);
-        this.olLayer.set("_tooltip_mov", true);
-        this.olLayer.set("_tooltip_top", '10px');
+        this.olLayer.set("_tooltip_mov", !this.tooltipEstatico);
+        this.olLayer.set("_tooltip_top", this.tooltipEstaticoMargenSuperior);
+      }
+
+      if (this.contenidoPopup !== "none") {
+        this.olLayer.set("_popup", this.contenidoPopup);
       }
 
       this._saveAllFeaturesFromSource(vectorSource);
