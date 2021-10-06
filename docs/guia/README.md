@@ -40,9 +40,9 @@ Tambien seria posible instalar subcomponentes especificos [TERMINAR DE REDACTAR 
 ```html
 <template>
     <!--el centro como coordenadas (x,y) en EPSG:4326 (longitud,latitud) -->
-    <dai-map :zoom="2" :centro="0,0">
+    <dai-mapa :zoom="2" :centro="0,0">
         <dai-capa-xyz-osm/>
-    </dai-map>
+    </dai-mapa>
 </template>
 
 ```

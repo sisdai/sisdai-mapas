@@ -225,5 +225,83 @@ Utiliza la propiedad `estilo-capa` para definir el estilo simple.
 </dai-tarjeta-contenedor-mapa>
 ```
 
-## Agregar tooltips y Popups
+## Agregar tooltips 
+
+Los tooltips son los cuadros de información que aparecen cuando el usuario pasa el mouse sobre algun elemento de la capa.
+
+<capas-5-tooltips />
+
+```html
+<DaiMapa
+:extension="[-118.365119934082,14.5320978164673,-86.7104034423828,32.7186546325684]" 
+>
+    <DaiCapaXyz />
+    <!--Un tooltip con contenido estatico-->
+    <DaiCapaGeojson 
+    contenidoTooltip="hola soy un tooltip"
+    id="estados_poligonos"
+    :url="$withBase('/sample-edos.geojson')"
+    />
+    <!--Un tooltip con contenido dinamico-->
+    <DaiCapaGeojson
+    :contenidoTooltip="(centroide)=>`Grado de marginación <br><b>${centroide.estados_grado_marg}</b>`"
+    id="estados_centroides"
+    :url="$withBase('/centroides-estados.geojson')"
+    :estilo-capa="{circle:{fill:{color:'white'},stroke:{color:'black'},radius:5}}"
+    />
+</DaiMapa>
+```
+
+### Tooltips que se quedan cuando pasa el mouse sobre ellos
+
+<capas-6-tooltip-contenido-para-click />
+
+```html
+<DaiMapa
+:extension="[-118.365119934082,14.5320978164673,-86.7104034423828,32.7186546325684]" 
+>
+    <DaiCapaXyz />
+    <!--Un tooltip con un enlace-->
+    <DaiCapaGeojson 
+    contenido-tooltip="hola soy un tooltip con un <a href='https://google.com' target='_blank'>enlace</a>"
+    :tooltip-estatico="true"
+    :tooltip-estatico-margen-superior="2"
+    id="estados_poligonos"
+    url="/sample-edos.geojson"
+    />
+    <!--Un tooltip con un elemento abbr que tiene un title-->
+    <DaiCapaGeojson
+    :contenido-tooltip="(centroide)=>`un elemento abbr:<br>
+        <abbr title='Grado de marginación :${centroide.estados_grado_marg}'>${centroide.estados_grado_marg}</abbr>`"
+    :tooltip-estatico="true"
+    :tooltip-estatico-margen-superior="5"
+    id="estados_centroides"
+    url="/centroides-estados.geojson"
+    :estilo-capa="{circle:{fill:{color:'white'},stroke:{color:'black'},radius:6}}"
+    />
+</DaiMapa>
+```
+
+
+## Agregar popups
+
+Los popups son los cuadros de información que aparecen cuando se da click a algun poligono/linea/punto. Se mantienen abiertos hasta que el usuario los cierre.
+<capas-7-popups />
+
+```html
+<DaiTarjetaContenedorMapa>
+    <DaiMapa
+    :extension="[-118.365119934082,14.5320978164673,-86.7104034423828,32.7186546325684]" 
+    >
+        <DaiCapaXyz />
+        <!--Un popup-->
+        <DaiCapaGeojson 
+        contenido-popup="hola soy un popup<br>con algo mas de texto"
+        url="/sample-edos.geojson"
+        :zoom-al-dar-click="false"
+        />
+
+    </DaiMapa>
+</DaiTarjetaContenedorMapa>
+```
 
