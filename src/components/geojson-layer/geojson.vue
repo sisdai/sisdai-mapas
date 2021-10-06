@@ -42,9 +42,13 @@ export default {
             if(this.contenidoTooltip!="none"){
                 
                 this.olLayer.set("_tooltip",this.contenidoTooltip)
-                this.olLayer.set("_tooltip_mov",true)
-                this.olLayer.set("_tooltip_top",'10px')
+                this.olLayer.set("_tooltip_mov",!this.tooltipEstatico)
+                this.olLayer.set("_tooltip_top",this.tooltipEstaticoMargenSuperior)
                 
+            }
+
+            if(this.contenidoPopup!=="none"){
+                this.olLayer.set("_popup",this.contenidoPopup)
             }
             
             this._saveAllFeaturesFromSource(vectorSource)
