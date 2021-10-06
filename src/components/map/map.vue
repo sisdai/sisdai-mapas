@@ -15,7 +15,11 @@
             <div class="content"></div>
         </div>
         <div ref="popup" class="ol-popup">
-            <div class="botones"><a class="boton-cerrar" @click="_cerrarPopup">x</a></div><div class="content"></div>
+            <div class="botones">
+                <button class="boton-cerrar" @click="_cerrarPopup"><span class="dai-icon-cerrar"></span></button>
+            </div>
+            <div class="content">
+            </div>
         </div>
     </div>
 </template>

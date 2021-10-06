@@ -1,12 +1,21 @@
     //popup mapa
     .ol-popup {
         min-width: 110px;
-        background: #fff;
+        background: var(--popup-bg-color);
+        color: var(--popup-color);
         box-shadow: 0 2px 4px rgba(0,0,0,.3);
         border-radius: 4px;
         font: normal normal 400 12px/14px "Montserrat",sans-serif;
-        padding: .75rem;
+        padding: .2rem;
         position: absolute;
+
+        *{
+            font-size: inherit;
+            color: inherit;
+        }
+        .content{
+            padding: .3rem 1.3rem .3rem .3rem;
+        }
         &::before,
         &::after {
             content: "";
@@ -16,7 +25,7 @@
             border-style: solid;
         }
         .botones{
-            height: .5rem;
+            height: .3rem;
             width: 100%;
             .boton-cerrar{
                 float: right;
@@ -24,6 +33,15 @@
                 cursor: pointer;
                 //margin: -.5rem -.5rem -.5rem auto;
                 opacity: .6;
+                font-size: .9rem;
+                width: 1.2rem;
+                
+                padding: 2px 0 0 0 ;
+                text-align: center;
+                background-color: var(--popup-color);
+                color: var(--popup-bg-color);
+                border: none;
+                border-radius: 2px;
             }
         }
     }

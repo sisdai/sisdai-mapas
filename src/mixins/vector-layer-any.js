@@ -36,7 +36,7 @@ export default{
         },
         tooltipEstaticoMargenSuperior:{
             type: Number,
-            default: 0
+            default: 5
         },
         zoomAlDarClick:{
             type: Boolean,
