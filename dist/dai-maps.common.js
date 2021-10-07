@@ -31418,7 +31418,10 @@ var es_regexp_to_string = __webpack_require__("25f0");
   },
   destroyed: function destroyed() {
     //eliminar del mapa el layer
-    this.olMap.removeLayer(this.olLayer); //console.log("removiendo",this.VM_id)
+    if (this.olMap !== null) {
+      this.olMap.removeLayer(this.olLayer);
+    } //console.log("removiendo",this.VM_id)
+
   }
 });
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/xyz-layer-osm/osm.vue?vue&type=script&lang=js&
@@ -60063,6 +60066,7 @@ var defaultsValuesRule = {
             var value = corte.val;
 
             if (Array.isArray(value)) {
+              //INICIO DE COMPARACION DE CLASIFICACIONES NUMERICAS
               var quitar1unidad = h === 0 ? value[0] === value[1] ? false : true : false;
 
               if (originalArray[h - 1]) {
@@ -60126,7 +60130,8 @@ var defaultsValuesRule = {
                     default_style.style["stroke"]["width"] = corte.v;
                   }
                 }
-              }
+              } //FIN DE COMPARACION DE CLASIFICACIONES NUMERICAS
+
             } else {
               if (feature.getProperties()[rule.columna] == value) {
                 if (rule.propiedadObjetivo == "relleno") {
