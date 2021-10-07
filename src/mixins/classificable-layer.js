@@ -216,6 +216,7 @@ export default{
                     rule_cortes.cortes.forEach((corte,h,originalArray)=>{
                         let value = corte.val
                         if(Array.isArray(value)){
+                            //INICIO DE COMPARACION DE CLASIFICACIONES NUMERICAS
                             let quitar1unidad = h === 0 ? (value[0] === value[1] ? false: true): false ;
                             if(originalArray[h-1] ){
                                 if(originalArray[h-1].val[0] === originalArray[h-1].val[1]){
@@ -269,7 +270,7 @@ export default{
                                     if(geomType.includes("LineString") ) { default_style.style["stroke"]["width"] = corte.v  }
                                 }
                             }
-
+                            //FIN DE COMPARACION DE CLASIFICACIONES NUMERICAS
                         }else{
                             if(feature.getProperties()[rule.columna] == value){
                                 if(rule.propiedadObjetivo=="relleno"){
