@@ -106,7 +106,10 @@ export default{
     },
     destroyed:function(){
         //eliminar del mapa el layer
-        this.olMap.removeLayer(this.olLayer)
+        if(this.olMap!==null){
+            this.olMap.removeLayer(this.olLayer)
+        }
+        
         //console.log("removiendo",this.VM_id)
         
     },
