@@ -244,7 +244,8 @@ export default{
                                     }else{
                                         //es un size
                                         if(geomType.includes("Point") ) { 
-                                            default_style.style[this.VM_default_shape]["radius"] = corte.v  
+                                            default_style.style[this.VM_default_shape]["radius"] = corte.v 
+                                            default_style.style["zIndex"] = originalArray.length - h;
                                         }
                                         if(geomType.includes("LineString") ) { default_style.style["stroke"]["width"] = corte.v  }
                                     }
@@ -266,7 +267,10 @@ export default{
 
                                 }else{
                                     //es un size
-                                    if(geomType.includes("Point") ) { default_style.style[this.VM_default_shape]["radius"] = corte.v  }
+                                    if(geomType.includes("Point") ) { 
+                                        default_style.style[this.VM_default_shape]["radius"] = corte.v  
+                                        default_style.style["zIndex"] = originalArray.length - h;
+                                    }
                                     if(geomType.includes("LineString") ) { default_style.style["stroke"]["width"] = corte.v  }
                                 }
                             }
@@ -286,7 +290,10 @@ export default{
 
                                 }else{
                                     //es un size
-                                    if(geomType.includes("Point") ) { default_style.style[this.VM_default_shape]["radius"] = corte.v  }
+                                    if(geomType.includes("Point") ) { 
+                                        default_style.style[this.VM_default_shape]["radius"] = corte.v  
+                                        default_style.style["zIndex"] = originalArray.length - h;
+                                    }
                                     if(geomType.includes("LineString") ) { default_style.style["stroke"]["width"] = corte.v  }
                                 }
                             }
