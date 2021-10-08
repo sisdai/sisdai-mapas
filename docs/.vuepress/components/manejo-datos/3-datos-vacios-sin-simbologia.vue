@@ -1,12 +1,3 @@
-# Manejo de datos
-
-## Aplicando filtros
-
-## Recibiendo datos vacios
-
-<manejo-datos-2-recibiendo-datos-vacios />
-
-```html
 <template>
     <div class="another-map">
         <dai-tarjeta-contenedor-mapa>
@@ -23,12 +14,9 @@
                 <dai-capa-geojson 
                 id="centroides"
                 :datos="centroidesComputados"
-                :reglas-estilo-capa="{
-                    clasificacion:'cuantiles',
-                    columna : 'estados_pob18ymas',
-                    propiedadObjetivo: 'proporcion',
-                    clases:4,
-                    proporciones:[4,8,12,16]
+                :estilo-capa="{
+                    fill:{color:'green'},
+                    stroke:{color:'white',width:1}
                 }"
                 />
             </dai-mapa>
@@ -37,7 +25,7 @@
 </template>
 
 <script>
-import centroides from "../capas/centroides-estados.json"
+import centroides from "../capas/sample-edos.json"
 export default {
     data: function (){
         return {
@@ -52,6 +40,3 @@ export default {
     }
 }
 </script>
-```
-
-<manejo-datos-3-datos-vacios-sin-simbologia />
