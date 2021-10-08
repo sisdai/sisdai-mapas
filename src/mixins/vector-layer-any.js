@@ -192,7 +192,9 @@ export default{
                     return olstyles
                 }
             }
-            this.olLayer.setStyle(style)
+            if(this.olLayer!==null){
+                this.olLayer.setStyle(style)
+            }
 
             /**
              * poner informacion en la leyenda cuando no es clasificable el layer
