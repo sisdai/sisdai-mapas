@@ -60109,6 +60109,7 @@ var defaultsValuesRule = {
                   //es un size
                   if (geomType.includes("Point")) {
                     default_style.style[_this4.VM_default_shape]["radius"] = corte.v;
+                    default_style.style["zIndex"] = originalArray.length - h;
                   }
 
                   if (geomType.includes("LineString")) {
@@ -60136,6 +60137,7 @@ var defaultsValuesRule = {
                   //es un size
                   if (geomType.includes("Point")) {
                     default_style.style[_this4.VM_default_shape]["radius"] = corte.v;
+                    default_style.style["zIndex"] = originalArray.length - h;
                   }
 
                   if (geomType.includes("LineString")) {
@@ -60164,6 +60166,7 @@ var defaultsValuesRule = {
                   //es un size
                   if (geomType.includes("Point")) {
                     default_style.style[_this4.VM_default_shape]["radius"] = corte.v;
+                    default_style.style["zIndex"] = originalArray.length - h;
                   }
 
                   if (geomType.includes("LineString")) {
