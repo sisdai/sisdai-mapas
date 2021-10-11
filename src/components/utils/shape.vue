@@ -6,6 +6,7 @@
             'width':`${size[0]}${sizeUnits}`,
             'height':`${size[1]}${sizeUnits}`,
             'backgroundColor':backgroundColor,
+            'backgroundImage':backgroundImage,
             'borderWidth':`${strokeWidth}px`,
             'borderColor':strokeColor
 
@@ -51,6 +52,10 @@ export default {
         strokeWidth:{
             default:1,
             type:Number
+        },
+        backgroundImage:{
+            default:'none',
+            type:String
         }
     }
 }

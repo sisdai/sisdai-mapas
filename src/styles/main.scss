@@ -18,6 +18,7 @@
     font-display: swap;
     src: url("../assets/fonts/Montserrat-SemiBold.ttf");
 }
+
 @font-face {
     font-family: "Montserrat";
     font-style: normal;
@@ -102,19 +103,12 @@ $invert-control-bg-color-hover:invert($control-bg-color-hover);
 $invert-control-bg-color-accent:invert($control-bg-color-accent);
 $invert-control-color-accent:invert($control-color-accent);
 
-:root{
+.card-map-container,.dai-map-container{
     --main-bg-color:white;
     --accent-color:black;
     --main-text-color:black;
     --hover-color:lightgray;
-    //diferenciacion entre controles claros o oscuros
-    //--light-control-bg-color:white;
-    //--light-control-color: black;
-    //--light-control-hover-color: lightgray;
-    //--dark-control-bg-color: black;
-    //--dark-control-color: white;
-    //--dark-control-hover-color: lightgray;
-
+    
     //colores en los controles
     --control-bg-color: #{$control-bg-color};
     --control-color: #{$control-color};
@@ -126,10 +120,13 @@ $invert-control-color-accent:invert($control-color-accent);
     --inverted-control-bg-color-hover: #{$invert-control-bg-color-hover};
     --inverted-control-bg-color-accent: #{$invert-control-bg-color-accent};
     --inverted-control-color-accent: #{$invert-control-color-accent};
-    //--inverted-control-bg-color: $control-color;
-    //--inverted-control-color: $control-bg-color;
-    //--inverted-control-bg-color-hover: $control-color;
-    //--inverted-control-bg-color-accent: $control-color;
+    
+
+    //colores para el tooltip y popup
+    --tooltip-bg-color: rgba(0, 0, 0, 0.8);
+    --tooltip-color:#fff;
+    --popup-bg-color: white;
+    --popup-color:black;
 
 
 }

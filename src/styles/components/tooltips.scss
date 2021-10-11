@@ -2,12 +2,21 @@
 .ol-tooltip {
     min-width: 110px;
     max-width: 450px;
-    background: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,.3);
+    background: var(--tooltip-bg-color);
+    color: var(--tooltip-color);
+    //box-shadow: 0 2px 4px rgba(0,0,0,.3);
     border-radius: 4px;
     font: normal normal 400 12px/14px "Montserrat",sans-serif;
     padding: .75rem;
     position: absolute;
+    left: -50px;
+    *{
+        font-size: inherit;
+        color: inherit;
+    }
+    a{
+        color:#236EF0
+    }
     
     .botones{
         height: .5rem;
@@ -21,6 +30,8 @@
         }
     }
 }
+
+/*
 .ol-tooltip-right {
     left: -50px;
 }
@@ -33,6 +44,7 @@
 .ol-tooltip-bottom {
     //top: -3px;
 }
+*/
 
 @media screen and (min-width:1200px) {
     .ol-tooltip {
@@ -45,12 +57,21 @@
     //tooltipmov mapa
     .ol-tooltipmov {
         min-width: 110px;
-        background: #fff;
-        box-shadow: 0 2px 4px rgba(0,0,0,.3);
+        background: var(--tooltip-bg-color);
+        color: var(--tooltip-color);
+        //box-shadow: 0 2px 4px rgba(0,0,0,.3);
         border-radius: 4px;
         font: normal normal 400 12px/14px "Montserrat",sans-serif;
         padding: .75rem;
         position: absolute;
+        font-size: 12px;
+        
+        *{
+            font-size: inherit;
+            color: inherit;
+        }
+        
+        /*
         &::before,
         &::after {
             content: "";
@@ -59,6 +80,7 @@
             height: 0;
             border-style: solid;
         }
+        */
         .botones{
             height: .5rem;
             width: 100%;
@@ -70,19 +92,24 @@
                 opacity: .6;
             }
         }
+
+        a{
+            color:#236EF0
+        }
     }
     .ol-tooltipmov-right {
-        left: -50px;
+        left: 0px;
     }
     .ol-tooltipmov-left {
-        right: -50px;
+        right: 0px;
     }
     .ol-tooltipmov-top {
-        bottom: 15px;
+        bottom: 5px;
     }
     .ol-tooltipmov-bottom {
-        top: 25px;
+        top: 5px;
     }
+    /*
     .ol-tooltipmov.ol-tooltipmov-right {
         &::before {
             left: 36px;
@@ -123,6 +150,7 @@
             top: -10px;
         }
     }
+    */
     @media screen and (min-width:1200px) {
         .ol-tooltipmov {
             white-space: nowrap;

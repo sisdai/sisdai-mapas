@@ -11,14 +11,17 @@ const dataClassification = (data,classType,clases,colors,sizes,targetProperty,
     clasesVisiblesInicial=[],clasesEtiquetasLimitesDecimales=0)=>{
     let valores_clases = []
     //aqui ir agregando las demas clasificaciones
-    valores_clases = classType==="categorias" ? qualitativeClassification(data) : valores_clases;
-    valores_clases = classType==="cuantiles" ? quantileClassification(data,clases) : valores_clases;
-    valores_clases = classType==="linear" ? linearClassification(data,clases) : valores_clases;
-    valores_clases = classType==="exponencial" ? powClassification(data,clases) : valores_clases;
-    valores_clases = classType==="logarimica" ? logClassification(data,clases) : valores_clases;
+    if (data.length>0){
+        valores_clases = classType==="categorias" ? qualitativeClassification(data) : valores_clases;
+        valores_clases = classType==="cuantiles" ? quantileClassification(data,clases) : valores_clases;
+        valores_clases = classType==="linear" ? linearClassification(data,clases) : valores_clases;
+        valores_clases = classType==="exponencial" ? powClassification(data,clases) : valores_clases;
+        valores_clases = classType==="logarimica" ? logClassification(data,clases) : valores_clases;
 
-    valores_clases = classType==="cortes-naturales" ? naturalBreaksClassificaction(data,clases) : valores_clases;
-    valores_clases = classType==="personalizada" ? clasificacion_custom : valores_clases;
+        valores_clases = classType==="cortes-naturales" ? naturalBreaksClassificaction(data,clases) : valores_clases;
+        valores_clases = classType==="personalizada" ? clasificacion_custom : valores_clases;
+    }
+    
     //console.log(valores_clases)
 
     if(classType==="categorias" && acomodoCategorias.length>1){
@@ -40,7 +43,8 @@ const dataClassification = (data,classType,clases,colors,sizes,targetProperty,
             //dar formato a los labels si son numericas, 
             //si son iguales, no deberia haber el a
             if(numeric_item[0] === numeric_item[1]){
-                return numeric_item[0].toLocaleString("en")
+                return numeric_item[0]!=undefined && numeric_item[0]!=null 
+                ? numeric_item[0].toLocaleString("en") : `${numeric_item[0]}`;
             }
             // si es el primero que inicia los rangos
             // o si esta despues de un valor que no es un rango
@@ -155,7 +159,8 @@ const naturalBreaksClassificaction = (data,noClases)=>{
 
     let cortes = clases.map((item,i)=>{
         let corte_inferior = item //(i==0) ? Math.round(item): Math.round(item)+ 1
-        return [corte_inferior,Math.round(clases[i+1])]
+        //return [corte_inferior,Math.round(clases[i+1])]
+        return [corte_inferior,clases[i+1]]
     })
     cortes.pop()
     //console.log(cortes)

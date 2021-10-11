@@ -1,6 +1,6 @@
 <script>
-import { Tile as TileLayer} from 'ol/layer';
-import { XYZ } from 'ol/source';
+import TileLayer from 'ol/layer/Tile';
+import XYZ from 'ol/source/XYZ';
 
 import layer from "../../mixins/layer"
 export default {
@@ -21,7 +21,7 @@ export default {
             this.olLayer = new TileLayer({
                 source: new XYZ({
                     url: this.url,
-                    attributions:this.attributions
+                    attributions:this.atribuciones
                 }),
             })
         }

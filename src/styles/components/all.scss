@@ -1,10 +1,10 @@
-@import "./zoom-controls.scss";
+@import "./map-controls.scss";
 @import "./popup.scss";
 @import "./tooltips.scss";
 
 .card-map-container{
     font-family: "Montserrat", sans-serif;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 1.45;
 
     p{
@@ -22,10 +22,12 @@
     font-size: 10px !important;
 }
 
-
+.control-mini{
+    font-size: 12px !important;
+}
 
 .control-normal{
-    font-size: 13px !important;
+    font-size: 14px !important;
 }
 
 .control-medium{
@@ -51,7 +53,7 @@
         
     }
     &.thick{
-        border-width: 2.5px;
+        border-width: 2px;
     }
     
 }
@@ -85,6 +87,7 @@
     max-width: 130px;
     text-align: center;
     font-family: "Montserrat";
+    cursor: pointer;
     &.download{
         padding-top: 0px;
         margin-top: 1rem !important;

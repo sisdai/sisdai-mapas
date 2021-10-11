@@ -6,7 +6,8 @@
         <checkbox v-model="visible" @change="set_visible_to_layer">
             <shape class="simbologia"
                 :shapeType="classShape"
-                :backgroundColor="params.content.fill_color || 'gray'" 
+                :backgroundColor=" usarTexturas? 'transparent': params.content.fill_color "
+                :backgroundImage="backgroundImage" 
                 :strokeColor="params.content.stroke_color || 'white'"
                 :strokeWidth="params.content.stroke_width || 1"
                 :size="[25,25]" 
@@ -22,6 +23,8 @@
 import checkbox from "../utils/checkbox"
 import shape from "../utils/shape.vue"
 import legend_item_child  from "../../mixins/legend-item-child"
+import {convertirNode} from "../../mixins/_json2olstyle"
+
 export default {
     mixins:[legend_item_child],
     components:{
@@ -29,6 +32,14 @@ export default {
     },computed:{
         classShape:function(){
             return this.params.content.shape.startsWith("svg:") ? '' : this.params.content.shape  
+        },
+        backgroundImage:function(){
+            return this.$parent.$parent.cmpMap.cmpLayers[this.layerId].usarTexturasEnRelleno
+                ? `url('${convertirNode("fillPattern",{...this.params.content.texture}).fill.getImage().toDataURL()}'`
+                : 'none'
+        },
+        usarTexturas:function(){
+            return this.$parent.$parent.cmpMap.cmpLayers[this.layerId].usarTexturasEnRelleno
         }
     }
 }
@@ -36,6 +47,9 @@ export default {
 
 <style lang="scss" scoped>
     .legend-normal-vector{
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 1.16em;
       .simbologia{
           
           margin-right: .4em;

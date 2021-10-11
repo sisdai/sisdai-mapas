@@ -2,7 +2,12 @@
     <div>
         <div class="legend-list-checks-colors">
             <div class="list-item-check" v-for="(corte,i) in cortes_colores.cortes" :key="corte.v">
-                <checkbox-color v-model="list_filter[i]" :color="corte.v" @change="_filtrarCapa">
+                <checkbox-color 
+                v-model="list_filter[i]" 
+                :color="usarTexturas?'transparent': corte.v" 
+                :backgroundImage="backgroundImage[i]"
+                @change="_filtrarCapa"
+                >
                     {{corte.d}}
                 </checkbox-color>
                 
@@ -11,7 +16,7 @@
         <div class="shapes">
             <div class="shape-item" v-for=" corte_s in cortes_sizes.cortes" :key="corte_s.v">
                 <shape class="shape-this-legend" shape-type="circle" backgroundColor="gray" :size="[corte_s.v*2,corte_s.v*2]" />
-                <div>{{corte_s.d}}</div>
+                <div class="shape-text-this-legend">{{corte_s.d}}</div>
             </div>
             
         </div>
@@ -25,6 +30,8 @@
 import CheckboxColor from "../utils/checkbox-color.vue";
 import Shape from "../utils/shape.vue";
 import legend_item_child  from "../../mixins/legend-item-child";
+import {convertirNode} from "../../mixins/_json2olstyle"
+
 export default {
     mixins:[legend_item_child],
     data:function(){
@@ -88,6 +95,20 @@ export default {
             this._filter_features(fnCompare)
             this.visibleStatusFilters = [...this.list_filter];
         }
+    },
+    computed:{
+        usarTexturas:function(){
+            return this.$parent.$parent.cmpMap.cmpLayers[this.layerId].usarTexturasEnRelleno
+        },
+        backgroundImage:function(){
+            return this.$parent.$parent.cmpMap.cmpLayers[this.layerId].usarTexturasEnRelleno
+                ? this.cortes_colores.args.textures.map(textura=>{
+                    let fillStyle = convertirNode("fillPattern",{...textura})
+                    let pattern = fillStyle.fill
+                    return `url('${pattern.getImage().toDataURL()}'`
+                })
+                :this.cortes_colores.cortes.map(item=>'none')
+        },
     }
 }
 </script>
@@ -97,6 +118,9 @@ export default {
         display: grid;
         grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
         grid-gap: 9px 5px;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 1.16em;
     }
 
     .shapes{
@@ -115,6 +139,11 @@ export default {
             padding: 0 3px;
             .shape-this-legend{
                 margin-bottom: 6px;
+            }
+            .shape-text-this-legend{
+                font-size: 12px;
+                line-height: 1.16em;
+                font-weight: 500;
             }
         }
         

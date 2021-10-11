@@ -1,7 +1,11 @@
 <template>
     <div class="legend-list-checks-colors">
         <div class="list-item-check" v-for="(corte,i) in params.content.cortes.cortes" :key="corte.v">
-            <checkbox-color v-model="list_filter[i]" :color="corte.v" @change="_filtrarCapa">
+            <checkbox-color 
+            v-model="list_filter[i]" 
+            :color="usarTexturas?'transparent': corte.v" 
+            :backgroundImage="backgroundImage[i]"
+            @change="_filtrarCapa">
                 {{corte.d}}
             </checkbox-color>
             
@@ -13,6 +17,8 @@
 //import checkbox from "../utils/checkbox"
 import CheckboxColor from "../utils/checkbox-color.vue"
 import legend_item_child  from "../../mixins/legend-item-child"
+import {convertirNode} from "../../mixins/_json2olstyle"
+
 export default {
     mixins:[legend_item_child],
     data:function(){
@@ -68,6 +74,20 @@ export default {
             this._filter_features(fnCompare)
             this.visibleStatusFilters = [...this.list_filter];
         }
+    },
+    computed:{
+        backgroundImage:function(){
+            return this.$parent.$parent.cmpMap.cmpLayers[this.layerId].usarTexturasEnRelleno
+                ? this.params.content.cortes.args.textures.map(textura=>{
+                    let fillStyle = convertirNode("fillPattern",{...textura})
+                    let pattern = fillStyle.fill
+                    return `url('${pattern.getImage().toDataURL()}'`
+                })
+                :this.params.content.cortes.cortes.map(item=>'none')
+        },
+        usarTexturas:function(){
+            return this.$parent.$parent.cmpMap.cmpLayers[this.layerId].usarTexturasEnRelleno
+        }
     }
 }
 </script>
@@ -77,5 +97,8 @@ export default {
         display: grid;
         grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
         grid-gap: 9px 5px;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 1.16em;
     }
 </style>

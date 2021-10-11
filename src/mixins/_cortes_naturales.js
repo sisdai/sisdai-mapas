@@ -1,6 +1,6 @@
-import * as ss from 'simple-statistics';
-
-ss.jenks = function(data, n_classes) {
+import * as ss_original from 'simple-statistics';
+const ss  = Object.assign({'jenks':undefined,'jenksMatrices':undefined},ss_original)
+ss['jenks'] = function(data, n_classes) {
 
     // sort data in numerical order
     data = data.slice().sort(function (a, b) { return a - b; });
@@ -29,7 +29,7 @@ ss.jenks = function(data, n_classes) {
     return kclass;
 };
 
-ss.jenksMatrices = function(data, n_classes) {
+ss['jenksMatrices'] = function(data, n_classes) {
 
     // in the original implementation, these matrices are referred to
     // as `LC` and `OP`
