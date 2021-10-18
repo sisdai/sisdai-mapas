@@ -105,6 +105,21 @@ export default{
                     size:1
                 }
             } //definir un catalogo
+        },
+        //propiedades a las que se les reescribira el estilo (preferentemente que no sean las de clasificacion (rellenos,tamaños))
+        propsAsignaEstilo:{
+            type:Array,
+            default:function(){
+                return []
+            }
+        },
+        //Funcion para definir esas propieadades de estilo al vuelo, toma como paametro el feature actual 
+        //y debe regresar el tantas propieadades se definieron en `propsAsignaEstilo`
+        fnAsignaEstilo:{
+            type: Function,
+            default:function(){
+                return (feature)=>[]
+            }
         }
     },
     data:function(){
@@ -143,6 +158,14 @@ export default{
                         serializes2 =removeFillStyle(serializes2,'fillPattern',vm.VM_defaultShapePoint)
                     }
                     //console.log(JSON.stringify( serializes2),">>SALIO DE FUNCION<<",vm.VM_id)
+                    if(vm.propsAsignaEstilo.length>0){
+                        //console.log(JSON.stringify(serializes2),"INICIO_reescribe")
+                        let resultReescribe = vm.fnAsignaEstilo(feature.getProperties())
+                        vm.propsAsignaEstilo.forEach((path,i)=>{
+                            replacePropertyAt(serializes2["style"],path,resultReescribe[i])
+                        })
+                        //console.log(JSON.stringify(serializes2),"FIN_reescribe")
+                    }
                     let olstyles=generateOlStyle(serializes2)["style"]
                     return olstyles
                 }
@@ -150,7 +173,7 @@ export default{
                 
                 let serializes= JSON.parse(JSON.stringify({...fixSerializedStyleIfIncomplete( vm.VM_mapStyle )}))
                 
-                //let geometry_type = this.olLayer.getSource().getFeatures()[0].getGeometry().getType()
+                //let geometry_type = vm.olLayer.getSource().getFeatures()[0].getGeometry().getType()
                 /******************************************************************************** */
                 //console.log("//AQUI VERIFICAR TAMBIEN QUE SHAPE SE VA A LA LEYENDA",serializes)
                 if(this.VM_geometryType.includes("Point") ){
@@ -188,6 +211,15 @@ export default{
                            //console.log(serializes2,"setTExtureINStyle",vm.VM_geometryType)
                     }
                     
+                    if(vm.propsAsignaEstilo.length>0){
+                        //console.log(JSON.stringify(serializes2),"INICIO_reescribe")
+                        let resultReescribe = vm.fnAsignaEstilo(feature.getProperties())
+                        vm.propsAsignaEstilo.forEach((path,i)=>{
+                            replacePropertyAt(serializes2["style"],path,resultReescribe[i])
+                        })
+                        //console.log(JSON.stringify(serializes2),"FIN_reescribe")
+                    }
+
                     let olstyles=generateOlStyle(serializes2)["style"]
                     
                     
@@ -285,4 +317,18 @@ export default{
             }
         }
     }
+}
+
+
+function replacePropertyAt(object, path, newValue){
+    const list_keys = path.split('.');
+    //console.log(list_keys,'path')
+    let last_instance = object
+    list_keys.forEach((key,i)=>{
+        if(i<(list_keys.length-1)){
+            last_instance=last_instance[key]
+        }
+    })
+
+    last_instance[list_keys[list_keys.length-1]] = newValue
 }
