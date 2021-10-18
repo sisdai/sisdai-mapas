@@ -1,4 +1,4 @@
-import {Fill, Stroke, Circle, Style, Icon} from 'ol/style';
+import {Fill, Stroke, Circle, Style, Icon, Text as TextStyle} from 'ol/style';
 import FillPattern from "ol-ext/style/FillPattern"
 
 const equivalencias = {
@@ -25,6 +25,10 @@ const equivalencias = {
     "fillPattern":{
         class:FillPattern,
         key:"fill"
+    },
+    "textStyle":{
+        class: TextStyle,
+        key: "text"
     }
 }
 
