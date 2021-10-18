@@ -5534,6 +5534,7 @@ __webpack_require__.d(__webpack_exports__, "DaiCardMapContainer", function() { r
 __webpack_require__.d(__webpack_exports__, "DaiXyzLayer", function() { return /* reexport */ xyz_layer_namespaceObject; });
 __webpack_require__.d(__webpack_exports__, "DaiXyzLayerOsm", function() { return /* reexport */ xyz_layer_osm_namespaceObject; });
 __webpack_require__.d(__webpack_exports__, "DaiGeojsonLayer", function() { return /* reexport */ geojson_layer_namespaceObject; });
+__webpack_require__.d(__webpack_exports__, "DaiCapaGeojsonCluster", function() { return /* reexport */ geojson_cluster_layer_namespaceObject; });
 __webpack_require__.d(__webpack_exports__, "DaiWmsLayer", function() { return /* reexport */ wms_layer_namespaceObject; });
 __webpack_require__.d(__webpack_exports__, "DaiLeyendaMapa", function() { return /* reexport */ legend_control_namespaceObject; });
 __webpack_require__.d(__webpack_exports__, "DaiMapSelector", function() { return /* reexport */ selector_control_namespaceObject; });
@@ -5804,7 +5805,7 @@ __webpack_require__.d(d3_namespaceObject, "geoTransverseMercatorRaw", function()
 __webpack_require__.d(d3_namespaceObject, "geoRotation", function() { return src_rotation; });
 __webpack_require__.d(d3_namespaceObject, "geoStream", function() { return src_stream; });
 __webpack_require__.d(d3_namespaceObject, "geoTransform", function() { return src_transform; });
-__webpack_require__.d(d3_namespaceObject, "cluster", function() { return cluster; });
+__webpack_require__.d(d3_namespaceObject, "cluster", function() { return src_cluster; });
 __webpack_require__.d(d3_namespaceObject, "hierarchy", function() { return hierarchy; });
 __webpack_require__.d(d3_namespaceObject, "pack", function() { return src_pack; });
 __webpack_require__.d(d3_namespaceObject, "packSiblings", function() { return siblings; });
@@ -6133,6 +6134,13 @@ __webpack_require__.r(geojson_layer_namespaceObject);
 __webpack_require__.d(geojson_layer_namespaceObject, "default", function() { return geojson_layer; });
 __webpack_require__.d(geojson_layer_namespaceObject, "install", function() { return geojson_layer_plugin; });
 __webpack_require__.d(geojson_layer_namespaceObject, "DaiGeojsonLayer", function() { return geojson; });
+
+// NAMESPACE OBJECT: ./src/components/geojson-cluster-layer/index.js
+var geojson_cluster_layer_namespaceObject = {};
+__webpack_require__.r(geojson_cluster_layer_namespaceObject);
+__webpack_require__.d(geojson_cluster_layer_namespaceObject, "default", function() { return geojson_cluster_layer; });
+__webpack_require__.d(geojson_cluster_layer_namespaceObject, "install", function() { return geojson_cluster_layer_plugin; });
+__webpack_require__.d(geojson_cluster_layer_namespaceObject, "DaiCapaGeojsonCluster", function() { return geojson_cluster; });
 
 // NAMESPACE OBJECT: ./src/components/wms-layer/index.js
 var wms_layer_namespaceObject = {};
@@ -25121,6 +25129,1655 @@ var invoke_tooltips = function invoke_tooltips(map, e) {
 
   }
 };
+// EXTERNAL MODULE: ./node_modules/rbush/rbush.min.js
+var rbush_min = __webpack_require__("25a5");
+var rbush_min_default = /*#__PURE__*/__webpack_require__.n(rbush_min);
+
+// CONCATENATED MODULE: ./node_modules/ol/structs/RBush.js
+/**
+ * @module ol/structs/RBush
+ */
+
+
+
+
+/**
+ * @typedef {Object} Entry
+ * @property {number} minX
+ * @property {number} minY
+ * @property {number} maxX
+ * @property {number} maxY
+ * @property {Object} [value]
+ */
+/**
+ * @classdesc
+ * Wrapper around the RBush by Vladimir Agafonkin.
+ * See https://github.com/mourner/rbush.
+ *
+ * @template T
+ */
+var RBush_RBush = /** @class */ (function () {
+    /**
+     * @param {number=} opt_maxEntries Max entries.
+     */
+    function RBush(opt_maxEntries) {
+        /**
+         * @private
+         */
+        this.rbush_ = new rbush_min_default.a(opt_maxEntries);
+        /**
+         * A mapping between the objects added to this rbush wrapper
+         * and the objects that are actually added to the internal rbush.
+         * @private
+         * @type {Object<string, Entry>}
+         */
+        this.items_ = {};
+    }
+    /**
+     * Insert a value into the RBush.
+     * @param {import("../extent.js").Extent} extent Extent.
+     * @param {T} value Value.
+     */
+    RBush.prototype.insert = function (extent, value) {
+        /** @type {Entry} */
+        var item = {
+            minX: extent[0],
+            minY: extent[1],
+            maxX: extent[2],
+            maxY: extent[3],
+            value: value,
+        };
+        this.rbush_.insert(item);
+        this.items_[getUid(value)] = item;
+    };
+    /**
+     * Bulk-insert values into the RBush.
+     * @param {Array<import("../extent.js").Extent>} extents Extents.
+     * @param {Array<T>} values Values.
+     */
+    RBush.prototype.load = function (extents, values) {
+        var items = new Array(values.length);
+        for (var i = 0, l = values.length; i < l; i++) {
+            var extent = extents[i];
+            var value = values[i];
+            /** @type {Entry} */
+            var item = {
+                minX: extent[0],
+                minY: extent[1],
+                maxX: extent[2],
+                maxY: extent[3],
+                value: value,
+            };
+            items[i] = item;
+            this.items_[getUid(value)] = item;
+        }
+        this.rbush_.load(items);
+    };
+    /**
+     * Remove a value from the RBush.
+     * @param {T} value Value.
+     * @return {boolean} Removed.
+     */
+    RBush.prototype.remove = function (value) {
+        var uid = getUid(value);
+        // get the object in which the value was wrapped when adding to the
+        // internal rbush. then use that object to do the removal.
+        var item = this.items_[uid];
+        delete this.items_[uid];
+        return this.rbush_.remove(item) !== null;
+    };
+    /**
+     * Update the extent of a value in the RBush.
+     * @param {import("../extent.js").Extent} extent Extent.
+     * @param {T} value Value.
+     */
+    RBush.prototype.update = function (extent, value) {
+        var item = this.items_[getUid(value)];
+        var bbox = [item.minX, item.minY, item.maxX, item.maxY];
+        if (!extent_equals(bbox, extent)) {
+            this.remove(value);
+            this.insert(extent, value);
+        }
+    };
+    /**
+     * Return all values in the RBush.
+     * @return {Array<T>} All.
+     */
+    RBush.prototype.getAll = function () {
+        var items = this.rbush_.all();
+        return items.map(function (item) {
+            return item.value;
+        });
+    };
+    /**
+     * Return all values in the given extent.
+     * @param {import("../extent.js").Extent} extent Extent.
+     * @return {Array<T>} All in extent.
+     */
+    RBush.prototype.getInExtent = function (extent) {
+        /** @type {Entry} */
+        var bbox = {
+            minX: extent[0],
+            minY: extent[1],
+            maxX: extent[2],
+            maxY: extent[3],
+        };
+        var items = this.rbush_.search(bbox);
+        return items.map(function (item) {
+            return item.value;
+        });
+    };
+    /**
+     * Calls a callback function with each value in the tree.
+     * If the callback returns a truthy value, this value is returned without
+     * checking the rest of the tree.
+     * @param {function(T): *} callback Callback.
+     * @return {*} Callback return value.
+     */
+    RBush.prototype.forEach = function (callback) {
+        return this.forEach_(this.getAll(), callback);
+    };
+    /**
+     * Calls a callback function with each value in the provided extent.
+     * @param {import("../extent.js").Extent} extent Extent.
+     * @param {function(T): *} callback Callback.
+     * @return {*} Callback return value.
+     */
+    RBush.prototype.forEachInExtent = function (extent, callback) {
+        return this.forEach_(this.getInExtent(extent), callback);
+    };
+    /**
+     * @param {Array<T>} values Values.
+     * @param {function(T): *} callback Callback.
+     * @private
+     * @return {*} Callback return value.
+     */
+    RBush.prototype.forEach_ = function (values, callback) {
+        var result;
+        for (var i = 0, l = values.length; i < l; i++) {
+            result = callback(values[i]);
+            if (result) {
+                return result;
+            }
+        }
+        return result;
+    };
+    /**
+     * @return {boolean} Is empty.
+     */
+    RBush.prototype.isEmpty = function () {
+        return obj_isEmpty(this.items_);
+    };
+    /**
+     * Remove all values from the RBush.
+     */
+    RBush.prototype.clear = function () {
+        this.rbush_.clear();
+        this.items_ = {};
+    };
+    /**
+     * @param {import("../extent.js").Extent=} opt_extent Extent.
+     * @return {import("../extent.js").Extent} Extent.
+     */
+    RBush.prototype.getExtent = function (opt_extent) {
+        var data = this.rbush_.toJSON();
+        return createOrUpdate(data.minX, data.minY, data.maxX, data.maxY, opt_extent);
+    };
+    /**
+     * @param {RBush} rbush R-Tree.
+     */
+    RBush.prototype.concat = function (rbush) {
+        this.rbush_.load(rbush.rbush_.all());
+        for (var i in rbush.items_) {
+            this.items_[i] = rbush.items_[i];
+        }
+    };
+    return RBush;
+}());
+/* harmony default export */ var structs_RBush = (RBush_RBush);
+//# sourceMappingURL=RBush.js.map
+// CONCATENATED MODULE: ./node_modules/ol/source/Source.js
+var Source_extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/source/Source
+ */
+
+
+
+
+/**
+ * A function that returns a string or an array of strings representing source
+ * attributions.
+ *
+ * @typedef {function(import("../PluggableMap.js").FrameState): (string|Array<string>)} Attribution
+ */
+/**
+ * A type that can be used to provide attribution information for data sources.
+ *
+ * It represents either
+ * * a simple string (e.g. `'© Acme Inc.'`)
+ * * an array of simple strings (e.g. `['© Acme Inc.', '© Bacme Inc.']`)
+ * * a function that returns a string or array of strings ({@link module:ol/source/Source~Attribution})
+ *
+ * @typedef {string|Array<string>|Attribution} AttributionLike
+ */
+/**
+ * @typedef {Object} Options
+ * @property {AttributionLike} [attributions]
+ * @property {boolean} [attributionsCollapsible=true] Attributions are collapsible.
+ * @property {import("../proj.js").ProjectionLike} [projection] Projection. Default is the view projection.
+ * @property {import("./State.js").default} [state='ready']
+ * @property {boolean} [wrapX=false]
+ */
+/**
+ * @classdesc
+ * Abstract base class; normally only used for creating subclasses and not
+ * instantiated in apps.
+ * Base class for {@link module:ol/layer/Layer~Layer} sources.
+ *
+ * A generic `change` event is triggered when the state of the source changes.
+ * @abstract
+ * @api
+ */
+var Source_Source = /** @class */ (function (_super) {
+    Source_extends(Source, _super);
+    /**
+     * @param {Options} options Source options.
+     */
+    function Source(options) {
+        var _this = _super.call(this) || this;
+        /**
+         * @private
+         * @type {import("../proj/Projection.js").default}
+         */
+        _this.projection_ = proj_get(options.projection);
+        /**
+         * @private
+         * @type {?Attribution}
+         */
+        _this.attributions_ = adaptAttributions(options.attributions);
+        /**
+         * @private
+         * @type {boolean}
+         */
+        _this.attributionsCollapsible_ =
+            options.attributionsCollapsible !== undefined
+                ? options.attributionsCollapsible
+                : true;
+        /**
+         * This source is currently loading data. Sources that defer loading to the
+         * map's tile queue never set this to `true`.
+         * @type {boolean}
+         */
+        _this.loading = false;
+        /**
+         * @private
+         * @type {import("./State.js").default}
+         */
+        _this.state_ =
+            options.state !== undefined ? options.state : State.READY;
+        /**
+         * @private
+         * @type {boolean}
+         */
+        _this.wrapX_ = options.wrapX !== undefined ? options.wrapX : false;
+        return _this;
+    }
+    /**
+     * Get the attribution function for the source.
+     * @return {?Attribution} Attribution function.
+     */
+    Source.prototype.getAttributions = function () {
+        return this.attributions_;
+    };
+    /**
+     * @return {boolean} Attributions are collapsible.
+     */
+    Source.prototype.getAttributionsCollapsible = function () {
+        return this.attributionsCollapsible_;
+    };
+    /**
+     * Get the projection of the source.
+     * @return {import("../proj/Projection.js").default} Projection.
+     * @api
+     */
+    Source.prototype.getProjection = function () {
+        return this.projection_;
+    };
+    /**
+     * @abstract
+     * @return {Array<number>|undefined} Resolutions.
+     */
+    Source.prototype.getResolutions = function () {
+        return util_abstract();
+    };
+    /**
+     * Get the state of the source, see {@link module:ol/source/State~State} for possible states.
+     * @return {import("./State.js").default} State.
+     * @api
+     */
+    Source.prototype.getState = function () {
+        return this.state_;
+    };
+    /**
+     * @return {boolean|undefined} Wrap X.
+     */
+    Source.prototype.getWrapX = function () {
+        return this.wrapX_;
+    };
+    /**
+     * @return {Object|undefined} Context options.
+     */
+    Source.prototype.getContextOptions = function () {
+        return undefined;
+    };
+    /**
+     * Refreshes the source. The source will be cleared, and data from the server will be reloaded.
+     * @api
+     */
+    Source.prototype.refresh = function () {
+        this.changed();
+    };
+    /**
+     * Set the attributions of the source.
+     * @param {AttributionLike|undefined} attributions Attributions.
+     *     Can be passed as `string`, `Array<string>`, {@link module:ol/source/Source~Attribution},
+     *     or `undefined`.
+     * @api
+     */
+    Source.prototype.setAttributions = function (attributions) {
+        this.attributions_ = adaptAttributions(attributions);
+        this.changed();
+    };
+    /**
+     * Set the state of the source.
+     * @param {import("./State.js").default} state State.
+     */
+    Source.prototype.setState = function (state) {
+        this.state_ = state;
+        this.changed();
+    };
+    return Source;
+}(ol_Object));
+/**
+ * Turns the attributions option into an attributions function.
+ * @param {AttributionLike|undefined} attributionLike The attribution option.
+ * @return {?Attribution} An attribution function (or null).
+ */
+function adaptAttributions(attributionLike) {
+    if (!attributionLike) {
+        return null;
+    }
+    if (Array.isArray(attributionLike)) {
+        return function (frameState) {
+            return attributionLike;
+        };
+    }
+    if (typeof attributionLike === 'function') {
+        return attributionLike;
+    }
+    return function (frameState) {
+        return [attributionLike];
+    };
+}
+/* harmony default export */ var source_Source = (Source_Source);
+//# sourceMappingURL=Source.js.map
+// CONCATENATED MODULE: ./node_modules/ol/source/VectorEventType.js
+/**
+ * @module ol/source/VectorEventType
+ */
+/**
+ * @enum {string}
+ */
+/* harmony default export */ var VectorEventType = ({
+    /**
+     * Triggered when a feature is added to the source.
+     * @event module:ol/source/Vector.VectorSourceEvent#addfeature
+     * @api
+     */
+    ADDFEATURE: 'addfeature',
+    /**
+     * Triggered when a feature is updated.
+     * @event module:ol/source/Vector.VectorSourceEvent#changefeature
+     * @api
+     */
+    CHANGEFEATURE: 'changefeature',
+    /**
+     * Triggered when the clear method is called on the source.
+     * @event module:ol/source/Vector.VectorSourceEvent#clear
+     * @api
+     */
+    CLEAR: 'clear',
+    /**
+     * Triggered when a feature is removed from the source.
+     * See {@link module:ol/source/Vector#clear source.clear()} for exceptions.
+     * @event module:ol/source/Vector.VectorSourceEvent#removefeature
+     * @api
+     */
+    REMOVEFEATURE: 'removefeature',
+    /**
+     * Triggered when features starts loading.
+     * @event module:ol/source/Vector.VectorSourceEvent#featuresloadstart
+     * @api
+     */
+    FEATURESLOADSTART: 'featuresloadstart',
+    /**
+     * Triggered when features finishes loading.
+     * @event module:ol/source/Vector.VectorSourceEvent#featuresloadend
+     * @api
+     */
+    FEATURESLOADEND: 'featuresloadend',
+    /**
+     * Triggered if feature loading results in an error.
+     * @event module:ol/source/Vector.VectorSourceEvent#featuresloaderror
+     * @api
+     */
+    FEATURESLOADERROR: 'featuresloaderror',
+});
+//# sourceMappingURL=VectorEventType.js.map
+// CONCATENATED MODULE: ./node_modules/ol/loadingstrategy.js
+/**
+ * @module ol/loadingstrategy
+ */
+/**
+ * Strategy function for loading all features with a single request.
+ * @param {import("./extent.js").Extent} extent Extent.
+ * @param {number} resolution Resolution.
+ * @return {Array<import("./extent.js").Extent>} Extents.
+ * @api
+ */
+function loadingstrategy_all(extent, resolution) {
+    return [[-Infinity, -Infinity, Infinity, Infinity]];
+}
+/**
+ * Strategy function for loading features based on the view's extent and
+ * resolution.
+ * @param {import("./extent.js").Extent} extent Extent.
+ * @param {number} resolution Resolution.
+ * @return {Array<import("./extent.js").Extent>} Extents.
+ * @api
+ */
+function loadingstrategy_bbox(extent, resolution) {
+    return [extent];
+}
+/**
+ * Creates a strategy function for loading features based on a tile grid.
+ * @param {import("./tilegrid/TileGrid.js").default} tileGrid Tile grid.
+ * @return {function(import("./extent.js").Extent, number): Array<import("./extent.js").Extent>} Loading strategy.
+ * @api
+ */
+function loadingstrategy_tile(tileGrid) {
+    return (
+    /**
+     * @param {import("./extent.js").Extent} extent Extent.
+     * @param {number} resolution Resolution.
+     * @return {Array<import("./extent.js").Extent>} Extents.
+     */
+    function (extent, resolution) {
+        var z = tileGrid.getZForResolution(resolution);
+        var tileRange = tileGrid.getTileRangeForExtentAndZ(extent, z);
+        /** @type {Array<import("./extent.js").Extent>} */
+        var extents = [];
+        /** @type {import("./tilecoord.js").TileCoord} */
+        var tileCoord = [z, 0, 0];
+        for (tileCoord[1] = tileRange.minX; tileCoord[1] <= tileRange.maxX; ++tileCoord[1]) {
+            for (tileCoord[2] = tileRange.minY; tileCoord[2] <= tileRange.maxY; ++tileCoord[2]) {
+                extents.push(tileGrid.getTileCoordExtent(tileCoord));
+            }
+        }
+        return extents;
+    });
+}
+//# sourceMappingURL=loadingstrategy.js.map
+// CONCATENATED MODULE: ./node_modules/ol/format/FormatType.js
+/**
+ * @module ol/format/FormatType
+ */
+/**
+ * @enum {string}
+ */
+/* harmony default export */ var FormatType = ({
+    ARRAY_BUFFER: 'arraybuffer',
+    JSON: 'json',
+    TEXT: 'text',
+    XML: 'xml',
+});
+//# sourceMappingURL=FormatType.js.map
+// CONCATENATED MODULE: ./node_modules/ol/featureloader.js
+/**
+ * @module ol/featureloader
+ */
+
+
+/**
+ *
+ * @type {boolean}
+ * @private
+ */
+var withCredentials = false;
+/**
+ * {@link module:ol/source/Vector} sources use a function of this type to
+ * load features.
+ *
+ * This function takes an {@link module:ol/extent~Extent} representing the area to be loaded,
+ * a `{number}` representing the resolution (map units per pixel), an
+ * {@link module:ol/proj/Projection} for the projection and success and failure callbacks as
+ * arguments. `this` within the function is bound to the
+ * {@link module:ol/source/Vector} it's called from.
+ *
+ * The function is responsible for loading the features and adding them to the
+ * source.
+ * @typedef {function(this:(import("./source/Vector").default|import("./VectorTile.js").default),
+ *           import("./extent.js").Extent,
+ *           number,
+ *           import("./proj/Projection.js").default,
+ *           function(Array<import("./Feature.js").default>): void=,
+ *           function(): void=): void} FeatureLoader
+ * @api
+ */
+/**
+ * {@link module:ol/source/Vector} sources use a function of this type to
+ * get the url to load features from.
+ *
+ * This function takes an {@link module:ol/extent~Extent} representing the area
+ * to be loaded, a `{number}` representing the resolution (map units per pixel)
+ * and an {@link module:ol/proj/Projection} for the projection  as
+ * arguments and returns a `{string}` representing the URL.
+ * @typedef {function(import("./extent.js").Extent, number, import("./proj/Projection.js").default): string} FeatureUrlFunction
+ * @api
+ */
+/**
+ * @param {string|FeatureUrlFunction} url Feature URL service.
+ * @param {import("./format/Feature.js").default} format Feature format.
+ * @param {import("./extent.js").Extent} extent Extent.
+ * @param {number} resolution Resolution.
+ * @param {import("./proj/Projection.js").default} projection Projection.
+ * @param {function(Array<import("./Feature.js").default>, import("./proj/Projection.js").default): void} success Success
+ *      Function called with the loaded features and optionally with the data projection.
+ * @param {function(): void} failure Failure
+ *      Function called when loading failed.
+ */
+function loadFeaturesXhr(url, format, extent, resolution, projection, success, failure) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', typeof url === 'function' ? url(extent, resolution, projection) : url, true);
+    if (format.getType() == FormatType.ARRAY_BUFFER) {
+        xhr.responseType = 'arraybuffer';
+    }
+    xhr.withCredentials = withCredentials;
+    /**
+     * @param {Event} event Event.
+     * @private
+     */
+    xhr.onload = function (event) {
+        // status will be 0 for file:// urls
+        if (!xhr.status || (xhr.status >= 200 && xhr.status < 300)) {
+            var type = format.getType();
+            /** @type {Document|Node|Object|string|undefined} */
+            var source = void 0;
+            if (type == FormatType.JSON || type == FormatType.TEXT) {
+                source = xhr.responseText;
+            }
+            else if (type == FormatType.XML) {
+                source = xhr.responseXML;
+                if (!source) {
+                    source = new DOMParser().parseFromString(xhr.responseText, 'application/xml');
+                }
+            }
+            else if (type == FormatType.ARRAY_BUFFER) {
+                source = /** @type {ArrayBuffer} */ (xhr.response);
+            }
+            if (source) {
+                success(
+                /** @type {Array<import("./Feature.js").default>} */
+                (format.readFeatures(source, {
+                    extent: extent,
+                    featureProjection: projection,
+                })), format.readProjection(source));
+            }
+            else {
+                failure();
+            }
+        }
+        else {
+            failure();
+        }
+    };
+    /**
+     * @private
+     */
+    xhr.onerror = failure;
+    xhr.send();
+}
+/**
+ * Create an XHR feature loader for a `url` and `format`. The feature loader
+ * loads features (with XHR), parses the features, and adds them to the
+ * vector source.
+ * @param {string|FeatureUrlFunction} url Feature URL service.
+ * @param {import("./format/Feature.js").default} format Feature format.
+ * @return {FeatureLoader} The feature loader.
+ * @api
+ */
+function featureloader_xhr(url, format) {
+    /**
+     * @param {import("./extent.js").Extent} extent Extent.
+     * @param {number} resolution Resolution.
+     * @param {import("./proj/Projection.js").default} projection Projection.
+     * @param {function(): void=} success Success
+     *      Function called when loading succeeded.
+     * @param {function(): void=} failure Failure
+     *      Function called when loading failed.
+     * @this {import("./source/Vector").default}
+     */
+    return function (extent, resolution, projection, success, failure) {
+        var source = /** @type {import("./source/Vector").default} */ (this);
+        loadFeaturesXhr(url, format, extent, resolution, projection, 
+        /**
+         * @param {Array<import("./Feature.js").default>} features The loaded features.
+         * @param {import("./proj/Projection.js").default} dataProjection Data
+         * projection.
+         */
+        function (features, dataProjection) {
+            if (success !== undefined) {
+                success(features);
+            }
+            source.addFeatures(features);
+        }, 
+        /* FIXME handle error */ failure ? failure : VOID);
+    };
+}
+/**
+ * Setter for the withCredentials configuration for the XHR.
+ *
+ * @param {boolean} xhrWithCredentials The value of withCredentials to set.
+ * Compare https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/
+ * @api
+ */
+function setWithCredentials(xhrWithCredentials) {
+    withCredentials = xhrWithCredentials;
+}
+//# sourceMappingURL=featureloader.js.map
+// CONCATENATED MODULE: ./node_modules/ol/source/Vector.js
+/**
+ * @module ol/source/Vector
+ */
+var Vector_extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * A function that takes an {@link module:ol/extent~Extent} and a resolution as arguments, and
+ * returns an array of {@link module:ol/extent~Extent} with the extents to load. Usually this
+ * is one of the standard {@link module:ol/loadingstrategy} strategies.
+ *
+ * @typedef {function(import("../extent.js").Extent, number): Array<import("../extent.js").Extent>} LoadingStrategy
+ * @api
+ */
+/**
+ * @classdesc
+ * Events emitted by {@link module:ol/source/Vector} instances are instances of this
+ * type.
+ * @template {import("../geom/Geometry.js").default} Geometry
+ */
+var VectorSourceEvent = /** @class */ (function (_super) {
+    Vector_extends(VectorSourceEvent, _super);
+    /**
+     * @param {string} type Type.
+     * @param {import("../Feature.js").default<Geometry>=} opt_feature Feature.
+     * @param {Array<import("../Feature.js").default<Geometry>>=} opt_features Features.
+     */
+    function VectorSourceEvent(type, opt_feature, opt_features) {
+        var _this = _super.call(this, type) || this;
+        /**
+         * The added or removed feature for the `ADDFEATURE` and `REMOVEFEATURE` events, `undefined` otherwise.
+         * @type {import("../Feature.js").default<Geometry>|undefined}
+         * @api
+         */
+        _this.feature = opt_feature;
+        /**
+         * The loaded features for the `FEATURESLOADED` event, `undefined` otherwise.
+         * @type {Array<import("../Feature.js").default<Geometry>>|undefined}
+         * @api
+         */
+        _this.features = opt_features;
+        return _this;
+    }
+    return VectorSourceEvent;
+}(Event));
+
+/**
+ * @typedef {Object} Options
+ * @property {import("./Source.js").AttributionLike} [attributions] Attributions.
+ * @property {Array<import("../Feature.js").default>|Collection<import("../Feature.js").default>} [features]
+ * Features. If provided as {@link module:ol/Collection}, the features in the source
+ * and the collection will stay in sync.
+ * @property {import("../format/Feature.js").default} [format] The feature format used by the XHR
+ * feature loader when `url` is set. Required if `url` is set, otherwise ignored.
+ * @property {import("../featureloader.js").FeatureLoader} [loader]
+ * The loader function used to load features, from a remote source for example.
+ * If this is not set and `url` is set, the source will create and use an XHR
+ * feature loader.
+ *
+ * Example:
+ *
+ * ```js
+ * import {Vector} from 'ol/source';
+ * import {GeoJSON} from 'ol/format';
+ * import {bbox} from 'ol/loadingstrategy';
+ *
+ * var vectorSource = new Vector({
+ *   format: new GeoJSON(),
+ *   loader: function(extent, resolution, projection) {
+ *      var proj = projection.getCode();
+ *      var url = 'https://ahocevar.com/geoserver/wfs?service=WFS&' +
+ *          'version=1.1.0&request=GetFeature&typename=osm:water_areas&' +
+ *          'outputFormat=application/json&srsname=' + proj + '&' +
+ *          'bbox=' + extent.join(',') + ',' + proj;
+ *      var xhr = new XMLHttpRequest();
+ *      xhr.open('GET', url);
+ *      var onError = function() {
+ *        vectorSource.removeLoadedExtent(extent);
+ *      }
+ *      xhr.onerror = onError;
+ *      xhr.onload = function() {
+ *        if (xhr.status == 200) {
+ *          vectorSource.addFeatures(
+ *              vectorSource.getFormat().readFeatures(xhr.responseText));
+ *        } else {
+ *          onError();
+ *        }
+ *      }
+ *      xhr.send();
+ *    },
+ *    strategy: bbox
+ *  });
+ * ```
+ * @property {boolean} [overlaps=true] This source may have overlapping geometries.
+ * Setting this to `false` (e.g. for sources with polygons that represent administrative
+ * boundaries or TopoJSON sources) allows the renderer to optimise fill and
+ * stroke operations.
+ * @property {LoadingStrategy} [strategy] The loading strategy to use.
+ * By default an {@link module:ol/loadingstrategy~all}
+ * strategy is used, a one-off strategy which loads all features at once.
+ * @property {string|import("../featureloader.js").FeatureUrlFunction} [url]
+ * Setting this option instructs the source to load features using an XHR loader
+ * (see {@link module:ol/featureloader~xhr}). Use a `string` and an
+ * {@link module:ol/loadingstrategy~all} for a one-off download of all features from
+ * the given URL. Use a {@link module:ol/featureloader~FeatureUrlFunction} to generate the url with
+ * other loading strategies.
+ * Requires `format` to be set as well.
+ * When default XHR feature loader is provided, the features will
+ * be transformed from the data projection to the view projection
+ * during parsing. If your remote data source does not advertise its projection
+ * properly, this transformation will be incorrect. For some formats, the
+ * default projection (usually EPSG:4326) can be overridden by setting the
+ * dataProjection constructor option on the format.
+ * Note that if a source contains non-feature data, such as a GeoJSON geometry
+ * or a KML NetworkLink, these will be ignored. Use a custom loader to load these.
+ * @property {boolean} [useSpatialIndex=true]
+ * By default, an RTree is used as spatial index. When features are removed and
+ * added frequently, and the total number of features is low, setting this to
+ * `false` may improve performance.
+ *
+ * Note that
+ * {@link module:ol/source/Vector~VectorSource#getFeaturesInExtent},
+ * {@link module:ol/source/Vector~VectorSource#getClosestFeatureToCoordinate} and
+ * {@link module:ol/source/Vector~VectorSource#getExtent} cannot be used when `useSpatialIndex` is
+ * set to `false`, and {@link module:ol/source/Vector~VectorSource#forEachFeatureInExtent} will loop
+ * through all features.
+ *
+ * When set to `false`, the features will be maintained in an
+ * {@link module:ol/Collection}, which can be retrieved through
+ * {@link module:ol/source/Vector~VectorSource#getFeaturesCollection}.
+ * @property {boolean} [wrapX=true] Wrap the world horizontally. For vector editing across the
+ * -180° and 180° meridians to work properly, this should be set to `false`. The
+ * resulting geometry coordinates will then exceed the world bounds.
+ */
+/**
+ * @classdesc
+ * Provides a source of features for vector layers. Vector features provided
+ * by this source are suitable for editing. See {@link module:ol/source/VectorTile~VectorTile} for
+ * vector data that is optimized for rendering.
+ *
+ * @fires VectorSourceEvent
+ * @api
+ * @template {import("../geom/Geometry.js").default} Geometry
+ */
+var Vector_VectorSource = /** @class */ (function (_super) {
+    Vector_extends(VectorSource, _super);
+    /**
+     * @param {Options=} opt_options Vector source options.
+     */
+    function VectorSource(opt_options) {
+        var _this = this;
+        var options = opt_options || {};
+        _this = _super.call(this, {
+            attributions: options.attributions,
+            projection: undefined,
+            state: State.READY,
+            wrapX: options.wrapX !== undefined ? options.wrapX : true,
+        }) || this;
+        /**
+         * @private
+         * @type {import("../featureloader.js").FeatureLoader}
+         */
+        _this.loader_ = VOID;
+        /**
+         * @private
+         * @type {import("../format/Feature.js").default|undefined}
+         */
+        _this.format_ = options.format;
+        /**
+         * @private
+         * @type {boolean}
+         */
+        _this.overlaps_ = options.overlaps === undefined ? true : options.overlaps;
+        /**
+         * @private
+         * @type {string|import("../featureloader.js").FeatureUrlFunction|undefined}
+         */
+        _this.url_ = options.url;
+        if (options.loader !== undefined) {
+            _this.loader_ = options.loader;
+        }
+        else if (_this.url_ !== undefined) {
+            assert(_this.format_, 7); // `format` must be set when `url` is set
+            // create a XHR feature loader for "url" and "format"
+            _this.loader_ = featureloader_xhr(_this.url_, 
+            /** @type {import("../format/Feature.js").default} */ (_this.format_));
+        }
+        /**
+         * @private
+         * @type {LoadingStrategy}
+         */
+        _this.strategy_ =
+            options.strategy !== undefined ? options.strategy : loadingstrategy_all;
+        var useSpatialIndex = options.useSpatialIndex !== undefined ? options.useSpatialIndex : true;
+        /**
+         * @private
+         * @type {RBush<import("../Feature.js").default<Geometry>>}
+         */
+        _this.featuresRtree_ = useSpatialIndex ? new structs_RBush() : null;
+        /**
+         * @private
+         * @type {RBush<{extent: import("../extent.js").Extent}>}
+         */
+        _this.loadedExtentsRtree_ = new structs_RBush();
+        /**
+         * @private
+         * @type {!Object<string, import("../Feature.js").default<Geometry>>}
+         */
+        _this.nullGeometryFeatures_ = {};
+        /**
+         * A lookup of features by id (the return from feature.getId()).
+         * @private
+         * @type {!Object<string, import("../Feature.js").default<Geometry>>}
+         */
+        _this.idIndex_ = {};
+        /**
+         * A lookup of features by uid (using getUid(feature)).
+         * @private
+         * @type {!Object<string, import("../Feature.js").default<Geometry>>}
+         */
+        _this.uidIndex_ = {};
+        /**
+         * @private
+         * @type {Object<string, Array<import("../events.js").EventsKey>>}
+         */
+        _this.featureChangeKeys_ = {};
+        /**
+         * @private
+         * @type {Collection<import("../Feature.js").default<Geometry>>}
+         */
+        _this.featuresCollection_ = null;
+        var collection, features;
+        if (Array.isArray(options.features)) {
+            features = options.features;
+        }
+        else if (options.features) {
+            collection = options.features;
+            features = collection.getArray();
+        }
+        if (!useSpatialIndex && collection === undefined) {
+            collection = new ol_Collection(features);
+        }
+        if (features !== undefined) {
+            _this.addFeaturesInternal(features);
+        }
+        if (collection !== undefined) {
+            _this.bindFeaturesCollection_(collection);
+        }
+        return _this;
+    }
+    /**
+     * Add a single feature to the source.  If you want to add a batch of features
+     * at once, call {@link module:ol/source/Vector~VectorSource#addFeatures #addFeatures()}
+     * instead. A feature will not be added to the source if feature with
+     * the same id is already there. The reason for this behavior is to avoid
+     * feature duplication when using bbox or tile loading strategies.
+     * Note: this also applies if an {@link module:ol/Collection} is used for features,
+     * meaning that if a feature with a duplicate id is added in the collection, it will
+     * be removed from it right away.
+     * @param {import("../Feature.js").default<Geometry>} feature Feature to add.
+     * @api
+     */
+    VectorSource.prototype.addFeature = function (feature) {
+        this.addFeatureInternal(feature);
+        this.changed();
+    };
+    /**
+     * Add a feature without firing a `change` event.
+     * @param {import("../Feature.js").default<Geometry>} feature Feature.
+     * @protected
+     */
+    VectorSource.prototype.addFeatureInternal = function (feature) {
+        var featureKey = getUid(feature);
+        if (!this.addToIndex_(featureKey, feature)) {
+            if (this.featuresCollection_) {
+                this.featuresCollection_.remove(feature);
+            }
+            return;
+        }
+        this.setupChangeEvents_(featureKey, feature);
+        var geometry = feature.getGeometry();
+        if (geometry) {
+            var extent = geometry.getExtent();
+            if (this.featuresRtree_) {
+                this.featuresRtree_.insert(extent, feature);
+            }
+        }
+        else {
+            this.nullGeometryFeatures_[featureKey] = feature;
+        }
+        this.dispatchEvent(new VectorSourceEvent(VectorEventType.ADDFEATURE, feature));
+    };
+    /**
+     * @param {string} featureKey Unique identifier for the feature.
+     * @param {import("../Feature.js").default<Geometry>} feature The feature.
+     * @private
+     */
+    VectorSource.prototype.setupChangeEvents_ = function (featureKey, feature) {
+        this.featureChangeKeys_[featureKey] = [
+            listen(feature, EventType.CHANGE, this.handleFeatureChange_, this),
+            listen(feature, ObjectEventType.PROPERTYCHANGE, this.handleFeatureChange_, this),
+        ];
+    };
+    /**
+     * @param {string} featureKey Unique identifier for the feature.
+     * @param {import("../Feature.js").default<Geometry>} feature The feature.
+     * @return {boolean} The feature is "valid", in the sense that it is also a
+     *     candidate for insertion into the Rtree.
+     * @private
+     */
+    VectorSource.prototype.addToIndex_ = function (featureKey, feature) {
+        var valid = true;
+        var id = feature.getId();
+        if (id !== undefined) {
+            if (!(id.toString() in this.idIndex_)) {
+                this.idIndex_[id.toString()] = feature;
+            }
+            else {
+                valid = false;
+            }
+        }
+        if (valid) {
+            assert(!(featureKey in this.uidIndex_), 30); // The passed `feature` was already added to the source
+            this.uidIndex_[featureKey] = feature;
+        }
+        return valid;
+    };
+    /**
+     * Add a batch of features to the source.
+     * @param {Array<import("../Feature.js").default<Geometry>>} features Features to add.
+     * @api
+     */
+    VectorSource.prototype.addFeatures = function (features) {
+        this.addFeaturesInternal(features);
+        this.changed();
+    };
+    /**
+     * Add features without firing a `change` event.
+     * @param {Array<import("../Feature.js").default<Geometry>>} features Features.
+     * @protected
+     */
+    VectorSource.prototype.addFeaturesInternal = function (features) {
+        var extents = [];
+        var newFeatures = [];
+        var geometryFeatures = [];
+        for (var i = 0, length_1 = features.length; i < length_1; i++) {
+            var feature = features[i];
+            var featureKey = getUid(feature);
+            if (this.addToIndex_(featureKey, feature)) {
+                newFeatures.push(feature);
+            }
+        }
+        for (var i = 0, length_2 = newFeatures.length; i < length_2; i++) {
+            var feature = newFeatures[i];
+            var featureKey = getUid(feature);
+            this.setupChangeEvents_(featureKey, feature);
+            var geometry = feature.getGeometry();
+            if (geometry) {
+                var extent = geometry.getExtent();
+                extents.push(extent);
+                geometryFeatures.push(feature);
+            }
+            else {
+                this.nullGeometryFeatures_[featureKey] = feature;
+            }
+        }
+        if (this.featuresRtree_) {
+            this.featuresRtree_.load(extents, geometryFeatures);
+        }
+        for (var i = 0, length_3 = newFeatures.length; i < length_3; i++) {
+            this.dispatchEvent(new VectorSourceEvent(VectorEventType.ADDFEATURE, newFeatures[i]));
+        }
+    };
+    /**
+     * @param {!Collection<import("../Feature.js").default<Geometry>>} collection Collection.
+     * @private
+     */
+    VectorSource.prototype.bindFeaturesCollection_ = function (collection) {
+        var modifyingCollection = false;
+        this.addEventListener(VectorEventType.ADDFEATURE, 
+        /**
+         * @param {VectorSourceEvent<Geometry>} evt The vector source event
+         */
+        function (evt) {
+            if (!modifyingCollection) {
+                modifyingCollection = true;
+                collection.push(evt.feature);
+                modifyingCollection = false;
+            }
+        });
+        this.addEventListener(VectorEventType.REMOVEFEATURE, 
+        /**
+         * @param {VectorSourceEvent<Geometry>} evt The vector source event
+         */
+        function (evt) {
+            if (!modifyingCollection) {
+                modifyingCollection = true;
+                collection.remove(evt.feature);
+                modifyingCollection = false;
+            }
+        });
+        collection.addEventListener(CollectionEventType.ADD, 
+        /**
+         * @param {import("../Collection.js").CollectionEvent} evt The collection event
+         */
+        function (evt) {
+            if (!modifyingCollection) {
+                modifyingCollection = true;
+                this.addFeature(
+                /** @type {import("../Feature.js").default<Geometry>} */ (evt.element));
+                modifyingCollection = false;
+            }
+        }.bind(this));
+        collection.addEventListener(CollectionEventType.REMOVE, 
+        /**
+         * @param {import("../Collection.js").CollectionEvent} evt The collection event
+         */
+        function (evt) {
+            if (!modifyingCollection) {
+                modifyingCollection = true;
+                this.removeFeature(
+                /** @type {import("../Feature.js").default<Geometry>} */ (evt.element));
+                modifyingCollection = false;
+            }
+        }.bind(this));
+        this.featuresCollection_ = collection;
+    };
+    /**
+     * Remove all features from the source.
+     * @param {boolean=} opt_fast Skip dispatching of {@link module:ol/source/Vector.VectorSourceEvent#removefeature} events.
+     * @api
+     */
+    VectorSource.prototype.clear = function (opt_fast) {
+        if (opt_fast) {
+            for (var featureId in this.featureChangeKeys_) {
+                var keys = this.featureChangeKeys_[featureId];
+                keys.forEach(unlistenByKey);
+            }
+            if (!this.featuresCollection_) {
+                this.featureChangeKeys_ = {};
+                this.idIndex_ = {};
+                this.uidIndex_ = {};
+            }
+        }
+        else {
+            if (this.featuresRtree_) {
+                this.featuresRtree_.forEach(this.removeFeatureInternal.bind(this));
+                for (var id in this.nullGeometryFeatures_) {
+                    this.removeFeatureInternal(this.nullGeometryFeatures_[id]);
+                }
+            }
+        }
+        if (this.featuresCollection_) {
+            this.featuresCollection_.clear();
+        }
+        if (this.featuresRtree_) {
+            this.featuresRtree_.clear();
+        }
+        this.nullGeometryFeatures_ = {};
+        var clearEvent = new VectorSourceEvent(VectorEventType.CLEAR);
+        this.dispatchEvent(clearEvent);
+        this.changed();
+    };
+    /**
+     * Iterate through all features on the source, calling the provided callback
+     * with each one.  If the callback returns any "truthy" value, iteration will
+     * stop and the function will return the same value.
+     * Note: this function only iterate through the feature that have a defined geometry.
+     *
+     * @param {function(import("../Feature.js").default<Geometry>): T} callback Called with each feature
+     *     on the source.  Return a truthy value to stop iteration.
+     * @return {T|undefined} The return value from the last call to the callback.
+     * @template T
+     * @api
+     */
+    VectorSource.prototype.forEachFeature = function (callback) {
+        if (this.featuresRtree_) {
+            return this.featuresRtree_.forEach(callback);
+        }
+        else if (this.featuresCollection_) {
+            this.featuresCollection_.forEach(callback);
+        }
+    };
+    /**
+     * Iterate through all features whose geometries contain the provided
+     * coordinate, calling the callback with each feature.  If the callback returns
+     * a "truthy" value, iteration will stop and the function will return the same
+     * value.
+     *
+     * @param {import("../coordinate.js").Coordinate} coordinate Coordinate.
+     * @param {function(import("../Feature.js").default<Geometry>): T} callback Called with each feature
+     *     whose goemetry contains the provided coordinate.
+     * @return {T|undefined} The return value from the last call to the callback.
+     * @template T
+     */
+    VectorSource.prototype.forEachFeatureAtCoordinateDirect = function (coordinate, callback) {
+        var extent = [coordinate[0], coordinate[1], coordinate[0], coordinate[1]];
+        return this.forEachFeatureInExtent(extent, function (feature) {
+            var geometry = feature.getGeometry();
+            if (geometry.intersectsCoordinate(coordinate)) {
+                return callback(feature);
+            }
+            else {
+                return undefined;
+            }
+        });
+    };
+    /**
+     * Iterate through all features whose bounding box intersects the provided
+     * extent (note that the feature's geometry may not intersect the extent),
+     * calling the callback with each feature.  If the callback returns a "truthy"
+     * value, iteration will stop and the function will return the same value.
+     *
+     * If you are interested in features whose geometry intersects an extent, call
+     * the {@link module:ol/source/Vector~VectorSource#forEachFeatureIntersectingExtent #forEachFeatureIntersectingExtent()} method instead.
+     *
+     * When `useSpatialIndex` is set to false, this method will loop through all
+     * features, equivalent to {@link module:ol/source/Vector~VectorSource#forEachFeature #forEachFeature()}.
+     *
+     * @param {import("../extent.js").Extent} extent Extent.
+     * @param {function(import("../Feature.js").default<Geometry>): T} callback Called with each feature
+     *     whose bounding box intersects the provided extent.
+     * @return {T|undefined} The return value from the last call to the callback.
+     * @template T
+     * @api
+     */
+    VectorSource.prototype.forEachFeatureInExtent = function (extent, callback) {
+        if (this.featuresRtree_) {
+            return this.featuresRtree_.forEachInExtent(extent, callback);
+        }
+        else if (this.featuresCollection_) {
+            this.featuresCollection_.forEach(callback);
+        }
+    };
+    /**
+     * Iterate through all features whose geometry intersects the provided extent,
+     * calling the callback with each feature.  If the callback returns a "truthy"
+     * value, iteration will stop and the function will return the same value.
+     *
+     * If you only want to test for bounding box intersection, call the
+     * {@link module:ol/source/Vector~VectorSource#forEachFeatureInExtent #forEachFeatureInExtent()} method instead.
+     *
+     * @param {import("../extent.js").Extent} extent Extent.
+     * @param {function(import("../Feature.js").default<Geometry>): T} callback Called with each feature
+     *     whose geometry intersects the provided extent.
+     * @return {T|undefined} The return value from the last call to the callback.
+     * @template T
+     * @api
+     */
+    VectorSource.prototype.forEachFeatureIntersectingExtent = function (extent, callback) {
+        return this.forEachFeatureInExtent(extent, 
+        /**
+         * @param {import("../Feature.js").default<Geometry>} feature Feature.
+         * @return {T|undefined} The return value from the last call to the callback.
+         */
+        function (feature) {
+            var geometry = feature.getGeometry();
+            if (geometry.intersectsExtent(extent)) {
+                var result = callback(feature);
+                if (result) {
+                    return result;
+                }
+            }
+        });
+    };
+    /**
+     * Get the features collection associated with this source. Will be `null`
+     * unless the source was configured with `useSpatialIndex` set to `false`, or
+     * with an {@link module:ol/Collection} as `features`.
+     * @return {Collection<import("../Feature.js").default<Geometry>>} The collection of features.
+     * @api
+     */
+    VectorSource.prototype.getFeaturesCollection = function () {
+        return this.featuresCollection_;
+    };
+    /**
+     * Get all features on the source in random order.
+     * @return {Array<import("../Feature.js").default<Geometry>>} Features.
+     * @api
+     */
+    VectorSource.prototype.getFeatures = function () {
+        var features;
+        if (this.featuresCollection_) {
+            features = this.featuresCollection_.getArray();
+        }
+        else if (this.featuresRtree_) {
+            features = this.featuresRtree_.getAll();
+            if (!obj_isEmpty(this.nullGeometryFeatures_)) {
+                extend(features, getValues(this.nullGeometryFeatures_));
+            }
+        }
+        return /** @type {Array<import("../Feature.js").default<Geometry>>} */ (features);
+    };
+    /**
+     * Get all features whose geometry intersects the provided coordinate.
+     * @param {import("../coordinate.js").Coordinate} coordinate Coordinate.
+     * @return {Array<import("../Feature.js").default<Geometry>>} Features.
+     * @api
+     */
+    VectorSource.prototype.getFeaturesAtCoordinate = function (coordinate) {
+        var features = [];
+        this.forEachFeatureAtCoordinateDirect(coordinate, function (feature) {
+            features.push(feature);
+        });
+        return features;
+    };
+    /**
+     * Get all features whose bounding box intersects the provided extent.  Note that this returns an array of
+     * all features intersecting the given extent in random order (so it may include
+     * features whose geometries do not intersect the extent).
+     *
+     * When `useSpatialIndex` is set to false, this method will return all
+     * features.
+     *
+     * @param {import("../extent.js").Extent} extent Extent.
+     * @return {Array<import("../Feature.js").default<Geometry>>} Features.
+     * @api
+     */
+    VectorSource.prototype.getFeaturesInExtent = function (extent) {
+        if (this.featuresRtree_) {
+            return this.featuresRtree_.getInExtent(extent);
+        }
+        else if (this.featuresCollection_) {
+            return this.featuresCollection_.getArray();
+        }
+        else {
+            return [];
+        }
+    };
+    /**
+     * Get the closest feature to the provided coordinate.
+     *
+     * This method is not available when the source is configured with
+     * `useSpatialIndex` set to `false`.
+     * @param {import("../coordinate.js").Coordinate} coordinate Coordinate.
+     * @param {function(import("../Feature.js").default<Geometry>):boolean=} opt_filter Feature filter function.
+     *     The filter function will receive one argument, the {@link module:ol/Feature feature}
+     *     and it should return a boolean value. By default, no filtering is made.
+     * @return {import("../Feature.js").default<Geometry>} Closest feature.
+     * @api
+     */
+    VectorSource.prototype.getClosestFeatureToCoordinate = function (coordinate, opt_filter) {
+        // Find the closest feature using branch and bound.  We start searching an
+        // infinite extent, and find the distance from the first feature found.  This
+        // becomes the closest feature.  We then compute a smaller extent which any
+        // closer feature must intersect.  We continue searching with this smaller
+        // extent, trying to find a closer feature.  Every time we find a closer
+        // feature, we update the extent being searched so that any even closer
+        // feature must intersect it.  We continue until we run out of features.
+        var x = coordinate[0];
+        var y = coordinate[1];
+        var closestFeature = null;
+        var closestPoint = [NaN, NaN];
+        var minSquaredDistance = Infinity;
+        var extent = [-Infinity, -Infinity, Infinity, Infinity];
+        var filter = opt_filter ? opt_filter : TRUE;
+        this.featuresRtree_.forEachInExtent(extent, 
+        /**
+         * @param {import("../Feature.js").default<Geometry>} feature Feature.
+         */
+        function (feature) {
+            if (filter(feature)) {
+                var geometry = feature.getGeometry();
+                var previousMinSquaredDistance = minSquaredDistance;
+                minSquaredDistance = geometry.closestPointXY(x, y, closestPoint, minSquaredDistance);
+                if (minSquaredDistance < previousMinSquaredDistance) {
+                    closestFeature = feature;
+                    // This is sneaky.  Reduce the extent that it is currently being
+                    // searched while the R-Tree traversal using this same extent object
+                    // is still in progress.  This is safe because the new extent is
+                    // strictly contained by the old extent.
+                    var minDistance = Math.sqrt(minSquaredDistance);
+                    extent[0] = x - minDistance;
+                    extent[1] = y - minDistance;
+                    extent[2] = x + minDistance;
+                    extent[3] = y + minDistance;
+                }
+            }
+        });
+        return closestFeature;
+    };
+    /**
+     * Get the extent of the features currently in the source.
+     *
+     * This method is not available when the source is configured with
+     * `useSpatialIndex` set to `false`.
+     * @param {import("../extent.js").Extent=} opt_extent Destination extent. If provided, no new extent
+     *     will be created. Instead, that extent's coordinates will be overwritten.
+     * @return {import("../extent.js").Extent} Extent.
+     * @api
+     */
+    VectorSource.prototype.getExtent = function (opt_extent) {
+        return this.featuresRtree_.getExtent(opt_extent);
+    };
+    /**
+     * Get a feature by its identifier (the value returned by feature.getId()).
+     * Note that the index treats string and numeric identifiers as the same.  So
+     * `source.getFeatureById(2)` will return a feature with id `'2'` or `2`.
+     *
+     * @param {string|number} id Feature identifier.
+     * @return {import("../Feature.js").default<Geometry>} The feature (or `null` if not found).
+     * @api
+     */
+    VectorSource.prototype.getFeatureById = function (id) {
+        var feature = this.idIndex_[id.toString()];
+        return feature !== undefined ? feature : null;
+    };
+    /**
+     * Get a feature by its internal unique identifier (using `getUid`).
+     *
+     * @param {string} uid Feature identifier.
+     * @return {import("../Feature.js").default<Geometry>} The feature (or `null` if not found).
+     */
+    VectorSource.prototype.getFeatureByUid = function (uid) {
+        var feature = this.uidIndex_[uid];
+        return feature !== undefined ? feature : null;
+    };
+    /**
+     * Get the format associated with this source.
+     *
+     * @return {import("../format/Feature.js").default|undefined} The feature format.
+     * @api
+     */
+    VectorSource.prototype.getFormat = function () {
+        return this.format_;
+    };
+    /**
+     * @return {boolean} The source can have overlapping geometries.
+     */
+    VectorSource.prototype.getOverlaps = function () {
+        return this.overlaps_;
+    };
+    /**
+     * Get the url associated with this source.
+     *
+     * @return {string|import("../featureloader.js").FeatureUrlFunction|undefined} The url.
+     * @api
+     */
+    VectorSource.prototype.getUrl = function () {
+        return this.url_;
+    };
+    /**
+     * @param {Event} event Event.
+     * @private
+     */
+    VectorSource.prototype.handleFeatureChange_ = function (event) {
+        var feature = /** @type {import("../Feature.js").default<Geometry>} */ (event.target);
+        var featureKey = getUid(feature);
+        var geometry = feature.getGeometry();
+        if (!geometry) {
+            if (!(featureKey in this.nullGeometryFeatures_)) {
+                if (this.featuresRtree_) {
+                    this.featuresRtree_.remove(feature);
+                }
+                this.nullGeometryFeatures_[featureKey] = feature;
+            }
+        }
+        else {
+            var extent = geometry.getExtent();
+            if (featureKey in this.nullGeometryFeatures_) {
+                delete this.nullGeometryFeatures_[featureKey];
+                if (this.featuresRtree_) {
+                    this.featuresRtree_.insert(extent, feature);
+                }
+            }
+            else {
+                if (this.featuresRtree_) {
+                    this.featuresRtree_.update(extent, feature);
+                }
+            }
+        }
+        var id = feature.getId();
+        if (id !== undefined) {
+            var sid = id.toString();
+            if (this.idIndex_[sid] !== feature) {
+                this.removeFromIdIndex_(feature);
+                this.idIndex_[sid] = feature;
+            }
+        }
+        else {
+            this.removeFromIdIndex_(feature);
+            this.uidIndex_[featureKey] = feature;
+        }
+        this.changed();
+        this.dispatchEvent(new VectorSourceEvent(VectorEventType.CHANGEFEATURE, feature));
+    };
+    /**
+     * Returns true if the feature is contained within the source.
+     * @param {import("../Feature.js").default<Geometry>} feature Feature.
+     * @return {boolean} Has feature.
+     * @api
+     */
+    VectorSource.prototype.hasFeature = function (feature) {
+        var id = feature.getId();
+        if (id !== undefined) {
+            return id in this.idIndex_;
+        }
+        else {
+            return getUid(feature) in this.uidIndex_;
+        }
+    };
+    /**
+     * @return {boolean} Is empty.
+     */
+    VectorSource.prototype.isEmpty = function () {
+        return this.featuresRtree_.isEmpty() && obj_isEmpty(this.nullGeometryFeatures_);
+    };
+    /**
+     * @param {import("../extent.js").Extent} extent Extent.
+     * @param {number} resolution Resolution.
+     * @param {import("../proj/Projection.js").default} projection Projection.
+     */
+    VectorSource.prototype.loadFeatures = function (extent, resolution, projection) {
+        var loadedExtentsRtree = this.loadedExtentsRtree_;
+        var extentsToLoad = this.strategy_(extent, resolution);
+        this.loading = false;
+        var _loop_1 = function (i, ii) {
+            var extentToLoad = extentsToLoad[i];
+            var alreadyLoaded = loadedExtentsRtree.forEachInExtent(extentToLoad, 
+            /**
+             * @param {{extent: import("../extent.js").Extent}} object Object.
+             * @return {boolean} Contains.
+             */
+            function (object) {
+                return containsExtent(object.extent, extentToLoad);
+            });
+            if (!alreadyLoaded) {
+                this_1.dispatchEvent(new VectorSourceEvent(VectorEventType.FEATURESLOADSTART));
+                this_1.loader_.call(this_1, extentToLoad, resolution, projection, function (features) {
+                    this.dispatchEvent(new VectorSourceEvent(VectorEventType.FEATURESLOADEND, undefined, features));
+                }.bind(this_1), function () {
+                    this.dispatchEvent(new VectorSourceEvent(VectorEventType.FEATURESLOADERROR));
+                }.bind(this_1));
+                loadedExtentsRtree.insert(extentToLoad, { extent: extentToLoad.slice() });
+                this_1.loading = this_1.loader_ !== VOID;
+            }
+        };
+        var this_1 = this;
+        for (var i = 0, ii = extentsToLoad.length; i < ii; ++i) {
+            _loop_1(i, ii);
+        }
+    };
+    VectorSource.prototype.refresh = function () {
+        this.clear(true);
+        this.loadedExtentsRtree_.clear();
+        _super.prototype.refresh.call(this);
+    };
+    /**
+     * Remove an extent from the list of loaded extents.
+     * @param {import("../extent.js").Extent} extent Extent.
+     * @api
+     */
+    VectorSource.prototype.removeLoadedExtent = function (extent) {
+        var loadedExtentsRtree = this.loadedExtentsRtree_;
+        var obj;
+        loadedExtentsRtree.forEachInExtent(extent, function (object) {
+            if (extent_equals(object.extent, extent)) {
+                obj = object;
+                return true;
+            }
+        });
+        if (obj) {
+            loadedExtentsRtree.remove(obj);
+        }
+    };
+    /**
+     * Remove a single feature from the source.  If you want to remove all features
+     * at once, use the {@link module:ol/source/Vector~VectorSource#clear #clear()} method
+     * instead.
+     * @param {import("../Feature.js").default<Geometry>} feature Feature to remove.
+     * @api
+     */
+    VectorSource.prototype.removeFeature = function (feature) {
+        var featureKey = getUid(feature);
+        if (featureKey in this.nullGeometryFeatures_) {
+            delete this.nullGeometryFeatures_[featureKey];
+        }
+        else {
+            if (this.featuresRtree_) {
+                this.featuresRtree_.remove(feature);
+            }
+        }
+        this.removeFeatureInternal(feature);
+        this.changed();
+    };
+    /**
+     * Remove feature without firing a `change` event.
+     * @param {import("../Feature.js").default<Geometry>} feature Feature.
+     * @protected
+     */
+    VectorSource.prototype.removeFeatureInternal = function (feature) {
+        var featureKey = getUid(feature);
+        this.featureChangeKeys_[featureKey].forEach(unlistenByKey);
+        delete this.featureChangeKeys_[featureKey];
+        var id = feature.getId();
+        if (id !== undefined) {
+            delete this.idIndex_[id.toString()];
+        }
+        delete this.uidIndex_[featureKey];
+        this.dispatchEvent(new VectorSourceEvent(VectorEventType.REMOVEFEATURE, feature));
+    };
+    /**
+     * Remove a feature from the id index.  Called internally when the feature id
+     * may have changed.
+     * @param {import("../Feature.js").default<Geometry>} feature The feature.
+     * @return {boolean} Removed the feature from the index.
+     * @private
+     */
+    VectorSource.prototype.removeFromIdIndex_ = function (feature) {
+        var removed = false;
+        for (var id in this.idIndex_) {
+            if (this.idIndex_[id] === feature) {
+                delete this.idIndex_[id];
+                removed = true;
+                break;
+            }
+        }
+        return removed;
+    };
+    /**
+     * Set the new loader of the source. The next render cycle will use the
+     * new loader.
+     * @param {import("../featureloader.js").FeatureLoader} loader The loader to set.
+     * @api
+     */
+    VectorSource.prototype.setLoader = function (loader) {
+        this.loader_ = loader;
+    };
+    /**
+     * Points the source to a new url. The next render cycle will use the new url.
+     * @param {string|import("../featureloader.js").FeatureUrlFunction} url Url.
+     * @api
+     */
+    VectorSource.prototype.setUrl = function (url) {
+        assert(this.format_, 7); // `format` must be set when `url` is set
+        this.setLoader(featureloader_xhr(url, this.format_));
+    };
+    return VectorSource;
+}(source_Source));
+/* harmony default export */ var Vector = (Vector_VectorSource);
+//# sourceMappingURL=Vector.js.map
 // CONCATENATED MODULE: ./src/components/map/_invokeClicks.js
 
 
@@ -25132,7 +26789,8 @@ var invoke_tooltips = function invoke_tooltips(map, e) {
  * @param {Map} map objeto mapa de Open Layers
  * @param {*} e evento
  */
-var invoke_clicks = function invoke_clicks(map, e, component) {
+
+var _invokeClicks_invoke_clicks = function invoke_clicks(map, e, component) {
   var hightlight_on_click = function hightlight_on_click(feature) {
     if (feature !== component.VM_highlight_feature) {
       if (component.VM_highlight_feature) {
@@ -25172,11 +26830,22 @@ var invoke_clicks = function invoke_clicks(map, e, component) {
         hightlight_on_click(feature);
 
         if (feature.getGeometry().getType() == "Point") {
-          map.getView().animate({
-            center: feature.getGeometry().getCoordinates(),
-            zoom: 13.5,
-            duration: 500
-          });
+          if (feature.get("features") && feature.get("features").length > 1) {
+            //es una capa de puntos agrupados
+            var vSource = new Vector({
+              features: feature.get("features")
+            });
+            map.getView().fit(vSource.getExtent(), {
+              duration: 500,
+              padding: [25, 25, 25, 25]
+            });
+          } else {
+            map.getView().animate({
+              center: feature.getGeometry().getCoordinates(),
+              zoom: 13.5,
+              duration: 500
+            });
+          }
         } else {
           map.getView().fit(feature.getGeometry(), {
             duration: 500,
@@ -25457,7 +27126,7 @@ var invoke_clicks = function invoke_clicks(map, e, component) {
     this.map.on("click", function (e) {
       _this.$emit("click", e);
 
-      invoke_clicks(_this.map, e, _this);
+      _invokeClicks_invoke_clicks(_this.map, e, _this);
     });
     this.map.getLayers().on("add", function () {
       _this.$emit("add-layer");
@@ -25686,7 +27355,7 @@ function normalizeComponent (
 
 /* normalize component */
 
-var component = normalizeComponent(
+var map_component = normalizeComponent(
   map_mapvue_type_script_lang_js_,
   mapvue_type_template_id_1b7d1b00_render,
   staticRenderFns,
@@ -25697,7 +27366,7 @@ var component = normalizeComponent(
   
 )
 
-/* harmony default export */ var map_map = (component.exports);
+/* harmony default export */ var map_map = (map_component.exports);
 // CONCATENATED MODULE: ./src/components/map/index.js
 
 
@@ -29306,204 +30975,6 @@ var TileCache_TileCache = /** @class */ (function (_super) {
     TILELOADERROR: 'tileloaderror',
 });
 //# sourceMappingURL=TileEventType.js.map
-// CONCATENATED MODULE: ./node_modules/ol/source/Source.js
-var Source_extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-/**
- * @module ol/source/Source
- */
-
-
-
-
-/**
- * A function that returns a string or an array of strings representing source
- * attributions.
- *
- * @typedef {function(import("../PluggableMap.js").FrameState): (string|Array<string>)} Attribution
- */
-/**
- * A type that can be used to provide attribution information for data sources.
- *
- * It represents either
- * * a simple string (e.g. `'© Acme Inc.'`)
- * * an array of simple strings (e.g. `['© Acme Inc.', '© Bacme Inc.']`)
- * * a function that returns a string or array of strings ({@link module:ol/source/Source~Attribution})
- *
- * @typedef {string|Array<string>|Attribution} AttributionLike
- */
-/**
- * @typedef {Object} Options
- * @property {AttributionLike} [attributions]
- * @property {boolean} [attributionsCollapsible=true] Attributions are collapsible.
- * @property {import("../proj.js").ProjectionLike} [projection] Projection. Default is the view projection.
- * @property {import("./State.js").default} [state='ready']
- * @property {boolean} [wrapX=false]
- */
-/**
- * @classdesc
- * Abstract base class; normally only used for creating subclasses and not
- * instantiated in apps.
- * Base class for {@link module:ol/layer/Layer~Layer} sources.
- *
- * A generic `change` event is triggered when the state of the source changes.
- * @abstract
- * @api
- */
-var Source_Source = /** @class */ (function (_super) {
-    Source_extends(Source, _super);
-    /**
-     * @param {Options} options Source options.
-     */
-    function Source(options) {
-        var _this = _super.call(this) || this;
-        /**
-         * @private
-         * @type {import("../proj/Projection.js").default}
-         */
-        _this.projection_ = proj_get(options.projection);
-        /**
-         * @private
-         * @type {?Attribution}
-         */
-        _this.attributions_ = adaptAttributions(options.attributions);
-        /**
-         * @private
-         * @type {boolean}
-         */
-        _this.attributionsCollapsible_ =
-            options.attributionsCollapsible !== undefined
-                ? options.attributionsCollapsible
-                : true;
-        /**
-         * This source is currently loading data. Sources that defer loading to the
-         * map's tile queue never set this to `true`.
-         * @type {boolean}
-         */
-        _this.loading = false;
-        /**
-         * @private
-         * @type {import("./State.js").default}
-         */
-        _this.state_ =
-            options.state !== undefined ? options.state : State.READY;
-        /**
-         * @private
-         * @type {boolean}
-         */
-        _this.wrapX_ = options.wrapX !== undefined ? options.wrapX : false;
-        return _this;
-    }
-    /**
-     * Get the attribution function for the source.
-     * @return {?Attribution} Attribution function.
-     */
-    Source.prototype.getAttributions = function () {
-        return this.attributions_;
-    };
-    /**
-     * @return {boolean} Attributions are collapsible.
-     */
-    Source.prototype.getAttributionsCollapsible = function () {
-        return this.attributionsCollapsible_;
-    };
-    /**
-     * Get the projection of the source.
-     * @return {import("../proj/Projection.js").default} Projection.
-     * @api
-     */
-    Source.prototype.getProjection = function () {
-        return this.projection_;
-    };
-    /**
-     * @abstract
-     * @return {Array<number>|undefined} Resolutions.
-     */
-    Source.prototype.getResolutions = function () {
-        return util_abstract();
-    };
-    /**
-     * Get the state of the source, see {@link module:ol/source/State~State} for possible states.
-     * @return {import("./State.js").default} State.
-     * @api
-     */
-    Source.prototype.getState = function () {
-        return this.state_;
-    };
-    /**
-     * @return {boolean|undefined} Wrap X.
-     */
-    Source.prototype.getWrapX = function () {
-        return this.wrapX_;
-    };
-    /**
-     * @return {Object|undefined} Context options.
-     */
-    Source.prototype.getContextOptions = function () {
-        return undefined;
-    };
-    /**
-     * Refreshes the source. The source will be cleared, and data from the server will be reloaded.
-     * @api
-     */
-    Source.prototype.refresh = function () {
-        this.changed();
-    };
-    /**
-     * Set the attributions of the source.
-     * @param {AttributionLike|undefined} attributions Attributions.
-     *     Can be passed as `string`, `Array<string>`, {@link module:ol/source/Source~Attribution},
-     *     or `undefined`.
-     * @api
-     */
-    Source.prototype.setAttributions = function (attributions) {
-        this.attributions_ = adaptAttributions(attributions);
-        this.changed();
-    };
-    /**
-     * Set the state of the source.
-     * @param {import("./State.js").default} state State.
-     */
-    Source.prototype.setState = function (state) {
-        this.state_ = state;
-        this.changed();
-    };
-    return Source;
-}(ol_Object));
-/**
- * Turns the attributions option into an attributions function.
- * @param {AttributionLike|undefined} attributionLike The attribution option.
- * @return {?Attribution} An attribution function (or null).
- */
-function adaptAttributions(attributionLike) {
-    if (!attributionLike) {
-        return null;
-    }
-    if (Array.isArray(attributionLike)) {
-        return function (frameState) {
-            return attributionLike;
-        };
-    }
-    if (typeof attributionLike === 'function') {
-        return attributionLike;
-    }
-    return function (frameState) {
-        return [attributionLike];
-    };
-}
-/* harmony default export */ var source_Source = (Source_Source);
-//# sourceMappingURL=Source.js.map
 // CONCATENATED MODULE: ./node_modules/ol/tilegrid/TileGrid.js
 /**
  * @module ol/tilegrid/TileGrid
@@ -31873,6 +33344,12 @@ function _objectSpread2(target) {
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.fill.js
 var es_array_fill = __webpack_require__("cb29");
 
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.exec.js
+var es_regexp_exec = __webpack_require__("ac1f");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.split.js
+var es_string_split = __webpack_require__("1276");
+
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.assign.js
 var es_object_assign = __webpack_require__("cca6");
 
@@ -34233,6 +35710,508 @@ function defaultGeometryFunction(feature) {
 }
 /* harmony default export */ var style_Style = (Style);
 //# sourceMappingURL=Style.js.map
+// CONCATENATED MODULE: ./node_modules/ol/style/TextPlacement.js
+/**
+ * @module ol/style/TextPlacement
+ */
+/**
+ * Text placement. One of `'point'`, `'line'`. Default is `'point'`. Note that
+ * `'line'` requires the underlying geometry to be a {@link module:ol/geom/LineString~LineString},
+ * {@link module:ol/geom/Polygon~Polygon}, {@link module:ol/geom/MultiLineString~MultiLineString} or
+ * {@link module:ol/geom/MultiPolygon~MultiPolygon}.
+ * @enum {string}
+ */
+/* harmony default export */ var TextPlacement = ({
+    POINT: 'point',
+    LINE: 'line',
+});
+//# sourceMappingURL=TextPlacement.js.map
+// CONCATENATED MODULE: ./node_modules/ol/style/Text.js
+/**
+ * @module ol/style/Text
+ */
+
+
+
+/**
+ * The default fill color to use if no fill was set at construction time; a
+ * blackish `#333`.
+ *
+ * @const {string}
+ */
+var DEFAULT_FILL_COLOR = '#333';
+/**
+ * @typedef {Object} Options
+ * @property {string} [font] Font style as CSS 'font' value, see:
+ * https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/font. Default is '10px sans-serif'
+ * @property {number} [maxAngle=Math.PI/4] When `placement` is set to `'line'`, allow a maximum angle between adjacent characters.
+ * The expected value is in radians, and the default is 45° (`Math.PI / 4`).
+ * @property {number} [offsetX=0] Horizontal text offset in pixels. A positive will shift the text right.
+ * @property {number} [offsetY=0] Vertical text offset in pixels. A positive will shift the text down.
+ * @property {boolean} [overflow=false] For polygon labels or when `placement` is set to `'line'`, allow text to exceed
+ * the width of the polygon at the label position or the length of the path that it follows.
+ * @property {import("./TextPlacement.js").default|string} [placement='point'] Text placement.
+ * @property {number|import("../size.js").Size} [scale] Scale.
+ * @property {boolean} [rotateWithView=false] Whether to rotate the text with the view.
+ * @property {number} [rotation=0] Rotation in radians (positive rotation clockwise).
+ * @property {string} [text] Text content.
+ * @property {string} [textAlign] Text alignment. Possible values: 'left', 'right', 'center', 'end' or 'start'.
+ * Default is 'center' for `placement: 'point'`. For `placement: 'line'`, the default is to let the renderer choose a
+ * placement where `maxAngle` is not exceeded.
+ * @property {string} [textBaseline='middle'] Text base line. Possible values: 'bottom', 'top', 'middle', 'alphabetic',
+ * 'hanging', 'ideographic'.
+ * @property {import("./Fill.js").default} [fill] Fill style. If none is provided, we'll use a dark fill-style (#333).
+ * @property {import("./Stroke.js").default} [stroke] Stroke style.
+ * @property {import("./Fill.js").default} [backgroundFill] Fill style for the text background when `placement` is
+ * `'point'`. Default is no fill.
+ * @property {import("./Stroke.js").default} [backgroundStroke] Stroke style for the text background  when `placement`
+ * is `'point'`. Default is no stroke.
+ * @property {Array<number>} [padding=[0, 0, 0, 0]] Padding in pixels around the text for decluttering and background. The order of
+ * values in the array is `[top, right, bottom, left]`.
+ */
+/**
+ * @classdesc
+ * Set text style for vector features.
+ * @api
+ */
+var Text_Text = /** @class */ (function () {
+    /**
+     * @param {Options=} opt_options Options.
+     */
+    function Text(opt_options) {
+        var options = opt_options || {};
+        /**
+         * @private
+         * @type {string|undefined}
+         */
+        this.font_ = options.font;
+        /**
+         * @private
+         * @type {number|undefined}
+         */
+        this.rotation_ = options.rotation;
+        /**
+         * @private
+         * @type {boolean|undefined}
+         */
+        this.rotateWithView_ = options.rotateWithView;
+        /**
+         * @private
+         * @type {number|import("../size.js").Size|undefined}
+         */
+        this.scale_ = options.scale;
+        /**
+         * @private
+         * @type {import("../size.js").Size}
+         */
+        this.scaleArray_ = toSize(options.scale !== undefined ? options.scale : 1);
+        /**
+         * @private
+         * @type {string|undefined}
+         */
+        this.text_ = options.text;
+        /**
+         * @private
+         * @type {string|undefined}
+         */
+        this.textAlign_ = options.textAlign;
+        /**
+         * @private
+         * @type {string|undefined}
+         */
+        this.textBaseline_ = options.textBaseline;
+        /**
+         * @private
+         * @type {import("./Fill.js").default}
+         */
+        this.fill_ =
+            options.fill !== undefined
+                ? options.fill
+                : new style_Fill({ color: DEFAULT_FILL_COLOR });
+        /**
+         * @private
+         * @type {number}
+         */
+        this.maxAngle_ =
+            options.maxAngle !== undefined ? options.maxAngle : Math.PI / 4;
+        /**
+         * @private
+         * @type {import("./TextPlacement.js").default|string}
+         */
+        this.placement_ =
+            options.placement !== undefined ? options.placement : TextPlacement.POINT;
+        /**
+         * @private
+         * @type {boolean}
+         */
+        this.overflow_ = !!options.overflow;
+        /**
+         * @private
+         * @type {import("./Stroke.js").default}
+         */
+        this.stroke_ = options.stroke !== undefined ? options.stroke : null;
+        /**
+         * @private
+         * @type {number}
+         */
+        this.offsetX_ = options.offsetX !== undefined ? options.offsetX : 0;
+        /**
+         * @private
+         * @type {number}
+         */
+        this.offsetY_ = options.offsetY !== undefined ? options.offsetY : 0;
+        /**
+         * @private
+         * @type {import("./Fill.js").default}
+         */
+        this.backgroundFill_ = options.backgroundFill
+            ? options.backgroundFill
+            : null;
+        /**
+         * @private
+         * @type {import("./Stroke.js").default}
+         */
+        this.backgroundStroke_ = options.backgroundStroke
+            ? options.backgroundStroke
+            : null;
+        /**
+         * @private
+         * @type {Array<number>}
+         */
+        this.padding_ = options.padding === undefined ? null : options.padding;
+    }
+    /**
+     * Clones the style.
+     * @return {Text} The cloned style.
+     * @api
+     */
+    Text.prototype.clone = function () {
+        var scale = this.getScale();
+        return new Text({
+            font: this.getFont(),
+            placement: this.getPlacement(),
+            maxAngle: this.getMaxAngle(),
+            overflow: this.getOverflow(),
+            rotation: this.getRotation(),
+            rotateWithView: this.getRotateWithView(),
+            scale: Array.isArray(scale) ? scale.slice() : scale,
+            text: this.getText(),
+            textAlign: this.getTextAlign(),
+            textBaseline: this.getTextBaseline(),
+            fill: this.getFill() ? this.getFill().clone() : undefined,
+            stroke: this.getStroke() ? this.getStroke().clone() : undefined,
+            offsetX: this.getOffsetX(),
+            offsetY: this.getOffsetY(),
+            backgroundFill: this.getBackgroundFill()
+                ? this.getBackgroundFill().clone()
+                : undefined,
+            backgroundStroke: this.getBackgroundStroke()
+                ? this.getBackgroundStroke().clone()
+                : undefined,
+            padding: this.getPadding(),
+        });
+    };
+    /**
+     * Get the `overflow` configuration.
+     * @return {boolean} Let text overflow the length of the path they follow.
+     * @api
+     */
+    Text.prototype.getOverflow = function () {
+        return this.overflow_;
+    };
+    /**
+     * Get the font name.
+     * @return {string|undefined} Font.
+     * @api
+     */
+    Text.prototype.getFont = function () {
+        return this.font_;
+    };
+    /**
+     * Get the maximum angle between adjacent characters.
+     * @return {number} Angle in radians.
+     * @api
+     */
+    Text.prototype.getMaxAngle = function () {
+        return this.maxAngle_;
+    };
+    /**
+     * Get the label placement.
+     * @return {import("./TextPlacement.js").default|string} Text placement.
+     * @api
+     */
+    Text.prototype.getPlacement = function () {
+        return this.placement_;
+    };
+    /**
+     * Get the x-offset for the text.
+     * @return {number} Horizontal text offset.
+     * @api
+     */
+    Text.prototype.getOffsetX = function () {
+        return this.offsetX_;
+    };
+    /**
+     * Get the y-offset for the text.
+     * @return {number} Vertical text offset.
+     * @api
+     */
+    Text.prototype.getOffsetY = function () {
+        return this.offsetY_;
+    };
+    /**
+     * Get the fill style for the text.
+     * @return {import("./Fill.js").default} Fill style.
+     * @api
+     */
+    Text.prototype.getFill = function () {
+        return this.fill_;
+    };
+    /**
+     * Determine whether the text rotates with the map.
+     * @return {boolean|undefined} Rotate with map.
+     * @api
+     */
+    Text.prototype.getRotateWithView = function () {
+        return this.rotateWithView_;
+    };
+    /**
+     * Get the text rotation.
+     * @return {number|undefined} Rotation.
+     * @api
+     */
+    Text.prototype.getRotation = function () {
+        return this.rotation_;
+    };
+    /**
+     * Get the text scale.
+     * @return {number|import("../size.js").Size|undefined} Scale.
+     * @api
+     */
+    Text.prototype.getScale = function () {
+        return this.scale_;
+    };
+    /**
+     * Get the symbolizer scale array.
+     * @return {import("../size.js").Size} Scale array.
+     */
+    Text.prototype.getScaleArray = function () {
+        return this.scaleArray_;
+    };
+    /**
+     * Get the stroke style for the text.
+     * @return {import("./Stroke.js").default} Stroke style.
+     * @api
+     */
+    Text.prototype.getStroke = function () {
+        return this.stroke_;
+    };
+    /**
+     * Get the text to be rendered.
+     * @return {string|undefined} Text.
+     * @api
+     */
+    Text.prototype.getText = function () {
+        return this.text_;
+    };
+    /**
+     * Get the text alignment.
+     * @return {string|undefined} Text align.
+     * @api
+     */
+    Text.prototype.getTextAlign = function () {
+        return this.textAlign_;
+    };
+    /**
+     * Get the text baseline.
+     * @return {string|undefined} Text baseline.
+     * @api
+     */
+    Text.prototype.getTextBaseline = function () {
+        return this.textBaseline_;
+    };
+    /**
+     * Get the background fill style for the text.
+     * @return {import("./Fill.js").default} Fill style.
+     * @api
+     */
+    Text.prototype.getBackgroundFill = function () {
+        return this.backgroundFill_;
+    };
+    /**
+     * Get the background stroke style for the text.
+     * @return {import("./Stroke.js").default} Stroke style.
+     * @api
+     */
+    Text.prototype.getBackgroundStroke = function () {
+        return this.backgroundStroke_;
+    };
+    /**
+     * Get the padding for the text.
+     * @return {Array<number>} Padding.
+     * @api
+     */
+    Text.prototype.getPadding = function () {
+        return this.padding_;
+    };
+    /**
+     * Set the `overflow` property.
+     *
+     * @param {boolean} overflow Let text overflow the path that it follows.
+     * @api
+     */
+    Text.prototype.setOverflow = function (overflow) {
+        this.overflow_ = overflow;
+    };
+    /**
+     * Set the font.
+     *
+     * @param {string|undefined} font Font.
+     * @api
+     */
+    Text.prototype.setFont = function (font) {
+        this.font_ = font;
+    };
+    /**
+     * Set the maximum angle between adjacent characters.
+     *
+     * @param {number} maxAngle Angle in radians.
+     * @api
+     */
+    Text.prototype.setMaxAngle = function (maxAngle) {
+        this.maxAngle_ = maxAngle;
+    };
+    /**
+     * Set the x offset.
+     *
+     * @param {number} offsetX Horizontal text offset.
+     * @api
+     */
+    Text.prototype.setOffsetX = function (offsetX) {
+        this.offsetX_ = offsetX;
+    };
+    /**
+     * Set the y offset.
+     *
+     * @param {number} offsetY Vertical text offset.
+     * @api
+     */
+    Text.prototype.setOffsetY = function (offsetY) {
+        this.offsetY_ = offsetY;
+    };
+    /**
+     * Set the text placement.
+     *
+     * @param {import("./TextPlacement.js").default|string} placement Placement.
+     * @api
+     */
+    Text.prototype.setPlacement = function (placement) {
+        this.placement_ = placement;
+    };
+    /**
+     * Set whether to rotate the text with the view.
+     *
+     * @param {boolean} rotateWithView Rotate with map.
+     * @api
+     */
+    Text.prototype.setRotateWithView = function (rotateWithView) {
+        this.rotateWithView_ = rotateWithView;
+    };
+    /**
+     * Set the fill.
+     *
+     * @param {import("./Fill.js").default} fill Fill style.
+     * @api
+     */
+    Text.prototype.setFill = function (fill) {
+        this.fill_ = fill;
+    };
+    /**
+     * Set the rotation.
+     *
+     * @param {number|undefined} rotation Rotation.
+     * @api
+     */
+    Text.prototype.setRotation = function (rotation) {
+        this.rotation_ = rotation;
+    };
+    /**
+     * Set the scale.
+     *
+     * @param {number|import("../size.js").Size|undefined} scale Scale.
+     * @api
+     */
+    Text.prototype.setScale = function (scale) {
+        this.scale_ = scale;
+        this.scaleArray_ = toSize(scale !== undefined ? scale : 1);
+    };
+    /**
+     * Set the stroke.
+     *
+     * @param {import("./Stroke.js").default} stroke Stroke style.
+     * @api
+     */
+    Text.prototype.setStroke = function (stroke) {
+        this.stroke_ = stroke;
+    };
+    /**
+     * Set the text.
+     *
+     * @param {string|undefined} text Text.
+     * @api
+     */
+    Text.prototype.setText = function (text) {
+        this.text_ = text;
+    };
+    /**
+     * Set the text alignment.
+     *
+     * @param {string|undefined} textAlign Text align.
+     * @api
+     */
+    Text.prototype.setTextAlign = function (textAlign) {
+        this.textAlign_ = textAlign;
+    };
+    /**
+     * Set the text baseline.
+     *
+     * @param {string|undefined} textBaseline Text baseline.
+     * @api
+     */
+    Text.prototype.setTextBaseline = function (textBaseline) {
+        this.textBaseline_ = textBaseline;
+    };
+    /**
+     * Set the background fill.
+     *
+     * @param {import("./Fill.js").default} fill Fill style.
+     * @api
+     */
+    Text.prototype.setBackgroundFill = function (fill) {
+        this.backgroundFill_ = fill;
+    };
+    /**
+     * Set the background stroke.
+     *
+     * @param {import("./Stroke.js").default} stroke Stroke style.
+     * @api
+     */
+    Text.prototype.setBackgroundStroke = function (stroke) {
+        this.backgroundStroke_ = stroke;
+    };
+    /**
+     * Set the padding (`[top, right, bottom, left]`).
+     *
+     * @param {!Array<number>} padding Padding.
+     * @api
+     */
+    Text.prototype.setPadding = function (padding) {
+        this.padding_ = padding;
+    };
+    return Text;
+}());
+/* harmony default export */ var style_Text = (Text_Text);
+//# sourceMappingURL=Text.js.map
 // CONCATENATED MODULE: ./node_modules/ol-ext/util/ext.js
 /** @namespace  ol.ext
  */
@@ -34277,7 +36256,7 @@ if(typeof window !== "undefined"){
 }
 
 
-/* harmony default export */ var ext = (ol_ext_inherits);
+/* harmony default export */ var util_ext = (ol_ext_inherits);
 // CONCATENATED MODULE: ./node_modules/ol-ext/style/FillPattern.js
 /*	Copyright (c) 2016 Jean-Marc VIGLINO, 
 	released under the CeCILL-B license (French BSD license)
@@ -34424,7 +36403,7 @@ var ol_style_FillPattern = function(options)
 	style_Fill.call (this, { color: pattern });
 
 };
-ext(ol_style_FillPattern, style_Fill);
+util_ext(ol_style_FillPattern, style_Fill);
 
 
 /**
@@ -34900,6 +36879,10 @@ var equivalencias = {
   "fillPattern": {
     class: FillPattern,
     key: "fill"
+  },
+  "textStyle": {
+    class: style_Text,
+    key: "text"
   }
 };
 
@@ -35928,20 +37911,6 @@ function transformExtentWithOptions(extent, opt_options) {
     }
 }
 //# sourceMappingURL=Feature.js.map
-// CONCATENATED MODULE: ./node_modules/ol/format/FormatType.js
-/**
- * @module ol/format/FormatType
- */
-/**
- * @enum {string}
- */
-/* harmony default export */ var FormatType = ({
-    ARRAY_BUFFER: 'arraybuffer',
-    JSON: 'json',
-    TEXT: 'text',
-    XML: 'xml',
-});
-//# sourceMappingURL=FormatType.js.map
 // CONCATENATED MODULE: ./node_modules/ol/format/JSONFeature.js
 var JSONFeature_extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -37961,7 +39930,10 @@ function writePolygonGeometry(geometry, opt_options) {
 
 
 
-var DEFAULT_FILL_COLOR = "gray";
+
+
+
+var vector_layer_any_DEFAULT_FILL_COLOR = "gray";
 var DEFAULT_STROKE_COLOR = "white";
 /* harmony default export */ var vector_layer_any = ({
   props: {
@@ -38012,7 +39984,7 @@ var DEFAULT_STROKE_COLOR = "white";
       default: function _default() {
         return {
           fill: {
-            color: DEFAULT_FILL_COLOR
+            color: vector_layer_any_DEFAULT_FILL_COLOR
           },
           stroke: {
             width: 1,
@@ -38021,7 +39993,7 @@ var DEFAULT_STROKE_COLOR = "white";
           },
           circle: {
             fill: {
-              color: DEFAULT_FILL_COLOR
+              color: vector_layer_any_DEFAULT_FILL_COLOR
             },
             stroke: {
               color: DEFAULT_STROKE_COLOR,
@@ -38068,6 +40040,23 @@ var DEFAULT_STROKE_COLOR = "white";
         };
       } //definir un catalogo
 
+    },
+    //propiedades a las que se les reescribira el estilo (preferentemente que no sean las de clasificacion (rellenos,tamaños))
+    propsAsignaEstilo: {
+      type: Array,
+      default: function _default() {
+        return [];
+      }
+    },
+    //Funcion para definir esas propieadades de estilo al vuelo, toma como paametro el feature actual 
+    //y debe regresar el tantas propieadades se definieron en `propsAsignaEstilo`
+    fnAsignaEstilo: {
+      type: Function,
+      default: function _default() {
+        return function (feature) {
+          return [];
+        };
+      }
     }
   },
   data: function data() {
@@ -38075,7 +40064,9 @@ var DEFAULT_STROKE_COLOR = "white";
       VM_mapStyle: undefined,
       VM_allFeatures: "",
       VM_geometryType: "",
-      VM_defaultShapePoint: "circle"
+      VM_defaultShapePoint: "circle",
+      VM_is_classified: false,
+      VM_is_cluster: false
     };
   },
   created: function created() {
@@ -38106,11 +40097,19 @@ var DEFAULT_STROKE_COLOR = "white";
           } //console.log(JSON.stringify( serializes2),">>SALIO DE FUNCION<<",vm.VM_id)
 
 
+          if (vm.propsAsignaEstilo.length > 0) {
+            //console.log(JSON.stringify(serializes2),"INICIO_reescribe")
+            var resultReescribe = vm.fnAsignaEstilo(feature.getProperties());
+            vm.propsAsignaEstilo.forEach(function (path, i) {
+              replacePropertyAt(serializes2["style"], path, resultReescribe[i]);
+            }); //console.log(JSON.stringify(serializes2),"FIN_reescribe")
+          }
+
           var olstyles = _json2olstyle(serializes2)["style"];
           return olstyles;
         };
       } else {
-        var serializes = JSON.parse(JSON.stringify(_objectSpread2({}, fixSerializedStyleIfIncomplete(vm.VM_mapStyle)))); //let geometry_type = this.olLayer.getSource().getFeatures()[0].getGeometry().getType()
+        var serializes = JSON.parse(JSON.stringify(_objectSpread2({}, fixSerializedStyleIfIncomplete(vm.VM_mapStyle)))); //let geometry_type = vm.olLayer.getSource().getFeatures()[0].getGeometry().getType()
 
         /******************************************************************************** */
         //console.log("//AQUI VERIFICAR TAMBIEN QUE SHAPE SE VA A LA LEYENDA",serializes)
@@ -38139,6 +40138,14 @@ var DEFAULT_STROKE_COLOR = "white";
           if (vm.usarTexturasEnRelleno && (vm.VM_geometryType.includes('Polygon') && !("fillPattern" in serializes2.style) || vm.VM_geometryType.includes('Point') && !("fillPattern" in serializes2.style[vm.VM_defaultShapePoint]))) {
             //una condicion mas
             serializes2 = _json2olstyle_serializedStyleSetTexture(serializes2, vm.VM_defaultShapePoint, vm.estiloTexturaRelleno); //console.log(serializes2,"setTExtureINStyle",vm.VM_geometryType)
+          }
+
+          if (vm.propsAsignaEstilo.length > 0) {
+            //console.log(JSON.stringify(serializes2),"INICIO_reescribe")
+            var resultReescribe = vm.fnAsignaEstilo(feature.getProperties());
+            vm.propsAsignaEstilo.forEach(function (path, i) {
+              replacePropertyAt(serializes2["style"], path, resultReescribe[i]);
+            }); //console.log(JSON.stringify(serializes2),"FIN_reescribe")
           }
 
           var olstyles = _json2olstyle(serializes2)["style"];
@@ -38245,6 +40252,18 @@ var DEFAULT_STROKE_COLOR = "white";
     }
   }
 });
+
+function replacePropertyAt(object, path, newValue) {
+  var list_keys = path.split('.'); //console.log(list_keys,'path')
+
+  var last_instance = object;
+  list_keys.forEach(function (key, i) {
+    if (i < list_keys.length - 1) {
+      last_instance = last_instance[key];
+    }
+  });
+  last_instance[list_keys[list_keys.length - 1]] = newValue;
+}
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.concat.js
 var es_array_concat = __webpack_require__("99af");
 
@@ -51420,7 +53439,7 @@ function leafRight(node) {
   return node;
 }
 
-/* harmony default export */ var cluster = (function() {
+/* harmony default export */ var src_cluster = (function() {
   var separation = defaultSeparation,
       dx = 1,
       dy = 1,
@@ -60094,7 +62113,6 @@ var defaultsValuesRule = {
   },
   data: function data() {
     return {
-      VM_is_classified: false,
       VM_rules: [],
       VM_rules_cortes: [],
       VM_rules_textures: [],
@@ -60235,7 +62253,7 @@ var defaultsValuesRule = {
         var default_style = {
           style: {
             fill: {
-              color: DEFAULT_FILL_COLOR
+              color: vector_layer_any_DEFAULT_FILL_COLOR
             },
             stroke: {
               width: 1,
@@ -60246,7 +62264,7 @@ var defaultsValuesRule = {
         };
         default_style.style[_this4.VM_default_shape] = {
           fill: {
-            color: DEFAULT_FILL_COLOR
+            color: vector_layer_any_DEFAULT_FILL_COLOR
           },
           stroke: {
             color: DEFAULT_STROKE_COLOR,
@@ -60435,7 +62453,7 @@ var defaultsValuesRule = {
           var _style$style3, _style$style4;
 
           this.VM_persistentFill = ((_style$style3 = style.style) === null || _style$style3 === void 0 ? void 0 : _style$style3.fill) || {
-            color: DEFAULT_FILL_COLOR
+            color: vector_layer_any_DEFAULT_FILL_COLOR
           };
           this.VM_persistentStroke = ((_style$style4 = style.style) === null || _style$style4 === void 0 ? void 0 : _style$style4.stroke) || {
             color: DEFAULT_STROKE_COLOR,
@@ -60447,10 +62465,6 @@ var defaultsValuesRule = {
     }
   }
 });
-// EXTERNAL MODULE: ./node_modules/rbush/rbush.min.js
-var rbush_min = __webpack_require__("25a5");
-var rbush_min_default = /*#__PURE__*/__webpack_require__.n(rbush_min);
-
 // CONCATENATED MODULE: ./node_modules/ol/layer/BaseVector.js
 var BaseVector_extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -62006,22 +64020,6 @@ var PolygonBuilder_CanvasPolygonBuilder = /** @class */ (function (_super) {
 }(Builder));
 /* harmony default export */ var PolygonBuilder = (PolygonBuilder_CanvasPolygonBuilder);
 //# sourceMappingURL=PolygonBuilder.js.map
-// CONCATENATED MODULE: ./node_modules/ol/style/TextPlacement.js
-/**
- * @module ol/style/TextPlacement
- */
-/**
- * Text placement. One of `'point'`, `'line'`. Default is `'point'`. Note that
- * `'line'` requires the underlying geometry to be a {@link module:ol/geom/LineString~LineString},
- * {@link module:ol/geom/Polygon~Polygon}, {@link module:ol/geom/MultiLineString~MultiLineString} or
- * {@link module:ol/geom/MultiPolygon~MultiPolygon}.
- * @enum {string}
- */
-/* harmony default export */ var TextPlacement = ({
-    POINT: 'point',
-    LINE: 'line',
-});
-//# sourceMappingURL=TextPlacement.js.map
 // CONCATENATED MODULE: ./node_modules/ol/geom/flat/straightchunk.js
 /**
  * @module ol/geom/flat/straightchunk
@@ -66072,7 +68070,7 @@ var VectorLayer_CanvasVectorLayerRenderer = /** @class */ (function (_super) {
 /* harmony default export */ var canvas_VectorLayer = (VectorLayer_CanvasVectorLayerRenderer);
 //# sourceMappingURL=VectorLayer.js.map
 // CONCATENATED MODULE: ./node_modules/ol/layer/Vector.js
-var Vector_extends = (undefined && undefined.__extends) || (function () {
+var layer_Vector_extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
             ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -66101,7 +68099,7 @@ var Vector_extends = (undefined && undefined.__extends) || (function () {
  * @api
  */
 var Vector_VectorLayer = /** @class */ (function (_super) {
-    Vector_extends(VectorLayer, _super);
+    layer_Vector_extends(VectorLayer, _super);
     /**
      * @param {import("./BaseVector.js").Options=} opt_options Options.
      */
@@ -66117,1440 +68115,7 @@ var Vector_VectorLayer = /** @class */ (function (_super) {
     };
     return VectorLayer;
 }(BaseVector));
-/* harmony default export */ var Vector = (Vector_VectorLayer);
-//# sourceMappingURL=Vector.js.map
-// CONCATENATED MODULE: ./node_modules/ol/structs/RBush.js
-/**
- * @module ol/structs/RBush
- */
-
-
-
-
-/**
- * @typedef {Object} Entry
- * @property {number} minX
- * @property {number} minY
- * @property {number} maxX
- * @property {number} maxY
- * @property {Object} [value]
- */
-/**
- * @classdesc
- * Wrapper around the RBush by Vladimir Agafonkin.
- * See https://github.com/mourner/rbush.
- *
- * @template T
- */
-var RBush_RBush = /** @class */ (function () {
-    /**
-     * @param {number=} opt_maxEntries Max entries.
-     */
-    function RBush(opt_maxEntries) {
-        /**
-         * @private
-         */
-        this.rbush_ = new rbush_min_default.a(opt_maxEntries);
-        /**
-         * A mapping between the objects added to this rbush wrapper
-         * and the objects that are actually added to the internal rbush.
-         * @private
-         * @type {Object<string, Entry>}
-         */
-        this.items_ = {};
-    }
-    /**
-     * Insert a value into the RBush.
-     * @param {import("../extent.js").Extent} extent Extent.
-     * @param {T} value Value.
-     */
-    RBush.prototype.insert = function (extent, value) {
-        /** @type {Entry} */
-        var item = {
-            minX: extent[0],
-            minY: extent[1],
-            maxX: extent[2],
-            maxY: extent[3],
-            value: value,
-        };
-        this.rbush_.insert(item);
-        this.items_[getUid(value)] = item;
-    };
-    /**
-     * Bulk-insert values into the RBush.
-     * @param {Array<import("../extent.js").Extent>} extents Extents.
-     * @param {Array<T>} values Values.
-     */
-    RBush.prototype.load = function (extents, values) {
-        var items = new Array(values.length);
-        for (var i = 0, l = values.length; i < l; i++) {
-            var extent = extents[i];
-            var value = values[i];
-            /** @type {Entry} */
-            var item = {
-                minX: extent[0],
-                minY: extent[1],
-                maxX: extent[2],
-                maxY: extent[3],
-                value: value,
-            };
-            items[i] = item;
-            this.items_[getUid(value)] = item;
-        }
-        this.rbush_.load(items);
-    };
-    /**
-     * Remove a value from the RBush.
-     * @param {T} value Value.
-     * @return {boolean} Removed.
-     */
-    RBush.prototype.remove = function (value) {
-        var uid = getUid(value);
-        // get the object in which the value was wrapped when adding to the
-        // internal rbush. then use that object to do the removal.
-        var item = this.items_[uid];
-        delete this.items_[uid];
-        return this.rbush_.remove(item) !== null;
-    };
-    /**
-     * Update the extent of a value in the RBush.
-     * @param {import("../extent.js").Extent} extent Extent.
-     * @param {T} value Value.
-     */
-    RBush.prototype.update = function (extent, value) {
-        var item = this.items_[getUid(value)];
-        var bbox = [item.minX, item.minY, item.maxX, item.maxY];
-        if (!extent_equals(bbox, extent)) {
-            this.remove(value);
-            this.insert(extent, value);
-        }
-    };
-    /**
-     * Return all values in the RBush.
-     * @return {Array<T>} All.
-     */
-    RBush.prototype.getAll = function () {
-        var items = this.rbush_.all();
-        return items.map(function (item) {
-            return item.value;
-        });
-    };
-    /**
-     * Return all values in the given extent.
-     * @param {import("../extent.js").Extent} extent Extent.
-     * @return {Array<T>} All in extent.
-     */
-    RBush.prototype.getInExtent = function (extent) {
-        /** @type {Entry} */
-        var bbox = {
-            minX: extent[0],
-            minY: extent[1],
-            maxX: extent[2],
-            maxY: extent[3],
-        };
-        var items = this.rbush_.search(bbox);
-        return items.map(function (item) {
-            return item.value;
-        });
-    };
-    /**
-     * Calls a callback function with each value in the tree.
-     * If the callback returns a truthy value, this value is returned without
-     * checking the rest of the tree.
-     * @param {function(T): *} callback Callback.
-     * @return {*} Callback return value.
-     */
-    RBush.prototype.forEach = function (callback) {
-        return this.forEach_(this.getAll(), callback);
-    };
-    /**
-     * Calls a callback function with each value in the provided extent.
-     * @param {import("../extent.js").Extent} extent Extent.
-     * @param {function(T): *} callback Callback.
-     * @return {*} Callback return value.
-     */
-    RBush.prototype.forEachInExtent = function (extent, callback) {
-        return this.forEach_(this.getInExtent(extent), callback);
-    };
-    /**
-     * @param {Array<T>} values Values.
-     * @param {function(T): *} callback Callback.
-     * @private
-     * @return {*} Callback return value.
-     */
-    RBush.prototype.forEach_ = function (values, callback) {
-        var result;
-        for (var i = 0, l = values.length; i < l; i++) {
-            result = callback(values[i]);
-            if (result) {
-                return result;
-            }
-        }
-        return result;
-    };
-    /**
-     * @return {boolean} Is empty.
-     */
-    RBush.prototype.isEmpty = function () {
-        return obj_isEmpty(this.items_);
-    };
-    /**
-     * Remove all values from the RBush.
-     */
-    RBush.prototype.clear = function () {
-        this.rbush_.clear();
-        this.items_ = {};
-    };
-    /**
-     * @param {import("../extent.js").Extent=} opt_extent Extent.
-     * @return {import("../extent.js").Extent} Extent.
-     */
-    RBush.prototype.getExtent = function (opt_extent) {
-        var data = this.rbush_.toJSON();
-        return createOrUpdate(data.minX, data.minY, data.maxX, data.maxY, opt_extent);
-    };
-    /**
-     * @param {RBush} rbush R-Tree.
-     */
-    RBush.prototype.concat = function (rbush) {
-        this.rbush_.load(rbush.rbush_.all());
-        for (var i in rbush.items_) {
-            this.items_[i] = rbush.items_[i];
-        }
-    };
-    return RBush;
-}());
-/* harmony default export */ var structs_RBush = (RBush_RBush);
-//# sourceMappingURL=RBush.js.map
-// CONCATENATED MODULE: ./node_modules/ol/source/VectorEventType.js
-/**
- * @module ol/source/VectorEventType
- */
-/**
- * @enum {string}
- */
-/* harmony default export */ var VectorEventType = ({
-    /**
-     * Triggered when a feature is added to the source.
-     * @event module:ol/source/Vector.VectorSourceEvent#addfeature
-     * @api
-     */
-    ADDFEATURE: 'addfeature',
-    /**
-     * Triggered when a feature is updated.
-     * @event module:ol/source/Vector.VectorSourceEvent#changefeature
-     * @api
-     */
-    CHANGEFEATURE: 'changefeature',
-    /**
-     * Triggered when the clear method is called on the source.
-     * @event module:ol/source/Vector.VectorSourceEvent#clear
-     * @api
-     */
-    CLEAR: 'clear',
-    /**
-     * Triggered when a feature is removed from the source.
-     * See {@link module:ol/source/Vector#clear source.clear()} for exceptions.
-     * @event module:ol/source/Vector.VectorSourceEvent#removefeature
-     * @api
-     */
-    REMOVEFEATURE: 'removefeature',
-    /**
-     * Triggered when features starts loading.
-     * @event module:ol/source/Vector.VectorSourceEvent#featuresloadstart
-     * @api
-     */
-    FEATURESLOADSTART: 'featuresloadstart',
-    /**
-     * Triggered when features finishes loading.
-     * @event module:ol/source/Vector.VectorSourceEvent#featuresloadend
-     * @api
-     */
-    FEATURESLOADEND: 'featuresloadend',
-    /**
-     * Triggered if feature loading results in an error.
-     * @event module:ol/source/Vector.VectorSourceEvent#featuresloaderror
-     * @api
-     */
-    FEATURESLOADERROR: 'featuresloaderror',
-});
-//# sourceMappingURL=VectorEventType.js.map
-// CONCATENATED MODULE: ./node_modules/ol/loadingstrategy.js
-/**
- * @module ol/loadingstrategy
- */
-/**
- * Strategy function for loading all features with a single request.
- * @param {import("./extent.js").Extent} extent Extent.
- * @param {number} resolution Resolution.
- * @return {Array<import("./extent.js").Extent>} Extents.
- * @api
- */
-function loadingstrategy_all(extent, resolution) {
-    return [[-Infinity, -Infinity, Infinity, Infinity]];
-}
-/**
- * Strategy function for loading features based on the view's extent and
- * resolution.
- * @param {import("./extent.js").Extent} extent Extent.
- * @param {number} resolution Resolution.
- * @return {Array<import("./extent.js").Extent>} Extents.
- * @api
- */
-function loadingstrategy_bbox(extent, resolution) {
-    return [extent];
-}
-/**
- * Creates a strategy function for loading features based on a tile grid.
- * @param {import("./tilegrid/TileGrid.js").default} tileGrid Tile grid.
- * @return {function(import("./extent.js").Extent, number): Array<import("./extent.js").Extent>} Loading strategy.
- * @api
- */
-function loadingstrategy_tile(tileGrid) {
-    return (
-    /**
-     * @param {import("./extent.js").Extent} extent Extent.
-     * @param {number} resolution Resolution.
-     * @return {Array<import("./extent.js").Extent>} Extents.
-     */
-    function (extent, resolution) {
-        var z = tileGrid.getZForResolution(resolution);
-        var tileRange = tileGrid.getTileRangeForExtentAndZ(extent, z);
-        /** @type {Array<import("./extent.js").Extent>} */
-        var extents = [];
-        /** @type {import("./tilecoord.js").TileCoord} */
-        var tileCoord = [z, 0, 0];
-        for (tileCoord[1] = tileRange.minX; tileCoord[1] <= tileRange.maxX; ++tileCoord[1]) {
-            for (tileCoord[2] = tileRange.minY; tileCoord[2] <= tileRange.maxY; ++tileCoord[2]) {
-                extents.push(tileGrid.getTileCoordExtent(tileCoord));
-            }
-        }
-        return extents;
-    });
-}
-//# sourceMappingURL=loadingstrategy.js.map
-// CONCATENATED MODULE: ./node_modules/ol/featureloader.js
-/**
- * @module ol/featureloader
- */
-
-
-/**
- *
- * @type {boolean}
- * @private
- */
-var withCredentials = false;
-/**
- * {@link module:ol/source/Vector} sources use a function of this type to
- * load features.
- *
- * This function takes an {@link module:ol/extent~Extent} representing the area to be loaded,
- * a `{number}` representing the resolution (map units per pixel), an
- * {@link module:ol/proj/Projection} for the projection and success and failure callbacks as
- * arguments. `this` within the function is bound to the
- * {@link module:ol/source/Vector} it's called from.
- *
- * The function is responsible for loading the features and adding them to the
- * source.
- * @typedef {function(this:(import("./source/Vector").default|import("./VectorTile.js").default),
- *           import("./extent.js").Extent,
- *           number,
- *           import("./proj/Projection.js").default,
- *           function(Array<import("./Feature.js").default>): void=,
- *           function(): void=): void} FeatureLoader
- * @api
- */
-/**
- * {@link module:ol/source/Vector} sources use a function of this type to
- * get the url to load features from.
- *
- * This function takes an {@link module:ol/extent~Extent} representing the area
- * to be loaded, a `{number}` representing the resolution (map units per pixel)
- * and an {@link module:ol/proj/Projection} for the projection  as
- * arguments and returns a `{string}` representing the URL.
- * @typedef {function(import("./extent.js").Extent, number, import("./proj/Projection.js").default): string} FeatureUrlFunction
- * @api
- */
-/**
- * @param {string|FeatureUrlFunction} url Feature URL service.
- * @param {import("./format/Feature.js").default} format Feature format.
- * @param {import("./extent.js").Extent} extent Extent.
- * @param {number} resolution Resolution.
- * @param {import("./proj/Projection.js").default} projection Projection.
- * @param {function(Array<import("./Feature.js").default>, import("./proj/Projection.js").default): void} success Success
- *      Function called with the loaded features and optionally with the data projection.
- * @param {function(): void} failure Failure
- *      Function called when loading failed.
- */
-function loadFeaturesXhr(url, format, extent, resolution, projection, success, failure) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', typeof url === 'function' ? url(extent, resolution, projection) : url, true);
-    if (format.getType() == FormatType.ARRAY_BUFFER) {
-        xhr.responseType = 'arraybuffer';
-    }
-    xhr.withCredentials = withCredentials;
-    /**
-     * @param {Event} event Event.
-     * @private
-     */
-    xhr.onload = function (event) {
-        // status will be 0 for file:// urls
-        if (!xhr.status || (xhr.status >= 200 && xhr.status < 300)) {
-            var type = format.getType();
-            /** @type {Document|Node|Object|string|undefined} */
-            var source = void 0;
-            if (type == FormatType.JSON || type == FormatType.TEXT) {
-                source = xhr.responseText;
-            }
-            else if (type == FormatType.XML) {
-                source = xhr.responseXML;
-                if (!source) {
-                    source = new DOMParser().parseFromString(xhr.responseText, 'application/xml');
-                }
-            }
-            else if (type == FormatType.ARRAY_BUFFER) {
-                source = /** @type {ArrayBuffer} */ (xhr.response);
-            }
-            if (source) {
-                success(
-                /** @type {Array<import("./Feature.js").default>} */
-                (format.readFeatures(source, {
-                    extent: extent,
-                    featureProjection: projection,
-                })), format.readProjection(source));
-            }
-            else {
-                failure();
-            }
-        }
-        else {
-            failure();
-        }
-    };
-    /**
-     * @private
-     */
-    xhr.onerror = failure;
-    xhr.send();
-}
-/**
- * Create an XHR feature loader for a `url` and `format`. The feature loader
- * loads features (with XHR), parses the features, and adds them to the
- * vector source.
- * @param {string|FeatureUrlFunction} url Feature URL service.
- * @param {import("./format/Feature.js").default} format Feature format.
- * @return {FeatureLoader} The feature loader.
- * @api
- */
-function featureloader_xhr(url, format) {
-    /**
-     * @param {import("./extent.js").Extent} extent Extent.
-     * @param {number} resolution Resolution.
-     * @param {import("./proj/Projection.js").default} projection Projection.
-     * @param {function(): void=} success Success
-     *      Function called when loading succeeded.
-     * @param {function(): void=} failure Failure
-     *      Function called when loading failed.
-     * @this {import("./source/Vector").default}
-     */
-    return function (extent, resolution, projection, success, failure) {
-        var source = /** @type {import("./source/Vector").default} */ (this);
-        loadFeaturesXhr(url, format, extent, resolution, projection, 
-        /**
-         * @param {Array<import("./Feature.js").default>} features The loaded features.
-         * @param {import("./proj/Projection.js").default} dataProjection Data
-         * projection.
-         */
-        function (features, dataProjection) {
-            if (success !== undefined) {
-                success(features);
-            }
-            source.addFeatures(features);
-        }, 
-        /* FIXME handle error */ failure ? failure : VOID);
-    };
-}
-/**
- * Setter for the withCredentials configuration for the XHR.
- *
- * @param {boolean} xhrWithCredentials The value of withCredentials to set.
- * Compare https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/
- * @api
- */
-function setWithCredentials(xhrWithCredentials) {
-    withCredentials = xhrWithCredentials;
-}
-//# sourceMappingURL=featureloader.js.map
-// CONCATENATED MODULE: ./node_modules/ol/source/Vector.js
-/**
- * @module ol/source/Vector
- */
-var source_Vector_extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**
- * A function that takes an {@link module:ol/extent~Extent} and a resolution as arguments, and
- * returns an array of {@link module:ol/extent~Extent} with the extents to load. Usually this
- * is one of the standard {@link module:ol/loadingstrategy} strategies.
- *
- * @typedef {function(import("../extent.js").Extent, number): Array<import("../extent.js").Extent>} LoadingStrategy
- * @api
- */
-/**
- * @classdesc
- * Events emitted by {@link module:ol/source/Vector} instances are instances of this
- * type.
- * @template {import("../geom/Geometry.js").default} Geometry
- */
-var VectorSourceEvent = /** @class */ (function (_super) {
-    source_Vector_extends(VectorSourceEvent, _super);
-    /**
-     * @param {string} type Type.
-     * @param {import("../Feature.js").default<Geometry>=} opt_feature Feature.
-     * @param {Array<import("../Feature.js").default<Geometry>>=} opt_features Features.
-     */
-    function VectorSourceEvent(type, opt_feature, opt_features) {
-        var _this = _super.call(this, type) || this;
-        /**
-         * The added or removed feature for the `ADDFEATURE` and `REMOVEFEATURE` events, `undefined` otherwise.
-         * @type {import("../Feature.js").default<Geometry>|undefined}
-         * @api
-         */
-        _this.feature = opt_feature;
-        /**
-         * The loaded features for the `FEATURESLOADED` event, `undefined` otherwise.
-         * @type {Array<import("../Feature.js").default<Geometry>>|undefined}
-         * @api
-         */
-        _this.features = opt_features;
-        return _this;
-    }
-    return VectorSourceEvent;
-}(Event));
-
-/**
- * @typedef {Object} Options
- * @property {import("./Source.js").AttributionLike} [attributions] Attributions.
- * @property {Array<import("../Feature.js").default>|Collection<import("../Feature.js").default>} [features]
- * Features. If provided as {@link module:ol/Collection}, the features in the source
- * and the collection will stay in sync.
- * @property {import("../format/Feature.js").default} [format] The feature format used by the XHR
- * feature loader when `url` is set. Required if `url` is set, otherwise ignored.
- * @property {import("../featureloader.js").FeatureLoader} [loader]
- * The loader function used to load features, from a remote source for example.
- * If this is not set and `url` is set, the source will create and use an XHR
- * feature loader.
- *
- * Example:
- *
- * ```js
- * import {Vector} from 'ol/source';
- * import {GeoJSON} from 'ol/format';
- * import {bbox} from 'ol/loadingstrategy';
- *
- * var vectorSource = new Vector({
- *   format: new GeoJSON(),
- *   loader: function(extent, resolution, projection) {
- *      var proj = projection.getCode();
- *      var url = 'https://ahocevar.com/geoserver/wfs?service=WFS&' +
- *          'version=1.1.0&request=GetFeature&typename=osm:water_areas&' +
- *          'outputFormat=application/json&srsname=' + proj + '&' +
- *          'bbox=' + extent.join(',') + ',' + proj;
- *      var xhr = new XMLHttpRequest();
- *      xhr.open('GET', url);
- *      var onError = function() {
- *        vectorSource.removeLoadedExtent(extent);
- *      }
- *      xhr.onerror = onError;
- *      xhr.onload = function() {
- *        if (xhr.status == 200) {
- *          vectorSource.addFeatures(
- *              vectorSource.getFormat().readFeatures(xhr.responseText));
- *        } else {
- *          onError();
- *        }
- *      }
- *      xhr.send();
- *    },
- *    strategy: bbox
- *  });
- * ```
- * @property {boolean} [overlaps=true] This source may have overlapping geometries.
- * Setting this to `false` (e.g. for sources with polygons that represent administrative
- * boundaries or TopoJSON sources) allows the renderer to optimise fill and
- * stroke operations.
- * @property {LoadingStrategy} [strategy] The loading strategy to use.
- * By default an {@link module:ol/loadingstrategy~all}
- * strategy is used, a one-off strategy which loads all features at once.
- * @property {string|import("../featureloader.js").FeatureUrlFunction} [url]
- * Setting this option instructs the source to load features using an XHR loader
- * (see {@link module:ol/featureloader~xhr}). Use a `string` and an
- * {@link module:ol/loadingstrategy~all} for a one-off download of all features from
- * the given URL. Use a {@link module:ol/featureloader~FeatureUrlFunction} to generate the url with
- * other loading strategies.
- * Requires `format` to be set as well.
- * When default XHR feature loader is provided, the features will
- * be transformed from the data projection to the view projection
- * during parsing. If your remote data source does not advertise its projection
- * properly, this transformation will be incorrect. For some formats, the
- * default projection (usually EPSG:4326) can be overridden by setting the
- * dataProjection constructor option on the format.
- * Note that if a source contains non-feature data, such as a GeoJSON geometry
- * or a KML NetworkLink, these will be ignored. Use a custom loader to load these.
- * @property {boolean} [useSpatialIndex=true]
- * By default, an RTree is used as spatial index. When features are removed and
- * added frequently, and the total number of features is low, setting this to
- * `false` may improve performance.
- *
- * Note that
- * {@link module:ol/source/Vector~VectorSource#getFeaturesInExtent},
- * {@link module:ol/source/Vector~VectorSource#getClosestFeatureToCoordinate} and
- * {@link module:ol/source/Vector~VectorSource#getExtent} cannot be used when `useSpatialIndex` is
- * set to `false`, and {@link module:ol/source/Vector~VectorSource#forEachFeatureInExtent} will loop
- * through all features.
- *
- * When set to `false`, the features will be maintained in an
- * {@link module:ol/Collection}, which can be retrieved through
- * {@link module:ol/source/Vector~VectorSource#getFeaturesCollection}.
- * @property {boolean} [wrapX=true] Wrap the world horizontally. For vector editing across the
- * -180° and 180° meridians to work properly, this should be set to `false`. The
- * resulting geometry coordinates will then exceed the world bounds.
- */
-/**
- * @classdesc
- * Provides a source of features for vector layers. Vector features provided
- * by this source are suitable for editing. See {@link module:ol/source/VectorTile~VectorTile} for
- * vector data that is optimized for rendering.
- *
- * @fires VectorSourceEvent
- * @api
- * @template {import("../geom/Geometry.js").default} Geometry
- */
-var Vector_VectorSource = /** @class */ (function (_super) {
-    source_Vector_extends(VectorSource, _super);
-    /**
-     * @param {Options=} opt_options Vector source options.
-     */
-    function VectorSource(opt_options) {
-        var _this = this;
-        var options = opt_options || {};
-        _this = _super.call(this, {
-            attributions: options.attributions,
-            projection: undefined,
-            state: State.READY,
-            wrapX: options.wrapX !== undefined ? options.wrapX : true,
-        }) || this;
-        /**
-         * @private
-         * @type {import("../featureloader.js").FeatureLoader}
-         */
-        _this.loader_ = VOID;
-        /**
-         * @private
-         * @type {import("../format/Feature.js").default|undefined}
-         */
-        _this.format_ = options.format;
-        /**
-         * @private
-         * @type {boolean}
-         */
-        _this.overlaps_ = options.overlaps === undefined ? true : options.overlaps;
-        /**
-         * @private
-         * @type {string|import("../featureloader.js").FeatureUrlFunction|undefined}
-         */
-        _this.url_ = options.url;
-        if (options.loader !== undefined) {
-            _this.loader_ = options.loader;
-        }
-        else if (_this.url_ !== undefined) {
-            assert(_this.format_, 7); // `format` must be set when `url` is set
-            // create a XHR feature loader for "url" and "format"
-            _this.loader_ = featureloader_xhr(_this.url_, 
-            /** @type {import("../format/Feature.js").default} */ (_this.format_));
-        }
-        /**
-         * @private
-         * @type {LoadingStrategy}
-         */
-        _this.strategy_ =
-            options.strategy !== undefined ? options.strategy : loadingstrategy_all;
-        var useSpatialIndex = options.useSpatialIndex !== undefined ? options.useSpatialIndex : true;
-        /**
-         * @private
-         * @type {RBush<import("../Feature.js").default<Geometry>>}
-         */
-        _this.featuresRtree_ = useSpatialIndex ? new structs_RBush() : null;
-        /**
-         * @private
-         * @type {RBush<{extent: import("../extent.js").Extent}>}
-         */
-        _this.loadedExtentsRtree_ = new structs_RBush();
-        /**
-         * @private
-         * @type {!Object<string, import("../Feature.js").default<Geometry>>}
-         */
-        _this.nullGeometryFeatures_ = {};
-        /**
-         * A lookup of features by id (the return from feature.getId()).
-         * @private
-         * @type {!Object<string, import("../Feature.js").default<Geometry>>}
-         */
-        _this.idIndex_ = {};
-        /**
-         * A lookup of features by uid (using getUid(feature)).
-         * @private
-         * @type {!Object<string, import("../Feature.js").default<Geometry>>}
-         */
-        _this.uidIndex_ = {};
-        /**
-         * @private
-         * @type {Object<string, Array<import("../events.js").EventsKey>>}
-         */
-        _this.featureChangeKeys_ = {};
-        /**
-         * @private
-         * @type {Collection<import("../Feature.js").default<Geometry>>}
-         */
-        _this.featuresCollection_ = null;
-        var collection, features;
-        if (Array.isArray(options.features)) {
-            features = options.features;
-        }
-        else if (options.features) {
-            collection = options.features;
-            features = collection.getArray();
-        }
-        if (!useSpatialIndex && collection === undefined) {
-            collection = new ol_Collection(features);
-        }
-        if (features !== undefined) {
-            _this.addFeaturesInternal(features);
-        }
-        if (collection !== undefined) {
-            _this.bindFeaturesCollection_(collection);
-        }
-        return _this;
-    }
-    /**
-     * Add a single feature to the source.  If you want to add a batch of features
-     * at once, call {@link module:ol/source/Vector~VectorSource#addFeatures #addFeatures()}
-     * instead. A feature will not be added to the source if feature with
-     * the same id is already there. The reason for this behavior is to avoid
-     * feature duplication when using bbox or tile loading strategies.
-     * Note: this also applies if an {@link module:ol/Collection} is used for features,
-     * meaning that if a feature with a duplicate id is added in the collection, it will
-     * be removed from it right away.
-     * @param {import("../Feature.js").default<Geometry>} feature Feature to add.
-     * @api
-     */
-    VectorSource.prototype.addFeature = function (feature) {
-        this.addFeatureInternal(feature);
-        this.changed();
-    };
-    /**
-     * Add a feature without firing a `change` event.
-     * @param {import("../Feature.js").default<Geometry>} feature Feature.
-     * @protected
-     */
-    VectorSource.prototype.addFeatureInternal = function (feature) {
-        var featureKey = getUid(feature);
-        if (!this.addToIndex_(featureKey, feature)) {
-            if (this.featuresCollection_) {
-                this.featuresCollection_.remove(feature);
-            }
-            return;
-        }
-        this.setupChangeEvents_(featureKey, feature);
-        var geometry = feature.getGeometry();
-        if (geometry) {
-            var extent = geometry.getExtent();
-            if (this.featuresRtree_) {
-                this.featuresRtree_.insert(extent, feature);
-            }
-        }
-        else {
-            this.nullGeometryFeatures_[featureKey] = feature;
-        }
-        this.dispatchEvent(new VectorSourceEvent(VectorEventType.ADDFEATURE, feature));
-    };
-    /**
-     * @param {string} featureKey Unique identifier for the feature.
-     * @param {import("../Feature.js").default<Geometry>} feature The feature.
-     * @private
-     */
-    VectorSource.prototype.setupChangeEvents_ = function (featureKey, feature) {
-        this.featureChangeKeys_[featureKey] = [
-            listen(feature, EventType.CHANGE, this.handleFeatureChange_, this),
-            listen(feature, ObjectEventType.PROPERTYCHANGE, this.handleFeatureChange_, this),
-        ];
-    };
-    /**
-     * @param {string} featureKey Unique identifier for the feature.
-     * @param {import("../Feature.js").default<Geometry>} feature The feature.
-     * @return {boolean} The feature is "valid", in the sense that it is also a
-     *     candidate for insertion into the Rtree.
-     * @private
-     */
-    VectorSource.prototype.addToIndex_ = function (featureKey, feature) {
-        var valid = true;
-        var id = feature.getId();
-        if (id !== undefined) {
-            if (!(id.toString() in this.idIndex_)) {
-                this.idIndex_[id.toString()] = feature;
-            }
-            else {
-                valid = false;
-            }
-        }
-        if (valid) {
-            assert(!(featureKey in this.uidIndex_), 30); // The passed `feature` was already added to the source
-            this.uidIndex_[featureKey] = feature;
-        }
-        return valid;
-    };
-    /**
-     * Add a batch of features to the source.
-     * @param {Array<import("../Feature.js").default<Geometry>>} features Features to add.
-     * @api
-     */
-    VectorSource.prototype.addFeatures = function (features) {
-        this.addFeaturesInternal(features);
-        this.changed();
-    };
-    /**
-     * Add features without firing a `change` event.
-     * @param {Array<import("../Feature.js").default<Geometry>>} features Features.
-     * @protected
-     */
-    VectorSource.prototype.addFeaturesInternal = function (features) {
-        var extents = [];
-        var newFeatures = [];
-        var geometryFeatures = [];
-        for (var i = 0, length_1 = features.length; i < length_1; i++) {
-            var feature = features[i];
-            var featureKey = getUid(feature);
-            if (this.addToIndex_(featureKey, feature)) {
-                newFeatures.push(feature);
-            }
-        }
-        for (var i = 0, length_2 = newFeatures.length; i < length_2; i++) {
-            var feature = newFeatures[i];
-            var featureKey = getUid(feature);
-            this.setupChangeEvents_(featureKey, feature);
-            var geometry = feature.getGeometry();
-            if (geometry) {
-                var extent = geometry.getExtent();
-                extents.push(extent);
-                geometryFeatures.push(feature);
-            }
-            else {
-                this.nullGeometryFeatures_[featureKey] = feature;
-            }
-        }
-        if (this.featuresRtree_) {
-            this.featuresRtree_.load(extents, geometryFeatures);
-        }
-        for (var i = 0, length_3 = newFeatures.length; i < length_3; i++) {
-            this.dispatchEvent(new VectorSourceEvent(VectorEventType.ADDFEATURE, newFeatures[i]));
-        }
-    };
-    /**
-     * @param {!Collection<import("../Feature.js").default<Geometry>>} collection Collection.
-     * @private
-     */
-    VectorSource.prototype.bindFeaturesCollection_ = function (collection) {
-        var modifyingCollection = false;
-        this.addEventListener(VectorEventType.ADDFEATURE, 
-        /**
-         * @param {VectorSourceEvent<Geometry>} evt The vector source event
-         */
-        function (evt) {
-            if (!modifyingCollection) {
-                modifyingCollection = true;
-                collection.push(evt.feature);
-                modifyingCollection = false;
-            }
-        });
-        this.addEventListener(VectorEventType.REMOVEFEATURE, 
-        /**
-         * @param {VectorSourceEvent<Geometry>} evt The vector source event
-         */
-        function (evt) {
-            if (!modifyingCollection) {
-                modifyingCollection = true;
-                collection.remove(evt.feature);
-                modifyingCollection = false;
-            }
-        });
-        collection.addEventListener(CollectionEventType.ADD, 
-        /**
-         * @param {import("../Collection.js").CollectionEvent} evt The collection event
-         */
-        function (evt) {
-            if (!modifyingCollection) {
-                modifyingCollection = true;
-                this.addFeature(
-                /** @type {import("../Feature.js").default<Geometry>} */ (evt.element));
-                modifyingCollection = false;
-            }
-        }.bind(this));
-        collection.addEventListener(CollectionEventType.REMOVE, 
-        /**
-         * @param {import("../Collection.js").CollectionEvent} evt The collection event
-         */
-        function (evt) {
-            if (!modifyingCollection) {
-                modifyingCollection = true;
-                this.removeFeature(
-                /** @type {import("../Feature.js").default<Geometry>} */ (evt.element));
-                modifyingCollection = false;
-            }
-        }.bind(this));
-        this.featuresCollection_ = collection;
-    };
-    /**
-     * Remove all features from the source.
-     * @param {boolean=} opt_fast Skip dispatching of {@link module:ol/source/Vector.VectorSourceEvent#removefeature} events.
-     * @api
-     */
-    VectorSource.prototype.clear = function (opt_fast) {
-        if (opt_fast) {
-            for (var featureId in this.featureChangeKeys_) {
-                var keys = this.featureChangeKeys_[featureId];
-                keys.forEach(unlistenByKey);
-            }
-            if (!this.featuresCollection_) {
-                this.featureChangeKeys_ = {};
-                this.idIndex_ = {};
-                this.uidIndex_ = {};
-            }
-        }
-        else {
-            if (this.featuresRtree_) {
-                this.featuresRtree_.forEach(this.removeFeatureInternal.bind(this));
-                for (var id in this.nullGeometryFeatures_) {
-                    this.removeFeatureInternal(this.nullGeometryFeatures_[id]);
-                }
-            }
-        }
-        if (this.featuresCollection_) {
-            this.featuresCollection_.clear();
-        }
-        if (this.featuresRtree_) {
-            this.featuresRtree_.clear();
-        }
-        this.nullGeometryFeatures_ = {};
-        var clearEvent = new VectorSourceEvent(VectorEventType.CLEAR);
-        this.dispatchEvent(clearEvent);
-        this.changed();
-    };
-    /**
-     * Iterate through all features on the source, calling the provided callback
-     * with each one.  If the callback returns any "truthy" value, iteration will
-     * stop and the function will return the same value.
-     * Note: this function only iterate through the feature that have a defined geometry.
-     *
-     * @param {function(import("../Feature.js").default<Geometry>): T} callback Called with each feature
-     *     on the source.  Return a truthy value to stop iteration.
-     * @return {T|undefined} The return value from the last call to the callback.
-     * @template T
-     * @api
-     */
-    VectorSource.prototype.forEachFeature = function (callback) {
-        if (this.featuresRtree_) {
-            return this.featuresRtree_.forEach(callback);
-        }
-        else if (this.featuresCollection_) {
-            this.featuresCollection_.forEach(callback);
-        }
-    };
-    /**
-     * Iterate through all features whose geometries contain the provided
-     * coordinate, calling the callback with each feature.  If the callback returns
-     * a "truthy" value, iteration will stop and the function will return the same
-     * value.
-     *
-     * @param {import("../coordinate.js").Coordinate} coordinate Coordinate.
-     * @param {function(import("../Feature.js").default<Geometry>): T} callback Called with each feature
-     *     whose goemetry contains the provided coordinate.
-     * @return {T|undefined} The return value from the last call to the callback.
-     * @template T
-     */
-    VectorSource.prototype.forEachFeatureAtCoordinateDirect = function (coordinate, callback) {
-        var extent = [coordinate[0], coordinate[1], coordinate[0], coordinate[1]];
-        return this.forEachFeatureInExtent(extent, function (feature) {
-            var geometry = feature.getGeometry();
-            if (geometry.intersectsCoordinate(coordinate)) {
-                return callback(feature);
-            }
-            else {
-                return undefined;
-            }
-        });
-    };
-    /**
-     * Iterate through all features whose bounding box intersects the provided
-     * extent (note that the feature's geometry may not intersect the extent),
-     * calling the callback with each feature.  If the callback returns a "truthy"
-     * value, iteration will stop and the function will return the same value.
-     *
-     * If you are interested in features whose geometry intersects an extent, call
-     * the {@link module:ol/source/Vector~VectorSource#forEachFeatureIntersectingExtent #forEachFeatureIntersectingExtent()} method instead.
-     *
-     * When `useSpatialIndex` is set to false, this method will loop through all
-     * features, equivalent to {@link module:ol/source/Vector~VectorSource#forEachFeature #forEachFeature()}.
-     *
-     * @param {import("../extent.js").Extent} extent Extent.
-     * @param {function(import("../Feature.js").default<Geometry>): T} callback Called with each feature
-     *     whose bounding box intersects the provided extent.
-     * @return {T|undefined} The return value from the last call to the callback.
-     * @template T
-     * @api
-     */
-    VectorSource.prototype.forEachFeatureInExtent = function (extent, callback) {
-        if (this.featuresRtree_) {
-            return this.featuresRtree_.forEachInExtent(extent, callback);
-        }
-        else if (this.featuresCollection_) {
-            this.featuresCollection_.forEach(callback);
-        }
-    };
-    /**
-     * Iterate through all features whose geometry intersects the provided extent,
-     * calling the callback with each feature.  If the callback returns a "truthy"
-     * value, iteration will stop and the function will return the same value.
-     *
-     * If you only want to test for bounding box intersection, call the
-     * {@link module:ol/source/Vector~VectorSource#forEachFeatureInExtent #forEachFeatureInExtent()} method instead.
-     *
-     * @param {import("../extent.js").Extent} extent Extent.
-     * @param {function(import("../Feature.js").default<Geometry>): T} callback Called with each feature
-     *     whose geometry intersects the provided extent.
-     * @return {T|undefined} The return value from the last call to the callback.
-     * @template T
-     * @api
-     */
-    VectorSource.prototype.forEachFeatureIntersectingExtent = function (extent, callback) {
-        return this.forEachFeatureInExtent(extent, 
-        /**
-         * @param {import("../Feature.js").default<Geometry>} feature Feature.
-         * @return {T|undefined} The return value from the last call to the callback.
-         */
-        function (feature) {
-            var geometry = feature.getGeometry();
-            if (geometry.intersectsExtent(extent)) {
-                var result = callback(feature);
-                if (result) {
-                    return result;
-                }
-            }
-        });
-    };
-    /**
-     * Get the features collection associated with this source. Will be `null`
-     * unless the source was configured with `useSpatialIndex` set to `false`, or
-     * with an {@link module:ol/Collection} as `features`.
-     * @return {Collection<import("../Feature.js").default<Geometry>>} The collection of features.
-     * @api
-     */
-    VectorSource.prototype.getFeaturesCollection = function () {
-        return this.featuresCollection_;
-    };
-    /**
-     * Get all features on the source in random order.
-     * @return {Array<import("../Feature.js").default<Geometry>>} Features.
-     * @api
-     */
-    VectorSource.prototype.getFeatures = function () {
-        var features;
-        if (this.featuresCollection_) {
-            features = this.featuresCollection_.getArray();
-        }
-        else if (this.featuresRtree_) {
-            features = this.featuresRtree_.getAll();
-            if (!obj_isEmpty(this.nullGeometryFeatures_)) {
-                extend(features, getValues(this.nullGeometryFeatures_));
-            }
-        }
-        return /** @type {Array<import("../Feature.js").default<Geometry>>} */ (features);
-    };
-    /**
-     * Get all features whose geometry intersects the provided coordinate.
-     * @param {import("../coordinate.js").Coordinate} coordinate Coordinate.
-     * @return {Array<import("../Feature.js").default<Geometry>>} Features.
-     * @api
-     */
-    VectorSource.prototype.getFeaturesAtCoordinate = function (coordinate) {
-        var features = [];
-        this.forEachFeatureAtCoordinateDirect(coordinate, function (feature) {
-            features.push(feature);
-        });
-        return features;
-    };
-    /**
-     * Get all features whose bounding box intersects the provided extent.  Note that this returns an array of
-     * all features intersecting the given extent in random order (so it may include
-     * features whose geometries do not intersect the extent).
-     *
-     * When `useSpatialIndex` is set to false, this method will return all
-     * features.
-     *
-     * @param {import("../extent.js").Extent} extent Extent.
-     * @return {Array<import("../Feature.js").default<Geometry>>} Features.
-     * @api
-     */
-    VectorSource.prototype.getFeaturesInExtent = function (extent) {
-        if (this.featuresRtree_) {
-            return this.featuresRtree_.getInExtent(extent);
-        }
-        else if (this.featuresCollection_) {
-            return this.featuresCollection_.getArray();
-        }
-        else {
-            return [];
-        }
-    };
-    /**
-     * Get the closest feature to the provided coordinate.
-     *
-     * This method is not available when the source is configured with
-     * `useSpatialIndex` set to `false`.
-     * @param {import("../coordinate.js").Coordinate} coordinate Coordinate.
-     * @param {function(import("../Feature.js").default<Geometry>):boolean=} opt_filter Feature filter function.
-     *     The filter function will receive one argument, the {@link module:ol/Feature feature}
-     *     and it should return a boolean value. By default, no filtering is made.
-     * @return {import("../Feature.js").default<Geometry>} Closest feature.
-     * @api
-     */
-    VectorSource.prototype.getClosestFeatureToCoordinate = function (coordinate, opt_filter) {
-        // Find the closest feature using branch and bound.  We start searching an
-        // infinite extent, and find the distance from the first feature found.  This
-        // becomes the closest feature.  We then compute a smaller extent which any
-        // closer feature must intersect.  We continue searching with this smaller
-        // extent, trying to find a closer feature.  Every time we find a closer
-        // feature, we update the extent being searched so that any even closer
-        // feature must intersect it.  We continue until we run out of features.
-        var x = coordinate[0];
-        var y = coordinate[1];
-        var closestFeature = null;
-        var closestPoint = [NaN, NaN];
-        var minSquaredDistance = Infinity;
-        var extent = [-Infinity, -Infinity, Infinity, Infinity];
-        var filter = opt_filter ? opt_filter : TRUE;
-        this.featuresRtree_.forEachInExtent(extent, 
-        /**
-         * @param {import("../Feature.js").default<Geometry>} feature Feature.
-         */
-        function (feature) {
-            if (filter(feature)) {
-                var geometry = feature.getGeometry();
-                var previousMinSquaredDistance = minSquaredDistance;
-                minSquaredDistance = geometry.closestPointXY(x, y, closestPoint, minSquaredDistance);
-                if (minSquaredDistance < previousMinSquaredDistance) {
-                    closestFeature = feature;
-                    // This is sneaky.  Reduce the extent that it is currently being
-                    // searched while the R-Tree traversal using this same extent object
-                    // is still in progress.  This is safe because the new extent is
-                    // strictly contained by the old extent.
-                    var minDistance = Math.sqrt(minSquaredDistance);
-                    extent[0] = x - minDistance;
-                    extent[1] = y - minDistance;
-                    extent[2] = x + minDistance;
-                    extent[3] = y + minDistance;
-                }
-            }
-        });
-        return closestFeature;
-    };
-    /**
-     * Get the extent of the features currently in the source.
-     *
-     * This method is not available when the source is configured with
-     * `useSpatialIndex` set to `false`.
-     * @param {import("../extent.js").Extent=} opt_extent Destination extent. If provided, no new extent
-     *     will be created. Instead, that extent's coordinates will be overwritten.
-     * @return {import("../extent.js").Extent} Extent.
-     * @api
-     */
-    VectorSource.prototype.getExtent = function (opt_extent) {
-        return this.featuresRtree_.getExtent(opt_extent);
-    };
-    /**
-     * Get a feature by its identifier (the value returned by feature.getId()).
-     * Note that the index treats string and numeric identifiers as the same.  So
-     * `source.getFeatureById(2)` will return a feature with id `'2'` or `2`.
-     *
-     * @param {string|number} id Feature identifier.
-     * @return {import("../Feature.js").default<Geometry>} The feature (or `null` if not found).
-     * @api
-     */
-    VectorSource.prototype.getFeatureById = function (id) {
-        var feature = this.idIndex_[id.toString()];
-        return feature !== undefined ? feature : null;
-    };
-    /**
-     * Get a feature by its internal unique identifier (using `getUid`).
-     *
-     * @param {string} uid Feature identifier.
-     * @return {import("../Feature.js").default<Geometry>} The feature (or `null` if not found).
-     */
-    VectorSource.prototype.getFeatureByUid = function (uid) {
-        var feature = this.uidIndex_[uid];
-        return feature !== undefined ? feature : null;
-    };
-    /**
-     * Get the format associated with this source.
-     *
-     * @return {import("../format/Feature.js").default|undefined} The feature format.
-     * @api
-     */
-    VectorSource.prototype.getFormat = function () {
-        return this.format_;
-    };
-    /**
-     * @return {boolean} The source can have overlapping geometries.
-     */
-    VectorSource.prototype.getOverlaps = function () {
-        return this.overlaps_;
-    };
-    /**
-     * Get the url associated with this source.
-     *
-     * @return {string|import("../featureloader.js").FeatureUrlFunction|undefined} The url.
-     * @api
-     */
-    VectorSource.prototype.getUrl = function () {
-        return this.url_;
-    };
-    /**
-     * @param {Event} event Event.
-     * @private
-     */
-    VectorSource.prototype.handleFeatureChange_ = function (event) {
-        var feature = /** @type {import("../Feature.js").default<Geometry>} */ (event.target);
-        var featureKey = getUid(feature);
-        var geometry = feature.getGeometry();
-        if (!geometry) {
-            if (!(featureKey in this.nullGeometryFeatures_)) {
-                if (this.featuresRtree_) {
-                    this.featuresRtree_.remove(feature);
-                }
-                this.nullGeometryFeatures_[featureKey] = feature;
-            }
-        }
-        else {
-            var extent = geometry.getExtent();
-            if (featureKey in this.nullGeometryFeatures_) {
-                delete this.nullGeometryFeatures_[featureKey];
-                if (this.featuresRtree_) {
-                    this.featuresRtree_.insert(extent, feature);
-                }
-            }
-            else {
-                if (this.featuresRtree_) {
-                    this.featuresRtree_.update(extent, feature);
-                }
-            }
-        }
-        var id = feature.getId();
-        if (id !== undefined) {
-            var sid = id.toString();
-            if (this.idIndex_[sid] !== feature) {
-                this.removeFromIdIndex_(feature);
-                this.idIndex_[sid] = feature;
-            }
-        }
-        else {
-            this.removeFromIdIndex_(feature);
-            this.uidIndex_[featureKey] = feature;
-        }
-        this.changed();
-        this.dispatchEvent(new VectorSourceEvent(VectorEventType.CHANGEFEATURE, feature));
-    };
-    /**
-     * Returns true if the feature is contained within the source.
-     * @param {import("../Feature.js").default<Geometry>} feature Feature.
-     * @return {boolean} Has feature.
-     * @api
-     */
-    VectorSource.prototype.hasFeature = function (feature) {
-        var id = feature.getId();
-        if (id !== undefined) {
-            return id in this.idIndex_;
-        }
-        else {
-            return getUid(feature) in this.uidIndex_;
-        }
-    };
-    /**
-     * @return {boolean} Is empty.
-     */
-    VectorSource.prototype.isEmpty = function () {
-        return this.featuresRtree_.isEmpty() && obj_isEmpty(this.nullGeometryFeatures_);
-    };
-    /**
-     * @param {import("../extent.js").Extent} extent Extent.
-     * @param {number} resolution Resolution.
-     * @param {import("../proj/Projection.js").default} projection Projection.
-     */
-    VectorSource.prototype.loadFeatures = function (extent, resolution, projection) {
-        var loadedExtentsRtree = this.loadedExtentsRtree_;
-        var extentsToLoad = this.strategy_(extent, resolution);
-        this.loading = false;
-        var _loop_1 = function (i, ii) {
-            var extentToLoad = extentsToLoad[i];
-            var alreadyLoaded = loadedExtentsRtree.forEachInExtent(extentToLoad, 
-            /**
-             * @param {{extent: import("../extent.js").Extent}} object Object.
-             * @return {boolean} Contains.
-             */
-            function (object) {
-                return containsExtent(object.extent, extentToLoad);
-            });
-            if (!alreadyLoaded) {
-                this_1.dispatchEvent(new VectorSourceEvent(VectorEventType.FEATURESLOADSTART));
-                this_1.loader_.call(this_1, extentToLoad, resolution, projection, function (features) {
-                    this.dispatchEvent(new VectorSourceEvent(VectorEventType.FEATURESLOADEND, undefined, features));
-                }.bind(this_1), function () {
-                    this.dispatchEvent(new VectorSourceEvent(VectorEventType.FEATURESLOADERROR));
-                }.bind(this_1));
-                loadedExtentsRtree.insert(extentToLoad, { extent: extentToLoad.slice() });
-                this_1.loading = this_1.loader_ !== VOID;
-            }
-        };
-        var this_1 = this;
-        for (var i = 0, ii = extentsToLoad.length; i < ii; ++i) {
-            _loop_1(i, ii);
-        }
-    };
-    VectorSource.prototype.refresh = function () {
-        this.clear(true);
-        this.loadedExtentsRtree_.clear();
-        _super.prototype.refresh.call(this);
-    };
-    /**
-     * Remove an extent from the list of loaded extents.
-     * @param {import("../extent.js").Extent} extent Extent.
-     * @api
-     */
-    VectorSource.prototype.removeLoadedExtent = function (extent) {
-        var loadedExtentsRtree = this.loadedExtentsRtree_;
-        var obj;
-        loadedExtentsRtree.forEachInExtent(extent, function (object) {
-            if (extent_equals(object.extent, extent)) {
-                obj = object;
-                return true;
-            }
-        });
-        if (obj) {
-            loadedExtentsRtree.remove(obj);
-        }
-    };
-    /**
-     * Remove a single feature from the source.  If you want to remove all features
-     * at once, use the {@link module:ol/source/Vector~VectorSource#clear #clear()} method
-     * instead.
-     * @param {import("../Feature.js").default<Geometry>} feature Feature to remove.
-     * @api
-     */
-    VectorSource.prototype.removeFeature = function (feature) {
-        var featureKey = getUid(feature);
-        if (featureKey in this.nullGeometryFeatures_) {
-            delete this.nullGeometryFeatures_[featureKey];
-        }
-        else {
-            if (this.featuresRtree_) {
-                this.featuresRtree_.remove(feature);
-            }
-        }
-        this.removeFeatureInternal(feature);
-        this.changed();
-    };
-    /**
-     * Remove feature without firing a `change` event.
-     * @param {import("../Feature.js").default<Geometry>} feature Feature.
-     * @protected
-     */
-    VectorSource.prototype.removeFeatureInternal = function (feature) {
-        var featureKey = getUid(feature);
-        this.featureChangeKeys_[featureKey].forEach(unlistenByKey);
-        delete this.featureChangeKeys_[featureKey];
-        var id = feature.getId();
-        if (id !== undefined) {
-            delete this.idIndex_[id.toString()];
-        }
-        delete this.uidIndex_[featureKey];
-        this.dispatchEvent(new VectorSourceEvent(VectorEventType.REMOVEFEATURE, feature));
-    };
-    /**
-     * Remove a feature from the id index.  Called internally when the feature id
-     * may have changed.
-     * @param {import("../Feature.js").default<Geometry>} feature The feature.
-     * @return {boolean} Removed the feature from the index.
-     * @private
-     */
-    VectorSource.prototype.removeFromIdIndex_ = function (feature) {
-        var removed = false;
-        for (var id in this.idIndex_) {
-            if (this.idIndex_[id] === feature) {
-                delete this.idIndex_[id];
-                removed = true;
-                break;
-            }
-        }
-        return removed;
-    };
-    /**
-     * Set the new loader of the source. The next render cycle will use the
-     * new loader.
-     * @param {import("../featureloader.js").FeatureLoader} loader The loader to set.
-     * @api
-     */
-    VectorSource.prototype.setLoader = function (loader) {
-        this.loader_ = loader;
-    };
-    /**
-     * Points the source to a new url. The next render cycle will use the new url.
-     * @param {string|import("../featureloader.js").FeatureUrlFunction} url Url.
-     * @api
-     */
-    VectorSource.prototype.setUrl = function (url) {
-        assert(this.format_, 7); // `format` must be set when `url` is set
-        this.setLoader(featureloader_xhr(url, this.format_));
-    };
-    return VectorSource;
-}(source_Source));
-/* harmony default export */ var source_Vector = (Vector_VectorSource);
+/* harmony default export */ var layer_Vector = (Vector_VectorLayer);
 //# sourceMappingURL=Vector.js.map
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/geojson-layer/geojson.vue?vue&type=script&lang=js&
 
@@ -67569,7 +68134,7 @@ var Vector_VectorSource = /** @class */ (function (_super) {
       var _this = this;
 
       var vectorSource = this.datos != undefined ? geojsonvue_type_script_lang_js_createGeojsonSourceFromObjectJs(this.datos) : geojsonvue_type_script_lang_js_createGeojsonSourceFromUrl(this.url);
-      this.olLayer = new Vector({
+      this.olLayer = new layer_Vector({
         source: vectorSource
       });
       this.olLayer.set("_realce_hover", this.realceAlPasarMouse);
@@ -67637,16 +68202,16 @@ var Vector_VectorSource = /** @class */ (function (_super) {
 
 var geojsonvue_type_script_lang_js_createGeojsonSourceFromObjectJs = function createGeojsonSourceFromObjectJs(JsObject) {
   if (_typeof(JsObject) != 'object') {
-    return new source_Vector({});
+    return new Vector({});
   }
 
-  return new source_Vector({
+  return new Vector({
     features: new format_GeoJSON().readFeatures(_objectSpread2({}, JsObject))
   });
 };
 
 var geojsonvue_type_script_lang_js_createGeojsonSourceFromUrl = function createGeojsonSourceFromUrl(url) {
-  return new source_Vector({
+  return new Vector({
     url: url,
     format: new format_GeoJSON()
   });
@@ -67687,6 +68252,411 @@ function geojson_layer_plugin(Vue) {
 }
 
 /* harmony default export */ var geojson_layer = (geojson_layer_plugin);
+
+// CONCATENATED MODULE: ./node_modules/ol/source/Cluster.js
+/**
+ * @module ol/source/Cluster
+ */
+var Cluster_extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+
+
+
+
+
+
+/**
+ * @typedef {Object} Options
+ * @property {import("./Source.js").AttributionLike} [attributions] Attributions.
+ * @property {number} [distance=20] Minimum distance in pixels between clusters.
+ * @property {function(Feature):Point} [geometryFunction]
+ * Function that takes an {@link module:ol/Feature} as argument and returns an
+ * {@link module:ol/geom/Point} as cluster calculation point for the feature. When a
+ * feature should not be considered for clustering, the function should return
+ * `null`. The default, which works when the underyling source contains point
+ * features only, is
+ * ```js
+ * function(feature) {
+ *   return feature.getGeometry();
+ * }
+ * ```
+ * See {@link module:ol/geom/Polygon~Polygon#getInteriorPoint} for a way to get a cluster
+ * calculation point for polygons.
+ * @property {VectorSource} [source] Source.
+ * @property {boolean} [wrapX=true] Whether to wrap the world horizontally.
+ */
+/**
+ * @classdesc
+ * Layer source to cluster vector data. Works out of the box with point
+ * geometries. For other geometry types, or if not all geometries should be
+ * considered for clustering, a custom `geometryFunction` can be defined.
+ *
+ * If the instance is disposed without also disposing the underlying
+ * source `setSource(null)` has to be called to remove the listener reference
+ * from the wrapped source.
+ * @api
+ */
+var Cluster_Cluster = /** @class */ (function (_super) {
+    Cluster_extends(Cluster, _super);
+    /**
+     * @param {Options} options Cluster options.
+     */
+    function Cluster(options) {
+        var _this = _super.call(this, {
+            attributions: options.attributions,
+            wrapX: options.wrapX,
+        }) || this;
+        /**
+         * @type {number|undefined}
+         * @protected
+         */
+        _this.resolution = undefined;
+        /**
+         * @type {number}
+         * @protected
+         */
+        _this.distance = options.distance !== undefined ? options.distance : 20;
+        /**
+         * @type {Array<Feature>}
+         * @protected
+         */
+        _this.features = [];
+        /**
+         * @param {Feature} feature Feature.
+         * @return {Point} Cluster calculation point.
+         * @protected
+         */
+        _this.geometryFunction =
+            options.geometryFunction ||
+                function (feature) {
+                    var geometry = feature.getGeometry();
+                    assert(geometry.getType() == GeometryType.POINT, 10); // The default `geometryFunction` can only handle `Point` geometries
+                    return geometry;
+                };
+        _this.boundRefresh_ = _this.refresh.bind(_this);
+        _this.setSource(options.source || null);
+        return _this;
+    }
+    /**
+     * Remove all features from the source.
+     * @param {boolean=} opt_fast Skip dispatching of {@link module:ol/source/Vector.VectorSourceEvent#removefeature} events.
+     * @api
+     */
+    Cluster.prototype.clear = function (opt_fast) {
+        this.features.length = 0;
+        _super.prototype.clear.call(this, opt_fast);
+    };
+    /**
+     * Get the distance in pixels between clusters.
+     * @return {number} Distance.
+     * @api
+     */
+    Cluster.prototype.getDistance = function () {
+        return this.distance;
+    };
+    /**
+     * Get a reference to the wrapped source.
+     * @return {VectorSource} Source.
+     * @api
+     */
+    Cluster.prototype.getSource = function () {
+        return this.source;
+    };
+    /**
+     * @param {import("../extent.js").Extent} extent Extent.
+     * @param {number} resolution Resolution.
+     * @param {import("../proj/Projection.js").default} projection Projection.
+     */
+    Cluster.prototype.loadFeatures = function (extent, resolution, projection) {
+        this.source.loadFeatures(extent, resolution, projection);
+        if (resolution !== this.resolution) {
+            this.clear();
+            this.resolution = resolution;
+            this.cluster();
+            this.addFeatures(this.features);
+        }
+    };
+    /**
+     * Set the distance in pixels between clusters.
+     * @param {number} distance The distance in pixels.
+     * @api
+     */
+    Cluster.prototype.setDistance = function (distance) {
+        this.distance = distance;
+        this.refresh();
+    };
+    /**
+     * Replace the wrapped source.
+     * @param {VectorSource} source The new source for this instance.
+     * @api
+     */
+    Cluster.prototype.setSource = function (source) {
+        if (this.source) {
+            this.source.removeEventListener(EventType.CHANGE, this.boundRefresh_);
+        }
+        this.source = source;
+        if (source) {
+            source.addEventListener(EventType.CHANGE, this.boundRefresh_);
+        }
+        this.refresh();
+    };
+    /**
+     * Handle the source changing.
+     */
+    Cluster.prototype.refresh = function () {
+        this.clear();
+        this.cluster();
+        this.addFeatures(this.features);
+    };
+    /**
+     * @protected
+     */
+    Cluster.prototype.cluster = function () {
+        if (this.resolution === undefined || !this.source) {
+            return;
+        }
+        var extent = createEmpty();
+        var mapDistance = this.distance * this.resolution;
+        var features = this.source.getFeatures();
+        /**
+         * @type {!Object<string, boolean>}
+         */
+        var clustered = {};
+        for (var i = 0, ii = features.length; i < ii; i++) {
+            var feature = features[i];
+            if (!(getUid(feature) in clustered)) {
+                var geometry = this.geometryFunction(feature);
+                if (geometry) {
+                    var coordinates = geometry.getCoordinates();
+                    createOrUpdateFromCoordinate(coordinates, extent);
+                    extent_buffer(extent, mapDistance, extent);
+                    var neighbors = this.source.getFeaturesInExtent(extent);
+                    neighbors = neighbors.filter(function (neighbor) {
+                        var uid = getUid(neighbor);
+                        if (!(uid in clustered)) {
+                            clustered[uid] = true;
+                            return true;
+                        }
+                        else {
+                            return false;
+                        }
+                    });
+                    this.features.push(this.createCluster(neighbors));
+                }
+            }
+        }
+    };
+    /**
+     * @param {Array<Feature>} features Features
+     * @return {Feature} The cluster feature.
+     * @protected
+     */
+    Cluster.prototype.createCluster = function (features) {
+        var centroid = [0, 0];
+        for (var i = features.length - 1; i >= 0; --i) {
+            var geometry = this.geometryFunction(features[i]);
+            if (geometry) {
+                add(centroid, geometry.getCoordinates());
+            }
+            else {
+                features.splice(i, 1);
+            }
+        }
+        coordinate_scale(centroid, 1 / features.length);
+        var cluster = new ol_Feature(new geom_Point(centroid));
+        cluster.set('features', features);
+        return cluster;
+    };
+    return Cluster;
+}(Vector));
+/* harmony default export */ var source_Cluster = (Cluster_Cluster);
+//# sourceMappingURL=Cluster.js.map
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/geojson-cluster-layer/geojson-cluster.vue?vue&type=script&lang=js&
+
+
+
+
+ //import classificable_layer from "../../mixins/classificable-layer"
+
+
+
+
+
+/* harmony default export */ var geojson_clustervue_type_script_lang_js_ = ({
+  name: "DaiCapaGeojsonCluster",
+  mixins: [mixins_layer, vector_layer_any],
+  props: {
+    distancia: {
+      type: Number,
+      default: 20
+    },
+    distanciaMinima: {
+      type: Number,
+      default: 0
+    }
+  },
+  methods: {
+    _createLayerObject: function _createLayerObject() {
+      this.VM_is_cluster = true;
+      var vectorSource = this.datos != undefined ? geojson_clustervue_type_script_lang_js_createGeojsonSourceFromObjectJs(this.datos) : geojson_clustervue_type_script_lang_js_createGeojsonSourceFromUrl(this.url);
+      this.olLayer = new layer_Vector({
+        source: new source_Cluster({
+          source: vectorSource,
+          distance: this.distancia,
+          minDistance: this.distanciaMinima
+        })
+      });
+      this.olLayer.set("_realce_hover", this.realceAlPasarMouse);
+      /** 
+       * solo aplica a las capas que se pueden clasificar, de inicio los clusters no
+      
+      if(this.VM_is_classified){
+          if(vectorSource.getUrl()===undefined){
+              this._clasificar_v2();
+              this._set_style_class_v2()
+          }else{
+              vectorSource.on("featuresloadend",()=>{
+                  setTimeout(()=>{
+                      //console.log(evento.target.getFeatures())
+                      //console.log("cambio el source del layer, evento cachado, geojson.vue")
+                      this._clasificar_v2();
+                      this._set_style_class_v2()
+                      this._setStyle()
+                  },50)
+                  
+              })
+          }
+          
+      }
+      */
+
+      if (this.contenidoTooltip != "none") {
+        this.olLayer.set("_tooltip", this.contenidoTooltip);
+        this.olLayer.set("_tooltip_mov", !this.tooltipEstatico);
+        this.olLayer.set("_tooltip_top", this.tooltipEstaticoMargenSuperior);
+      }
+
+      if (this.contenidoPopup !== "none") {
+        this.olLayer.set("_popup", this.contenidoPopup);
+      }
+
+      this._saveAllFeaturesFromSource(vectorSource);
+
+      this._setStyle();
+
+      if (this.contenidoTooltip != "none") {
+        this.olLayer.set("_tooltip", this.contenidoTooltip);
+        this.olLayer.set("_tooltip_mov", !this.tooltipEstatico);
+        this.olLayer.set("_tooltip_top", this.tooltipEstaticoMargenSuperior);
+      }
+
+      if (this.contenidoPopup !== "none") {
+        this.olLayer.set("_popup", this.contenidoPopup);
+      }
+
+      this._saveAllFeaturesFromSource(vectorSource);
+
+      this._setStyle();
+    }
+  },
+  watch: {
+    datos: function datos(newDatos) {
+      if (newDatos !== undefined && this.olLayer !== null && this.olLayer !== undefined) {
+        //console.log(this.olLayer,this.olLayer.getSource())
+        var vectorSource = this.olLayer.getSource().getSource();
+        var features = new format_GeoJSON().readFeatures(_objectSpread2({}, newDatos));
+        vectorSource.clear(); //if(features.length>0){
+        //console.log("se esta escuchando el cambio de datos, BORRAR ESTE LOG")
+
+        vectorSource.addFeatures(features);
+
+        if (this.VM_is_classified) {
+          this._clasificar_v2();
+
+          this._set_style_class_v2();
+        } //}
+
+
+        this._saveAllFeaturesFromSource(vectorSource);
+
+        this._setStyle();
+      }
+    },
+    distancia: function distancia(newDistancia) {
+      this.olLayer.getSource().setDistance(newDistancia);
+    },
+    distanciaMinima: function distanciaMinima(newDistancia) {
+      this.olLayer.getSource().setMinDistance(newDistancia);
+    }
+  }
+});
+
+var geojson_clustervue_type_script_lang_js_createGeojsonSourceFromObjectJs = function createGeojsonSourceFromObjectJs(JsObject) {
+  if (_typeof(JsObject) != 'object') {
+    return new Vector({});
+  }
+
+  return new Vector({
+    features: new format_GeoJSON().readFeatures(_objectSpread2({}, JsObject))
+  });
+};
+
+var geojson_clustervue_type_script_lang_js_createGeojsonSourceFromUrl = function createGeojsonSourceFromUrl(url) {
+  return new Vector({
+    url: url,
+    format: new format_GeoJSON()
+  });
+};
+// CONCATENATED MODULE: ./src/components/geojson-cluster-layer/geojson-cluster.vue?vue&type=script&lang=js&
+ /* harmony default export */ var geojson_cluster_layer_geojson_clustervue_type_script_lang_js_ = (geojson_clustervue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/geojson-cluster-layer/geojson-cluster.vue
+var geojson_cluster_render, geojson_cluster_staticRenderFns
+
+
+
+
+/* normalize component */
+
+var geojson_cluster_component = normalizeComponent(
+  geojson_cluster_layer_geojson_clustervue_type_script_lang_js_,
+  geojson_cluster_render,
+  geojson_cluster_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var geojson_cluster = (geojson_cluster_component.exports);
+// CONCATENATED MODULE: ./src/components/geojson-cluster-layer/index.js
+
+
+
+function geojson_cluster_layer_plugin(Vue) {
+  if (geojson_cluster_layer_plugin.installed) {
+    return;
+  }
+
+  geojson_cluster_layer_plugin.installed = true;
+  Vue.component(geojson_cluster.name, geojson_cluster);
+}
+
+/* harmony default export */ var geojson_cluster_layer = (geojson_cluster_layer_plugin);
 
 // CONCATENATED MODULE: ./node_modules/ol/layer/BaseImage.js
 var BaseImage_extends = (undefined && undefined.__extends) || (function () {
@@ -68980,12 +69950,6 @@ var legendvue_type_template_id_679f2d5a_scoped_true_staticRenderFns = []
 
 
 // CONCATENATED MODULE: ./src/components/legend-control/legend.vue?vue&type=template&id=679f2d5a&scoped=true&
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.exec.js
-var es_regexp_exec = __webpack_require__("ac1f");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.split.js
-var es_string_split = __webpack_require__("1276");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.match.js
 var es_string_match = __webpack_require__("466d");
@@ -70932,7 +71896,7 @@ var searchervue_type_template_id_4947b33e_scoped_true_staticRenderFns = []
       this.searchers.forEach(function (layerid) {
         var layer = _this2.cmpMap.cmpLayers[layerid];
 
-        if (layer.olLayer instanceof Vector && layer.olLayer.getSource() instanceof source_Vector) {
+        if (layer.olLayer instanceof layer_Vector && layer.olLayer.getSource() instanceof Vector) {
           //console.log( layer.olLayer.getSource().getFeatures(),"todas")
           if (layer.olLayer.getSource().getFeatures().length == 0) {
             //console.log("se esperara el evento")
@@ -70968,7 +71932,7 @@ var searchervue_type_template_id_4947b33e_scoped_true_staticRenderFns = []
       if (this.options.indexOf(value) != -1) {
         this.$emit("select", value);
         var feature = this.options_values[value];
-        hightlight_on_click(feature, this.cmpMap);
+        searchervue_type_script_lang_js_hightlight_on_click(feature, this.cmpMap);
 
         if (feature.getGeometry().getType() == "Point") {
           this.cmpMap.map.getView().animate({
@@ -70987,7 +71951,7 @@ var searchervue_type_template_id_4947b33e_scoped_true_staticRenderFns = []
   }
 });
 
-var hightlight_on_click = function hightlight_on_click(feature, mapComponent) {
+var searchervue_type_script_lang_js_hightlight_on_click = function hightlight_on_click(feature, mapComponent) {
   if (feature !== mapComponent.VM_highlight_feature) {
     if (mapComponent.VM_highlight_feature) {
       mapComponent.VM_highlight_feature.set("_hightlight", false);
@@ -71148,6 +72112,7 @@ function info_control_plugin(Vue) {
 
 
 
+
  //controles
 
 
@@ -71244,6 +72209,7 @@ function src_plugin(Vue) {
   Vue.use(xyz_layer_namespaceObject);
   Vue.use(xyz_layer_osm_namespaceObject);
   Vue.use(geojson_layer_namespaceObject);
+  Vue.use(geojson_cluster_layer_namespaceObject);
   Vue.use(wms_layer_namespaceObject);
   Vue.use(legend_control_namespaceObject);
   Vue.use(selector_control_namespaceObject);
