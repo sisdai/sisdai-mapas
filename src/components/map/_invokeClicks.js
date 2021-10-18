@@ -1,3 +1,5 @@
+import VectorSource from 'ol/source/Vector';
+
 /**
  * Invocar el mostrar/ocultar los tooltips dentro del mapa
  * @param {Map} map objeto mapa de Open Layers
@@ -41,7 +43,15 @@
             if(component.cmpLayers[id].zoomAlDarClick){
                 hightlight_on_click(feature)
                 if(feature.getGeometry().getType()=="Point"){
-                    map.getView().animate({center:feature.getGeometry().getCoordinates(),zoom:13.5,duration:500})
+                    if(feature.get("features") && feature.get("features").length > 1){//es una capa de puntos agrupados
+                        const vSource = new VectorSource({
+                            features:feature.get("features")
+                        })
+                        map.getView().fit(vSource.getExtent(),{duration:500,padding:[25,25,25,25]})
+                    }else{
+                        map.getView().animate({center:feature.getGeometry().getCoordinates(),zoom:13.5,duration:500})
+                    }
+                    
                 }else{
                     map.getView().fit(feature.getGeometry(),{duration:500,padding:[25,25,25,25]})
                 }

@@ -114,6 +114,8 @@ export default{
             VM_geometryType:"",
             VM_defaultShapePoint:"circle",
 
+            VM_is_classified:false,
+            VM_is_cluster:false,
             
             
         }

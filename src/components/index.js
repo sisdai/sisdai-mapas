@@ -5,7 +5,8 @@ import * as DaiCardMapContainer from "./card-container"
 //layers
 import * as DaiXyzLayerOsm from "./xyz-layer-osm"
 import * as DaiXyzLayer from "./xyz-layer"
-import * as  DaiGeojsonLayer  from "./geojson-layer"
+import * as DaiGeojsonLayer  from "./geojson-layer"
+import * as DaiCapaGeojsonCluster  from "./geojson-cluster-layer"
 import * as DaiWmsLayer from "./wms-layer"
 
 //controles
@@ -23,6 +24,7 @@ export{
     DaiXyzLayer,
     DaiXyzLayerOsm,
     DaiGeojsonLayer,
+    DaiCapaGeojsonCluster,
     DaiWmsLayer,
 
     DaiLeyendaMapa,

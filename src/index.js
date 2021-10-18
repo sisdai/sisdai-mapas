@@ -5,6 +5,7 @@ import {
     DaiXyzLayer,
     DaiXyzLayerOsm,
     DaiGeojsonLayer,
+    DaiCapaGeojsonCluster,
     DaiWmsLayer,
 
     DaiLeyendaMapa,
@@ -31,6 +32,7 @@ export default function plugin(Vue){
     Vue.use(DaiXyzLayer)
     Vue.use(DaiXyzLayerOsm)
     Vue.use(DaiGeojsonLayer)
+    Vue.use(DaiCapaGeojsonCluster)
     Vue.use(DaiWmsLayer)
 
     Vue.use(DaiLeyendaMapa)
@@ -54,6 +56,7 @@ export {
     DaiXyzLayer,
     DaiXyzLayerOsm,
     DaiGeojsonLayer,
+    DaiCapaGeojsonCluster,
     DaiWmsLayer,
 
     DaiLeyendaMapa,
