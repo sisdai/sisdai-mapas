@@ -24,10 +24,13 @@ export default {
     },
     methods:{
         _createLayerObject:function(){
+            this.VM_is_cluster = true;
             let vectorSource = this.datos != undefined ? createGeojsonSourceFromObjectJs(this.datos) : createGeojsonSourceFromUrl(this.url)
             this.olLayer = new VectorLayer({
                 source: new Cluster({
-                    source: vectorSource
+                    source: vectorSource,
+                    distance:this.distancia,
+                    minDistance:this.distanciaMinima
                 }) 
             })
             this.olLayer.set("_realce_hover",this.realceAlPasarMouse)
@@ -109,7 +112,13 @@ export default {
                 
                 
             }  
-        }
+        },
+        distancia:function(newDistancia){
+            this.olLayer.getSource().setDistance(newDistancia);
+        },
+        distanciaMinima:function(newDistancia){
+            this.olLayer.getSource().setMinDistance(newDistancia);
+        },
     }
 }
 
