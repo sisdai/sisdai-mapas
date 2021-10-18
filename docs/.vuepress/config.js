@@ -73,7 +73,8 @@ module.exports = {
             'controles',
             'clasificacion-datos',
             'manejo-datos',
-            'texturas'
+            'texturas',
+            'cluster'
           ]
         }
       ],

@@ -34,7 +34,6 @@ export default{
     },
     data:function(){
         return {
-           VM_is_classified:false,
             
            VM_rules:[],
            VM_rules_cortes:[],
