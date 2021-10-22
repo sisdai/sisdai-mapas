@@ -222,17 +222,16 @@ export default {
             this.$emit("click",e)
             const seleccion = invoke_clicks(this.map,e,this)
             //solo si es un dispositivo touch se emitira el evento de los tooltips
+            //console.log(e)
             if(this.VM_isTouchDevice){
-                const evento_copia = {...e}
                 if(seleccion.has_selection){
                     let coordinate = seleccion.feature_selected.getGeometry().getType().includes('Polygon') 
                         || seleccion.feature_selected.getGeometry().getType().includes('LineString') 
                         ?  getCenter( seleccion.feature_selected.getGeometry().getExtent() )
                         : e.coordinate; 
-                    evento_copia.coordinate = coordinate
+                    e.coordinate = coordinate
                 }
-                
-                invoke_tooltips(this.map,evento_copia,this)
+                invoke_tooltips(this.map,e)
             }
         })
 
