@@ -7,7 +7,7 @@ import VectorSource from 'ol/source/Vector';
  */
  
  export const invoke_clicks = (map, e, component) => {
-    
+    let has_selection,feature_selected = false,undefined;
     const hightlight_on_click = (feature) => {
         if (feature !== component.VM_highlight_feature) {
             if (component.VM_highlight_feature) {
@@ -55,6 +55,8 @@ import VectorSource from 'ol/source/Vector';
                 }else{
                     map.getView().fit(feature.getGeometry(),{duration:500,padding:[25,25,25,25]})
                 }
+                has_selection = true;
+                feature_selected = feature
             }
             
             
@@ -116,4 +118,6 @@ import VectorSource from 'ol/source/Vector';
         popup_overlay.setPosition(undefined)
         //tooltipelement.classList.remove("show")
     }
+
+    return {has_selection,feature_selected}
 }
