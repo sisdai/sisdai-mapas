@@ -9,10 +9,17 @@
         <slot></slot>
         
         <div ref="tooltip" class="ol-tooltip ol-tooltip-bottom">
+            <div class="botones" v-if="VM_isTouchDevice">
+                <button class="boton-cerrar" @click="cerrarTooltip"><span class="dai-icon-cerrar"></span></button>
+            </div>
             <div class="content"></div>
         </div>
         <div ref="tooltipmov" class="ol-tooltipmov ">
+            <div class="botones" v-if="VM_isTouchDevice">
+                <button class="boton-cerrar" @click="cerrarTooltip"><span class="dai-icon-cerrar"></span></button>
+            </div>
             <div class="content"></div>
+            
         </div>
         <div ref="popup" class="ol-popup">
             <div class="botones">
@@ -92,7 +99,8 @@ export default {
             VM_nivel_actual :"",
             VM_nivel_control : undefined,
 
-            VM_scrollZoomInteraction: undefined
+            VM_scrollZoomInteraction: undefined,
+            VM_isTouchDevice:false
         }
     },
     created:function(){
@@ -155,15 +163,21 @@ export default {
         if(this.$parent.$options.name == "DaiTarjetaContenedorMapa"){
             this.$parent._registerMap(this)
         }
+
+        //el mapa debe saber si se encuentra en un dispositivo touch, para cambiar algunos eventos como el tooltip
+        this.VM_isTouchDevice = isTouchDevice()
+
         //los overlays 
         //tooltip overlay
         let overlay_tooltip = new Overlay({
             id: "tooltip",
             element: this.$refs.tooltip,
-            autoPan: true,
-            stopEvent: true,
+            // TEORIA:si es desktop true, si es touch false porque el arrastre ya se asegura un poco que el usuario lo tiene donde lo necesita
+            //2021-10-22 puesto en false mejor todo el tiempo
+            autoPan: false, 
+            stopEvent: !this.VM_isTouchDevice,
             positioning: "bottom-center",
-            insertFirst: true
+            insertFirst: !this.VM_isTouchDevice
         });
         overlay_tooltip.setPosition(undefined);
         this.map.addOverlay(overlay_tooltip);
@@ -175,6 +189,7 @@ export default {
             autoPan: false,
             stopEvent: false,
             positioning: "bottom-center",
+            insertFirst: !this.VM_isTouchDevice
             
         });
         overlay_tooltip_mov.setPosition(undefined);
@@ -205,7 +220,10 @@ export default {
         this.map.on("click",(e)=>{
             this.$emit("click",e)
             invoke_clicks(this.map,e,this)
-            
+            //solo si es un dispositivo touch se emitira el evento de los tooltips
+            if(this.VM_isTouchDevice){
+                invoke_tooltips(this.map,e,this)
+            }
         })
 
         this.map.getLayers().on("add",()=>{
@@ -219,6 +237,7 @@ export default {
             this.$emit("remove-layer")
         })
 
+        
     },
     methods:{
         _getMap:function(found){
@@ -239,6 +258,12 @@ export default {
         _cerrarPopup:function(){
             let popup_overlay = this.map.getOverlayById("popup")
             popup_overlay.setPosition(undefined)
+        },
+        cerrarTooltip:function(){
+            let tooltip_overlay = this.map.getOverlayById("tooltip");
+            tooltip_overlay.setPosition(undefined);
+            let tooltipmov_overlay = this.map.getOverlayById("tooltipmov")
+            tooltipmov_overlay.setPosition(undefined)
         },
         cerrarPopup:function(){
             this._cerrarPopup()
@@ -314,6 +339,12 @@ export default {
             }
         }
     }
+}
+
+function isTouchDevice() {
+  return (('ontouchstart' in window) ||
+     (navigator.maxTouchPoints > 0) ||
+     (navigator.msMaxTouchPoints > 0));
 }
 </script>
 
