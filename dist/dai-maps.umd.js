@@ -6017,13 +6017,92 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
 var es_function_name = __webpack_require__("b0c0");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a636930-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/map.vue?vue&type=template&id=bf1152f2&
-var mapvue_type_template_id_bf1152f2_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"dai-map-container"},[_c('div',{ref:"map",staticClass:"dai-map ",class:[_vm.colorControlesInvertidos ? 'inverted-controls': 'default-controls']}),_vm._t("default"),_c('div',{ref:"tooltip",staticClass:"ol-tooltip ol-tooltip-bottom"},[(_vm.VM_isTouchDevice)?_c('div',{staticClass:"botones"},[_c('button',{staticClass:"boton-cerrar",on:{"click":_vm.cerrarTooltip}},[_c('span',{staticClass:"dai-icon-cerrar"})])]):_vm._e(),_c('div',{staticClass:"content"})]),_c('div',{ref:"tooltipmov",staticClass:"ol-tooltipmov "},[(_vm.VM_isTouchDevice)?_c('div',{staticClass:"botones"},[_c('button',{staticClass:"boton-cerrar",on:{"click":_vm.cerrarTooltip}},[_c('span',{staticClass:"dai-icon-cerrar"})])]):_vm._e(),_c('div',{staticClass:"content"})]),_c('div',{ref:"popup",staticClass:"ol-popup"},[_c('div',{staticClass:"botones"},[_c('button',{staticClass:"boton-cerrar",on:{"click":_vm._cerrarPopup}},[_c('span',{staticClass:"dai-icon-cerrar"})])]),_c('div',{staticClass:"content"})])],2)}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a636930-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/map.vue?vue&type=template&id=1b49e24d&
+var mapvue_type_template_id_1b49e24d_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"dai-map-container"},[_c('div',{ref:"map",staticClass:"dai-map ",class:[_vm.colorControlesInvertidos ? 'inverted-controls': 'default-controls']}),_vm._t("default"),_c('div',{ref:"tooltip",staticClass:"ol-tooltip ol-tooltip-bottom"},[(_vm.VM_isTouchDevice)?_c('div',{staticClass:"botones"},[_c('button',{staticClass:"boton-cerrar",on:{"click":_vm.cerrarTooltip}},[_c('span',{staticClass:"dai-icon-cerrar"})])]):_vm._e(),_c('div',{staticClass:"content"})]),_c('div',{ref:"tooltipmov",staticClass:"ol-tooltipmov "},[(_vm.VM_isTouchDevice)?_c('div',{staticClass:"botones"},[_c('button',{staticClass:"boton-cerrar",on:{"click":_vm.cerrarTooltip}},[_c('span',{staticClass:"dai-icon-cerrar"})])]):_vm._e(),_c('div',{staticClass:"content"})]),_c('div',{ref:"popup",staticClass:"ol-popup"},[_c('div',{staticClass:"botones"},[_c('button',{staticClass:"boton-cerrar",on:{"click":_vm._cerrarPopup}},[_c('span',{staticClass:"dai-icon-cerrar"})])]),_c('div',{staticClass:"content"})])],2)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/map/map.vue?vue&type=template&id=bf1152f2&
+// CONCATENATED MODULE: ./src/components/map/map.vue?vue&type=template&id=1b49e24d&
 
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.keys.js
+var es_object_keys = __webpack_require__("b64b");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.js
+var es_symbol = __webpack_require__("a4d3");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.filter.js
+var es_array_filter = __webpack_require__("4de4");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.get-own-property-descriptor.js
+var es_object_get_own_property_descriptor = __webpack_require__("e439");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.for-each.js
+var web_dom_collections_for_each = __webpack_require__("159b");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.get-own-property-descriptors.js
+var es_object_get_own_property_descriptors = __webpack_require__("dbb4");
+
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/objectSpread2.js
+
+
+
+
+
+
+
+
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+
+    if (enumerableOnly) {
+      symbols = symbols.filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+      });
+    }
+
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread2(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      ownKeys(Object(source), true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(Object(source)).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+  }
+
+  return target;
+}
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.number.constructor.js
 var es_number_constructor = __webpack_require__("a9e3");
 
@@ -24761,9 +24840,6 @@ var NivelControl = function (Control) {
 
 /* harmony default export */ var _zoom_control = (CustomZoomControl);
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.filter.js
-var es_array_filter = __webpack_require__("4de4");
-
 // CONCATENATED MODULE: ./src/components/map/_invokeTooltips.js
 
 
@@ -26590,6 +26666,10 @@ var Vector_VectorSource = /** @class */ (function (_super) {
  */
 
 var _invokeClicks_invoke_clicks = function invoke_clicks(map, e, component) {
+  var has_selection,
+      feature_selected = false,
+      undefined;
+
   var hightlight_on_click = function hightlight_on_click(feature) {
     if (feature !== component.VM_highlight_feature) {
       if (component.VM_highlight_feature) {
@@ -26651,6 +26731,9 @@ var _invokeClicks_invoke_clicks = function invoke_clicks(map, e, component) {
             padding: [25, 25, 25, 25]
           });
         }
+
+        has_selection = true;
+        feature_selected = feature;
       }
 
       if (capas_con_popup.includes(layer.get("id")) && layer.get("_popup") != undefined) {
@@ -26704,8 +26787,14 @@ var _invokeClicks_invoke_clicks = function invoke_clicks(map, e, component) {
   } else {
     popup_overlay.setPosition(undefined); //tooltipelement.classList.remove("show")
   }
+
+  return {
+    has_selection: has_selection,
+    feature_selected: feature_selected
+  };
 };
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/map.vue?vue&type=script&lang=js&
+
 
 
 
@@ -26746,6 +26835,7 @@ var _invokeClicks_invoke_clicks = function invoke_clicks(map, e, component) {
 
 
  //import { defaults as defaultControls} from 'ol/control';
+
 
 
 
@@ -26894,7 +26984,7 @@ var _invokeClicks_invoke_clicks = function invoke_clicks(map, e, component) {
       // TEORIA:si es desktop true, si es touch false porque el arrastre ya se asegura un poco que el usuario lo tiene donde lo necesita
       //2021-10-22 puesto en false mejor todo el tiempo
       autoPan: false,
-      stopEvent: !this.VM_isTouchDevice,
+      stopEvent: true,
       positioning: "bottom-center",
       insertFirst: !this.VM_isTouchDevice
     });
@@ -26905,7 +26995,7 @@ var _invokeClicks_invoke_clicks = function invoke_clicks(map, e, component) {
       id: "tooltipmov",
       element: this.$refs.tooltipmov,
       autoPan: false,
-      stopEvent: false,
+      stopEvent: this.VM_isTouchDevice,
       positioning: "bottom-center",
       insertFirst: !this.VM_isTouchDevice
     });
@@ -26938,10 +27028,17 @@ var _invokeClicks_invoke_clicks = function invoke_clicks(map, e, component) {
     this.map.on("click", function (e) {
       _this.$emit("click", e);
 
-      _invokeClicks_invoke_clicks(_this.map, e, _this); //solo si es un dispositivo touch se emitira el evento de los tooltips
+      var seleccion = _invokeClicks_invoke_clicks(_this.map, e, _this); //solo si es un dispositivo touch se emitira el evento de los tooltips
 
       if (_this.VM_isTouchDevice) {
-        invoke_tooltips(_this.map, e, _this);
+        var evento_copia = _objectSpread2({}, e);
+
+        if (seleccion.has_selection) {
+          var coordinate = seleccion.feature_selected.getGeometry().getType().includes('Polygon') || seleccion.feature_selected.getGeometry().getType().includes('LineString') ? getCenter(seleccion.feature_selected.getGeometry().getExtent()) : e.coordinate;
+          evento_copia.coordinate = coordinate;
+        }
+
+        invoke_tooltips(_this.map, evento_copia, _this);
       }
     });
     this.map.getLayers().on("add", function () {
@@ -27183,7 +27280,7 @@ function normalizeComponent (
 
 var map_component = normalizeComponent(
   map_mapvue_type_script_lang_js_,
-  mapvue_type_template_id_bf1152f2_render,
+  mapvue_type_template_id_1b49e24d_render,
   staticRenderFns,
   false,
   null,
@@ -33053,9 +33150,6 @@ function xyz_layer_plugin(Vue) {
 
 /* harmony default export */ var xyz_layer = (xyz_layer_plugin);
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.js
-var es_symbol = __webpack_require__("a4d3");
-
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.description.js
 var es_symbol_description = __webpack_require__("e01a");
 
@@ -33093,79 +33187,6 @@ function _typeof(obj) {
   }
 
   return _typeof(obj);
-}
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.keys.js
-var es_object_keys = __webpack_require__("b64b");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.get-own-property-descriptor.js
-var es_object_get_own_property_descriptor = __webpack_require__("e439");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.for-each.js
-var web_dom_collections_for_each = __webpack_require__("159b");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.get-own-property-descriptors.js
-var es_object_get_own_property_descriptors = __webpack_require__("dbb4");
-
-// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/objectSpread2.js
-
-
-
-
-
-
-
-
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-
-    if (enumerableOnly) {
-      symbols = symbols.filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-      });
-    }
-
-    keys.push.apply(keys, symbols);
-  }
-
-  return keys;
-}
-
-function _objectSpread2(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-
-    if (i % 2) {
-      ownKeys(Object(source), true).forEach(function (key) {
-        _defineProperty(target, key, source[key]);
-      });
-    } else if (Object.getOwnPropertyDescriptors) {
-      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-      ownKeys(Object(source)).forEach(function (key) {
-        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-      });
-    }
-  }
-
-  return target;
 }
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.fill.js
 var es_array_fill = __webpack_require__("cb29");
