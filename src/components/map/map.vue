@@ -41,6 +41,7 @@ import {invoke_clicks} from "./_invokeClicks";
 import {defaults as defaultInteractions} from 'ol/interaction';
 import Attribution from 'ol/control/Attribution';
 import MouseWheelZoom from 'ol/interaction/MouseWheelZoom';
+import {getCenter} from 'ol/extent';
 
 export default {
     name:"DaiMapa",
@@ -175,7 +176,7 @@ export default {
             // TEORIA:si es desktop true, si es touch false porque el arrastre ya se asegura un poco que el usuario lo tiene donde lo necesita
             //2021-10-22 puesto en false mejor todo el tiempo
             autoPan: false, 
-            stopEvent: !this.VM_isTouchDevice,
+            stopEvent: true,
             positioning: "bottom-center",
             insertFirst: !this.VM_isTouchDevice
         });
@@ -187,7 +188,7 @@ export default {
             id: "tooltipmov",
             element: this.$refs.tooltipmov,
             autoPan: false,
-            stopEvent: false,
+            stopEvent: this.VM_isTouchDevice,
             positioning: "bottom-center",
             insertFirst: !this.VM_isTouchDevice
             
@@ -219,10 +220,19 @@ export default {
         })
         this.map.on("click",(e)=>{
             this.$emit("click",e)
-            invoke_clicks(this.map,e,this)
+            const seleccion = invoke_clicks(this.map,e,this)
             //solo si es un dispositivo touch se emitira el evento de los tooltips
             if(this.VM_isTouchDevice){
-                invoke_tooltips(this.map,e,this)
+                const evento_copia = {...e}
+                if(seleccion.has_selection){
+                    let coordinate = seleccion.feature_selected.getGeometry().getType().includes('Polygon') 
+                        || seleccion.feature_selected.getGeometry().getType().includes('LineString') 
+                        ?  getCenter( seleccion.feature_selected.getGeometry().getExtent() )
+                        : e.coordinate; 
+                    evento_copia.coordinate = coordinate
+                }
+                
+                invoke_tooltips(this.map,evento_copia,this)
             }
         })
 
