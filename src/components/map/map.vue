@@ -346,6 +346,14 @@ export default {
             if(this.VM_scrollZoomInteraction){
                 this.VM_scrollZoomInteraction.setActive(zoomOnScroll)
             }
+        },
+        extension: function(newExtension){
+            this.VM_reset_view = newExtension[0] == 0 && newExtension[3] ==0 
+            ? {type:"center",value:{zoom:this.zoom,center:this.centro}} 
+            : {type:"extent",value:newExtension};
+        },
+        "VM_reset_view": function(newResetView){
+            this.map.set("_reset_view",newResetView)
         }
     }
 }
