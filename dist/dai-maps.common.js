@@ -1015,6 +1015,17 @@ module.exports = function (iterator, kind, value) {
 
 /***/ }),
 
+/***/ "2bfb":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_normal_vector_vue_vue_type_style_index_0_id_3a7e30a1_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("dace");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_normal_vector_vue_vue_type_style_index_0_id_3a7e30a1_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_normal_vector_vue_vue_type_style_index_0_id_3a7e30a1_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+
+
+/***/ }),
+
 /***/ "2ca0":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1098,17 +1109,6 @@ module.exports = version && +version;
 var getBuiltIn = __webpack_require__("d066");
 
 module.exports = getBuiltIn('navigator', 'userAgent') || '';
-
-
-/***/ }),
-
-/***/ "3567":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_shape_vue_vue_type_style_index_0_id_43e35359_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("efdc");
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_shape_vue_vue_type_style_index_0_id_43e35359_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_shape_vue_vue_type_style_index_0_id_43e35359_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
-/* unused harmony reexport * */
 
 
 /***/ }),
@@ -1719,23 +1719,23 @@ module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
 
 /***/ }),
 
-/***/ "5704":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_normal_vector_vue_vue_type_style_index_0_id_21407b8f_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("6dd9");
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_normal_vector_vue_vue_type_style_index_0_id_21407b8f_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_normal_vector_vue_vue_type_style_index_0_id_21407b8f_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
-/* unused harmony reexport * */
-
-
-/***/ }),
-
 /***/ "5718":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_switcher_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("7cba");
 /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_switcher_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_switcher_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+
+
+/***/ }),
+
+/***/ "5750":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_shape_vue_vue_type_style_index_0_id_5ff61140_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("c4c9");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_shape_vue_vue_type_style_index_0_id_5ff61140_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_shape_vue_vue_type_style_index_0_id_5ff61140_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
 /* unused harmony reexport * */
 
 
@@ -2378,13 +2378,6 @@ module.exports = function (CONSTRUCTOR_NAME, wrapper, common) {
   return Constructor;
 };
 
-
-/***/ }),
-
-/***/ "6dd9":
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -4331,6 +4324,13 @@ module.exports = false;
 
 /***/ }),
 
+/***/ "c4c9":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "c6b6":
 /***/ (function(module, exports) {
 
@@ -4824,6 +4824,13 @@ module.exports =
 
 /***/ }),
 
+/***/ "dace":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "dbb4":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -5189,13 +5196,6 @@ module.exports = function (it) {
   return it !== undefined && (Iterators.Array === it || ArrayPrototype[ITERATOR] === it);
 };
 
-
-/***/ }),
-
-/***/ "efdc":
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -36843,6 +36843,10 @@ var checkPointShapeFromStyle = function checkPointShapeFromStyle(style) {
     return "circle";
   }
 
+  if ("icon" in style.style) {
+    return "icon";
+  }
+
   if ("square" in style.style) {
     return "square";
   }
@@ -40033,6 +40037,10 @@ var vector_layer_any_DEFAULT_RADIUS = 7;
           colorsLegend.stroke = ((_serializes$style2 = serializes.style) === null || _serializes$style2 === void 0 ? void 0 : (_serializes$style2$sh = _serializes$style2[shapeLegend]) === null || _serializes$style2$sh === void 0 ? void 0 : (_serializes$style2$sh2 = _serializes$style2$sh.stroke) === null || _serializes$style2$sh2 === void 0 ? void 0 : _serializes$style2$sh2.color) || 'white';
           colorsLegend.stroke_width = ((_serializes$style3 = serializes.style) === null || _serializes$style3 === void 0 ? void 0 : (_serializes$style3$sh = _serializes$style3[shapeLegend]) === null || _serializes$style3$sh === void 0 ? void 0 : (_serializes$style3$sh2 = _serializes$style3$sh.stroke) === null || _serializes$style3$sh2 === void 0 ? void 0 : _serializes$style3$sh2.width) || 1;
           colorsLegend.radius = ((_serializes$style4 = serializes.style) === null || _serializes$style4 === void 0 ? void 0 : (_serializes$style4$sh = _serializes$style4[shapeLegend]) === null || _serializes$style4$sh === void 0 ? void 0 : _serializes$style4$sh.radius) || vector_layer_any_DEFAULT_RADIUS;
+
+          if (shapeLegend === "icon") {
+            colorsLegend.icon = serializes.style[shapeLegend];
+          }
         } else if (this.VM_geometryType.includes("LineString")) {
           var _serializes$style5, _serializes$style5$st, _serializes$style6, _serializes$style6$st;
 
@@ -40095,7 +40103,8 @@ var vector_layer_any_DEFAULT_RADIUS = 7;
             // circle, square,  triangle, line, etc,  tambien el url del svg que se desee insertar
             //shape: "svg:ruta/alsvg",
             title: this.VM_title,
-            texture: JSON.parse(JSON.stringify(this.estiloTexturaRelleno))
+            texture: JSON.parse(JSON.stringify(this.estiloTexturaRelleno)),
+            icon: colorsLegend.icon || {}
           }
         };
         this.VM_legend_info_status = "ready";
@@ -40129,36 +40138,37 @@ var vector_layer_any_DEFAULT_RADIUS = 7;
           _this.VM_defaultShapePoint = checkPointShapeFromStyle(serializes);
 
           if (((_this$VM_legend_info = _this.VM_legend_info) === null || _this$VM_legend_info === void 0 ? void 0 : _this$VM_legend_info.type) === "legend-normal-vector") {
-            var _serializes$style10, _serializes$style10$_, _serializes$style10$_2, _serializes$style11, _serializes$style11$_, _serializes$style11$_2, _serializes$style12, _serializes$style12$_, _serializes$style12$_2, _serializes$style13, _serializes$style13$_;
+            var _serializes$style10, _serializes$style10$_, _serializes$style10$_2, _serializes$style11, _serializes$style11$_, _serializes$style11$_2, _serializes$style12, _serializes$style12$_, _serializes$style12$_2, _serializes$style13, _serializes$style13$_, _serializes$style14;
 
             _this.VM_legend_info.content.shape = _this.VM_defaultShapePoint;
             _this.VM_legend_info.content.fill_color = ((_serializes$style10 = serializes.style) === null || _serializes$style10 === void 0 ? void 0 : (_serializes$style10$_ = _serializes$style10[_this.VM_defaultShapePoint]) === null || _serializes$style10$_ === void 0 ? void 0 : (_serializes$style10$_2 = _serializes$style10$_.fill) === null || _serializes$style10$_2 === void 0 ? void 0 : _serializes$style10$_2.color) || 'gray';
             _this.VM_legend_info.content.stroke_color = ((_serializes$style11 = serializes.style) === null || _serializes$style11 === void 0 ? void 0 : (_serializes$style11$_ = _serializes$style11[_this.VM_defaultShapePoint]) === null || _serializes$style11$_ === void 0 ? void 0 : (_serializes$style11$_2 = _serializes$style11$_.stroke) === null || _serializes$style11$_2 === void 0 ? void 0 : _serializes$style11$_2.color) || 'white';
             _this.VM_legend_info.content.stroke_width = ((_serializes$style12 = serializes.style) === null || _serializes$style12 === void 0 ? void 0 : (_serializes$style12$_ = _serializes$style12[_this.VM_defaultShapePoint]) === null || _serializes$style12$_ === void 0 ? void 0 : (_serializes$style12$_2 = _serializes$style12$_.stroke) === null || _serializes$style12$_2 === void 0 ? void 0 : _serializes$style12$_2.width) || 1;
-            _this.VM_legend_info.content.shape_radius = ((_serializes$style13 = serializes.style) === null || _serializes$style13 === void 0 ? void 0 : (_serializes$style13$_ = _serializes$style13[_this.VM_defaultShapePoint]) === null || _serializes$style13$_ === void 0 ? void 0 : _serializes$style13$_.radius) || vector_layer_any_DEFAULT_RADIUS; //this.VM_legend_info.content.shape = this.VM_geometryType.includes("Point") ? 'square' :this.VM_legend_info.content.shape
+            _this.VM_legend_info.content.shape_radius = ((_serializes$style13 = serializes.style) === null || _serializes$style13 === void 0 ? void 0 : (_serializes$style13$_ = _serializes$style13[_this.VM_defaultShapePoint]) === null || _serializes$style13$_ === void 0 ? void 0 : _serializes$style13$_.radius) || vector_layer_any_DEFAULT_RADIUS;
+            _this.VM_legend_info.content.icon = ((_serializes$style14 = serializes.style) === null || _serializes$style14 === void 0 ? void 0 : _serializes$style14[_this.VM_defaultShapePoint]) || {}; //this.VM_legend_info.content.shape = this.VM_geometryType.includes("Point") ? 'square' :this.VM_legend_info.content.shape
           }
         } else if (_this.VM_geometryType.includes("LineString")) {
           var _this$VM_legend_info2;
 
           if (((_this$VM_legend_info2 = _this.VM_legend_info) === null || _this$VM_legend_info2 === void 0 ? void 0 : _this$VM_legend_info2.type) === "legend-normal-vector") {
-            var _serializes$style14, _serializes$style14$s, _serializes$style15, _serializes$style15$s;
+            var _serializes$style15, _serializes$style15$s, _serializes$style16, _serializes$style16$s;
 
             _this.VM_legend_info.content.shape = "line";
             _this.VM_legend_info.content.fill_color = "transparent";
-            _this.VM_legend_info.content.stroke_color = ((_serializes$style14 = serializes.style) === null || _serializes$style14 === void 0 ? void 0 : (_serializes$style14$s = _serializes$style14.stroke) === null || _serializes$style14$s === void 0 ? void 0 : _serializes$style14$s.color) || 'white';
-            _this.VM_legend_info.content.stroke_width = ((_serializes$style15 = serializes.style) === null || _serializes$style15 === void 0 ? void 0 : (_serializes$style15$s = _serializes$style15.stroke) === null || _serializes$style15$s === void 0 ? void 0 : _serializes$style15$s.width) || 1;
+            _this.VM_legend_info.content.stroke_color = ((_serializes$style15 = serializes.style) === null || _serializes$style15 === void 0 ? void 0 : (_serializes$style15$s = _serializes$style15.stroke) === null || _serializes$style15$s === void 0 ? void 0 : _serializes$style15$s.color) || 'white';
+            _this.VM_legend_info.content.stroke_width = ((_serializes$style16 = serializes.style) === null || _serializes$style16 === void 0 ? void 0 : (_serializes$style16$s = _serializes$style16.stroke) === null || _serializes$style16$s === void 0 ? void 0 : _serializes$style16$s.width) || 1;
             _this.VM_legend_info.content.shape_radius = 12.5; //this.VM_legend_info.content.shape = this.VM_geometryType.includes("Point") ? 'square' :this.VM_legend_info.content.shape
           }
         } else {
           var _this$VM_legend_info3;
 
           if (((_this$VM_legend_info3 = _this.VM_legend_info) === null || _this$VM_legend_info3 === void 0 ? void 0 : _this$VM_legend_info3.type) === "legend-normal-vector") {
-            var _serializes$style16, _serializes$style16$f, _serializes$style17, _serializes$style17$s, _serializes$style18, _serializes$style18$s;
+            var _serializes$style17, _serializes$style17$f, _serializes$style18, _serializes$style18$s, _serializes$style19, _serializes$style19$s;
 
             _this.VM_legend_info.content.shape = "square";
-            _this.VM_legend_info.content.fill_color = ((_serializes$style16 = serializes.style) === null || _serializes$style16 === void 0 ? void 0 : (_serializes$style16$f = _serializes$style16.fill) === null || _serializes$style16$f === void 0 ? void 0 : _serializes$style16$f.color) || 'gray';
-            _this.VM_legend_info.content.stroke_color = ((_serializes$style17 = serializes.style) === null || _serializes$style17 === void 0 ? void 0 : (_serializes$style17$s = _serializes$style17.stroke) === null || _serializes$style17$s === void 0 ? void 0 : _serializes$style17$s.color) || 'white';
-            _this.VM_legend_info.content.stroke_width = ((_serializes$style18 = serializes.style) === null || _serializes$style18 === void 0 ? void 0 : (_serializes$style18$s = _serializes$style18.stroke) === null || _serializes$style18$s === void 0 ? void 0 : _serializes$style18$s.width) || 1;
+            _this.VM_legend_info.content.fill_color = ((_serializes$style17 = serializes.style) === null || _serializes$style17 === void 0 ? void 0 : (_serializes$style17$f = _serializes$style17.fill) === null || _serializes$style17$f === void 0 ? void 0 : _serializes$style17$f.color) || 'gray';
+            _this.VM_legend_info.content.stroke_color = ((_serializes$style18 = serializes.style) === null || _serializes$style18 === void 0 ? void 0 : (_serializes$style18$s = _serializes$style18.stroke) === null || _serializes$style18$s === void 0 ? void 0 : _serializes$style18$s.color) || 'white';
+            _this.VM_legend_info.content.stroke_width = ((_serializes$style19 = serializes.style) === null || _serializes$style19 === void 0 ? void 0 : (_serializes$style19$s = _serializes$style19.stroke) === null || _serializes$style19$s === void 0 ? void 0 : _serializes$style19$s.width) || 1;
             _this.VM_legend_info.content.shape_radius = 12.5; //this.VM_legend_info.content.shape = this.VM_geometryType.includes("Point") ? 'square' :this.VM_legend_info.content.shape
           }
         }
@@ -70251,8 +70261,8 @@ var _legend_coropletavue_type_template_id_5f2d7684_scoped_true_staticRenderFns =
 
 // CONCATENATED MODULE: ./src/components/legend-control/_legend_coropleta.vue?vue&type=template&id=5f2d7684&scoped=true&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a636930-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/utils/shape.vue?vue&type=template&id=43e35359&scoped=true&
-var shapevue_type_template_id_43e35359_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"dai-map-shape"},[(_vm.shapeType!='image')?_c('div',{staticClass:"shape",class:_vm.shapeType,style:({
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a636930-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/utils/shape.vue?vue&type=template&id=5ff61140&scoped=true&
+var shapevue_type_template_id_5ff61140_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"dai-map-shape"},[(_vm.shapeType!=='image')?_c('div',{staticClass:"shape",class:_vm.shapeType,style:({
         'width':("" + (_vm.size[0]) + _vm.sizeUnits),
         'height':("" + (_vm.size[1]) + _vm.sizeUnits),
         'backgroundColor':_vm.backgroundColor,
@@ -70260,14 +70270,18 @@ var shapevue_type_template_id_43e35359_scoped_true_render = function () {var _vm
         'borderWidth':(_vm.strokeWidth + "px"),
         'borderColor':_vm.strokeColor
 
-        })}):_vm._e()])}
-var shapevue_type_template_id_43e35359_scoped_true_staticRenderFns = []
+        })}):_vm._e(),(_vm.shapeType==='image')?_c('div',[_c('img',{staticClass:"imagen-leyenda",attrs:{"src":_vm.imageOptions.src,"alt":".."}})]):_vm._e()])}
+var shapevue_type_template_id_5ff61140_scoped_true_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/utils/shape.vue?vue&type=template&id=43e35359&scoped=true&
+// CONCATENATED MODULE: ./src/components/utils/shape.vue?vue&type=template&id=5ff61140&scoped=true&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/utils/shape.vue?vue&type=script&lang=js&
 
+//
+//
+//
+//
 //
 //
 //
@@ -70311,9 +70325,11 @@ var shapevue_type_template_id_43e35359_scoped_true_staticRenderFns = []
       default: "black",
       type: String
     },
-    imageSrc: {
-      default: "",
-      type: String
+    imageOptions: {
+      default: function _default() {
+        return {};
+      },
+      type: Object
     },
     strokeColor: {
       default: 'white',
@@ -70331,8 +70347,8 @@ var shapevue_type_template_id_43e35359_scoped_true_staticRenderFns = []
 });
 // CONCATENATED MODULE: ./src/components/utils/shape.vue?vue&type=script&lang=js&
  /* harmony default export */ var utils_shapevue_type_script_lang_js_ = (shapevue_type_script_lang_js_); 
-// EXTERNAL MODULE: ./src/components/utils/shape.vue?vue&type=style&index=0&id=43e35359&lang=scss&scoped=true&
-var shapevue_type_style_index_0_id_43e35359_lang_scss_scoped_true_ = __webpack_require__("3567");
+// EXTERNAL MODULE: ./src/components/utils/shape.vue?vue&type=style&index=0&id=5ff61140&lang=scss&scoped=true&
+var shapevue_type_style_index_0_id_5ff61140_lang_scss_scoped_true_ = __webpack_require__("5750");
 
 // CONCATENATED MODULE: ./src/components/utils/shape.vue
 
@@ -70345,11 +70361,11 @@ var shapevue_type_style_index_0_id_43e35359_lang_scss_scoped_true_ = __webpack_r
 
 var shape_component = normalizeComponent(
   utils_shapevue_type_script_lang_js_,
-  shapevue_type_template_id_43e35359_scoped_true_render,
-  shapevue_type_template_id_43e35359_scoped_true_staticRenderFns,
+  shapevue_type_template_id_5ff61140_scoped_true_render,
+  shapevue_type_template_id_5ff61140_scoped_true_staticRenderFns,
   false,
   null,
-  "43e35359",
+  "5ff61140",
   null
   
 )
@@ -70522,12 +70538,12 @@ var _legend_coropleta_component = normalizeComponent(
 )
 
 /* harmony default export */ var _legend_coropleta = (_legend_coropleta_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a636930-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_normal_vector.vue?vue&type=template&id=21407b8f&scoped=true&
-var _legend_normal_vectorvue_type_template_id_21407b8f_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"legend-normal-vector"},[_c('checkbox',{on:{"change":_vm.set_visible_to_layer},model:{value:(_vm.visible),callback:function ($$v) {_vm.visible=$$v},expression:"visible"}},[_c('shape',{staticClass:"simbologia",attrs:{"shapeType":_vm.classShape,"backgroundColor":_vm.usarTexturas? 'transparent': _vm.params.content.fill_color,"backgroundImage":_vm.backgroundImage,"strokeColor":_vm.params.content.stroke_color || 'white',"strokeWidth":_vm.params.content.stroke_width || 1,"size":[(_vm.params.content.shape_radius || 10 ) *2, (_vm.params.content.shape_radius || 10 ) *2 ]}}),_c('span',[_vm._v(_vm._s(_vm.params.content.title))])],1)],1)}
-var _legend_normal_vectorvue_type_template_id_21407b8f_scoped_true_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a636930-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_normal_vector.vue?vue&type=template&id=3a7e30a1&scoped=true&
+var _legend_normal_vectorvue_type_template_id_3a7e30a1_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"legend-normal-vector"},[_c('checkbox',{on:{"change":_vm.set_visible_to_layer},model:{value:(_vm.visible),callback:function ($$v) {_vm.visible=$$v},expression:"visible"}},[(_vm.params.content.shape!=='icon')?_c('shape',{staticClass:"simbologia",attrs:{"shapeType":_vm.classShape,"backgroundColor":_vm.usarTexturas? 'transparent': _vm.params.content.fill_color,"backgroundImage":_vm.backgroundImage,"strokeColor":_vm.params.content.stroke_color || 'white',"strokeWidth":_vm.params.content.stroke_width || 1,"size":[(_vm.params.content.shape_radius || 12 ) *2, (_vm.params.content.shape_radius || 12 ) *2 ]}}):_vm._e(),(_vm.params.content.shape === 'icon')?_c('shape',{staticClass:"simbologia",attrs:{"shapeType":"image","imageOptions":_vm.params.content.icon,"size":[(_vm.params.content.shape_radius || 12 ) *2, (_vm.params.content.shape_radius || 12 ) *2 ]}}):_vm._e(),_c('span',[_vm._v(_vm._s(_vm.params.content.title))])],1)],1)}
+var _legend_normal_vectorvue_type_template_id_3a7e30a1_scoped_true_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/legend-control/_legend_normal_vector.vue?vue&type=template&id=21407b8f&scoped=true&
+// CONCATENATED MODULE: ./src/components/legend-control/_legend_normal_vector.vue?vue&type=template&id=3a7e30a1&scoped=true&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.starts-with.js
 var es_string_starts_with = __webpack_require__("2ca0");
@@ -70536,6 +70552,13 @@ var es_string_starts_with = __webpack_require__("2ca0");
 
 
 
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -70581,8 +70604,8 @@ var es_string_starts_with = __webpack_require__("2ca0");
 });
 // CONCATENATED MODULE: ./src/components/legend-control/_legend_normal_vector.vue?vue&type=script&lang=js&
  /* harmony default export */ var legend_control_legend_normal_vectorvue_type_script_lang_js_ = (_legend_normal_vectorvue_type_script_lang_js_); 
-// EXTERNAL MODULE: ./src/components/legend-control/_legend_normal_vector.vue?vue&type=style&index=0&id=21407b8f&lang=scss&scoped=true&
-var _legend_normal_vectorvue_type_style_index_0_id_21407b8f_lang_scss_scoped_true_ = __webpack_require__("5704");
+// EXTERNAL MODULE: ./src/components/legend-control/_legend_normal_vector.vue?vue&type=style&index=0&id=3a7e30a1&lang=scss&scoped=true&
+var _legend_normal_vectorvue_type_style_index_0_id_3a7e30a1_lang_scss_scoped_true_ = __webpack_require__("2bfb");
 
 // EXTERNAL MODULE: ./src/components/legend-control/_legend_normal_vector.vue?vue&type=style&index=1&lang=css&
 var _legend_normal_vectorvue_type_style_index_1_lang_css_ = __webpack_require__("09c6");
@@ -70599,11 +70622,11 @@ var _legend_normal_vectorvue_type_style_index_1_lang_css_ = __webpack_require__(
 
 var _legend_normal_vector_component = normalizeComponent(
   legend_control_legend_normal_vectorvue_type_script_lang_js_,
-  _legend_normal_vectorvue_type_template_id_21407b8f_scoped_true_render,
-  _legend_normal_vectorvue_type_template_id_21407b8f_scoped_true_staticRenderFns,
+  _legend_normal_vectorvue_type_template_id_3a7e30a1_scoped_true_render,
+  _legend_normal_vectorvue_type_template_id_3a7e30a1_scoped_true_staticRenderFns,
   false,
   null,
-  "21407b8f",
+  "3a7e30a1",
   null
   
 )
