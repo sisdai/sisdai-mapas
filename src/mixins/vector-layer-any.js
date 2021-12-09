@@ -4,6 +4,7 @@ import GeoJSON from 'ol/format/GeoJSON';
 
 export const DEFAULT_FILL_COLOR="gray"
 export const DEFAULT_STROKE_COLOR="white"
+export const DEFAULT_RADIUS = 7
 
 export default{
     props:{
@@ -65,7 +66,7 @@ export default{
                             color: DEFAULT_STROKE_COLOR,
                             width: 1
                         },
-                        radius: 7
+                        radius: DEFAULT_RADIUS
                     }
                 }
             }
@@ -120,6 +121,11 @@ export default{
             default:function(){
                 return (feature)=>[]
             }
+        },
+        tipoGeometria:{
+            default:'', //'Point', 'LineString', 'LinearRing', 'Polygon', 'MultiPoint', 'MultiLineString', 'MultiPolygon', 'GeometryCollection', 'Circle'
+            type:String,
+            
         }
     },
     data:function(){
@@ -138,6 +144,11 @@ export default{
     created:function(){
         //console.log("DEBUG: carga vm_mapstyle")
         this.VM_mapStyle = {...this.estiloCapa}
+        if(this.tipoGeometria!==""){
+            //console.log("se definio tipo de geometria desde el inicio")
+            this.VM_geometryType = this.tipoGeometria;
+        }
+        
     },
     methods:{
         _setStyle:function(){
@@ -175,7 +186,12 @@ export default{
                 
                 //let geometry_type = vm.olLayer.getSource().getFeatures()[0].getGeometry().getType()
                 /******************************************************************************** */
+                /******************************************************************************** */
+                /******************************************************************************** */
+                /******************************************************************************** */
+                /******************************************************************************** */
                 //console.log("//AQUI VERIFICAR TAMBIEN QUE SHAPE SE VA A LA LEYENDA",serializes)
+                
                 if(this.VM_geometryType.includes("Point") ){
 
                     this.VM_defaultShapePoint= checkPointShapeFromStyle(serializes)
@@ -183,10 +199,19 @@ export default{
                     colorsLegend.fill = serializes.style?.[shapeLegend]?.fill?.color || 'gray';
                     colorsLegend.stroke = serializes.style?.[shapeLegend]?.stroke?.color || 'white';
                     colorsLegend.stroke_width = serializes.style?.[shapeLegend]?.stroke?.width || 1;
+                    colorsLegend.radius = serializes.style?.[shapeLegend]?.radius || DEFAULT_RADIUS;
+                }else  if(this.VM_geometryType.includes("LineString") ){
+                    shapeLegend = "line"
+                    colorsLegend.fill = "transparent"
+                    colorsLegend.stroke = serializes.style?.stroke?.color || 'white';
+                    colorsLegend.stroke_width = serializes.style?.stroke?.width || 1;
+                    colorsLegend.radius = 12.5;
                 }else{
+                    //console.log("aqui se esta poniendo los colores de leyenda por default", this.id)
                     colorsLegend.fill = serializes.style?.fill?.color || 'gray';
                     colorsLegend.stroke = serializes.style?.stroke?.color || 'white';
                     colorsLegend.stroke_width = serializes.style?.stroke?.width || 1;
+                    colorsLegend.radius = 12.5;
                     //colorsLegend.fill = serializes["style"].fill !=undefined ? serializes["style"].fill.color : 'gray'
                     //colorsLegend.stroke = serializes["style"].stroke != undefined ? serializes["style"].stroke.color : 'gray'
                 }
@@ -240,6 +265,8 @@ export default{
                     content:{
                         fill_color: colorsLegend.fill,
                         stroke_color: colorsLegend.stroke,
+                        stroke_width : colorsLegend?.stroke_width || 1,
+                        shape_radius : colorsLegend?.radius || DEFAULT_RADIUS,
                         shape: shapeLegend, // circle, square,  triangle, line, etc,  tambien el url del svg que se desee insertar
                         //shape: "svg:ruta/alsvg",
                         title:this.VM_title,
@@ -278,10 +305,29 @@ export default{
                         this.VM_legend_info.content.fill_color = serializes.style?.[this.VM_defaultShapePoint]?.fill?.color || 'gray'
                         this.VM_legend_info.content.stroke_color = serializes.style?.[this.VM_defaultShapePoint]?.stroke?.color || 'white'
                         this.VM_legend_info.content.stroke_width = serializes.style?.[this.VM_defaultShapePoint]?.stroke?.width || 1
+                        this.VM_legend_info.content.shape_radius =  serializes.style?.[this.VM_defaultShapePoint]?.radius || DEFAULT_RADIUS;
                         //this.VM_legend_info.content.shape = this.VM_geometryType.includes("Point") ? 'square' :this.VM_legend_info.content.shape
                     }
                     
-                }   
+                }else if(this.VM_geometryType.includes("LineString")){
+                    if(this.VM_legend_info?.type === "legend-normal-vector"){
+                        this.VM_legend_info.content.shape = "line"
+                        this.VM_legend_info.content.fill_color = "transparent"
+                        this.VM_legend_info.content.stroke_color = serializes.style?.stroke?.color || 'white'
+                        this.VM_legend_info.content.stroke_width = serializes.style?.stroke?.width || 1
+                        this.VM_legend_info.content.shape_radius =  12.5;
+                        //this.VM_legend_info.content.shape = this.VM_geometryType.includes("Point") ? 'square' :this.VM_legend_info.content.shape
+                    }
+                }else{
+                    if(this.VM_legend_info?.type === "legend-normal-vector"){
+                        this.VM_legend_info.content.shape = "square"
+                        this.VM_legend_info.content.fill_color = serializes.style?.fill?.color || 'gray'
+                        this.VM_legend_info.content.stroke_color = serializes.style?.stroke?.color || 'white'
+                        this.VM_legend_info.content.stroke_width = serializes.style?.stroke?.width || 1
+                        this.VM_legend_info.content.shape_radius =  12.5;
+                        //this.VM_legend_info.content.shape = this.VM_geometryType.includes("Point") ? 'square' :this.VM_legend_info.content.shape
+                    }
+                }  
                 this.$emit("saved_features",this.VM_allFeatures)
                 
                 //console.log(evento,"---AQUI GUARDAR LAS FEATURES EN VM_allfeatures")
