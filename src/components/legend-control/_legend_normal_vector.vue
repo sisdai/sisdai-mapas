@@ -10,7 +10,7 @@
                 :backgroundImage="backgroundImage" 
                 :strokeColor="params.content.stroke_color || 'white'"
                 :strokeWidth="params.content.stroke_width || 1"
-                :size="[25,25]" 
+                :size="[(params.content.shape_radius || 10 ) *2, (params.content.shape_radius || 10 ) *2 ]" 
             />
                 
             <span>{{params.content.title}}</span>
@@ -53,8 +53,17 @@ export default {
       .simbologia{
           
           margin-right: .4em;
+          max-width: 28px;
+          width: 28px;
           
-      }  
+      }
+      
         
     }
+</style>
+
+<style>
+.dai-map-shape.simbologia>div{
+    margin: 0 auto;
+}
 </style>

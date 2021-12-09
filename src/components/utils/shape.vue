@@ -1,6 +1,7 @@
 <template>
     <div class="dai-map-shape" >
         <div  v-if="shapeType!='image'" 
+        class="shape"
         :class="shapeType"
         :style="{
             'width':`${size[0]}${sizeUnits}`,
@@ -24,7 +25,7 @@ export default {
             type:String,
             required:true,
             validator:function(value){
-                return ['circle', 'square', 'triangle','rounded-square',"image"].indexOf(value) !== -1
+                return ['circle', 'square', 'triangle','rounded-square',"image","line"].indexOf(value) !== -1
             }
         },
         size:{
@@ -73,6 +74,10 @@ export default {
 
     .rounded-square{
         border-radius: 20%;
+    }
+    .line{
+        border-style: solid none none none;
+        transform: translateY(50%);
     }
 }
 </style>

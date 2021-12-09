@@ -158,8 +158,9 @@ export default {
         <h3 v-width-control="'100%'" >Control de leyenda</h3> 
         <dai-leyenda-mapa
         titulo="Este es el titulo de la leyenda"
-        :para="['estados','estados2','estados3']"
+        :para="['estados','estados2','estados3','corredores']"
         :mostrar-boton-alterna-todos="true"
+        :tamanosDeMapa="true"
         />
     </template>
     <dai-mapa 
@@ -178,6 +179,15 @@ export default {
         id="estados3" 
         url="/centroides-estados.geojson"
         :estilo-capa="{circle:{fill:{color:'purple'},radius:3}}"
+        />
+        <dai-capa-geojson 
+        id="corredores" 
+        url="https://dadsigvisgeo.conacyt.mx/geoserver/vacunacion/wms?service=WMS&version=1.1.0&request=GetMap&layers=vacunacion%3Acorredores&bbox=-117.1227035522461%2C14.684399604797363%2C-86.80320739746094%2C32.595672607421875&width=768&height=453&srs=EPSG%3A4326&styles=&format=geojson"
+        :visible="false"
+        :estilo-capa="{
+            stroke:{color:'red',width:2}
+        }"
+        tipoGeometria="LineString"
         />
     </dai-mapa>        
 </dai-tarjeta-contenedor-mapa>
@@ -362,3 +372,7 @@ export default {
 }
 </script>
 ```
+
+## Leyenda antes de cargar los datos
+
+<controles-8-leyenda-simple-antes-cargar />
