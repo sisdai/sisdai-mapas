@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <div class="header-legend">
+    <div class="main-legend" :class="{'no-tamanos-mapa':!tamanosDeMapa}">
+        <div class="header-legend" >
             <p class="title">{{titulo}}</p>
             <button class="toggle-all" v-if="mostrarBotonAlternaTodos" @click="toogleAll">{{labelToogleAll}}</button>
         </div>
@@ -31,6 +31,10 @@ export default {
          */
         mostrarBotonAlternaTodos:{
             type:Boolean,
+            default:false
+        },
+        tamanosDeMapa:{
+            type: Boolean,
             default:false
         }
     },
@@ -151,4 +155,19 @@ export default {
         }
     }
     
+</style>
+
+<style lang="scss">
+.main-legend.no-tamanos-mapa{
+    .legend-normal-vector{
+        .dai-map-shape{
+            .shape{
+                max-height: 25px;
+                max-width: 25px;
+                min-height: 25px;
+                min-width: 25px;
+            }
+        }
+    }
+}
 </style>

@@ -120,6 +120,15 @@ Cuando hay varias capas en la leyenda el boton apaga-prende todas las capas a la
 
 Cuando hay solo una capa en la leyenda y esa capa contiene reglas de estilo que clasifican los datos, por ejemplo una coropleta, el boton apaga-prende todos los filtros de esa capa.
 
+
+#### tamanos-de-mapa
+
+- Type: `Boolean`
+- Default: `false`
+
+Para leyendas simples, sin clasificacion por colores ni tamaños. Indica si las capas de tipo punto reflejaran exactamente el mismo tamaño que muestra en el mapa. 
+
+Por default es `false`, es decir,  todas las capas de tipo punto reflejan en leyenda una figura de 25px de ancho por 25px de  alto.
 ## dai-info-mapa
 
 ### propiedades
