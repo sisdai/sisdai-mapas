@@ -200,6 +200,9 @@ export default{
                     colorsLegend.stroke = serializes.style?.[shapeLegend]?.stroke?.color || 'white';
                     colorsLegend.stroke_width = serializes.style?.[shapeLegend]?.stroke?.width || 1;
                     colorsLegend.radius = serializes.style?.[shapeLegend]?.radius || DEFAULT_RADIUS;
+                    if(shapeLegend==="icon"){
+                        colorsLegend.icon = serializes.style[shapeLegend]
+                    }
                 }else  if(this.VM_geometryType.includes("LineString") ){
                     shapeLegend = "line"
                     colorsLegend.fill = "transparent"
@@ -270,7 +273,8 @@ export default{
                         shape: shapeLegend, // circle, square,  triangle, line, etc,  tambien el url del svg que se desee insertar
                         //shape: "svg:ruta/alsvg",
                         title:this.VM_title,
-                        texture:JSON.parse(JSON.stringify(this.estiloTexturaRelleno))
+                        texture:JSON.parse(JSON.stringify(this.estiloTexturaRelleno)),
+                        icon : colorsLegend.icon || {}
                     }
                 }
                 this.VM_legend_info_status = "ready"
@@ -306,6 +310,7 @@ export default{
                         this.VM_legend_info.content.stroke_color = serializes.style?.[this.VM_defaultShapePoint]?.stroke?.color || 'white'
                         this.VM_legend_info.content.stroke_width = serializes.style?.[this.VM_defaultShapePoint]?.stroke?.width || 1
                         this.VM_legend_info.content.shape_radius =  serializes.style?.[this.VM_defaultShapePoint]?.radius || DEFAULT_RADIUS;
+                        this.VM_legend_info.content.icon = serializes.style?.[this.VM_defaultShapePoint] || {}
                         //this.VM_legend_info.content.shape = this.VM_geometryType.includes("Point") ? 'square' :this.VM_legend_info.content.shape
                     }
                     

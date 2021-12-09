@@ -10,9 +10,16 @@
                 :backgroundImage="backgroundImage" 
                 :strokeColor="params.content.stroke_color || 'white'"
                 :strokeWidth="params.content.stroke_width || 1"
-                :size="[(params.content.shape_radius || 10 ) *2, (params.content.shape_radius || 10 ) *2 ]" 
+                :size="[(params.content.shape_radius || 12 ) *2, (params.content.shape_radius || 12 ) *2 ]" 
+                v-if="params.content.shape!=='icon'"
             />
-                
+            <shape 
+            class="simbologia"
+            v-if="params.content.shape === 'icon'"
+            shapeType="image"
+            :imageOptions="params.content.icon"
+            :size="[(params.content.shape_radius || 12 ) *2, (params.content.shape_radius || 12 ) *2 ]" 
+            />
             <span>{{params.content.title}}</span>
         </checkbox>
         
