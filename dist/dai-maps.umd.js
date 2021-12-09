@@ -125,11 +125,11 @@ module.exports = String(test) === '[object z]';
 /***/ "0366":
 /***/ (function(module, exports, __webpack_require__) {
 
-var aCallable = __webpack_require__("59ed");
+var aFunction = __webpack_require__("1c0b");
 
 // optional / simple context binding
 module.exports = function (fn, that, length) {
-  aCallable(fn);
+  aFunction(fn);
   if (that === undefined) return fn;
   switch (length) {
     case 0: return function () {
@@ -159,17 +159,6 @@ module.exports = function (fn, that, length) {
 "use strict";
 /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_selector_vue_vue_type_style_index_0_id_044f4166_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("fe7c");
 /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_selector_vue_vue_type_style_index_0_id_044f4166_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_selector_vue_vue_type_style_index_0_id_044f4166_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
-/* unused harmony reexport * */
-
-
-/***/ }),
-
-/***/ "042f":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_normal_vector_vue_vue_type_style_index_0_id_6c329126_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("4315");
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_normal_vector_vue_vue_type_style_index_0_id_6c329126_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_normal_vector_vue_vue_type_style_index_0_id_6c329126_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
 /* unused harmony reexport * */
 
 
@@ -225,7 +214,7 @@ var propertyIsEnumerableModule = __webpack_require__("d1e7");
 var createPropertyDescriptor = __webpack_require__("5c6c");
 var toIndexedObject = __webpack_require__("fc6a");
 var toPropertyKey = __webpack_require__("a04b");
-var hasOwn = __webpack_require__("1a2d");
+var has = __webpack_require__("5135");
 var IE8_DOM_DEFINE = __webpack_require__("0cfb");
 
 // eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
@@ -239,30 +228,20 @@ exports.f = DESCRIPTORS ? $getOwnPropertyDescriptor : function getOwnPropertyDes
   if (IE8_DOM_DEFINE) try {
     return $getOwnPropertyDescriptor(O, P);
   } catch (error) { /* empty */ }
-  if (hasOwn(O, P)) return createPropertyDescriptor(!propertyIsEnumerableModule.f.call(O, P), O[P]);
+  if (has(O, P)) return createPropertyDescriptor(!propertyIsEnumerableModule.f.call(O, P), O[P]);
 };
 
 
 /***/ }),
 
-/***/ "07fa":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "09c6":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-var toLength = __webpack_require__("50c4");
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_normal_vector_vue_vue_type_style_index_1_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("7246");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_normal_vector_vue_vue_type_style_index_1_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_normal_vector_vue_vue_type_style_index_1_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
 
-// `LengthOfArrayLike` abstract operation
-// https://tc39.es/ecma262/#sec-lengthofarraylike
-module.exports = function (obj) {
-  return toLength(obj.length);
-};
-
-
-/***/ }),
-
-/***/ "087b":
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -276,9 +255,8 @@ module.exports = function (obj) {
 /***/ "0b42":
 /***/ (function(module, exports, __webpack_require__) {
 
-var isArray = __webpack_require__("e8b5");
-var isConstructor = __webpack_require__("68ee");
 var isObject = __webpack_require__("861d");
+var isArray = __webpack_require__("e8b5");
 var wellKnownSymbol = __webpack_require__("b622");
 
 var SPECIES = wellKnownSymbol('species');
@@ -290,7 +268,7 @@ module.exports = function (originalArray) {
   if (isArray(originalArray)) {
     C = originalArray.constructor;
     // cross-realm fallback
-    if (isConstructor(C) && (C === Array || isArray(C.prototype))) C = undefined;
+    if (typeof C == 'function' && (C === Array || isArray(C.prototype))) C = undefined;
     else if (isObject(C)) {
       C = C[SPECIES];
       if (C === null) C = undefined;
@@ -319,17 +297,10 @@ module.exports = !DESCRIPTORS && !fails(function () {
 
 /***/ }),
 
-/***/ "0d51":
-/***/ (function(module, exports) {
+/***/ "0f16":
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = function (argument) {
-  try {
-    return String(argument);
-  } catch (error) {
-    return 'Object';
-  }
-};
-
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -364,7 +335,6 @@ var speciesConstructor = __webpack_require__("4840");
 var advanceStringIndex = __webpack_require__("8aa5");
 var toLength = __webpack_require__("50c4");
 var toString = __webpack_require__("577e");
-var getMethod = __webpack_require__("dc4a");
 var callRegExpExec = __webpack_require__("14c3");
 var regexpExec = __webpack_require__("9263");
 var stickyHelpers = __webpack_require__("9f7f");
@@ -446,8 +416,8 @@ fixRegExpWellKnownSymbolLogic('split', function (SPLIT, nativeSplit, maybeCallNa
     // https://tc39.es/ecma262/#sec-string.prototype.split
     function split(separator, limit) {
       var O = requireObjectCoercible(this);
-      var splitter = separator == undefined ? undefined : getMethod(separator, SPLIT);
-      return splitter
+      var splitter = separator == undefined ? undefined : separator[SPLIT];
+      return splitter !== undefined
         ? splitter.call(separator, O, limit)
         : internalSplit.call(toString(O), separator, limit);
     },
@@ -522,8 +492,6 @@ fixRegExpWellKnownSymbolLogic('split', function (SPLIT, nativeSplit, maybeCallNa
 /***/ "14c3":
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__("825a");
-var isCallable = __webpack_require__("1626");
 var classof = __webpack_require__("c6b6");
 var regexpExec = __webpack_require__("9263");
 
@@ -531,14 +499,21 @@ var regexpExec = __webpack_require__("9263");
 // https://tc39.es/ecma262/#sec-regexpexec
 module.exports = function (R, S) {
   var exec = R.exec;
-  if (isCallable(exec)) {
+  if (typeof exec === 'function') {
     var result = exec.call(R, S);
-    if (result !== null) anObject(result);
+    if (typeof result !== 'object') {
+      throw TypeError('RegExp exec method returned something other than an Object or null');
+    }
     return result;
   }
-  if (classof(R) === 'RegExp') return regexpExec.call(R, S);
-  throw TypeError('RegExp#exec called on incompatible receiver');
+
+  if (classof(R) !== 'RegExp') {
+    throw TypeError('RegExp#exec called on incompatible receiver');
+  }
+
+  return regexpExec.call(R, S);
 };
+
 
 
 /***/ }),
@@ -562,24 +537,10 @@ var handlePrototype = function (CollectionPrototype) {
 };
 
 for (var COLLECTION_NAME in DOMIterables) {
-  if (DOMIterables[COLLECTION_NAME]) {
-    handlePrototype(global[COLLECTION_NAME] && global[COLLECTION_NAME].prototype);
-  }
+  handlePrototype(global[COLLECTION_NAME] && global[COLLECTION_NAME].prototype);
 }
 
 handlePrototype(DOMTokenListPrototype);
-
-
-/***/ }),
-
-/***/ "1626":
-/***/ (function(module, exports) {
-
-// `IsCallable` abstract operation
-// https://tc39.es/ecma262/#sec-iscallable
-module.exports = function (argument) {
-  return typeof argument === 'function';
-};
 
 
 /***/ }),
@@ -608,8 +569,9 @@ module.exports = !STRICT_METHOD ? function forEach(callbackfn /* , thisArg */) {
 /***/ (function(module, exports) {
 
 module.exports = function (it, Constructor, name) {
-  if (it instanceof Constructor) return it;
-  throw TypeError('Incorrect ' + (name ? name + ' ' : '') + 'invocation');
+  if (!(it instanceof Constructor)) {
+    throw TypeError('Incorrect ' + (name ? name + ' ' : '') + 'invocation');
+  } return it;
 };
 
 
@@ -622,22 +584,6 @@ module.exports = function (it, Constructor, name) {
 /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_list_checks_colors_vue_vue_type_style_index_0_id_7a7364ec_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("1ad0");
 /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_list_checks_colors_vue_vue_type_style_index_0_id_7a7364ec_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_list_checks_colors_vue_vue_type_style_index_0_id_7a7364ec_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
 /* unused harmony reexport * */
-
-
-/***/ }),
-
-/***/ "1a2d":
-/***/ (function(module, exports, __webpack_require__) {
-
-var toObject = __webpack_require__("7b0b");
-
-var hasOwnProperty = {}.hasOwnProperty;
-
-// `HasOwnProperty` abstract operation
-// https://tc39.es/ecma262/#sec-hasownproperty
-module.exports = Object.hasOwn || function hasOwn(it, key) {
-  return hasOwnProperty.call(toObject(it), key);
-};
 
 
 /***/ }),
@@ -655,6 +601,18 @@ module.exports = Object.hasOwn || function hasOwn(it, key) {
 var getBuiltIn = __webpack_require__("d066");
 
 module.exports = getBuiltIn('document', 'documentElement');
+
+
+/***/ }),
+
+/***/ "1c0b":
+/***/ (function(module, exports) {
+
+module.exports = function (it) {
+  if (typeof it != 'function') {
+    throw TypeError(String(it) + ' is not a function');
+  } return it;
+};
 
 
 /***/ }),
@@ -755,7 +713,7 @@ module.exports = function (METHOD_NAME) {
 
 var anObject = __webpack_require__("825a");
 var isArrayIteratorMethod = __webpack_require__("e95a");
-var lengthOfArrayLike = __webpack_require__("07fa");
+var toLength = __webpack_require__("50c4");
 var bind = __webpack_require__("0366");
 var getIterator = __webpack_require__("9a1f");
 var getIteratorMethod = __webpack_require__("35a1");
@@ -790,10 +748,10 @@ module.exports = function (iterable, unboundFunction, options) {
     iterator = iterable;
   } else {
     iterFn = getIteratorMethod(iterable);
-    if (!iterFn) throw TypeError(String(iterable) + ' is not iterable');
+    if (typeof iterFn != 'function') throw TypeError('Target is not iterable');
     // optimisation for array iterators
     if (isArrayIteratorMethod(iterFn)) {
-      for (index = 0, length = lengthOfArrayLike(iterable); length > index; index++) {
+      for (index = 0, length = toLength(iterable.length); length > index; index++) {
         result = callFn(iterable[index]);
         if (result && result instanceof Result) return result;
       } return new Result(false);
@@ -829,7 +787,7 @@ module.exports = function (iterable, unboundFunction, options) {
 /***/ "23cb":
 /***/ (function(module, exports, __webpack_require__) {
 
-var toIntegerOrInfinity = __webpack_require__("5926");
+var toInteger = __webpack_require__("a691");
 
 var max = Math.max;
 var min = Math.min;
@@ -838,7 +796,7 @@ var min = Math.min;
 // Let integer be ? ToInteger(index).
 // If integer < 0, let result be max((length + integer), 0); else let result be min(integer, length).
 module.exports = function (index, length) {
-  var integer = toIntegerOrInfinity(index);
+  var integer = toInteger(index);
   return integer < 0 ? max(integer + length, 0) : min(integer, length);
 };
 
@@ -869,7 +827,6 @@ var isForced = __webpack_require__("94ca");
   options.sham        - add a flag to not completely full polyfills
   options.enumerable  - export as enumerable property
   options.noTargetGet - prevent calling a getter on target
-  options.name        - the .name of the function if it does not match the key
 */
 module.exports = function (options, source) {
   var TARGET = options.target;
@@ -961,7 +918,6 @@ $({ target: 'String', proto: true, forced: !correctIsRegExpLogic('includes') }, 
 
 "use strict";
 
-var PROPER_FUNCTION_NAME = __webpack_require__("5e77").PROPER;
 var redefine = __webpack_require__("6eeb");
 var anObject = __webpack_require__("825a");
 var $toString = __webpack_require__("577e");
@@ -974,7 +930,7 @@ var nativeToString = RegExpPrototype[TO_STRING];
 
 var NOT_GENERIC = fails(function () { return nativeToString.call({ source: 'a', flags: 'b' }) != '/a/b'; });
 // FF44- RegExp#toString has a wrong name
-var INCORRECT_NAME = PROPER_FUNCTION_NAME && nativeToString.name != TO_STRING;
+var INCORRECT_NAME = nativeToString.name != TO_STRING;
 
 // `RegExp.prototype.toString` method
 // https://tc39.es/ecma262/#sec-regexp.prototype.tostring
@@ -1018,6 +974,17 @@ module.exports = function (CONSTRUCTOR_NAME) {
 
 /***/ }),
 
+/***/ "2894":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_vue_vue_type_style_index_1_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("0f16");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_vue_vue_type_style_index_1_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_vue_vue_type_style_index_1_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+
+
+/***/ }),
+
 /***/ "294b":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1033,14 +1000,13 @@ module.exports = function (CONSTRUCTOR_NAME) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var anObject = __webpack_require__("825a");
-var getMethod = __webpack_require__("dc4a");
 
 module.exports = function (iterator, kind, value) {
   var innerResult, innerError;
   anObject(iterator);
   try {
-    innerResult = getMethod(iterator, 'return');
-    if (!innerResult) {
+    innerResult = iterator['return'];
+    if (innerResult === undefined) {
       if (kind === 'throw') throw value;
       return value;
     }
@@ -1145,19 +1111,29 @@ module.exports = getBuiltIn('navigator', 'userAgent') || '';
 
 /***/ }),
 
+/***/ "3567":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_shape_vue_vue_type_style_index_0_id_43e35359_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("efdc");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_shape_vue_vue_type_style_index_0_id_43e35359_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_shape_vue_vue_type_style_index_0_id_43e35359_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+
+
+/***/ }),
+
 /***/ "35a1":
 /***/ (function(module, exports, __webpack_require__) {
 
 var classof = __webpack_require__("f5df");
-var getMethod = __webpack_require__("dc4a");
 var Iterators = __webpack_require__("3f8c");
 var wellKnownSymbol = __webpack_require__("b622");
 
 var ITERATOR = wellKnownSymbol('iterator');
 
 module.exports = function (it) {
-  if (it != undefined) return getMethod(it, ITERATOR)
-    || getMethod(it, '@@iterator')
+  if (it != undefined) return it[ITERATOR]
+    || it['@@iterator']
     || Iterators[classof(it)];
 };
 
@@ -1191,23 +1167,13 @@ module.exports = DESCRIPTORS ? Object.defineProperties : function defineProperti
 /***/ "3bbe":
 /***/ (function(module, exports, __webpack_require__) {
 
-var isCallable = __webpack_require__("1626");
+var isObject = __webpack_require__("861d");
 
-module.exports = function (argument) {
-  if (typeof argument === 'object' || isCallable(argument)) return argument;
-  throw TypeError("Can't set " + String(argument) + ' as a prototype');
+module.exports = function (it) {
+  if (!isObject(it) && it !== null) {
+    throw TypeError("Can't set " + String(it) + ' as a prototype');
+  } return it;
 };
-
-
-/***/ }),
-
-/***/ "3c3f":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_vue_vue_type_style_index_0_id_679f2d5a_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("087b");
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_vue_vue_type_style_index_0_id_679f2d5a_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_vue_vue_type_style_index_0_id_679f2d5a_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
-/* unused harmony reexport * */
 
 
 /***/ }),
@@ -1258,16 +1224,13 @@ module.exports = {};
 
 /***/ }),
 
-/***/ "408a":
-/***/ (function(module, exports) {
+/***/ "4147":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-var valueOf = 1.0.valueOf;
-
-// `thisNumberValue` abstract operation
-// https://tc39.es/ecma262/#sec-thisnumbervalue
-module.exports = function (value) {
-  return valueOf.call(value);
-};
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_vue_vue_type_style_index_0_id_54dc3ac5_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("d247");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_vue_vue_type_style_index_0_id_54dc3ac5_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_vue_vue_type_style_index_0_id_54dc3ac5_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
 
 
 /***/ }),
@@ -1279,13 +1242,6 @@ var global = __webpack_require__("da84");
 
 module.exports = global;
 
-
-/***/ }),
-
-/***/ "4315":
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -1365,7 +1321,6 @@ var anObject = __webpack_require__("825a");
 var toLength = __webpack_require__("50c4");
 var toString = __webpack_require__("577e");
 var requireObjectCoercible = __webpack_require__("1d80");
-var getMethod = __webpack_require__("dc4a");
 var advanceStringIndex = __webpack_require__("8aa5");
 var regExpExec = __webpack_require__("14c3");
 
@@ -1376,8 +1331,8 @@ fixRegExpWellKnownSymbolLogic('match', function (MATCH, nativeMatch, maybeCallNa
     // https://tc39.es/ecma262/#sec-string.prototype.match
     function match(regexp) {
       var O = requireObjectCoercible(this);
-      var matcher = regexp == undefined ? undefined : getMethod(regexp, MATCH);
-      return matcher ? matcher.call(regexp, O) : new RegExp(regexp)[MATCH](toString(O));
+      var matcher = regexp == undefined ? undefined : regexp[MATCH];
+      return matcher !== undefined ? matcher.call(regexp, O) : new RegExp(regexp)[MATCH](toString(O));
     },
     // `RegExp.prototype[@@match]` method
     // https://tc39.es/ecma262/#sec-regexp.prototype-@@match
@@ -1413,7 +1368,7 @@ fixRegExpWellKnownSymbolLogic('match', function (MATCH, nativeMatch, maybeCallNa
 /***/ (function(module, exports, __webpack_require__) {
 
 var anObject = __webpack_require__("825a");
-var aConstructor = __webpack_require__("5087");
+var aFunction = __webpack_require__("1c0b");
 var wellKnownSymbol = __webpack_require__("b622");
 
 var SPECIES = wellKnownSymbol('species');
@@ -1423,7 +1378,7 @@ var SPECIES = wellKnownSymbol('species');
 module.exports = function (O, defaultConstructor) {
   var C = anObject(O).constructor;
   var S;
-  return C === undefined || (S = anObject(C)[SPECIES]) == undefined ? defaultConstructor : aConstructor(S);
+  return C === undefined || (S = anObject(C)[SPECIES]) == undefined ? defaultConstructor : aFunction(S);
 };
 
 
@@ -1432,16 +1387,15 @@ module.exports = function (O, defaultConstructor) {
 /***/ "485a":
 /***/ (function(module, exports, __webpack_require__) {
 
-var isCallable = __webpack_require__("1626");
 var isObject = __webpack_require__("861d");
 
 // `OrdinaryToPrimitive` abstract operation
 // https://tc39.es/ecma262/#sec-ordinarytoprimitive
 module.exports = function (input, pref) {
   var fn, val;
-  if (pref === 'string' && isCallable(fn = input.toString) && !isObject(val = fn.call(input))) return val;
-  if (isCallable(fn = input.valueOf) && !isObject(val = fn.call(input))) return val;
-  if (pref !== 'string' && isCallable(fn = input.toString) && !isObject(val = fn.call(input))) return val;
+  if (pref === 'string' && typeof (fn = input.toString) == 'function' && !isObject(val = fn.call(input))) return val;
+  if (typeof (fn = input.valueOf) == 'function' && !isObject(val = fn.call(input))) return val;
+  if (pref !== 'string' && typeof (fn = input.toString) == 'function' && !isObject(val = fn.call(input))) return val;
   throw TypeError("Can't convert object to primitive value");
 };
 
@@ -1472,14 +1426,14 @@ module.exports = !!Object.getOwnPropertySymbols && !fails(function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 var toIndexedObject = __webpack_require__("fc6a");
+var toLength = __webpack_require__("50c4");
 var toAbsoluteIndex = __webpack_require__("23cb");
-var lengthOfArrayLike = __webpack_require__("07fa");
 
 // `Array.prototype.{ indexOf, includes }` methods implementation
 var createMethod = function (IS_INCLUDES) {
   return function ($this, el, fromIndex) {
     var O = toIndexedObject($this);
-    var length = lengthOfArrayLike(O);
+    var length = toLength(O.length);
     var index = toAbsoluteIndex(fromIndex, length);
     var value;
     // Array#includes uses SameValueZero equality algorithm
@@ -1539,8 +1493,7 @@ var bind = __webpack_require__("0366");
 var toObject = __webpack_require__("7b0b");
 var callWithSafeIterationClosing = __webpack_require__("9bdd");
 var isArrayIteratorMethod = __webpack_require__("e95a");
-var isConstructor = __webpack_require__("68ee");
-var lengthOfArrayLike = __webpack_require__("07fa");
+var toLength = __webpack_require__("50c4");
 var createProperty = __webpack_require__("8418");
 var getIterator = __webpack_require__("9a1f");
 var getIteratorMethod = __webpack_require__("35a1");
@@ -1549,26 +1502,26 @@ var getIteratorMethod = __webpack_require__("35a1");
 // https://tc39.es/ecma262/#sec-array.from
 module.exports = function from(arrayLike /* , mapfn = undefined, thisArg = undefined */) {
   var O = toObject(arrayLike);
-  var IS_CONSTRUCTOR = isConstructor(this);
+  var C = typeof this == 'function' ? this : Array;
   var argumentsLength = arguments.length;
   var mapfn = argumentsLength > 1 ? arguments[1] : undefined;
   var mapping = mapfn !== undefined;
-  if (mapping) mapfn = bind(mapfn, argumentsLength > 2 ? arguments[2] : undefined, 2);
   var iteratorMethod = getIteratorMethod(O);
   var index = 0;
   var length, result, step, iterator, next, value;
+  if (mapping) mapfn = bind(mapfn, argumentsLength > 2 ? arguments[2] : undefined, 2);
   // if the target is not iterable or it's an array with the default iterator - use a simple case
-  if (iteratorMethod && !(this == Array && isArrayIteratorMethod(iteratorMethod))) {
+  if (iteratorMethod != undefined && !(C == Array && isArrayIteratorMethod(iteratorMethod))) {
     iterator = getIterator(O, iteratorMethod);
     next = iterator.next;
-    result = IS_CONSTRUCTOR ? new this() : [];
+    result = new C();
     for (;!(step = next.call(iterator)).done; index++) {
       value = mapping ? callWithSafeIterationClosing(iterator, mapfn, [step.value, index], true) : step.value;
       createProperty(result, index, value);
     }
   } else {
-    length = lengthOfArrayLike(O);
-    result = IS_CONSTRUCTOR ? new this(length) : Array(length);
+    length = toLength(O.length);
+    result = new C(length);
     for (;length > index; index++) {
       value = mapping ? mapfn(O[index], index) : O[index];
       createProperty(result, index, value);
@@ -1587,9 +1540,9 @@ module.exports = function from(arrayLike /* , mapfn = undefined, thisArg = undef
 "use strict";
 
 var $ = __webpack_require__("23e7");
-var aCallable = __webpack_require__("59ed");
+var aFunction = __webpack_require__("1c0b");
 var toObject = __webpack_require__("7b0b");
-var lengthOfArrayLike = __webpack_require__("07fa");
+var toLength = __webpack_require__("50c4");
 var toString = __webpack_require__("577e");
 var fails = __webpack_require__("d039");
 var internalSort = __webpack_require__("addb");
@@ -1663,14 +1616,14 @@ var getSortCompare = function (comparefn) {
 // https://tc39.es/ecma262/#sec-array.prototype.sort
 $({ target: 'Array', proto: true, forced: FORCED }, {
   sort: function sort(comparefn) {
-    if (comparefn !== undefined) aCallable(comparefn);
+    if (comparefn !== undefined) aFunction(comparefn);
 
     var array = toObject(this);
 
     if (STABLE_SORT) return comparefn === undefined ? nativeSort.call(array) : nativeSort.call(array, comparefn);
 
     var items = [];
-    var arrayLength = lengthOfArrayLike(array);
+    var arrayLength = toLength(array.length);
     var itemsLength, index;
 
     for (index = 0; index < arrayLength; index++) {
@@ -1691,32 +1644,17 @@ $({ target: 'Array', proto: true, forced: FORCED }, {
 
 /***/ }),
 
-/***/ "5087":
-/***/ (function(module, exports, __webpack_require__) {
-
-var isConstructor = __webpack_require__("68ee");
-var tryToString = __webpack_require__("0d51");
-
-// `Assert: IsConstructor(argument) is true`
-module.exports = function (argument) {
-  if (isConstructor(argument)) return argument;
-  throw TypeError(tryToString(argument) + ' is not a constructor');
-};
-
-
-/***/ }),
-
 /***/ "50c4":
 /***/ (function(module, exports, __webpack_require__) {
 
-var toIntegerOrInfinity = __webpack_require__("5926");
+var toInteger = __webpack_require__("a691");
 
 var min = Math.min;
 
 // `ToLength` abstract operation
 // https://tc39.es/ecma262/#sec-tolength
 module.exports = function (argument) {
-  return argument > 0 ? min(toIntegerOrInfinity(argument), 0x1FFFFFFFFFFFFF) : 0; // 2 ** 53 - 1 == 9007199254740991
+  return argument > 0 ? min(toInteger(argument), 0x1FFFFFFFFFFFFF) : 0; // 2 ** 53 - 1 == 9007199254740991
 };
 
 
@@ -1730,6 +1668,20 @@ var userAgent = __webpack_require__("342f");
 var webkit = userAgent.match(/AppleWebKit\/(\d+)\./);
 
 module.exports = !!webkit && +webkit[1];
+
+
+/***/ }),
+
+/***/ "5135":
+/***/ (function(module, exports, __webpack_require__) {
+
+var toObject = __webpack_require__("7b0b");
+
+var hasOwnProperty = {}.hasOwnProperty;
+
+module.exports = Object.hasOwn || function hasOwn(it, key) {
+  return hasOwnProperty.call(toObject(it), key);
+};
 
 
 /***/ }),
@@ -1750,7 +1702,7 @@ var store = __webpack_require__("c6cd");
 (module.exports = function (key, value) {
   return store[key] || (store[key] = value !== undefined ? value : {});
 })('versions', []).push({
-  version: '3.18.2',
+  version: '3.17.3',
   mode: IS_PURE ? 'pure' : 'global',
   copyright: '© 2021 Denis Pushkarev (zloirock.ru)'
 });
@@ -1776,6 +1728,17 @@ module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
 
 /***/ }),
 
+/***/ "5704":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_normal_vector_vue_vue_type_style_index_0_id_21407b8f_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("6dd9");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_normal_vector_vue_vue_type_style_index_0_id_21407b8f_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_normal_vector_vue_vue_type_style_index_0_id_21407b8f_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+
+
+/***/ }),
+
 /***/ "5718":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1790,10 +1753,10 @@ module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
 /***/ "577e":
 /***/ (function(module, exports, __webpack_require__) {
 
-var classof = __webpack_require__("f5df");
+var isSymbol = __webpack_require__("d9b5");
 
 module.exports = function (argument) {
-  if (classof(argument) === 'Symbol') throw TypeError('Cannot convert a Symbol value to a string');
+  if (isSymbol(argument)) throw TypeError('Cannot convert a Symbol value to a string');
   return String(argument);
 };
 
@@ -1857,38 +1820,6 @@ module.exports = {
 
 /***/ }),
 
-/***/ "5926":
-/***/ (function(module, exports) {
-
-var ceil = Math.ceil;
-var floor = Math.floor;
-
-// `ToIntegerOrInfinity` abstract operation
-// https://tc39.es/ecma262/#sec-tointegerorinfinity
-module.exports = function (argument) {
-  var number = +argument;
-  // eslint-disable-next-line no-self-compare -- safe
-  return number !== number || number === 0 ? 0 : (number > 0 ? floor : ceil)(number);
-};
-
-
-/***/ }),
-
-/***/ "59ed":
-/***/ (function(module, exports, __webpack_require__) {
-
-var isCallable = __webpack_require__("1626");
-var tryToString = __webpack_require__("0d51");
-
-// `Assert: IsCallable(argument) is true`
-module.exports = function (argument) {
-  if (isCallable(argument)) return argument;
-  throw TypeError(tryToString(argument) + ' is not a function');
-};
-
-
-/***/ }),
-
 /***/ "5a34":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1933,30 +1864,6 @@ module.exports = function (bitmap, value) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
-
-/***/ }),
-
-/***/ "5e77":
-/***/ (function(module, exports, __webpack_require__) {
-
-var DESCRIPTORS = __webpack_require__("83ab");
-var hasOwn = __webpack_require__("1a2d");
-
-var FunctionPrototype = Function.prototype;
-// eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
-var getDescriptor = DESCRIPTORS && Object.getOwnPropertyDescriptor;
-
-var EXISTS = hasOwn(FunctionPrototype, 'name');
-// additional protection from minified / mangled / dropped function names
-var PROPER = EXISTS && (function something() { /* empty */ }).name === 'something';
-var CONFIGURABLE = EXISTS && (!DESCRIPTORS || (DESCRIPTORS && getDescriptor(FunctionPrototype, 'name').configurable));
-
-module.exports = {
-  EXISTS: EXISTS,
-  PROPER: PROPER,
-  CONFIGURABLE: CONFIGURABLE
-};
-
 
 /***/ }),
 
@@ -2042,14 +1949,15 @@ module.exports = !$assign || fails(function () {
 /***/ "6547":
 /***/ (function(module, exports, __webpack_require__) {
 
-var toIntegerOrInfinity = __webpack_require__("5926");
+var toInteger = __webpack_require__("a691");
 var toString = __webpack_require__("577e");
 var requireObjectCoercible = __webpack_require__("1d80");
 
+// `String.prototype.codePointAt` methods implementation
 var createMethod = function (CONVERT_TO_STRING) {
   return function ($this, pos) {
     var S = toString(requireObjectCoercible($this));
-    var position = toIntegerOrInfinity(pos);
+    var position = toInteger(pos);
     var size = S.length;
     var first, second;
     if (position < 0 || position >= size) return CONVERT_TO_STRING ? '' : undefined;
@@ -2297,54 +2205,6 @@ module.exports = function (originalArray, length) {
 
 /***/ }),
 
-/***/ "68ee":
-/***/ (function(module, exports, __webpack_require__) {
-
-var fails = __webpack_require__("d039");
-var isCallable = __webpack_require__("1626");
-var classof = __webpack_require__("f5df");
-var getBuiltIn = __webpack_require__("d066");
-var inspectSource = __webpack_require__("8925");
-
-var empty = [];
-var construct = getBuiltIn('Reflect', 'construct');
-var constructorRegExp = /^\s*(?:class|function)\b/;
-var exec = constructorRegExp.exec;
-var INCORRECT_TO_STRING = !constructorRegExp.exec(function () { /* empty */ });
-
-var isConstructorModern = function (argument) {
-  if (!isCallable(argument)) return false;
-  try {
-    construct(Object, empty, argument);
-    return true;
-  } catch (error) {
-    return false;
-  }
-};
-
-var isConstructorLegacy = function (argument) {
-  if (!isCallable(argument)) return false;
-  switch (classof(argument)) {
-    case 'AsyncFunction':
-    case 'GeneratorFunction':
-    case 'AsyncGeneratorFunction': return false;
-    // we can't check .prototype since constructors produced by .bind haven't it
-  } return INCORRECT_TO_STRING || !!exec.call(constructorRegExp, inspectSource(argument));
-};
-
-// `IsConstructor` abstract operation
-// https://tc39.es/ecma262/#sec-isconstructor
-module.exports = !construct || fails(function () {
-  var called;
-  return isConstructorModern(isConstructorModern.call)
-    || !isConstructorModern(Object)
-    || !isConstructorModern(function () { called = true; })
-    || called;
-}) ? isConstructorLegacy : isConstructorModern;
-
-
-/***/ }),
-
 /***/ "69f3":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2352,7 +2212,7 @@ var NATIVE_WEAK_MAP = __webpack_require__("7f9a");
 var global = __webpack_require__("da84");
 var isObject = __webpack_require__("861d");
 var createNonEnumerableProperty = __webpack_require__("9112");
-var hasOwn = __webpack_require__("1a2d");
+var objectHas = __webpack_require__("5135");
 var shared = __webpack_require__("c6cd");
 var sharedKey = __webpack_require__("f772");
 var hiddenKeys = __webpack_require__("d012");
@@ -2395,16 +2255,16 @@ if (NATIVE_WEAK_MAP || shared.state) {
   var STATE = sharedKey('state');
   hiddenKeys[STATE] = true;
   set = function (it, metadata) {
-    if (hasOwn(it, STATE)) throw new TypeError(OBJECT_ALREADY_INITIALIZED);
+    if (objectHas(it, STATE)) throw new TypeError(OBJECT_ALREADY_INITIALIZED);
     metadata.facade = it;
     createNonEnumerableProperty(it, STATE, metadata);
     return metadata;
   };
   get = function (it) {
-    return hasOwn(it, STATE) ? it[STATE] : {};
+    return objectHas(it, STATE) ? it[STATE] : {};
   };
   has = function (it) {
-    return hasOwn(it, STATE);
+    return objectHas(it, STATE);
   };
 }
 
@@ -2431,7 +2291,6 @@ var redefine = __webpack_require__("6eeb");
 var InternalMetadataModule = __webpack_require__("f183");
 var iterate = __webpack_require__("2266");
 var anInstance = __webpack_require__("19aa");
-var isCallable = __webpack_require__("1626");
 var isObject = __webpack_require__("861d");
 var fails = __webpack_require__("d039");
 var checkCorrectnessOfIteration = __webpack_require__("1c7e");
@@ -2468,7 +2327,7 @@ module.exports = function (CONSTRUCTOR_NAME, wrapper, common) {
 
   var REPLACE = isForced(
     CONSTRUCTOR_NAME,
-    !isCallable(NativeConstructor) || !(IS_WEAK || NativePrototype.forEach && !fails(function () {
+    typeof NativeConstructor != 'function' || !(IS_WEAK || NativePrototype.forEach && !fails(function () {
       new NativeConstructor().entries().next();
     }))
   );
@@ -2531,6 +2390,13 @@ module.exports = function (CONSTRUCTOR_NAME, wrapper, common) {
 
 /***/ }),
 
+/***/ "6dd9":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "6e06":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2542,13 +2408,11 @@ module.exports = function (CONSTRUCTOR_NAME, wrapper, common) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__("da84");
-var isCallable = __webpack_require__("1626");
-var hasOwn = __webpack_require__("1a2d");
 var createNonEnumerableProperty = __webpack_require__("9112");
+var has = __webpack_require__("5135");
 var setGlobal = __webpack_require__("ce4e");
 var inspectSource = __webpack_require__("8925");
 var InternalStateModule = __webpack_require__("69f3");
-var CONFIGURABLE_FUNCTION_NAME = __webpack_require__("5e77").CONFIGURABLE;
 
 var getInternalState = InternalStateModule.get;
 var enforceInternalState = InternalStateModule.enforce;
@@ -2558,18 +2422,14 @@ var TEMPLATE = String(String).split('String');
   var unsafe = options ? !!options.unsafe : false;
   var simple = options ? !!options.enumerable : false;
   var noTargetGet = options ? !!options.noTargetGet : false;
-  var name = options && options.name !== undefined ? options.name : key;
   var state;
-  if (isCallable(value)) {
-    if (String(name).slice(0, 7) === 'Symbol(') {
-      name = '[' + String(name).replace(/^Symbol\(([^)]*)\)/, '$1') + ']';
-    }
-    if (!hasOwn(value, 'name') || (CONFIGURABLE_FUNCTION_NAME && value.name !== name)) {
-      createNonEnumerableProperty(value, 'name', name);
+  if (typeof value == 'function') {
+    if (typeof key == 'string' && !has(value, 'name')) {
+      createNonEnumerableProperty(value, 'name', key);
     }
     state = enforceInternalState(value);
     if (!state.source) {
-      state.source = TEMPLATE.join(typeof name == 'string' ? name : '');
+      state.source = TEMPLATE.join(typeof key == 'string' ? key : '');
     }
   }
   if (O === global) {
@@ -2585,7 +2445,7 @@ var TEMPLATE = String(String).split('String');
   else createNonEnumerableProperty(O, key, value);
 // add fake Function#toString for correct work wrapped methods / constructors with methods like LoDash isNative
 })(Function.prototype, 'toString', function toString() {
-  return isCallable(this) && getInternalState(this).source || inspectSource(this);
+  return typeof this == 'function' && getInternalState(this).source || inspectSource(this);
 });
 
 
@@ -2594,7 +2454,6 @@ var TEMPLATE = String(String).split('String');
 /***/ "7156":
 /***/ (function(module, exports, __webpack_require__) {
 
-var isCallable = __webpack_require__("1626");
 var isObject = __webpack_require__("861d");
 var setPrototypeOf = __webpack_require__("d2bb");
 
@@ -2605,7 +2464,7 @@ module.exports = function ($this, dummy, Wrapper) {
     // it can work only with native `setPrototypeOf`
     setPrototypeOf &&
     // we haven't completely correct pre-ES6 way for getting `new.target`, so use this
-    isCallable(NewTarget = dummy.constructor) &&
+    typeof (NewTarget = dummy.constructor) == 'function' &&
     NewTarget !== Wrapper &&
     isObject(NewTargetPrototype = NewTarget.prototype) &&
     NewTargetPrototype !== Wrapper.prototype
@@ -2613,6 +2472,13 @@ module.exports = function ($this, dummy, Wrapper) {
   return $this;
 };
 
+
+/***/ }),
+
+/***/ "7246":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -2636,13 +2502,13 @@ exports.f = Object.getOwnPropertySymbols;
 /***/ (function(module, exports, __webpack_require__) {
 
 var path = __webpack_require__("428f");
-var hasOwn = __webpack_require__("1a2d");
+var has = __webpack_require__("5135");
 var wrappedWellKnownSymbolModule = __webpack_require__("e538");
 var defineProperty = __webpack_require__("9bf2").f;
 
 module.exports = function (NAME) {
   var Symbol = path.Symbol || (path.Symbol = {});
-  if (!hasOwn(Symbol, NAME)) defineProperty(Symbol, NAME, {
+  if (!has(Symbol, NAME)) defineProperty(Symbol, NAME, {
     value: wrappedWellKnownSymbolModule.f(NAME)
   });
 };
@@ -2837,9 +2703,6 @@ addToUnscopables(FIND);
 "use strict";
 
 var $ = __webpack_require__("23e7");
-var IS_PURE = __webpack_require__("c430");
-var FunctionName = __webpack_require__("5e77");
-var isCallable = __webpack_require__("1626");
 var createIteratorConstructor = __webpack_require__("9ed3");
 var getPrototypeOf = __webpack_require__("e163");
 var setPrototypeOf = __webpack_require__("d2bb");
@@ -2847,11 +2710,10 @@ var setToStringTag = __webpack_require__("d44e");
 var createNonEnumerableProperty = __webpack_require__("9112");
 var redefine = __webpack_require__("6eeb");
 var wellKnownSymbol = __webpack_require__("b622");
+var IS_PURE = __webpack_require__("c430");
 var Iterators = __webpack_require__("3f8c");
 var IteratorsCore = __webpack_require__("ae93");
 
-var PROPER_FUNCTION_NAME = FunctionName.PROPER;
-var CONFIGURABLE_FUNCTION_NAME = FunctionName.CONFIGURABLE;
 var IteratorPrototype = IteratorsCore.IteratorPrototype;
 var BUGGY_SAFARI_ITERATORS = IteratorsCore.BUGGY_SAFARI_ITERATORS;
 var ITERATOR = wellKnownSymbol('iterator');
@@ -2891,8 +2753,8 @@ module.exports = function (Iterable, NAME, IteratorConstructor, next, DEFAULT, I
       if (!IS_PURE && getPrototypeOf(CurrentIteratorPrototype) !== IteratorPrototype) {
         if (setPrototypeOf) {
           setPrototypeOf(CurrentIteratorPrototype, IteratorPrototype);
-        } else if (!isCallable(CurrentIteratorPrototype[ITERATOR])) {
-          redefine(CurrentIteratorPrototype, ITERATOR, returnThis);
+        } else if (typeof CurrentIteratorPrototype[ITERATOR] != 'function') {
+          createNonEnumerableProperty(CurrentIteratorPrototype, ITERATOR, returnThis);
         }
       }
       // Set @@toStringTag to native iterators
@@ -2902,14 +2764,16 @@ module.exports = function (Iterable, NAME, IteratorConstructor, next, DEFAULT, I
   }
 
   // fix Array.prototype.{ values, @@iterator }.name in V8 / FF
-  if (PROPER_FUNCTION_NAME && DEFAULT == VALUES && nativeIterator && nativeIterator.name !== VALUES) {
-    if (!IS_PURE && CONFIGURABLE_FUNCTION_NAME) {
-      createNonEnumerableProperty(IterablePrototype, 'name', VALUES);
-    } else {
-      INCORRECT_VALUES_NAME = true;
-      defaultIterator = function values() { return nativeIterator.call(this); };
-    }
+  if (DEFAULT == VALUES && nativeIterator && nativeIterator.name !== VALUES) {
+    INCORRECT_VALUES_NAME = true;
+    defaultIterator = function values() { return nativeIterator.call(this); };
   }
+
+  // define iterator
+  if ((!IS_PURE || FORCED) && IterablePrototype[ITERATOR] !== defaultIterator) {
+    createNonEnumerableProperty(IterablePrototype, ITERATOR, defaultIterator);
+  }
+  Iterators[NAME] = defaultIterator;
 
   // export additional methods
   if (DEFAULT) {
@@ -2925,12 +2789,6 @@ module.exports = function (Iterable, NAME, IteratorConstructor, next, DEFAULT, I
     } else $({ target: NAME, proto: true, forced: BUGGY_SAFARI_ITERATORS || INCORRECT_VALUES_NAME }, methods);
   }
 
-  // define iterator
-  if ((!IS_PURE || FORCED) && IterablePrototype[ITERATOR] !== defaultIterator) {
-    redefine(IterablePrototype, ITERATOR, defaultIterator, { name: DEFAULT });
-  }
-  Iterators[NAME] = defaultIterator;
-
   return methods;
 };
 
@@ -2941,12 +2799,11 @@ module.exports = function (Iterable, NAME, IteratorConstructor, next, DEFAULT, I
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__("da84");
-var isCallable = __webpack_require__("1626");
 var inspectSource = __webpack_require__("8925");
 
 var WeakMap = global.WeakMap;
 
-module.exports = isCallable(WeakMap) && /native code/.test(inspectSource(WeakMap));
+module.exports = typeof WeakMap === 'function' && /native code/.test(inspectSource(WeakMap));
 
 
 /***/ }),
@@ -2958,13 +2815,13 @@ module.exports = isCallable(WeakMap) && /native code/.test(inspectSource(WeakMap
 
 var toObject = __webpack_require__("7b0b");
 var toAbsoluteIndex = __webpack_require__("23cb");
-var lengthOfArrayLike = __webpack_require__("07fa");
+var toLength = __webpack_require__("50c4");
 
 // `Array.prototype.fill` method implementation
 // https://tc39.es/ecma262/#sec-array.prototype.fill
 module.exports = function fill(value /* , start = 0, end = @length */) {
   var O = toObject(this);
-  var length = lengthOfArrayLike(O);
+  var length = toLength(O.length);
   var argumentsLength = arguments.length;
   var index = toAbsoluteIndex(argumentsLength > 1 ? arguments[1] : undefined, length);
   var end = argumentsLength > 2 ? arguments[2] : undefined;
@@ -2981,10 +2838,10 @@ module.exports = function fill(value /* , start = 0, end = @length */) {
 
 var isObject = __webpack_require__("861d");
 
-// `Assert: Type(argument) is Object`
-module.exports = function (argument) {
-  if (isObject(argument)) return argument;
-  throw TypeError(String(argument) + ' is not an object');
+module.exports = function (it) {
+  if (!isObject(it)) {
+    throw TypeError(String(it) + ' is not an object');
+  } return it;
 };
 
 
@@ -3030,12 +2887,10 @@ module.exports = function (object, key, value) {
 /***/ }),
 
 /***/ "861d":
-/***/ (function(module, exports, __webpack_require__) {
-
-var isCallable = __webpack_require__("1626");
+/***/ (function(module, exports) {
 
 module.exports = function (it) {
-  return typeof it === 'object' ? it !== null : isCallable(it);
+  return typeof it === 'object' ? it !== null : typeof it === 'function';
 };
 
 
@@ -3129,13 +2984,12 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /***/ "8925":
 /***/ (function(module, exports, __webpack_require__) {
 
-var isCallable = __webpack_require__("1626");
 var store = __webpack_require__("c6cd");
 
 var functionToString = Function.toString;
 
 // this helper broken in `core-js@3.4.1-3.4.4`, so we can't use `shared` helper
-if (!isCallable(store.inspectSource)) {
+if (typeof store.inspectSource != 'function') {
   store.inspectSource = function (it) {
     return functionToString.call(it);
   };
@@ -3331,7 +3185,6 @@ module.exports = patchedExec;
 /***/ (function(module, exports, __webpack_require__) {
 
 var fails = __webpack_require__("d039");
-var isCallable = __webpack_require__("1626");
 
 var replacement = /#|\.prototype\./;
 
@@ -3339,7 +3192,7 @@ var isForced = function (feature, detection) {
   var value = data[normalize(feature)];
   return value == POLYFILL ? true
     : value == NATIVE ? false
-    : isCallable(detection) ? fails(detection)
+    : typeof detection == 'function' ? fails(detection)
     : !!detection;
 };
 
@@ -3366,7 +3219,7 @@ var fails = __webpack_require__("d039");
 var isArray = __webpack_require__("e8b5");
 var isObject = __webpack_require__("861d");
 var toObject = __webpack_require__("7b0b");
-var lengthOfArrayLike = __webpack_require__("07fa");
+var toLength = __webpack_require__("50c4");
 var createProperty = __webpack_require__("8418");
 var arraySpeciesCreate = __webpack_require__("65f0");
 var arrayMethodHasSpeciesSupport = __webpack_require__("1dde");
@@ -3409,7 +3262,7 @@ $({ target: 'Array', proto: true, forced: FORCED }, {
     for (i = -1, length = arguments.length; i < length; i++) {
       E = i === -1 ? O : arguments[i];
       if (isConcatSpreadable(E)) {
-        len = lengthOfArrayLike(E);
+        len = toLength(E.length);
         if (n + len > MAX_SAFE_INTEGER) throw TypeError(MAXIMUM_ALLOWED_INDEX_EXCEEDED);
         for (k = 0; k < len; k++, n++) if (k in E) createProperty(A, n, E[k]);
       } else {
@@ -3428,14 +3281,14 @@ $({ target: 'Array', proto: true, forced: FORCED }, {
 /***/ "9a1f":
 /***/ (function(module, exports, __webpack_require__) {
 
-var aCallable = __webpack_require__("59ed");
 var anObject = __webpack_require__("825a");
 var getIteratorMethod = __webpack_require__("35a1");
 
-module.exports = function (argument, usingIterator) {
-  var iteratorMethod = arguments.length < 2 ? getIteratorMethod(argument) : usingIterator;
-  if (aCallable(iteratorMethod)) return anObject(iteratorMethod.call(argument));
-  throw TypeError(String(argument) + ' is not iterable');
+module.exports = function (it, usingIterator) {
+  var iteratorMethod = arguments.length < 2 ? getIteratorMethod(it) : usingIterator;
+  if (typeof iteratorMethod != 'function') {
+    throw TypeError(String(it) + ' is not iterable');
+  } return anObject(iteratorMethod.call(it));
 };
 
 
@@ -3601,9 +3454,8 @@ var IS_PURE = __webpack_require__("c430");
 var DESCRIPTORS = __webpack_require__("83ab");
 var NATIVE_SYMBOL = __webpack_require__("4930");
 var fails = __webpack_require__("d039");
-var hasOwn = __webpack_require__("1a2d");
+var has = __webpack_require__("5135");
 var isArray = __webpack_require__("e8b5");
-var isCallable = __webpack_require__("1626");
 var isObject = __webpack_require__("861d");
 var isSymbol = __webpack_require__("d9b5");
 var anObject = __webpack_require__("825a");
@@ -3620,6 +3472,7 @@ var getOwnPropertySymbolsModule = __webpack_require__("7418");
 var getOwnPropertyDescriptorModule = __webpack_require__("06cf");
 var definePropertyModule = __webpack_require__("9bf2");
 var propertyIsEnumerableModule = __webpack_require__("d1e7");
+var createNonEnumerableProperty = __webpack_require__("9112");
 var redefine = __webpack_require__("6eeb");
 var shared = __webpack_require__("5692");
 var sharedKey = __webpack_require__("f772");
@@ -3684,12 +3537,12 @@ var $defineProperty = function defineProperty(O, P, Attributes) {
   anObject(O);
   var key = toPropertyKey(P);
   anObject(Attributes);
-  if (hasOwn(AllSymbols, key)) {
+  if (has(AllSymbols, key)) {
     if (!Attributes.enumerable) {
-      if (!hasOwn(O, HIDDEN)) nativeDefineProperty(O, HIDDEN, createPropertyDescriptor(1, {}));
+      if (!has(O, HIDDEN)) nativeDefineProperty(O, HIDDEN, createPropertyDescriptor(1, {}));
       O[HIDDEN][key] = true;
     } else {
-      if (hasOwn(O, HIDDEN) && O[HIDDEN][key]) O[HIDDEN][key] = false;
+      if (has(O, HIDDEN) && O[HIDDEN][key]) O[HIDDEN][key] = false;
       Attributes = nativeObjectCreate(Attributes, { enumerable: createPropertyDescriptor(0, false) });
     } return setSymbolDescriptor(O, key, Attributes);
   } return nativeDefineProperty(O, key, Attributes);
@@ -3712,17 +3565,16 @@ var $create = function create(O, Properties) {
 var $propertyIsEnumerable = function propertyIsEnumerable(V) {
   var P = toPropertyKey(V);
   var enumerable = nativePropertyIsEnumerable.call(this, P);
-  if (this === ObjectPrototype && hasOwn(AllSymbols, P) && !hasOwn(ObjectPrototypeSymbols, P)) return false;
-  return enumerable || !hasOwn(this, P) || !hasOwn(AllSymbols, P) || hasOwn(this, HIDDEN) && this[HIDDEN][P]
-    ? enumerable : true;
+  if (this === ObjectPrototype && has(AllSymbols, P) && !has(ObjectPrototypeSymbols, P)) return false;
+  return enumerable || !has(this, P) || !has(AllSymbols, P) || has(this, HIDDEN) && this[HIDDEN][P] ? enumerable : true;
 };
 
 var $getOwnPropertyDescriptor = function getOwnPropertyDescriptor(O, P) {
   var it = toIndexedObject(O);
   var key = toPropertyKey(P);
-  if (it === ObjectPrototype && hasOwn(AllSymbols, key) && !hasOwn(ObjectPrototypeSymbols, key)) return;
+  if (it === ObjectPrototype && has(AllSymbols, key) && !has(ObjectPrototypeSymbols, key)) return;
   var descriptor = nativeGetOwnPropertyDescriptor(it, key);
-  if (descriptor && hasOwn(AllSymbols, key) && !(hasOwn(it, HIDDEN) && it[HIDDEN][key])) {
+  if (descriptor && has(AllSymbols, key) && !(has(it, HIDDEN) && it[HIDDEN][key])) {
     descriptor.enumerable = true;
   }
   return descriptor;
@@ -3732,7 +3584,7 @@ var $getOwnPropertyNames = function getOwnPropertyNames(O) {
   var names = nativeGetOwnPropertyNames(toIndexedObject(O));
   var result = [];
   $forEach(names, function (key) {
-    if (!hasOwn(AllSymbols, key) && !hasOwn(hiddenKeys, key)) result.push(key);
+    if (!has(AllSymbols, key) && !has(hiddenKeys, key)) result.push(key);
   });
   return result;
 };
@@ -3742,7 +3594,7 @@ var $getOwnPropertySymbols = function getOwnPropertySymbols(O) {
   var names = nativeGetOwnPropertyNames(IS_OBJECT_PROTOTYPE ? ObjectPrototypeSymbols : toIndexedObject(O));
   var result = [];
   $forEach(names, function (key) {
-    if (hasOwn(AllSymbols, key) && (!IS_OBJECT_PROTOTYPE || hasOwn(ObjectPrototype, key))) {
+    if (has(AllSymbols, key) && (!IS_OBJECT_PROTOTYPE || has(ObjectPrototype, key))) {
       result.push(AllSymbols[key]);
     }
   });
@@ -3758,7 +3610,7 @@ if (!NATIVE_SYMBOL) {
     var tag = uid(description);
     var setter = function (value) {
       if (this === ObjectPrototype) setter.call(ObjectPrototypeSymbols, value);
-      if (hasOwn(this, HIDDEN) && hasOwn(this[HIDDEN], tag)) this[HIDDEN][tag] = false;
+      if (has(this, HIDDEN) && has(this[HIDDEN], tag)) this[HIDDEN][tag] = false;
       setSymbolDescriptor(this, tag, createPropertyDescriptor(1, value));
     };
     if (DESCRIPTORS && USE_SETTER) setSymbolDescriptor(ObjectPrototype, tag, { configurable: true, set: setter });
@@ -3810,7 +3662,7 @@ $({ target: SYMBOL, stat: true, forced: !NATIVE_SYMBOL }, {
   // https://tc39.es/ecma262/#sec-symbol.for
   'for': function (key) {
     var string = $toString(key);
-    if (hasOwn(StringToSymbolRegistry, string)) return StringToSymbolRegistry[string];
+    if (has(StringToSymbolRegistry, string)) return StringToSymbolRegistry[string];
     var symbol = $Symbol(string);
     StringToSymbolRegistry[string] = symbol;
     SymbolToStringRegistry[symbol] = string;
@@ -3820,7 +3672,7 @@ $({ target: SYMBOL, stat: true, forced: !NATIVE_SYMBOL }, {
   // https://tc39.es/ecma262/#sec-symbol.keyfor
   keyFor: function keyFor(sym) {
     if (!isSymbol(sym)) throw TypeError(sym + ' is not a symbol');
-    if (hasOwn(SymbolToStringRegistry, sym)) return SymbolToStringRegistry[sym];
+    if (has(SymbolToStringRegistry, sym)) return SymbolToStringRegistry[sym];
   },
   useSetter: function () { USE_SETTER = true; },
   useSimple: function () { USE_SETTER = false; }
@@ -3881,7 +3733,7 @@ if ($stringify) {
       $replacer = replacer;
       if (!isObject(replacer) && it === undefined || isSymbol(it)) return; // IE8 returns string on undefined
       if (!isArray(replacer)) replacer = function (key, value) {
-        if (isCallable($replacer)) value = $replacer.call(this, key, value);
+        if (typeof $replacer == 'function') value = $replacer.call(this, key, value);
         if (!isSymbol(value)) return value;
       };
       args[1] = replacer;
@@ -3893,10 +3745,7 @@ if ($stringify) {
 // `Symbol.prototype[@@toPrimitive]` method
 // https://tc39.es/ecma262/#sec-symbol.prototype-@@toprimitive
 if (!$Symbol[PROTOTYPE][TO_PRIMITIVE]) {
-  var valueOf = $Symbol[PROTOTYPE].valueOf;
-  redefine($Symbol[PROTOTYPE], TO_PRIMITIVE, function () {
-    return valueOf.apply(this, arguments);
-  });
+  createNonEnumerableProperty($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
 }
 // `Symbol.prototype[@@toStringTag]` property
 // https://tc39.es/ecma262/#sec-symbol.prototype-@@tostringtag
@@ -3946,6 +3795,21 @@ module.exports = function (METHOD_NAME, argument) {
 
 /***/ }),
 
+/***/ "a691":
+/***/ (function(module, exports) {
+
+var ceil = Math.ceil;
+var floor = Math.floor;
+
+// `ToInteger` abstract operation
+// https://tc39.es/ecma262/#sec-tointeger
+module.exports = function (argument) {
+  return isNaN(argument = +argument) ? 0 : (argument > 0 ? floor : ceil)(argument);
+};
+
+
+/***/ }),
+
 /***/ "a9e3":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3955,34 +3819,31 @@ var DESCRIPTORS = __webpack_require__("83ab");
 var global = __webpack_require__("da84");
 var isForced = __webpack_require__("94ca");
 var redefine = __webpack_require__("6eeb");
-var hasOwn = __webpack_require__("1a2d");
+var has = __webpack_require__("5135");
+var classof = __webpack_require__("c6b6");
 var inheritIfRequired = __webpack_require__("7156");
 var isSymbol = __webpack_require__("d9b5");
 var toPrimitive = __webpack_require__("c04e");
 var fails = __webpack_require__("d039");
+var create = __webpack_require__("7c73");
 var getOwnPropertyNames = __webpack_require__("241c").f;
 var getOwnPropertyDescriptor = __webpack_require__("06cf").f;
 var defineProperty = __webpack_require__("9bf2").f;
-var thisNumberValue = __webpack_require__("408a");
 var trim = __webpack_require__("58a8").trim;
 
 var NUMBER = 'Number';
 var NativeNumber = global[NUMBER];
 var NumberPrototype = NativeNumber.prototype;
 
-// `ToNumeric` abstract operation
-// https://tc39.es/ecma262/#sec-tonumeric
-var toNumeric = function (value) {
-  var primValue = toPrimitive(value, 'number');
-  return typeof primValue === 'bigint' ? primValue : toNumber(primValue);
-};
+// Opera ~12 has broken Object#toString
+var BROKEN_CLASSOF = classof(create(NumberPrototype)) == NUMBER;
 
 // `ToNumber` abstract operation
 // https://tc39.es/ecma262/#sec-tonumber
 var toNumber = function (argument) {
+  if (isSymbol(argument)) throw TypeError('Cannot convert a Symbol value to a number');
   var it = toPrimitive(argument, 'number');
   var first, third, radix, maxCode, digits, length, index, code;
-  if (isSymbol(it)) throw TypeError('Cannot convert a Symbol value to a number');
   if (typeof it == 'string' && it.length > 2) {
     it = trim(it);
     first = it.charCodeAt(0);
@@ -4011,21 +3872,23 @@ var toNumber = function (argument) {
 // https://tc39.es/ecma262/#sec-number-constructor
 if (isForced(NUMBER, !NativeNumber(' 0o1') || !NativeNumber('0b1') || NativeNumber('+0x1'))) {
   var NumberWrapper = function Number(value) {
-    var n = arguments.length < 1 ? 0 : NativeNumber(toNumeric(value));
+    var it = arguments.length < 1 ? 0 : value;
     var dummy = this;
-    // check on 1..constructor(foo) case
-    return dummy instanceof NumberWrapper && fails(function () { thisNumberValue(dummy); })
-      ? inheritIfRequired(Object(n), dummy, NumberWrapper) : n;
+    return dummy instanceof NumberWrapper
+      // check on 1..constructor(foo) case
+      && (BROKEN_CLASSOF ? fails(function () { NumberPrototype.valueOf.call(dummy); }) : classof(dummy) != NUMBER)
+        ? inheritIfRequired(new NativeNumber(toNumber(it)), dummy, NumberWrapper) : toNumber(it);
   };
   for (var keys = DESCRIPTORS ? getOwnPropertyNames(NativeNumber) : (
     // ES3:
     'MAX_VALUE,MIN_VALUE,NaN,NEGATIVE_INFINITY,POSITIVE_INFINITY,' +
     // ES2015 (in case, if modules with ES2015 Number statics required before):
-    'EPSILON,MAX_SAFE_INTEGER,MIN_SAFE_INTEGER,isFinite,isInteger,isNaN,isSafeInteger,parseFloat,parseInt,' +
+    'EPSILON,isFinite,isInteger,isNaN,isSafeInteger,MAX_SAFE_INTEGER,' +
+    'MIN_SAFE_INTEGER,parseFloat,parseInt,isInteger,' +
     // ESNext
     'fromString,range'
   ).split(','), j = 0, key; keys.length > j; j++) {
-    if (hasOwn(NativeNumber, key = keys[j]) && !hasOwn(NumberWrapper, key)) {
+    if (has(NativeNumber, key = keys[j]) && !has(NumberWrapper, key)) {
       defineProperty(NumberWrapper, key, getOwnPropertyDescriptor(NativeNumber, key));
     }
   }
@@ -4169,10 +4032,9 @@ module.exports = mergeSort;
 "use strict";
 
 var fails = __webpack_require__("d039");
-var isCallable = __webpack_require__("1626");
 var create = __webpack_require__("7c73");
 var getPrototypeOf = __webpack_require__("e163");
-var redefine = __webpack_require__("6eeb");
+var createNonEnumerableProperty = __webpack_require__("9112");
 var wellKnownSymbol = __webpack_require__("b622");
 var IS_PURE = __webpack_require__("c430");
 
@@ -4205,8 +4067,8 @@ else if (IS_PURE) IteratorPrototype = create(IteratorPrototype);
 
 // `%IteratorPrototype%[@@iterator]()` method
 // https://tc39.es/ecma262/#sec-%iteratorprototype%-@@iterator
-if (!isCallable(IteratorPrototype[ITERATOR])) {
-  redefine(IteratorPrototype, ITERATOR, function () {
+if (typeof IteratorPrototype[ITERATOR] !== 'function') {
+  createNonEnumerableProperty(IteratorPrototype, ITERATOR, function () {
     return this;
   });
 }
@@ -4247,7 +4109,6 @@ module.exports = TO_STRING_TAG_SUPPORT ? {}.toString : function toString() {
 /***/ (function(module, exports, __webpack_require__) {
 
 var DESCRIPTORS = __webpack_require__("83ab");
-var FUNCTION_NAME_EXISTS = __webpack_require__("5e77").EXISTS;
 var defineProperty = __webpack_require__("9bf2").f;
 
 var FunctionPrototype = Function.prototype;
@@ -4257,7 +4118,7 @@ var NAME = 'name';
 
 // Function instances `.name` property
 // https://tc39.es/ecma262/#sec-function-instances-name
-if (DESCRIPTORS && !FUNCTION_NAME_EXISTS) {
+if (DESCRIPTORS && !(NAME in FunctionPrototype)) {
   defineProperty(FunctionPrototype, NAME, {
     configurable: true,
     get: function () {
@@ -4273,23 +4134,12 @@ if (DESCRIPTORS && !FUNCTION_NAME_EXISTS) {
 
 /***/ }),
 
-/***/ "b14c":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_shape_vue_vue_type_style_index_0_id_7feecf5c_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("c512");
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_shape_vue_vue_type_style_index_0_id_7feecf5c_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_shape_vue_vue_type_style_index_0_id_7feecf5c_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
-/* unused harmony reexport * */
-
-
-/***/ }),
-
 /***/ "b622":
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__("da84");
 var shared = __webpack_require__("5692");
-var hasOwn = __webpack_require__("1a2d");
+var has = __webpack_require__("5135");
 var uid = __webpack_require__("90e3");
 var NATIVE_SYMBOL = __webpack_require__("4930");
 var USE_SYMBOL_AS_UID = __webpack_require__("fdbf");
@@ -4299,8 +4149,8 @@ var Symbol = global.Symbol;
 var createWellKnownSymbol = USE_SYMBOL_AS_UID ? Symbol : Symbol && Symbol.withoutSetter || uid;
 
 module.exports = function (name) {
-  if (!hasOwn(WellKnownSymbolsStore, name) || !(NATIVE_SYMBOL || typeof WellKnownSymbolsStore[name] == 'string')) {
-    if (NATIVE_SYMBOL && hasOwn(Symbol, name)) {
+  if (!has(WellKnownSymbolsStore, name) || !(NATIVE_SYMBOL || typeof WellKnownSymbolsStore[name] == 'string')) {
+    if (NATIVE_SYMBOL && has(Symbol, name)) {
       WellKnownSymbolsStore[name] = Symbol[name];
     } else {
       WellKnownSymbolsStore[name] = createWellKnownSymbol('Symbol.' + name);
@@ -4338,7 +4188,7 @@ $({ target: 'Object', stat: true, forced: FAILS_ON_PRIMITIVES }, {
 var bind = __webpack_require__("0366");
 var IndexedObject = __webpack_require__("44ad");
 var toObject = __webpack_require__("7b0b");
-var lengthOfArrayLike = __webpack_require__("07fa");
+var toLength = __webpack_require__("50c4");
 var arraySpeciesCreate = __webpack_require__("65f0");
 
 var push = [].push;
@@ -4356,7 +4206,7 @@ var createMethod = function (TYPE) {
     var O = toObject($this);
     var self = IndexedObject(O);
     var boundFunction = bind(callbackfn, that, 3);
-    var length = lengthOfArrayLike(self);
+    var length = toLength(self.length);
     var index = 0;
     var create = specificCreate || arraySpeciesCreate;
     var target = IS_MAP ? create($this, length) : IS_FILTER || IS_FILTER_REJECT ? create($this, 0) : undefined;
@@ -4458,7 +4308,6 @@ module.exports = !fails(function () {
 
 var isObject = __webpack_require__("861d");
 var isSymbol = __webpack_require__("d9b5");
-var getMethod = __webpack_require__("dc4a");
 var ordinaryToPrimitive = __webpack_require__("485a");
 var wellKnownSymbol = __webpack_require__("b622");
 
@@ -4468,9 +4317,9 @@ var TO_PRIMITIVE = wellKnownSymbol('toPrimitive');
 // https://tc39.es/ecma262/#sec-toprimitive
 module.exports = function (input, pref) {
   if (!isObject(input) || isSymbol(input)) return input;
-  var exoticToPrim = getMethod(input, TO_PRIMITIVE);
+  var exoticToPrim = input[TO_PRIMITIVE];
   var result;
-  if (exoticToPrim) {
+  if (exoticToPrim !== undefined) {
     if (pref === undefined) pref = 'default';
     result = exoticToPrim.call(input, pref);
     if (!isObject(result) || isSymbol(result)) return result;
@@ -4488,13 +4337,6 @@ module.exports = function (input, pref) {
 
 module.exports = false;
 
-
-/***/ }),
-
-/***/ "c512":
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -4554,7 +4396,7 @@ module.exports = g;
 /***/ "ca84":
 /***/ (function(module, exports, __webpack_require__) {
 
-var hasOwn = __webpack_require__("1a2d");
+var has = __webpack_require__("5135");
 var toIndexedObject = __webpack_require__("fc6a");
 var indexOf = __webpack_require__("4d64").indexOf;
 var hiddenKeys = __webpack_require__("d012");
@@ -4564,9 +4406,9 @@ module.exports = function (object, names) {
   var i = 0;
   var result = [];
   var key;
-  for (key in O) !hasOwn(hiddenKeys, key) && hasOwn(O, key) && result.push(key);
+  for (key in O) !has(hiddenKeys, key) && has(O, key) && result.push(key);
   // Don't enum bug & hidden keys
-  while (names.length > i) if (hasOwn(O, key = names[i++])) {
+  while (names.length > i) if (has(O, key = names[i++])) {
     ~indexOf(result, key) || result.push(key);
   }
   return result;
@@ -4711,10 +4553,9 @@ module.exports = function (exec) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__("da84");
-var isCallable = __webpack_require__("1626");
 
-var aFunction = function (argument) {
-  return isCallable(argument) ? argument : undefined;
+var aFunction = function (variable) {
+  return typeof variable == 'function' ? variable : undefined;
 };
 
 module.exports = function (namespace, method) {
@@ -4752,6 +4593,13 @@ exports.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
   return !!descriptor && descriptor.enumerable;
 } : $propertyIsEnumerable;
 
+
+/***/ }),
+
+/***/ "d247":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -4820,13 +4668,13 @@ if (!TO_STRING_TAG_SUPPORT) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var defineProperty = __webpack_require__("9bf2").f;
-var hasOwn = __webpack_require__("1a2d");
+var has = __webpack_require__("5135");
 var wellKnownSymbol = __webpack_require__("b622");
 
 var TO_STRING_TAG = wellKnownSymbol('toStringTag');
 
 module.exports = function (it, TAG, STATIC) {
-  if (it && !hasOwn(it = STATIC ? it : it.prototype, TO_STRING_TAG)) {
+  if (it && !has(it = STATIC ? it : it.prototype, TO_STRING_TAG)) {
     defineProperty(it, TO_STRING_TAG, { configurable: true, value: TAG });
   }
 };
@@ -4950,7 +4798,6 @@ module.exports = /MSIE|Trident/.test(UA);
 /***/ "d9b5":
 /***/ (function(module, exports, __webpack_require__) {
 
-var isCallable = __webpack_require__("1626");
 var getBuiltIn = __webpack_require__("d066");
 var USE_SYMBOL_AS_UID = __webpack_require__("fdbf");
 
@@ -4958,7 +4805,7 @@ module.exports = USE_SYMBOL_AS_UID ? function (it) {
   return typeof it == 'symbol';
 } : function (it) {
   var $Symbol = getBuiltIn('Symbol');
-  return isCallable($Symbol) && Object(it) instanceof $Symbol;
+  return typeof $Symbol == 'function' && Object(it) instanceof $Symbol;
 };
 
 
@@ -5013,21 +4860,6 @@ $({ target: 'Object', stat: true, sham: !DESCRIPTORS }, {
     return result;
   }
 });
-
-
-/***/ }),
-
-/***/ "dc4a":
-/***/ (function(module, exports, __webpack_require__) {
-
-var aCallable = __webpack_require__("59ed");
-
-// `GetMethod` abstract operation
-// https://tc39.es/ecma262/#sec-getmethod
-module.exports = function (V, P) {
-  var func = V[P];
-  return func == null ? undefined : aCallable(func);
-};
 
 
 /***/ }),
@@ -5114,15 +4946,14 @@ module.exports = Object.keys || function keys(O) {
 var $ = __webpack_require__("23e7");
 var DESCRIPTORS = __webpack_require__("83ab");
 var global = __webpack_require__("da84");
-var hasOwn = __webpack_require__("1a2d");
-var isCallable = __webpack_require__("1626");
+var has = __webpack_require__("5135");
 var isObject = __webpack_require__("861d");
 var defineProperty = __webpack_require__("9bf2").f;
 var copyConstructorProperties = __webpack_require__("e893");
 
 var NativeSymbol = global.Symbol;
 
-if (DESCRIPTORS && isCallable(NativeSymbol) && (!('description' in NativeSymbol.prototype) ||
+if (DESCRIPTORS && typeof NativeSymbol == 'function' && (!('description' in NativeSymbol.prototype) ||
   // Safari 12 bug
   NativeSymbol().description !== undefined
 )) {
@@ -5149,7 +4980,7 @@ if (DESCRIPTORS && isCallable(NativeSymbol) && (!('description' in NativeSymbol.
     get: function description() {
       var symbol = isObject(this) ? this.valueOf() : this;
       var string = symbolToString.call(symbol);
-      if (hasOwn(EmptyStringDescriptionStore, symbol)) return '';
+      if (has(EmptyStringDescriptionStore, symbol)) return '';
       var desc = nativeSymbol ? string.slice(7, -1) : string.replace(regexp, '$1');
       return desc === '' ? undefined : desc;
     }
@@ -5166,8 +4997,7 @@ if (DESCRIPTORS && isCallable(NativeSymbol) && (!('description' in NativeSymbol.
 /***/ "e163":
 /***/ (function(module, exports, __webpack_require__) {
 
-var hasOwn = __webpack_require__("1a2d");
-var isCallable = __webpack_require__("1626");
+var has = __webpack_require__("5135");
 var toObject = __webpack_require__("7b0b");
 var sharedKey = __webpack_require__("f772");
 var CORRECT_PROTOTYPE_GETTER = __webpack_require__("e177");
@@ -5179,12 +5009,11 @@ var ObjectPrototype = Object.prototype;
 // https://tc39.es/ecma262/#sec-object.getprototypeof
 // eslint-disable-next-line es/no-object-getprototypeof -- safe
 module.exports = CORRECT_PROTOTYPE_GETTER ? Object.getPrototypeOf : function (O) {
-  var object = toObject(O);
-  if (hasOwn(object, IE_PROTO)) return object[IE_PROTO];
-  var constructor = object.constructor;
-  if (isCallable(constructor) && object instanceof constructor) {
-    return constructor.prototype;
-  } return object instanceof Object ? ObjectPrototype : null;
+  O = toObject(O);
+  if (has(O, IE_PROTO)) return O[IE_PROTO];
+  if (typeof O.constructor == 'function' && O instanceof O.constructor) {
+    return O.constructor.prototype;
+  } return O instanceof Object ? ObjectPrototype : null;
 };
 
 
@@ -5322,7 +5151,7 @@ exports.f = wellKnownSymbol;
 /***/ "e893":
 /***/ (function(module, exports, __webpack_require__) {
 
-var hasOwn = __webpack_require__("1a2d");
+var has = __webpack_require__("5135");
 var ownKeys = __webpack_require__("56ef");
 var getOwnPropertyDescriptorModule = __webpack_require__("06cf");
 var definePropertyModule = __webpack_require__("9bf2");
@@ -5333,7 +5162,7 @@ module.exports = function (target, source) {
   var getOwnPropertyDescriptor = getOwnPropertyDescriptorModule.f;
   for (var i = 0; i < keys.length; i++) {
     var key = keys[i];
-    if (!hasOwn(target, key)) defineProperty(target, key, getOwnPropertyDescriptor(source, key));
+    if (!has(target, key)) defineProperty(target, key, getOwnPropertyDescriptor(source, key));
   }
 };
 
@@ -5348,8 +5177,8 @@ var classof = __webpack_require__("c6b6");
 // `IsArray` abstract operation
 // https://tc39.es/ecma262/#sec-isarray
 // eslint-disable-next-line es/no-array-isarray -- safe
-module.exports = Array.isArray || function isArray(argument) {
-  return classof(argument) == 'Array';
+module.exports = Array.isArray || function isArray(arg) {
+  return classof(arg) == 'Array';
 };
 
 
@@ -5372,13 +5201,20 @@ module.exports = function (it) {
 
 /***/ }),
 
+/***/ "efdc":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "f183":
 /***/ (function(module, exports, __webpack_require__) {
 
 var $ = __webpack_require__("23e7");
 var hiddenKeys = __webpack_require__("d012");
 var isObject = __webpack_require__("861d");
-var hasOwn = __webpack_require__("1a2d");
+var has = __webpack_require__("5135");
 var defineProperty = __webpack_require__("9bf2").f;
 var getOwnPropertyNamesModule = __webpack_require__("241c");
 var getOwnPropertyNamesExternalModule = __webpack_require__("057f");
@@ -5404,7 +5240,7 @@ var setMetadata = function (it) {
 var fastKey = function (it, create) {
   // return a primitive with prefix
   if (!isObject(it)) return typeof it == 'symbol' ? it : (typeof it == 'string' ? 'S' : 'P') + it;
-  if (!hasOwn(it, METADATA)) {
+  if (!has(it, METADATA)) {
     // can't set metadata to uncaught frozen object
     if (!isExtensible(it)) return 'F';
     // not necessary to add metadata
@@ -5416,7 +5252,7 @@ var fastKey = function (it, create) {
 };
 
 var getWeakData = function (it, create) {
-  if (!hasOwn(it, METADATA)) {
+  if (!has(it, METADATA)) {
     // can't set metadata to uncaught frozen object
     if (!isExtensible(it)) return true;
     // not necessary to add metadata
@@ -5429,7 +5265,7 @@ var getWeakData = function (it, create) {
 
 // add metadata on freeze-family methods calling
 var onFreeze = function (it) {
-  if (FREEZING && REQUIRED && isExtensible(it) && !hasOwn(it, METADATA)) setMetadata(it);
+  if (FREEZING && REQUIRED && isExtensible(it) && !has(it, METADATA)) setMetadata(it);
   return it;
 };
 
@@ -5475,7 +5311,6 @@ hiddenKeys[METADATA] = true;
 /***/ (function(module, exports, __webpack_require__) {
 
 var TO_STRING_TAG_SUPPORT = __webpack_require__("00ee");
-var isCallable = __webpack_require__("1626");
 var classofRaw = __webpack_require__("c6b6");
 var wellKnownSymbol = __webpack_require__("b622");
 
@@ -5499,7 +5334,7 @@ module.exports = TO_STRING_TAG_SUPPORT ? classofRaw : function (it) {
     // builtinTag case
     : CORRECT_ARGUMENTS ? classofRaw(O)
     // ES3 arguments fallback
-    : (result = classofRaw(O)) == 'Object' && isCallable(O.callee) ? 'Arguments' : result;
+    : (result = classofRaw(O)) == 'Object' && typeof O.callee == 'function' ? 'Arguments' : result;
 };
 
 
@@ -24836,7 +24671,7 @@ var Overlay_Overlay = /** @class */ (function (_super) {
 // CONCATENATED MODULE: ./src/components/map/_zoom-control.js
 
 
-var CustomZoomControl = /*@__PURE__*/function (Control) {
+var CustomZoomControl = function (Control) {
   function CustomZoomControl(opt_options) {
     var options = opt_options || {};
     var button = document.createElement('button');
@@ -24879,7 +24714,7 @@ var CustomZoomControl = /*@__PURE__*/function (Control) {
   return CustomZoomControl;
 }(control_Control);
 
-var ResetControl = /*@__PURE__*/function (Control) {
+var ResetControl = function (Control) {
   function ResetControl(opt_options) {
     var options = opt_options || {};
     var button = document.createElement('button');
@@ -24919,7 +24754,7 @@ var ResetControl = /*@__PURE__*/function (Control) {
   return ResetControl;
 }(control_Control);
 
-var NivelControl = /*@__PURE__*/function (Control) {
+var NivelControl = function (Control) {
   function NivelControl(opt_options) {
     var options = opt_options || {};
     var button = document.createElement('button');
@@ -36278,10 +36113,11 @@ var Text_Text = /** @class */ (function () {
  */
 /*global ol*/
 if(typeof window !== "undefined"){
-  if (window.ol && !ol.ext) {
-    ol.ext = {};
-  }
+    if (window.ol && !ol.ext) {
+        ol.ext = {};
+      }
 }
+
 
 /** Inherit the prototype methods from one constructor into another.
  * replace deprecated ol method
@@ -36296,28 +36132,31 @@ var ol_ext_inherits = function(child,parent) {
   child.prototype.constructor = child;
 };
 
-if(typeof window !== "undefined"){
-  // Compatibilty with ol > 5 to be removed when v6 is out
-  if (window.ol) {
-    if (!ol.inherits) ol.inherits = ol_ext_inherits;
-  }
 
-  /* IE Polyfill */
-  // NodeList.forEach
-  if (window.NodeList && !NodeList.prototype.forEach) {
-    NodeList.prototype.forEach = Array.prototype.forEach;
+if(typeof window !== "undefined"){
+
+// Compatibilty with ol > 5 to be removed when v6 is out
+if (window.ol) {
+  if (!ol.inherits) ol.inherits = ol_ext_inherits;
+}
+
+/* IE Polyfill */
+// NodeList.forEach
+if (window.NodeList && !NodeList.prototype.forEach) {
+  NodeList.prototype.forEach = Array.prototype.forEach;
+}
+// Element.remove
+if (window.Element && !Element.prototype.remove) {
+  Element.prototype.remove = function() {
+    if (this.parentNode) this.parentNode.removeChild(this);
   }
-  // Element.remove
-  if (window.Element && !Element.prototype.remove) {
-    Element.prototype.remove = function() {
-      if (this.parentNode) this.parentNode.removeChild(this);
-    }
-  }
-  /* End Polyfill */
+}
+/* End Polyfill */
 }
 
 
 /* harmony default export */ var util_ext = (ol_ext_inherits);
+
 // CONCATENATED MODULE: ./node_modules/ol-ext/style/FillPattern.js
 /*	Copyright (c) 2016 Jean-Marc VIGLINO, 
 	released under the CeCILL-B license (French BSD license)
@@ -39996,6 +39835,7 @@ function writePolygonGeometry(geometry, opt_options) {
 
 var vector_layer_any_DEFAULT_FILL_COLOR = "gray";
 var DEFAULT_STROKE_COLOR = "white";
+var vector_layer_any_DEFAULT_RADIUS = 7;
 /* harmony default export */ var vector_layer_any = ({
   props: {
     /**  Url de la fuente de datos, sea csv, geojson o kml por ejemplo */
@@ -40060,7 +39900,7 @@ var DEFAULT_STROKE_COLOR = "white";
               color: DEFAULT_STROKE_COLOR,
               width: 1
             },
-            radius: 7
+            radius: vector_layer_any_DEFAULT_RADIUS
           }
         };
       }
@@ -40118,6 +39958,11 @@ var DEFAULT_STROKE_COLOR = "white";
           return [];
         };
       }
+    },
+    tipoGeometria: {
+      default: '',
+      //'Point', 'LineString', 'LinearRing', 'Polygon', 'MultiPoint', 'MultiLineString', 'MultiPolygon', 'GeometryCollection', 'Circle'
+      type: String
     }
   },
   data: function data() {
@@ -40133,6 +39978,11 @@ var DEFAULT_STROKE_COLOR = "white";
   created: function created() {
     //console.log("DEBUG: carga vm_mapstyle")
     this.VM_mapStyle = _objectSpread2({}, this.estiloCapa);
+
+    if (this.tipoGeometria !== "") {
+      //console.log("se definio tipo de geometria desde el inicio")
+      this.VM_geometryType = this.tipoGeometria;
+    }
   },
   methods: {
     _setStyle: function _setStyle() {
@@ -40173,22 +40023,41 @@ var DEFAULT_STROKE_COLOR = "white";
         var serializes = JSON.parse(JSON.stringify(_objectSpread2({}, fixSerializedStyleIfIncomplete(vm.VM_mapStyle)))); //let geometry_type = vm.olLayer.getSource().getFeatures()[0].getGeometry().getType()
 
         /******************************************************************************** */
+
+        /******************************************************************************** */
+
+        /******************************************************************************** */
+
+        /******************************************************************************** */
+
+        /******************************************************************************** */
         //console.log("//AQUI VERIFICAR TAMBIEN QUE SHAPE SE VA A LA LEYENDA",serializes)
 
         if (this.VM_geometryType.includes("Point")) {
-          var _serializes$style, _serializes$style$sha, _serializes$style$sha2, _serializes$style2, _serializes$style2$sh, _serializes$style2$sh2, _serializes$style3, _serializes$style3$sh, _serializes$style3$sh2;
+          var _serializes$style, _serializes$style$sha, _serializes$style$sha2, _serializes$style2, _serializes$style2$sh, _serializes$style2$sh2, _serializes$style3, _serializes$style3$sh, _serializes$style3$sh2, _serializes$style4, _serializes$style4$sh;
 
           this.VM_defaultShapePoint = checkPointShapeFromStyle(serializes);
           shapeLegend = this.VM_defaultShapePoint;
           colorsLegend.fill = ((_serializes$style = serializes.style) === null || _serializes$style === void 0 ? void 0 : (_serializes$style$sha = _serializes$style[shapeLegend]) === null || _serializes$style$sha === void 0 ? void 0 : (_serializes$style$sha2 = _serializes$style$sha.fill) === null || _serializes$style$sha2 === void 0 ? void 0 : _serializes$style$sha2.color) || 'gray';
           colorsLegend.stroke = ((_serializes$style2 = serializes.style) === null || _serializes$style2 === void 0 ? void 0 : (_serializes$style2$sh = _serializes$style2[shapeLegend]) === null || _serializes$style2$sh === void 0 ? void 0 : (_serializes$style2$sh2 = _serializes$style2$sh.stroke) === null || _serializes$style2$sh2 === void 0 ? void 0 : _serializes$style2$sh2.color) || 'white';
           colorsLegend.stroke_width = ((_serializes$style3 = serializes.style) === null || _serializes$style3 === void 0 ? void 0 : (_serializes$style3$sh = _serializes$style3[shapeLegend]) === null || _serializes$style3$sh === void 0 ? void 0 : (_serializes$style3$sh2 = _serializes$style3$sh.stroke) === null || _serializes$style3$sh2 === void 0 ? void 0 : _serializes$style3$sh2.width) || 1;
-        } else {
-          var _serializes$style4, _serializes$style4$fi, _serializes$style5, _serializes$style5$st, _serializes$style6, _serializes$style6$st;
+          colorsLegend.radius = ((_serializes$style4 = serializes.style) === null || _serializes$style4 === void 0 ? void 0 : (_serializes$style4$sh = _serializes$style4[shapeLegend]) === null || _serializes$style4$sh === void 0 ? void 0 : _serializes$style4$sh.radius) || vector_layer_any_DEFAULT_RADIUS;
+        } else if (this.VM_geometryType.includes("LineString")) {
+          var _serializes$style5, _serializes$style5$st, _serializes$style6, _serializes$style6$st;
 
-          colorsLegend.fill = ((_serializes$style4 = serializes.style) === null || _serializes$style4 === void 0 ? void 0 : (_serializes$style4$fi = _serializes$style4.fill) === null || _serializes$style4$fi === void 0 ? void 0 : _serializes$style4$fi.color) || 'gray';
+          shapeLegend = "line";
+          colorsLegend.fill = "transparent";
           colorsLegend.stroke = ((_serializes$style5 = serializes.style) === null || _serializes$style5 === void 0 ? void 0 : (_serializes$style5$st = _serializes$style5.stroke) === null || _serializes$style5$st === void 0 ? void 0 : _serializes$style5$st.color) || 'white';
-          colorsLegend.stroke_width = ((_serializes$style6 = serializes.style) === null || _serializes$style6 === void 0 ? void 0 : (_serializes$style6$st = _serializes$style6.stroke) === null || _serializes$style6$st === void 0 ? void 0 : _serializes$style6$st.width) || 1; //colorsLegend.fill = serializes["style"].fill !=undefined ? serializes["style"].fill.color : 'gray'
+          colorsLegend.stroke_width = ((_serializes$style6 = serializes.style) === null || _serializes$style6 === void 0 ? void 0 : (_serializes$style6$st = _serializes$style6.stroke) === null || _serializes$style6$st === void 0 ? void 0 : _serializes$style6$st.width) || 1;
+          colorsLegend.radius = 12.5;
+        } else {
+          var _serializes$style7, _serializes$style7$fi, _serializes$style8, _serializes$style8$st, _serializes$style9, _serializes$style9$st;
+
+          //console.log("aqui se esta poniendo los colores de leyenda por default", this.id)
+          colorsLegend.fill = ((_serializes$style7 = serializes.style) === null || _serializes$style7 === void 0 ? void 0 : (_serializes$style7$fi = _serializes$style7.fill) === null || _serializes$style7$fi === void 0 ? void 0 : _serializes$style7$fi.color) || 'gray';
+          colorsLegend.stroke = ((_serializes$style8 = serializes.style) === null || _serializes$style8 === void 0 ? void 0 : (_serializes$style8$st = _serializes$style8.stroke) === null || _serializes$style8$st === void 0 ? void 0 : _serializes$style8$st.color) || 'white';
+          colorsLegend.stroke_width = ((_serializes$style9 = serializes.style) === null || _serializes$style9 === void 0 ? void 0 : (_serializes$style9$st = _serializes$style9.stroke) === null || _serializes$style9$st === void 0 ? void 0 : _serializes$style9$st.width) || 1;
+          colorsLegend.radius = 12.5; //colorsLegend.fill = serializes["style"].fill !=undefined ? serializes["style"].fill.color : 'gray'
           //colorsLegend.stroke = serializes["style"].stroke != undefined ? serializes["style"].stroke.color : 'gray'
         }
 
@@ -40229,6 +40098,8 @@ var DEFAULT_STROKE_COLOR = "white";
           content: {
             fill_color: colorsLegend.fill,
             stroke_color: colorsLegend.stroke,
+            stroke_width: (colorsLegend === null || colorsLegend === void 0 ? void 0 : colorsLegend.stroke_width) || 1,
+            shape_radius: (colorsLegend === null || colorsLegend === void 0 ? void 0 : colorsLegend.radius) || vector_layer_any_DEFAULT_RADIUS,
             shape: shapeLegend,
             // circle, square,  triangle, line, etc,  tambien el url del svg que se desee insertar
             //shape: "svg:ruta/alsvg",
@@ -40267,12 +40138,37 @@ var DEFAULT_STROKE_COLOR = "white";
           _this.VM_defaultShapePoint = checkPointShapeFromStyle(serializes);
 
           if (((_this$VM_legend_info = _this.VM_legend_info) === null || _this$VM_legend_info === void 0 ? void 0 : _this$VM_legend_info.type) === "legend-normal-vector") {
-            var _serializes$style7, _serializes$style7$_t, _serializes$style7$_t2, _serializes$style8, _serializes$style8$_t, _serializes$style8$_t2, _serializes$style9, _serializes$style9$_t, _serializes$style9$_t2;
+            var _serializes$style10, _serializes$style10$_, _serializes$style10$_2, _serializes$style11, _serializes$style11$_, _serializes$style11$_2, _serializes$style12, _serializes$style12$_, _serializes$style12$_2, _serializes$style13, _serializes$style13$_;
 
             _this.VM_legend_info.content.shape = _this.VM_defaultShapePoint;
-            _this.VM_legend_info.content.fill_color = ((_serializes$style7 = serializes.style) === null || _serializes$style7 === void 0 ? void 0 : (_serializes$style7$_t = _serializes$style7[_this.VM_defaultShapePoint]) === null || _serializes$style7$_t === void 0 ? void 0 : (_serializes$style7$_t2 = _serializes$style7$_t.fill) === null || _serializes$style7$_t2 === void 0 ? void 0 : _serializes$style7$_t2.color) || 'gray';
-            _this.VM_legend_info.content.stroke_color = ((_serializes$style8 = serializes.style) === null || _serializes$style8 === void 0 ? void 0 : (_serializes$style8$_t = _serializes$style8[_this.VM_defaultShapePoint]) === null || _serializes$style8$_t === void 0 ? void 0 : (_serializes$style8$_t2 = _serializes$style8$_t.stroke) === null || _serializes$style8$_t2 === void 0 ? void 0 : _serializes$style8$_t2.color) || 'white';
-            _this.VM_legend_info.content.stroke_width = ((_serializes$style9 = serializes.style) === null || _serializes$style9 === void 0 ? void 0 : (_serializes$style9$_t = _serializes$style9[_this.VM_defaultShapePoint]) === null || _serializes$style9$_t === void 0 ? void 0 : (_serializes$style9$_t2 = _serializes$style9$_t.stroke) === null || _serializes$style9$_t2 === void 0 ? void 0 : _serializes$style9$_t2.width) || 1; //this.VM_legend_info.content.shape = this.VM_geometryType.includes("Point") ? 'square' :this.VM_legend_info.content.shape
+            _this.VM_legend_info.content.fill_color = ((_serializes$style10 = serializes.style) === null || _serializes$style10 === void 0 ? void 0 : (_serializes$style10$_ = _serializes$style10[_this.VM_defaultShapePoint]) === null || _serializes$style10$_ === void 0 ? void 0 : (_serializes$style10$_2 = _serializes$style10$_.fill) === null || _serializes$style10$_2 === void 0 ? void 0 : _serializes$style10$_2.color) || 'gray';
+            _this.VM_legend_info.content.stroke_color = ((_serializes$style11 = serializes.style) === null || _serializes$style11 === void 0 ? void 0 : (_serializes$style11$_ = _serializes$style11[_this.VM_defaultShapePoint]) === null || _serializes$style11$_ === void 0 ? void 0 : (_serializes$style11$_2 = _serializes$style11$_.stroke) === null || _serializes$style11$_2 === void 0 ? void 0 : _serializes$style11$_2.color) || 'white';
+            _this.VM_legend_info.content.stroke_width = ((_serializes$style12 = serializes.style) === null || _serializes$style12 === void 0 ? void 0 : (_serializes$style12$_ = _serializes$style12[_this.VM_defaultShapePoint]) === null || _serializes$style12$_ === void 0 ? void 0 : (_serializes$style12$_2 = _serializes$style12$_.stroke) === null || _serializes$style12$_2 === void 0 ? void 0 : _serializes$style12$_2.width) || 1;
+            _this.VM_legend_info.content.shape_radius = ((_serializes$style13 = serializes.style) === null || _serializes$style13 === void 0 ? void 0 : (_serializes$style13$_ = _serializes$style13[_this.VM_defaultShapePoint]) === null || _serializes$style13$_ === void 0 ? void 0 : _serializes$style13$_.radius) || vector_layer_any_DEFAULT_RADIUS; //this.VM_legend_info.content.shape = this.VM_geometryType.includes("Point") ? 'square' :this.VM_legend_info.content.shape
+          }
+        } else if (_this.VM_geometryType.includes("LineString")) {
+          var _this$VM_legend_info2;
+
+          if (((_this$VM_legend_info2 = _this.VM_legend_info) === null || _this$VM_legend_info2 === void 0 ? void 0 : _this$VM_legend_info2.type) === "legend-normal-vector") {
+            var _serializes$style14, _serializes$style14$s, _serializes$style15, _serializes$style15$s;
+
+            _this.VM_legend_info.content.shape = "line";
+            _this.VM_legend_info.content.fill_color = "transparent";
+            _this.VM_legend_info.content.stroke_color = ((_serializes$style14 = serializes.style) === null || _serializes$style14 === void 0 ? void 0 : (_serializes$style14$s = _serializes$style14.stroke) === null || _serializes$style14$s === void 0 ? void 0 : _serializes$style14$s.color) || 'white';
+            _this.VM_legend_info.content.stroke_width = ((_serializes$style15 = serializes.style) === null || _serializes$style15 === void 0 ? void 0 : (_serializes$style15$s = _serializes$style15.stroke) === null || _serializes$style15$s === void 0 ? void 0 : _serializes$style15$s.width) || 1;
+            _this.VM_legend_info.content.shape_radius = 12.5; //this.VM_legend_info.content.shape = this.VM_geometryType.includes("Point") ? 'square' :this.VM_legend_info.content.shape
+          }
+        } else {
+          var _this$VM_legend_info3;
+
+          if (((_this$VM_legend_info3 = _this.VM_legend_info) === null || _this$VM_legend_info3 === void 0 ? void 0 : _this$VM_legend_info3.type) === "legend-normal-vector") {
+            var _serializes$style16, _serializes$style16$f, _serializes$style17, _serializes$style17$s, _serializes$style18, _serializes$style18$s;
+
+            _this.VM_legend_info.content.shape = "square";
+            _this.VM_legend_info.content.fill_color = ((_serializes$style16 = serializes.style) === null || _serializes$style16 === void 0 ? void 0 : (_serializes$style16$f = _serializes$style16.fill) === null || _serializes$style16$f === void 0 ? void 0 : _serializes$style16$f.color) || 'gray';
+            _this.VM_legend_info.content.stroke_color = ((_serializes$style17 = serializes.style) === null || _serializes$style17 === void 0 ? void 0 : (_serializes$style17$s = _serializes$style17.stroke) === null || _serializes$style17$s === void 0 ? void 0 : _serializes$style17$s.color) || 'white';
+            _this.VM_legend_info.content.stroke_width = ((_serializes$style18 = serializes.style) === null || _serializes$style18 === void 0 ? void 0 : (_serializes$style18$s = _serializes$style18.stroke) === null || _serializes$style18$s === void 0 ? void 0 : _serializes$style18$s.width) || 1;
+            _this.VM_legend_info.content.shape_radius = 12.5; //this.VM_legend_info.content.shape = this.VM_geometryType.includes("Point") ? 'square' :this.VM_legend_info.content.shape
           }
         }
 
@@ -70005,12 +69901,12 @@ function wms_layer_plugin(Vue) {
 
 /* harmony default export */ var wms_layer = (wms_layer_plugin);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a636930-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/legend.vue?vue&type=template&id=679f2d5a&scoped=true&
-var legendvue_type_template_id_679f2d5a_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',{staticClass:"header-legend"},[_c('p',{staticClass:"title"},[_vm._v(_vm._s(_vm.titulo))]),(_vm.mostrarBotonAlternaTodos)?_c('button',{staticClass:"toggle-all",on:{"click":_vm.toogleAll}},[_vm._v(_vm._s(_vm.labelToogleAll))]):_vm._e()]),_vm._l((_vm.VM_legends),function(leg){return _c('legend-item',{key:leg,attrs:{"layerId":leg}})})],2)}
-var legendvue_type_template_id_679f2d5a_scoped_true_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a636930-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/legend.vue?vue&type=template&id=54dc3ac5&scoped=true&
+var legendvue_type_template_id_54dc3ac5_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"main-legend",class:{'no-tamanos-mapa':!_vm.tamanosDeMapa}},[_c('div',{staticClass:"header-legend"},[_c('p',{staticClass:"title"},[_vm._v(_vm._s(_vm.titulo))]),(_vm.mostrarBotonAlternaTodos)?_c('button',{staticClass:"toggle-all",on:{"click":_vm.toogleAll}},[_vm._v(_vm._s(_vm.labelToogleAll))]):_vm._e()]),_vm._l((_vm.VM_legends),function(leg){return _c('legend-item',{key:leg,attrs:{"layerId":leg}})})],2)}
+var legendvue_type_template_id_54dc3ac5_scoped_true_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/legend-control/legend.vue?vue&type=template&id=679f2d5a&scoped=true&
+// CONCATENATED MODULE: ./src/components/legend-control/legend.vue?vue&type=template&id=54dc3ac5&scoped=true&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.match.js
 var es_string_match = __webpack_require__("466d");
@@ -70364,8 +70260,8 @@ var _legend_coropletavue_type_template_id_5f2d7684_scoped_true_staticRenderFns =
 
 // CONCATENATED MODULE: ./src/components/legend-control/_legend_coropleta.vue?vue&type=template&id=5f2d7684&scoped=true&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a636930-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/utils/shape.vue?vue&type=template&id=7feecf5c&scoped=true&
-var shapevue_type_template_id_7feecf5c_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"dai-map-shape"},[(_vm.shapeType!='image')?_c('div',{class:_vm.shapeType,style:({
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a636930-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/utils/shape.vue?vue&type=template&id=43e35359&scoped=true&
+var shapevue_type_template_id_43e35359_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"dai-map-shape"},[(_vm.shapeType!='image')?_c('div',{staticClass:"shape",class:_vm.shapeType,style:({
         'width':("" + (_vm.size[0]) + _vm.sizeUnits),
         'height':("" + (_vm.size[1]) + _vm.sizeUnits),
         'backgroundColor':_vm.backgroundColor,
@@ -70374,13 +70270,14 @@ var shapevue_type_template_id_7feecf5c_scoped_true_render = function () {var _vm
         'borderColor':_vm.strokeColor
 
         })}):_vm._e()])}
-var shapevue_type_template_id_7feecf5c_scoped_true_staticRenderFns = []
+var shapevue_type_template_id_43e35359_scoped_true_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/utils/shape.vue?vue&type=template&id=7feecf5c&scoped=true&
+// CONCATENATED MODULE: ./src/components/utils/shape.vue?vue&type=template&id=43e35359&scoped=true&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/utils/shape.vue?vue&type=script&lang=js&
 
+//
 //
 //
 //
@@ -70406,7 +70303,7 @@ var shapevue_type_template_id_7feecf5c_scoped_true_staticRenderFns = []
       type: String,
       required: true,
       validator: function validator(value) {
-        return ['circle', 'square', 'triangle', 'rounded-square', "image"].indexOf(value) !== -1;
+        return ['circle', 'square', 'triangle', 'rounded-square', "image", "line"].indexOf(value) !== -1;
       }
     },
     size: {
@@ -70443,8 +70340,8 @@ var shapevue_type_template_id_7feecf5c_scoped_true_staticRenderFns = []
 });
 // CONCATENATED MODULE: ./src/components/utils/shape.vue?vue&type=script&lang=js&
  /* harmony default export */ var utils_shapevue_type_script_lang_js_ = (shapevue_type_script_lang_js_); 
-// EXTERNAL MODULE: ./src/components/utils/shape.vue?vue&type=style&index=0&id=7feecf5c&lang=scss&scoped=true&
-var shapevue_type_style_index_0_id_7feecf5c_lang_scss_scoped_true_ = __webpack_require__("b14c");
+// EXTERNAL MODULE: ./src/components/utils/shape.vue?vue&type=style&index=0&id=43e35359&lang=scss&scoped=true&
+var shapevue_type_style_index_0_id_43e35359_lang_scss_scoped_true_ = __webpack_require__("3567");
 
 // CONCATENATED MODULE: ./src/components/utils/shape.vue
 
@@ -70457,11 +70354,11 @@ var shapevue_type_style_index_0_id_7feecf5c_lang_scss_scoped_true_ = __webpack_r
 
 var shape_component = normalizeComponent(
   utils_shapevue_type_script_lang_js_,
-  shapevue_type_template_id_7feecf5c_scoped_true_render,
-  shapevue_type_template_id_7feecf5c_scoped_true_staticRenderFns,
+  shapevue_type_template_id_43e35359_scoped_true_render,
+  shapevue_type_template_id_43e35359_scoped_true_staticRenderFns,
   false,
   null,
-  "7feecf5c",
+  "43e35359",
   null
   
 )
@@ -70634,12 +70531,12 @@ var _legend_coropleta_component = normalizeComponent(
 )
 
 /* harmony default export */ var _legend_coropleta = (_legend_coropleta_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a636930-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_normal_vector.vue?vue&type=template&id=6c329126&scoped=true&
-var _legend_normal_vectorvue_type_template_id_6c329126_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"legend-normal-vector"},[_c('checkbox',{on:{"change":_vm.set_visible_to_layer},model:{value:(_vm.visible),callback:function ($$v) {_vm.visible=$$v},expression:"visible"}},[_c('shape',{staticClass:"simbologia",attrs:{"shapeType":_vm.classShape,"backgroundColor":_vm.usarTexturas? 'transparent': _vm.params.content.fill_color,"backgroundImage":_vm.backgroundImage,"strokeColor":_vm.params.content.stroke_color || 'white',"strokeWidth":_vm.params.content.stroke_width || 1,"size":[25,25]}}),_c('span',[_vm._v(_vm._s(_vm.params.content.title))])],1)],1)}
-var _legend_normal_vectorvue_type_template_id_6c329126_scoped_true_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a636930-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_normal_vector.vue?vue&type=template&id=21407b8f&scoped=true&
+var _legend_normal_vectorvue_type_template_id_21407b8f_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"legend-normal-vector"},[_c('checkbox',{on:{"change":_vm.set_visible_to_layer},model:{value:(_vm.visible),callback:function ($$v) {_vm.visible=$$v},expression:"visible"}},[_c('shape',{staticClass:"simbologia",attrs:{"shapeType":_vm.classShape,"backgroundColor":_vm.usarTexturas? 'transparent': _vm.params.content.fill_color,"backgroundImage":_vm.backgroundImage,"strokeColor":_vm.params.content.stroke_color || 'white',"strokeWidth":_vm.params.content.stroke_width || 1,"size":[(_vm.params.content.shape_radius || 10 ) *2, (_vm.params.content.shape_radius || 10 ) *2 ]}}),_c('span',[_vm._v(_vm._s(_vm.params.content.title))])],1)],1)}
+var _legend_normal_vectorvue_type_template_id_21407b8f_scoped_true_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/legend-control/_legend_normal_vector.vue?vue&type=template&id=6c329126&scoped=true&
+// CONCATENATED MODULE: ./src/components/legend-control/_legend_normal_vector.vue?vue&type=template&id=21407b8f&scoped=true&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.starts-with.js
 var es_string_starts_with = __webpack_require__("2ca0");
@@ -70693,10 +70590,14 @@ var es_string_starts_with = __webpack_require__("2ca0");
 });
 // CONCATENATED MODULE: ./src/components/legend-control/_legend_normal_vector.vue?vue&type=script&lang=js&
  /* harmony default export */ var legend_control_legend_normal_vectorvue_type_script_lang_js_ = (_legend_normal_vectorvue_type_script_lang_js_); 
-// EXTERNAL MODULE: ./src/components/legend-control/_legend_normal_vector.vue?vue&type=style&index=0&id=6c329126&lang=scss&scoped=true&
-var _legend_normal_vectorvue_type_style_index_0_id_6c329126_lang_scss_scoped_true_ = __webpack_require__("042f");
+// EXTERNAL MODULE: ./src/components/legend-control/_legend_normal_vector.vue?vue&type=style&index=0&id=21407b8f&lang=scss&scoped=true&
+var _legend_normal_vectorvue_type_style_index_0_id_21407b8f_lang_scss_scoped_true_ = __webpack_require__("5704");
+
+// EXTERNAL MODULE: ./src/components/legend-control/_legend_normal_vector.vue?vue&type=style&index=1&lang=css&
+var _legend_normal_vectorvue_type_style_index_1_lang_css_ = __webpack_require__("09c6");
 
 // CONCATENATED MODULE: ./src/components/legend-control/_legend_normal_vector.vue
+
 
 
 
@@ -70707,11 +70608,11 @@ var _legend_normal_vectorvue_type_style_index_0_id_6c329126_lang_scss_scoped_tru
 
 var _legend_normal_vector_component = normalizeComponent(
   legend_control_legend_normal_vectorvue_type_script_lang_js_,
-  _legend_normal_vectorvue_type_template_id_6c329126_scoped_true_render,
-  _legend_normal_vectorvue_type_template_id_6c329126_scoped_true_staticRenderFns,
+  _legend_normal_vectorvue_type_template_id_21407b8f_scoped_true_render,
+  _legend_normal_vectorvue_type_template_id_21407b8f_scoped_true_staticRenderFns,
   false,
   null,
-  "6c329126",
+  "21407b8f",
   null
   
 )
@@ -71364,6 +71265,10 @@ var legend_item_component = normalizeComponent(
     mostrarBotonAlternaTodos: {
       type: Boolean,
       default: false
+    },
+    tamanosDeMapa: {
+      type: Boolean,
+      default: false
     }
   },
   components: {
@@ -71465,10 +71370,14 @@ var legend_item_component = normalizeComponent(
 });
 // CONCATENATED MODULE: ./src/components/legend-control/legend.vue?vue&type=script&lang=js&
  /* harmony default export */ var legend_control_legendvue_type_script_lang_js_ = (legendvue_type_script_lang_js_); 
-// EXTERNAL MODULE: ./src/components/legend-control/legend.vue?vue&type=style&index=0&id=679f2d5a&lang=scss&scoped=true&
-var legendvue_type_style_index_0_id_679f2d5a_lang_scss_scoped_true_ = __webpack_require__("3c3f");
+// EXTERNAL MODULE: ./src/components/legend-control/legend.vue?vue&type=style&index=0&id=54dc3ac5&lang=scss&scoped=true&
+var legendvue_type_style_index_0_id_54dc3ac5_lang_scss_scoped_true_ = __webpack_require__("4147");
+
+// EXTERNAL MODULE: ./src/components/legend-control/legend.vue?vue&type=style&index=1&lang=scss&
+var legendvue_type_style_index_1_lang_scss_ = __webpack_require__("2894");
 
 // CONCATENATED MODULE: ./src/components/legend-control/legend.vue
+
 
 
 
@@ -71479,11 +71388,11 @@ var legendvue_type_style_index_0_id_679f2d5a_lang_scss_scoped_true_ = __webpack_
 
 var legend_component = normalizeComponent(
   legend_control_legendvue_type_script_lang_js_,
-  legendvue_type_template_id_679f2d5a_scoped_true_render,
-  legendvue_type_template_id_679f2d5a_scoped_true_staticRenderFns,
+  legendvue_type_template_id_54dc3ac5_scoped_true_render,
+  legendvue_type_template_id_54dc3ac5_scoped_true_staticRenderFns,
   false,
   null,
-  "679f2d5a",
+  "54dc3ac5",
   null
   
 )
@@ -72297,11 +72206,10 @@ function src_plugin(Vue) {
 "use strict";
 
 var $ = __webpack_require__("23e7");
-var isArray = __webpack_require__("e8b5");
-var isConstructor = __webpack_require__("68ee");
 var isObject = __webpack_require__("861d");
+var isArray = __webpack_require__("e8b5");
 var toAbsoluteIndex = __webpack_require__("23cb");
-var lengthOfArrayLike = __webpack_require__("07fa");
+var toLength = __webpack_require__("50c4");
 var toIndexedObject = __webpack_require__("fc6a");
 var createProperty = __webpack_require__("8418");
 var wellKnownSymbol = __webpack_require__("b622");
@@ -72319,7 +72227,7 @@ var max = Math.max;
 $({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT }, {
   slice: function slice(start, end) {
     var O = toIndexedObject(this);
-    var length = lengthOfArrayLike(O);
+    var length = toLength(O.length);
     var k = toAbsoluteIndex(start, length);
     var fin = toAbsoluteIndex(end === undefined ? length : end, length);
     // inline `ArraySpeciesCreate` for usage native `Array#slice` where it's possible
@@ -72327,7 +72235,7 @@ $({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT }, {
     if (isArray(O)) {
       Constructor = O.constructor;
       // cross-realm fallback
-      if (isConstructor(Constructor) && (Constructor === Array || isArray(Constructor.prototype))) {
+      if (typeof Constructor == 'function' && (Constructor === Array || isArray(Constructor.prototype))) {
         Constructor = undefined;
       } else if (isObject(Constructor)) {
         Constructor = Constructor[SPECIES];
