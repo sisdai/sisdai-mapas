@@ -1,6 +1,6 @@
 <template>
     <div class="dai-map-shape" >
-        <div  v-if="shapeType!='image'" 
+        <div  v-if="shapeType!=='image'" 
         class="shape"
         :class="shapeType"
         :style="{
@@ -12,6 +12,10 @@
             'borderColor':strokeColor
 
             }" ></div>
+        <div v-if="shapeType==='image'"
+        >
+            <img class="imagen-leyenda" :src="imageOptions.src" alt="..">
+        </div>
     </div>
     
 </template>
@@ -42,9 +46,11 @@ export default {
             default:"black",
             type:String
         },
-        imageSrc:{
-            default:"",
-            type:String
+        imageOptions:{
+            default:function(){
+                return {}
+            },
+            type:Object
         },
         strokeColor:{
             default:'white',
@@ -78,6 +84,12 @@ export default {
     .line{
         border-style: solid none none none;
         transform: translateY(50%);
+    }
+
+    .imagen-leyenda{
+        max-width: 100%;
+        max-height: 28px;
+        object-fit: cover;
     }
 }
 </style>
