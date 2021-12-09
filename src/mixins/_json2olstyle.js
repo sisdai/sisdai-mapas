@@ -91,6 +91,9 @@ const checkPointShapeFromStyle = function(style){
     if("circle" in style.style ){
         return "circle"
     }
+    if("icon" in style.style ){
+        return "icon"
+    }
     if("square" in style.style ){
         return "square"
     }
