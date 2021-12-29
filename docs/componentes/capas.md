@@ -80,7 +80,7 @@ Componente de capa para desplegar una agrupacion de puntos apartir de datos en f
 
 ```html{2}
 <dai-mapa>
-    <dai-capa-geojson url="path/to/file.geojson"/>
+    <dai-capa-geojson-cluster url="path/to/file.geojson"/>
 <dai-mapa/>
 ```
 
@@ -88,7 +88,7 @@ o
 
 ```html{2}
 <dai-mapa>
-    <dai-capa-geojson :datos="variable_objetos_json"/>
+    <dai-capa-geojson-cluster :datos="variable_objetos_json"/>
 <dai-mapa/>
 ```
 ### Propiedades
