@@ -25,6 +25,13 @@ const dataClassification = (data,classType,clases,colors,sizes,targetProperty,
     //console.log(valores_clases)
 
     if(classType==="categorias" && acomodoCategorias.length>1){
+        //aqui verificar que valores_clases tenga todos los valores unicos que acomodoCategorias, porque si no sale un array que se recorre
+        const mismosValores = acomodoCategorias.every(item=>valores_clases.includes(item))
+        if(!mismosValores){
+            valores_clases = [...new Set([...valores_clases,...acomodoCategorias])]
+        }
+        
+        //console.log(mismosValores,valores_clases,acomodoCategorias)
         valores_clases = [...valores_clases].sort((a,b)=>{
             return acomodoCategorias.indexOf(a) - acomodoCategorias.indexOf(b)
         })
