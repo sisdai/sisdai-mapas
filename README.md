@@ -15,14 +15,7 @@ npm install dai-maps
 
 1.- *Por el momento*
 ```bash
-git clone https://github.com/conacyt-dai/dai-maps
-cd dai-maps
-npm install
-npm run build
-cd ..
-# ... crear el nuevo proyecto desde el vue-cli...
-# una vez creado, instalar con la ruta al repositorio dai-maps en local
-npm install ..path/to/dai-maps
+npm install git+https://usuario:clave_privada@github.com/conacyt-dai/dai-maps.git#version-a-instalar
 ```
 
 2.- 
@@ -47,75 +40,21 @@ Dentro del componente en el que se desee crear mapas con el diseño Dai mandar a
 ```html
 <template>
     <!--el center como coordenadas (x,y) en EPSG:4326-->
-    <dai-map :zoom="2" :center="0,0">
-        <dai-xyz-layer-osm/>
+    <dai-mapa :zoom="2" :centro="0,0">
+        <dai-capa-xyz-osm/>
     </dai-map>
 </template>
 
 ```
 
-Si se ocupa crear un mapa con header y/o footer. Dentro del header y footer se puede agregar otros controles del mapa o simple html.
 
-Para usarlos se implementa el componente `dai-card-map-container` y dentro de el necesariamente habria que generar  el mapa con `dai-map` y opcionalmente un template con el atributo `v-slot:header` y otro con el atributo `v-slot:footer`. 
 
-```html
-<template>
-    <dai-card-map-container>
-        <template v-slot:header>
-            <p>Lorem ipsum, dolor..</p>
-        </template>
-        <dai-map :zoom="2" :center="0,0">
-            <dai-xyz-layer-osm/>
-        </dai-map>
-        <template v-slot:footer>        
-            <button @click="hago_algo"> soy un boton</button>            
-        </template>
-    </dai-card-map-container>
-</template>
+### Revisar la documentacion en local
+
+```bash
+npm install
+npm run docs:serve
+
 ```
 
-
-### Cambiar algunas carcateristicas del mapa
-
-#### el tamaño del mapa 
-
-```html
-<template>
-    <dai-map :zoom="2" class="custom-size">
-        <dai-xyz-layer-osm/>
-    </dai-map>
-</template>
-<style>
-.custom-size{
-    height:400px
-    width:600px
-}
-</style>
-```
-
-#### el tamaño minimo de la card-container
-
-[redactar esta y otras propiedades]
-
-#### subcomponentes - controles
-
-[redactar como se usa la leyenda, dropdowns, etc]
-## Contribuir
-
-
-
-Por el momento, y antes de implementar las pruebas unitarias, si contribuyes al desarrollo de este componente hay algunos scrips que debes conocer:
-
-todos se ejecutan desde `npm run [nombre del scrip]`
-
-- dev-varios 
-- dev-capas
-- dev-fullpage
-- dev-simbologias
-
-Todos los anteriores para probar y revisar las caracteristicas que se esten desarrollando desde un servicio web de vue-cli.
-
-
-
-
-[redactar organizacion de las ramas y convencion de nombres de subcomponentes]
+abrir localhost:8080
