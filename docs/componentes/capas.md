@@ -74,6 +74,39 @@ El url del archivo [geojson](https://geojson.org/), puede ser externo o relativo
 Objeto o array de objetos en formato [geojson](https://geojson.org/) para pasar a la capa del mapa. Si se define, la propiedad `url` se ignora.
 
 
+## dai-capa-geojson-cluster
+Componente de capa para desplegar una agrupacion de puntos apartir de datos en formato [geojson](https://geojson.org/).
+### Uso
+
+```html{2}
+<dai-mapa>
+    <dai-capa-geojson url="path/to/file.geojson"/>
+<dai-mapa/>
+```
+
+o
+
+```html{2}
+<dai-mapa>
+    <dai-capa-geojson :datos="variable_objetos_json"/>
+<dai-mapa/>
+```
+### Propiedades
+
+**Las propiedades y metodos extienden de [Mixin layer](#mixin-layer) , [Mixin vector-layer](#mixin-vector-layer) y [Mixin clasificable-layer](#mixin-clasificable-layer )**, y sobreescribe las siguientes:
+
+#### url
+
+- Type: `String`
+- Default: `undefined`
+
+El url del archivo [geojson](https://geojson.org/), puede ser externo o relativo  a las carpetas del proyecto.
+
+#### datos
+- Type: `Object` | `Array<Object>`
+- Default `undefined`
+
+Objeto o array de objetos en formato [geojson](https://geojson.org/) para pasar a la capa del mapa. Si se define, la propiedad `url` se ignora.
 
 
 ## dai-capa-wms
@@ -179,6 +212,38 @@ El titulo que se le asigna a la capa, puede ser util cuando algunos controles ac
 
 El estilo persistente de la capa, es decir el estilo que no esta enlazado a los datos, la key "circle" esta pensada para las capas de geometria tipo punto, tambien es posible usar una "square", "triangle" o "image" cuando se requiera poner un svg o un svg , revisar [estilos de capa](./estilos-capas.md), cuando la geometria es poligono o linea esta key se ignora.
 
+La idea de esta propiedad es construir un objecto de estilo , tal y como se construira en [OpenLayers](https://openlayers.org/en/latest/apidoc/module-ol_style_Style-Style.html), pero sin instanciar las clases. Por lo tanto todas los parametros que requieren estas clases de estilo son validos en el json  de `estilo-capa`. Es por ello que esto:
+
+```json
+{
+    "style":{
+        "fill":{
+            "color":"red"
+        },
+        "stroke":{
+            "width":1,
+            "color":"gray"
+        }
+    }
+}
+```
+
+equivaldria a esto 
+
+```javascript
+ import { Fill, Stroke, Style} from 'ol/style';
+
+new Style({
+    fill: new Fill({
+        color:'red'
+    }),
+    stroke: new Stroke({
+        width: 1,
+        color: 'gray'
+    })
+})
+```
+
 #### estilo-realce
 - Type `object`
 - Default 
@@ -280,6 +345,31 @@ Tener en cuenta que el tooltip reacciona al evento de pasar el mouse sobre la ge
 
 Indica si al dar click en algun poligono/linea/punto el mapa debera hacer el acercamiento.
 
+
+#### props-asigna-estilo
+Lista de keys, de la propiedad `estilo-capa`, a las que se les puede reescribir el valor. Es requerido usar junto con `fn-asigna-estilo`. 
+
+Pensemos en un caso de uso como el siguiente: *para dibujar un texto dentro de una geometria se debe definir dentro de la propiedad `estilo-capa` , pero como se necesita que ese texto dependa del dato del feature, necesitamos reescribirlo al vuelo*, para resolver esto,  dentro de `estilo-capa` se necesita contar con la propiedad `textStyle.text`, y dicha propiedad reescribirla segun los valores de cada feature de la capa.
+
+```javascript
+//pensemos que el campo cantidad del geojson tiene el texto que queremos dibujar arriba de la geometria
+
+:props-asigna-estilo="['textStyle.text']"
+:fn-asigna-estilo="(featureProps)=>[featureProps.cantidad]
+```
+
+Revisar ejemplo [estilos de capa](../ejemplos/cluster.md#cluster-con-numero).
+
+Tambieen funciona para reescribir colores y tamaños, aunque no se mostrara el resultado final en leyenda. Para colores y tamaños se recomienda usar las clasificaciones de estilo basado en datos.
+
+
+#### fn-asigna-estilo
+Funcion que debe retornar el valor de las keys a reescribir dentro del  `estilo-capa`. Dichas keys se definen en `props-asigna-estilo`, importante que se retornen el numero de valores 
+
+```javascript
+:props-asigna-estilo="['fill.color','stroke.color']"
+:fn-asigna-estilo="(f)=>[f.color_en_props, f.otro_color]"
+```
 
 #### url
 [depende del tipo de capa]
