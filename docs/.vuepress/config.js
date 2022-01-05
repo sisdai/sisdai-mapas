@@ -74,6 +74,7 @@ module.exports = {
             'clasificacion-datos',
             'manejo-datos',
             'texturas',
+            'texturas-sd',
             'cluster'
           ]
         }
