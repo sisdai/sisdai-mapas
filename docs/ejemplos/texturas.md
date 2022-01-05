@@ -1,10 +1,14 @@
 # Texturas
 
+
+
 ## Relleno simple
 
 Documentacion: [Mixin Vector Layer](../componentes/capas.md#mixin-vector-layer).
 
-<texturas-1-relleno-texturas/>
+<texturas-1-relleno-texturas />
+
+
 
 ```html
 <dai-tarjeta-contenedor-mapa
@@ -61,6 +65,9 @@ Documentacion: [Mixin Vector Layer](../componentes/capas.md#mixin-vector-layer).
 </dai-tarjeta-contenedor-mapa>
 ```
 
+
+## Catalogo de texturas
+<texturas-0-catalogo />
 
 ## Texturas en clasificacion
 
