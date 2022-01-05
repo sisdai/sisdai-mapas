@@ -366,6 +366,11 @@ export default{
                 this.VM_mapStyle = nv
                 this._setStyle()
             }
+        },
+        estiloTexturaRelleno:function(nv){
+            if(this.olLayer){
+                this._setStyle()
+            }
         }
     }
 }

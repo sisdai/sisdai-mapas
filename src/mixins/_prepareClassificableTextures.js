@@ -15,7 +15,14 @@ const  prepararTexturesfromCortes = (cortes,rule,texturaOpcionesIniciales)=>{
 
     let total_cortes = cortes.cortes.length
     return cortes.cortes.map((corte,idx)=>{
-        const propsClasificacion = {size:(idx+1),spacing:total_cortes+2}
+        const patron = textura_modificable.pattern;
+        let propsClasificacion = {}
+        if(simplePatterns.includes(patron)){
+            propsClasificacion = {size:(idx+1),spacing:total_cortes+2}
+        }else{
+            propsClasificacion = {scale:.75+(idx*.25)}
+        }
+        
         let nueva_textura = {...textura_modificable,...propsClasificacion }
         return nueva_textura
     })
@@ -25,26 +32,28 @@ const  prepararTexturesfromCortes = (cortes,rule,texturaOpcionesIniciales)=>{
 
 export default prepararTexturesfromCortes;
 
+const simplePatterns = ['hatch','cross','dot','circle','square','tile'];
+const complexPatterns = ['woven','crosses','caps','nylon','hexagon','wave','vine','brick','rock']
+
 
 const categoricalVariants = [
     {
-        pattern:"hatch",
-        angle: 45
+        pattern:"dot"
+    },
+    
+    {
+        pattern:"crosses"
     },
     {
-        pattern:"dot",
+        pattern:"hatch",
         angle: 0
     },
     {
         pattern:"hatch",
-        angle: 135
+        angle: 90
     },
     {
         pattern:"woven",
-    },
-    {
-        pattern:"hatch",
-        angle: 0
     },
     
     {
@@ -59,10 +68,7 @@ const categoricalVariants = [
         pattern:"circle",
         angle: 0
     },
-    {
-        pattern:"hatch",
-        angle: 90
-    },
+    
     
     {
         pattern:"crosses",
