@@ -105,7 +105,16 @@ export default{
             this.VM_rules_cortes = [];
             this.VM_rules_textures= [];
             //darle estilo segun cada una de las reglas
-            let features = this.olLayer.getSource().getFeatures();
+            let features;
+            if(this.VM_featuresGroup){
+                features = this.olLayer.getSource().getFeatures().map(f=>{
+                    f.set('features_count',f.getProperties()['features'].length) 
+                    return f
+                })
+            }else{
+                features = this.olLayer.getSource().getFeatures();
+            }
+            
             //console.log(this.VM_geometryType,"el tipo de geometria")
             this.VM_geometryType = features.length>0 ? features[0].getGeometry().getType() : ''
 

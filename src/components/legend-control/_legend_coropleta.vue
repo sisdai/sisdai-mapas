@@ -36,17 +36,11 @@ export default {
         }
     },
     created:function(){
-        this.colorsCortes = this.params.content.cortes.cortes;
-        this.$on("update:legend_info_ready",function(){
-            //console.log("la leyenda esta lista")
-        })
-        this.list_filter = this.params.content.cortes.cortes.map(()=>true)
+        this._initLegend()
         this.hasSubfilters = true;
-        this.visibleStatusFilters = [...this.list_filter];
-
         this.$on("toogle_allsubfilters",(apagar_todos)=>{
-            this.list_filter = this.list_filter.map(()=>!apagar_todos)
-            this._filtrarCapa()
+                this.list_filter = this.list_filter.map(()=>!apagar_todos)
+                this._filtrarCapa()
         })
     },
     methods:{
@@ -88,6 +82,18 @@ export default {
             this._filter_features(fnCompare)
             this.visibleStatusFilters = [...this.list_filter];
             
+        },
+        _initLegend:function(){
+            this.colorsCortes = this.params.content.cortes.cortes;
+            //console.log(this.params)
+            this.$on("update:legend_info_ready",function(){
+                //console.log("la leyenda esta lista")
+            })
+            this.list_filter = this.params.content.cortes.cortes.map(()=>true)
+            
+            this.visibleStatusFilters = [...this.list_filter];
+
+            
         }
     },
     computed:{
@@ -117,7 +123,7 @@ export default {
         usarTexturas:function(){
             return this.$parent.$parent.cmpMap.cmpLayers[this.layerId].usarTexturasEnRelleno
         }
-    }
+    },
 }
 </script>
 

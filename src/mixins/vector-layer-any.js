@@ -8,6 +8,10 @@ export const DEFAULT_RADIUS = 7
 
 export default{
     props:{
+        renderizarComoImagen:{
+            type:Boolean,
+            default:false
+        },
         /**  Url de la fuente de datos, sea csv, geojson o kml por ejemplo */
         url:{
             type:String,
@@ -286,7 +290,19 @@ export default{
             let geojsonFormat = new GeoJSON()
             //if(vectorSource.getFeatures().length>1){
             if(vectorSource.getUrl()===undefined){
-                this.VM_allFeatures = geojsonFormat.writeFeatures( vectorSource.getFeatures() )
+                if(this.VM_featuresGroup){
+                    const objects = geojsonFormat.writeFeaturesObject( vectorSource.getFeatures() )
+                    
+                    objects.features = objects.features.map(f=>{
+                        f.properties['features'] =''
+                        return f
+                    })
+                    
+                    this.VM_allFeatures = JSON.stringify(objects)
+                }else{
+                    this.VM_allFeatures = geojsonFormat.writeFeatures( vectorSource.getFeatures() )
+                }
+                
                 this.VM_geometryType = vectorSource.getFeatures().length > 0 
                     ? vectorSource.getFeatures()[0].getGeometry().getType() 
                     : ""
