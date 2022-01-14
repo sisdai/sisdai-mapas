@@ -4,6 +4,7 @@ import vector_any from "../../mixins/vector-layer-any"
 //import classificable_layer from "../../mixins/classificable-layer"
 
 import VectorLayer from 'ol/layer/Vector';
+import VectorImage  from 'ol/layer/VectorImage'
 import VectorSource from 'ol/source/Vector';
 import GeoJSON from 'ol/format/GeoJSON';
 import Cluster from 'ol/source/Cluster';
@@ -26,7 +27,8 @@ export default {
         _createLayerObject:function(){
             this.VM_is_cluster = true;
             let vectorSource = this.datos != undefined ? createGeojsonSourceFromObjectJs(this.datos) : createGeojsonSourceFromUrl(this.url)
-            this.olLayer = new VectorLayer({
+            const LayerClass= this.renderizarComoImagen ? VectorImage : VectorLayer
+            this.olLayer = new LayerClass({
                 source: new Cluster({
                     source: vectorSource,
                     distance:this.distancia,

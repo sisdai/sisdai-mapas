@@ -28,6 +28,9 @@ export default {
             //console.log(nuevosFeatures)
             source.clear()
             source.addFeatures(nuevosFeatures)
+        },
+        _initLegend:function(){
+            //Implementar en cada leyenda si es necesario
         }
     },
     created:function(){
@@ -71,6 +74,9 @@ export default {
             }
             this.$parent.$parent.labelToogleAll = newerValue.some(item=>item) ? "Quitar todos" : "Encender Todos"
             
+        },
+        'params':function(){
+            this._initLegend()
         }
     }
 }
