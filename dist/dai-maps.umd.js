@@ -773,17 +773,6 @@ module.exports = function (iterable, unboundFunction, options) {
 
 /***/ }),
 
-/***/ "23b2":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_coropleta_vue_vue_type_style_index_0_id_5f2d7684_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("6e06");
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_coropleta_vue_vue_type_style_index_0_id_5f2d7684_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_coropleta_vue_vue_type_style_index_0_id_5f2d7684_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
-/* unused harmony reexport * */
-
-
-/***/ }),
-
 /***/ "23cb":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2390,13 +2379,6 @@ module.exports = function (CONSTRUCTOR_NAME, wrapper, common) {
 
 /***/ }),
 
-/***/ "6e06":
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-
 /***/ "6eeb":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3333,6 +3315,17 @@ exports.f = DESCRIPTORS ? $defineProperty : function defineProperty(O, P, Attrib
 
 /***/ }),
 
+/***/ "9e53":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_coropleta_vue_vue_type_style_index_0_id_5c0f6534_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("b4a6");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_coropleta_vue_vue_type_style_index_0_id_5c0f6534_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_coropleta_vue_vue_type_style_index_0_id_5c0f6534_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+
+
+/***/ }),
+
 /***/ "9ec5":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -4124,6 +4117,13 @@ if (DESCRIPTORS && !(NAME in FunctionPrototype)) {
   });
 }
 
+
+/***/ }),
+
+/***/ "b4a6":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -5370,6 +5370,7 @@ __webpack_require__.d(__webpack_exports__, "DaiXyzLayer", function() { return /*
 __webpack_require__.d(__webpack_exports__, "DaiXyzLayerOsm", function() { return /* reexport */ xyz_layer_osm_namespaceObject; });
 __webpack_require__.d(__webpack_exports__, "DaiGeojsonLayer", function() { return /* reexport */ geojson_layer_namespaceObject; });
 __webpack_require__.d(__webpack_exports__, "DaiCapaGeojsonCluster", function() { return /* reexport */ geojson_cluster_layer_namespaceObject; });
+__webpack_require__.d(__webpack_exports__, "DaiCapaGeojsonHexbin", function() { return /* reexport */ geojson_hexbin_layer_namespaceObject; });
 __webpack_require__.d(__webpack_exports__, "DaiWmsLayer", function() { return /* reexport */ wms_layer_namespaceObject; });
 __webpack_require__.d(__webpack_exports__, "DaiLeyendaMapa", function() { return /* reexport */ legend_control_namespaceObject; });
 __webpack_require__.d(__webpack_exports__, "DaiMapSelector", function() { return /* reexport */ selector_control_namespaceObject; });
@@ -5976,6 +5977,14 @@ __webpack_require__.r(geojson_cluster_layer_namespaceObject);
 __webpack_require__.d(geojson_cluster_layer_namespaceObject, "default", function() { return geojson_cluster_layer; });
 __webpack_require__.d(geojson_cluster_layer_namespaceObject, "install", function() { return geojson_cluster_layer_plugin; });
 __webpack_require__.d(geojson_cluster_layer_namespaceObject, "DaiCapaGeojsonCluster", function() { return geojson_cluster; });
+
+// NAMESPACE OBJECT: ./src/components/geojson-hexbin-layer/index.js
+var geojson_hexbin_layer_namespaceObject = {};
+__webpack_require__.r(geojson_hexbin_layer_namespaceObject);
+__webpack_require__.d(geojson_hexbin_layer_namespaceObject, "default", function() { return geojson_hexbin_layer; });
+__webpack_require__.d(geojson_hexbin_layer_namespaceObject, "install", function() { return geojson_hexbin_layer_plugin; });
+__webpack_require__.d(geojson_hexbin_layer_namespaceObject, "DaiCapaGeojsonHexbinDinamico", function() { return geojson_hexbin_dinamico; });
+__webpack_require__.d(geojson_hexbin_layer_namespaceObject, "DaiCapaGeojsonHexbin", function() { return geojson_hexbin; });
 
 // NAMESPACE OBJECT: ./src/components/wms-layer/index.js
 var wms_layer_namespaceObject = {};
@@ -8212,7 +8221,7 @@ var obj_assign = typeof Object.assign === 'function'
  * Removes all properties from an object.
  * @param {Object} object The object to clear.
  */
-function clear(object) {
+function obj_clear(object) {
     for (var property in object) {
         delete object[property];
     }
@@ -8384,7 +8393,7 @@ var Target_Target = /** @class */ (function (_super) {
      * Clean up.
      */
     Target.prototype.disposeInternal = function () {
-        this.listeners_ && clear(this.listeners_);
+        this.listeners_ && obj_clear(this.listeners_);
     };
     /**
      * Get the listeners for a specified event type. Listeners are returned in the
@@ -8570,7 +8579,7 @@ function listenOnce(target, type, listener, opt_this) {
 function unlistenByKey(key) {
     if (key && key.target) {
         key.target.removeEventListener(key.type, key.listener);
-        clear(key);
+        obj_clear(key);
     }
 }
 //# sourceMappingURL=events.js.map
@@ -10900,7 +10909,7 @@ var registerFont = (function () {
             var font = fonts[i];
             if (checkedFonts.get(font) < retries) {
                 if (isAvailable.apply(this, font.split('\n'))) {
-                    clear(textHeights);
+                    obj_clear(textHeights);
                     // Make sure that loaded fonts are picked up by Safari
                     measureContext = null;
                     measureFont = undefined;
@@ -11728,7 +11737,7 @@ var Group_LayerGroup = /** @class */ (function (_super) {
         for (var id in this.listenerKeys_) {
             this.listenerKeys_[id].forEach(unlistenByKey);
         }
-        clear(this.listenerKeys_);
+        obj_clear(this.listenerKeys_);
         var layersArray = layers.getArray();
         for (var i = 0, ii = layersArray.length; i < ii; i++) {
             var layer = layersArray[i];
@@ -12475,7 +12484,7 @@ var PriorityQueue_PriorityQueue = /** @class */ (function () {
     PriorityQueue.prototype.clear = function () {
         this.elements_.length = 0;
         this.priorities_.length = 0;
-        clear(this.queuedElements_);
+        obj_clear(this.queuedElements_);
     };
     /**
      * Remove and return the highest-priority element. O(log N).
@@ -34384,7 +34393,7 @@ var CircleStyle = /** @class */ (function (_super) {
     };
     return CircleStyle;
 }(style_RegularShape));
-/* harmony default export */ var Circle = (CircleStyle);
+/* harmony default export */ var style_Circle = (CircleStyle);
 //# sourceMappingURL=Circle.js.map
 // CONCATENATED MODULE: ./node_modules/ol/style/IconAnchorUnits.js
 /**
@@ -35531,7 +35540,7 @@ function createDefaultStyle(feature, resolution) {
         });
         defaultStyles = [
             new Style({
-                image: new Circle({
+                image: new style_Circle({
                     fill: fill,
                     stroke: stroke,
                     radius: 5,
@@ -35579,7 +35588,7 @@ function createEditingStyle() {
     styles[GeometryType.CIRCLE] = styles[GeometryType.POLYGON].concat(styles[GeometryType.LINE_STRING]);
     styles[GeometryType.POINT] = [
         new Style({
-            image: new Circle({
+            image: new style_Circle({
                 radius: width * 2,
                 fill: new style_Fill({
                     color: blue,
@@ -36765,7 +36774,7 @@ var equivalencias = {
     key: "stroke"
   },
   "circle": {
-    class: Circle,
+    class: style_Circle,
     key: "image"
   },
   "icon": {
@@ -39837,11 +39846,17 @@ function writePolygonGeometry(geometry, opt_options) {
 
 
 
+
 var vector_layer_any_DEFAULT_FILL_COLOR = "gray";
 var DEFAULT_STROKE_COLOR = "white";
 var vector_layer_any_DEFAULT_RADIUS = 7;
 /* harmony default export */ var vector_layer_any = ({
   props: {
+    renderizarComoImagen: {
+      type: Boolean,
+      default: false
+    },
+
     /**  Url de la fuente de datos, sea csv, geojson o kml por ejemplo */
     url: {
       type: String,
@@ -40126,7 +40141,17 @@ var vector_layer_any_DEFAULT_RADIUS = 7;
       var geojsonFormat = new format_GeoJSON(); //if(vectorSource.getFeatures().length>1){
 
       if (vectorSource.getUrl() === undefined) {
-        this.VM_allFeatures = geojsonFormat.writeFeatures(vectorSource.getFeatures());
+        if (this.VM_featuresGroup) {
+          var objects = geojsonFormat.writeFeaturesObject(vectorSource.getFeatures());
+          objects.features = objects.features.map(function (f) {
+            f.properties['features'] = '';
+            return f;
+          });
+          this.VM_allFeatures = JSON.stringify(objects);
+        } else {
+          this.VM_allFeatures = geojsonFormat.writeFeatures(vectorSource.getFeatures());
+        }
+
         this.VM_geometryType = vectorSource.getFeatures().length > 0 ? vectorSource.getFeatures()[0].getGeometry().getType() : "";
         this.$emit("saved_features", this.VM_allFeatures);
         return;
@@ -62171,7 +62196,17 @@ var defaultsValuesRule = {
       this.VM_rules_cortes = [];
       this.VM_rules_textures = []; //darle estilo segun cada una de las reglas
 
-      var features = this.olLayer.getSource().getFeatures(); //console.log(this.VM_geometryType,"el tipo de geometria")
+      var features;
+
+      if (this.VM_featuresGroup) {
+        features = this.olLayer.getSource().getFeatures().map(function (f) {
+          f.set('features_count', f.getProperties()['features'].length);
+          return f;
+        });
+      } else {
+        features = this.olLayer.getSource().getFeatures();
+      } //console.log(this.VM_geometryType,"el tipo de geometria")
+
 
       this.VM_geometryType = features.length > 0 ? features[0].getGeometry().getType() : '';
       this.VM_default_shape = this.VM_rules.map(function (rule) {
@@ -68109,7 +68144,564 @@ var Vector_VectorLayer = /** @class */ (function (_super) {
 }(BaseVector));
 /* harmony default export */ var layer_Vector = (Vector_VectorLayer);
 //# sourceMappingURL=Vector.js.map
+// CONCATENATED MODULE: ./node_modules/ol/renderer/canvas/ImageLayer.js
+var ImageLayer_extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/renderer/canvas/ImageLayer
+ */
+
+
+
+
+
+
+
+
+
+/**
+ * @classdesc
+ * Canvas renderer for image layers.
+ * @api
+ */
+var ImageLayer_CanvasImageLayerRenderer = /** @class */ (function (_super) {
+    ImageLayer_extends(CanvasImageLayerRenderer, _super);
+    /**
+     * @param {import("../../layer/Image.js").default} imageLayer Image layer.
+     */
+    function CanvasImageLayerRenderer(imageLayer) {
+        var _this = _super.call(this, imageLayer) || this;
+        /**
+         * @protected
+         * @type {?import("../../ImageBase.js").default}
+         */
+        _this.image_ = null;
+        return _this;
+    }
+    /**
+     * @return {HTMLCanvasElement|HTMLImageElement|HTMLVideoElement} Image.
+     */
+    CanvasImageLayerRenderer.prototype.getImage = function () {
+        return !this.image_ ? null : this.image_.getImage();
+    };
+    /**
+     * Determine whether render should be called.
+     * @param {import("../../PluggableMap.js").FrameState} frameState Frame state.
+     * @return {boolean} Layer is ready to be rendered.
+     */
+    CanvasImageLayerRenderer.prototype.prepareFrame = function (frameState) {
+        var layerState = frameState.layerStatesArray[frameState.layerIndex];
+        var pixelRatio = frameState.pixelRatio;
+        var viewState = frameState.viewState;
+        var viewResolution = viewState.resolution;
+        var imageSource = this.getLayer().getSource();
+        var hints = frameState.viewHints;
+        var renderedExtent = frameState.extent;
+        if (layerState.extent !== undefined) {
+            renderedExtent = getIntersection(renderedExtent, fromUserExtent(layerState.extent, viewState.projection));
+        }
+        if (!hints[ViewHint.ANIMATING] &&
+            !hints[ViewHint.INTERACTING] &&
+            !isEmpty(renderedExtent)) {
+            if (imageSource) {
+                var projection = viewState.projection;
+                if (!ENABLE_RASTER_REPROJECTION) {
+                    var sourceProjection = imageSource.getProjection();
+                    if (sourceProjection) {
+                        projection = sourceProjection;
+                    }
+                }
+                var image = imageSource.getImage(renderedExtent, viewResolution, pixelRatio, projection);
+                if (image && this.loadImage(image)) {
+                    this.image_ = image;
+                }
+            }
+            else {
+                this.image_ = null;
+            }
+        }
+        return !!this.image_;
+    };
+    /**
+     * Render the layer.
+     * @param {import("../../PluggableMap.js").FrameState} frameState Frame state.
+     * @param {HTMLElement} target Target that may be used to render content to.
+     * @return {HTMLElement} The rendered element.
+     */
+    CanvasImageLayerRenderer.prototype.renderFrame = function (frameState, target) {
+        var image = this.image_;
+        var imageExtent = image.getExtent();
+        var imageResolution = image.getResolution();
+        var imagePixelRatio = image.getPixelRatio();
+        var layerState = frameState.layerStatesArray[frameState.layerIndex];
+        var pixelRatio = frameState.pixelRatio;
+        var viewState = frameState.viewState;
+        var viewCenter = viewState.center;
+        var viewResolution = viewState.resolution;
+        var size = frameState.size;
+        var scale = (pixelRatio * imageResolution) / (viewResolution * imagePixelRatio);
+        var width = Math.round(size[0] * pixelRatio);
+        var height = Math.round(size[1] * pixelRatio);
+        var rotation = viewState.rotation;
+        if (rotation) {
+            var size_1 = Math.round(Math.sqrt(width * width + height * height));
+            width = size_1;
+            height = size_1;
+        }
+        // set forward and inverse pixel transforms
+        compose(this.pixelTransform, frameState.size[0] / 2, frameState.size[1] / 2, 1 / pixelRatio, 1 / pixelRatio, rotation, -width / 2, -height / 2);
+        makeInverse(this.inversePixelTransform, this.pixelTransform);
+        var canvasTransform = createTransformString(this.pixelTransform);
+        this.useContainer(target, canvasTransform, layerState.opacity);
+        var context = this.context;
+        var canvas = context.canvas;
+        if (canvas.width != width || canvas.height != height) {
+            canvas.width = width;
+            canvas.height = height;
+        }
+        else if (!this.containerReused) {
+            context.clearRect(0, 0, width, height);
+        }
+        // clipped rendering if layer extent is set
+        var clipped = false;
+        if (layerState.extent) {
+            var layerExtent = fromUserExtent(layerState.extent, viewState.projection);
+            clipped =
+                !containsExtent(layerExtent, frameState.extent) &&
+                    extent_intersects(layerExtent, frameState.extent);
+            if (clipped) {
+                this.clipUnrotated(context, frameState, layerExtent);
+            }
+        }
+        var img = image.getImage();
+        var transform = compose(this.tempTransform, width / 2, height / 2, scale, scale, 0, (imagePixelRatio * (imageExtent[0] - viewCenter[0])) / imageResolution, (imagePixelRatio * (viewCenter[1] - imageExtent[3])) / imageResolution);
+        this.renderedResolution = (imageResolution * pixelRatio) / imagePixelRatio;
+        var dx = transform[4];
+        var dy = transform[5];
+        var dw = img.width * transform[0];
+        var dh = img.height * transform[3];
+        obj_assign(context, this.getLayer().getSource().getContextOptions());
+        this.preRender(context, frameState);
+        if (dw >= 0.5 && dh >= 0.5) {
+            var opacity = layerState.opacity;
+            var previousAlpha = void 0;
+            if (opacity !== 1) {
+                previousAlpha = this.context.globalAlpha;
+                this.context.globalAlpha = opacity;
+            }
+            this.context.drawImage(img, 0, 0, +img.width, +img.height, Math.round(dx), Math.round(dy), Math.round(dw), Math.round(dh));
+            if (opacity !== 1) {
+                this.context.globalAlpha = previousAlpha;
+            }
+        }
+        this.postRender(context, frameState);
+        if (clipped) {
+            context.restore();
+        }
+        if (canvasTransform !== canvas.style.transform) {
+            canvas.style.transform = canvasTransform;
+        }
+        return this.container;
+    };
+    return CanvasImageLayerRenderer;
+}(canvas_Layer));
+/* harmony default export */ var canvas_ImageLayer = (ImageLayer_CanvasImageLayerRenderer);
+//# sourceMappingURL=ImageLayer.js.map
+// CONCATENATED MODULE: ./node_modules/ol/ImageCanvas.js
+var ImageCanvas_extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/ImageCanvas
+ */
+
+
+/**
+ * A function that is called to trigger asynchronous canvas drawing.  It is
+ * called with a "done" callback that should be called when drawing is done.
+ * If any error occurs during drawing, the "done" callback should be called with
+ * that error.
+ *
+ * @typedef {function(function(Error=): void): void} Loader
+ */
+var ImageCanvas_ImageCanvas = /** @class */ (function (_super) {
+    ImageCanvas_extends(ImageCanvas, _super);
+    /**
+     * @param {import("./extent.js").Extent} extent Extent.
+     * @param {number} resolution Resolution.
+     * @param {number} pixelRatio Pixel ratio.
+     * @param {HTMLCanvasElement} canvas Canvas.
+     * @param {Loader=} opt_loader Optional loader function to
+     *     support asynchronous canvas drawing.
+     */
+    function ImageCanvas(extent, resolution, pixelRatio, canvas, opt_loader) {
+        var _this = this;
+        var state = opt_loader !== undefined ? ImageState.IDLE : ImageState.LOADED;
+        _this = _super.call(this, extent, resolution, pixelRatio, state) || this;
+        /**
+         * Optional canvas loader function.
+         * @type {?Loader}
+         * @private
+         */
+        _this.loader_ = opt_loader !== undefined ? opt_loader : null;
+        /**
+         * @private
+         * @type {HTMLCanvasElement}
+         */
+        _this.canvas_ = canvas;
+        /**
+         * @private
+         * @type {?Error}
+         */
+        _this.error_ = null;
+        return _this;
+    }
+    /**
+     * Get any error associated with asynchronous rendering.
+     * @return {?Error} Any error that occurred during rendering.
+     */
+    ImageCanvas.prototype.getError = function () {
+        return this.error_;
+    };
+    /**
+     * Handle async drawing complete.
+     * @param {Error=} err Any error during drawing.
+     * @private
+     */
+    ImageCanvas.prototype.handleLoad_ = function (err) {
+        if (err) {
+            this.error_ = err;
+            this.state = ImageState.ERROR;
+        }
+        else {
+            this.state = ImageState.LOADED;
+        }
+        this.changed();
+    };
+    /**
+     * Load not yet loaded URI.
+     */
+    ImageCanvas.prototype.load = function () {
+        if (this.state == ImageState.IDLE) {
+            this.state = ImageState.LOADING;
+            this.changed();
+            this.loader_(this.handleLoad_.bind(this));
+        }
+    };
+    /**
+     * @return {HTMLCanvasElement} Canvas element.
+     */
+    ImageCanvas.prototype.getImage = function () {
+        return this.canvas_;
+    };
+    return ImageCanvas;
+}(ol_ImageBase));
+/* harmony default export */ var ol_ImageCanvas = (ImageCanvas_ImageCanvas);
+//# sourceMappingURL=ImageCanvas.js.map
+// CONCATENATED MODULE: ./node_modules/ol/renderer/canvas/VectorImageLayer.js
+var VectorImageLayer_extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/renderer/canvas/VectorImageLayer
+ */
+
+
+
+
+
+
+
+
+
+
+/**
+ * @classdesc
+ * Canvas renderer for image layers.
+ * @api
+ */
+var VectorImageLayer_CanvasVectorImageLayerRenderer = /** @class */ (function (_super) {
+    VectorImageLayer_extends(CanvasVectorImageLayerRenderer, _super);
+    /**
+     * @param {import("../../layer/VectorImage.js").default} layer Vector image layer.
+     */
+    function CanvasVectorImageLayerRenderer(layer) {
+        var _this = _super.call(this, layer) || this;
+        /**
+         * @private
+         * @type {import("./VectorLayer.js").default}
+         */
+        _this.vectorRenderer_ = new canvas_VectorLayer(layer);
+        /**
+         * @private
+         * @type {number}
+         */
+        _this.layerImageRatio_ = layer.getImageRatio();
+        /**
+         * @private
+         * @type {import("../../transform.js").Transform}
+         */
+        _this.coordinateToVectorPixelTransform_ = transform_create();
+        /**
+         * @private
+         * @type {import("../../transform.js").Transform}
+         */
+        _this.renderedPixelToCoordinateTransform_ = null;
+        return _this;
+    }
+    /**
+     * Clean up.
+     */
+    CanvasVectorImageLayerRenderer.prototype.disposeInternal = function () {
+        this.vectorRenderer_.dispose();
+        _super.prototype.disposeInternal.call(this);
+    };
+    /**
+     * Asynchronous layer level hit detection.
+     * @param {import("../../pixel.js").Pixel} pixel Pixel.
+     * @return {Promise<Array<import("../../Feature").default>>} Promise that resolves with an array of features.
+     */
+    CanvasVectorImageLayerRenderer.prototype.getFeatures = function (pixel) {
+        if (this.vectorRenderer_) {
+            var vectorPixel = transform_apply(this.coordinateToVectorPixelTransform_, transform_apply(this.renderedPixelToCoordinateTransform_, pixel.slice()));
+            return this.vectorRenderer_.getFeatures(vectorPixel);
+        }
+        else {
+            var promise = new Promise(function (resolve, reject) {
+                resolve([]);
+            });
+            return promise;
+        }
+    };
+    /**
+     * Perform action necessary to get the layer rendered after new fonts have loaded
+     */
+    CanvasVectorImageLayerRenderer.prototype.handleFontsChanged = function () {
+        this.vectorRenderer_.handleFontsChanged();
+    };
+    /**
+     * Determine whether render should be called.
+     * @param {import("../../PluggableMap.js").FrameState} frameState Frame state.
+     * @return {boolean} Layer is ready to be rendered.
+     */
+    CanvasVectorImageLayerRenderer.prototype.prepareFrame = function (frameState) {
+        var pixelRatio = frameState.pixelRatio;
+        var viewState = frameState.viewState;
+        var viewResolution = viewState.resolution;
+        var hints = frameState.viewHints;
+        var vectorRenderer = this.vectorRenderer_;
+        var renderedExtent = frameState.extent;
+        if (this.layerImageRatio_ !== 1) {
+            renderedExtent = renderedExtent.slice(0);
+            scaleFromCenter(renderedExtent, this.layerImageRatio_);
+        }
+        var width = getWidth(renderedExtent) / viewResolution;
+        var height = getHeight(renderedExtent) / viewResolution;
+        if (!hints[ViewHint.ANIMATING] &&
+            !hints[ViewHint.INTERACTING] &&
+            !isEmpty(renderedExtent)) {
+            vectorRenderer.useContainer(null, null, 1);
+            var context = vectorRenderer.context;
+            var imageFrameState_1 = /** @type {import("../../PluggableMap.js").FrameState} */ (obj_assign({}, frameState, {
+                declutterTree: new rbush_min_default.a(9),
+                extent: renderedExtent,
+                size: [width, height],
+                viewState: /** @type {import("../../View.js").State} */ (obj_assign({}, frameState.viewState, {
+                    rotation: 0,
+                })),
+            }));
+            var image_1 = new ol_ImageCanvas(renderedExtent, viewResolution, pixelRatio, context.canvas, function (callback) {
+                if (vectorRenderer.prepareFrame(imageFrameState_1) &&
+                    vectorRenderer.replayGroupChanged) {
+                    vectorRenderer.clipping = false;
+                    vectorRenderer.renderFrame(imageFrameState_1, null);
+                    vectorRenderer.renderDeclutter(imageFrameState_1);
+                    callback();
+                }
+            });
+            image_1.addEventListener(EventType.CHANGE, function () {
+                if (image_1.getState() === ImageState.LOADED) {
+                    this.image_ = image_1;
+                    var imageResolution = image_1.getResolution();
+                    var imagePixelRatio = image_1.getPixelRatio();
+                    var renderedResolution = (imageResolution * pixelRatio) / imagePixelRatio;
+                    this.renderedResolution = renderedResolution;
+                    this.coordinateToVectorPixelTransform_ = compose(this.coordinateToVectorPixelTransform_, width / 2, height / 2, 1 / renderedResolution, -1 / renderedResolution, 0, -viewState.center[0], -viewState.center[1]);
+                }
+            }.bind(this));
+            image_1.load();
+        }
+        if (this.image_) {
+            this.renderedPixelToCoordinateTransform_ = frameState.pixelToCoordinateTransform.slice();
+        }
+        return !!this.image_;
+    };
+    /**
+     */
+    CanvasVectorImageLayerRenderer.prototype.preRender = function () { };
+    /**
+     */
+    CanvasVectorImageLayerRenderer.prototype.postRender = function () { };
+    /**
+     */
+    CanvasVectorImageLayerRenderer.prototype.renderDeclutter = function () { };
+    /**
+     * @param {import("../../coordinate.js").Coordinate} coordinate Coordinate.
+     * @param {import("../../PluggableMap.js").FrameState} frameState Frame state.
+     * @param {number} hitTolerance Hit tolerance in pixels.
+     * @param {import("../vector.js").FeatureCallback<T>} callback Feature callback.
+     * @param {Array<import("../Map.js").HitMatch<T>>} matches The hit detected matches with tolerance.
+     * @return {T|undefined} Callback result.
+     * @template T
+     */
+    CanvasVectorImageLayerRenderer.prototype.forEachFeatureAtCoordinate = function (coordinate, frameState, hitTolerance, callback, matches) {
+        if (this.vectorRenderer_) {
+            return this.vectorRenderer_.forEachFeatureAtCoordinate(coordinate, frameState, hitTolerance, callback, matches);
+        }
+        else {
+            return _super.prototype.forEachFeatureAtCoordinate.call(this, coordinate, frameState, hitTolerance, callback, matches);
+        }
+    };
+    return CanvasVectorImageLayerRenderer;
+}(canvas_ImageLayer));
+/* harmony default export */ var canvas_VectorImageLayer = (VectorImageLayer_CanvasVectorImageLayerRenderer);
+//# sourceMappingURL=VectorImageLayer.js.map
+// CONCATENATED MODULE: ./node_modules/ol/layer/VectorImage.js
+var VectorImage_extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/layer/VectorImage
+ */
+
+
+
+/**
+ * @typedef {Object} Options
+ * @property {string} [className='ol-layer'] A CSS class name to set to the layer element.
+ * @property {number} [opacity=1] Opacity (0, 1).
+ * @property {boolean} [visible=true] Visibility.
+ * @property {import("../extent.js").Extent} [extent] The bounding extent for layer rendering.  The layer will not be
+ * rendered outside of this extent.
+ * @property {number} [zIndex] The z-index for layer rendering.  At rendering time, the layers
+ * will be ordered, first by Z-index and then by position. When `undefined`, a `zIndex` of 0 is assumed
+ * for layers that are added to the map's `layers` collection, or `Infinity` when the layer's `setMap()`
+ * method was used.
+ * @property {number} [minResolution] The minimum resolution (inclusive) at which this layer will be
+ * visible.
+ * @property {number} [maxResolution] The maximum resolution (exclusive) below which this layer will
+ * be visible.
+ * @property {number} [minZoom] The minimum view zoom level (exclusive) above which this layer will be
+ * visible.
+ * @property {number} [maxZoom] The maximum view zoom level (inclusive) at which this layer will
+ * be visible.
+ * @property {import("../render.js").OrderFunction} [renderOrder] Render order. Function to be used when sorting
+ * features before rendering. By default features are drawn in the order that they are created. Use
+ * `null` to avoid the sort, but get an undefined draw order.
+ * @property {number} [renderBuffer=100] The buffer in pixels around the viewport extent used by the
+ * renderer when getting features from the vector source for the rendering or hit-detection.
+ * Recommended value: the size of the largest symbol, line width or label.
+ * @property {import("../source/Vector.js").default} [source] Source.
+ * @property {import("../PluggableMap.js").default} [map] Sets the layer as overlay on a map. The map will not manage
+ * this layer in its layers collection, and the layer will be rendered on top. This is useful for
+ * temporary layers. The standard way to add a layer to a map and have it managed by the map is to
+ * use {@link module:ol/Map#addLayer}.
+ * @property {boolean} [declutter=false] Declutter images and text on this layer. The priority is defined
+ * by the `zIndex` of the style and the render order of features. Higher z-index means higher priority.
+ * Within the same z-index, a feature rendered before another has higher priority.
+ * @property {import("../style/Style.js").StyleLike} [style] Layer style. See
+ * {@link module:ol/style} for default style which will be used if this is not defined.
+ * @property {number} [imageRatio=1] Ratio by which the rendered extent should be larger than the
+ * viewport extent. A larger ratio avoids cut images during panning, but will cause a decrease in performance.
+ */
+/**
+ * @classdesc
+ * Vector data that is rendered client-side.
+ * Note that any property set in the options is set as a {@link module:ol/Object~BaseObject}
+ * property on the layer object; for example, setting `title: 'My Title'` in the
+ * options means that `title` is observable, and has get/set accessors.
+ *
+ * @api
+ */
+var VectorImage_VectorImageLayer = /** @class */ (function (_super) {
+    VectorImage_extends(VectorImageLayer, _super);
+    /**
+     * @param {Options=} opt_options Options.
+     */
+    function VectorImageLayer(opt_options) {
+        var _this = this;
+        var options = opt_options ? opt_options : {};
+        var baseOptions = obj_assign({}, options);
+        delete baseOptions.imageRatio;
+        _this = _super.call(this, baseOptions) || this;
+        /**
+         * @type {number}
+         * @private
+         */
+        _this.imageRatio_ =
+            options.imageRatio !== undefined ? options.imageRatio : 1;
+        return _this;
+    }
+    /**
+     * @return {number} Ratio between rendered extent size and viewport extent size.
+     */
+    VectorImageLayer.prototype.getImageRatio = function () {
+        return this.imageRatio_;
+    };
+    /**
+     * Create a renderer for this layer.
+     * @return {import("../renderer/Layer.js").default} A layer renderer.
+     */
+    VectorImageLayer.prototype.createRenderer = function () {
+        return new canvas_VectorImageLayer(this);
+    };
+    return VectorImageLayer;
+}(BaseVector));
+/* harmony default export */ var VectorImage = (VectorImage_VectorImageLayer);
+//# sourceMappingURL=VectorImage.js.map
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/geojson-layer/geojson.vue?vue&type=script&lang=js&
+
 
 
 
@@ -68126,7 +68718,8 @@ var Vector_VectorLayer = /** @class */ (function (_super) {
       var _this = this;
 
       var vectorSource = this.datos != undefined ? geojsonvue_type_script_lang_js_createGeojsonSourceFromObjectJs(this.datos) : geojsonvue_type_script_lang_js_createGeojsonSourceFromUrl(this.url);
-      this.olLayer = new layer_Vector({
+      var LayerClass = this.renderizarComoImagen ? VectorImage : layer_Vector;
+      this.olLayer = new LayerClass({
         source: vectorSource
       });
       this.olLayer.set("_realce_hover", this.realceAlPasarMouse);
@@ -68488,6 +69081,7 @@ var Cluster_Cluster = /** @class */ (function (_super) {
 
 
 
+
 /* harmony default export */ var geojson_clustervue_type_script_lang_js_ = ({
   name: "DaiCapaGeojsonCluster",
   mixins: [mixins_layer, vector_layer_any],
@@ -68505,7 +69099,8 @@ var Cluster_Cluster = /** @class */ (function (_super) {
     _createLayerObject: function _createLayerObject() {
       this.VM_is_cluster = true;
       var vectorSource = this.datos != undefined ? geojson_clustervue_type_script_lang_js_createGeojsonSourceFromObjectJs(this.datos) : geojson_clustervue_type_script_lang_js_createGeojsonSourceFromUrl(this.url);
-      this.olLayer = new layer_Vector({
+      var LayerClass = this.renderizarComoImagen ? VectorImage : layer_Vector;
+      this.olLayer = new LayerClass({
         source: new source_Cluster({
           source: vectorSource,
           distance: this.distancia,
@@ -68650,6 +69245,1683 @@ function geojson_cluster_layer_plugin(Vue) {
 
 /* harmony default export */ var geojson_cluster_layer = (geojson_cluster_layer_plugin);
 
+// CONCATENATED MODULE: ./node_modules/ol/geom/Circle.js
+var geom_Circle_extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/geom/Circle
+ */
+
+
+
+
+
+/**
+ * @classdesc
+ * Circle geometry.
+ *
+ * @api
+ */
+var Circle_Circle = /** @class */ (function (_super) {
+    geom_Circle_extends(Circle, _super);
+    /**
+     * @param {!import("../coordinate.js").Coordinate} center Center.
+     *     For internal use, flat coordinates in combination with `opt_layout` and no
+     *     `opt_radius` are also accepted.
+     * @param {number=} opt_radius Radius.
+     * @param {import("./GeometryLayout.js").default=} opt_layout Layout.
+     */
+    function Circle(center, opt_radius, opt_layout) {
+        var _this = _super.call(this) || this;
+        if (opt_layout !== undefined && opt_radius === undefined) {
+            _this.setFlatCoordinates(opt_layout, center);
+        }
+        else {
+            var radius = opt_radius ? opt_radius : 0;
+            _this.setCenterAndRadius(center, radius, opt_layout);
+        }
+        return _this;
+    }
+    /**
+     * Make a complete copy of the geometry.
+     * @return {!Circle} Clone.
+     * @api
+     */
+    Circle.prototype.clone = function () {
+        var circle = new Circle(this.flatCoordinates.slice(), undefined, this.layout);
+        circle.applyProperties(this);
+        return circle;
+    };
+    /**
+     * @param {number} x X.
+     * @param {number} y Y.
+     * @param {import("../coordinate.js").Coordinate} closestPoint Closest point.
+     * @param {number} minSquaredDistance Minimum squared distance.
+     * @return {number} Minimum squared distance.
+     */
+    Circle.prototype.closestPointXY = function (x, y, closestPoint, minSquaredDistance) {
+        var flatCoordinates = this.flatCoordinates;
+        var dx = x - flatCoordinates[0];
+        var dy = y - flatCoordinates[1];
+        var squaredDistance = dx * dx + dy * dy;
+        if (squaredDistance < minSquaredDistance) {
+            if (squaredDistance === 0) {
+                for (var i = 0; i < this.stride; ++i) {
+                    closestPoint[i] = flatCoordinates[i];
+                }
+            }
+            else {
+                var delta = this.getRadius() / Math.sqrt(squaredDistance);
+                closestPoint[0] = flatCoordinates[0] + delta * dx;
+                closestPoint[1] = flatCoordinates[1] + delta * dy;
+                for (var i = 2; i < this.stride; ++i) {
+                    closestPoint[i] = flatCoordinates[i];
+                }
+            }
+            closestPoint.length = this.stride;
+            return squaredDistance;
+        }
+        else {
+            return minSquaredDistance;
+        }
+    };
+    /**
+     * @param {number} x X.
+     * @param {number} y Y.
+     * @return {boolean} Contains (x, y).
+     */
+    Circle.prototype.containsXY = function (x, y) {
+        var flatCoordinates = this.flatCoordinates;
+        var dx = x - flatCoordinates[0];
+        var dy = y - flatCoordinates[1];
+        return dx * dx + dy * dy <= this.getRadiusSquared_();
+    };
+    /**
+     * Return the center of the circle as {@link module:ol/coordinate~Coordinate coordinate}.
+     * @return {import("../coordinate.js").Coordinate} Center.
+     * @api
+     */
+    Circle.prototype.getCenter = function () {
+        return this.flatCoordinates.slice(0, this.stride);
+    };
+    /**
+     * @param {import("../extent.js").Extent} extent Extent.
+     * @protected
+     * @return {import("../extent.js").Extent} extent Extent.
+     */
+    Circle.prototype.computeExtent = function (extent) {
+        var flatCoordinates = this.flatCoordinates;
+        var radius = flatCoordinates[this.stride] - flatCoordinates[0];
+        return createOrUpdate(flatCoordinates[0] - radius, flatCoordinates[1] - radius, flatCoordinates[0] + radius, flatCoordinates[1] + radius, extent);
+    };
+    /**
+     * Return the radius of the circle.
+     * @return {number} Radius.
+     * @api
+     */
+    Circle.prototype.getRadius = function () {
+        return Math.sqrt(this.getRadiusSquared_());
+    };
+    /**
+     * @private
+     * @return {number} Radius squared.
+     */
+    Circle.prototype.getRadiusSquared_ = function () {
+        var dx = this.flatCoordinates[this.stride] - this.flatCoordinates[0];
+        var dy = this.flatCoordinates[this.stride + 1] - this.flatCoordinates[1];
+        return dx * dx + dy * dy;
+    };
+    /**
+     * Get the type of this geometry.
+     * @return {import("./GeometryType.js").default} Geometry type.
+     * @api
+     */
+    Circle.prototype.getType = function () {
+        return GeometryType.CIRCLE;
+    };
+    /**
+     * Test if the geometry and the passed extent intersect.
+     * @param {import("../extent.js").Extent} extent Extent.
+     * @return {boolean} `true` if the geometry and the extent intersect.
+     * @api
+     */
+    Circle.prototype.intersectsExtent = function (extent) {
+        var circleExtent = this.getExtent();
+        if (extent_intersects(extent, circleExtent)) {
+            var center = this.getCenter();
+            if (extent[0] <= center[0] && extent[2] >= center[0]) {
+                return true;
+            }
+            if (extent[1] <= center[1] && extent[3] >= center[1]) {
+                return true;
+            }
+            return forEachCorner(extent, this.intersectsCoordinate.bind(this));
+        }
+        return false;
+    };
+    /**
+     * Set the center of the circle as {@link module:ol/coordinate~Coordinate coordinate}.
+     * @param {import("../coordinate.js").Coordinate} center Center.
+     * @api
+     */
+    Circle.prototype.setCenter = function (center) {
+        var stride = this.stride;
+        var radius = this.flatCoordinates[stride] - this.flatCoordinates[0];
+        var flatCoordinates = center.slice();
+        flatCoordinates[stride] = flatCoordinates[0] + radius;
+        for (var i = 1; i < stride; ++i) {
+            flatCoordinates[stride + i] = center[i];
+        }
+        this.setFlatCoordinates(this.layout, flatCoordinates);
+        this.changed();
+    };
+    /**
+     * Set the center (as {@link module:ol/coordinate~Coordinate coordinate}) and the radius (as
+     * number) of the circle.
+     * @param {!import("../coordinate.js").Coordinate} center Center.
+     * @param {number} radius Radius.
+     * @param {import("./GeometryLayout.js").default=} opt_layout Layout.
+     * @api
+     */
+    Circle.prototype.setCenterAndRadius = function (center, radius, opt_layout) {
+        this.setLayout(opt_layout, center, 0);
+        if (!this.flatCoordinates) {
+            this.flatCoordinates = [];
+        }
+        /** @type {Array<number>} */
+        var flatCoordinates = this.flatCoordinates;
+        var offset = deflateCoordinate(flatCoordinates, 0, center, this.stride);
+        flatCoordinates[offset++] = flatCoordinates[0] + radius;
+        for (var i = 1, ii = this.stride; i < ii; ++i) {
+            flatCoordinates[offset++] = flatCoordinates[i];
+        }
+        flatCoordinates.length = offset;
+        this.changed();
+    };
+    Circle.prototype.getCoordinates = function () {
+        return null;
+    };
+    Circle.prototype.setCoordinates = function (coordinates, opt_layout) { };
+    /**
+     * Set the radius of the circle. The radius is in the units of the projection.
+     * @param {number} radius Radius.
+     * @api
+     */
+    Circle.prototype.setRadius = function (radius) {
+        this.flatCoordinates[this.stride] = this.flatCoordinates[0] + radius;
+        this.changed();
+    };
+    /**
+     * Rotate the geometry around a given coordinate. This modifies the geometry
+     * coordinates in place.
+     * @param {number} angle Rotation angle in counter-clockwise radians.
+     * @param {import("../coordinate.js").Coordinate} anchor The rotation center.
+     * @api
+     */
+    Circle.prototype.rotate = function (angle, anchor) {
+        var center = this.getCenter();
+        var stride = this.getStride();
+        this.setCenter(flat_transform_rotate(center, 0, center.length, stride, angle, anchor, center));
+        this.changed();
+    };
+    /**
+     * Translate the geometry.  This modifies the geometry coordinates in place.  If
+     * instead you want a new geometry, first `clone()` this geometry.
+     * @param {number} deltaX Delta X.
+     * @param {number} deltaY Delta Y.
+     * @api
+     */
+    Circle.prototype.translate = function (deltaX, deltaY) {
+        var center = this.getCenter();
+        var stride = this.getStride();
+        this.setCenter(flat_transform_translate(center, 0, center.length, stride, deltaX, deltaY, center));
+        this.changed();
+    };
+    return Circle;
+}(geom_SimpleGeometry));
+/**
+ * Transform each coordinate of the circle from one coordinate reference system
+ * to another. The geometry is modified in place.
+ * If you do not want the geometry modified in place, first clone() it and
+ * then use this function on the clone.
+ *
+ * Internally a circle is currently represented by two points: the center of
+ * the circle `[cx, cy]`, and the point to the right of the circle
+ * `[cx + r, cy]`. This `transform` function just transforms these two points.
+ * So the resulting geometry is also a circle, and that circle does not
+ * correspond to the shape that would be obtained by transforming every point
+ * of the original circle.
+ *
+ * @param {import("../proj.js").ProjectionLike} source The current projection.  Can be a
+ *     string identifier or a {@link module:ol/proj/Projection~Projection} object.
+ * @param {import("../proj.js").ProjectionLike} destination The desired projection.  Can be a
+ *     string identifier or a {@link module:ol/proj/Projection~Projection} object.
+ * @return {Circle} This geometry.  Note that original geometry is
+ *     modified in place.
+ * @function
+ * @api
+ */
+Circle_Circle.prototype.transform;
+/* harmony default export */ var geom_Circle = (Circle_Circle);
+//# sourceMappingURL=Circle.js.map
+// CONCATENATED MODULE: ./node_modules/ol-ext/geom/GeomUtils.js
+/*	Copyright (c) 2016 Jean-Marc VIGLINO, 
+  released under the CeCILL-B license (French BSD license)
+  (http://www.cecill.info/licences/Licence_CeCILL-B_V1-en.txt).
+
+  Usefull function to handle geometric operations
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+/** Distance beetween 2 points
+ *	Usefull geometric functions
+ * @param {ol.Coordinate} p1 first point
+ * @param {ol.Coordinate} p2 second point
+ * @return {number} distance
+ */
+var ol_coordinate_dist2d = function(p1, p2) {
+  var dx = p1[0]-p2[0];
+  var dy = p1[1]-p2[1];
+  return Math.sqrt(dx*dx+dy*dy);
+}
+
+/** 2 points are equal
+ *	Usefull geometric functions
+ * @param {ol.Coordinate} p1 first point
+ * @param {ol.Coordinate} p2 second point
+ * @return {boolean}
+ */
+var ol_coordinate_equal = function(p1, p2) {
+  return (p1[0]==p2[0] && p1[1]==p2[1]);
+}
+
+/** Get center coordinate of a feature
+ * @param {ol.Feature} f
+ * @return {ol.coordinate} the center
+ */
+var ol_coordinate_getFeatureCenter = function(f) {
+  return ol_coordinate_getGeomCenter (f.getGeometry());
+};
+
+/** Get center coordinate of a geometry
+* @param {ol.geom.Geometry} geom
+* @return {ol.Coordinate} the center
+*/
+var ol_coordinate_getGeomCenter = function(geom) {
+  switch (geom.getType()) {
+    case 'Point': 
+      return geom.getCoordinates();
+    case "MultiPolygon":
+      geom = geom.getPolygon(0);
+      // fallthrough
+    case "Polygon":
+      return geom.getInteriorPoint().getCoordinates();
+    default:
+      return geom.getClosestPoint(getCenter(geom.getExtent()));
+  }
+};
+
+/** Offset a polyline
+ * @param {Array<ol.Coordinate>} coords
+ * @param {number} offset
+ * @return {Array<ol.Coordinate>} resulting coord
+ * @see http://stackoverflow.com/a/11970006/796832
+ * @see https://drive.google.com/viewerng/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxqa2dhZGdldHN0b3JlfGd4OjQ4MzI5M2Y0MjNmNzI2MjY
+ */
+var ol_coordinate_offsetCoords = function (coords, offset) {
+  var path = [];
+  var N = coords.length-1;
+  var max = N;
+  var mi, mi1, li, li1, ri, ri1, si, si1, Xi1, Yi1;
+  var p0, p1, p2;
+  var isClosed = ol_coordinate_equal(coords[0],coords[N]);
+  if (!isClosed) {
+    p0 = coords[0];
+    p1 = coords[1];
+    p2 = [
+      p0[0] + (p1[1] - p0[1]) / ol_coordinate_dist2d(p0,p1) *offset,
+      p0[1] - (p1[0] - p0[0]) / ol_coordinate_dist2d(p0,p1) *offset
+    ];
+    path.push(p2);
+    coords.push(coords[N])
+    N++;
+    max--;
+  }
+  for (var i = 0; i < max; i++) {
+    p0 = coords[i];
+    p1 = coords[(i+1) % N];
+    p2 = coords[(i+2) % N];
+
+    mi = (p1[1] - p0[1])/(p1[0] - p0[0]);
+    mi1 = (p2[1] - p1[1])/(p2[0] - p1[0]);
+    // Prevent alignements
+    if (Math.abs(mi-mi1) > 1e-10) {
+      li = Math.sqrt((p1[0] - p0[0])*(p1[0] - p0[0])+(p1[1] - p0[1])*(p1[1] - p0[1]));
+      li1 = Math.sqrt((p2[0] - p1[0])*(p2[0] - p1[0])+(p2[1] - p1[1])*(p2[1] - p1[1]));
+      ri = p0[0] + offset*(p1[1] - p0[1])/li;
+      ri1 = p1[0] + offset*(p2[1] - p1[1])/li1;
+      si = p0[1] - offset*(p1[0] - p0[0])/li;
+      si1 = p1[1] - offset*(p2[0] - p1[0])/li1;
+      Xi1 = (mi1*ri1-mi*ri+si-si1) / (mi1-mi);
+      Yi1 = (mi*mi1*(ri1-ri)+mi1*si-mi*si1) / (mi1-mi);
+
+      // Correction for vertical lines
+      if(p1[0] - p0[0] == 0) {
+        Xi1 = p1[0] + offset*(p1[1] - p0[1])/Math.abs(p1[1] - p0[1]);
+        Yi1 = mi1*Xi1 - mi1*ri1 + si1;
+      }
+      if (p2[0] - p1[0] == 0 ) {
+        Xi1 = p2[0] + offset*(p2[1] - p1[1])/Math.abs(p2[1] - p1[1]);
+        Yi1 = mi*Xi1 - mi*ri + si;
+      }
+
+      path.push([Xi1, Yi1]);
+    }
+  }
+  if (isClosed) {
+    path.push(path[0]);
+  } else {
+    coords.pop();
+    p0 = coords[coords.length-1];
+    p1 = coords[coords.length-2];
+    p2 = [
+      p0[0] - (p1[1] - p0[1]) / ol_coordinate_dist2d(p0,p1) *offset,
+      p0[1] + (p1[0] - p0[0]) / ol_coordinate_dist2d(p0,p1) *offset
+    ];
+    path.push(p2);
+  }
+  return path;
+}
+
+/** Find the segment a point belongs to
+ * @param {ol.Coordinate} pt
+ * @param {Array<ol.Coordinate>} coords
+ * @return {} the index (-1 if not found) and the segment
+ */
+var ol_coordinate_findSegment = function (pt, coords) {
+  for (var i=0; i<coords.length-1; i++) {
+    var p0 = coords[i];
+    var p1 = coords[i+1];
+    if (ol_coordinate_equal(pt, p0) || ol_coordinate_equal(pt, p1)) {
+      return { index:1, segment: [p0,p1] };
+    } else {
+      var d0 = ol_coordinate_dist2d(p0,p1);
+      var v0 = [ (p1[0] - p0[0]) / d0, (p1[1] - p0[1]) / d0 ];
+      var d1 = ol_coordinate_dist2d(p0,pt);
+      var v1 = [ (pt[0] - p0[0]) / d1, (pt[1] - p0[1]) / d1 ];
+      if (Math.abs(v0[0]*v1[1] - v0[1]*v1[0]) < 1e-10) {
+        return { index:1, segment: [p0,p1] };
+      }
+    }
+  }
+  return { index: -1 };
+};
+
+/**
+ * Split a Polygon geom with horizontal lines
+ * @param {Array<ol.Coordinate>} geom
+ * @param {number} y the y to split
+ * @param {number} n contour index
+ * @return {Array<Array<ol.Coordinate>>}
+ */
+var ol_coordinate_splitH = function (geom, y, n) {
+  var x, abs;
+  var list = [];
+  for (var i=0; i<geom.length-1; i++) {
+    // Hole separator?
+    if (!geom[i].length || !geom[i+1].length) continue;
+    // Intersect
+    if (geom[i][1]<=y && geom[i+1][1]>y || geom[i][1]>=y && geom[i+1][1]<y) {
+      abs = (y-geom[i][1]) / (geom[i+1][1]-geom[i][1]);
+      x = abs * (geom[i+1][0]-geom[i][0]) + geom[i][0];
+      list.push ({ contour: n, index: i, pt: [x,y], abs: abs });
+    }
+  }
+  // Sort x
+  list.sort(function(a,b) { return a.pt[0] - b.pt[0] });
+  // Horizontal segment
+  var result = [];
+  for (var j=0; j<list.length-1; j += 2) {
+    result.push([list[j], list[j+1]])
+  }
+  return result;
+};
+
+/** Create a geometry given a type and coordinates */
+var ol_geom_createFromType = function (type, coordinates) {
+  switch (type) {
+    case 'LineString': return new geom_LineString(coordinates);
+    case 'LinearRing': return new geom_LinearRing(coordinates);
+    case 'MultiLineString': return new geom_MultiLineString(coordinates);
+    case 'MultiPoint': return new geom_MultiPoint(coordinates);
+    case 'MultiPolygon': return new geom_MultiPolygon(coordinates);
+    case 'Point': return new geom_Point(coordinates);
+    case 'Polygon': return new geom_Polygon(coordinates);
+    default:
+      console.error('[createFromType] Unsupported type: '+type);
+      return null;
+  }
+};
+
+
+
+
+/** Intersect 2 lines
+ * @param {Arrar<ol.coordinate>} d1
+ * @param {Arrar<ol.coordinate>} d2
+ */
+var ol_coordinate_getIntersectionPoint = function (d1, d2) {
+  var d1x = d1[1][0] - d1[0][0];
+  var d1y = d1[1][1] - d1[0][1];
+  var d2x = d2[1][0] - d2[0][0];
+  var d2y = d2[1][1] - d2[0][1];
+  var det = d1x * d2y - d1y * d2x;
+  if (det != 0) {
+    var k = (d1x * d1[0][1] - d1x * d2[0][1] - d1y * d1[0][0] + d1y * d2[0][0]) / det;
+    return [d2[0][0] + k*d2x, d2[0][1] + k*d2y];
+  } else {
+    return false;
+  }
+};
+
+
+
+var ol_extent_intersection;
+
+(function() {
+// Split at x
+function splitX(pts, x) {
+  var pt;
+  for (let i=pts.length-1; i>0; i--) {
+    if ((pts[i][0]>x && pts[i-1][0]<x) || (pts[i][0]<x && pts[i-1][0]>x)) {
+      pt = [ x, (x - pts[i][0]) / (pts[i-1][0]-pts[i][0]) * (pts[i-1][1]-pts[i][1]) + pts[i][1]];
+      pts.splice(i, 0, pt);
+    }
+  }
+}
+// Split at y
+function splitY(pts, y) {
+  var pt;
+  for (let i=pts.length-1; i>0; i--) {
+    if ((pts[i][1]>y && pts[i-1][1]<y) || (pts[i][1]<y && pts[i-1][1]>y)) {
+      pt = [ (y - pts[i][1]) / (pts[i-1][1]-pts[i][1]) * (pts[i-1][0]-pts[i][0]) + pts[i][0], y];
+      pts.splice(i, 0, pt);
+    }
+  }
+}
+
+/** Fast polygon intersection with an extent (used for area calculation)
+ * @param {ol_extent_Extent} extent
+ * @param {ol_geom_Polygon|ol_geom_MultiPolygon} polygon
+ * @returns {ol_geom_Polygon|ol_geom_MultiPolygon|null} return null if not a polygon geometry
+ */
+ol_extent_intersection = function(extent, polygon) {
+  var poly = (polygon.getType() === 'Polygon');
+  if (!poly && polygon.getType() !== 'MultiPolygon') return null;
+  var geom = polygon.getCoordinates();
+  if (poly) geom = [geom];
+  geom.forEach(function(g) {
+    g.forEach(function(c) {
+      splitX(c, extent[0]);
+      splitX(c, extent[2]);
+      splitY(c, extent[1]);
+      splitY(c, extent[3]);
+    });
+  })
+  // Snap geom to the extent 
+  geom.forEach(function(g) {
+    g.forEach(function(c) {
+      c.forEach(function(p) {
+        if (p[0]<extent[0]) p[0] = extent[0];
+        else if (p[0]>extent[2]) p[0] = extent[2];
+        if (p[1]<extent[1]) p[1] = extent[1];
+        else if (p[1]>extent[3]) p[1] = extent[3];
+      })
+    })
+  })
+  if (poly) {
+    return new geom_Polygon(geom[0]);
+  } else {
+    return new geom_MultiPolygon(geom);
+  }
+};
+})();
+
+
+
+/** Add points along a segment
+ * @param {ol_Coordinate} p1 
+ * @param {ol_Coordinate} p2 
+ * @param {number} d 
+ * @param {boolean} start include starting point, default true
+ * @returns {Array<ol_Coordinate>}
+ */
+var ol_coordinate_sampleAt = function(p1, p2, d, start) {
+  var pts = [];
+  if (start!==false) pts.push(p1);
+  var dl = ol_coordinate_dist2d(p1,p2);
+  if (dl) {
+    var nb = Math.round(dl/d);
+    if (nb>1) {
+      var dx = (p2[0]-p1[0]) / nb;
+      var dy = (p2[1]-p1[1]) / nb;
+      for (var i=1; i<nb; i++) {
+        pts.push([p1[0] + dx*i, p1[1] + dy*i])
+      }
+    }
+  }
+  pts.push(p2);
+  return pts;
+};
+
+
+/** Sample a Polygon at a distance
+ * @param {number} d
+ * @returns {ol_geom_Polygon}
+ */
+geom_Polygon.prototype.sampleAt = function(res) {
+  var poly = this.getCoordinates();
+  var result = [];
+  poly.forEach(function(p) {
+    var l = [];
+    for (var i=1; i<p.length; i++) {
+      l = l.concat(ol_coordinate_sampleAt(p[i-1], p[i], res, i===1));
+    }
+    result.push(l);
+  })
+  return new geom_Polygon(result);
+};
+
+/** Sample a MultiPolygon at a distance
+ * @param {number} res
+ * @returns {ol_geom_MultiPolygon}
+ */
+geom_MultiPolygon.prototype.sampleAt = function(res) {
+  var mpoly = this.getCoordinates();
+  var result = [];
+  mpoly.forEach(function(poly) {
+    var a = [];
+    result.push(a);
+    poly.forEach(function(p) {
+      var l = [];
+      for (var i=1; i<p.length; i++) {
+        l = l.concat(ol_coordinate_sampleAt(p[i-1], p[i], res, i===1));
+      }
+      a.push(l);
+    })
+  });
+  return new geom_MultiPolygon(result);
+};
+
+/** Intersect a geometry using a circle
+ * @param {ol_geom_Geometry} geom
+ * @param {number} resolution circle resolution to sample the polygon on the circle, default 1
+ * @returns {ol_geom_Geometry}
+ */
+geom_Circle.prototype.intersection = function(geom, resolution) {
+  if (geom.sampleAt) {
+    var ext = extent_buffer(this.getCenter().concat(this.getCenter()), this.getRadius());
+    geom = ol_extent_intersection(ext, geom);
+    geom = geom.simplify(resolution);
+    var c = this.getCenter();
+    var r = this.getRadius();
+    //var res = (resolution||1) * r / 100;
+    var g = geom.sampleAt(resolution).getCoordinates();
+    switch (geom.getType()) {
+      case 'Polygon': g = [g];
+        // fallthrough
+      case 'MultiPolygon': {
+        var hasout = false;
+        // var hasin = false;
+        var result = [];
+        g.forEach(function(poly) {
+          var a = [];
+          result.push(a);
+          poly.forEach(function(ring) {
+            var l = [];
+            a.push(l);
+            ring.forEach(function(p) {
+              var d = ol_coordinate_dist2d(c, p);
+              if (d > r) {
+                hasout = true;
+                l.push([
+                  c[0] + r / d * (p[0]-c[0]),
+                  c[1] + r / d * (p[1]-c[1])
+                ]);
+              } else {
+                // hasin = true;
+                l.push(p);
+              }
+            });
+          })
+        });
+        if (!hasout) return geom;
+        if (geom.getType() === 'Polygon') {
+          return new geom_Polygon(result[0]);
+        } else {
+          return new geom_MultiPolygon(result);
+        }
+      }
+    }
+  } else {
+    console.warn('[ol/geom/Circle~intersection] Unsupported geometry type: '+geom.getType());
+  }
+  return geom;
+};
+
+// CONCATENATED MODULE: ./node_modules/ol-ext/source/Vector.js
+
+
+(function () {
+  var clear = Vector.prototype.clear;
+
+  /** Overwrite ol/source/Vector clear to fire clearstart / clearend event
+   */
+  Vector.prototype.clear = function(opt_fast) {
+    this.dispatchEvent({ type: 'clearstart' });
+    clear.call(this, opt_fast)
+    this.dispatchEvent({ type: 'clearend' });
+  };
+})();
+
+// CONCATENATED MODULE: ./node_modules/ol-ext/source/BinBase.js
+/*	Copyright (c) 2019 Jean-Marc VIGLINO,
+  released under the CeCILL-B license (French BSD license)
+  (http://www.cecill.info/licences/Licence_CeCILL-B_V1-en.txt).
+*/
+
+
+
+
+ 
+
+
+
+/** Abstract base class; normally only used for creating subclasses. Bin collector for data
+ * @constructor
+ * @extends {ol.source.Vector}
+ * @param {Object} options ol_source_VectorOptions + grid option
+ *  @param {ol.source.Vector} options.source Source
+ *  @param {boolean} options.listenChange listen changes (move) on source features to recalculate the bin, default true
+ *  @param {fucntion} [options.geometryFunction] Function that takes an ol.Feature as argument and returns an ol.geom.Point as feature's center.
+ *  @param {function} [options.flatAttributes] Function takes a bin and the features it contains and aggragate the features in the bin attributes when saving
+ */
+var ol_source_BinBase = function (options) {
+  options = options || {};
+  this._bindModify = this._onModifyFeature.bind(this);
+  this._watch = true;
+
+  Vector.call(this, options);
+
+  this._origin = options.source;
+  this._listen = (options.listenChange !== false);
+
+  // Geometry function
+  this._geomFn = options.geometryFunction || ol_coordinate_getFeatureCenter || function (f) { return f.getGeometry().getFirstCoordinate(); };
+
+  // Existing features
+  this.reset();
+
+  // Future features
+  this._origin.on('addfeature', this._onAddFeature.bind(this));
+  this._origin.on('removefeature', this._onRemoveFeature.bind(this));
+  this._origin.on('clearstart', this._onClearFeature.bind(this));
+  this._origin.on('clearend', this._onClearFeature.bind(this));
+  if (typeof (options.flatAttributes) === 'function') this._flatAttributes = options.flatAttributes;
+};
+ol_ext_inherits(ol_source_BinBase, Vector);
+
+/**
+ * On add feature
+ * @param {ol.events.Event} e
+ * @param {ol.Feature} bin
+ * @private
+ */
+ol_source_BinBase.prototype._onAddFeature = function (e, bin, listen) {
+  var f = e.feature || e.target;
+  bin = bin || this.getBinAt(this._geomFn(f), true);
+  if (bin) bin.get('features').push(f);
+  if (this._listen && listen!==false) f.on('change', this._bindModify);
+};
+
+/**
+ *  On remove feature
+ *  @param {ol.events.Event} e
+ *  @param {ol.Feature} bin
+ *  @private
+ */
+ol_source_BinBase.prototype._onRemoveFeature = function (e, bin, listen) {
+  if (!this._watch) return;
+  var f = e.feature || e.target;
+  bin = bin || this.getBinAt(this._geomFn(f));
+  if (bin) {
+    // Remove feature from bin
+    var features = bin.get('features');
+    for (var i=0, fi; fi=features[i]; i++) {
+      if (fi===f) {
+        features.splice(i, 1);
+        break;
+      }
+    }
+    // Remove bin if no features
+    if (!features.length) {
+      this.removeFeature(bin);
+    }
+  } else {
+    // console.log("[ERROR:Bin] remove feature: feature doesn't exists anymore.");
+  }
+  if (this._listen && listen!==false) f.un('change', this._bindModify);
+};
+
+/** When clearing features remove the listener
+ * @private
+ */
+ol_source_BinBase.prototype._onClearFeature = function (e) {
+  if (e.type==='clearstart') {
+    if (this._listen) {
+      this._origin.getFeatures().forEach(function (f) {
+        f.un('change', this._bindModify);
+      }.bind(this));
+    }
+    this.clear();
+    this._watch = false;
+  } else {
+    this._watch = true;
+  }
+};
+
+/**
+ * Get the bin that contains a feature
+ * @param {ol.Feature} f the feature
+ * @return {ol.Feature} the bin or null it doesn't exit
+ */
+ol_source_BinBase.prototype.getBin = function (feature) {
+  var bins = this.getFeatures();
+  for (var i=0, b; b = bins[i]; i++) {
+    var features = b.get('features');
+    for (var j=0, f; f=features[j]; j++) {
+      if (f===feature) return b;
+    }
+  }
+  return null;
+}
+
+/** Get the grid geometry at the coord 
+ * @param {ol.Coordinate} coord
+ * @param {Object} attributes add key/value to this object to add properties to the grid feature
+ * @returns {ol.geom.Polygon} 
+ * @api
+ */
+ol_source_BinBase.prototype.getGridGeomAt = function (coord /*, attributes */) {
+  return new geom_Polygon([coord]);
+};
+
+/** Get the bean at a coord
+ * @param {ol.Coordinate} coord
+ * @param {boolean} create true to create if doesn't exit
+ * @return {ol.Feature} the bin or null it doesn't exit
+ */
+ol_source_BinBase.prototype.getBinAt = function (coord, create) {
+  var attributes = {};
+  var g = this.getGridGeomAt(coord, attributes);
+  if (!g) return null;
+  var center = g.getInteriorPoint ? g.getInteriorPoint().getCoordinates() : g.getInteriorPoints().getCoordinates()[0];// ol_extent_getCenter(g.getExtent());
+  var features = this.getFeaturesAtCoordinate( center );
+  var bin = features[0];
+  if (!bin && create) {
+    attributes.geometry = g;
+    attributes.features = [];
+    attributes.center = center;
+    bin = new ol_Feature(attributes);
+    this.addFeature(bin);
+  }
+  return bin || null;
+};
+
+/**
+ *  A feature has been modified
+ *  @param {ol.events.Event} e
+ *  @private
+ */
+ol_source_BinBase.prototype._onModifyFeature = function (e) {
+  var bin = this.getBin(e.target);
+  var bin2 = this.getBinAt(this._geomFn(e.target), 'create');
+  if (bin !== bin2) {
+    // remove from the bin
+    if (bin) {
+      this._onRemoveFeature(e, bin, false);
+    }
+    // insert in the new bin
+    if (bin2) {
+      this._onAddFeature(e, bin2, false);
+    }
+  }
+  this.changed();
+};
+
+/** Clear all bins and generate a new one. 
+ */
+ol_source_BinBase.prototype.reset = function () {
+  this.clear();
+  var features = this._origin.getFeatures();
+  for (var i = 0, f; f = features[i]; i++) {
+    this._onAddFeature({ feature: f });
+  }
+  this.changed();
+};
+
+/**
+ * Get features without circular dependencies (vs. getFeatures)
+ * @return {Array<ol.Feature>}
+ */
+ol_source_BinBase.prototype.getGridFeatures = function () {
+  var features = [];
+  this.getFeatures().forEach(function (f) {
+    var bin = new ol_Feature(f.getGeometry().clone());
+    for (var i in f.getProperties()) {
+      if (i!=='features' && i!=='geometry') {
+        bin.set(i, f.get(i));
+      }
+    }
+    bin.set('nb', f.get('features').length);
+    this._flatAttributes(bin, f.get('features'));
+    features.push(bin);
+  }.bind(this));
+  return features;
+};
+
+/** Create bin attributes using the features it contains when exporting 
+ * @param {ol.Feature} bin the bin to export
+ * @param {Array<ol.Features>} features the features it contains
+ */
+ol_source_BinBase.prototype._flatAttributes = function(/*bin, features*/) {
+};
+
+/** Set the flatAttribute function
+ * @param {function} fn Function that takes a bin and the features it contains and aggragate the features in the bin attributes when saving
+ */
+ ol_source_BinBase.prototype.setFlatAttributesFn = function(fn) {
+  if (typeof(fn)==='function') this._flatAttributes = fn;
+};
+
+/**
+ * Get the orginal source
+ * @return {ol_source_Vector}
+ */
+ol_source_BinBase.prototype.getSource = function () {
+  return this._origin;
+};
+
+/* harmony default export */ var BinBase = (ol_source_BinBase);
+
+// CONCATENATED MODULE: ./node_modules/ol-ext/render/HexGrid.js
+/*	Copyright (c) 2017 Jean-Marc VIGLINO, 
+	released under the CeCILL-B license (French BSD license)
+	(http://www.cecill.info/licences/Licence_CeCILL-B_V1-en.txt).
+*/
+
+
+
+
+/** @typedef {'pointy' | 'flat'} HexagonLayout
+ *  Layout of a Hexagon. Flat means the bottom part of the hexagon is flat.
+ */
+
+/**
+* Hexagonal grids
+* @classdesc ol_HexGrid is a class to compute hexagonal grids
+* @see http://www.redblobgames.com/grids/hexagons
+*
+* @constructor ol_HexGrid
+* @extends {ol_Object}
+* @param {Object} [options]
+*	@param {number} [options.size] size of the exagon in map units, default 80000
+*	@param {ol.Coordinate} [options.origin] orgin of the grid, default [0,0]
+*	@param {HexagonLayout} [options.layout] grid layout, default pointy
+*/
+var ol_HexGrid = function (options)
+{	options = options || {};
+	
+	ol_Object.call (this, options);
+
+	// Options
+	this.size_ = options.size||80000;
+	this.origin_ = options.origin || [0,0];
+	this.layout_ = this.layout[options.layout] || this.layout.pointy;
+
+};
+util_ext(ol_HexGrid, ol_Object);
+
+/** Layout
+*/
+ol_HexGrid.prototype.layout =
+{	pointy: 
+	[	Math.sqrt(3), Math.sqrt(3)/2, 0, 3/2, 
+		Math.sqrt(3)/3, -1/3, 0, 2/3, 
+		// corners
+		Math.cos(Math.PI / 180 * (60 * 0 + 30)), Math.sin(Math.PI / 180 * (60 * 0 + 30)), 
+		Math.cos(Math.PI / 180 * (60 * 1 + 30)), Math.sin(Math.PI / 180 * (60 * 1 + 30)), 
+		Math.cos(Math.PI / 180 * (60 * 2 + 30)), Math.sin(Math.PI / 180 * (60 * 2 + 30)), 
+		Math.cos(Math.PI / 180 * (60 * 3 + 30)), Math.sin(Math.PI / 180 * (60 * 3 + 30)), 
+		Math.cos(Math.PI / 180 * (60 * 4 + 30)), Math.sin(Math.PI / 180 * (60 * 4 + 30)), 
+		Math.cos(Math.PI / 180 * (60 * 5 + 30)), Math.sin(Math.PI / 180 * (60 * 5 + 30))
+	],
+	flat: 
+	[	3/2, 0, Math.sqrt(3)/2, Math.sqrt(3), 2/3, 
+		0, -1/3, Math.sqrt(3) / 3, 
+		// corners
+		Math.cos(Math.PI / 180 * (60 * 0)), Math.sin(Math.PI / 180 * (60 * 0)), 
+		Math.cos(Math.PI / 180 * (60 * 1)), Math.sin(Math.PI / 180 * (60 * 1)), 
+		Math.cos(Math.PI / 180 * (60 * 2)), Math.sin(Math.PI / 180 * (60 * 2)), 
+		Math.cos(Math.PI / 180 * (60 * 3)), Math.sin(Math.PI / 180 * (60 * 3)), 
+		Math.cos(Math.PI / 180 * (60 * 4)), Math.sin(Math.PI / 180 * (60 * 4)), 
+		Math.cos(Math.PI / 180 * (60 * 5)), Math.sin(Math.PI / 180 * (60 * 5))
+	]
+};
+
+/** Set layout
+* @param {HexagonLayout | undefined} layout name, default pointy
+*/
+ol_HexGrid.prototype.setLayout = function (layout)
+{	this.layout_ = this.layout[layout] || this.layout.pointy;
+	this.changed();
+}
+
+/** Get layout
+* @return {HexagonLayout} layout name
+*/
+ol_HexGrid.prototype.getLayout = function ()
+{	return (this.layout_[9]!=0 ? 'pointy' : 'flat');
+}
+
+/** Set hexagon origin
+* @param {ol.Coordinate} coord origin
+*/
+ol_HexGrid.prototype.setOrigin = function (coord)
+{	this.origin_ = coord;
+	this.changed();
+}
+
+/** Get hexagon origin
+* @return {ol.Coordinate} coord origin
+*/
+ol_HexGrid.prototype.getOrigin = function ()
+{	return this.origin_;
+}
+
+/** Set hexagon size
+* @param {number} hexagon size
+*/
+ol_HexGrid.prototype.setSize = function (s) {
+	this.size_ = s || 80000;
+	this.changed();
+}
+
+/** Get hexagon size
+* @return {number} hexagon size
+*/
+ol_HexGrid.prototype.getSize = function () {
+	return this.size_;
+}
+
+/** Convert cube to axial coords
+* @param {ol.Coordinate} c cube coordinate
+* @return {ol.Coordinate} axial coordinate
+*/
+ol_HexGrid.prototype.cube2hex = function (c)
+{	return [c[0], c[2]];
+};
+
+/** Convert axial to cube coords
+* @param {ol.Coordinate} h axial coordinate
+* @return {ol.Coordinate} cube coordinate
+*/
+ol_HexGrid.prototype.hex2cube = function(h)
+{	return [h[0], -h[0]-h[1], h[1]];
+};
+
+/** Convert offset to axial coords
+* @param {ol.Coordinate} h axial coordinate
+* @return {ol.Coordinate} offset coordinate
+*/
+ol_HexGrid.prototype.hex2offset = function (h)
+{	if (this.layout_[9]) return [ h[0] + (h[1] - (h[1]&1)) / 2, h[1] ];
+	else return [ h[0], h[1] + (h[0] + (h[0]&1)) / 2 ];
+}
+
+/** Convert axial to offset coords
+* @param {ol.Coordinate} o offset coordinate
+* @return {ol.Coordinate} axial coordinate
+*/
+ol_HexGrid.prototype.offset2hex = function(o)
+{	if (this.layout_[9]) return [ o[0] - (o[1] - (o[1]&1)) / 2,  o[1] ];
+	else return [ o[0], o[1] - (o[0] + (o[0]&1)) / 2 ];
+}
+
+/** Convert offset to cube coords
+* @param {ol.Coordinate} c cube coordinate
+* @return {ol.Coordinate} offset coordinate
+* /
+ol_HexGrid.prototype.cube2offset = function(c)
+{	return hex2offset(cube2hex(c));
+};
+
+/** Convert cube to offset coords
+* @param {ol.Coordinate} o offset coordinate
+* @return {ol.Coordinate} cube coordinate
+* /
+ol_HexGrid.prototype.offset2cube = function (o)
+{	return hex2cube(offset2Hex(o));
+};
+
+/** Round cube coords
+* @param {ol.Coordinate} h cube coordinate
+* @return {ol.Coordinate} rounded cube coordinate
+*/
+ol_HexGrid.prototype.cube_round = function(h)
+{	var rx = Math.round(h[0])
+	var ry = Math.round(h[1])
+	var rz = Math.round(h[2])
+
+	var x_diff = Math.abs(rx - h[0])
+	var y_diff = Math.abs(ry - h[1])
+	var z_diff = Math.abs(rz - h[2])
+
+	if (x_diff > y_diff && x_diff > z_diff) rx = -ry-rz
+	else if (y_diff > z_diff) ry = -rx-rz
+	else rz = -rx-ry
+
+	return [rx, ry, rz];
+};
+
+/** Round axial coords
+* @param {ol.Coordinate} h axial coordinate
+* @return {ol.Coordinate} rounded axial coordinate
+*/
+ol_HexGrid.prototype.hex_round = function(h)
+{	return this.cube2hex( this.cube_round( this.hex2cube(h )) );
+};
+
+/** Get hexagon corners
+*/
+ol_HexGrid.prototype.hex_corner = function(center, size, i)
+{	return [ center[0] + size * this.layout_[8+(2*(i%6))], center[1] + size * this.layout_[9+(2*(i%6))]];
+};
+
+/** Get hexagon coordinates at a coordinate
+* @param {ol.Coordinate} coord
+* @return {Arrary<ol.Coordinate>}
+*/
+ol_HexGrid.prototype.getHexagonAtCoord = function (coord)
+{	return (this.getHexagon(this.coord2hex(coord)));
+};
+
+/** Get hexagon coordinates at hex
+* @param {ol.Coordinate} hex
+* @return {Arrary<ol.Coordinate>}
+*/
+ol_HexGrid.prototype.getHexagon = function (hex)
+{	var p = [];
+	var c = this.hex2coord(hex);
+	for (var i=0; i<=7; i++)
+	{	p.push(this.hex_corner(c, this.size_, i, this.layout_[8]));
+	}
+	return p;
+};
+
+/** Convert hex to coord
+* @param {ol.hex} hex
+* @return {ol.Coordinate}
+*/
+ol_HexGrid.prototype.hex2coord = function (hex)
+{	return [
+		this.origin_[0] + this.size_ * (this.layout_[0] * hex[0] + this.layout_[1] * hex[1]), 
+		this.origin_[1] + this.size_ * (this.layout_[2] * hex[0] + this.layout_[3] * hex[1])
+	];
+};
+
+/** Convert coord to hex
+* @param {ol.Coordinate} coord
+* @return {ol.hex}
+*/
+ol_HexGrid.prototype.coord2hex = function (coord)
+{	var c = [ (coord[0]-this.origin_[0]) / this.size_, (coord[1]-this.origin_[1]) / this.size_ ];
+	var q = this.layout_[4] * c[0] + this.layout_[5] * c[1];
+	var r = this.layout_[6] * c[0] + this.layout_[7] * c[1];
+	return this.hex_round([q, r]);
+};
+
+/** Calculate distance between to hexagon (number of cube)
+* @param {ol.Coordinate} a first cube coord
+* @param {ol.Coordinate} a second cube coord
+* @return {number} distance
+*/
+ol_HexGrid.prototype.cube_distance = function (a, b)
+{	//return ( (Math.abs(a[0] - b[0]) + Math.abs(a[1] - b[1]) + Math.abs(a[2] - b[2])) / 2 );
+	return ( Math.max (Math.abs(a[0] - b[0]), Math.abs(a[1] - b[1]), Math.abs(a[2] - b[2])) );
+};
+
+(function(){
+/** Line interpolation
+*/
+function lerp(a, b, t)
+{	// for floats
+    return a + (b - a) * t;
+}
+function cube_lerp(a, b, t)
+{	// for hexes
+    return [ 
+		lerp (a[0]+1e-6, b[0], t), 
+		lerp (a[1]+1e-6, b[1], t),
+		lerp (a[2]+1e-6, b[2], t)
+	];
+}
+
+/** Calculate line between to hexagon
+* @param {ol.Coordinate} a first cube coord
+* @param {ol.Coordinate} b second cube coord
+* @return {Array<ol.Coordinate>} array of cube coordinates
+*/
+ol_HexGrid.prototype.cube_line = function (a, b)
+{	var d = this.cube_distance(a, b);
+	if (!d) return [a];
+    var results = []
+    for (var i=0; i<=d; i++) 
+	{	results.push ( this.cube_round ( cube_lerp(a, b, i/d) ) );
+	}
+    return results;
+};
+})();
+
+
+ol_HexGrid.prototype.neighbors =
+{	'cube':	[ [+1, -1,  0], [+1,  0, -1], [0, +1, -1], [-1, +1,  0], [-1,  0, +1], [0, -1, +1] ],
+	'hex':	[ [+1, 0], [+1,  -1], [0, -1], [-1, 0], [-1, +1], [0, +1] ]
+};
+
+/** Get the neighbors for an hexagon
+* @param {ol.Coordinate} h axial coord
+* @param {number} direction
+* @return { ol.Coordinate | Array<ol.Coordinate> } neighbor || array of neighbors
+*/
+ol_HexGrid.prototype.hex_neighbors = function (h, d)
+{	if (d!==undefined)
+	{	return [ h[0] + this.neighbors.hex[d%6][0], h[1]  + this.neighbors.hex[d%6][1] ];
+	}
+	else
+	{	var n = [];
+		for (d=0; d<6; d++)
+		{	n.push ([ h[0] + this.neighbors.hex[d][0], h[1]  + this.neighbors.hex[d][1] ]);
+		}
+		return n;
+	}
+};
+
+/** Get the neighbors for an hexagon
+* @param {ol.Coordinate} c cube coord
+* @param {number} direction
+* @return { ol.Coordinate | Array<ol.Coordinate> } neighbor || array of neighbors
+*/
+ol_HexGrid.prototype.cube_neighbors = function (c, d)
+{	if (d!==undefined)
+	{	return [ c[0] + this.neighbors.cube[d%6][0], c[1]  + this.neighbors.cube[d%6][1], c[2]  + this.neighbors.cube[d%6][2] ];
+	}
+	else
+	{	var n = [];
+		for (d=0; d<6; d++)
+		{	n.push ([ c[0] + this.neighbors.cube[d][0], c[1]  + this.neighbors.cube[d][1], c[2]  + this.neighbors.cube[d][2] ]);
+		}
+		for (d=0; d<6; d++) n[d] = this.cube2hex(n[d])
+		return n;
+	}
+};
+
+/* harmony default export */ var HexGrid = (ol_HexGrid);
+
+// CONCATENATED MODULE: ./node_modules/ol-ext/source/HexBin.js
+/*	Copyright (c) 2017-2019 Jean-Marc VIGLINO,
+  released under the CeCILL-B license (French BSD license)
+  (http://www.cecill.info/licences/Licence_CeCILL-B_V1-en.txt).
+*/
+
+
+
+
+
+
+/** A source for hexagonal binning
+ * @constructor
+ * @extends {ol.source.Vector}
+ * @param {Object} options ol_source_VectorOptions + ol.HexGridOptions
+ *  @param {ol.source.Vector} options.source Source
+ *  @param {number} [options.size] size of the hexagon in map units, default 80000
+ *  @param {ol.coordinate} [options.origin] origin of the grid, default [0,0]
+ *  @param {HexagonLayout} [options.layout] grid layout, default pointy
+ *  @param {function} [options.geometryFunction] Function that takes an ol.Feature as argument and returns an ol.geom.Point as feature's center.
+ *  @param {function} [options.flatAttributes] Function takes a bin and the features it contains and aggragate the features in the bin attributes when saving
+ */
+var ol_source_HexBin = function (options) {
+  options = options || {};
+
+  /** The HexGrid
+   * 	@type {ol_HexGrid}
+   */
+  this._hexgrid = new HexGrid(options);
+
+  BinBase.call(this, options);
+
+};
+util_ext(ol_source_HexBin, BinBase);
+
+/** Get the hexagon geometry at the coord 
+ * @param {ol.Coordinate} coord
+ * @returns {ol.geom.Polygon} 
+ * @api
+ */
+ol_source_HexBin.prototype.getGridGeomAt = function (coord) {
+  var h = this._hexgrid.coord2hex(coord);
+  return new geom_Polygon([this._hexgrid.getHexagon(h)])
+};
+
+/**	Set the inner HexGrid size.
+ * 	@param {number} newSize
+ * 	@param {boolean} noreset If true, reset will not be called (It need to be called through)
+ */
+ol_source_HexBin.prototype.setSize = function (newSize, noreset) {
+  this._hexgrid.setSize(newSize);
+  if (!noreset) {
+    this.reset();
+  }
+}
+
+/**	Get the inner HexGrid size.
+ * 	@return {number}
+ */
+ol_source_HexBin.prototype.getSize = function () {
+  return this._hexgrid.getSize();
+}
+
+/**	Set the inner HexGrid layout.
+ * 	@param {HexagonLayout} newLayout
+ * 	@param {boolean} noreset If true, reset will not be called (It need to be called through)
+ */
+ol_source_HexBin.prototype.setLayout = function (newLayout, noreset) {
+  this._hexgrid.setLayout(newLayout);
+  if (!noreset) {
+    this.reset();
+  }
+}
+
+/**	Get the inner HexGrid layout.
+ * 	@return {HexagonLayout}
+ */
+ol_source_HexBin.prototype.getLayout = function () {
+  return this._hexgrid.getLayout();
+};
+
+/**	Set the inner HexGrid origin.
+ * 	@param {ol.Coordinate} newLayout
+ * 	@param {boolean} noreset If true, reset will not be called (It need to be called through)
+ */
+ol_source_HexBin.prototype.setOrigin = function (newLayout, noreset) {
+  this._hexgrid.setOrigin(newLayout);
+  if (!noreset) {
+    this.reset();
+  }
+};
+
+/**	Get the inner HexGrid origin.
+ * 	@return {ol.Coordinate}
+ */
+ol_source_HexBin.prototype.getOrigin = function () {
+  return this._hexgrid.getOrigin();
+};
+
+/**
+ * Get hexagons without circular dependencies (vs. getFeatures)
+ * @return {Array<ol.Feature>}
+ */
+ol_source_HexBin.prototype.getHexFeatures = function () {
+  return BinBase.prototype.getGridFeatures.call(this);
+};
+
+/* harmony default export */ var HexBin = (ol_source_HexBin);
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/geojson-hexbin-layer/geojson-hexbin-dinamico.vue?vue&type=script&lang=js&
+
+
+
+
+
+
+
+
+
+
+
+/* harmony default export */ var geojson_hexbin_dinamicovue_type_script_lang_js_ = ({
+  name: "DaiCapaGeojsonHexbinDinamico",
+  mixins: [mixins_layer, vector_layer_any, classificable_layer],
+  props: {
+    diametroPixeles: {
+      type: Number,
+      default: 25
+    },
+    retrasoRecalcular: {
+      type: Number,
+      default: 500
+    }
+  },
+  data: function data() {
+    return {
+      VM_featuresGroup: true,
+      VM_timeOut: 0
+    };
+  },
+  methods: {
+    _createLayerObject: function _createLayerObject() {
+      var _this = this;
+
+      var vectorSource = this.datos != undefined ? geojson_hexbin_dinamicovue_type_script_lang_js_createGeojsonSourceFromObjectJs(this.datos) : geojson_hexbin_dinamicovue_type_script_lang_js_createGeojsonSourceFromUrl(this.url);
+      var LayerClass = this.renderizarComoImagen ? VectorImage : layer_Vector;
+      this.olLayer = new LayerClass({
+        source: new HexBin({
+          source: vectorSource,
+          size: .5
+        })
+      });
+      this.olLayer.set("_realce_hover", this.realceAlPasarMouse);
+
+      if (this.VM_is_classified) {
+        if (vectorSource.getUrl() === undefined) {
+          this._clasificar_v2();
+
+          this._set_style_class_v2();
+        } else {
+          vectorSource.on("featuresloadend", function () {
+            setTimeout(function () {
+              //console.log(evento.target.getFeatures())
+              //console.log("cambio el source del layer, evento cachado, geojson.vue")
+              _this._clasificar_v2();
+
+              _this._set_style_class_v2();
+
+              _this._setStyle();
+            }, 50);
+          });
+        }
+      }
+
+      if (this.contenidoTooltip != "none") {
+        this.olLayer.set("_tooltip", this.contenidoTooltip);
+        this.olLayer.set("_tooltip_mov", !this.tooltipEstatico);
+        this.olLayer.set("_tooltip_top", this.tooltipEstaticoMargenSuperior);
+      }
+
+      if (this.contenidoPopup !== "none") {
+        this.olLayer.set("_popup", this.contenidoPopup);
+      }
+
+      this._saveAllFeaturesFromSource(this.olLayer.getSource());
+
+      this._setStyle();
+
+      this.olMap.on("moveend", function (e) {
+        var resolucion = e.target.getView().getResolution();
+
+        _this.olLayer.getSource().setSize(resolucion * _this.diametroPixeles);
+
+        _this._clasificar_v2();
+
+        _this._set_style_class_v2();
+
+        _this._saveAllFeaturesFromSource(_this.olLayer.getSource());
+
+        _this._setStyle();
+      });
+    }
+  },
+  watch: {
+    datos: function datos(newDatos) {
+      if (newDatos !== undefined && this.olLayer !== null && this.olLayer !== undefined) {
+        //console.log(this.olLayer,this.olLayer.getSource())
+        var vectorSource = this.olLayer.getSource().getSource();
+        var features = new format_GeoJSON().readFeatures(_objectSpread2({}, newDatos));
+        vectorSource.clear(); //if(features.length>0){
+        //console.log("se esta escuchando el cambio de datos, BORRAR ESTE LOG")
+
+        vectorSource.addFeatures(features);
+
+        if (this.VM_is_classified) {
+          this._clasificar_v2();
+
+          this._set_style_class_v2();
+        } //}
+
+
+        this._saveAllFeaturesFromSource(this.olLayer.getSource());
+
+        this._setStyle();
+      }
+    }
+  }
+});
+
+var geojson_hexbin_dinamicovue_type_script_lang_js_createGeojsonSourceFromObjectJs = function createGeojsonSourceFromObjectJs(JsObject) {
+  if (_typeof(JsObject) != 'object') {
+    return new Vector({});
+  }
+
+  return new Vector({
+    features: new format_GeoJSON().readFeatures(_objectSpread2({}, JsObject))
+  });
+};
+
+var geojson_hexbin_dinamicovue_type_script_lang_js_createGeojsonSourceFromUrl = function createGeojsonSourceFromUrl(url) {
+  return new Vector({
+    url: url,
+    format: new format_GeoJSON()
+  });
+};
+// CONCATENATED MODULE: ./src/components/geojson-hexbin-layer/geojson-hexbin-dinamico.vue?vue&type=script&lang=js&
+ /* harmony default export */ var geojson_hexbin_layer_geojson_hexbin_dinamicovue_type_script_lang_js_ = (geojson_hexbin_dinamicovue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/geojson-hexbin-layer/geojson-hexbin-dinamico.vue
+var geojson_hexbin_dinamico_render, geojson_hexbin_dinamico_staticRenderFns
+
+
+
+
+/* normalize component */
+
+var geojson_hexbin_dinamico_component = normalizeComponent(
+  geojson_hexbin_layer_geojson_hexbin_dinamicovue_type_script_lang_js_,
+  geojson_hexbin_dinamico_render,
+  geojson_hexbin_dinamico_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var geojson_hexbin_dinamico = (geojson_hexbin_dinamico_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/geojson-hexbin-layer/geojson-hexbin.vue?vue&type=script&lang=js&
+
+
+
+
+
+
+
+
+
+
+
+/* harmony default export */ var geojson_hexbinvue_type_script_lang_js_ = ({
+  name: "DaiCapaGeojsonHexbin",
+  mixins: [mixins_layer, vector_layer_any, classificable_layer],
+  props: {
+    diametro: {
+      type: Number,
+      default: .2
+    }
+  },
+  data: function data() {
+    return {
+      VM_featuresGroup: true
+    };
+  },
+  methods: {
+    _createLayerObject: function _createLayerObject() {
+      var _this = this;
+
+      var vectorSource = this.datos != undefined ? geojson_hexbinvue_type_script_lang_js_createGeojsonSourceFromObjectJs(this.datos) : geojson_hexbinvue_type_script_lang_js_createGeojsonSourceFromUrl(this.url);
+      var LayerClass = this.renderizarComoImagen ? VectorImage : layer_Vector;
+      this.olLayer = new LayerClass({
+        source: new HexBin({
+          source: vectorSource,
+          size: this.diametro
+        })
+      });
+      this.olLayer.set("_realce_hover", this.realceAlPasarMouse);
+
+      if (this.VM_is_classified) {
+        if (vectorSource.getUrl() === undefined) {
+          this._clasificar_v2();
+
+          this._set_style_class_v2();
+        } else {
+          vectorSource.on("featuresloadend", function () {
+            setTimeout(function () {
+              //console.log(evento.target.getFeatures())
+              //console.log("cambio el source del layer, evento cachado, geojson.vue")
+              _this._clasificar_v2();
+
+              _this._set_style_class_v2();
+
+              _this._setStyle();
+            }, 50);
+          });
+        }
+      }
+
+      if (this.contenidoTooltip != "none") {
+        this.olLayer.set("_tooltip", this.contenidoTooltip);
+        this.olLayer.set("_tooltip_mov", !this.tooltipEstatico);
+        this.olLayer.set("_tooltip_top", this.tooltipEstaticoMargenSuperior);
+      }
+
+      if (this.contenidoPopup !== "none") {
+        this.olLayer.set("_popup", this.contenidoPopup);
+      }
+
+      this._saveAllFeaturesFromSource(this.olLayer.getSource());
+
+      this._setStyle();
+    }
+  },
+  watch: {
+    datos: function datos(newDatos) {
+      if (newDatos !== undefined && this.olLayer !== null && this.olLayer !== undefined) {
+        //console.log(this.olLayer,this.olLayer.getSource())
+        var vectorSource = this.olLayer.getSource().getSource();
+        var features = new format_GeoJSON().readFeatures(_objectSpread2({}, newDatos));
+        vectorSource.clear(); //if(features.length>0){
+        //console.log("se esta escuchando el cambio de datos, BORRAR ESTE LOG")
+
+        vectorSource.addFeatures(features);
+
+        if (this.VM_is_classified) {
+          this._clasificar_v2();
+
+          this._set_style_class_v2();
+        } //}
+
+
+        this._saveAllFeaturesFromSource(this.olLayer.getSource());
+
+        this._setStyle();
+      }
+    }
+  }
+});
+
+var geojson_hexbinvue_type_script_lang_js_createGeojsonSourceFromObjectJs = function createGeojsonSourceFromObjectJs(JsObject) {
+  if (_typeof(JsObject) != 'object') {
+    return new Vector({});
+  }
+
+  return new Vector({
+    features: new format_GeoJSON().readFeatures(_objectSpread2({}, JsObject))
+  });
+};
+
+var geojson_hexbinvue_type_script_lang_js_createGeojsonSourceFromUrl = function createGeojsonSourceFromUrl(url) {
+  return new Vector({
+    url: url,
+    format: new format_GeoJSON()
+  });
+};
+// CONCATENATED MODULE: ./src/components/geojson-hexbin-layer/geojson-hexbin.vue?vue&type=script&lang=js&
+ /* harmony default export */ var geojson_hexbin_layer_geojson_hexbinvue_type_script_lang_js_ = (geojson_hexbinvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/geojson-hexbin-layer/geojson-hexbin.vue
+var geojson_hexbin_render, geojson_hexbin_staticRenderFns
+
+
+
+
+/* normalize component */
+
+var geojson_hexbin_component = normalizeComponent(
+  geojson_hexbin_layer_geojson_hexbinvue_type_script_lang_js_,
+  geojson_hexbin_render,
+  geojson_hexbin_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var geojson_hexbin = (geojson_hexbin_component.exports);
+// CONCATENATED MODULE: ./src/components/geojson-hexbin-layer/index.js
+
+
+
+
+function geojson_hexbin_layer_plugin(Vue) {
+  if (geojson_hexbin_layer_plugin.installed) {
+    return;
+  }
+
+  geojson_hexbin_layer_plugin.installed = true;
+  Vue.component(geojson_hexbin_dinamico.name, geojson_hexbin_dinamico);
+  Vue.component(geojson_hexbin.name, geojson_hexbin);
+}
+
+/* harmony default export */ var geojson_hexbin_layer = (geojson_hexbin_layer_plugin);
+
 // CONCATENATED MODULE: ./node_modules/ol/layer/BaseImage.js
 var BaseImage_extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -68719,180 +70991,6 @@ var BaseImageLayer = /** @class */ (function (_super) {
 }(layer_Layer));
 /* harmony default export */ var BaseImage = (BaseImageLayer);
 //# sourceMappingURL=BaseImage.js.map
-// CONCATENATED MODULE: ./node_modules/ol/renderer/canvas/ImageLayer.js
-var ImageLayer_extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-/**
- * @module ol/renderer/canvas/ImageLayer
- */
-
-
-
-
-
-
-
-
-
-/**
- * @classdesc
- * Canvas renderer for image layers.
- * @api
- */
-var ImageLayer_CanvasImageLayerRenderer = /** @class */ (function (_super) {
-    ImageLayer_extends(CanvasImageLayerRenderer, _super);
-    /**
-     * @param {import("../../layer/Image.js").default} imageLayer Image layer.
-     */
-    function CanvasImageLayerRenderer(imageLayer) {
-        var _this = _super.call(this, imageLayer) || this;
-        /**
-         * @protected
-         * @type {?import("../../ImageBase.js").default}
-         */
-        _this.image_ = null;
-        return _this;
-    }
-    /**
-     * @return {HTMLCanvasElement|HTMLImageElement|HTMLVideoElement} Image.
-     */
-    CanvasImageLayerRenderer.prototype.getImage = function () {
-        return !this.image_ ? null : this.image_.getImage();
-    };
-    /**
-     * Determine whether render should be called.
-     * @param {import("../../PluggableMap.js").FrameState} frameState Frame state.
-     * @return {boolean} Layer is ready to be rendered.
-     */
-    CanvasImageLayerRenderer.prototype.prepareFrame = function (frameState) {
-        var layerState = frameState.layerStatesArray[frameState.layerIndex];
-        var pixelRatio = frameState.pixelRatio;
-        var viewState = frameState.viewState;
-        var viewResolution = viewState.resolution;
-        var imageSource = this.getLayer().getSource();
-        var hints = frameState.viewHints;
-        var renderedExtent = frameState.extent;
-        if (layerState.extent !== undefined) {
-            renderedExtent = getIntersection(renderedExtent, fromUserExtent(layerState.extent, viewState.projection));
-        }
-        if (!hints[ViewHint.ANIMATING] &&
-            !hints[ViewHint.INTERACTING] &&
-            !isEmpty(renderedExtent)) {
-            if (imageSource) {
-                var projection = viewState.projection;
-                if (!ENABLE_RASTER_REPROJECTION) {
-                    var sourceProjection = imageSource.getProjection();
-                    if (sourceProjection) {
-                        projection = sourceProjection;
-                    }
-                }
-                var image = imageSource.getImage(renderedExtent, viewResolution, pixelRatio, projection);
-                if (image && this.loadImage(image)) {
-                    this.image_ = image;
-                }
-            }
-            else {
-                this.image_ = null;
-            }
-        }
-        return !!this.image_;
-    };
-    /**
-     * Render the layer.
-     * @param {import("../../PluggableMap.js").FrameState} frameState Frame state.
-     * @param {HTMLElement} target Target that may be used to render content to.
-     * @return {HTMLElement} The rendered element.
-     */
-    CanvasImageLayerRenderer.prototype.renderFrame = function (frameState, target) {
-        var image = this.image_;
-        var imageExtent = image.getExtent();
-        var imageResolution = image.getResolution();
-        var imagePixelRatio = image.getPixelRatio();
-        var layerState = frameState.layerStatesArray[frameState.layerIndex];
-        var pixelRatio = frameState.pixelRatio;
-        var viewState = frameState.viewState;
-        var viewCenter = viewState.center;
-        var viewResolution = viewState.resolution;
-        var size = frameState.size;
-        var scale = (pixelRatio * imageResolution) / (viewResolution * imagePixelRatio);
-        var width = Math.round(size[0] * pixelRatio);
-        var height = Math.round(size[1] * pixelRatio);
-        var rotation = viewState.rotation;
-        if (rotation) {
-            var size_1 = Math.round(Math.sqrt(width * width + height * height));
-            width = size_1;
-            height = size_1;
-        }
-        // set forward and inverse pixel transforms
-        compose(this.pixelTransform, frameState.size[0] / 2, frameState.size[1] / 2, 1 / pixelRatio, 1 / pixelRatio, rotation, -width / 2, -height / 2);
-        makeInverse(this.inversePixelTransform, this.pixelTransform);
-        var canvasTransform = createTransformString(this.pixelTransform);
-        this.useContainer(target, canvasTransform, layerState.opacity);
-        var context = this.context;
-        var canvas = context.canvas;
-        if (canvas.width != width || canvas.height != height) {
-            canvas.width = width;
-            canvas.height = height;
-        }
-        else if (!this.containerReused) {
-            context.clearRect(0, 0, width, height);
-        }
-        // clipped rendering if layer extent is set
-        var clipped = false;
-        if (layerState.extent) {
-            var layerExtent = fromUserExtent(layerState.extent, viewState.projection);
-            clipped =
-                !containsExtent(layerExtent, frameState.extent) &&
-                    extent_intersects(layerExtent, frameState.extent);
-            if (clipped) {
-                this.clipUnrotated(context, frameState, layerExtent);
-            }
-        }
-        var img = image.getImage();
-        var transform = compose(this.tempTransform, width / 2, height / 2, scale, scale, 0, (imagePixelRatio * (imageExtent[0] - viewCenter[0])) / imageResolution, (imagePixelRatio * (viewCenter[1] - imageExtent[3])) / imageResolution);
-        this.renderedResolution = (imageResolution * pixelRatio) / imagePixelRatio;
-        var dx = transform[4];
-        var dy = transform[5];
-        var dw = img.width * transform[0];
-        var dh = img.height * transform[3];
-        obj_assign(context, this.getLayer().getSource().getContextOptions());
-        this.preRender(context, frameState);
-        if (dw >= 0.5 && dh >= 0.5) {
-            var opacity = layerState.opacity;
-            var previousAlpha = void 0;
-            if (opacity !== 1) {
-                previousAlpha = this.context.globalAlpha;
-                this.context.globalAlpha = opacity;
-            }
-            this.context.drawImage(img, 0, 0, +img.width, +img.height, Math.round(dx), Math.round(dy), Math.round(dw), Math.round(dh));
-            if (opacity !== 1) {
-                this.context.globalAlpha = previousAlpha;
-            }
-        }
-        this.postRender(context, frameState);
-        if (clipped) {
-            context.restore();
-        }
-        if (canvasTransform !== canvas.style.transform) {
-            canvas.style.transform = canvasTransform;
-        }
-        return this.container;
-    };
-    return CanvasImageLayerRenderer;
-}(canvas_Layer));
-/* harmony default export */ var canvas_ImageLayer = (ImageLayer_CanvasImageLayerRenderer);
-//# sourceMappingURL=ImageLayer.js.map
 // CONCATENATED MODULE: ./node_modules/ol/layer/Image.js
 var layer_Image_extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -70119,6 +72217,8 @@ var es_array_find = __webpack_require__("7db0");
 
       source.clear();
       source.addFeatures(nuevosFeatures);
+    },
+    _initLegend: function _initLegend() {//Implementar en cada leyenda si es necesario
     }
   },
   created: function created() {
@@ -70160,6 +72260,9 @@ var es_array_find = __webpack_require__("7db0");
       this.$parent.$parent.labelToogleAll = newerValue.some(function (item) {
         return item;
       }) ? "Quitar todos" : "Encender Todos";
+    },
+    'params': function params() {
+      this._initLegend();
     }
   }
 });
@@ -70288,12 +72391,12 @@ var _legend_loading_component = normalizeComponent(
 )
 
 /* harmony default export */ var _legend_loading = (_legend_loading_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a636930-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_coropleta.vue?vue&type=template&id=5f2d7684&scoped=true&
-var _legend_coropletavue_type_template_id_5f2d7684_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"map-legends"},_vm._l((_vm.cortesToRender),function(corte,i){return _c('div',{key:corte.c,staticClass:"map-legend-item",on:{"click":function($event){return _vm._filtrarCapa(i)}}},[_c('shape',{staticClass:"map-legends-item-color",attrs:{"shapeType":"rounded-square","size":[40,40],"backgroundColor":corte.activo ? (_vm.usarTexturas?'white': corte.v): 'white',"backgroundImage":corte.activo ? _vm.backgroundImage[i] : 'none',"strokeColor":corte.activo ?  (_vm.params.content.cortes.args.persistentStroke.color || 'white') : 'black ',"strokeWidth":_vm.params.content.cortes.args.persistentStroke.width || 1}}),_c('div',{staticClass:"map-legends-item-text"},[_vm._v(_vm._s(corte.d))])],1)}),0)}
-var _legend_coropletavue_type_template_id_5f2d7684_scoped_true_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a636930-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_coropleta.vue?vue&type=template&id=5c0f6534&scoped=true&
+var _legend_coropletavue_type_template_id_5c0f6534_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"map-legends"},_vm._l((_vm.cortesToRender),function(corte,i){return _c('div',{key:corte.c,staticClass:"map-legend-item",on:{"click":function($event){return _vm._filtrarCapa(i)}}},[_c('shape',{staticClass:"map-legends-item-color",attrs:{"shapeType":"rounded-square","size":[40,40],"backgroundColor":corte.activo ? (_vm.usarTexturas?'white': corte.v): 'white',"backgroundImage":corte.activo ? _vm.backgroundImage[i] : 'none',"strokeColor":corte.activo ?  (_vm.params.content.cortes.args.persistentStroke.color || 'white') : 'black ',"strokeWidth":_vm.params.content.cortes.args.persistentStroke.width || 1}}),_c('div',{staticClass:"map-legends-item-text"},[_vm._v(_vm._s(corte.d))])],1)}),0)}
+var _legend_coropletavue_type_template_id_5c0f6534_scoped_true_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/legend-control/_legend_coropleta.vue?vue&type=template&id=5f2d7684&scoped=true&
+// CONCATENATED MODULE: ./src/components/legend-control/_legend_coropleta.vue?vue&type=template&id=5c0f6534&scoped=true&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a636930-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/utils/shape.vue?vue&type=template&id=5ff61140&scoped=true&
 var shapevue_type_template_id_5ff61140_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"dai-map-shape"},[(_vm.shapeType!=='image')?_c('div',{staticClass:"shape",class:_vm.shapeType,style:({
@@ -70453,14 +72556,9 @@ var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpac
   created: function created() {
     var _this = this;
 
-    this.colorsCortes = this.params.content.cortes.cortes;
-    this.$on("update:legend_info_ready", function () {//console.log("la leyenda esta lista")
-    });
-    this.list_filter = this.params.content.cortes.cortes.map(function () {
-      return true;
-    });
+    this._initLegend();
+
     this.hasSubfilters = true;
-    this.visibleStatusFilters = _toConsumableArray(this.list_filter);
     this.$on("toogle_allsubfilters", function (apagar_todos) {
       _this.list_filter = _this.list_filter.map(function () {
         return !apagar_todos;
@@ -70517,6 +72615,16 @@ var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpac
       this._filter_features(fnCompare);
 
       this.visibleStatusFilters = _toConsumableArray(this.list_filter);
+    },
+    _initLegend: function _initLegend() {
+      this.colorsCortes = this.params.content.cortes.cortes; //console.log(this.params)
+
+      this.$on("update:legend_info_ready", function () {//console.log("la leyenda esta lista")
+      });
+      this.list_filter = this.params.content.cortes.cortes.map(function () {
+        return true;
+      });
+      this.visibleStatusFilters = _toConsumableArray(this.list_filter);
     }
   },
   computed: {
@@ -70548,8 +72656,8 @@ var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpac
 });
 // CONCATENATED MODULE: ./src/components/legend-control/_legend_coropleta.vue?vue&type=script&lang=js&
  /* harmony default export */ var legend_control_legend_coropletavue_type_script_lang_js_ = (_legend_coropletavue_type_script_lang_js_); 
-// EXTERNAL MODULE: ./src/components/legend-control/_legend_coropleta.vue?vue&type=style&index=0&id=5f2d7684&lang=scss&scoped=true&
-var _legend_coropletavue_type_style_index_0_id_5f2d7684_lang_scss_scoped_true_ = __webpack_require__("23b2");
+// EXTERNAL MODULE: ./src/components/legend-control/_legend_coropleta.vue?vue&type=style&index=0&id=5c0f6534&lang=scss&scoped=true&
+var _legend_coropletavue_type_style_index_0_id_5c0f6534_lang_scss_scoped_true_ = __webpack_require__("9e53");
 
 // CONCATENATED MODULE: ./src/components/legend-control/_legend_coropleta.vue
 
@@ -70562,11 +72670,11 @@ var _legend_coropletavue_type_style_index_0_id_5f2d7684_lang_scss_scoped_true_ =
 
 var _legend_coropleta_component = normalizeComponent(
   legend_control_legend_coropletavue_type_script_lang_js_,
-  _legend_coropletavue_type_template_id_5f2d7684_scoped_true_render,
-  _legend_coropletavue_type_template_id_5f2d7684_scoped_true_staticRenderFns,
+  _legend_coropletavue_type_template_id_5c0f6534_scoped_true_render,
+  _legend_coropletavue_type_template_id_5c0f6534_scoped_true_staticRenderFns,
   false,
   null,
-  "5f2d7684",
+  "5c0f6534",
   null
   
 )
@@ -72131,6 +74239,7 @@ function info_control_plugin(Vue) {
 
 
 
+
  //controles
 
 
@@ -72228,6 +74337,7 @@ function src_plugin(Vue) {
   Vue.use(xyz_layer_osm_namespaceObject);
   Vue.use(geojson_layer_namespaceObject);
   Vue.use(geojson_cluster_layer_namespaceObject);
+  Vue.use(geojson_hexbin_layer_namespaceObject);
   Vue.use(wms_layer_namespaceObject);
   Vue.use(legend_control_namespaceObject);
   Vue.use(selector_control_namespaceObject);
