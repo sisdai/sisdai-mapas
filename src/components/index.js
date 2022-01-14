@@ -7,6 +7,7 @@ import * as DaiXyzLayerOsm from "./xyz-layer-osm"
 import * as DaiXyzLayer from "./xyz-layer"
 import * as DaiGeojsonLayer  from "./geojson-layer"
 import * as DaiCapaGeojsonCluster  from "./geojson-cluster-layer"
+import * as DaiCapaGeojsonHexbin from "./geojson-hexbin-layer"
 import * as DaiWmsLayer from "./wms-layer"
 
 //controles
@@ -25,6 +26,7 @@ export{
     DaiXyzLayerOsm,
     DaiGeojsonLayer,
     DaiCapaGeojsonCluster,
+    DaiCapaGeojsonHexbin,
     DaiWmsLayer,
 
     DaiLeyendaMapa,
@@ -32,5 +34,6 @@ export{
     DaiMapOpacity,
     DaiMapSwitch,
     DaiMapSearcher,
-    DaiMapInfo
+    DaiMapInfo,
+    
 }

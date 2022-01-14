@@ -7,17 +7,29 @@ import VectorLayer from 'ol/layer/Vector';
 import VectorImage  from 'ol/layer/VectorImage'
 import VectorSource from 'ol/source/Vector';
 import GeoJSON from 'ol/format/GeoJSON';
+import HexBin from 'ol-ext/source/HexBin'
 
 
 export default {
-    name:"DaiCapaGeojson",
+    name:"DaiCapaGeojsonHexbin",
     mixins:[layer,vector_any,classificable_layer],
+    props:{
+        diametro:{
+            type:Number,
+            default:.2
+        }
+    },
+    data:function(){
+        return {
+            VM_featuresGroup:true
+        }
+    },
     methods:{
         _createLayerObject:function(){
             let vectorSource = this.datos != undefined ? createGeojsonSourceFromObjectJs(this.datos) : createGeojsonSourceFromUrl(this.url)
             const LayerClass= this.renderizarComoImagen ? VectorImage : VectorLayer
             this.olLayer = new LayerClass({
-                source: vectorSource
+                source: new HexBin({source:vectorSource, size:this.diametro})
             })
             this.olLayer.set("_realce_hover",this.realceAlPasarMouse)
             if(this.VM_is_classified){
@@ -53,15 +65,17 @@ export default {
                 this.olLayer.set("_popup",this.contenidoPopup)
             }
             
-            this._saveAllFeaturesFromSource(vectorSource)
+            this._saveAllFeaturesFromSource(this.olLayer.getSource())
             this._setStyle()
+
+            
         }
     },
     watch:{
         datos:function(newDatos){
             if( newDatos !== undefined && this.olLayer !== null && this.olLayer !== undefined ){
                 //console.log(this.olLayer,this.olLayer.getSource())
-                let vectorSource = this.olLayer.getSource()
+                let vectorSource = this.olLayer.getSource().getSource()
                 let features = new GeoJSON().readFeatures({...newDatos})
                 
                 vectorSource.clear()
@@ -74,7 +88,7 @@ export default {
                         this._set_style_class_v2()
                     }
                 //}
-                this._saveAllFeaturesFromSource(vectorSource)
+                this._saveAllFeaturesFromSource(this.olLayer.getSource())
                 this._setStyle()
                 
                 
