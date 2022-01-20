@@ -305,3 +305,7 @@ Los popups son los cuadros de información que aparecen cuando se da click a alg
 </DaiTarjetaContenedorMapa>
 ```
 
+## Eventos de la capa
+
+
+<capas-8-eventos-capas />
