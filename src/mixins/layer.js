@@ -14,7 +14,8 @@ export default{
              * Estado de la informacion de la leyenda, para que otros 
              * componentes que quieran acceder a la leyenda de esta capa sepan que status tiene
              */
-            VM_legend_info_status:"unready" //"ready","loading"
+            VM_legend_info_status:"unready", //"ready","loading",
+            VM_has_event_hover :false
         }
     },
     render:function(){
@@ -45,6 +46,15 @@ export default{
         },
         _addLayerToMap:function(){
             this.olMap.addLayer(this.olLayer)
+            this.olLayer.on("hover_feature",(e)=>{
+                this.$emit("hover_feature",{feature:e.target.get("VM_hovered_feature_props"),style:e.target.get("VM_hovered_feature_style")})
+            })
+
+            //console.log(this.$listeners,this.id)
+            if("hover_feature" in this.$listeners){
+                this.VM_has_event_hover = true;
+                this.olLayer.set("VM_has_event_hover",true)
+            }
         },
         _setInitialPropsToLayer:function(){
             

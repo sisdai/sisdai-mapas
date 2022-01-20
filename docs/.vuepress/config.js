@@ -75,7 +75,8 @@ module.exports = {
             'manejo-datos',
             'texturas',
             'texturas-sd',
-            'cluster'
+            'cluster',
+            'mallas-hexagonales'
           ]
         }
       ],

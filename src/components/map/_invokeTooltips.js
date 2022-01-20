@@ -31,9 +31,10 @@
         var f_l = map.forEachFeatureAtPixel(pixel, function (feature, layer) {
             //console.log("REgresando",layer.get("id"),layer.get("_tooltip"),layer.get("_tooltip_mov"),"----",contador)
             //contador++
-            if(layer.get("_tooltip")!=undefined){
+            if(layer.get("_tooltip")!==undefined || layer.get("VM_has_event_hover")){
                 return [feature,layer]
             }
+            
             //return [feature, layer];
         });
         var f_l_pRealce = map.forEachFeatureAtPixel(pixel, function (feature2, layer2) {
@@ -56,8 +57,14 @@
             var feature = f_l[0];
 
             
-            //remplazando la hover_feature del mapa
+            if(layer.get("VM_has_event_hover")){
+                
+                layer.set("VM_hovered_feature_style",layer.getStyle()(feature))
+                layer.set("VM_hovered_feature_props",feature.getProperties())
+                layer.dispatchEvent("hover_feature")
+            }
             
+            //component.cmpLayers[id].$emit("hover_feature",f_l)
             //console.log(!layer.get("_tooltip_mov"))
             if(map.get("hover_feature") == feature && !layer.get("_tooltip_mov") ){
                 return 

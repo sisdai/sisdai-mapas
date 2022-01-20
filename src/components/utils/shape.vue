@@ -4,13 +4,15 @@
         class="shape"
         :class="shapeType"
         :style="{
+            '--shape-bg-color': backgroundColor,
+            '--shape-stroke-color': strokeColor,
             'width':`${size[0]}${sizeUnits}`,
             'height':`${size[1]}${sizeUnits}`,
-            'backgroundColor':backgroundColor,
+            'backgroundColor':'var(--shape-bg-color)',
             'backgroundImage':backgroundImage,
             'borderWidth':`${strokeWidth}px`,
-            'borderColor':strokeColor
-
+            'borderColor':'var(--shape-stroke-color)',
+            
             }" ></div>
         <div v-if="shapeType==='image'"
         >
