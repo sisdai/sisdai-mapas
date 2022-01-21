@@ -74,13 +74,26 @@ export default {
             this._setStyle()
 
             this.olMap.on("moveend",(e)=>{
-                const resolucion = e.target.getView().getResolution()
-                this.olLayer.getSource().setSize(resolucion*this.diametroPixeles)
-                this._clasificar_v2();
-                this._set_style_class_v2()
-                this._saveAllFeaturesFromSource(this.olLayer.getSource())
-                this._setStyle()
+                if(this.visible){
+                    const resolucion = e.target.getView().getResolution()
+                    this.olLayer.getSource().setSize(resolucion*this.diametroPixeles)
+                    this._clasificar_v2();
+                    this._set_style_class_v2()
+                    this._saveAllFeaturesFromSource(this.olLayer.getSource())
+                    this._setStyle()
+                }
+                
             })
+            this.olLayer.on("change:visible", (eventoLayer) =>{
+                if(eventoLayer.target.getVisible()){
+                    const resolucion = this.olMap.getView().getResolution()
+                    this.olLayer.getSource().setSize(resolucion*this.diametroPixeles)
+                    this._clasificar_v2();
+                    this._set_style_class_v2()
+                    this._saveAllFeaturesFromSource(this.olLayer.getSource())
+                    this._setStyle()
+                }
+            });
         }
     },
     watch:{
