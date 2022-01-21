@@ -87,6 +87,13 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
+/***/ "000d":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "00ee":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1015,17 +1022,6 @@ module.exports = function (iterator, kind, value) {
 
 /***/ }),
 
-/***/ "2bfb":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_normal_vector_vue_vue_type_style_index_0_id_3a7e30a1_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("dace");
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_normal_vector_vue_vue_type_style_index_0_id_3a7e30a1_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_normal_vector_vue_vue_type_style_index_0_id_3a7e30a1_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
-/* unused harmony reexport * */
-
-
-/***/ }),
-
 /***/ "2ca0":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1211,17 +1207,6 @@ defineIterator(String, 'String', function (iterated) {
 /***/ (function(module, exports) {
 
 module.exports = {};
-
-
-/***/ }),
-
-/***/ "4147":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_vue_vue_type_style_index_0_id_54dc3ac5_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("d247");
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_vue_vue_type_style_index_0_id_54dc3ac5_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_vue_vue_type_style_index_0_id_54dc3ac5_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
-/* unused harmony reexport * */
 
 
 /***/ }),
@@ -2482,6 +2467,17 @@ module.exports = function (NAME) {
 
 /***/ }),
 
+/***/ "765e":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_normal_vector_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("000d");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_normal_vector_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_normal_vector_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+
+
+/***/ }),
+
 /***/ "7839":
 /***/ (function(module, exports) {
 
@@ -3179,6 +3175,13 @@ var POLYFILL = isForced.POLYFILL = 'P';
 
 module.exports = isForced;
 
+
+/***/ }),
+
+/***/ "9794":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -4587,13 +4590,6 @@ exports.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
 
 /***/ }),
 
-/***/ "d247":
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-
 /***/ "d28b":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4821,13 +4817,6 @@ module.exports =
   (function () { return this; })() || Function('return this')();
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("c8ba")))
-
-/***/ }),
-
-/***/ "dace":
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -5294,6 +5283,17 @@ var meta = module.exports = {
 };
 
 hiddenKeys[METADATA] = true;
+
+
+/***/ }),
+
+/***/ "f186":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("9794");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
 
 
 /***/ }),
@@ -6053,12 +6053,12 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
 var es_function_name = __webpack_require__("b0c0");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a636930-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/map.vue?vue&type=template&id=3cba6dcc&
-var mapvue_type_template_id_3cba6dcc_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"dai-map-container"},[_c('div',{ref:"map",staticClass:"dai-map ",class:[_vm.colorControlesInvertidos ? 'inverted-controls': 'default-controls']}),_vm._t("default"),_c('div',{ref:"tooltip",staticClass:"ol-tooltip ol-tooltip-bottom"},[(_vm.VM_isTouchDevice)?_c('div',{staticClass:"botones"},[_c('button',{staticClass:"boton-cerrar",on:{"click":_vm.cerrarTooltip}},[_c('span',{staticClass:"dai-icon-cerrar"})])]):_vm._e(),_c('div',{staticClass:"content"})]),_c('div',{ref:"tooltipmov",staticClass:"ol-tooltipmov "},[(_vm.VM_isTouchDevice)?_c('div',{staticClass:"botones"},[_c('button',{staticClass:"boton-cerrar",on:{"click":_vm.cerrarTooltip}},[_c('span',{staticClass:"dai-icon-cerrar"})])]):_vm._e(),_c('div',{staticClass:"content"})]),_c('div',{ref:"popup",staticClass:"ol-popup"},[_c('div',{staticClass:"botones"},[_c('button',{staticClass:"boton-cerrar",on:{"click":_vm._cerrarPopup}},[_c('span',{staticClass:"dai-icon-cerrar"})])]),_c('div',{staticClass:"content"})])],2)}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a636930-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/map.vue?vue&type=template&id=43177fd4&
+var mapvue_type_template_id_43177fd4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"dai-map-container"},[_c('div',{ref:"map",staticClass:"dai-map ",class:[_vm.colorControlesInvertidos ? 'inverted-controls': 'default-controls']}),_vm._t("default"),_c('div',{ref:"tooltip",staticClass:"ol-tooltip ol-tooltip-bottom"},[(_vm.VM_isTouchDevice)?_c('div',{staticClass:"botones"},[_c('button',{staticClass:"boton-cerrar",on:{"click":_vm.cerrarTooltip}},[_c('span',{staticClass:"dai-icon-cerrar"})])]):_vm._e(),_c('div',{staticClass:"content"})]),_c('div',{ref:"tooltipmov",staticClass:"ol-tooltipmov "},[(_vm.VM_isTouchDevice)?_c('div',{staticClass:"botones"},[_c('button',{staticClass:"boton-cerrar",on:{"click":_vm.cerrarTooltip}},[_c('span',{staticClass:"dai-icon-cerrar"})])]):_vm._e(),_c('div',{staticClass:"content"})]),_c('div',{ref:"popup",staticClass:"ol-popup"},[_c('div',{staticClass:"botones"},[_c('button',{staticClass:"boton-cerrar",on:{"click":_vm._cerrarPopup}},[_c('span',{staticClass:"dai-icon-cerrar"})])]),_c('div',{staticClass:"content"})])],2)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/map/map.vue?vue&type=template&id=3cba6dcc&
+// CONCATENATED MODULE: ./src/components/map/map.vue?vue&type=template&id=43177fd4&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.number.constructor.js
 var es_number_constructor = __webpack_require__("a9e3");
@@ -26836,6 +26836,14 @@ var _invokeClicks_invoke_clicks = function invoke_clicks(map, e, component) {
         return [0, 0, 0, 0];
       }
     },
+
+    /**No permite que se navegue mas alla de esta extension */
+    noSalirDeExtension: {
+      type: Array,
+      default: function _default() {
+        return [0, 0, 0, 0];
+      }
+    },
     colorControlesInvertidos: {
       type: Boolean,
       default: false
@@ -26906,6 +26914,7 @@ var _invokeClicks_invoke_clicks = function invoke_clicks(map, e, component) {
     var attributionControl = new control_Attribution({
       collapsible: false
     });
+    var extensionMaxima = this.noSalirDeExtension[0] === 0 && this.noSalirDeExtension[3] === 0 ? undefined : this.noSalirDeExtension;
     this.map = new ol_Map({
       target: this.$refs.map,
       layers: [],
@@ -26914,7 +26923,8 @@ var _invokeClicks_invoke_clicks = function invoke_clicks(map, e, component) {
         zoom: this.zoom,
         projection: 'EPSG:4326',
         maxZoom: this.maxZoom,
-        minZoom: this.minZoom
+        minZoom: this.minZoom,
+        extent: extensionMaxima
       }),
       controls: [new _zoom_control(), resetcontrol, this.VM_nivel_control, attributionControl],
       interactions: interaction_defaults({
@@ -27260,7 +27270,7 @@ function normalizeComponent (
 
 var map_component = normalizeComponent(
   map_mapvue_type_script_lang_js_,
-  mapvue_type_template_id_3cba6dcc_render,
+  mapvue_type_template_id_43177fd4_render,
   staticRenderFns,
   false,
   null,
@@ -36886,6 +36896,8 @@ var checkPointShapeFromStyle = function checkPointShapeFromStyle(style) {
   }
 
   console.log("BUG:::estilo para punto no esperado");
+  console.log(style);
+  console.error("nose");
   return "none";
 };
 
@@ -40027,6 +40039,7 @@ var vector_layer_any_DEFAULT_RADIUS = 7;
       var shapeLegend = "square";
 
       if (typeof vm.VM_mapStyle === "function") {
+        //console.log(this.id,"llegamos aqui")
         style = function style(feature) {
           var serializes = JSON.parse(JSON.stringify(fixSerializedStyleIfIncomplete(vm.VM_mapStyle(feature))));
           var estilo_realce = fixSerializedStyleIfIncomplete(vm.estiloRealce);
@@ -40150,13 +40163,17 @@ var vector_layer_any_DEFAULT_RADIUS = 7;
     _saveAllFeaturesFromSource: function _saveAllFeaturesFromSource(vectorSource) {
       var _this = this;
 
-      var geojsonFormat = new format_GeoJSON(); //if(vectorSource.getFeatures().length>1){
+      var geojsonFormat = new format_GeoJSON(); //console.log(vectorSource.getUrl(),vectorSource.getSource(),"---")
+      //if(vectorSource.getFeatures().length>1){
+      //if(vectorSource.getUrl()===undefined){
 
-      if (vectorSource.getUrl() === undefined) {
+      if (this.datos !== undefined) {
         if (this.VM_featuresGroup) {
           var objects = geojsonFormat.writeFeaturesObject(vectorSource.getFeatures());
           objects.features = objects.features.map(function (f) {
-            f.properties['features'] = '';
+            f.properties['features'] = {
+              length: f.properties['features'].length
+            };
             return f;
           });
           this.VM_allFeatures = JSON.stringify(objects);
@@ -40171,59 +40188,88 @@ var vector_layer_any_DEFAULT_RADIUS = 7;
 
 
       var listenerFn = function listenerFn(evento) {
-        //console.log(0,this.id)
-        _this.VM_allFeatures = geojsonFormat.writeFeatures(evento.features); //console.log(evento.features[0].getGeometry(),1,this.id)
+        if (_this.VM_featuresGroup) {
+          setTimeout(function () {
+            var objects = geojsonFormat.writeFeaturesObject(_this.olLayer.getSource().getFeatures());
+            objects.features = objects.features.map(function (f) {
+              f.properties['features'] = {
+                length: f.properties['features'].length
+              };
+              return f;
+            });
+            _this.VM_allFeatures = JSON.stringify(objects);
+            _this.VM_geometryType = _this.olLayer.getSource().getFeatures().length > 0 ? _this.olLayer.getSource().getFeatures()[0].getGeometry().getType() : "";
 
-        _this.VM_geometryType = evento.features.length > 0 ? evento.features[0].getGeometry().getType() : ""; //console.log(evento.features[0].getGeometry(),2,this.id)
+            if (!_this.VM_is_classified) {
+              var serializes = fixSerializedStyleIfIncomplete(_this.VM_mapStyle);
 
-        var serializes = fixSerializedStyleIfIncomplete(_this.VM_mapStyle);
+              _this.setDefaultLegendInfo(serializes);
+            }
 
-        if (_this.VM_geometryType.includes("Point")) {
-          var _this$VM_legend_info;
-
-          _this.VM_defaultShapePoint = checkPointShapeFromStyle(serializes);
-
-          if (((_this$VM_legend_info = _this.VM_legend_info) === null || _this$VM_legend_info === void 0 ? void 0 : _this$VM_legend_info.type) === "legend-normal-vector") {
-            var _serializes$style10, _serializes$style10$_, _serializes$style10$_2, _serializes$style11, _serializes$style11$_, _serializes$style11$_2, _serializes$style12, _serializes$style12$_, _serializes$style12$_2, _serializes$style13, _serializes$style13$_, _serializes$style14;
-
-            _this.VM_legend_info.content.shape = _this.VM_defaultShapePoint;
-            _this.VM_legend_info.content.fill_color = ((_serializes$style10 = serializes.style) === null || _serializes$style10 === void 0 ? void 0 : (_serializes$style10$_ = _serializes$style10[_this.VM_defaultShapePoint]) === null || _serializes$style10$_ === void 0 ? void 0 : (_serializes$style10$_2 = _serializes$style10$_.fill) === null || _serializes$style10$_2 === void 0 ? void 0 : _serializes$style10$_2.color) || 'gray';
-            _this.VM_legend_info.content.stroke_color = ((_serializes$style11 = serializes.style) === null || _serializes$style11 === void 0 ? void 0 : (_serializes$style11$_ = _serializes$style11[_this.VM_defaultShapePoint]) === null || _serializes$style11$_ === void 0 ? void 0 : (_serializes$style11$_2 = _serializes$style11$_.stroke) === null || _serializes$style11$_2 === void 0 ? void 0 : _serializes$style11$_2.color) || 'white';
-            _this.VM_legend_info.content.stroke_width = ((_serializes$style12 = serializes.style) === null || _serializes$style12 === void 0 ? void 0 : (_serializes$style12$_ = _serializes$style12[_this.VM_defaultShapePoint]) === null || _serializes$style12$_ === void 0 ? void 0 : (_serializes$style12$_2 = _serializes$style12$_.stroke) === null || _serializes$style12$_2 === void 0 ? void 0 : _serializes$style12$_2.width) || 1;
-            _this.VM_legend_info.content.shape_radius = ((_serializes$style13 = serializes.style) === null || _serializes$style13 === void 0 ? void 0 : (_serializes$style13$_ = _serializes$style13[_this.VM_defaultShapePoint]) === null || _serializes$style13$_ === void 0 ? void 0 : _serializes$style13$_.radius) || vector_layer_any_DEFAULT_RADIUS;
-            _this.VM_legend_info.content.icon = ((_serializes$style14 = serializes.style) === null || _serializes$style14 === void 0 ? void 0 : _serializes$style14[_this.VM_defaultShapePoint]) || {}; //this.VM_legend_info.content.shape = this.VM_geometryType.includes("Point") ? 'square' :this.VM_legend_info.content.shape
-          }
-        } else if (_this.VM_geometryType.includes("LineString")) {
-          var _this$VM_legend_info2;
-
-          if (((_this$VM_legend_info2 = _this.VM_legend_info) === null || _this$VM_legend_info2 === void 0 ? void 0 : _this$VM_legend_info2.type) === "legend-normal-vector") {
-            var _serializes$style15, _serializes$style15$s, _serializes$style16, _serializes$style16$s;
-
-            _this.VM_legend_info.content.shape = "line";
-            _this.VM_legend_info.content.fill_color = "transparent";
-            _this.VM_legend_info.content.stroke_color = ((_serializes$style15 = serializes.style) === null || _serializes$style15 === void 0 ? void 0 : (_serializes$style15$s = _serializes$style15.stroke) === null || _serializes$style15$s === void 0 ? void 0 : _serializes$style15$s.color) || 'white';
-            _this.VM_legend_info.content.stroke_width = ((_serializes$style16 = serializes.style) === null || _serializes$style16 === void 0 ? void 0 : (_serializes$style16$s = _serializes$style16.stroke) === null || _serializes$style16$s === void 0 ? void 0 : _serializes$style16$s.width) || 1;
-            _this.VM_legend_info.content.shape_radius = 12.5; //this.VM_legend_info.content.shape = this.VM_geometryType.includes("Point") ? 'square' :this.VM_legend_info.content.shape
-          }
+            _this.$emit("saved_features", _this.VM_allFeatures);
+          }, 70);
         } else {
-          var _this$VM_legend_info3;
+          _this.VM_allFeatures = geojsonFormat.writeFeatures(evento.features);
+          _this.VM_geometryType = evento.features.length > 0 ? evento.features[0].getGeometry().getType() : "";
 
-          if (((_this$VM_legend_info3 = _this.VM_legend_info) === null || _this$VM_legend_info3 === void 0 ? void 0 : _this$VM_legend_info3.type) === "legend-normal-vector") {
-            var _serializes$style17, _serializes$style17$f, _serializes$style18, _serializes$style18$s, _serializes$style19, _serializes$style19$s;
+          if (!_this.VM_is_classified) {
+            var serializes = fixSerializedStyleIfIncomplete(_this.VM_mapStyle);
 
-            _this.VM_legend_info.content.shape = "square";
-            _this.VM_legend_info.content.fill_color = ((_serializes$style17 = serializes.style) === null || _serializes$style17 === void 0 ? void 0 : (_serializes$style17$f = _serializes$style17.fill) === null || _serializes$style17$f === void 0 ? void 0 : _serializes$style17$f.color) || 'gray';
-            _this.VM_legend_info.content.stroke_color = ((_serializes$style18 = serializes.style) === null || _serializes$style18 === void 0 ? void 0 : (_serializes$style18$s = _serializes$style18.stroke) === null || _serializes$style18$s === void 0 ? void 0 : _serializes$style18$s.color) || 'white';
-            _this.VM_legend_info.content.stroke_width = ((_serializes$style19 = serializes.style) === null || _serializes$style19 === void 0 ? void 0 : (_serializes$style19$s = _serializes$style19.stroke) === null || _serializes$style19$s === void 0 ? void 0 : _serializes$style19$s.width) || 1;
-            _this.VM_legend_info.content.shape_radius = 12.5; //this.VM_legend_info.content.shape = this.VM_geometryType.includes("Point") ? 'square' :this.VM_legend_info.content.shape
+            _this.setDefaultLegendInfo(serializes);
           }
-        }
 
-        _this.$emit("saved_features", _this.VM_allFeatures); //console.log(evento,"---AQUI GUARDAR LAS FEATURES EN VM_allfeatures")
+          _this.$emit("saved_features", _this.VM_allFeatures);
+        } //console.log(evento,"---AQUI GUARDAR LAS FEATURES EN VM_allfeatures")
 
       };
 
-      vectorSource.on("featuresloadend", listenerFn);
+      if (this.VM_featuresGroup) {
+        vectorSource.getSource().on("featuresloadend", listenerFn);
+      } else {
+        vectorSource.on("featuresloadend", listenerFn);
+      }
+    },
+    setDefaultLegendInfo: function setDefaultLegendInfo(serializes) {
+      if (this.VM_geometryType.includes("Point")) {
+        var _this$VM_legend_info;
+
+        this.VM_defaultShapePoint = checkPointShapeFromStyle(serializes);
+
+        if (((_this$VM_legend_info = this.VM_legend_info) === null || _this$VM_legend_info === void 0 ? void 0 : _this$VM_legend_info.type) === "legend-normal-vector") {
+          var _serializes$style10, _serializes$style10$t, _serializes$style10$t2, _serializes$style11, _serializes$style11$t, _serializes$style11$t2, _serializes$style12, _serializes$style12$t, _serializes$style12$t2, _serializes$style13, _serializes$style13$t, _serializes$style14;
+
+          this.VM_legend_info.content.shape = this.VM_defaultShapePoint;
+          this.VM_legend_info.content.fill_color = ((_serializes$style10 = serializes.style) === null || _serializes$style10 === void 0 ? void 0 : (_serializes$style10$t = _serializes$style10[this.VM_defaultShapePoint]) === null || _serializes$style10$t === void 0 ? void 0 : (_serializes$style10$t2 = _serializes$style10$t.fill) === null || _serializes$style10$t2 === void 0 ? void 0 : _serializes$style10$t2.color) || 'gray';
+          this.VM_legend_info.content.stroke_color = ((_serializes$style11 = serializes.style) === null || _serializes$style11 === void 0 ? void 0 : (_serializes$style11$t = _serializes$style11[this.VM_defaultShapePoint]) === null || _serializes$style11$t === void 0 ? void 0 : (_serializes$style11$t2 = _serializes$style11$t.stroke) === null || _serializes$style11$t2 === void 0 ? void 0 : _serializes$style11$t2.color) || 'white';
+          this.VM_legend_info.content.stroke_width = ((_serializes$style12 = serializes.style) === null || _serializes$style12 === void 0 ? void 0 : (_serializes$style12$t = _serializes$style12[this.VM_defaultShapePoint]) === null || _serializes$style12$t === void 0 ? void 0 : (_serializes$style12$t2 = _serializes$style12$t.stroke) === null || _serializes$style12$t2 === void 0 ? void 0 : _serializes$style12$t2.width) || 1;
+          this.VM_legend_info.content.shape_radius = ((_serializes$style13 = serializes.style) === null || _serializes$style13 === void 0 ? void 0 : (_serializes$style13$t = _serializes$style13[this.VM_defaultShapePoint]) === null || _serializes$style13$t === void 0 ? void 0 : _serializes$style13$t.radius) || vector_layer_any_DEFAULT_RADIUS;
+          this.VM_legend_info.content.icon = ((_serializes$style14 = serializes.style) === null || _serializes$style14 === void 0 ? void 0 : _serializes$style14[this.VM_defaultShapePoint]) || {}; //this.VM_legend_info.content.shape = this.VM_geometryType.includes("Point") ? 'square' :this.VM_legend_info.content.shape
+        }
+      } else if (this.VM_geometryType.includes("LineString")) {
+        var _this$VM_legend_info2;
+
+        if (((_this$VM_legend_info2 = this.VM_legend_info) === null || _this$VM_legend_info2 === void 0 ? void 0 : _this$VM_legend_info2.type) === "legend-normal-vector") {
+          var _serializes$style15, _serializes$style15$s, _serializes$style16, _serializes$style16$s;
+
+          this.VM_legend_info.content.shape = "line";
+          this.VM_legend_info.content.fill_color = "transparent";
+          this.VM_legend_info.content.stroke_color = ((_serializes$style15 = serializes.style) === null || _serializes$style15 === void 0 ? void 0 : (_serializes$style15$s = _serializes$style15.stroke) === null || _serializes$style15$s === void 0 ? void 0 : _serializes$style15$s.color) || 'white';
+          this.VM_legend_info.content.stroke_width = ((_serializes$style16 = serializes.style) === null || _serializes$style16 === void 0 ? void 0 : (_serializes$style16$s = _serializes$style16.stroke) === null || _serializes$style16$s === void 0 ? void 0 : _serializes$style16$s.width) || 1;
+          this.VM_legend_info.content.shape_radius = 12.5; //this.VM_legend_info.content.shape = this.VM_geometryType.includes("Point") ? 'square' :this.VM_legend_info.content.shape
+        }
+      } else {
+        var _this$VM_legend_info3;
+
+        if (((_this$VM_legend_info3 = this.VM_legend_info) === null || _this$VM_legend_info3 === void 0 ? void 0 : _this$VM_legend_info3.type) === "legend-normal-vector") {
+          var _serializes$style17, _serializes$style17$f, _serializes$style18, _serializes$style18$s, _serializes$style19, _serializes$style19$s;
+
+          this.VM_legend_info.content.shape = "square";
+          this.VM_legend_info.content.fill_color = ((_serializes$style17 = serializes.style) === null || _serializes$style17 === void 0 ? void 0 : (_serializes$style17$f = _serializes$style17.fill) === null || _serializes$style17$f === void 0 ? void 0 : _serializes$style17$f.color) || 'gray';
+          this.VM_legend_info.content.stroke_color = ((_serializes$style18 = serializes.style) === null || _serializes$style18 === void 0 ? void 0 : (_serializes$style18$s = _serializes$style18.stroke) === null || _serializes$style18$s === void 0 ? void 0 : _serializes$style18$s.color) || 'white';
+          this.VM_legend_info.content.stroke_width = ((_serializes$style19 = serializes.style) === null || _serializes$style19 === void 0 ? void 0 : (_serializes$style19$s = _serializes$style19.stroke) === null || _serializes$style19$s === void 0 ? void 0 : _serializes$style19$s.width) || 1;
+          this.VM_legend_info.content.shape_radius = 12.5; //this.VM_legend_info.content.shape = this.VM_geometryType.includes("Point") ? 'square' :this.VM_legend_info.content.shape
+        }
+      }
     },
     filtrarDatos: function filtrarDatos(fn_comparacion) {
       //console.log("se filtraran los datos :)")
@@ -69087,7 +69133,7 @@ var Cluster_Cluster = /** @class */ (function (_super) {
 
 
 
- //import classificable_layer from "../../mixins/classificable-layer"
+
 
 
 
@@ -69096,7 +69142,7 @@ var Cluster_Cluster = /** @class */ (function (_super) {
 
 /* harmony default export */ var geojson_clustervue_type_script_lang_js_ = ({
   name: "DaiCapaGeojsonCluster",
-  mixins: [mixins_layer, vector_layer_any],
+  mixins: [mixins_layer, vector_layer_any, classificable_layer],
   props: {
     distancia: {
       type: Number,
@@ -69107,10 +69153,17 @@ var Cluster_Cluster = /** @class */ (function (_super) {
       default: 0
     }
   },
+  data: function data() {
+    return {
+      VM_featuresGroup: true
+    };
+  },
   methods: {
     _createLayerObject: function _createLayerObject() {
+      var _this = this;
+
       this.VM_is_cluster = true;
-      var vectorSource = this.datos != undefined ? geojson_clustervue_type_script_lang_js_createGeojsonSourceFromObjectJs(this.datos) : geojson_clustervue_type_script_lang_js_createGeojsonSourceFromUrl(this.url);
+      var vectorSource = this.datos !== undefined ? geojson_clustervue_type_script_lang_js_createGeojsonSourceFromObjectJs(this.datos) : geojson_clustervue_type_script_lang_js_createGeojsonSourceFromUrl(this.url);
       var LayerClass = this.renderizarComoImagen ? VectorImage : layer_Vector;
       this.olLayer = new LayerClass({
         source: new source_Cluster({
@@ -69120,56 +69173,54 @@ var Cluster_Cluster = /** @class */ (function (_super) {
         })
       });
       this.olLayer.set("_realce_hover", this.realceAlPasarMouse);
-      /** 
-       * solo aplica a las capas que se pueden clasificar, de inicio los clusters no
-      
-      if(this.VM_is_classified){
-          if(vectorSource.getUrl()===undefined){
-              this._clasificar_v2();
-              this._set_style_class_v2()
-          }else{
-              vectorSource.on("featuresloadend",()=>{
-                  setTimeout(()=>{
-                      //console.log(evento.target.getFeatures())
-                      //console.log("cambio el source del layer, evento cachado, geojson.vue")
-                      this._clasificar_v2();
-                      this._set_style_class_v2()
-                      this._setStyle()
-                  },50)
-                  
-              })
+
+      if (this.VM_is_classified) {
+        if (vectorSource.getUrl() === undefined) {
+          this._clasificar_v2();
+
+          this._set_style_class_v2();
+        } else {
+          vectorSource.on("featuresloadend", function () {
+            setTimeout(function () {
+              //console.log(evento.target.getFeatures())
+              //console.log("cambio el source del layer, evento cachado, geojson.vue")
+              _this._clasificar_v2();
+
+              _this._set_style_class_v2();
+
+              _this._setStyle();
+            }, 50);
+          });
+        }
+      }
+
+      if (this.contenidoTooltip != "none") {
+        this.olLayer.set("_tooltip", this.contenidoTooltip);
+        this.olLayer.set("_tooltip_mov", !this.tooltipEstatico);
+        this.olLayer.set("_tooltip_top", this.tooltipEstaticoMargenSuperior);
+      }
+
+      if (this.contenidoPopup !== "none") {
+        this.olLayer.set("_popup", this.contenidoPopup);
+      }
+
+      this._saveAllFeaturesFromSource(this.olLayer.getSource());
+
+      this._setStyle();
+
+      this.olMap.on("moveend", function (e) {
+        if (_this.visible) {
+          if (_this.VM_is_classified) {
+            _this._clasificar_v2();
+
+            _this._set_style_class_v2();
           }
-          
-      }
-      */
 
-      if (this.contenidoTooltip != "none") {
-        this.olLayer.set("_tooltip", this.contenidoTooltip);
-        this.olLayer.set("_tooltip_mov", !this.tooltipEstatico);
-        this.olLayer.set("_tooltip_top", this.tooltipEstaticoMargenSuperior);
-      }
+          _this._saveAllFeaturesFromSource(_this.olLayer.getSource());
 
-      if (this.contenidoPopup !== "none") {
-        this.olLayer.set("_popup", this.contenidoPopup);
-      }
-
-      this._saveAllFeaturesFromSource(vectorSource);
-
-      this._setStyle();
-
-      if (this.contenidoTooltip != "none") {
-        this.olLayer.set("_tooltip", this.contenidoTooltip);
-        this.olLayer.set("_tooltip_mov", !this.tooltipEstatico);
-        this.olLayer.set("_tooltip_top", this.tooltipEstaticoMargenSuperior);
-      }
-
-      if (this.contenidoPopup !== "none") {
-        this.olLayer.set("_popup", this.contenidoPopup);
-      }
-
-      this._saveAllFeaturesFromSource(vectorSource);
-
-      this._setStyle();
+          _this._setStyle();
+        }
+      });
     }
   },
   watch: {
@@ -69190,7 +69241,7 @@ var Cluster_Cluster = /** @class */ (function (_super) {
         } //}
 
 
-        this._saveAllFeaturesFromSource(vectorSource);
+        this._saveAllFeaturesFromSource(this.olLayer.getSource());
 
         this._setStyle();
       }
@@ -70673,8 +70724,6 @@ ol_source_HexBin.prototype.getHexFeatures = function () {
         } else {
           vectorSource.on("featuresloadend", function () {
             setTimeout(function () {
-              //console.log(evento.target.getFeatures())
-              //console.log("cambio el source del layer, evento cachado, geojson.vue")
               _this._clasificar_v2();
 
               _this._set_style_class_v2();
@@ -70700,17 +70749,38 @@ ol_source_HexBin.prototype.getHexFeatures = function () {
       this._setStyle();
 
       this.olMap.on("moveend", function (e) {
-        var resolucion = e.target.getView().getResolution();
+        if (_this.visible) {
+          var resolucion = e.target.getView().getResolution();
 
-        _this.olLayer.getSource().setSize(resolucion * _this.diametroPixeles);
+          _this.olLayer.getSource().setSize(resolucion * _this.diametroPixeles);
 
-        _this._clasificar_v2();
+          if (_this.VM_is_classified) {
+            _this._clasificar_v2();
 
-        _this._set_style_class_v2();
+            _this._set_style_class_v2();
+          }
 
-        _this._saveAllFeaturesFromSource(_this.olLayer.getSource());
+          _this._saveAllFeaturesFromSource(_this.olLayer.getSource());
 
-        _this._setStyle();
+          _this._setStyle();
+        }
+      });
+      this.olLayer.on("change:visible", function (eventoLayer) {
+        if (eventoLayer.target.getVisible()) {
+          var resolucion = _this.olMap.getView().getResolution();
+
+          _this.olLayer.getSource().setSize(resolucion * _this.diametroPixeles);
+
+          if (_this.VM_is_classified) {
+            _this._clasificar_v2();
+
+            _this._set_style_class_v2();
+          }
+
+          _this._saveAllFeaturesFromSource(_this.olLayer.getSource());
+
+          _this._setStyle();
+        }
       });
     }
   },
@@ -72046,12 +72116,12 @@ function wms_layer_plugin(Vue) {
 
 /* harmony default export */ var wms_layer = (wms_layer_plugin);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a636930-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/legend.vue?vue&type=template&id=54dc3ac5&scoped=true&
-var legendvue_type_template_id_54dc3ac5_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"main-legend",class:{'no-tamanos-mapa':!_vm.tamanosDeMapa}},[_c('div',{staticClass:"header-legend"},[_c('p',{staticClass:"title"},[_vm._v(_vm._s(_vm.titulo))]),(_vm.mostrarBotonAlternaTodos)?_c('button',{staticClass:"toggle-all",on:{"click":_vm.toogleAll}},[_vm._v(_vm._s(_vm.labelToogleAll))]):_vm._e()]),_vm._l((_vm.VM_legends),function(leg){return _c('legend-item',{key:leg,attrs:{"layerId":leg}})})],2)}
-var legendvue_type_template_id_54dc3ac5_scoped_true_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a636930-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/legend.vue?vue&type=template&id=aa8c29ca&
+var legendvue_type_template_id_aa8c29ca_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"main-legend",class:{'no-tamanos-mapa':!_vm.tamanosDeMapa}},[_c('div',{staticClass:"header-legend"},[_c('div',{staticClass:"title-header-legend"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.algunoActivo),expression:"algunoActivo"}],staticClass:"checkbox-legend-header",style:({display: _vm.mostrarBotonAlternaTodos && _vm.estiloBotonAlternaTodos==='checkbox' ? '':'none'}),attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.algunoActivo)?_vm._i(_vm.algunoActivo,null)>-1:(_vm.algunoActivo)},on:{"change":[function($event){var $$a=_vm.algunoActivo,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.algunoActivo=$$a.concat([$$v]))}else{$$i>-1&&(_vm.algunoActivo=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.algunoActivo=$$c}},_vm.cambioCheckbox]}}),_c('span',[_vm._v(_vm._s(_vm.titulo))])]),(_vm.mostrarBotonAlternaTodos && _vm.estiloBotonAlternaTodos==='boton')?_c('button',{staticClass:"toggle-all",on:{"click":_vm.toogleAll}},[_vm._v(_vm._s(_vm.labelToogleAll))]):_vm._e(),(_vm.colapsable)?_c('button',{staticClass:"header-legend-collapsable-boton",class:{up:_vm.VM_collapsed},on:{"click":function($event){_vm.VM_collapsed = !_vm.VM_collapsed}}},[_c('svg',{attrs:{"xmlns":"http://www.w3.org/2000/svg","width":"17.908","height":"12.147","viewBox":"0 0 17.908 12.147"}},[_c('path',{attrs:{"id":"Trazado_24243","data-name":"Trazado 24243","d":"M8.954,0,0,9.359l2.667,2.788L8.954,5.576l6.287,6.571,2.667-2.788Z","transform":"translate(17.908 12.147) rotate(180)"}})])]):_vm._e()]),_c('div',{staticClass:"legend-content",class:{collapsed:_vm.VM_collapsed}},_vm._l((_vm.VM_legends),function(leg){return _c('legend-item',{key:leg,class:{'has-parent-check': _vm.mostrarBotonAlternaTodos && _vm.estiloBotonAlternaTodos==='checkbox'},attrs:{"layerId":leg}})}),1)])}
+var legendvue_type_template_id_aa8c29ca_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/legend-control/legend.vue?vue&type=template&id=54dc3ac5&scoped=true&
+// CONCATENATED MODULE: ./src/components/legend-control/legend.vue?vue&type=template&id=aa8c29ca&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.match.js
 var es_string_match = __webpack_require__("466d");
@@ -72272,6 +72342,9 @@ var es_array_find = __webpack_require__("7db0");
       this.$parent.$parent.labelToogleAll = newerValue.some(function (item) {
         return item;
       }) ? "Quitar todos" : "Encender Todos";
+      this.$parent.$parent.algunoActivo = newerValue.some(function (item) {
+        return item;
+      });
     },
     'params': function params() {
       this._initLegend();
@@ -72696,12 +72769,12 @@ var _legend_coropleta_component = normalizeComponent(
 )
 
 /* harmony default export */ var _legend_coropleta = (_legend_coropleta_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a636930-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_normal_vector.vue?vue&type=template&id=3a7e30a1&scoped=true&
-var _legend_normal_vectorvue_type_template_id_3a7e30a1_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"legend-normal-vector"},[_c('checkbox',{on:{"change":_vm.set_visible_to_layer},model:{value:(_vm.visible),callback:function ($$v) {_vm.visible=$$v},expression:"visible"}},[(_vm.params.content.shape!=='icon')?_c('shape',{staticClass:"simbologia",attrs:{"shapeType":_vm.classShape,"backgroundColor":_vm.usarTexturas? 'transparent': _vm.params.content.fill_color,"backgroundImage":_vm.backgroundImage,"strokeColor":_vm.params.content.stroke_color || 'white',"strokeWidth":_vm.params.content.stroke_width || 1,"size":[(_vm.params.content.shape_radius || 12 ) *2, (_vm.params.content.shape_radius || 12 ) *2 ]}}):_vm._e(),(_vm.params.content.shape === 'icon')?_c('shape',{staticClass:"simbologia",attrs:{"shapeType":"image","imageOptions":_vm.params.content.icon,"size":[(_vm.params.content.shape_radius || 12 ) *2, (_vm.params.content.shape_radius || 12 ) *2 ]}}):_vm._e(),_c('span',[_vm._v(_vm._s(_vm.params.content.title))])],1)],1)}
-var _legend_normal_vectorvue_type_template_id_3a7e30a1_scoped_true_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a636930-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_normal_vector.vue?vue&type=template&id=706255b1&
+var _legend_normal_vectorvue_type_template_id_706255b1_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"legend-normal-vector"},[_c('checkbox',{on:{"change":_vm.set_visible_to_layer},model:{value:(_vm.visible),callback:function ($$v) {_vm.visible=$$v},expression:"visible"}},[(_vm.params.content.shape!=='icon')?_c('shape',{staticClass:"simbologia",attrs:{"shapeType":_vm.classShape,"backgroundColor":_vm.usarTexturas? 'transparent': _vm.params.content.fill_color,"backgroundImage":_vm.backgroundImage,"strokeColor":_vm.params.content.stroke_color || 'white',"strokeWidth":_vm.params.content.stroke_width || 1,"size":[(_vm.params.content.shape_radius || 12 ) *2, (_vm.params.content.shape_radius || 12 ) *2 ]}}):_vm._e(),(_vm.params.content.shape === 'icon')?_c('shape',{staticClass:"simbologia",attrs:{"shapeType":"image","imageOptions":_vm.params.content.icon,"size":[(_vm.params.content.shape_radius || 12 ) *2, (_vm.params.content.shape_radius || 12 ) *2 ]}}):_vm._e(),_c('span',[_vm._v(_vm._s(_vm.params.content.title))])],1)],1)}
+var _legend_normal_vectorvue_type_template_id_706255b1_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/legend-control/_legend_normal_vector.vue?vue&type=template&id=3a7e30a1&scoped=true&
+// CONCATENATED MODULE: ./src/components/legend-control/_legend_normal_vector.vue?vue&type=template&id=706255b1&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.starts-with.js
 var es_string_starts_with = __webpack_require__("2ca0");
@@ -72762,8 +72835,8 @@ var es_string_starts_with = __webpack_require__("2ca0");
 });
 // CONCATENATED MODULE: ./src/components/legend-control/_legend_normal_vector.vue?vue&type=script&lang=js&
  /* harmony default export */ var legend_control_legend_normal_vectorvue_type_script_lang_js_ = (_legend_normal_vectorvue_type_script_lang_js_); 
-// EXTERNAL MODULE: ./src/components/legend-control/_legend_normal_vector.vue?vue&type=style&index=0&id=3a7e30a1&lang=scss&scoped=true&
-var _legend_normal_vectorvue_type_style_index_0_id_3a7e30a1_lang_scss_scoped_true_ = __webpack_require__("2bfb");
+// EXTERNAL MODULE: ./src/components/legend-control/_legend_normal_vector.vue?vue&type=style&index=0&lang=scss&
+var _legend_normal_vectorvue_type_style_index_0_lang_scss_ = __webpack_require__("765e");
 
 // EXTERNAL MODULE: ./src/components/legend-control/_legend_normal_vector.vue?vue&type=style&index=1&lang=css&
 var _legend_normal_vectorvue_type_style_index_1_lang_css_ = __webpack_require__("09c6");
@@ -72780,11 +72853,11 @@ var _legend_normal_vectorvue_type_style_index_1_lang_css_ = __webpack_require__(
 
 var _legend_normal_vector_component = normalizeComponent(
   legend_control_legend_normal_vectorvue_type_script_lang_js_,
-  _legend_normal_vectorvue_type_template_id_3a7e30a1_scoped_true_render,
-  _legend_normal_vectorvue_type_template_id_3a7e30a1_scoped_true_staticRenderFns,
+  _legend_normal_vectorvue_type_template_id_706255b1_render,
+  _legend_normal_vectorvue_type_template_id_706255b1_staticRenderFns,
   false,
   null,
-  "3a7e30a1",
+  null,
   null
   
 )
@@ -73414,6 +73487,21 @@ var legend_item_component = normalizeComponent(
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ var legendvue_type_script_lang_js_ = ({
@@ -73438,6 +73526,21 @@ var legend_item_component = normalizeComponent(
       type: Boolean,
       default: false
     },
+    estiloBotonAlternaTodos: {
+      type: String,
+      default: 'boton',
+      validator: function validator(value) {
+        return ['boton', 'checkbox'].indexOf(value) !== -1;
+      }
+    },
+    colapsable: {
+      type: Boolean,
+      default: false
+    },
+
+    /**
+     * Para que en la leyenda, en representaciones de punto, se vea el mismo tamaño que en el mapa
+     */
     tamanosDeMapa: {
       type: Boolean,
       default: false
@@ -73449,7 +73552,9 @@ var legend_item_component = normalizeComponent(
   data: function data() {
     return {
       VM_legends: [],
-      labelToogleAll: "Quitar todos"
+      labelToogleAll: "Quitar todos",
+      algunoActivo: true,
+      VM_collapsed: false
     };
   },
   mounted: function mounted() {
@@ -73490,6 +73595,9 @@ var legend_item_component = normalizeComponent(
       interseccion_layers.forEach(function (layer_name) {
         _this2.VM_legends.push(layer_name);
       });
+    },
+    cambioCheckbox: function cambioCheckbox() {
+      this.toogleAll();
     },
     toogleAll: function toogleAll() {
       var legendas = this.$children; //console.log(legendas)
@@ -73537,13 +73645,16 @@ var legend_item_component = normalizeComponent(
       this.labelToogleAll = estadoTodas.some(function (item) {
         return item;
       }) ? "Quitar todos" : "Mostrar todos";
+      this.algunoActivo = estadoTodas.some(function (item) {
+        return item;
+      });
     }
   }
 });
 // CONCATENATED MODULE: ./src/components/legend-control/legend.vue?vue&type=script&lang=js&
  /* harmony default export */ var legend_control_legendvue_type_script_lang_js_ = (legendvue_type_script_lang_js_); 
-// EXTERNAL MODULE: ./src/components/legend-control/legend.vue?vue&type=style&index=0&id=54dc3ac5&lang=scss&scoped=true&
-var legendvue_type_style_index_0_id_54dc3ac5_lang_scss_scoped_true_ = __webpack_require__("4147");
+// EXTERNAL MODULE: ./src/components/legend-control/legend.vue?vue&type=style&index=0&lang=scss&
+var legendvue_type_style_index_0_lang_scss_ = __webpack_require__("f186");
 
 // EXTERNAL MODULE: ./src/components/legend-control/legend.vue?vue&type=style&index=1&lang=scss&
 var legendvue_type_style_index_1_lang_scss_ = __webpack_require__("2894");
@@ -73560,11 +73671,11 @@ var legendvue_type_style_index_1_lang_scss_ = __webpack_require__("2894");
 
 var legend_component = normalizeComponent(
   legend_control_legendvue_type_script_lang_js_,
-  legendvue_type_template_id_54dc3ac5_scoped_true_render,
-  legendvue_type_template_id_54dc3ac5_scoped_true_staticRenderFns,
+  legendvue_type_template_id_aa8c29ca_render,
+  legendvue_type_template_id_aa8c29ca_staticRenderFns,
   false,
   null,
-  "54dc3ac5",
+  null,
   null
   
 )
