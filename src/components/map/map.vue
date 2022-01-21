@@ -70,6 +70,13 @@ export default {
                 return [0,0,0,0]
             }
         },
+        /**No permite que se navegue mas alla de esta extension */
+        noSalirDeExtension:{
+            type:Array,
+            default:function(){
+                return [0,0,0,0]
+            }
+        },
         colorControlesInvertidos:{
             type:Boolean,
             default: false
@@ -134,6 +141,8 @@ export default {
             collapsible:false
         })
 
+        const extensionMaxima = this.noSalirDeExtension[0] === 0 && this.noSalirDeExtension[3] === 0 ? undefined : this.noSalirDeExtension
+
         this.map = new Map({
             target: this.$refs.map,
             layers: [],
@@ -142,7 +151,8 @@ export default {
                 zoom: this.zoom,
                 projection: 'EPSG:4326',
                 maxZoom: this.maxZoom,
-                minZoom: this.minZoom
+                minZoom: this.minZoom,
+                extent: extensionMaxima
             }),
             controls:[new CustomZoomControl(),resetcontrol,this.VM_nivel_control,attributionControl],
             interactions: defaultInteractions({
