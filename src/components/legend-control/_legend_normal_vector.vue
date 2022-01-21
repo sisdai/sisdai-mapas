@@ -52,7 +52,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
     .legend-normal-vector{
         font-weight: 500;
         font-size: 12px;

@@ -376,3 +376,7 @@ export default {
 ## Leyenda antes de cargar los datos
 
 <controles-8-leyenda-simple-antes-cargar />
+
+## Leyenda con un checkbox para alternar todos
+
+<controles-9-leyenda-checkbox-alternar-todos />

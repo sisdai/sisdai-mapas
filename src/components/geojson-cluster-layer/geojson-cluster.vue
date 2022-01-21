@@ -1,7 +1,7 @@
 <script>
 import layer from "../../mixins/layer"
 import vector_any from "../../mixins/vector-layer-any"
-//import classificable_layer from "../../mixins/classificable-layer"
+import classificable_layer from "../../mixins/classificable-layer"
 
 import VectorLayer from 'ol/layer/Vector';
 import VectorImage  from 'ol/layer/VectorImage'
@@ -12,7 +12,7 @@ import Cluster from 'ol/source/Cluster';
 
 export default {
     name:"DaiCapaGeojsonCluster",
-    mixins:[layer,vector_any],
+    mixins:[layer,vector_any,classificable_layer],
     props:{
         distancia:{
             type:Number,
@@ -23,10 +23,15 @@ export default {
             default:0
         }
     },
+    data:function(){
+        return{
+            VM_featuresGroup:true,
+        }
+    },
     methods:{
         _createLayerObject:function(){
             this.VM_is_cluster = true;
-            let vectorSource = this.datos != undefined ? createGeojsonSourceFromObjectJs(this.datos) : createGeojsonSourceFromUrl(this.url)
+            let vectorSource = this.datos !== undefined ? createGeojsonSourceFromObjectJs(this.datos) : createGeojsonSourceFromUrl(this.url)
             const LayerClass= this.renderizarComoImagen ? VectorImage : VectorLayer
             this.olLayer = new LayerClass({
                 source: new Cluster({
@@ -37,9 +42,7 @@ export default {
             })
             this.olLayer.set("_realce_hover",this.realceAlPasarMouse)
 
-            /** 
-             * solo aplica a las capas que se pueden clasificar, de inicio los clusters no
-            
+
             if(this.VM_is_classified){
                 if(vectorSource.getUrl()===undefined){
                     this._clasificar_v2();
@@ -58,7 +61,7 @@ export default {
                 }
                 
             }
-            */
+            
            if(this.contenidoTooltip!="none"){
                 
                 this.olLayer.set("_tooltip",this.contenidoTooltip)
@@ -71,25 +74,22 @@ export default {
                 this.olLayer.set("_popup",this.contenidoPopup)
             }
             
-            this._saveAllFeaturesFromSource(vectorSource)
+            this._saveAllFeaturesFromSource(this.olLayer.getSource())
             this._setStyle()
             
-            
-
-            if(this.contenidoTooltip!="none"){
+            this.olMap.on("moveend",(e)=>{
                 
-                this.olLayer.set("_tooltip",this.contenidoTooltip)
-                this.olLayer.set("_tooltip_mov",!this.tooltipEstatico)
-                this.olLayer.set("_tooltip_top",this.tooltipEstaticoMargenSuperior)
+                if(this.visible){
+                    
+                    if(this.VM_is_classified){
+                        this._clasificar_v2();
+                        this._set_style_class_v2()
+                    }
+                    this._saveAllFeaturesFromSource(this.olLayer.getSource())
+                    this._setStyle()
+                }
                 
-            }
-
-            if(this.contenidoPopup!=="none"){
-                this.olLayer.set("_popup",this.contenidoPopup)
-            }
-            
-            this._saveAllFeaturesFromSource(vectorSource)
-            this._setStyle()
+            })
         }
     },
     watch:{
@@ -109,7 +109,7 @@ export default {
                         this._set_style_class_v2()
                     }
                 //}
-                this._saveAllFeaturesFromSource(vectorSource)
+                this._saveAllFeaturesFromSource(this.olLayer.getSource())
                 this._setStyle()
                 
                 

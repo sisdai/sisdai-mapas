@@ -7,7 +7,9 @@
                 titulo="Este es el titulo de la leyenda"
                 :para="['estados','estados2','estados3','corredores']"
                 :mostrar-boton-alterna-todos="true"
+                estilo-boton-alterna-todos="checkbox"
                 :tamanosDeMapa="true"
+                :colapsable="true"
                 />
             </template>
             <dai-mapa 
