@@ -9,6 +9,7 @@
                 :mostrar-boton-alterna-todos="true"
                 estilo-boton-alterna-todos="checkbox"
                 :tamanosDeMapa="true"
+                :colapsable="true"
                 />
             </template>
             <dai-mapa 

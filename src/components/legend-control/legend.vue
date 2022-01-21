@@ -1,18 +1,26 @@
 <template>
     <div class="main-legend" :class="{'no-tamanos-mapa':!tamanosDeMapa}">
         <div class="header-legend" >
-            <p class="title-header-legend">
+            <div class="title-header-legend">
                 <input type="checkbox" class="checkbox-legend-header" 
                 v-model="algunoActivo"
                 :style="{display: mostrarBotonAlternaTodos && estiloBotonAlternaTodos==='checkbox' ? '':'none'}"
                 @change="cambioCheckbox"
                 >
                 <span>{{titulo}}</span>
-            </p>
+            </div>
             <button class="toggle-all" v-if="mostrarBotonAlternaTodos && estiloBotonAlternaTodos==='boton'" @click="toogleAll">{{labelToogleAll}}</button>
+            <button class="header-legend-collapsable-boton" :class="{up:VM_collapsed}" @click="VM_collapsed = !VM_collapsed" v-if="colapsable" >
+                <svg xmlns="http://www.w3.org/2000/svg" width="17.908" height="12.147" viewBox="0 0 17.908 12.147">
+                    <path id="Trazado_24243" data-name="Trazado 24243" d="M8.954,0,0,9.359l2.667,2.788L8.954,5.576l6.287,6.571,2.667-2.788Z" transform="translate(17.908 12.147) rotate(180)" />
+                </svg>
+            </button>
+            
+        </div>
+        <div class="legend-content" :class="{collapsed:VM_collapsed}">
+            <legend-item v-for="leg in VM_legends" :key="leg" :layerId="leg" :class="{'has-parent-check': mostrarBotonAlternaTodos && estiloBotonAlternaTodos==='checkbox'}"></legend-item>
         </div>
         
-        <legend-item v-for="leg in VM_legends" :key="leg" :layerId="leg" :class="{'has-parent-check': mostrarBotonAlternaTodos && estiloBotonAlternaTodos==='checkbox'}"></legend-item>
     </div>
 </template>
 
@@ -47,6 +55,10 @@ export default {
                 return ['boton', 'checkbox'].indexOf(value) !== -1
             }
         },
+        colapsable:{
+            type:Boolean,
+            default:false
+        },
         /**
          * Para que en la leyenda, en representaciones de punto, se vea el mismo tamaño que en el mapa
          */
@@ -62,7 +74,8 @@ export default {
         return{
             VM_legends:[],
             labelToogleAll:"Quitar todos",  
-            algunoActivo:true
+            algunoActivo:true,
+            VM_collapsed:false
         }
     },
     mounted:function(){
@@ -153,10 +166,13 @@ export default {
 </script>
 
 <style lang="scss" >
-    p.title-header-legend{
+    div.title-header-legend{
         font-size: 14px;
         font-weight: 600;
         margin-block-end: .5em;
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
     }
 
     .header-legend{
@@ -174,6 +190,7 @@ export default {
             cursor: pointer;
             font-size: 12px;
             font-family: "Montserrat";
+            flex-grow: 0;
         }
 
         input[type=checkbox].checkbox-legend-header{
@@ -197,17 +214,40 @@ export default {
             margin-bottom: 0;
             margin-top: 0;
             margin-left: 0px;
-            transform: translateY(.5em);
+            
             &:checked {
                 background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 512 512"><path d="m186 340l-90-91-32 31 122 122 262-261-32-31z"></path></svg>');
             }
             
+        }
+
+
+        .header-legend-collapsable-boton{
+            background-color: var(--control-bg-color);
+            border:none;
+            flex-grow: 0;
+            margin-block-end: 0.5em;
+            cursor: pointer;
+            &.up{
+                svg{
+                    transform: rotate(180deg);
+                }
+            }
         }
     }
     
 
     .legend-normal-vector.has-parent-check{
         margin-left: 6px;
+        
+    }
+
+    .legend-content{
+        
+        &.collapsed{
+            display: none;
+            
+        }
     }
 </style>
 
