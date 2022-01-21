@@ -27,7 +27,7 @@
                 <dai-capa-geojson 
                 id="estados3" 
                 :url="$withBase('/centroides-estados.geojson')"
-                :estilo-capa="{icon:{src:'/aves.svg'}}"
+                :estilo-capa="{icon:{src:$withBase('/aves.svg')}}"
                 :visible="false"
                 tipoGeometria="Point"
                 />

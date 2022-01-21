@@ -163,6 +163,7 @@ export default{
             let colorsLegend={fill:"gray", stroke:"gray",stroke_width:1}
             let shapeLegend = "square"
             if (typeof vm.VM_mapStyle === "function"){
+                //console.log(this.id,"llegamos aqui")
                 style= function(feature){
                     let serializes= JSON.parse(JSON.stringify(fixSerializedStyleIfIncomplete( vm.VM_mapStyle(feature) ) ))
                     const estilo_realce = fixSerializedStyleIfIncomplete(vm.estiloRealce)
@@ -288,17 +289,20 @@ export default{
         },
         _saveAllFeaturesFromSource:function(vectorSource){
             let geojsonFormat = new GeoJSON()
+            //console.log(vectorSource.getUrl(),vectorSource.getSource(),"---")
             //if(vectorSource.getFeatures().length>1){
-            if(vectorSource.getUrl()===undefined){
+            //if(vectorSource.getUrl()===undefined){
+            if(this.datos!==undefined ){
                 if(this.VM_featuresGroup){
                     const objects = geojsonFormat.writeFeaturesObject( vectorSource.getFeatures() )
                     
                     objects.features = objects.features.map(f=>{
-                        f.properties['features'] =''
+                        f.properties['features'] ={length:f.properties['features'].length}
                         return f
                     })
                     
                     this.VM_allFeatures = JSON.stringify(objects)
+                    
                 }else{
                     this.VM_allFeatures = geojsonFormat.writeFeatures( vectorSource.getFeatures() )
                 }
@@ -311,49 +315,88 @@ export default{
             }
             //console.log("---AQUI ESPERAR LAS FEATURES EN VM_allfeatures")
             let listenerFn = (evento)=>{
-                //console.log(0,this.id)
-                this.VM_allFeatures = geojsonFormat.writeFeatures(evento.features)
-                //console.log(evento.features[0].getGeometry(),1,this.id)
-                this.VM_geometryType = evento.features.length > 0 ? evento.features[0].getGeometry().getType() : ""
-                //console.log(evento.features[0].getGeometry(),2,this.id)
-                let serializes= fixSerializedStyleIfIncomplete( this.VM_mapStyle )
-                if(this.VM_geometryType.includes("Point")){
+                
+                
+                if(this.VM_featuresGroup){
+                    setTimeout(()=>{
+                        const objects = geojsonFormat.writeFeaturesObject( this.olLayer.getSource().getFeatures() )
+                        objects.features = objects.features.map(f=>{
+                            f.properties['features'] ={length:f.properties['features'].length}
+                            return f
+                        })
+                        
+                        this.VM_allFeatures = JSON.stringify(objects)
+                        this.VM_geometryType = this.olLayer.getSource().getFeatures().length > 0 
+                            ? this.olLayer.getSource().getFeatures()[0].getGeometry().getType() 
+                            : ""
+                        
+                        if(!this.VM_is_classified){
+                            let serializes= fixSerializedStyleIfIncomplete( this.VM_mapStyle )
+                            this.setDefaultLegendInfo(serializes)
+                        }
+                        
+                        this.$emit("saved_features",this.VM_allFeatures)
+                    },70)
                     
-                    this.VM_defaultShapePoint= checkPointShapeFromStyle(serializes)    
-                    if(this.VM_legend_info?.type === "legend-normal-vector"){
-                        this.VM_legend_info.content.shape = this.VM_defaultShapePoint
-                        this.VM_legend_info.content.fill_color = serializes.style?.[this.VM_defaultShapePoint]?.fill?.color || 'gray'
-                        this.VM_legend_info.content.stroke_color = serializes.style?.[this.VM_defaultShapePoint]?.stroke?.color || 'white'
-                        this.VM_legend_info.content.stroke_width = serializes.style?.[this.VM_defaultShapePoint]?.stroke?.width || 1
-                        this.VM_legend_info.content.shape_radius =  serializes.style?.[this.VM_defaultShapePoint]?.radius || DEFAULT_RADIUS;
-                        this.VM_legend_info.content.icon = serializes.style?.[this.VM_defaultShapePoint] || {}
-                        //this.VM_legend_info.content.shape = this.VM_geometryType.includes("Point") ? 'square' :this.VM_legend_info.content.shape
-                    }
-                    
-                }else if(this.VM_geometryType.includes("LineString")){
-                    if(this.VM_legend_info?.type === "legend-normal-vector"){
-                        this.VM_legend_info.content.shape = "line"
-                        this.VM_legend_info.content.fill_color = "transparent"
-                        this.VM_legend_info.content.stroke_color = serializes.style?.stroke?.color || 'white'
-                        this.VM_legend_info.content.stroke_width = serializes.style?.stroke?.width || 1
-                        this.VM_legend_info.content.shape_radius =  12.5;
-                        //this.VM_legend_info.content.shape = this.VM_geometryType.includes("Point") ? 'square' :this.VM_legend_info.content.shape
-                    }
                 }else{
-                    if(this.VM_legend_info?.type === "legend-normal-vector"){
-                        this.VM_legend_info.content.shape = "square"
-                        this.VM_legend_info.content.fill_color = serializes.style?.fill?.color || 'gray'
-                        this.VM_legend_info.content.stroke_color = serializes.style?.stroke?.color || 'white'
-                        this.VM_legend_info.content.stroke_width = serializes.style?.stroke?.width || 1
-                        this.VM_legend_info.content.shape_radius =  12.5;
-                        //this.VM_legend_info.content.shape = this.VM_geometryType.includes("Point") ? 'square' :this.VM_legend_info.content.shape
+                    this.VM_allFeatures = geojsonFormat.writeFeatures(evento.features)
+                    this.VM_geometryType = evento.features.length > 0 ? evento.features[0].getGeometry().getType() : ""
+                    if(!this.VM_is_classified){
+                        let serializes= fixSerializedStyleIfIncomplete( this.VM_mapStyle )
+                        this.setDefaultLegendInfo(serializes)
                     }
-                }  
-                this.$emit("saved_features",this.VM_allFeatures)
+                    this.$emit("saved_features",this.VM_allFeatures)
+                }
+                
+                
+                
+                
+                
                 
                 //console.log(evento,"---AQUI GUARDAR LAS FEATURES EN VM_allfeatures")
             }
-            vectorSource.on("featuresloadend",listenerFn)
+
+            
+            if(this.VM_featuresGroup){
+                vectorSource.getSource().on("featuresloadend",listenerFn)
+            }else{
+                vectorSource.on("featuresloadend",listenerFn)
+            }
+            
+        },
+        setDefaultLegendInfo(serializes){
+            if(this.VM_geometryType.includes("Point")){
+                    
+                this.VM_defaultShapePoint= checkPointShapeFromStyle(serializes)    
+                if(this.VM_legend_info?.type === "legend-normal-vector"){
+                    this.VM_legend_info.content.shape = this.VM_defaultShapePoint
+                    this.VM_legend_info.content.fill_color = serializes.style?.[this.VM_defaultShapePoint]?.fill?.color || 'gray'
+                    this.VM_legend_info.content.stroke_color = serializes.style?.[this.VM_defaultShapePoint]?.stroke?.color || 'white'
+                    this.VM_legend_info.content.stroke_width = serializes.style?.[this.VM_defaultShapePoint]?.stroke?.width || 1
+                    this.VM_legend_info.content.shape_radius =  serializes.style?.[this.VM_defaultShapePoint]?.radius || DEFAULT_RADIUS;
+                    this.VM_legend_info.content.icon = serializes.style?.[this.VM_defaultShapePoint] || {}
+                    //this.VM_legend_info.content.shape = this.VM_geometryType.includes("Point") ? 'square' :this.VM_legend_info.content.shape
+                }
+                
+            }else if(this.VM_geometryType.includes("LineString")){
+                if(this.VM_legend_info?.type === "legend-normal-vector"){
+                    this.VM_legend_info.content.shape = "line"
+                    this.VM_legend_info.content.fill_color = "transparent"
+                    this.VM_legend_info.content.stroke_color = serializes.style?.stroke?.color || 'white'
+                    this.VM_legend_info.content.stroke_width = serializes.style?.stroke?.width || 1
+                    this.VM_legend_info.content.shape_radius =  12.5;
+                    //this.VM_legend_info.content.shape = this.VM_geometryType.includes("Point") ? 'square' :this.VM_legend_info.content.shape
+                }
+            }else{
+                if(this.VM_legend_info?.type === "legend-normal-vector"){
+                    this.VM_legend_info.content.shape = "square"
+                    this.VM_legend_info.content.fill_color = serializes.style?.fill?.color || 'gray'
+                    this.VM_legend_info.content.stroke_color = serializes.style?.stroke?.color || 'white'
+                    this.VM_legend_info.content.stroke_width = serializes.style?.stroke?.width || 1
+                    this.VM_legend_info.content.shape_radius =  12.5;
+                    //this.VM_legend_info.content.shape = this.VM_geometryType.includes("Point") ? 'square' :this.VM_legend_info.content.shape
+                }
+            }  
         },
         filtrarDatos:function(fn_comparacion){
             //console.log("se filtraran los datos :)")

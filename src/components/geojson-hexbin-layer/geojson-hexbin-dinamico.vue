@@ -44,8 +44,6 @@ export default {
                 }else{
                     vectorSource.on("featuresloadend",()=>{
                         setTimeout(()=>{
-                            //console.log(evento.target.getFeatures())
-                            //console.log("cambio el source del layer, evento cachado, geojson.vue")
                             this._clasificar_v2();
                             this._set_style_class_v2()
                             this._setStyle()
@@ -77,8 +75,10 @@ export default {
                 if(this.visible){
                     const resolucion = e.target.getView().getResolution()
                     this.olLayer.getSource().setSize(resolucion*this.diametroPixeles)
-                    this._clasificar_v2();
-                    this._set_style_class_v2()
+                    if(this.VM_is_classified){
+                        this._clasificar_v2();
+                        this._set_style_class_v2()
+                    }
                     this._saveAllFeaturesFromSource(this.olLayer.getSource())
                     this._setStyle()
                 }
@@ -88,8 +88,10 @@ export default {
                 if(eventoLayer.target.getVisible()){
                     const resolucion = this.olMap.getView().getResolution()
                     this.olLayer.getSource().setSize(resolucion*this.diametroPixeles)
-                    this._clasificar_v2();
-                    this._set_style_class_v2()
+                    if(this.VM_is_classified){
+                        this._clasificar_v2();
+                        this._set_style_class_v2()
+                    }
                     this._saveAllFeaturesFromSource(this.olLayer.getSource())
                     this._setStyle()
                 }
