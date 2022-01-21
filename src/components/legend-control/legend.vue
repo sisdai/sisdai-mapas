@@ -1,8 +1,15 @@
 <template>
     <div class="main-legend" :class="{'no-tamanos-mapa':!tamanosDeMapa}">
         <div class="header-legend" >
-            <p class="title">{{titulo}}</p>
-            <button class="toggle-all" v-if="mostrarBotonAlternaTodos" @click="toogleAll">{{labelToogleAll}}</button>
+            <p class="title-header-legend">
+                <input type="checkbox" class="checkbox-legend-header" 
+                v-model="algunoActivo"
+                :style="{display: mostrarBotonAlternaTodos && estiloBotonAlternaTodos==='checkbox' ? '':'none'}"
+                @change="cambioCheckbox"
+                >
+                <span>{{titulo}}</span>
+            </p>
+            <button class="toggle-all" v-if="mostrarBotonAlternaTodos && estiloBotonAlternaTodos==='boton'" @click="toogleAll">{{labelToogleAll}}</button>
         </div>
         
         <legend-item v-for="leg in VM_legends" :key="leg" :layerId="leg"></legend-item>
@@ -33,6 +40,16 @@ export default {
             type:Boolean,
             default:false
         },
+        estiloBotonAlternaTodos:{
+            type:String,
+            default:'boton',
+            validator:function(value){
+                return ['boton', 'checkbox'].indexOf(value) !== -1
+            }
+        },
+        /**
+         * Para que en la leyenda, en representaciones de punto, se vea el mismo tamaño que en el mapa
+         */
         tamanosDeMapa:{
             type: Boolean,
             default:false
@@ -45,6 +62,7 @@ export default {
         return{
             VM_legends:[],
             labelToogleAll:"Quitar todos",  
+            algunoActivo:true
         }
     },
     mounted:function(){
@@ -81,6 +99,9 @@ export default {
                 
                 this.VM_legends.push(layer_name)
             });
+        },
+        cambioCheckbox:function(){
+            this.toogleAll()
         },
         toogleAll:function(){
             let legendas = this.$children;
@@ -125,13 +146,14 @@ export default {
                 return legend.$children[0].visible;
             })
             this.labelToogleAll = estadoTodas.some(item=>item) ? "Quitar todos" : "Mostrar todos";
+            this.algunoActivo = estadoTodas.some(item=>item)
         }
     }
 }
 </script>
 
 <style lang="scss" scoped>
-    p.title{
+    p.title-header-legend{
         font-size: 14px;
         font-weight: 600;
         margin-block-end: .5em;
@@ -152,6 +174,34 @@ export default {
             cursor: pointer;
             font-size: 12px;
             font-family: "Montserrat";
+        }
+
+        input[type=checkbox].checkbox-legend-header{
+            background-color: var(--control-bg-color);
+            font-size: inherit;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            width: 26px;
+            height: 26px;
+            border-radius: 5px;
+            border: 1px solid var(--control-color);
+            cursor: pointer;
+            margin-right: 0.5em;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 1.5em 1.5em;
+            flex-grow: 0;
+
+            //quitando algunas cossas que pone la base web
+            margin-bottom: 0;
+            margin-top: 0;
+            margin-left: 0;
+            transform: translateY(.5em);
+            &:checked {
+                background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 512 512"><path d="m186 340l-90-91-32 31 122 122 262-261-32-31z"></path></svg>');
+            }
+            
         }
     }
     
