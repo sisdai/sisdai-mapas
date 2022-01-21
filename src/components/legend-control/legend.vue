@@ -12,7 +12,7 @@
             <button class="toggle-all" v-if="mostrarBotonAlternaTodos && estiloBotonAlternaTodos==='boton'" @click="toogleAll">{{labelToogleAll}}</button>
         </div>
         
-        <legend-item v-for="leg in VM_legends" :key="leg" :layerId="leg"></legend-item>
+        <legend-item v-for="leg in VM_legends" :key="leg" :layerId="leg" :class="{'has-parent-check': mostrarBotonAlternaTodos && estiloBotonAlternaTodos==='checkbox'}"></legend-item>
     </div>
 </template>
 
@@ -152,7 +152,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
     p.title-header-legend{
         font-size: 14px;
         font-weight: 600;
@@ -182,8 +182,8 @@ export default {
             appearance: none;
             -webkit-appearance: none;
             -moz-appearance: none;
-            width: 26px;
-            height: 26px;
+            width: 32px;
+            height: 32px;
             border-radius: 5px;
             border: 1px solid var(--control-color);
             cursor: pointer;
@@ -196,7 +196,7 @@ export default {
             //quitando algunas cossas que pone la base web
             margin-bottom: 0;
             margin-top: 0;
-            margin-left: 0;
+            margin-left: 0px;
             transform: translateY(.5em);
             &:checked {
                 background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 512 512"><path d="m186 340l-90-91-32 31 122 122 262-261-32-31z"></path></svg>');
@@ -205,6 +205,10 @@ export default {
         }
     }
     
+
+    .legend-normal-vector.has-parent-check{
+        margin-left: 6px;
+    }
 </style>
 
 <style lang="scss">
