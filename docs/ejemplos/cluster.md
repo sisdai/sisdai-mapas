@@ -114,3 +114,7 @@
         </DaiMapa>
 </DaiTarjetaContenedorMapa>
 ````
+
+## Cluster con tamaños, desde las reglas de clasificacion
+
+<cluster-4-cluster-clasificado />

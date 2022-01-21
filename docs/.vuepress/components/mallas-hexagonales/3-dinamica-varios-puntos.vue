@@ -1,7 +1,7 @@
 <template>
     <DaiTarjetaContenedorMapa>
         <template #header>
-            
+            <label for=""><input type="checkbox" v-model="malla_visible"> apagar-prender malla</label>
             <DaiLeyendaMapa :para="['normal']"/>
             <DaiLeyendaMapa :para="['cluster-hexbin']" :mostrar-boton-alterna-todos="true"/>
         </template>
@@ -23,6 +23,7 @@
             }"
             :props-asigna-estilo="['textStyle.text']"
             :fn-asigna-estilo="(f)=>[f.features_count+'']"
+            :visible="malla_visible"
             />
             <DaiCapaGeojson 
             id="normal"
@@ -48,7 +49,8 @@
 export default {
     data:function(){
         return {
-            puntos : { "type": "FeatureCollection","features":[]}
+            puntos : { "type": "FeatureCollection","features":[]},
+            malla_visible:true
         }
     },
     mounted:function(){

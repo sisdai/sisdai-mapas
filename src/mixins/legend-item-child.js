@@ -73,6 +73,7 @@ export default {
                 return ;
             }
             this.$parent.$parent.labelToogleAll = newerValue.some(item=>item) ? "Quitar todos" : "Encender Todos"
+            this.$parent.$parent.algunoActivo = newerValue.some(item=>item) 
             
         },
         'params':function(){

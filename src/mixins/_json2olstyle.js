@@ -103,6 +103,8 @@ const checkPointShapeFromStyle = function(style){
     }
 
     console.log("BUG:::estilo para punto no esperado")
+    console.log(style)
+    console.error("nose")
     return "none"
 }
 
