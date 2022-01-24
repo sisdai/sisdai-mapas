@@ -10,7 +10,7 @@
                 <span>{{titulo}}</span>
             </div>
             <button class="toggle-all" v-if="mostrarBotonAlternaTodos && estiloBotonAlternaTodos==='boton'" @click="toogleAll">{{labelToogleAll}}</button>
-            <button class="header-legend-collapsable-boton" :class="{up:VM_collapsed}" @click="VM_collapsed = !VM_collapsed" v-if="colapsable" >
+            <button class="header-legend-collapsable-boton" :class="{up:!VM_collapsed}" @click="VM_collapsed = !VM_collapsed" v-if="colapsable" >
                 <svg xmlns="http://www.w3.org/2000/svg" width="17.908" height="12.147" viewBox="0 0 17.908 12.147">
                     <path id="Trazado_24243" data-name="Trazado 24243" d="M8.954,0,0,9.359l2.667,2.788L8.954,5.576l6.287,6.571,2.667-2.788Z" transform="translate(17.908 12.147) rotate(180)" />
                 </svg>

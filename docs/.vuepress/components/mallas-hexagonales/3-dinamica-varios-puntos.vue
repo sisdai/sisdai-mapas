@@ -24,6 +24,7 @@
             :props-asigna-estilo="['textStyle.text']"
             :fn-asigna-estilo="(f)=>[f.features_count+'']"
             :visible="malla_visible"
+            :contenidoTooltip="(f)=>f.features_count+' hay aqui'"
             />
             <DaiCapaGeojson 
             id="normal"
@@ -38,6 +39,7 @@
                 }
             }"
             :visible="false"
+            
             />
             
         </DaiMapa>
