@@ -22,6 +22,9 @@
             />
             <span>{{params.content.title}}</span>
         </checkbox>
+        <!-- legend-info -->
+        <legend-info v-if="$parent.$parent.mostrarBotonInfo"
+        :contenido="$parent.$parent.contenidoInfo[$parent.index]" />
         
     </div>
 </template>
@@ -31,11 +34,12 @@ import checkbox from "../utils/checkbox"
 import shape from "../utils/shape.vue"
 import legend_item_child  from "../../mixins/legend-item-child"
 import {convertirNode} from "../../mixins/_json2olstyle"
+import LegendInfo from "./_legend_info.vue"
 
 export default {
     mixins:[legend_item_child],
     components:{
-        checkbox,shape
+        checkbox,shape,LegendInfo
     },computed:{
         classShape:function(){
             return this.params.content.shape.startsWith("svg:") ? '' : this.params.content.shape  
@@ -54,6 +58,7 @@ export default {
 
 <style lang="scss" >
     .legend-normal-vector{
+        display: flex;
         font-weight: 500;
         font-size: 12px;
         line-height: 1.16em;
