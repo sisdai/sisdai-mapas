@@ -129,6 +129,16 @@ Cuando hay solo una capa en la leyenda y esa capa contiene reglas de estilo que 
 Para leyendas simples, sin clasificacion por colores ni tamaños. Indica si las capas de tipo punto reflejaran exactamente el mismo tamaño que muestra en el mapa. 
 
 Por default es `false`, es decir,  todas las capas de tipo punto reflejan en leyenda una figura de 25px de ancho por 25px de  alto.
+
+#### mostrarBotonInfo
+
+- Type: `Boolean`
+- Default: `false`
+
+#### contenidoInfo
+
+- Type: `String`, `Array`
+- Default: `undefined`
 ## dai-info-mapa
 
 ### propiedades

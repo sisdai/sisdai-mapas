@@ -18,7 +18,7 @@
             
         </div>
         <div class="legend-content" :class="{collapsed:VM_collapsed}">
-            <legend-item v-for="leg in VM_legends" :key="leg" :layerId="leg" :class="{'has-parent-check': mostrarBotonAlternaTodos && estiloBotonAlternaTodos==='checkbox'}"></legend-item>
+            <legend-item v-for="(leg, i) in VM_legends" :key="leg" :index="i" :layerId="leg" :class="{'has-parent-check': mostrarBotonAlternaTodos && estiloBotonAlternaTodos==='checkbox'}"></legend-item>
         </div>
         
     </div>
@@ -27,6 +27,7 @@
 <script>
 import control from "../../mixins/control"
 import LegendItem from "./legend-item.vue"
+
 export default {
     name:"DaiLeyendaMapa",
     mixins:[control],
@@ -65,7 +66,20 @@ export default {
         tamanosDeMapa:{
             type: Boolean,
             default:false
-        }
+        },
+        /**
+         * Botón información
+         */
+        mostrarBotonInfo:{
+            type:Boolean,
+            default:false
+        },
+        contenidoInfo:{
+            type:[Array,String],
+            default:function(){
+                return []
+            }
+        },
     },
     components:{
         LegendItem

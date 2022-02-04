@@ -13,7 +13,7 @@ import LegendListChecksValues from "./_legend-list-checks-values.vue"
 import LegendListChecksColorsListChecksValues from "./_legend_list_checks_colors_list_checks_values.vue"
 
 export default {
-    props:["layerId"],
+    props:["layerId", "index"],
     created:function(){
         //console.log("creando el leyenda de",this.layerId)
         let id = this.layerId
