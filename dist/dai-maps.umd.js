@@ -72806,14 +72806,18 @@ var _legend_normal_vectorvue_type_template_id_930807bc_staticRenderFns = []
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.starts-with.js
 var es_string_starts_with = __webpack_require__("2ca0");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a636930-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_info.vue?vue&type=template&id=d06a69a2&
-var _legend_infovue_type_template_id_d06a69a2_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"boton-info",on:{"mouseover":function($event){_vm.show=true},"mouseleave":function($event){_vm.show=false}}},[_c('span',{staticClass:"dai-icon-info"}),(_vm.show)?_c('div',{staticClass:"contenedor-tooltip"},[_c('div',{domProps:{"innerHTML":_vm._s(_vm.contenido)}}),_c('div',{staticClass:"triangulito"})]):_vm._e()])}
-var _legend_infovue_type_template_id_d06a69a2_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a636930-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_info.vue?vue&type=template&id=3f867733&
+var _legend_infovue_type_template_id_3f867733_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"boton-info",on:{"mouseover":function($event){_vm.show=true},"mouseleave":function($event){_vm.show=false}}},[_c('span',{staticClass:"dai-icon-info"})])}
+var _legend_infovue_type_template_id_3f867733_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/legend-control/_legend_info.vue?vue&type=template&id=d06a69a2&
+// CONCATENATED MODULE: ./src/components/legend-control/_legend_info.vue?vue&type=template&id=3f867733&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_info.vue?vue&type=script&lang=js&
+
+
+
+//
 //
 //
 //
@@ -72839,8 +72843,30 @@ var _legend_infovue_type_template_id_d06a69a2_staticRenderFns = []
   },
   data: function data() {
     return {
-      show: false
+      show: false,
+      id: ''
     };
+  },
+  created: function created() {
+    this.id = Math.random().toString(36).substring(7);
+  },
+  watch: {
+    "show": function show(nv) {
+      if (nv) {
+        var position = this.$el.getBoundingClientRect();
+        var height = this.$el.clientHeight;
+        var width = this.$el.clientWidth;
+        var tooltip = document.createElement('div');
+        tooltip.setAttribute('tooltip-id', this.id); //transform: translate(108%, calc(-50% + 15px));
+
+        tooltip.classList.add('contenedor-tooltip');
+        tooltip.innerHTML = "<div>".concat(this.contenido, "</div><div class=\"triangulito\"></div>");
+        document.body.appendChild(tooltip);
+        tooltip.setAttribute('style', "transform: translate(".concat(position.left + width + 16, "px, ").concat(position.top + window.scrollY + height / 2, "px) translateY(-50%)"));
+      } else {
+        document.querySelector("[tooltip-id='" + this.id + "']").remove();
+      }
+    }
   }
 });
 // CONCATENATED MODULE: ./src/components/legend-control/_legend_info.vue?vue&type=script&lang=js&
@@ -72859,8 +72885,8 @@ var _legend_infovue_type_style_index_0_lang_scss_ = __webpack_require__("88c0");
 
 var _legend_info_component = normalizeComponent(
   legend_control_legend_infovue_type_script_lang_js_,
-  _legend_infovue_type_template_id_d06a69a2_render,
-  _legend_infovue_type_template_id_d06a69a2_staticRenderFns,
+  _legend_infovue_type_template_id_3f867733_render,
+  _legend_infovue_type_template_id_3f867733_staticRenderFns,
   false,
   null,
   null,
