@@ -38,7 +38,7 @@ export default {
                 const height = this.$el.clientHeight
                 const width = this.$el.clientWidth
                 
-                console.log(position,height,width)
+               
                 const tooltip = document.createElement('div')
                 tooltip.setAttribute('tooltip-id',this.id)
                 //transform: translate(108%, calc(-50% + 15px));
