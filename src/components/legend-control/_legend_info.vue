@@ -4,13 +4,14 @@
         @mouseleave="show=false">
             
             <span class="dai-icon-info"></span>
-
+            <!--
             <div v-if="show"
             class="contenedor-tooltip"
             >
                 <div v-html="contenido"></div>
                 <div class="triangulito"></div>
             </div>
+            -->
         </div>
 </template>
 
@@ -24,6 +25,35 @@ export default {
     }, data(){
         return {
             show: false,
+            id:''
+        }
+    },
+    created(){
+        this.id = Math.random().toString(36).substring(7)
+    },
+    watch:{
+        "show"(nv){
+            if(nv){
+                const position  = this.$el.getBoundingClientRect()
+                const height = this.$el.clientHeight
+                const width = this.$el.clientWidth
+                
+                console.log(position,height,width)
+                const tooltip = document.createElement('div')
+                tooltip.setAttribute('tooltip-id',this.id)
+                //transform: translate(108%, calc(-50% + 15px));
+                
+                tooltip.classList.add('contenedor-tooltip')
+                tooltip.innerHTML= `<div>${this.contenido}</div><div class="triangulito"></div>`
+                
+                document.body.appendChild(tooltip)
+
+                tooltip.setAttribute('style',`transform: translate(${position.left+width+16}px, ${position.top+window.scrollY + (height/2)}px) translateY(-50%)`)
+            }else{
+                document.querySelector("[tooltip-id='"+this.id+"']").remove()
+            }
+            
+
         }
     }
 }
@@ -31,11 +61,11 @@ export default {
 
 <style lang="scss">
 .boton-info {
-    position: relative;
-    max-width: 2.25em;
-    max-height: 2em;
-    width: 2.25em;
+    //position: relative;
+    
+    width: calc(2em + 3px);
     height: 2em;
+    
     background-color: #DDDDDD;
     border-radius: 50%;
     text-align: center;
@@ -48,33 +78,42 @@ export default {
         line-height: 1.2;
     }
 
-    .contenedor-tooltip { 
+    
+}
+
+.contenedor-tooltip { 
         // el ancho está bien, pero el alto se va a tener que ajustar a la extensión del texto
         max-width: 290px;
         max-height: 550px;        
-        min-width: 290px;
-        min-height: 550px;
+        min-width: 200px;
+        min-height: 50px;
         
-        background-color:var(--tooltip-bg-color);
+        background-color:#000000cc;
         border-radius: 8px; 
         position: absolute;
-        top: 0px;
-        bottom: 0px;
-        // left: 0px;
-        right: 0px;
-        z-index: 9;
+        top: 0;
+        //bottom: 0px;
+         left: 0;
+        //right: 0px;
+        z-index: 20;
         
         font-family: Montserrat; 
         text-align: left;
-        color: var(--tooltip-color);  
+        color: #fff;  
         font-size: 14px; 
         font-weight:400;         
-        // padding: 20px; // esto se suma a los elementos <p>
-        transform: translate(108%, calc(-50% + 15px));
+        padding: 24px; // esto se suma a los elementos <p>
+        
         
         p {
-            margin: 24px; // estos elementos tienen por defecto un margen de 12.6px
+            //margin: 24px; // estos elementos tienen por defecto un margen de 12.6px
             line-height: 1.5;
+            &:first-child{
+                margin-top: 0;
+            }
+            &:last-child{
+                margin-bottom: 0;
+            }
         }
 
         .triangulito {
@@ -82,7 +121,7 @@ export default {
             height: 0px; 
             border-top: 16px solid transparent; 
             border-bottom: 16px solid transparent; 
-            border-right: 16px solid var(--tooltip-bg-color); 
+            border-right: 16px solid #000000cc; 
             position: absolute;
             top: 0px;
             bottom: 0px;
@@ -91,6 +130,5 @@ export default {
             display: flex; 
             margin: auto 0;
         }
-    }
 }
 </style>
