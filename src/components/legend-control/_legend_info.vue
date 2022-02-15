@@ -3,7 +3,8 @@
         @mouseover="show=true"
         @mouseleave="show=false">
             
-            <span class="dai-icon-info"></span>
+            
+            <img src="@assets/icons/info.svg" />
             <!--
             <div v-if="show"
             class="contenedor-tooltip"
