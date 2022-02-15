@@ -26,7 +26,7 @@
                 id="estados2" 
                 titulo="Estados con titulo"
                 :url="$withBase('/centroides-estados.geojson')"
-                
+                :visible="false"
                 />
                 <dai-capa-geojson 
                 id="estados3" 
