@@ -126,6 +126,7 @@ export default {
                 
                 this.VM_legends.push(layer_name)
             });
+            this.checkLabelToggleAll()
         },
         cambioCheckbox:function(){
             this.toogleAll()

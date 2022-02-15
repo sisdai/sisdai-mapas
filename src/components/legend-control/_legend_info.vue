@@ -3,7 +3,21 @@
         @mouseover="show=true"
         @mouseleave="show=false">
             
-            <span class="dai-icon-info"></span>
+            
+            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 17 17" style="enable-background:new 0 0 17 17;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#DDDDDD;}
+	.st1{fill:#141414;}
+</style>
+<g id="Componente_35_25" transform="translate(0.5 0.5)">
+	<circle id="Elipse_3766" class="st0" cx="8" cy="8" r="8"/>
+	<g id="Grupo_11228" transform="translate(6 3)">
+		<path id="Trazado_30342" class="st1" d="M2.9,8V3.4H0.6v1.1h1.1V8H0v1.1h4.6V8H2.9z"/>
+		<path id="Trazado_30343" class="st1" d="M1.9,0C1.4,0,1,0.4,1,0.9s0.4,0.9,0.9,0.9c0.5,0,0.9-0.4,0.9-0.9S2.3,0,1.9,0L1.9,0z"/>
+	</g>
+</g>
+</svg>
             <!--
             <div v-if="show"
             class="contenedor-tooltip"
@@ -63,13 +77,13 @@ export default {
 .boton-info {
     //position: relative;
     
-    width: calc(2em + 3px);
+    width: 2em;
     height: 2em;
     
     background-color: #DDDDDD;
     border-radius: 50%;
     text-align: center;
-    padding-top: .25em;
+    margin-top: .25em;
     margin-left: .4em;    
     cursor: pointer;
 
