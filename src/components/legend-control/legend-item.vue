@@ -27,6 +27,7 @@ export default {
             this.VM_params =  this.$parent.cmpMap.cmpLayers[id].VM_legend_info;
         }
 
+        
     },
     components:{
         LegendWms,LegendLoading,LegendCoropleta,LegendNormalVector,
@@ -48,7 +49,13 @@ export default {
 
     },
     render:function(createElement){
-        return createElement(this.VM_params.type,{
+        //las coropletas tienen dos leyendas posibles, verificar si es coropleta y si se indico otro metodo
+        let  tipo = this.VM_params.type
+        if(tipo === 'legend-coropleta'  ){
+            tipo = this.$parent.coropletasConCheckbox ? 'legend-list-checks-colors' :tipo
+        }
+        
+        return createElement(tipo,{
             props:{
                 params: this.VM_params,
                 

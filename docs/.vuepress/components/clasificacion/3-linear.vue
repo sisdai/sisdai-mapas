@@ -5,6 +5,7 @@
                 <dai-leyenda-mapa
                 :para="['estados2']"
                 :mostrar-boton-alterna-todos="true"
+                :coropletas-con-checkbox="true"
                 />
             </template>
             <dai-mapa 
