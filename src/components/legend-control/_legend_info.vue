@@ -6,10 +6,6 @@
             
             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 17 17" style="enable-background:new 0 0 17 17;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:#DDDDDD;}
-	.st1{fill:#141414;}
-</style>
 <g id="Componente_35_25" transform="translate(0.5 0.5)">
 	<circle id="Elipse_3766" class="st0" cx="8" cy="8" r="8"/>
 	<g id="Grupo_11228" transform="translate(6 3)">
@@ -74,6 +70,8 @@ export default {
 </script>
 
 <style lang="scss">
+.st0{fill:#DDDDDD;}
+.st1{fill:#141414;}
 .boton-info {
     //position: relative;
     
