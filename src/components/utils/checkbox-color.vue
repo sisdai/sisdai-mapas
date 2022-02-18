@@ -67,6 +67,8 @@ export default {
             .color{
                 background-color: black;
                 min-width: 15px;
+                border-top-right-radius: 4px;
+                border-bottom-right-radius: 4px;
             }
         }
     }

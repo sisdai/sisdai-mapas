@@ -18,7 +18,11 @@
             
         </div>
         <div class="legend-content" :class="{collapsed:VM_collapsed}">
-            <legend-item v-for="(leg, i) in VM_legends" :key="leg" :index="i" :layerId="leg" :class="{'has-parent-check': mostrarBotonAlternaTodos && estiloBotonAlternaTodos==='checkbox'}"></legend-item>
+            <legend-item 
+            v-for="(leg, i) in VM_legends" 
+            :key="leg" :index="i" 
+            :layerId="leg" 
+            :class="{'has-parent-check': mostrarBotonAlternaTodos && estiloBotonAlternaTodos==='checkbox'}"></legend-item>
         </div>
         
     </div>
@@ -80,6 +84,10 @@ export default {
                 return []
             }
         },
+        coropletasConCheckbox:{
+            type:Boolean,
+            default:false
+        }
     },
     components:{
         LegendItem

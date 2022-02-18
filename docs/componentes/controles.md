@@ -139,6 +139,14 @@ Por default es `false`, es decir,  todas las capas de tipo punto reflejan en ley
 
 - Type: `String`, `Array`
 - Default: `undefined`
+
+#### coropletas-con-checkbox
+- Type: `Boolean`
+- Default: `false`
+
+
+Indica si las leyendas de tipo coropleta se dibujaran con un checkbox. Por default es falso y las las coropletas son una serie de cuadrados con color sin el checkbox.
+
 ## dai-info-mapa
 
 ### propiedades
