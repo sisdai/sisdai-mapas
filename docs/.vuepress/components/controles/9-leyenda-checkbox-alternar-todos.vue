@@ -11,7 +11,11 @@
                 :tamanosDeMapa="true"
                 :colapsable="true"
                 :mostrar-boton-info="true"
-                :contenido-info="['<p>Del griego <em>phaios</em>, oscuro, y del ruso<em>phaios</em> <em>zemlja</em>, tierra.</p><p>Suelos con capas orgánicas de espesor mayor a 10 cm y presentan una concentración mayor al 18% de carbono orgánico. Son suelos de alto valor ecológico debido a sus propiedades de absorción de humedad.</p><p>El encalado y el drenaje combinados son prácticas que aumentan la disponibilidad de nutrientes y carbono orgánico, así como disminuyen la toxicidad por aluminio en el suelo. Los Gleysoles son aprovechados en México como pastizales cultivados y por su extensión constituyen una fuente importante de carbono especialmente en la vegetación de tular, manglar y popal.</p>', '<p>tooltip Estados con título</p>', '<strong>tooltip estados3</strong>', '<em>tooltip corredores</em>']"
+                :contenido-info="['<p>Del griego <em>phaios</em>, oscuro, y del ruso<em>phaios</em> <em>zemlja</em>, tierra.</p><p>Suelos con capas orgánicas de espesor mayor a 10 cm y presentan una concentración mayor al 18% de carbono orgánico. Son suelos de alto valor ecológico debido a sus propiedades de absorción de humedad.</p><p>El encalado y el drenaje combinados son prácticas que aumentan la disponibilidad de nutrientes y carbono orgánico, así como disminuyen la toxicidad por aluminio en el suelo. Los Gleysoles son aprovechados en México como pastizales cultivados y por su extensión constituyen una fuente importante de carbono especialmente en la vegetación de tular, manglar y popal.</p>', 
+                '<p>tooltip Estados con título</p>',
+                '<strong>tooltip estados3</strong>', 
+                '<em>tooltip corredores</em>' ]"
+                lado-contenido-info="derecho"
                 />
             </template>
             <dai-mapa 
