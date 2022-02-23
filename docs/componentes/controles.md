@@ -130,15 +130,27 @@ Para leyendas simples, sin clasificacion por colores ni tamaños. Indica si las 
 
 Por default es `false`, es decir,  todas las capas de tipo punto reflejan en leyenda una figura de 25px de ancho por 25px de  alto.
 
-#### mostrarBotonInfo
+#### mostrar-boton-info
+
 
 - Type: `Boolean`
 - Default: `false`
 
-#### contenidoInfo
+indica si se mostrara a el boton de info a los elementos de esta leyenda  (tener en cuenta que solo sirve para representaciones simples y wms)
 
-- Type: `String`, `Array`
+#### contenido-info
+
+- Type: `String []`
 - Default: `undefined`
+
+Los contenidos a mostrar en el boton info, los strings pueden ser cadenas en formato html. Solo se toma en cuenta si `:mostrar-boton-info="true"`.
+
+#### lado-contenido-info
+- type `String`
+- default `derecho`
+- valores posibles `derecho` | `izquierdo`
+
+El lado en el que se desplegara la informacion definida en `contenido-info` . Solo se toma en cuenta si `:mostrar-boton-info="true"`.
 
 #### coropletas-con-checkbox
 - Type: `Boolean`

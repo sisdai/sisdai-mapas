@@ -24,7 +24,9 @@
         </checkbox>
         <!-- legend-info -->
         <legend-info v-if="$parent.$parent.mostrarBotonInfo"
-        :contenido="$parent.$parent.contenidoInfo[$parent.index]" />
+        :contenido="$parent.$parent.contenidoInfo[$parent.index]" 
+        :lado="$parent.$parent.ladoContenidoInfo"
+        />
         
     </div>
 </template>

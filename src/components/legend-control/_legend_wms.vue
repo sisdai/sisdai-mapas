@@ -4,25 +4,35 @@
         
         <checkbox v-model="visible" @change="set_visible_to_layer"> 
             <div class="label-content">
-                <span>{{params.content.title}}</span>
+                <legend-info v-if="$parent.$parent.mostrarBotonInfo"
+                    :contenido="$parent.$parent.contenidoInfo[$parent.index]" 
+                    :lado="$parent.$parent.ladoContenidoInfo"
+                />
+                <span>
+                    {{params.content.title}}    
+                </span>
+                
                 <div class="image">
                     <img :src="params.content.image" alt="">
+                    
                 </div>
             </div>
         </checkbox>
         
         
-        
+
     </div>
 </template>
 
 <script>
 import checkbox from "../utils/checkbox"
 import legend_item_child  from "../../mixins/legend-item-child"
+import LegendInfo from "./_legend_info.vue"
+
 export default {
     mixins:[legend_item_child],
     components:{
-        checkbox
+        checkbox,LegendInfo
     }
 }
 </script>
@@ -31,6 +41,7 @@ export default {
     .legend-wms{
         display: flex;
         flex-direction: column;
+        font-size: 12px;
         //align-items: center;
         justify-content: flex-start;
         .image{
@@ -44,7 +55,7 @@ export default {
         }
 
         .label-content{
-                display: flex;
+            display: flex;
             flex-direction: row-reverse;
             flex-wrap: wrap;
             justify-content: flex-end;

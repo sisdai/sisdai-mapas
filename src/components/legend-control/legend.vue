@@ -79,10 +79,14 @@ export default {
             default:false
         },
         contenidoInfo:{
-            type:[Array,String],
+            type:[Array],
             default:function(){
                 return []
             }
+        },
+        ladoContenidoInfo:{
+            type:String,
+            default:"derecho" // "izquierdo" | "derecho"
         },
         coropletasConCheckbox:{
             type:Boolean,
