@@ -465,7 +465,13 @@ estilo-boton-alterna-todos="checkbox"
         id="wmsx"
         titulo="Capa wms"
         url="https://dadsigvisgeo.conacyt.mx/geoserver/vacunacion/wms"
-        :parametros="{'LAYERS':'estados_210521'}"
+        :parametros="{'LAYERS':'estados_210521','cql_filter':`grado_marg='Alto'`}"     
+        :parametros-leyenda="{
+            transparent:true,
+            height:50,
+            width:20,
+            legend_options:'hideEmptyRules:true;'
+        }"
         />
     </dai-mapa>
     
