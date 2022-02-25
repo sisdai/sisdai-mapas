@@ -16,6 +16,10 @@
           ref="checkbox_header"
         />
         <span>{{ titulo }}</span>
+        <legend-info v-if="has_header_info"
+        :contenido="content_header_info" 
+        :lado="lado_header_info"
+        />
       </div>
       <button
         class="toggle-all"
@@ -49,6 +53,7 @@
       <legend-item
         v-for="(leg, i) in VM_legends"
         :key="leg"
+        ref="legends"
         :index="i"
         :layerId="leg"
         :class="{
@@ -63,6 +68,7 @@
 <script>
 import control from "../../mixins/control";
 import LegendItem from "./legend-item.vue";
+import LegendInfo from "./_legend_info.vue"
 
 export default {
   name: "DaiLeyendaMapa",
@@ -103,30 +109,20 @@ export default {
       type: Boolean,
       default: false,
     },
-    /**
-     * Botón información
-     */
-    mostrarBotonInfo: {
-      type: Boolean,
-      default: false,
-    },
-    contenidoInfo: {
-      type: [Array],
-      default: function () {
-        return [];
-      },
-    },
-    ladoContenidoInfo: {
-      type: String,
-      default: "derecho", // "izquierdo" | "derecho"
-    },
+    
     coropletasConCheckbox: {
       type: Boolean,
       default: false,
     },
+    infos:{
+        type: Object, // {capa:"",capa:{contenido:'uno',lado:'derecho'}}
+        default: function() {
+            return {}
+        }
+    }
   },
   components: {
-    LegendItem,
+    LegendItem,LegendInfo
   },
   data: function () {
     return {
@@ -177,7 +173,7 @@ export default {
       this.toogleAll();
     },
     toogleAll: function () {
-      let legendas = this.$children;
+      let legendas = this.$refs["legends"];
       //console.log(legendas)
       if (legendas.length == 1 && legendas[0].$children[0].hasSubfilters) {
         //solo aplicar el apagar prender a la leyenda de esa capa
@@ -208,7 +204,7 @@ export default {
       //console.log(children_legend)
     },
     checkLabelToggleAll: function () {
-      let legendas = this.$children;
+      let legendas = this.$refs["legends"] || [];
       
       if (legendas.length == 1 && legendas[0].$children[0].hasSubfilters) {
         return;
@@ -221,10 +217,33 @@ export default {
         : "Mostrar todos";
       this.algunoActivo = estadoTodas.some((item) => item);
       this.prendidosTodos = estadoTodas.every(estado=>estado)
-      this.$refs["checkbox_header"].indeterminate = this.algunoActivo && !this.prendidosTodos
+      //console.log(this.$refs,this.titulo)
+      if(this.$refs["checkbox_header"]){
+          this.$refs["checkbox_header"].indeterminate = this.algunoActivo && !this.prendidosTodos
+      }
+      
       //console.log("indeterminate:",this.algunoActivo && !this.prendidosTodos)
     },
   },
+  computed:{
+        has_header_info:function(){
+            return this.infos.hasOwnProperty(':header:') 
+        },
+        content_header_info:function(){
+            if (!this.infos.hasOwnProperty(':header:')){
+                return ""
+            }
+            return typeof this.infos[':header:'] === 'string' ? this.infos[':header:'] : this.infos[':header:'].contenido
+
+        },
+        lado_header_info:function(){
+            if (!this.infos.hasOwnProperty(':header:')){
+                return "derecho"
+            }
+            return typeof this.infos[':header:'] === 'string' ? "derecho" : this.infos[':header:'].lado
+
+        }
+  }
 };
 </script>
 
@@ -236,6 +255,9 @@ div.title-header-legend {
   flex-grow: 1;
   display: flex;
   align-items: center;
+  .boton-info{
+      margin-bottom: 0.25em;
+  }
 }
 
 .header-legend {

@@ -23,12 +23,17 @@
                 <dai-leyenda-mapa
                 :para="['poligonosx','wmsx']"
                 titulo="Mas opciones para una leyenda"
-                :mostrar-boton-info="true"
-                :contenido-info="[
-                    'Hola soy una capa con relleno de textura',
-                    'Soy una capa desde un servidor wms'
-                ]"
-                lado-contenido-info="izquierdo"
+                :infos="{
+                    poligonosx: 'Hola soy una capa con relleno de textura',
+                    wmsx: {
+                        contenido:'<b>Soy una capa desde servidor wms</b> geoserver',
+                        lado:'izquierdo'
+                    },
+                    ':header:': {
+                        contenido:'Un info del titulo',
+                        lado: 'izquierdo'
+                    }
+                }"
                 />
             </template>
         </dai-tarjeta-contenedor-mapa>

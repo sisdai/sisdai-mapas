@@ -130,27 +130,55 @@ Para leyendas simples, sin clasificacion por colores ni tamaños. Indica si las 
 
 Por default es `false`, es decir,  todas las capas de tipo punto reflejan en leyenda una figura de 25px de ancho por 25px de  alto.
 
-#### mostrar-boton-info
+#### infos
+
+- Type: 
+```typescript
+{
+    [nombreCapa: string] : string | { contenido:string,lado: "derecho" | "izquierdo" } 
+}
+```
+- Default: `{}`
+
+Diccionario de parametros para incrustar un "Boton tipo tooltip" a lado de los titulos de las capas. 
+
+Cada llave del diccionario representa una capa que se esta representando la leyenda, si no se define alguna capa dentro de este diccionario se entiende que tal capa no mostrara el "boton"
+
+El valor de cada llave (definido con el nombre de la capa) puede ser un `string` : definiendo directamente su contenido o un objecto donde se le indique una llave `contenido` y otra con el `lado` a donde se desplegara el tooltip
+
+```json
+{
+    "IdCapa1": "Contenido del tooltip <b>acepta html</b>",
+    "IdCapa2": {
+        "contenido": "Contenido del tooltip <b>acepta html</b>",
+        "lado": "derecho"
+    }
+}
+```
+
+Para desplegar el *boton tipo tooltip* en el encabezado de la leyenda se utilizara la key `:header:`
 
 
-- Type: `Boolean`
-- Default: `false`
 
-indica si se mostrara a el boton de info a los elementos de esta leyenda  (tener en cuenta que solo sirve para representaciones simples y wms)
+Ejemplo:
 
-#### contenido-info
-
-- Type: `String []`
-- Default: `undefined`
-
-Los contenidos a mostrar en el boton info, los strings pueden ser cadenas en formato html. Solo se toma en cuenta si `:mostrar-boton-info="true"`.
-
-#### lado-contenido-info
-- type `String`
-- default `derecho`
-- valores posibles `derecho` | `izquierdo`
-
-El lado en el que se desplegara la informacion definida en `contenido-info` . Solo se toma en cuenta si `:mostrar-boton-info="true"`.
+```html
+<dai-leyenda-mapa
+:para="['capa1','capa2']"
+titulo="Mas opciones para una leyenda"
+:infos="{
+    capa1: 'Hola soy una capa ',
+    capa2: {
+        contenido:'<b>Soy una capa desde servidor wms</b> geoserver',
+        lado:'derecho'
+    },
+    ':header:': {
+        contenido:'Un info del titulo',
+        lado: 'izquierdo'
+    }
+}"
+/>
+```
 
 #### coropletas-con-checkbox
 - Type: `Boolean`

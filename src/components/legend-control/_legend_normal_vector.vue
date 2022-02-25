@@ -23,9 +23,9 @@
             <span>{{params.content.title}}</span>
         </checkbox>
         <!-- legend-info -->
-        <legend-info v-if="$parent.$parent.mostrarBotonInfo"
-        :contenido="$parent.$parent.contenidoInfo[$parent.index]" 
-        :lado="$parent.$parent.ladoContenidoInfo"
+        <legend-info v-if="has_VM_info"
+        :contenido="content_VM_info" 
+        :lado="lado_VM_info"
         />
         
     </div>

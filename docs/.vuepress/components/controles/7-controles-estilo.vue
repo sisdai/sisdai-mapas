@@ -71,6 +71,12 @@
                 titulo="Titulo de la leyenda 1" 
                 para="estados" 
                 :mostrar-boton-alterna-todos="true" 
+                :infos="{
+                    ':header:': {
+                        contenido:'Una descripcion para esta leyenda',
+                        lado:'izquierdo'
+                    }
+                }"
                 v-width-control="'100%'" />
                 <!--Para poner dentro del titulo del control de opacidad el porcentaje-->
                 <dai-opacidad-mapa 
