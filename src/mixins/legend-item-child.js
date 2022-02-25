@@ -72,7 +72,7 @@ export default {
             if(!this.hasSubfilters){
                 return ;
             }
-            this.$parent.$parent.labelToogleAll = newerValue.some(item=>item) ? "Quitar todos" : "Encender Todos"
+            this.$parent.$parent.labelToogleAll = newerValue.some(item=>item) ? "Quitar todos" : "Mostrar todos"
             this.$parent.$parent.algunoActivo = newerValue.some(item=>item) 
             
         },

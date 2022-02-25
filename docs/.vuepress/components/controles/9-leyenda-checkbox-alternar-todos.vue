@@ -24,7 +24,7 @@
                 <dai-capa-geojson 
                 id="estados" 
                 :url="$withBase('/sample-edos.geojson')"
-                :visible="false"
+                :visible="true"
                 />
                 <dai-capa-geojson 
                 id="estados2" 
