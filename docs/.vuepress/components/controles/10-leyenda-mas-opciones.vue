@@ -16,19 +16,30 @@
                 id="wmsx"
                 titulo="Capa wms"
                 url="https://dadsigvisgeo.conacyt.mx/geoserver/vacunacion/wms"
-                :parametros="{'LAYERS':'estados_210521'}"
+                :parametros="{'LAYERS':'estados_210521','cql_filter':`grado_marg='Alto'`}"     
+                :parametros-leyenda="{
+                    transparent:true,
+                    height:50,
+                    width:20,
+                    legend_options:'hideEmptyRules:true;'
+                }"
                 />
             </dai-mapa>
             <template v-slot:header>
                 <dai-leyenda-mapa
                 :para="['poligonosx','wmsx']"
                 titulo="Mas opciones para una leyenda"
-                :mostrar-boton-info="true"
-                :contenido-info="[
-                    'Hola soy una capa con relleno de textura',
-                    'Soy una capa desde un servidor wms'
-                ]"
-                lado-contenido-info="izquierdo"
+                :infos="{
+                    poligonosx: 'Hola soy una capa con relleno de textura',
+                    wmsx: {
+                        contenido:'<b>Soy una capa desde servidor wms</b> geoserver',
+                        lado:'izquierdo'
+                    },
+                    ':header:': {
+                        contenido:'Un info del titulo',
+                        lado: 'izquierdo'
+                    }
+                }"
                 />
             </template>
         </dai-tarjeta-contenedor-mapa>

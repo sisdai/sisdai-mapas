@@ -8,7 +8,9 @@ export default {
             layerId:"",
             hasSubfilters:false,
             visibleStatusFilters:[],
-            VM_skip_first_toogle :false
+            VM_skip_first_toogle :false,
+            VM_infos_parent:{},
+            VM_info:undefined
         }
     },
     methods:{
@@ -37,7 +39,8 @@ export default {
         this.layerId= this.$parent.layerId
         this.visible= this.$parent.$parent.cmpMap.cmpLayers[this.layerId].visible;
         this.visibleStatusFilters = [this.visible]
-
+        this.VM_infos_parent = this.$parent.$parent.infos
+        this.VM_info = this.VM_infos_parent.hasOwnProperty(this.layerId) ? this.VM_infos_parent[this.layerId] : undefined
         let vm = this;
         this.$parent.$parent.cmpMap.cmpLayers[this.layerId].$on("update:visible",function(newValue){
             if(vm.visible!=newValue){
@@ -72,12 +75,31 @@ export default {
             if(!this.hasSubfilters){
                 return ;
             }
-            this.$parent.$parent.labelToogleAll = newerValue.some(item=>item) ? "Quitar todos" : "Encender Todos"
+            this.$parent.$parent.labelToogleAll = newerValue.some(item=>item) ? "Quitar todos" : "Mostrar todos"
             this.$parent.$parent.algunoActivo = newerValue.some(item=>item) 
             
         },
         'params':function(){
             this._initLegend()
+        }
+    },
+    computed:{
+        has_VM_info:function(){
+            return this.VM_info!==undefined
+        },
+        content_VM_info:function(){
+            if (this.VM_info===undefined){
+                return ""
+            }
+            return typeof this.VM_info === 'string' ? this.VM_info : this.VM_info.contenido
+
+        },
+        lado_VM_info:function(){
+            if (this.VM_info===undefined){
+                return "derecho"
+            }
+            return typeof this.VM_info === 'string' ? 'derecho' : this.VM_info.lado
+
         }
     }
 }

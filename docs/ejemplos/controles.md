@@ -415,12 +415,12 @@ titulo="Este es el titulo de la leyenda"
 estilo-boton-alterna-todos="checkbox"
 :tamanosDeMapa="true"
 :colapsable="true"
-:mostrar-boton-info="true"
-:contenido-info="['<p>Del griego <em>phaios</em>, oscuro, y del ruso<em>phaios</em> <em>zemlja</em>, tierra.</p><p>Suelos con capas orgánicas de espesor mayor a 10 cm y presentan una concentración mayor al 18% de carbono orgánico. Son suelos de alto valor ecológico debido a sus propiedades de absorción de humedad.</p><p>El encalado y el drenaje combinados son prácticas que aumentan la disponibilidad de nutrientes y carbono orgánico, así como disminuyen la toxicidad por aluminio en el suelo. Los Gleysoles son aprovechados en México como pastizales cultivados y por su extensión constituyen una fuente importante de carbono especialmente en la vegetación de tular, manglar y popal.</p>', 
-'<p>tooltip Estados con título</p>',
-'<strong>tooltip estados3</strong>', 
-'<em>tooltip corredores</em>' ]"
-lado-contenido-info="derecho"
+:infos="{
+    estados: '<p>Del griego <em>phaios</em>, oscuro, y del ruso<em>phaios</em> <em>zemlja</em>, tierra.</p><p>Suelos con capas orgánicas de espesor mayor a 10 cm y presentan una concentración mayor al 18% de carbono orgánico. Son suelos de alto valor ecológico debido a sus propiedades de absorción de humedad.</p><p>El encalado y el drenaje combinados son prácticas que aumentan la disponibilidad de nutrientes y carbono orgánico, así como disminuyen la toxicidad por aluminio en el suelo. Los Gleysoles son aprovechados en México como pastizales cultivados y por su extensión constituyen una fuente importante de carbono especialmente en la vegetación de tular, manglar y popal.</p>',
+    estados3:'<p>tooltip Estados con título</p>',
+    corredores:'<strong>tooltip estados3</strong>',
+    ':header:':'Este es el titulo de la leyenda'
+}"
 />
 
 ```
@@ -439,12 +439,17 @@ lado-contenido-info="derecho"
         <dai-leyenda-mapa
         :para="['poligonosx','wmsx']"
         titulo="Mas opciones para una leyenda"
-        :mostrar-boton-info="true"
-        :contenido-info="[
-            'Hola soy una capa con relleno de textura',
-            'Soy una capa desde un servidor wms'
-        ]"
-        lado-contenido-info="izquierdo"
+        :infos="{
+            poligonosx: 'Hola soy una capa con relleno de textura',
+            wmsx: {
+                contenido:'<b>Soy una capa desde servidor wms</b> geoserver',
+                lado:'izquierdo'
+            },
+            ':header:': {
+                contenido:'Un info del titulo',
+                lado: 'izquierdo'
+            }
+        }"
         />
     </template>
     <dai-mapa
@@ -460,7 +465,13 @@ lado-contenido-info="derecho"
         id="wmsx"
         titulo="Capa wms"
         url="https://dadsigvisgeo.conacyt.mx/geoserver/vacunacion/wms"
-        :parametros="{'LAYERS':'estados_210521'}"
+        :parametros="{'LAYERS':'estados_210521','cql_filter':`grado_marg='Alto'`}"     
+        :parametros-leyenda="{
+            transparent:true,
+            height:50,
+            width:20,
+            legend_options:'hideEmptyRules:true;'
+        }"
         />
     </dai-mapa>
     
