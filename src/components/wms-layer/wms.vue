@@ -66,7 +66,7 @@ export default {
         },
       };
 
-      console.log(this.VM_legend_info);
+      //console.log(this.VM_legend_info);
 
       this.VM_legend_info_status = "ready";
       this.$emit("legend_info_ready", this.VM_legend_info);
