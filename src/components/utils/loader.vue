@@ -1,5 +1,5 @@
 <template>
-  <div class="loader">
+  <div class="loader" ref="loader">
     <!-- By Sam Herbert (@sherb), for everyone. More @ http://goo.gl/7AJzbL -->
     <svg
       width="55"
@@ -66,12 +66,22 @@ export default {
     //console.log("inicial",this.$parent.$el.style.position)
     this.inicialPositionParent = this.$parent.$el.style.position;
     this.$parent.$el.style.position = "relative";
+    this.$refs.loader.addEventListener("wheel",wheelEvent)
   },
   destroyed() {
     //console.log("destruyendo loader")
     this.$parent.$el.style.position = this.inicialPositionParent;
+    
   },
+  beforeDestroy(){
+      this.$refs.loader.removeEventListener("wheel",wheelEvent)
+  }
 };
+
+const wheelEvent = (event)=>{
+    event.preventDefault()
+}
+
 </script>
 
 <style lang="scss" scoped>

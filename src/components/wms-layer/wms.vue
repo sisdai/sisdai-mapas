@@ -40,12 +40,13 @@ export default {
   },
   methods: {
     _createLayerObject: function () {
-      this.olLayer = new ImageLayer({
-        source: new ImageWMS({
+      const sourceLayer= new ImageWMS({
           url: this.url,
           params: this.parametros,
           serverType: this.serverType,
-        }),
+      })
+      this.olLayer = new ImageLayer({
+        source: sourceLayer,
       });
 
       if (this.extension != undefined) {
@@ -70,6 +71,27 @@ export default {
 
       this.VM_legend_info_status = "ready";
       this.$emit("legend_info_ready", this.VM_legend_info);
+
+      sourceLayer.on("imageloadstart",()=>{
+        if(this.useLoader){
+          this.addLayerLoaderToQueue("wms-"+this.VM_id)
+        }
+      })
+
+      sourceLayer.on("imageloaderror",()=>{
+        if(this.useLoader){
+          this.removeLayerLoaderFromQueue("wms-"+this.VM_id)
+        }
+        //console.log("Error al cargar "+this.VM_id)
+        this.VM_has_errors = true;
+      })
+      sourceLayer.on("imageloadend",()=>{
+        if(this.useLoader){
+          this.removeLayerLoaderFromQueue("wms-"+this.VM_id)
+        }
+        this.VM_has_errors = false;
+      })
+
     },
   },
   watch: {

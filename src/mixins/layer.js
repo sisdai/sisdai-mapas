@@ -15,7 +15,8 @@ export default{
              * componentes que quieran acceder a la leyenda de esta capa sepan que status tiene
              */
             VM_legend_info_status:"unready", //"ready","loading",
-            VM_has_event_hover :false
+            VM_has_event_hover :false,
+            VM_has_errors:false
         }
     },
     render:function(){
@@ -97,7 +98,7 @@ export default{
         },
         useLoader:{
             type:Boolean,
-            default:true
+            default:false
         }
     },
     watch:{

@@ -313,7 +313,7 @@ export default{
                     : ""
                 this.$emit("saved_features",this.VM_allFeatures)
                 if(this.useLoader){
-                    this.removeLayerLoaderFromQueue(this.VM_id)
+                    this.removeLayerLoaderFromQueue("l-"+this.VM_id)
                 }
                 return
             }
@@ -321,7 +321,7 @@ export default{
             let listenerFn = (evento)=>{
 
                 if(this.useLoader){
-                    this.removeLayerLoaderFromQueue(this.VM_id)
+                    this.removeLayerLoaderFromQueue("l-"+this.VM_id)
                 }
                 
                 
@@ -371,12 +371,24 @@ export default{
                         this.addLayerLoaderToQueue("l-"+this.VM_id)
                     }
                 })
+                vectorSource.getSource().on("featuresloaderror",()=>{
+                    if(this.useLoader){
+                        this.removeLayerLoaderFromQueue("l-"+this.VM_id)
+                    }
+                    this.VM_has_errors = true;
+                })
                 vectorSource.getSource().on("featuresloadend",listenerFn)
             }else{
                 vectorSource.on("featuresloadstart",()=>{
                     if(this.useLoader){
                         this.addLayerLoaderToQueue("l-"+this.VM_id)
                     }
+                })
+                vectorSource.on("featuresloaderror",()=>{
+                    if(this.useLoader){
+                        this.removeLayerLoaderFromQueue("l-"+this.VM_id)
+                    }
+                    this.VM_has_errors = true;
                 })
                 vectorSource.on("featuresloadend",listenerFn)
             }

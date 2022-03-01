@@ -342,8 +342,12 @@ export default {
             this.VM_loader_queue.push(id)
         },
         _removeLayerLoaderFromQueue: function(id){
-            let idx = this.VM_loader_queue.find(item=>item===id);
-            this.VM_loader_queue.splice(idx,1);
+            let idx = this.VM_loader_queue.findIndex(item=>item===id);
+            //console.log(idx,id,this.VM_loader_queue)
+            if(idx>-1){
+                this.VM_loader_queue.splice(idx,1);
+            }
+            
         },
     },
     provide:function(){
