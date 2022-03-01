@@ -287,7 +287,8 @@ export default{
             }
             
         },
-        _saveAllFeaturesFromSource:function(vectorSource){
+        _saveAllFeaturesFromSource:function(vectorSource,initial=true){
+            
             let geojsonFormat = new GeoJSON()
             //console.log(vectorSource.getUrl(),vectorSource.getSource(),"---")
             //if(vectorSource.getFeatures().length>1){
@@ -311,10 +312,17 @@ export default{
                     ? vectorSource.getFeatures()[0].getGeometry().getType() 
                     : ""
                 this.$emit("saved_features",this.VM_allFeatures)
+                if(this.useLoader){
+                    this.removeLayerLoaderFromQueue(this.VM_id)
+                }
                 return
             }
             //console.log("---AQUI ESPERAR LAS FEATURES EN VM_allfeatures")
             let listenerFn = (evento)=>{
+
+                if(this.useLoader){
+                    this.removeLayerLoaderFromQueue(this.VM_id)
+                }
                 
                 
                 if(this.VM_featuresGroup){
@@ -358,8 +366,18 @@ export default{
 
             
             if(this.VM_featuresGroup){
+                vectorSource.getSource().on("featuresloadstart",()=>{
+                    if(this.useLoader){
+                        this.addLayerLoaderToQueue("l-"+this.VM_id)
+                    }
+                })
                 vectorSource.getSource().on("featuresloadend",listenerFn)
             }else{
+                vectorSource.on("featuresloadstart",()=>{
+                    if(this.useLoader){
+                        this.addLayerLoaderToQueue("l-"+this.VM_id)
+                    }
+                })
                 vectorSource.on("featuresloadend",listenerFn)
             }
             

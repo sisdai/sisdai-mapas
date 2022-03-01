@@ -1,5 +1,5 @@
 export default{
-    inject:["getMap","registerLayer"],
+    inject:["getMap","registerLayer","addLayerLoaderToQueue","removeLayerLoaderFromQueue"],
     data:function(){
         return {
             olMap : null,
@@ -94,6 +94,10 @@ export default{
         titulo:{
             type:String,
             default:""
+        },
+        useLoader:{
+            type:Boolean,
+            default:true
         }
     },
     watch:{
