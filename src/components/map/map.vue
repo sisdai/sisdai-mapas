@@ -263,6 +263,10 @@ export default {
             this.$emit("remove-layer")
         })
 
+        this.$refs.map.addEventListener("mouseout",()=>{
+            overlay_tooltip.setPosition(undefined);
+            overlay_tooltip_mov.setPosition(undefined);
+        })
         
     },
     methods:{
