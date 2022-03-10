@@ -1088,6 +1088,17 @@ module.exports = version && +version;
 
 /***/ }),
 
+/***/ "334a":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_loader_vue_vue_type_style_index_0_id_0e1fa54d_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("461a");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_loader_vue_vue_type_style_index_0_id_0e1fa54d_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_loader_vue_vue_type_style_index_0_id_0e1fa54d_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+
+
+/***/ }),
+
 /***/ "342f":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1280,6 +1291,13 @@ module.exports = function (it) {
   return isObject(it) && ((isRegExp = it[MATCH]) !== undefined ? !!isRegExp : classof(it) == 'RegExp');
 };
 
+
+/***/ }),
+
+/***/ "461a":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -3440,6 +3458,82 @@ $({ target: 'Array', proto: true, forced: ES3_STRINGS || !STRICT_METHOD }, {
 
 /***/ }),
 
+/***/ "a434":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var toAbsoluteIndex = __webpack_require__("23cb");
+var toInteger = __webpack_require__("a691");
+var toLength = __webpack_require__("50c4");
+var toObject = __webpack_require__("7b0b");
+var arraySpeciesCreate = __webpack_require__("65f0");
+var createProperty = __webpack_require__("8418");
+var arrayMethodHasSpeciesSupport = __webpack_require__("1dde");
+
+var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('splice');
+
+var max = Math.max;
+var min = Math.min;
+var MAX_SAFE_INTEGER = 0x1FFFFFFFFFFFFF;
+var MAXIMUM_ALLOWED_LENGTH_EXCEEDED = 'Maximum allowed length exceeded';
+
+// `Array.prototype.splice` method
+// https://tc39.es/ecma262/#sec-array.prototype.splice
+// with adding support of @@species
+$({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT }, {
+  splice: function splice(start, deleteCount /* , ...items */) {
+    var O = toObject(this);
+    var len = toLength(O.length);
+    var actualStart = toAbsoluteIndex(start, len);
+    var argumentsLength = arguments.length;
+    var insertCount, actualDeleteCount, A, k, from, to;
+    if (argumentsLength === 0) {
+      insertCount = actualDeleteCount = 0;
+    } else if (argumentsLength === 1) {
+      insertCount = 0;
+      actualDeleteCount = len - actualStart;
+    } else {
+      insertCount = argumentsLength - 2;
+      actualDeleteCount = min(max(toInteger(deleteCount), 0), len - actualStart);
+    }
+    if (len + insertCount - actualDeleteCount > MAX_SAFE_INTEGER) {
+      throw TypeError(MAXIMUM_ALLOWED_LENGTH_EXCEEDED);
+    }
+    A = arraySpeciesCreate(O, actualDeleteCount);
+    for (k = 0; k < actualDeleteCount; k++) {
+      from = actualStart + k;
+      if (from in O) createProperty(A, k, O[from]);
+    }
+    A.length = actualDeleteCount;
+    if (insertCount < actualDeleteCount) {
+      for (k = actualStart; k < len - actualDeleteCount; k++) {
+        from = k + actualDeleteCount;
+        to = k + insertCount;
+        if (from in O) O[to] = O[from];
+        else delete O[to];
+      }
+      for (k = len; k > len - actualDeleteCount + insertCount; k--) delete O[k - 1];
+    } else if (insertCount > actualDeleteCount) {
+      for (k = len - actualDeleteCount; k > actualStart; k--) {
+        from = k + actualDeleteCount - 1;
+        to = k + insertCount - 1;
+        if (from in O) O[to] = O[from];
+        else delete O[to];
+      }
+    }
+    for (k = 0; k < insertCount; k++) {
+      O[k + actualStart] = arguments[k + 2];
+    }
+    O.length = len - actualDeleteCount + insertCount;
+    return A;
+  }
+});
+
+
+/***/ }),
+
 /***/ "a4aa":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4374,6 +4468,35 @@ var SHARED = '__core-js_shared__';
 var store = global[SHARED] || setGlobal(SHARED, {});
 
 module.exports = store;
+
+
+/***/ }),
+
+/***/ "c740":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var $findIndex = __webpack_require__("b727").findIndex;
+var addToUnscopables = __webpack_require__("44d2");
+
+var FIND_INDEX = 'findIndex';
+var SKIPS_HOLES = true;
+
+// Shouldn't skip holes
+if (FIND_INDEX in []) Array(1)[FIND_INDEX](function () { SKIPS_HOLES = false; });
+
+// `Array.prototype.findIndex` method
+// https://tc39.es/ecma262/#sec-array.prototype.findindex
+$({ target: 'Array', proto: true, forced: SKIPS_HOLES }, {
+  findIndex: function findIndex(callbackfn /* , that = undefined */) {
+    return $findIndex(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
+  }
+});
+
+// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
+addToUnscopables(FIND_INDEX);
 
 
 /***/ }),
@@ -6071,12 +6194,12 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
 var es_function_name = __webpack_require__("b0c0");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a636930-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/map.vue?vue&type=template&id=43177fd4&
-var mapvue_type_template_id_43177fd4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"dai-map-container"},[_c('div',{ref:"map",staticClass:"dai-map ",class:[_vm.colorControlesInvertidos ? 'inverted-controls': 'default-controls']}),_vm._t("default"),_c('div',{ref:"tooltip",staticClass:"ol-tooltip ol-tooltip-bottom"},[(_vm.VM_isTouchDevice)?_c('div',{staticClass:"botones"},[_c('button',{staticClass:"boton-cerrar",on:{"click":_vm.cerrarTooltip}},[_c('span',{staticClass:"dai-icon-cerrar"})])]):_vm._e(),_c('div',{staticClass:"content"})]),_c('div',{ref:"tooltipmov",staticClass:"ol-tooltipmov "},[(_vm.VM_isTouchDevice)?_c('div',{staticClass:"botones"},[_c('button',{staticClass:"boton-cerrar",on:{"click":_vm.cerrarTooltip}},[_c('span',{staticClass:"dai-icon-cerrar"})])]):_vm._e(),_c('div',{staticClass:"content"})]),_c('div',{ref:"popup",staticClass:"ol-popup"},[_c('div',{staticClass:"botones"},[_c('button',{staticClass:"boton-cerrar",on:{"click":_vm._cerrarPopup}},[_c('span',{staticClass:"dai-icon-cerrar"})])]),_c('div',{staticClass:"content"})])],2)}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a636930-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/map.vue?vue&type=template&id=02792335&
+var mapvue_type_template_id_02792335_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"dai-map-container"},[_c('transition',{attrs:{"name":"fade"}},[(_vm.VM_loader_queue.length>0)?_c('loader'):_vm._e()],1),_c('div',{ref:"map",staticClass:"dai-map ",class:[_vm.colorControlesInvertidos ? 'inverted-controls': 'default-controls']}),_vm._t("default"),_c('div',{ref:"tooltip",staticClass:"ol-tooltip ol-tooltip-bottom"},[(_vm.VM_isTouchDevice)?_c('div',{staticClass:"botones"},[_c('button',{staticClass:"boton-cerrar",on:{"click":_vm.cerrarTooltip}},[_c('span',{staticClass:"dai-icon-cerrar"})])]):_vm._e(),_c('div',{staticClass:"content"})]),_c('div',{ref:"tooltipmov",staticClass:"ol-tooltipmov "},[(_vm.VM_isTouchDevice)?_c('div',{staticClass:"botones"},[_c('button',{staticClass:"boton-cerrar",on:{"click":_vm.cerrarTooltip}},[_c('span',{staticClass:"dai-icon-cerrar"})])]):_vm._e(),_c('div',{staticClass:"content"})]),_c('div',{ref:"popup",staticClass:"ol-popup"},[_c('div',{staticClass:"botones"},[_c('button',{staticClass:"boton-cerrar",on:{"click":_vm._cerrarPopup}},[_c('span',{staticClass:"dai-icon-cerrar"})])]),_c('div',{staticClass:"content"})])],2)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/map/map.vue?vue&type=template&id=43177fd4&
+// CONCATENATED MODULE: ./src/components/map/map.vue?vue&type=template&id=02792335&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.number.constructor.js
 var es_number_constructor = __webpack_require__("a9e3");
@@ -6089,6 +6212,12 @@ var es_array_includes = __webpack_require__("caad");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.includes.js
 var es_string_includes = __webpack_require__("2532");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.find-index.js
+var es_array_find_index = __webpack_require__("c740");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.splice.js
+var es_array_splice = __webpack_require__("a434");
 
 // CONCATENATED MODULE: ./node_modules/ol/Disposable.js
 /**
@@ -26778,12 +26907,231 @@ var _invokeClicks_invoke_clicks = function invoke_clicks(map, e, component) {
     feature_selected: feature_selected
   };
 };
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a636930-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/utils/loader.vue?vue&type=template&id=0e1fa54d&scoped=true&
+var loadervue_type_template_id_0e1fa54d_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"loader",staticClass:"loader"},[_c('svg',{attrs:{"width":"55","height":"80","viewBox":"0 0 55 80","xmlns":"http://www.w3.org/2000/svg","fill":"#FFF"}},[_c('g',{attrs:{"transform":"matrix(1 0 0 -1 0 80)"}},[_c('rect',{attrs:{"width":"10","height":"20","rx":"3"}},[_c('animate',{attrs:{"attributeName":"height","begin":"0s","dur":"4.3s","values":"20;45;57;80;64;32;66;45;64;23;66;13;64;56;34;34;2;23;76;79;20","calcMode":"linear","repeatCount":"indefinite"}})]),_c('rect',{attrs:{"x":"15","width":"10","height":"80","rx":"3"}},[_c('animate',{attrs:{"attributeName":"height","begin":"0s","dur":"2s","values":"80;55;33;5;75;23;73;33;12;14;60;80","calcMode":"linear","repeatCount":"indefinite"}})]),_c('rect',{attrs:{"x":"30","width":"10","height":"50","rx":"3"}},[_c('animate',{attrs:{"attributeName":"height","begin":"0s","dur":"1.4s","values":"50;34;78;23;56;23;34;76;80;54;21;50","calcMode":"linear","repeatCount":"indefinite"}})]),_c('rect',{attrs:{"x":"45","width":"10","height":"30","rx":"3"}},[_c('animate',{attrs:{"attributeName":"height","begin":"0s","dur":"2s","values":"30;45;13;80;56;72;45;76;34;23;67;30","calcMode":"linear","repeatCount":"indefinite"}})])])])])}
+var loadervue_type_template_id_0e1fa54d_scoped_true_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/utils/loader.vue?vue&type=template&id=0e1fa54d&scoped=true&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/utils/loader.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ var loadervue_type_script_lang_js_ = ({
+  name: "Loader",
+  data: function data() {
+    return {
+      inicialPositionParent: ""
+    };
+  },
+  mounted: function mounted() {
+    //console.log("inicial",this.$parent.$el.style.position)
+    this.inicialPositionParent = this.$parent.$el.style.position;
+    this.$parent.$el.style.position = "relative";
+    this.$refs.loader.addEventListener("wheel", loadervue_type_script_lang_js_wheelEvent);
+  },
+  destroyed: function destroyed() {
+    //console.log("destruyendo loader")
+    this.$parent.$el.style.position = this.inicialPositionParent;
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.$refs.loader.removeEventListener("wheel", loadervue_type_script_lang_js_wheelEvent);
+  }
+});
+
+var loadervue_type_script_lang_js_wheelEvent = function wheelEvent(event) {
+  event.preventDefault();
+};
+// CONCATENATED MODULE: ./src/components/utils/loader.vue?vue&type=script&lang=js&
+ /* harmony default export */ var utils_loadervue_type_script_lang_js_ = (loadervue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./src/components/utils/loader.vue?vue&type=style&index=0&id=0e1fa54d&lang=scss&scoped=true&
+var loadervue_type_style_index_0_id_0e1fa54d_lang_scss_scoped_true_ = __webpack_require__("334a");
+
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+function normalizeComponent (
+  scriptExports,
+  render,
+  staticRenderFns,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier, /* server only */
+  shadowMode /* vue-cli only */
+) {
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (render) {
+    options.render = render
+    options.staticRenderFns = staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = 'data-v-' + scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = shadowMode
+      ? function () {
+        injectStyles.call(
+          this,
+          (options.functional ? this.parent : this).$root.$options.shadowRoot
+        )
+      }
+      : injectStyles
+  }
+
+  if (hook) {
+    if (options.functional) {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functional component in vue file
+      var originalRender = options.render
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return originalRender(h, context)
+      }
+    } else {
+      // inject component registration as beforeCreate hook
+      var existing = options.beforeCreate
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    }
+  }
+
+  return {
+    exports: scriptExports,
+    options: options
+  }
+}
+
+// CONCATENATED MODULE: ./src/components/utils/loader.vue
+
+
+
+
+
+
+/* normalize component */
+
+var loader_component = normalizeComponent(
+  utils_loadervue_type_script_lang_js_,
+  loadervue_type_template_id_0e1fa54d_scoped_true_render,
+  loadervue_type_template_id_0e1fa54d_scoped_true_staticRenderFns,
+  false,
+  null,
+  "0e1fa54d",
+  null
+  
+)
+
+/* harmony default export */ var loader = (loader_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/map.vue?vue&type=script&lang=js&
 
 
 
 
 
+
+
+//
+//
 //
 //
 //
@@ -26819,6 +27167,7 @@ var _invokeClicks_invoke_clicks = function invoke_clicks(map, e, component) {
 
 
  //import { defaults as defaultControls} from 'ol/control';
+
 
 
 
@@ -26892,7 +27241,8 @@ var _invokeClicks_invoke_clicks = function invoke_clicks(map, e, component) {
       VM_nivel_actual: "",
       VM_nivel_control: undefined,
       VM_scrollZoomInteraction: undefined,
-      VM_isTouchDevice: false
+      VM_isTouchDevice: false,
+      VM_loader_queue: []
     };
   },
   created: function created() {
@@ -26908,6 +27258,9 @@ var _invokeClicks_invoke_clicks = function invoke_clicks(map, e, component) {
     };
     this.VM_has_niveles = this.niveles.length > 0;
     this.VM_nivel_actual = this.nivelActual;
+  },
+  components: {
+    loader: loader
   },
   mounted: function mounted() {
     var _this = this;
@@ -27044,6 +27397,10 @@ var _invokeClicks_invoke_clicks = function invoke_clicks(map, e, component) {
 
       _this.$emit("remove-layer");
     });
+    this.$refs.map.addEventListener("mouseout", function () {
+      overlay_tooltip.setPosition(undefined);
+      overlay_tooltip_mov.setPosition(undefined);
+    });
   },
   methods: {
     _getMap: function _getMap(found) {
@@ -27125,12 +27482,26 @@ var _invokeClicks_invoke_clicks = function invoke_clicks(map, e, component) {
       if (newIndex > -1) {
         this.setNivel(this.niveles[newIndex]);
       }
+    },
+    _addLayerLoaderToQueue: function _addLayerLoaderToQueue(id) {
+      this.VM_loader_queue.push(id);
+    },
+    _removeLayerLoaderFromQueue: function _removeLayerLoaderFromQueue(id) {
+      var idx = this.VM_loader_queue.findIndex(function (item) {
+        return item === id;
+      }); //console.log(idx,id,this.VM_loader_queue)
+
+      if (idx > -1) {
+        this.VM_loader_queue.splice(idx, 1);
+      }
     }
   },
   provide: function provide() {
     return {
       getMap: this._getMap,
-      registerLayer: this._registerLayer
+      registerLayer: this._registerLayer,
+      addLayerLoaderToQueue: this._addLayerLoaderToQueue,
+      removeLayerLoaderFromQueue: this._removeLayerLoaderFromQueue
     };
   },
   watch: {
@@ -27177,106 +27548,6 @@ function isTouchDevice() {
 // EXTERNAL MODULE: ./src/components/map/map.vue?vue&type=style&index=0&lang=scss&
 var mapvue_type_style_index_0_lang_scss_ = __webpack_require__("9ec5");
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
-/* globals __VUE_SSR_CONTEXT__ */
-
-// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
-// This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
-
-function normalizeComponent (
-  scriptExports,
-  render,
-  staticRenderFns,
-  functionalTemplate,
-  injectStyles,
-  scopeId,
-  moduleIdentifier, /* server only */
-  shadowMode /* vue-cli only */
-) {
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
-
-  // render functions
-  if (render) {
-    options.render = render
-    options.staticRenderFns = staticRenderFns
-    options._compiled = true
-  }
-
-  // functional template
-  if (functionalTemplate) {
-    options.functional = true
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = 'data-v-' + scopeId
-  }
-
-  var hook
-  if (moduleIdentifier) { // server build
-    hook = function (context) {
-      // 2.3 injection
-      context =
-        context || // cached call
-        (this.$vnode && this.$vnode.ssrContext) || // stateful
-        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
-      // 2.2 with runInNewContext: true
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__
-      }
-      // inject component styles
-      if (injectStyles) {
-        injectStyles.call(this, context)
-      }
-      // register component module identifier for async chunk inferrence
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier)
-      }
-    }
-    // used by ssr in case component is cached and beforeCreate
-    // never gets called
-    options._ssrRegister = hook
-  } else if (injectStyles) {
-    hook = shadowMode
-      ? function () {
-        injectStyles.call(
-          this,
-          (options.functional ? this.parent : this).$root.$options.shadowRoot
-        )
-      }
-      : injectStyles
-  }
-
-  if (hook) {
-    if (options.functional) {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook
-      // register for functional component in vue file
-      var originalRender = options.render
-      options.render = function renderWithStyleInjection (h, context) {
-        hook.call(context)
-        return originalRender(h, context)
-      }
-    } else {
-      // inject component registration as beforeCreate hook
-      var existing = options.beforeCreate
-      options.beforeCreate = existing
-        ? [].concat(existing, hook)
-        : [hook]
-    }
-  }
-
-  return {
-    exports: scriptExports,
-    options: options
-  }
-}
-
 // CONCATENATED MODULE: ./src/components/map/map.vue
 
 
@@ -27288,7 +27559,7 @@ function normalizeComponent (
 
 var map_component = normalizeComponent(
   map_mapvue_type_script_lang_js_,
-  mapvue_type_template_id_43177fd4_render,
+  mapvue_type_template_id_02792335_render,
   staticRenderFns,
   false,
   null,
@@ -32924,7 +33195,7 @@ var es_regexp_to_string = __webpack_require__("25f0");
 
 
 /* harmony default export */ var mixins_layer = ({
-  inject: ["getMap", "registerLayer"],
+  inject: ["getMap", "registerLayer", "addLayerLoaderToQueue", "removeLayerLoaderFromQueue"],
   data: function data() {
     return {
       olMap: null,
@@ -32943,7 +33214,8 @@ var es_regexp_to_string = __webpack_require__("25f0");
        */
       VM_legend_info_status: "unready",
       //"ready","loading",
-      VM_has_event_hover: false
+      VM_has_event_hover: false,
+      VM_has_errors: false
     };
   },
   render: function render() {
@@ -33024,6 +33296,10 @@ var es_regexp_to_string = __webpack_require__("25f0");
     titulo: {
       type: String,
       default: ""
+    },
+    useLoader: {
+      type: Boolean,
+      default: false
     }
   },
   watch: {
@@ -40181,6 +40457,7 @@ var vector_layer_any_DEFAULT_RADIUS = 7;
     _saveAllFeaturesFromSource: function _saveAllFeaturesFromSource(vectorSource) {
       var _this = this;
 
+      var initial = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
       var geojsonFormat = new format_GeoJSON(); //console.log(vectorSource.getUrl(),vectorSource.getSource(),"---")
       //if(vectorSource.getFeatures().length>1){
       //if(vectorSource.getUrl()===undefined){
@@ -40199,13 +40476,23 @@ var vector_layer_any_DEFAULT_RADIUS = 7;
           this.VM_allFeatures = geojsonFormat.writeFeatures(vectorSource.getFeatures());
         }
 
-        this.VM_geometryType = vectorSource.getFeatures().length > 0 ? vectorSource.getFeatures()[0].getGeometry().getType() : "";
+        this.VM_geometryType = vectorSource.getFeatures().length > 0 ? vectorSource.getFeatures()[0].getGeometry().getType() : this.tipoGeometria; //console.log(this.VM_geometryType,"el tipo de geometria desde VECTOR layer",this.VM_id)
+
         this.$emit("saved_features", this.VM_allFeatures);
+
+        if (this.useLoader) {
+          this.removeLayerLoaderFromQueue("l-" + this.VM_id);
+        }
+
         return;
       } //console.log("---AQUI ESPERAR LAS FEATURES EN VM_allfeatures")
 
 
       var listenerFn = function listenerFn(evento) {
+        if (_this.useLoader) {
+          _this.removeLayerLoaderFromQueue("l-" + _this.VM_id);
+        }
+
         if (_this.VM_featuresGroup) {
           setTimeout(function () {
             var objects = geojsonFormat.writeFeaturesObject(_this.olLayer.getSource().getFeatures());
@@ -40216,7 +40503,7 @@ var vector_layer_any_DEFAULT_RADIUS = 7;
               return f;
             });
             _this.VM_allFeatures = JSON.stringify(objects);
-            _this.VM_geometryType = _this.olLayer.getSource().getFeatures().length > 0 ? _this.olLayer.getSource().getFeatures()[0].getGeometry().getType() : "";
+            _this.VM_geometryType = _this.olLayer.getSource().getFeatures().length > 0 ? _this.olLayer.getSource().getFeatures()[0].getGeometry().getType() : _this.tipoGeometria;
 
             if (!_this.VM_is_classified) {
               var serializes = fixSerializedStyleIfIncomplete(_this.VM_mapStyle);
@@ -40228,7 +40515,7 @@ var vector_layer_any_DEFAULT_RADIUS = 7;
           }, 70);
         } else {
           _this.VM_allFeatures = geojsonFormat.writeFeatures(evento.features);
-          _this.VM_geometryType = evento.features.length > 0 ? evento.features[0].getGeometry().getType() : "";
+          _this.VM_geometryType = evento.features.length > 0 ? evento.features[0].getGeometry().getType() : _this.tipoGeometria;
 
           if (!_this.VM_is_classified) {
             var serializes = fixSerializedStyleIfIncomplete(_this.VM_mapStyle);
@@ -40242,8 +40529,32 @@ var vector_layer_any_DEFAULT_RADIUS = 7;
       };
 
       if (this.VM_featuresGroup) {
+        vectorSource.getSource().on("featuresloadstart", function () {
+          if (_this.useLoader) {
+            _this.addLayerLoaderToQueue("l-" + _this.VM_id);
+          }
+        });
+        vectorSource.getSource().on("featuresloaderror", function () {
+          if (_this.useLoader) {
+            _this.removeLayerLoaderFromQueue("l-" + _this.VM_id);
+          }
+
+          _this.VM_has_errors = true;
+        });
         vectorSource.getSource().on("featuresloadend", listenerFn);
       } else {
+        vectorSource.on("featuresloadstart", function () {
+          if (_this.useLoader) {
+            _this.addLayerLoaderToQueue("l-" + _this.VM_id);
+          }
+        });
+        vectorSource.on("featuresloaderror", function () {
+          if (_this.useLoader) {
+            _this.removeLayerLoaderFromQueue("l-" + _this.VM_id);
+          }
+
+          _this.VM_has_errors = true;
+        });
         vectorSource.on("featuresloadend", listenerFn);
       }
     },
@@ -62281,10 +62592,11 @@ var defaultsValuesRule = {
         });
       } else {
         features = this.olLayer.getSource().getFeatures();
-      } //console.log(this.VM_geometryType,"el tipo de geometria")
+      }
 
+      this.VM_geometryType = features.length > 0 ? features[0].getGeometry().getType() : this.tipoGeometria; //this.VM_geometryType
+      //console.log(this.VM_geometryType,"el tipo de geometria desde CLASSS layer",this.VM_id)
 
-      this.VM_geometryType = features.length > 0 ? features[0].getGeometry().getType() : '';
       this.VM_default_shape = this.VM_rules.map(function (rule) {
         return rule.forma;
       }).some(function (element) {
@@ -68808,8 +69120,6 @@ var VectorImage_VectorImageLayer = /** @class */ (function (_super) {
         } else {
           vectorSource.on("featuresloadend", function () {
             setTimeout(function () {
-              //console.log(evento.target.getFeatures())
-              //console.log("cambio el source del layer, evento cachado, geojson.vue")
               _this._clasificar_v2();
 
               _this._set_style_class_v2();
@@ -69234,7 +69544,7 @@ var Cluster_Cluster = /** @class */ (function (_super) {
             _this._set_style_class_v2();
           }
 
-          _this._saveAllFeaturesFromSource(_this.olLayer.getSource());
+          _this._saveAllFeaturesFromSource(_this.olLayer.getSource(), false);
 
           _this._setStyle();
         }
@@ -70778,7 +71088,7 @@ ol_source_HexBin.prototype.getHexFeatures = function () {
             _this._set_style_class_v2();
           }
 
-          _this._saveAllFeaturesFromSource(_this.olLayer.getSource());
+          _this._saveAllFeaturesFromSource(_this.olLayer.getSource(), false);
 
           _this._setStyle();
         }
@@ -70795,7 +71105,7 @@ ol_source_HexBin.prototype.getHexFeatures = function () {
             _this._set_style_class_v2();
           }
 
-          _this._saveAllFeaturesFromSource(_this.olLayer.getSource());
+          _this._saveAllFeaturesFromSource(_this.olLayer.getSource(), false);
 
           _this._setStyle();
         }
@@ -72072,12 +72382,15 @@ var ImageWMS_ImageWMS = /** @class */ (function (_super) {
   },
   methods: {
     _createLayerObject: function _createLayerObject() {
+      var _this = this;
+
+      var sourceLayer = new source_ImageWMS({
+        url: this.url,
+        params: this.parametros,
+        serverType: this.serverType
+      });
       this.olLayer = new layer_Image({
-        source: new source_ImageWMS({
-          url: this.url,
-          params: this.parametros,
-          serverType: this.serverType
-        })
+        source: sourceLayer
       });
 
       if (this.extension != undefined) {
@@ -72101,6 +72414,26 @@ var ImageWMS_ImageWMS = /** @class */ (function (_super) {
 
       this.VM_legend_info_status = "ready";
       this.$emit("legend_info_ready", this.VM_legend_info);
+      sourceLayer.on("imageloadstart", function () {
+        if (_this.useLoader) {
+          _this.addLayerLoaderToQueue("wms-" + _this.VM_id);
+        }
+      });
+      sourceLayer.on("imageloaderror", function () {
+        if (_this.useLoader) {
+          _this.removeLayerLoaderFromQueue("wms-" + _this.VM_id);
+        } //console.log("Error al cargar "+this.VM_id)
+
+
+        _this.VM_has_errors = true;
+      });
+      sourceLayer.on("imageloadend", function () {
+        if (_this.useLoader) {
+          _this.removeLayerLoaderFromQueue("wms-" + _this.VM_id);
+        }
+
+        _this.VM_has_errors = false;
+      });
     }
   },
   watch: {
