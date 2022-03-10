@@ -3,7 +3,11 @@
         <dai-tarjeta-contenedor-mapa>
             <template #header>
                 <p>Da click en el boton para llenar o vaciar la capa</p>
-                <button @click="vaciar=!vaciar">{{vaciar?'llenar':'vaciar'}}</button>
+                <button @click="vaciar_poligonos=!vaciar_poligonos">{{vaciar_poligonos?'llenar poligonos':'vaciar poligonos'}}</button>
+
+                <dai-leyenda-mapa para="poligonos" />
+                <hr v-width-control="'100%'">
+                <button @click="vaciar_centroides=!vaciar_centroides">{{vaciar_centroides?'llenar centroides':'vaciar centroides'}}</button>
 
                 <dai-leyenda-mapa para="centroides" />
             </template>
@@ -12,12 +16,24 @@
             >
                 <dai-capa-xyz/>
                 <dai-capa-geojson 
+                id="poligonos"
+                :datos="poligonosComputados"
+                :estilo-capa="{
+                    fill:{color:'#D9D7F1'},
+                    stroke:{color:'white',width:1}
+                }"
+                />
+                <dai-capa-geojson 
                 id="centroides"
                 :datos="centroidesComputados"
                 :estilo-capa="{
-                    fill:{color:'green'},
-                    stroke:{color:'white',width:1}
+                    circle:{
+                        fill:{color:'#E7FBBE'},
+                        stroke:{color:'#FFCBCB',width:1},
+                        radius:5
+                    }
                 }"
+                tipo-geometria="Point"
                 />
             </dai-mapa>
         </dai-tarjeta-contenedor-mapa>
@@ -25,17 +41,23 @@
 </template>
 
 <script>
-import centroides from "../capas/sample-edos.json"
+import poligonos from "../capas/sample-edos.json"
+import centroides from "../capas/centroides-estados.json"
 export default {
     data: function (){
         return {
+            poligonos:poligonos,
+            vaciar_poligonos:true,
             centroides:centroides,
-            vaciar:true
+            vaciar_centroides:true
         }
     },
     computed: {
+        poligonosComputados:function(){
+            return !this.vaciar_poligonos ? this.poligonos : {"type": "FeatureCollection",features:[]}
+        },
         centroidesComputados:function(){
-            return !this.vaciar ? this.centroides : {"type": "FeatureCollection",features:[]}
+            return !this.vaciar_centroides ? this.centroides : {"type": "FeatureCollection",features:[]}
         }
     }
 }
