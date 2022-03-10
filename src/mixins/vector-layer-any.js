@@ -287,7 +287,8 @@ export default{
             }
             
         },
-        _saveAllFeaturesFromSource:function(vectorSource){
+        _saveAllFeaturesFromSource:function(vectorSource,initial=true){
+            
             let geojsonFormat = new GeoJSON()
             //console.log(vectorSource.getUrl(),vectorSource.getSource(),"---")
             //if(vectorSource.getFeatures().length>1){
@@ -309,12 +310,21 @@ export default{
                 
                 this.VM_geometryType = vectorSource.getFeatures().length > 0 
                     ? vectorSource.getFeatures()[0].getGeometry().getType() 
-                    : ""
+                    : this.tipoGeometria
+                //console.log(this.VM_geometryType,"el tipo de geometria desde VECTOR layer",this.VM_id)
+
                 this.$emit("saved_features",this.VM_allFeatures)
+                if(this.useLoader){
+                    this.removeLayerLoaderFromQueue("l-"+this.VM_id)
+                }
                 return
             }
             //console.log("---AQUI ESPERAR LAS FEATURES EN VM_allfeatures")
             let listenerFn = (evento)=>{
+
+                if(this.useLoader){
+                    this.removeLayerLoaderFromQueue("l-"+this.VM_id)
+                }
                 
                 
                 if(this.VM_featuresGroup){
@@ -328,7 +338,7 @@ export default{
                         this.VM_allFeatures = JSON.stringify(objects)
                         this.VM_geometryType = this.olLayer.getSource().getFeatures().length > 0 
                             ? this.olLayer.getSource().getFeatures()[0].getGeometry().getType() 
-                            : ""
+                            : this.tipoGeometria
                         
                         if(!this.VM_is_classified){
                             let serializes= fixSerializedStyleIfIncomplete( this.VM_mapStyle )
@@ -340,7 +350,7 @@ export default{
                     
                 }else{
                     this.VM_allFeatures = geojsonFormat.writeFeatures(evento.features)
-                    this.VM_geometryType = evento.features.length > 0 ? evento.features[0].getGeometry().getType() : ""
+                    this.VM_geometryType = evento.features.length > 0 ? evento.features[0].getGeometry().getType() : this.tipoGeometria
                     if(!this.VM_is_classified){
                         let serializes= fixSerializedStyleIfIncomplete( this.VM_mapStyle )
                         this.setDefaultLegendInfo(serializes)
@@ -358,8 +368,30 @@ export default{
 
             
             if(this.VM_featuresGroup){
+                vectorSource.getSource().on("featuresloadstart",()=>{
+                    if(this.useLoader){
+                        this.addLayerLoaderToQueue("l-"+this.VM_id)
+                    }
+                })
+                vectorSource.getSource().on("featuresloaderror",()=>{
+                    if(this.useLoader){
+                        this.removeLayerLoaderFromQueue("l-"+this.VM_id)
+                    }
+                    this.VM_has_errors = true;
+                })
                 vectorSource.getSource().on("featuresloadend",listenerFn)
             }else{
+                vectorSource.on("featuresloadstart",()=>{
+                    if(this.useLoader){
+                        this.addLayerLoaderToQueue("l-"+this.VM_id)
+                    }
+                })
+                vectorSource.on("featuresloaderror",()=>{
+                    if(this.useLoader){
+                        this.removeLayerLoaderFromQueue("l-"+this.VM_id)
+                    }
+                    this.VM_has_errors = true;
+                })
                 vectorSource.on("featuresloadend",listenerFn)
             }
             

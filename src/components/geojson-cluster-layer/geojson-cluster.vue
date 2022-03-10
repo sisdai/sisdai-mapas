@@ -85,7 +85,7 @@ export default {
                         this._clasificar_v2();
                         this._set_style_class_v2()
                     }
-                    this._saveAllFeaturesFromSource(this.olLayer.getSource())
+                    this._saveAllFeaturesFromSource(this.olLayer.getSource(),false)
                     this._setStyle()
                 }
                 

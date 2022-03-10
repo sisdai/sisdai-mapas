@@ -1,6 +1,8 @@
 <template>
     <div class="dai-map-container">
-        
+        <transition name="fade">
+            <loader v-if="VM_loader_queue.length>0" />
+        </transition>
 
         <div class="dai-map " 
         :class="[colorControlesInvertidos ? 'inverted-controls': 'default-controls']" 
@@ -42,6 +44,8 @@ import {defaults as defaultInteractions} from 'ol/interaction';
 import Attribution from 'ol/control/Attribution';
 import MouseWheelZoom from 'ol/interaction/MouseWheelZoom';
 import {getCenter} from 'ol/extent';
+
+import loader from "../utils/loader.vue"
 
 export default {
     name:"DaiMapa",
@@ -108,7 +112,8 @@ export default {
             VM_nivel_control : undefined,
 
             VM_scrollZoomInteraction: undefined,
-            VM_isTouchDevice:false
+            VM_isTouchDevice:false,
+            VM_loader_queue:[]
         }
     },
     created:function(){
@@ -118,7 +123,9 @@ export default {
         this.VM_has_niveles = this.niveles.length > 0;
         this.VM_nivel_actual = this.nivelActual
     },
-    
+    components:{
+        loader
+    },
     mounted:function(){
         
         let resetcontrol = new ResetControl();
@@ -256,6 +263,10 @@ export default {
             this.$emit("remove-layer")
         })
 
+        this.$refs.map.addEventListener("mouseout",()=>{
+            overlay_tooltip.setPosition(undefined);
+            overlay_tooltip_mov.setPosition(undefined);
+        })
         
     },
     methods:{
@@ -330,12 +341,26 @@ export default {
                 this.setNivel(this.niveles[newIndex])
             }
             
-        }
+        },
+        _addLayerLoaderToQueue: function(id){
+            this.VM_loader_queue.push(id)
+        },
+        _removeLayerLoaderFromQueue: function(id){
+            let idx = this.VM_loader_queue.findIndex(item=>item===id);
+            //console.log(idx,id,this.VM_loader_queue)
+            if(idx>-1){
+                this.VM_loader_queue.splice(idx,1);
+            }
+            
+        },
     },
     provide:function(){
         return {
             getMap:this._getMap,
-            registerLayer: this._registerLayer
+            registerLayer: this._registerLayer,
+            addLayerLoaderToQueue: this._addLayerLoaderToQueue,
+            removeLayerLoaderFromQueue: this._removeLayerLoaderFromQueue
+
         }
     },watch:{
         nivelActual:function(newNIvel){

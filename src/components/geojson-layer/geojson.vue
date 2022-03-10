@@ -27,8 +27,6 @@ export default {
                 }else{
                     vectorSource.on("featuresloadend",()=>{
                         setTimeout(()=>{
-                            //console.log(evento.target.getFeatures())
-                            //console.log("cambio el source del layer, evento cachado, geojson.vue")
                             this._clasificar_v2();
                             this._set_style_class_v2()
                             this._setStyle()

@@ -115,9 +115,9 @@ export default{
                 features = this.olLayer.getSource().getFeatures();
             }
             
-            //console.log(this.VM_geometryType,"el tipo de geometria")
-            this.VM_geometryType = features.length>0 ? features[0].getGeometry().getType() : ''
-
+            
+            this.VM_geometryType = features.length>0 ? features[0].getGeometry().getType() : this.tipoGeometria //this.VM_geometryType
+            //console.log(this.VM_geometryType,"el tipo de geometria desde CLASSS layer",this.VM_id)
             this.VM_default_shape = this.VM_rules.map(rule=>rule.forma).some(element=>element!="default") 
                 ? this.VM_rules.map(rule2=>rule2.forma).filter(element2=>element2!="default")[0] :"circle"
 
