@@ -53,7 +53,7 @@
 
 .dai-reset{
     left: .5rem;
-    bottom: .5rem;
+    bottom: calc( .8rem + 24px );
     .dai-reset-button{
         
         span{
@@ -64,7 +64,7 @@
 
 .dai-nivel-map{
     left: .5rem;
-    bottom: calc(.5rem + 42px);
+    bottom: calc(.8rem + 42px + 24px);
     &.hidden{
         display: none;
     }
@@ -93,4 +93,22 @@
     &:hover{
         background-color: white;
     }
+}
+
+.ol-control.dai-enlace-conacyt{
+    left: .5rem;
+    bottom: .1rem;
+    //background-color: #ffffffcc;
+    //padding: 2px 3px 0 3px;
+    a{
+        svg{
+            width: 85px;
+            height: 24px;
+            fill: #8C8D8E;
+            &:hover{
+                fill : #002663
+            }
+        }
+    }
+    
 }
