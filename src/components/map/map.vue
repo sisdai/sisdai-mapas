@@ -37,7 +37,7 @@ import Map from 'ol/Map';
 import View from 'ol/View';
 import Overlay from 'ol/Overlay';
 //import { defaults as defaultControls} from 'ol/control';
-import CustomZoomControl, {ResetControl,NivelControl,LogoConacytControl} from "./_zoom-control"
+import CustomZoomControl, {ResetControl,NivelControl} from "./_zoom-control"
 import {invoke_tooltips} from "./_invokeTooltips";
 import {invoke_clicks} from "./_invokeClicks";
 import {defaults as defaultInteractions} from 'ol/interaction';
@@ -148,8 +148,6 @@ export default {
             collapsible:false
         })
 
-        let logoConacytControl = new LogoConacytControl();
-
         const extensionMaxima = this.noSalirDeExtension[0] === 0 && this.noSalirDeExtension[3] === 0 ? undefined : this.noSalirDeExtension
 
         this.map = new Map({
@@ -163,7 +161,7 @@ export default {
                 minZoom: this.minZoom,
                 extent: extensionMaxima
             }),
-            controls:[new CustomZoomControl(),resetcontrol,this.VM_nivel_control,attributionControl,logoConacytControl],
+            controls:[new CustomZoomControl(),resetcontrol,this.VM_nivel_control,attributionControl],
             interactions: defaultInteractions({
                 mouseWheelZoom: false,
                 altShiftDragRotate:false
