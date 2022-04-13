@@ -278,6 +278,8 @@ export default {
     border-top: 1px solid black;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 
     svg.logo-conacyt{
         width: 102px;
