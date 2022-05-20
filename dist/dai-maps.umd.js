@@ -6203,12 +6203,12 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
 var es_function_name = __webpack_require__("b0c0");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a636930-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/map.vue?vue&type=template&id=02792335&
-var mapvue_type_template_id_02792335_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"dai-map-container"},[_c('transition',{attrs:{"name":"fade"}},[(_vm.VM_loader_queue.length>0)?_c('loader'):_vm._e()],1),_c('div',{ref:"map",staticClass:"dai-map ",class:[_vm.colorControlesInvertidos ? 'inverted-controls': 'default-controls']}),_vm._t("default"),_c('div',{ref:"tooltip",staticClass:"ol-tooltip ol-tooltip-bottom"},[(_vm.VM_isTouchDevice)?_c('div',{staticClass:"botones"},[_c('button',{staticClass:"boton-cerrar",on:{"click":_vm.cerrarTooltip}},[_c('span',{staticClass:"dai-icon-cerrar"})])]):_vm._e(),_c('div',{staticClass:"content"})]),_c('div',{ref:"tooltipmov",staticClass:"ol-tooltipmov "},[(_vm.VM_isTouchDevice)?_c('div',{staticClass:"botones"},[_c('button',{staticClass:"boton-cerrar",on:{"click":_vm.cerrarTooltip}},[_c('span',{staticClass:"dai-icon-cerrar"})])]):_vm._e(),_c('div',{staticClass:"content"})]),_c('div',{ref:"popup",staticClass:"ol-popup"},[_c('div',{staticClass:"botones"},[_c('button',{staticClass:"boton-cerrar",on:{"click":_vm._cerrarPopup}},[_c('span',{staticClass:"dai-icon-cerrar"})])]),_c('div',{staticClass:"content"})])],2)}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a636930-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/map.vue?vue&type=template&id=3e6be580&
+var mapvue_type_template_id_3e6be580_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"dai-map-container"},[_c('transition',{attrs:{"name":"fade"}},[(_vm.VM_loader_queue.length>0)?_c('loader'):_vm._e()],1),_c('div',{ref:"map",staticClass:"dai-map ",class:[_vm.colorControlesInvertidos ? 'inverted-controls': 'default-controls']}),_vm._t("default"),_c('div',{ref:"tooltip",staticClass:"ol-tooltip ol-tooltip-bottom"},[(_vm.VM_isTouchDevice)?_c('div',{staticClass:"botones"},[_c('button',{staticClass:"boton-cerrar",on:{"click":_vm.cerrarTooltip}},[_c('span',{staticClass:"dai-icon-cerrar"})])]):_vm._e(),_c('div',{staticClass:"content"})]),_c('div',{ref:"tooltipmov",staticClass:"ol-tooltipmov "},[(_vm.VM_isTouchDevice)?_c('div',{staticClass:"botones"},[_c('button',{staticClass:"boton-cerrar",on:{"click":_vm.cerrarTooltip}},[_c('span',{staticClass:"dai-icon-cerrar"})])]):_vm._e(),_c('div',{staticClass:"content"})]),_c('div',{ref:"popup",staticClass:"ol-popup"},[_c('div',{staticClass:"botones"},[_c('button',{staticClass:"boton-cerrar",on:{"click":_vm._cerrarPopup}},[_c('span',{staticClass:"dai-icon-cerrar"})])]),_c('div',{staticClass:"content"})])],2)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/map/map.vue?vue&type=template&id=02792335&
+// CONCATENATED MODULE: ./src/components/map/map.vue?vue&type=template&id=3e6be580&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.number.constructor.js
 var es_number_constructor = __webpack_require__("a9e3");
@@ -6227,6 +6227,15 @@ var es_array_find_index = __webpack_require__("c740");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.splice.js
 var es_array_splice = __webpack_require__("a434");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.exec.js
+var es_regexp_exec = __webpack_require__("ac1f");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.split.js
+var es_string_split = __webpack_require__("1276");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.match.js
+var es_string_match = __webpack_require__("466d");
 
 // CONCATENATED MODULE: ./node_modules/ol/Disposable.js
 /**
@@ -27139,6 +27148,9 @@ var loader_component = normalizeComponent(
 
 
 
+
+
+
 //
 //
 //
@@ -27503,6 +27515,42 @@ var loader_component = normalizeComponent(
       if (idx > -1) {
         this.VM_loader_queue.splice(idx, 1);
       }
+    },
+    getPngDataUrl: function getPngDataUrl() {
+      var map = this.map;
+      var mapCanvas = document.createElement('canvas');
+      var size = map.getSize();
+      mapCanvas.width = size[0];
+      mapCanvas.height = size[1];
+      var mapContext = mapCanvas.getContext('2d');
+      Array.prototype.forEach.call(map.getViewport().querySelectorAll('.ol-layer canvas, canvas.ol-layer'), function (canvas) {
+        if (canvas.width > 0) {
+          var opacity = canvas.parentNode.style.opacity || canvas.style.opacity;
+          mapContext.globalAlpha = opacity === '' ? 1 : Number(opacity);
+          var backgroundColor = canvas.parentNode.style.backgroundColor;
+
+          if (backgroundColor) {
+            mapContext.fillStyle = backgroundColor;
+            mapContext.fillRect(0, 0, canvas.width, canvas.height);
+          }
+
+          var matrix;
+          var transform = canvas.style.transform;
+
+          if (transform) {
+            // Get the transform parameters from the style's transform matrix
+            matrix = transform.match(/^matrix\(([^\(]*)\)$/)[1].split(',').map(Number);
+          } else {
+            matrix = [parseFloat(canvas.style.width) / canvas.width, 0, 0, parseFloat(canvas.style.height) / canvas.height, 0, 0];
+          } // Apply the transform to the export map context
+
+
+          CanvasRenderingContext2D.prototype.setTransform.apply(mapContext, matrix);
+          mapContext.drawImage(canvas, 0, 0);
+        }
+      });
+      mapContext.globalAlpha = 1;
+      return mapCanvas.toDataURL();
     }
   },
   provide: function provide() {
@@ -27568,7 +27616,7 @@ var mapvue_type_style_index_0_lang_scss_ = __webpack_require__("9ec5");
 
 var map_component = normalizeComponent(
   map_mapvue_type_script_lang_js_,
-  mapvue_type_template_id_02792335_render,
+  mapvue_type_template_id_3e6be580_render,
   staticRenderFns,
   false,
   null,
@@ -33329,6 +33377,10 @@ var es_regexp_to_string = __webpack_require__("25f0");
     useLoader: {
       type: Boolean,
       default: false
+    },
+    className: {
+      type: String,
+      default: 'ol-layer'
     }
   },
   watch: {
@@ -33365,7 +33417,8 @@ var es_regexp_to_string = __webpack_require__("25f0");
   methods: {
     _createLayerObject: function _createLayerObject() {
       this.olLayer = new layer_Tile({
-        source: new source_OSM()
+        source: new source_OSM(),
+        className: this.className
       });
     }
   }
@@ -33429,8 +33482,10 @@ function xyz_layer_osm_plugin(Vue) {
       this.olLayer = new layer_Tile({
         source: new source_XYZ({
           url: this.url,
-          attributions: this.atribuciones
-        })
+          attributions: this.atribuciones,
+          crossOrigin: 'Anonymous'
+        }),
+        className: this.className
       });
     }
   },
@@ -33593,12 +33648,6 @@ function _objectSpread2(target) {
 }
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.fill.js
 var es_array_fill = __webpack_require__("cb29");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.exec.js
-var es_regexp_exec = __webpack_require__("ac1f");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.split.js
-var es_string_split = __webpack_require__("1276");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.assign.js
 var es_object_assign = __webpack_require__("cca6");
@@ -69137,7 +69186,8 @@ var VectorImage_VectorImageLayer = /** @class */ (function (_super) {
       var vectorSource = this.datos != undefined ? geojsonvue_type_script_lang_js_createGeojsonSourceFromObjectJs(this.datos) : geojsonvue_type_script_lang_js_createGeojsonSourceFromUrl(this.url);
       var LayerClass = this.renderizarComoImagen ? VectorImage : layer_Vector;
       this.olLayer = new LayerClass({
-        source: vectorSource
+        source: vectorSource,
+        className: this.className
       });
       this.olLayer.set("_realce_hover", this.realceAlPasarMouse);
 
@@ -69527,7 +69577,8 @@ var Cluster_Cluster = /** @class */ (function (_super) {
           source: vectorSource,
           distance: this.distancia,
           minDistance: this.distanciaMinima
-        })
+        }),
+        className: this.className
       });
       this.olLayer.set("_realce_hover", this.realceAlPasarMouse);
 
@@ -71069,7 +71120,8 @@ ol_source_HexBin.prototype.getHexFeatures = function () {
         source: new HexBin({
           source: vectorSource,
           size: .5
-        })
+        }),
+        className: this.className
       });
       this.olLayer.set("_realce_hover", this.realceAlPasarMouse);
 
@@ -71241,7 +71293,8 @@ var geojson_hexbin_dinamico_component = normalizeComponent(
         source: new HexBin({
           source: vectorSource,
           size: this.diametro
-        })
+        }),
+        className: this.className
       });
       this.olLayer.set("_realce_hover", this.realceAlPasarMouse);
 
@@ -72416,10 +72469,12 @@ var ImageWMS_ImageWMS = /** @class */ (function (_super) {
       var sourceLayer = new source_ImageWMS({
         url: this.url,
         params: this.parametros,
-        serverType: this.serverType
+        serverType: this.serverType,
+        crossOrigin: 'Anonymous'
       });
       this.olLayer = new layer_Image({
-        source: sourceLayer
+        source: sourceLayer,
+        className: this.className
       });
 
       if (this.extension != undefined) {
@@ -72524,9 +72579,6 @@ var legendvue_type_template_id_3508e3be_staticRenderFns = []
 
 
 // CONCATENATED MODULE: ./src/components/legend-control/legend.vue?vue&type=template&id=3508e3be&
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.match.js
-var es_string_match = __webpack_require__("466d");
 
 // CONCATENATED MODULE: ./src/mixins/control.js
 
