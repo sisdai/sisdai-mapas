@@ -44,9 +44,11 @@ export default {
           url: this.url,
           params: this.parametros,
           serverType: this.serverType,
+          crossOrigin: 'Anonymous'
       })
       this.olLayer = new ImageLayer({
         source: sourceLayer,
+        className : this.className
       });
 
       if (this.extension != undefined) {

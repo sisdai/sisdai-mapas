@@ -21,8 +21,10 @@ export default {
             this.olLayer = new TileLayer({
                 source: new XYZ({
                     url: this.url,
-                    attributions:this.atribuciones
+                    attributions:this.atribuciones,
+                    crossOrigin: 'Anonymous'
                 }),
+                className : this.className,
             })
         }
     },

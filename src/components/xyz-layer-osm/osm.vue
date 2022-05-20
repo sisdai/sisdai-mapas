@@ -9,7 +9,8 @@ export default {
     methods:{
         _createLayerObject:function(){
             this.olLayer = new TileLayer({
-                source: new OSM()
+                source: new OSM(),
+                className : this.className
             })
         }
     }
