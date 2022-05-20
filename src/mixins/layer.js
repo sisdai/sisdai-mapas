@@ -99,6 +99,10 @@ export default{
         useLoader:{
             type:Boolean,
             default:false
+        },
+        className: {
+            type: String,
+            default : 'ol-layer'
         }
     },
     watch:{

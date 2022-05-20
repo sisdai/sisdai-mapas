@@ -38,7 +38,8 @@ export default {
                     source: vectorSource,
                     distance:this.distancia,
                     minDistance:this.distanciaMinima
-                }) 
+                }) ,
+                className : this.className
             })
             this.olLayer.set("_realce_hover",this.realceAlPasarMouse)
 

@@ -29,7 +29,8 @@ export default {
             let vectorSource = this.datos != undefined ? createGeojsonSourceFromObjectJs(this.datos) : createGeojsonSourceFromUrl(this.url)
             const LayerClass= this.renderizarComoImagen ? VectorImage : VectorLayer
             this.olLayer = new LayerClass({
-                source: new HexBin({source:vectorSource, size:this.diametro})
+                source: new HexBin({source:vectorSource, size:this.diametro}),
+                className : this.className
             })
             this.olLayer.set("_realce_hover",this.realceAlPasarMouse)
             if(this.VM_is_classified){
