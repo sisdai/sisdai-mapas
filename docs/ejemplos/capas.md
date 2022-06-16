@@ -379,7 +379,7 @@ Las capas que tienen una fuente remota, por ejempplo al cargar un geojson desde 
         
         <dai-capa-geojson 
         id="estados_poligonos"
-        :url="$withBase('/sample-edos.geojson')"
+        url="/sample-edos.geojson"
         :estilo-capa="{fill:{color:'yellow'},stroke:{color:'black',width:1}}"
         :use-loader="true"
         :visible="false"
@@ -413,7 +413,7 @@ El WMS y/o los formatos de mosaicos al ser formatos que en cada interaccion pide
     >   
         <dai-capa-geojson 
         id="estados_poligonos"
-        :url="$withBase('/sample-edos.geojson')"
+        url="/sample-edos.geojson"
         :estilo-capa="{fill:{color:'yellow'},stroke:{color:'black',width:1}}"
         :use-loader="true"
         :visible="false"
