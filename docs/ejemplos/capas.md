@@ -309,3 +309,128 @@ Los popups son los cuadros de información que aparecen cuando se da click a alg
 
 
 <capas-8-eventos-capas />
+
+```html
+<DaiMapa
+:extension="[-118.365119934082,14.5320978164673,-86.7104034423828,32.7186546325684]" 
+>
+    <DaiCapaXyz />
+    <!--Un tooltip con contenido estatico-->
+    <DaiCapaGeojson 
+    id="estados_poligonos"
+    :url="$withBase('/sample-edos.geojson')"
+    @hover_feature="hover1"
+    @click_feature="click1"
+    :reglas-estilo-capa="{
+        clasificacion:'cuantiles',
+        columna:'pob18ymas',
+        colores:'Reds'
+    }"
+/>
+                
+</DaiMapa>
+<p :style="{color:tooltip_fuera_color}">{{tooltip_fuera_contenido}}</p>
+<hr>
+<p :style="{color:tooltip_fuera_color2}">{{tooltip_fuera_contenido2}}</p>
+
+```
+
+```javascript
+export default {
+    methods:{
+        hover1:function(e){
+            // e = {feature: featureProperties, style: olStyle}
+            // featureProperties => propiedades de la geometria, atributos asociados
+            // olStyle => https://openlayers.org/en/latest/apidoc/module-ol_style_Style-Style.html
+            this.tooltip_fuera_contenido = "ocurrio un hover en "+e.feature.nom_edo
+            this.tooltip_fuera_color = e.style.getFill().getColor()
+        },
+        click1:function(e){
+            //e = [olFeature, olLayer]
+            //olFeature => https://openlayers.org/en/latest/apidoc/module-ol_Feature-Feature.html
+            //olLayer  => https://openlayers.org/en/latest/apidoc/module-ol_layer_Vector-VectorLayer.html
+            this.tooltip_fuera_contenido2 = "ocurrio un click en "+e[0].getProperties().nom_edo
+            
+        }
+    },
+    data:function(){
+        return{
+            tooltip_fuera_contenido:"Pasa el mouse sobre algun estado, y pon atencion al color de este texto",
+            tooltip_fuera_color:"black",
+            tooltip_fuera_contenido2:"Da click sobre algun estado",
+            tooltip_fuera_color2:"black"
+
+        }
+    }
+}
+```
+
+## Usar loader en las capas
+
+Las capas que tienen una fuente remota, por ejempplo al cargar un geojson desde otra ubicacion o un servicio de geoserver, en algunos casos sera necesario usar un loader para que el usuario conoz ca que se esta esperando la peticion de otro servicio 
+
+<capas-9-loader :loader_on_refresh_wms="true" />
+
+```html
+<dai-tarjeta-contenedor-mapa :permitir-colapso="false">
+    <dai-mapa
+    :extension="[-118.365119934082,14.5320978164673,-86.7104034423828,32.7186546325684]" 
+    >
+        
+        <dai-capa-geojson 
+        id="estados_poligonos"
+        url="/sample-edos.geojson"
+        :estilo-capa="{fill:{color:'yellow'},stroke:{color:'black',width:1}}"
+        :use-loader="true"
+        :visible="false"
+        />
+        
+        <dai-capa-wms 
+        id="estados_geoserver"
+        url="https://dadsigvisgeo.conacyt.mx/geoserver/pueblosindigenas/wms"
+        :parametros="{'LAYERS':'pueblosindigenas:estados_hist_resi'}"
+        :use-loader="true"
+        :visible="false"
+        />
+    </dai-mapa>
+    <template v-slot:header>
+        <dai-leyenda-mapa
+        :para="['estados_poligonos','estados_centroides','estados_geoserver']"
+        />
+    </template>
+</dai-tarjeta-contenedor-mapa>
+```
+
+
+El WMS y/o los formatos de mosaicos al ser formatos que en cada interaccion piden una  peticion al servicio remoto, por default al marcar la propiedad  `use-loader=true` desplegaran un loader cada vez que se prenda la capa y que se navegue en ella. Si solo se desea que el loader aparezca la primera vez que se carga la capa (para dar la percepcion que el mapa es mas fluido). Tendra  que agregar `use-loader-only-first-time = true` (Esto no aplica para las capas vectoriales)
+
+<capas-9-loader :loader_on_refresh_wms="false" />
+
+```html{17}
+<dai-tarjeta-contenedor-mapa :permitir-colapso="false">
+    <dai-mapa
+    :extension="[-118.365119934082,14.5320978164673,-86.7104034423828,32.7186546325684]" 
+    >   
+        <dai-capa-geojson 
+        id="estados_poligonos"
+        url="/sample-edos.geojson"
+        :estilo-capa="{fill:{color:'yellow'},stroke:{color:'black',width:1}}"
+        :use-loader="true"
+        :visible="false"
+        />   
+        <dai-capa-wms 
+        id="estados_geoserver"
+        url="https://dadsigvisgeo.conacyt.mx/geoserver/pueblosindigenas/wms"
+        :parametros="{'LAYERS':'pueblosindigenas:estados_hist_resi'}"
+        :use-loader="true"
+        :useLoaderOnlyFirstTime="true"
+        :visible="false"
+        />
+    </dai-mapa>
+    <template v-slot:header>
+        <dai-leyenda-mapa
+        :para="['estados_poligonos','estados_centroides','estados_geoserver']"
+        />
+    </template>
+</dai-tarjeta-contenedor-mapa>
+```

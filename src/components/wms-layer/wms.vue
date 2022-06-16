@@ -7,6 +7,11 @@ import image_layer from "../../mixins/image-layer";
 export default {
   name: "DaiCapaWms",
   mixins: [layer, image_layer],
+  data(){
+    return {
+        VM_loaderCounter:0
+    }
+  },
   props: {
     /**
      * url del servicio wms
@@ -37,6 +42,10 @@ export default {
         return {};
       },
     },
+    useLoaderOnlyFirstTime: {
+        type: Boolean,
+        default: false
+    }
   },
   methods: {
     _createLayerObject: function () {
@@ -76,7 +85,17 @@ export default {
 
       sourceLayer.on("imageloadstart",()=>{
         if(this.useLoader){
-          this.addLayerLoaderToQueue("wms-"+this.VM_id)
+            if(this.useLoaderOnlyFirstTime){
+                if(this.VM_loaderCounter ===0){
+                    this.addLayerLoaderToQueue("wms-"+this.VM_id)
+                    this.VM_loaderCounter++
+                }
+                
+            }else{
+                this.addLayerLoaderToQueue("wms-"+this.VM_id)
+                this.VM_loaderCounter++
+            }
+          
         }
       })
 
@@ -102,6 +121,14 @@ export default {
         this.olLayer.getSource().updateParams(nValue);
       }
     },
+    useLoader: function(usarLoader){
+        /**
+         * Remover los loaders al poner esta bandera en false
+         */
+        if(!usarLoader){
+            this.removeLayerLoaderFromQueue("wms-"+this.VM_id)
+        }
+    }
   },
 };
 </script>
