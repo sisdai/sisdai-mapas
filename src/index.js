@@ -8,6 +8,7 @@ import {
     DaiCapaGeojsonCluster,
     DaiCapaGeojsonHexbin,
     DaiWmsLayer,
+    DaiCapaUtfGrid,
 
     DaiLeyendaMapa,
     DaiMapSelector,
@@ -36,6 +37,7 @@ export default function plugin(Vue){
     Vue.use(DaiCapaGeojsonCluster)
     Vue.use(DaiCapaGeojsonHexbin)
     Vue.use(DaiWmsLayer)
+    Vue.use(DaiCapaUtfGrid)
 
     Vue.use(DaiLeyendaMapa)
     Vue.use(DaiMapSelector)

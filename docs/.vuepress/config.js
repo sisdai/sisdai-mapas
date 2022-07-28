@@ -76,7 +76,8 @@ module.exports = {
             'texturas',
             'texturas-sd',
             'cluster',
-            'mallas-hexagonales'
+            'mallas-hexagonales',
+            'utf-grid'
           ]
         }
       ],

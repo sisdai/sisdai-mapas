@@ -78,9 +78,10 @@ export default {
             this._saveAllFeaturesFromSource(this.olLayer.getSource())
             this._setStyle()
             
-            this.olMap.on("moveend",(e)=>{
-                
-                if(this.visible){
+            this.olMap.on("moveend",this.listenerMoveend)
+        },
+        listenerMoveend(e){
+            if(this.visible){
                     
                     if(this.VM_is_classified){
                         this._clasificar_v2();
@@ -88,9 +89,7 @@ export default {
                     }
                     this._saveAllFeaturesFromSource(this.olLayer.getSource(),false)
                     this._setStyle()
-                }
-                
-            })
+            }
         }
     },
     watch:{
@@ -122,6 +121,9 @@ export default {
         distanciaMinima:function(newDistancia){
             this.olLayer.getSource().setMinDistance(newDistancia);
         },
+    },
+    destroyed(){
+      this.olMap.un("moveend",this.listenerMoveend)  
     }
 }
 

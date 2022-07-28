@@ -9,7 +9,7 @@
                 <DaiCapaGeojson 
                 contenido-tooltip="hola soy un tooltip con un <a href='https://google.com' target='_blank'>enlace</a>"
                 :tooltip-estatico="true"
-                :tooltip-estatico-margen-superior="2"
+                :tooltip-estatico-margen-superior="1"
                 id="estados_poligonos"
                 :url="$withBase('/sample-edos.geojson')"
                 />

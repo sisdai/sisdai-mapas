@@ -113,7 +113,8 @@ export default {
 
             VM_scrollZoomInteraction: undefined,
             VM_isTouchDevice:false,
-            VM_loader_queue:[]
+            VM_loader_queue:[],
+            VM_grids:{}
         }
     },
     created:function(){
@@ -233,7 +234,7 @@ export default {
             if (evento.dragging) {
                 return;
             }
-            invoke_tooltips(this.map, evento)
+            invoke_tooltips(this.map, evento,this)
         })
         this.map.on("click",(e)=>{
             this.$emit("click",e)
@@ -284,7 +285,13 @@ export default {
         _registerLayer:function(component_layer){
             this.cmpLayers[component_layer.VM_id] = component_layer;
         },
-        
+        _registerGrid: function(component_grid){
+            this.VM_grids[component_grid.VM_id] = component_grid
+        },
+        _unregisterGrid: function(id){
+            this.VM_grids[id] = undefined
+            delete this.VM_grids[id]
+        },
         _cerrarPopup:function(){
             let popup_overlay = this.map.getOverlayById("popup")
             popup_overlay.setPosition(undefined)
@@ -412,8 +419,9 @@ export default {
             getMap:this._getMap,
             registerLayer: this._registerLayer,
             addLayerLoaderToQueue: this._addLayerLoaderToQueue,
-            removeLayerLoaderFromQueue: this._removeLayerLoaderFromQueue
-
+            removeLayerLoaderFromQueue: this._removeLayerLoaderFromQueue,
+            registerGrid:this._registerGrid,
+            unregisterGrid:this._unregisterGrid
         }
     },watch:{
         nivelActual:function(newNIvel){
