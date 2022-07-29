@@ -51,8 +51,8 @@ export default{
             const extent = mapa.getView().calculateExtent(mapa.getSize())
             const size = mapa.getSize()
             const parametros = {...this.wmsParametros,...defaultParametros}
-            parametros['WIDTH'] = size[0]
-            parametros['HEIGHT'] = size[1]
+            parametros["WIDTH"] =size[0] % 4 === 0 ?  size[0] : size[0] + size[0] % 4
+            parametros["HEIGHT"] = size[1] % 4 === 0 ?  size[1] : size[1] + size[1] % 4
             parametros['BBOX'] = extent.join(",")
 
             
