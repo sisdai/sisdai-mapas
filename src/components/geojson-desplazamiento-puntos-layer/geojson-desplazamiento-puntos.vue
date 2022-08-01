@@ -5,9 +5,9 @@ import classificable_layer from "../../mixins/classificable-layer";
 
 import VectorLayer from "ol/layer/Vector";
 import VectorImage from "ol/layer/VectorImage";
+import VectorSource from "ol/source/Vector";
 import GeoJSON from "ol/format/GeoJSON";
 import Cluster from "ol/source/Cluster";
-import Feature from "ol/Feature";
 
 import {
   createGeojsonSourceFromObjectJs,
@@ -29,7 +29,7 @@ export default {
       type: Number,
       default: 0,
     },
-    tipoVis: {
+    metodoUbicacion: {
       type: String,
       default: "anillo",
     },
@@ -66,7 +66,7 @@ export default {
 
       /** Reemplazar features antes de dibujar los que pasan cómo parámetros */
 
-      let vectorSourceVacio = createGeojsonSourceFromObjectJs();
+      let vectorSourceVacio = new VectorSource({ wrapX: false });
       this.olLayer = new LayerClass({
         source: vectorSourceVacio,
         className: this.className,

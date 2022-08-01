@@ -2,7 +2,6 @@ import VectorSource from "ol/source/Vector";
 import GeoJSON from "ol/format/GeoJSON";
 import { Circle as CircleStyle, Fill, Stroke, Style, Text } from "ol/style";
 import Point from "ol/geom/Point";
-import Feature from "ol/Feature";
 
 export const createGeojsonSourceFromObjectJs = JsObject => {
     if (typeof JsObject != "object") {

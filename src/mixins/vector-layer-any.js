@@ -321,7 +321,7 @@ export default{
                 return
             }
 
-            if (this.tipoVis !== undefined) {
+            if (this.metodoUbicacion !== undefined) {
                 /** Solo para cisualizaciones de despalazamiento de puntos */
                 this.VM_allFeatures = geojsonFormat.writeFeatures( vectorSource.getFeatures() );
             }
