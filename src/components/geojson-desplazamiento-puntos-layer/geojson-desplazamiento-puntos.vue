@@ -146,10 +146,10 @@ export default {
       }
     },
     distancia: function (newDistancia) {
-      this.olLayer.getSource().setDistance(newDistancia);
+      this.sourceCluster.setDistance(newDistancia);
     },
     distanciaMinima: function (newDistancia) {
-      this.olLayer.getSource().setMinDistance(newDistancia);
+      this.sourceCluster.setMinDistance(newDistancia);
     },
     metodoUbicacion() {
       this.actualizarSource();

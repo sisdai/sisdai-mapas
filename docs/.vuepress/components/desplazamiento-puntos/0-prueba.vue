@@ -11,6 +11,31 @@
           {{ metodo }}
         </option>
       </dai-selector-mapa>
+
+      <p>Distancia dentro de la cual se agruparán las entidades.</p>
+      <br />
+      <input
+        class="dai-range"
+        type="range"
+        min="0"
+        max="200"
+        step="1"
+        v-model="distanciaCluster"
+      />
+
+      <!--p>
+        Distancia mínima entre clústeres. No puede ser mayor que la distancia
+        configurada
+      </!--p>
+      <br />
+      <input
+        class="dai-range"
+        type="range"
+        min="0"
+        max="200"
+        step="1"
+        v-model="distanciaMinimaCluster"
+      /-->
     </template>
 
     <DaiMapa
@@ -27,6 +52,8 @@
         url="/comunidad-sargazo.geojson"
         :estilo-capa="{ circle: { radius: 5 } }"
         :reglas-estilo-capa="reglasEstiloCapa"
+        :distancia="Number(distanciaCluster)"
+        :distanciaMinima="Number(distanciaMinimaCluster)"
         :metodoUbicacion="metodoSeleccionado"
       />
       <!--
@@ -98,7 +125,14 @@ export default {
           "#42A542",
         ],
       },
-      metodosDeUbicacion: ["anillo", "anillos-consentricos", "espiral", "cuadricula"],
+      distanciaCluster: 20,
+      distanciaMinimaCluster: 0,
+      metodosDeUbicacion: [
+        "anillo",
+        "anillos-consentricos",
+        "espiral",
+        "cuadricula",
+      ],
       metodoSeleccionado: "anillo",
     };
   },
