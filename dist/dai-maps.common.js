@@ -2074,6 +2074,7 @@ __webpack_require__.d(__webpack_exports__, "DaiGeojsonLayer", function() { retur
 __webpack_require__.d(__webpack_exports__, "DaiCapaGeojsonCluster", function() { return /* reexport */ geojson_cluster_layer_namespaceObject; });
 __webpack_require__.d(__webpack_exports__, "DaiCapaGeojsonHexbin", function() { return /* reexport */ geojson_hexbin_layer_namespaceObject; });
 __webpack_require__.d(__webpack_exports__, "DaiWmsLayer", function() { return /* reexport */ wms_layer_namespaceObject; });
+__webpack_require__.d(__webpack_exports__, "DaiTopojsonLayer", function() { return /* reexport */ topojson_layer_namespaceObject; });
 __webpack_require__.d(__webpack_exports__, "DaiLeyendaMapa", function() { return /* reexport */ legend_control_namespaceObject; });
 __webpack_require__.d(__webpack_exports__, "DaiMapSelector", function() { return /* reexport */ selector_control_namespaceObject; });
 __webpack_require__.d(__webpack_exports__, "DaiMapOpacity", function() { return /* reexport */ opacity_control_namespaceObject; });
@@ -2695,6 +2696,13 @@ __webpack_require__.d(wms_layer_namespaceObject, "default", function() { return 
 __webpack_require__.d(wms_layer_namespaceObject, "install", function() { return wms_layer_plugin; });
 __webpack_require__.d(wms_layer_namespaceObject, "DaiWmsLayer", function() { return wms; });
 
+// NAMESPACE OBJECT: ./src/components/topojson-layer/index.js
+var topojson_layer_namespaceObject = {};
+__webpack_require__.r(topojson_layer_namespaceObject);
+__webpack_require__.d(topojson_layer_namespaceObject, "default", function() { return topojson_layer; });
+__webpack_require__.d(topojson_layer_namespaceObject, "install", function() { return topojson_layer_plugin; });
+__webpack_require__.d(topojson_layer_namespaceObject, "DaiTopojsonLayer", function() { return topojson; });
+
 // NAMESPACE OBJECT: ./src/components/legend-control/index.js
 var legend_control_namespaceObject = {};
 __webpack_require__.r(legend_control_namespaceObject);
@@ -2753,7 +2761,7 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5d4ec332-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/map.vue?vue&type=template&id=2609573c&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/map.vue?vue&type=template&id=2609573c&
 var mapvue_type_template_id_2609573c_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -23491,7 +23499,7 @@ const invoke_clicks = (map, e, component) => {
     feature_selected
   };
 };
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5d4ec332-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/utils/loader.vue?vue&type=template&id=0e1fa54d&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/utils/loader.vue?vue&type=template&id=0e1fa54d&scoped=true&
 var loadervue_type_template_id_0e1fa54d_scoped_true_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -24207,7 +24215,7 @@ function map_plugin(Vue) {
 
 /* harmony default export */ var components_map = (map_plugin);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5d4ec332-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/card-container/card.vue?vue&type=template&id=6ee45140&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/card-container/card.vue?vue&type=template&id=6ee45140&
 var cardvue_type_template_id_6ee45140_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -39629,7 +39637,7 @@ function propertyFunction(name, value) {
   };
 }
 
-/* harmony default export */ var property = (function(name, value) {
+/* harmony default export */ var selection_property = (function(name, value) {
   return arguments.length > 1
       ? this.each((value == null
           ? propertyRemove : typeof value === "function"
@@ -40060,7 +40068,7 @@ Selection.prototype = selection_selection.prototype = {
   each: each,
   attr: attr,
   style: selection_style,
-  property: property,
+  property: selection_property,
   classed: classed,
   text: selection_text,
   html: html,
@@ -69225,7 +69233,531 @@ function wms_layer_plugin(Vue) {
 
 /* harmony default export */ var wms_layer = (wms_layer_plugin);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5d4ec332-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/legend.vue?vue&type=template&id=3508e3be&
+// CONCATENATED MODULE: ./node_modules/ol/format/TopoJSON.js
+var TopoJSON_extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/TopoJSON
+ */
+
+
+
+
+
+
+
+
+
+
+/**
+ * @typedef {import("topojson-specification").Topology} TopoJSONTopology
+ * @typedef {import("topojson-specification").GeometryCollection} TopoJSONGeometryCollection
+ * @typedef {import("topojson-specification").GeometryObject} TopoJSONGeometry
+ * @typedef {import("topojson-specification").Point} TopoJSONPoint
+ * @typedef {import("topojson-specification").MultiPoint} TopoJSONMultiPoint
+ * @typedef {import("topojson-specification").LineString} TopoJSONLineString
+ * @typedef {import("topojson-specification").MultiLineString} TopoJSONMultiLineString
+ * @typedef {import("topojson-specification").Polygon} TopoJSONPolygon
+ * @typedef {import("topojson-specification").MultiPolygon} TopoJSONMultiPolygon
+ */
+/**
+ * @typedef {Object} Options
+ * @property {import("../proj.js").ProjectionLike} [dataProjection='EPSG:4326'] Default data projection.
+ * @property {string} [layerName] Set the name of the TopoJSON topology
+ * `objects`'s children as feature property with the specified name. This means
+ * that when set to `'layer'`, a topology like
+ * ```
+ * {
+ *   "type": "Topology",
+ *   "objects": {
+ *     "example": {
+ *       "type": "GeometryCollection",
+ *       "geometries": []
+ *     }
+ *   }
+ * }
+ * ```
+ * will result in features that have a property `'layer'` set to `'example'`.
+ * When not set, no property will be added to features.
+ * @property {Array<string>} [layers] Names of the TopoJSON topology's
+ * `objects`'s children to read features from.  If not provided, features will
+ * be read from all children.
+ */
+/**
+ * @classdesc
+ * Feature format for reading data in the TopoJSON format.
+ *
+ * @api
+ */
+var TopoJSON_TopoJSON = /** @class */ (function (_super) {
+    TopoJSON_extends(TopoJSON, _super);
+    /**
+     * @param {Options=} opt_options Options.
+     */
+    function TopoJSON(opt_options) {
+        var _this = _super.call(this) || this;
+        var options = opt_options ? opt_options : {};
+        /**
+         * @private
+         * @type {string|undefined}
+         */
+        _this.layerName_ = options.layerName;
+        /**
+         * @private
+         * @type {?Array<string>}
+         */
+        _this.layers_ = options.layers ? options.layers : null;
+        /**
+         * @type {import("../proj/Projection.js").default}
+         */
+        _this.dataProjection = proj_get(options.dataProjection ? options.dataProjection : 'EPSG:4326');
+        return _this;
+    }
+    /**
+     * @param {Object} object Object.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Read options.
+     * @protected
+     * @return {Array<Feature>} Features.
+     */
+    TopoJSON.prototype.readFeaturesFromObject = function (object, opt_options) {
+        if (object.type == 'Topology') {
+            var topoJSONTopology = /** @type {TopoJSONTopology} */ (object);
+            var transform = void 0, scale = null, translate = null;
+            if (topoJSONTopology['transform']) {
+                transform = topoJSONTopology['transform'];
+                scale = transform['scale'];
+                translate = transform['translate'];
+            }
+            var arcs = topoJSONTopology['arcs'];
+            if (transform) {
+                transformArcs(arcs, scale, translate);
+            }
+            /** @type {Array<Feature>} */
+            var features = [];
+            var topoJSONFeatures = topoJSONTopology['objects'];
+            var property = this.layerName_;
+            var feature = void 0;
+            for (var objectName in topoJSONFeatures) {
+                if (this.layers_ && this.layers_.indexOf(objectName) == -1) {
+                    continue;
+                }
+                if (topoJSONFeatures[objectName].type === 'GeometryCollection') {
+                    feature = /** @type {TopoJSONGeometryCollection} */ (topoJSONFeatures[objectName]);
+                    features.push.apply(features, readFeaturesFromGeometryCollection(feature, arcs, scale, translate, property, objectName, opt_options));
+                }
+                else {
+                    feature = /** @type {TopoJSONGeometry} */ (topoJSONFeatures[objectName]);
+                    features.push(readFeatureFromGeometry(feature, arcs, scale, translate, property, objectName, opt_options));
+                }
+            }
+            return features;
+        }
+        else {
+            return [];
+        }
+    };
+    /**
+     * @param {Object} object Object.
+     * @protected
+     * @return {import("../proj/Projection.js").default} Projection.
+     */
+    TopoJSON.prototype.readProjectionFromObject = function (object) {
+        return this.dataProjection;
+    };
+    return TopoJSON;
+}(format_JSONFeature));
+/**
+ * @const
+ * @type {Object<string, function(TopoJSONGeometry, Array, ...Array=): import("../geom/Geometry.js").default>}
+ */
+var GEOMETRY_READERS = {
+    'Point': TopoJSON_readPointGeometry,
+    'LineString': TopoJSON_readLineStringGeometry,
+    'Polygon': TopoJSON_readPolygonGeometry,
+    'MultiPoint': TopoJSON_readMultiPointGeometry,
+    'MultiLineString': TopoJSON_readMultiLineStringGeometry,
+    'MultiPolygon': TopoJSON_readMultiPolygonGeometry,
+};
+/**
+ * Concatenate arcs into a coordinate array.
+ * @param {Array<number>} indices Indices of arcs to concatenate.  Negative
+ *     values indicate arcs need to be reversed.
+ * @param {Array<Array<import("../coordinate.js").Coordinate>>} arcs Array of arcs (already
+ *     transformed).
+ * @return {Array<import("../coordinate.js").Coordinate>} Coordinates array.
+ */
+function concatenateArcs(indices, arcs) {
+    /** @type {Array<import("../coordinate.js").Coordinate>} */
+    var coordinates = [];
+    var index, arc;
+    for (var i = 0, ii = indices.length; i < ii; ++i) {
+        index = indices[i];
+        if (i > 0) {
+            // splicing together arcs, discard last point
+            coordinates.pop();
+        }
+        if (index >= 0) {
+            // forward arc
+            arc = arcs[index];
+        }
+        else {
+            // reverse arc
+            arc = arcs[~index].slice().reverse();
+        }
+        coordinates.push.apply(coordinates, arc);
+    }
+    // provide fresh copies of coordinate arrays
+    for (var j = 0, jj = coordinates.length; j < jj; ++j) {
+        coordinates[j] = coordinates[j].slice();
+    }
+    return coordinates;
+}
+/**
+ * Create a point from a TopoJSON geometry object.
+ *
+ * @param {TopoJSONPoint} object TopoJSON object.
+ * @param {Array<number>} scale Scale for each dimension.
+ * @param {Array<number>} translate Translation for each dimension.
+ * @return {Point} Geometry.
+ */
+function TopoJSON_readPointGeometry(object, scale, translate) {
+    var coordinates = object['coordinates'];
+    if (scale && translate) {
+        transformVertex(coordinates, scale, translate);
+    }
+    return new geom_Point(coordinates);
+}
+/**
+ * Create a multi-point from a TopoJSON geometry object.
+ *
+ * @param {TopoJSONMultiPoint} object TopoJSON object.
+ * @param {Array<number>} scale Scale for each dimension.
+ * @param {Array<number>} translate Translation for each dimension.
+ * @return {MultiPoint} Geometry.
+ */
+function TopoJSON_readMultiPointGeometry(object, scale, translate) {
+    var coordinates = object['coordinates'];
+    if (scale && translate) {
+        for (var i = 0, ii = coordinates.length; i < ii; ++i) {
+            transformVertex(coordinates[i], scale, translate);
+        }
+    }
+    return new geom_MultiPoint(coordinates);
+}
+/**
+ * Create a linestring from a TopoJSON geometry object.
+ *
+ * @param {TopoJSONLineString} object TopoJSON object.
+ * @param {Array<Array<import("../coordinate.js").Coordinate>>} arcs Array of arcs.
+ * @return {LineString} Geometry.
+ */
+function TopoJSON_readLineStringGeometry(object, arcs) {
+    var coordinates = concatenateArcs(object['arcs'], arcs);
+    return new geom_LineString(coordinates);
+}
+/**
+ * Create a multi-linestring from a TopoJSON geometry object.
+ *
+ * @param {TopoJSONMultiLineString} object TopoJSON object.
+ * @param {Array<Array<import("../coordinate.js").Coordinate>>} arcs Array of arcs.
+ * @return {MultiLineString} Geometry.
+ */
+function TopoJSON_readMultiLineStringGeometry(object, arcs) {
+    var coordinates = [];
+    for (var i = 0, ii = object['arcs'].length; i < ii; ++i) {
+        coordinates[i] = concatenateArcs(object['arcs'][i], arcs);
+    }
+    return new geom_MultiLineString(coordinates);
+}
+/**
+ * Create a polygon from a TopoJSON geometry object.
+ *
+ * @param {TopoJSONPolygon} object TopoJSON object.
+ * @param {Array<Array<import("../coordinate.js").Coordinate>>} arcs Array of arcs.
+ * @return {Polygon} Geometry.
+ */
+function TopoJSON_readPolygonGeometry(object, arcs) {
+    var coordinates = [];
+    for (var i = 0, ii = object['arcs'].length; i < ii; ++i) {
+        coordinates[i] = concatenateArcs(object['arcs'][i], arcs);
+    }
+    return new geom_Polygon(coordinates);
+}
+/**
+ * Create a multi-polygon from a TopoJSON geometry object.
+ *
+ * @param {TopoJSONMultiPolygon} object TopoJSON object.
+ * @param {Array<Array<import("../coordinate.js").Coordinate>>} arcs Array of arcs.
+ * @return {MultiPolygon} Geometry.
+ */
+function TopoJSON_readMultiPolygonGeometry(object, arcs) {
+    var coordinates = [];
+    for (var i = 0, ii = object['arcs'].length; i < ii; ++i) {
+        // for each polygon
+        var polyArray = object['arcs'][i];
+        var ringCoords = [];
+        for (var j = 0, jj = polyArray.length; j < jj; ++j) {
+            // for each ring
+            ringCoords[j] = concatenateArcs(polyArray[j], arcs);
+        }
+        coordinates[i] = ringCoords;
+    }
+    return new geom_MultiPolygon(coordinates);
+}
+/**
+ * Create features from a TopoJSON GeometryCollection object.
+ *
+ * @param {TopoJSONGeometryCollection} collection TopoJSON Geometry
+ *     object.
+ * @param {Array<Array<import("../coordinate.js").Coordinate>>} arcs Array of arcs.
+ * @param {Array<number>} scale Scale for each dimension.
+ * @param {Array<number>} translate Translation for each dimension.
+ * @param {string|undefined} property Property to set the `GeometryCollection`'s parent
+ *     object to.
+ * @param {string} name Name of the `Topology`'s child object.
+ * @param {import("./Feature.js").ReadOptions=} opt_options Read options.
+ * @return {Array<Feature>} Array of features.
+ */
+function readFeaturesFromGeometryCollection(collection, arcs, scale, translate, property, name, opt_options) {
+    var geometries = collection['geometries'];
+    var features = [];
+    for (var i = 0, ii = geometries.length; i < ii; ++i) {
+        features[i] = readFeatureFromGeometry(geometries[i], arcs, scale, translate, property, name, opt_options);
+    }
+    return features;
+}
+/**
+ * Create a feature from a TopoJSON geometry object.
+ *
+ * @param {TopoJSONGeometry} object TopoJSON geometry object.
+ * @param {Array<Array<import("../coordinate.js").Coordinate>>} arcs Array of arcs.
+ * @param {Array<number>} scale Scale for each dimension.
+ * @param {Array<number>} translate Translation for each dimension.
+ * @param {string|undefined} property Property to set the `GeometryCollection`'s parent
+ *     object to.
+ * @param {string} name Name of the `Topology`'s child object.
+ * @param {import("./Feature.js").ReadOptions=} opt_options Read options.
+ * @return {Feature} Feature.
+ */
+function readFeatureFromGeometry(object, arcs, scale, translate, property, name, opt_options) {
+    var geometry;
+    var type = object.type;
+    var geometryReader = GEOMETRY_READERS[type];
+    if (type === 'Point' || type === 'MultiPoint') {
+        geometry = geometryReader(object, scale, translate);
+    }
+    else {
+        geometry = geometryReader(object, arcs);
+    }
+    var feature = new ol_Feature();
+    feature.setGeometry(transformGeometryWithOptions(geometry, false, opt_options));
+    if (object.id !== undefined) {
+        feature.setId(object.id);
+    }
+    var properties = object.properties;
+    if (property) {
+        if (!properties) {
+            properties = {};
+        }
+        properties[property] = name;
+    }
+    if (properties) {
+        feature.setProperties(properties, true);
+    }
+    return feature;
+}
+/**
+ * Apply a linear transform to array of arcs.  The provided array of arcs is
+ * modified in place.
+ *
+ * @param {Array<Array<import("../coordinate.js").Coordinate>>} arcs Array of arcs.
+ * @param {Array<number>} scale Scale for each dimension.
+ * @param {Array<number>} translate Translation for each dimension.
+ */
+function transformArcs(arcs, scale, translate) {
+    for (var i = 0, ii = arcs.length; i < ii; ++i) {
+        transformArc(arcs[i], scale, translate);
+    }
+}
+/**
+ * Apply a linear transform to an arc.  The provided arc is modified in place.
+ *
+ * @param {Array<import("../coordinate.js").Coordinate>} arc Arc.
+ * @param {Array<number>} scale Scale for each dimension.
+ * @param {Array<number>} translate Translation for each dimension.
+ */
+function transformArc(arc, scale, translate) {
+    var x = 0;
+    var y = 0;
+    for (var i = 0, ii = arc.length; i < ii; ++i) {
+        var vertex = arc[i];
+        x += vertex[0];
+        y += vertex[1];
+        vertex[0] = x;
+        vertex[1] = y;
+        transformVertex(vertex, scale, translate);
+    }
+}
+/**
+ * Apply a linear transform to a vertex.  The provided vertex is modified in
+ * place.
+ *
+ * @param {import("../coordinate.js").Coordinate} vertex Vertex.
+ * @param {Array<number>} scale Scale for each dimension.
+ * @param {Array<number>} translate Translation for each dimension.
+ */
+function transformVertex(vertex, scale, translate) {
+    vertex[0] = vertex[0] * scale[0] + translate[0];
+    vertex[1] = vertex[1] * scale[1] + translate[1];
+}
+/* harmony default export */ var format_TopoJSON = (TopoJSON_TopoJSON);
+//# sourceMappingURL=TopoJSON.js.map
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/topojson-layer/topojson.vue?vue&type=script&lang=js&
+
+
+
+
+
+
+
+/* harmony default export */ var topojsonvue_type_script_lang_js_ = ({
+  name: "DaiCapaTopojson",
+  mixins: [mixins_layer, vector_layer_any, classificable_layer],
+  methods: {
+    _createLayerObject: function () {
+      let vectorSource = this.datos != undefined ? createTopoJSONSourceFromObjectJs(this.datos) : createTopoJSONSourceFromUrl(this.url);
+      const LayerClass = this.renderizarComoImagen ? VectorImage : layer_Vector;
+      this.olLayer = new LayerClass({
+        source: vectorSource,
+        className: this.className
+      });
+      this.olLayer.set("_realce_hover", this.realceAlPasarMouse);
+
+      if (this.VM_is_classified) {
+        if (vectorSource.getUrl() === undefined) {
+          this._clasificar_v2();
+
+          this._set_style_class_v2();
+        } else {
+          vectorSource.on("featuresloadend", () => {
+            setTimeout(() => {
+              this._clasificar_v2();
+
+              this._set_style_class_v2();
+
+              this._setStyle();
+            }, 50);
+          });
+        }
+      }
+
+      if (this.contenidoTooltip != "none") {
+        this.olLayer.set("_tooltip", this.contenidoTooltip);
+        this.olLayer.set("_tooltip_mov", !this.tooltipEstatico);
+        this.olLayer.set("_tooltip_top", this.tooltipEstaticoMargenSuperior);
+      }
+
+      if (this.contenidoPopup !== "none") {
+        this.olLayer.set("_popup", this.contenidoPopup);
+      }
+
+      this._saveAllFeaturesFromSource(vectorSource);
+
+      this._setStyle();
+    }
+  },
+  watch: {
+    datos: function (newDatos) {
+      if (newDatos !== undefined && this.olLayer !== null && this.olLayer !== undefined) {
+        //console.log(this.olLayer,this.olLayer.getSource())
+        let vectorSource = this.olLayer.getSource();
+        let features = new format_TopoJSON().readFeatures({ ...newDatos
+        });
+        vectorSource.clear(); //if(features.length>0){
+        //console.log("se esta escuchando el cambio de datos, BORRAR ESTE LOG")
+
+        vectorSource.addFeatures(features);
+
+        if (this.VM_is_classified) {
+          this._clasificar_v2();
+
+          this._set_style_class_v2();
+        } //}
+
+
+        this._saveAllFeaturesFromSource(vectorSource);
+
+        this._setStyle();
+      }
+    }
+  }
+});
+
+const createTopoJSONSourceFromObjectJs = JsObject => {
+  if (typeof JsObject != "object") {
+    return new Vector({});
+  }
+
+  return new Vector({
+    features: new format_TopoJSON().readFeatures({ ...JsObject
+    })
+  });
+};
+
+const createTopoJSONSourceFromUrl = url => {
+  return new Vector({
+    url: url,
+    format: new format_TopoJSON()
+  });
+};
+// CONCATENATED MODULE: ./src/components/topojson-layer/topojson.vue?vue&type=script&lang=js&
+ /* harmony default export */ var topojson_layer_topojsonvue_type_script_lang_js_ = (topojsonvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/topojson-layer/topojson.vue
+var topojson_render, topojson_staticRenderFns
+
+
+
+
+/* normalize component */
+
+var topojson_component = normalizeComponent(
+  topojson_layer_topojsonvue_type_script_lang_js_,
+  topojson_render,
+  topojson_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var topojson = (topojson_component.exports);
+// CONCATENATED MODULE: ./src/components/topojson-layer/index.js
+
+
+function topojson_layer_plugin(Vue) {
+  if (topojson_layer_plugin.installed) {
+    return;
+  }
+
+  topojson_layer_plugin.installed = true;
+  Vue.component(topojson.name, topojson);
+}
+
+/* harmony default export */ var topojson_layer = (topojson_layer_plugin);
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/legend.vue?vue&type=template&id=3508e3be&
 var legendvue_type_template_id_3508e3be_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -69400,7 +69932,7 @@ var legendvue_type_template_id_3508e3be_staticRenderFns = [];
     };
   }
 });
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5d4ec332-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_wms.vue?vue&type=template&id=0de20f90&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_wms.vue?vue&type=template&id=0de20f90&scoped=true&
 var _legend_wmsvue_type_template_id_0de20f90_scoped_true_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -69439,7 +69971,7 @@ var _legend_wmsvue_type_template_id_0de20f90_scoped_true_staticRenderFns = [];
 
 // CONCATENATED MODULE: ./src/components/legend-control/_legend_wms.vue?vue&type=template&id=0de20f90&scoped=true&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5d4ec332-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/utils/checkbox.vue?vue&type=template&id=0d254de0&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/utils/checkbox.vue?vue&type=template&id=0d254de0&scoped=true&
 var checkboxvue_type_template_id_0d254de0_scoped_true_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -69630,7 +70162,7 @@ const paramsIncludeInitialFilters = params => {
   }) : [];
   return [hayclases, clasesReturn];
 };
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5d4ec332-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_info.vue?vue&type=template&id=3da3d72a&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_info.vue?vue&type=template&id=3da3d72a&
 var _legend_infovue_type_template_id_3da3d72a_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -69814,7 +70346,7 @@ var _legend_wms_component = normalizeComponent(
 )
 
 /* harmony default export */ var _legend_wms = (_legend_wms_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5d4ec332-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_loading.vue?vue&type=template&id=0f90614a&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_loading.vue?vue&type=template&id=0f90614a&scoped=true&
 var _legend_loadingvue_type_template_id_0f90614a_scoped_true_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -69860,7 +70392,7 @@ var _legend_loading_component = normalizeComponent(
 )
 
 /* harmony default export */ var _legend_loading = (_legend_loading_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5d4ec332-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_coropleta.vue?vue&type=template&id=5c0f6534&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_coropleta.vue?vue&type=template&id=5c0f6534&scoped=true&
 var _legend_coropletavue_type_template_id_5c0f6534_scoped_true_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -69896,7 +70428,7 @@ var _legend_coropletavue_type_template_id_5c0f6534_scoped_true_staticRenderFns =
 
 // CONCATENATED MODULE: ./src/components/legend-control/_legend_coropleta.vue?vue&type=template&id=5c0f6534&scoped=true&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5d4ec332-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/utils/shape.vue?vue&type=template&id=ff017ec4&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/utils/shape.vue?vue&type=template&id=ff017ec4&scoped=true&
 var shapevue_type_template_id_ff017ec4_scoped_true_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -70131,7 +70663,7 @@ var _legend_coropleta_component = normalizeComponent(
 )
 
 /* harmony default export */ var _legend_coropleta = (_legend_coropleta_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5d4ec332-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_normal_vector.vue?vue&type=template&id=7317e94c&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_normal_vector.vue?vue&type=template&id=7317e94c&
 var _legend_normal_vectorvue_type_template_id_7317e94c_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -70234,7 +70766,7 @@ var _legend_normal_vector_component = normalizeComponent(
 )
 
 /* harmony default export */ var _legend_normal_vector = (_legend_normal_vector_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5d4ec332-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_list_checks_colors.vue?vue&type=template&id=7a7364ec&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_list_checks_colors.vue?vue&type=template&id=7a7364ec&scoped=true&
 var _legend_list_checks_colorsvue_type_template_id_7a7364ec_scoped_true_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -70268,7 +70800,7 @@ var _legend_list_checks_colorsvue_type_template_id_7a7364ec_scoped_true_staticRe
 
 // CONCATENATED MODULE: ./src/components/legend-control/_legend_list_checks_colors.vue?vue&type=template&id=7a7364ec&scoped=true&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5d4ec332-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/utils/checkbox-color.vue?vue&type=template&id=0da840d6&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/utils/checkbox-color.vue?vue&type=template&id=0da840d6&
 var checkbox_colorvue_type_template_id_0da840d6_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -70460,7 +70992,7 @@ var _legend_list_checks_colors_component = normalizeComponent(
 )
 
 /* harmony default export */ var _legend_list_checks_colors = (_legend_list_checks_colors_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5d4ec332-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_shapes_sizes_values.vue?vue&type=template&id=6ae65c4e&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_shapes_sizes_values.vue?vue&type=template&id=6ae65c4e&scoped=true&
 var _legend_shapes_sizes_valuesvue_type_template_id_6ae65c4e_scoped_true_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -70538,7 +71070,7 @@ var _legend_shapes_sizes_values_component = normalizeComponent(
 )
 
 /* harmony default export */ var _legend_shapes_sizes_values = (_legend_shapes_sizes_values_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5d4ec332-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_list_checks_colors_shapes_sizes_values.vue?vue&type=template&id=59b10d0e&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_list_checks_colors_shapes_sizes_values.vue?vue&type=template&id=59b10d0e&scoped=true&
 var _legend_list_checks_colors_shapes_sizes_valuesvue_type_template_id_59b10d0e_scoped_true_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -70700,7 +71232,7 @@ var _legend_list_checks_colors_shapes_sizes_values_component = normalizeComponen
 )
 
 /* harmony default export */ var _legend_list_checks_colors_shapes_sizes_values = (_legend_list_checks_colors_shapes_sizes_values_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5d4ec332-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend-list-checks-values.vue?vue&type=template&id=22aa6607&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend-list-checks-values.vue?vue&type=template&id=22aa6607&
 var _legend_list_checks_valuesvue_type_template_id_22aa6607_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -70739,7 +71271,7 @@ var _legend_list_checks_values_component = normalizeComponent(
 )
 
 /* harmony default export */ var _legend_list_checks_values = (_legend_list_checks_values_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5d4ec332-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_list_checks_colors_list_checks_values.vue?vue&type=template&id=7cab729a&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_list_checks_colors_list_checks_values.vue?vue&type=template&id=7cab729a&
 var _legend_list_checks_colors_list_checks_valuesvue_type_template_id_7cab729a_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -71087,7 +71619,7 @@ function legend_control_plugin(Vue) {
 
 /* harmony default export */ var legend_control = (legend_control_plugin);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5d4ec332-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/selector-control/selector.vue?vue&type=template&id=044f4166&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/selector-control/selector.vue?vue&type=template&id=044f4166&scoped=true&
 var selectorvue_type_template_id_044f4166_scoped_true_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -71174,7 +71706,7 @@ function selector_control_plugin(Vue) {
 
 /* harmony default export */ var selector_control = (selector_control_plugin);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5d4ec332-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/opacity-control/opacity.vue?vue&type=template&id=49997fcc&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/opacity-control/opacity.vue?vue&type=template&id=49997fcc&scoped=true&
 var opacityvue_type_template_id_49997fcc_scoped_true_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -71323,7 +71855,7 @@ function opacity_control_plugin(Vue) {
 
 /* harmony default export */ var opacity_control = (opacity_control_plugin);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5d4ec332-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/switcher-control/switcher.vue?vue&type=template&id=d1198544&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/switcher-control/switcher.vue?vue&type=template&id=d1198544&
 var switchervue_type_template_id_d1198544_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -71466,7 +71998,7 @@ function switcher_control_plugin(Vue) {
 
 /* harmony default export */ var switcher_control = (switcher_control_plugin);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5d4ec332-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/searcher-control/searcher.vue?vue&type=template&id=4947b33e&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/searcher-control/searcher.vue?vue&type=template&id=4947b33e&scoped=true&
 var searchervue_type_template_id_4947b33e_scoped_true_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -71688,7 +72220,7 @@ function searcher_control_plugin(Vue) {
 
 /* harmony default export */ var searcher_control = (searcher_control_plugin);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5d4ec332-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/info-control/info.vue?vue&type=template&id=b1b9d23a&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/info-control/info.vue?vue&type=template&id=b1b9d23a&
 var infovue_type_template_id_b1b9d23a_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -71802,6 +72334,7 @@ function info_control_plugin(Vue) {
 
 
 
+
  //controles
 
 
@@ -71897,6 +72430,7 @@ function src_plugin(Vue) {
   Vue.use(geojson_cluster_layer_namespaceObject);
   Vue.use(geojson_hexbin_layer_namespaceObject);
   Vue.use(wms_layer_namespaceObject);
+  Vue.use(topojson_layer_namespaceObject);
   Vue.use(legend_control_namespaceObject);
   Vue.use(selector_control_namespaceObject);
   Vue.use(opacity_control_namespaceObject);
