@@ -2,6 +2,7 @@ import VectorSource from "ol/source/Vector";
 import GeoJSON from "ol/format/GeoJSON";
 import { Circle as CircleStyle, Fill, Stroke, Style, Text } from "ol/style";
 import Point from "ol/geom/Point";
+import Feature from "ol/Feature";
 
 export const createGeojsonSourceFromObjectJs = JsObject => {
     if (typeof JsObject != "object") {
@@ -67,7 +68,7 @@ export const HacerGalleta = (clusters, pix, pointRadius) => {
             a = (2 * Math.PI * i) / features.length;
             if (features.length == 2 || features.length == 4) a += Math.PI / 4;
             p = [center[0] + r * Math.sin(a), center[1] + r * Math.cos(a)];
-            const newFeature = feature;
+            const newFeature = feature.clone();
             newFeature.setGeometry(new Point(p));
             featuresNuevos.push(newFeature);
         });

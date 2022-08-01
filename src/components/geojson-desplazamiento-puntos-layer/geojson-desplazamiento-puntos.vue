@@ -36,8 +36,7 @@ export default {
   },
   data: function () {
     return {
-      // VM_featuresGroup: true,
-      olLayerCluster: undefined,
+      sourceCluster: undefined,
       sourceOriginal:
         this.datos !== undefined
           ? createGeojsonSourceFromObjectJs(this.datos)
@@ -48,46 +47,22 @@ export default {
   methods: {
     _createLayerObject() {
       const LayerClass = this.renderizarComoImagen ? VectorImage : VectorLayer;
-      var ver = true;
 
-      this.olLayerCluster = new LayerClass({
-        source: new Cluster({
-          distance: this.distancia,
-          minDistance: this.distanciaMinima,
-          createCluster: function (point, features) {
-            if (ver) console.log(point, features);
-            ver = false;
-            return new Feature({
-              geometry: point,
-              features: features,
-            });
-          },
-          source: this.sourceOriginal,
-        }),
+      this.sourceCluster = new Cluster({
+        distance: this.distancia,
+        minDistance: this.distanciaMinima,
+        source: this.sourceOriginal,
+        wrapX: false,
+      });
+
+      this.sourceCluster.on("change", this.clusterOnChange);
+
+      const olLayerCluster = new LayerClass({
+        source: this.sourceCluster,
         className: this.className,
         style: styleClusterNoVisible,
       });
-      this.olMap.addLayer(this.olLayerCluster);
-
-      if (this.sourceOriginal.getUrl() === undefined) {
-        // si la fuente de datos es un archivo
-      } else {
-        // si la fuente de datos es una url
-        this.sourceOriginal.on("featuresloadend", () => {
-          setTimeout(() => {
-            const sourceGalleta = HacerGalleta(
-              this.olLayerCluster.getSource().getFeatures(),
-              this.olMap.getView().getResolution(),
-              this.estiloCapa.circle.radius
-            );
-
-            this.actualizarSource(sourceGalleta);
-
-            // console.log("galleta", this.olLayer.getSource().getFeatures());
-            // this.olMap.removeLayer(this.olLayerCluster);
-          });
-        });
-      }
+      this.olMap.addLayer(olLayerCluster);
 
       /** Reemplazar features antes de dibujar los que pasan cómo parámetros */
 
@@ -116,13 +91,21 @@ export default {
 
       this._saveAllFeaturesFromSource(vectorSourceVacio);
       this._setStyle();
+    },
+    clusterOnChange(e) {
+      const features = e.target.features;
 
-      // Redibuja el cluster al mover el mapa
-      this.olMap.on("moveend", (e) => {
-        if (this.visible) {
-          console.log("calcular de nuevo");
-        }
-      });
+      if (features.length > 0 && this.visible) {
+        // console.log("ha cambiado algo", features);
+
+        this.actualizarSource(
+          HacerGalleta(
+            features,
+            this.olMap.getView().getResolution(),
+            this.estiloCapa.circle.radius
+          )
+        );
+      }
     },
     actualizarSource(sourceNuevo) {
       let vectorSource = this.olLayer.getSource();
@@ -170,5 +153,8 @@ export default {
     },
   },
   computed: {},
+  destroyed() {
+    this.sourceCluster.un("change", this.clusterOnChange);
+  },
 };
 </script>
