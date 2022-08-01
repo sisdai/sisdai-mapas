@@ -46,32 +46,72 @@ export const styleClusterNoVisible = () =>
         })
     });
 
-export const HacerGalleta = (clusters, pix, pointRadius) => {
+export const HacerGalleta = (clusters, pix, pointRadius, metodoUbicacion) => {
     const sourceGalleta = new VectorSource({});
-    pointRadius = pointRadius + 3;
 
     clusters.forEach(cluster => {
-        // datos del feature
-        const center = cluster.get("geometry").flatCoordinates;
+        sourceGalleta.addFeatures(
+            metodosDeUbicacion[metodoUbicacion](
+                cluster.get("geometry").flatCoordinates,
+                cluster.get("features"),
+                pix,
+                pointRadius
+            )
+        );
+    });
+    return sourceGalleta;
+};
 
-        // param
+const metodosDeUbicacion = {
+    anillo: (centro, features, pix, pointRadius) => {
+        pointRadius = pointRadius + 3;
         // const pointRadius = 8;
         var featuresNuevos = [];
-
-        const features = cluster.get("features");
-        var r = pix * pointRadius * (0.5 + features.length / 4),
-            a,
-            p;
+        var r, a, p;
+        r = pix * pointRadius * (0.5 + features.length / 4);
 
         features.forEach((feature, i) => {
             a = (2 * Math.PI * i) / features.length;
             if (features.length == 2 || features.length == 4) a += Math.PI / 4;
-            p = [center[0] + r * Math.sin(a), center[1] + r * Math.cos(a)];
+            p = [centro[0] + r * Math.sin(a), centro[1] + r * Math.cos(a)];
             const newFeature = feature.clone();
             newFeature.setGeometry(new Point(p));
             featuresNuevos.push(newFeature);
         });
-        sourceGalleta.addFeatures(featuresNuevos);
-    });
-    return sourceGalleta;
+
+        return featuresNuevos;
+    },
+    espiral: (centro, features, pix, pointRadius) => {
+        pointRadius = pointRadius + 1;
+        var featuresNuevos = [];
+        // Ángulo inicial
+        var r, a, p;
+        a = 0;
+        var d = 2 * pointRadius;
+
+        features.forEach(feature => {
+            // New radius => increase d in one turn
+            r = d / 2 + (d * a) / (2 * Math.PI);
+            // Angle
+            a = a + (d + 0.1) / r;
+            var dx = pix * r * Math.sin(a);
+            var dy = pix * r * Math.cos(a);
+            p = [centro[0] + dx, centro[1] + dy];
+            const newFeature = feature.clone();
+            newFeature.setGeometry(new Point(p));
+            featuresNuevos.push(newFeature);
+        });
+
+        return featuresNuevos;
+    },
+    cuadricula: (centro, features, pix, pointRadius) => {
+        var featuresNuevos = [];
+        features.forEach(feature => {});
+        return featuresNuevos;
+    },
+    "anillos-consentricos": (centro, features, pix, pointRadius) => {
+        var featuresNuevos = [];
+        features.forEach(feature => {});
+        return featuresNuevos;
+    }
 };

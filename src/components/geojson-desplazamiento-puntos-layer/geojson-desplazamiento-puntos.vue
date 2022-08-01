@@ -64,8 +64,6 @@ export default {
       });
       this.olMap.addLayer(olLayerCluster);
 
-      /** Reemplazar features antes de dibujar los que pasan cómo parámetros */
-
       let vectorSourceVacio = new VectorSource({ wrapX: false });
       this.olLayer = new LayerClass({
         source: vectorSourceVacio,
@@ -102,7 +100,8 @@ export default {
           HacerGalleta(
             features,
             this.olMap.getView().getResolution(),
-            this.estiloCapa.circle.radius
+            this.estiloCapa.circle.radius,
+            this.metodoUbicacion
           )
         );
       }

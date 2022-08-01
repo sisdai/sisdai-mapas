@@ -20,6 +20,7 @@
         url="/comunidad-sargazo.geojson"
         :estilo-capa="{ circle: { radius: 5 } }"
         :reglas-estilo-capa="reglasEstiloCapa"
+        metodoUbicacion="anillo"
       />
       <!--
         :datos="require('../capas/centroides-estados.json')"
