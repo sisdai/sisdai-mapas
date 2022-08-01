@@ -41,6 +41,7 @@ export default {
         this.datos !== undefined
           ? createGeojsonSourceFromObjectJs(this.datos)
           : createGeojsonSourceFromUrl(this.url),
+      featuresClusterizados: [],
     };
   },
   created() {},
@@ -91,22 +92,22 @@ export default {
       this._setStyle();
     },
     clusterOnChange(e) {
-      const features = e.target.features;
+      this.featuresClusterizados = e.target.features;
 
-      if (features.length > 0 && this.visible) {
+      if (this.featuresClusterizados.length > 0 && this.visible) {
         // console.log("ha cambiado algo", features);
 
-        this.actualizarSource(
-          HacerGalleta(
-            features,
-            this.olMap.getView().getResolution(),
-            this.estiloCapa.circle.radius,
-            this.metodoUbicacion
-          )
-        );
+        this.actualizarSource();
       }
     },
-    actualizarSource(sourceNuevo) {
+    actualizarSource() {
+      const sourceNuevo = HacerGalleta(
+        this.featuresClusterizados,
+        this.olMap.getView().getResolution(),
+        this.estiloCapa.circle.radius,
+        this.metodoUbicacion
+      );
+
       let vectorSource = this.olLayer.getSource();
       vectorSource.clear();
 
@@ -149,6 +150,9 @@ export default {
     },
     distanciaMinima: function (newDistancia) {
       this.olLayer.getSource().setMinDistance(newDistancia);
+    },
+    metodoUbicacion() {
+      this.actualizarSource();
     },
   },
   computed: {},

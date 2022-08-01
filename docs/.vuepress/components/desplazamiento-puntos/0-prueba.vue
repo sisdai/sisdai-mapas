@@ -1,11 +1,18 @@
 <template>
-  <DaiTarjetaContenedorMapa>
+  <DaiTarjetaContenedorMapa :colapsada="false">
     <template v-slot:header>
-      <dai-leyenda-mapa
-        :para="['galletar-basico', 'cluster-clasificado']"
-        :mostrar-boton-alterna-todos="true"
-      />
+      <p>Selecciona la textura</p>
+      <dai-selector-mapa v-model="metodoSeleccionado">
+        <option
+          v-for="metodo in metodosDeUbicacion"
+          :value="metodo"
+          :key="metodo"
+        >
+          {{ metodo }}
+        </option>
+      </dai-selector-mapa>
     </template>
+
     <DaiMapa
       :extension="[
         -120.668130000000005, 18.5014099999999999, 20.8850700000000007,
@@ -20,7 +27,7 @@
         url="/comunidad-sargazo.geojson"
         :estilo-capa="{ circle: { radius: 5 } }"
         :reglas-estilo-capa="reglasEstiloCapa"
-        metodoUbicacion="anillo"
+        :metodoUbicacion="metodoSeleccionado"
       />
       <!--
         :datos="require('../capas/centroides-estados.json')"
@@ -48,6 +55,13 @@
         }"
       /-->
     </DaiMapa>
+
+    <template #footer>
+      <dai-leyenda-mapa
+        para="galletar-basico"
+        :mostrar-boton-alterna-todos="true"
+      />
+    </template>
   </DaiTarjetaContenedorMapa>
 </template>
 
@@ -84,6 +98,8 @@ export default {
           "#42A542",
         ],
       },
+      metodosDeUbicacion: ["anillo", "anillos-consentricos", "espiral", "cuadricula"],
+      metodoSeleccionado: "anillo",
     };
   },
   mounted() {},
