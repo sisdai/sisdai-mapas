@@ -7,10 +7,12 @@ import VectorLayer from "ol/layer/Vector";
 import VectorImage from "ol/layer/VectorImage";
 import GeoJSON from "ol/format/GeoJSON";
 import Cluster from "ol/source/Cluster";
+import Feature from "ol/Feature";
 
 import {
   createGeojsonSourceFromObjectJs,
   createGeojsonSourceFromUrl,
+  styleClusterGenerico,
   styleClusterNoVisible,
   HacerGalleta,
 } from "./utiles";
@@ -27,71 +29,45 @@ export default {
       type: Number,
       default: 0,
     },
+    tipoVis: {
+      type: String,
+      default: "anillo",
+    },
   },
   data: function () {
     return {
       // VM_featuresGroup: true,
-      olMap: undefined,
+      olLayerCluster: undefined,
+      sourceOriginal:
+        this.datos !== undefined
+          ? createGeojsonSourceFromObjectJs(this.datos)
+          : createGeojsonSourceFromUrl(this.url),
     };
   },
-  created() {
-    this.getMap((olMap) => {
-      this.olMap = olMap;
-    });
-  },
+  created() {},
   methods: {
-    _createClusterLayerObject() {
-      // Creando layer cluster
-      const olLayerCluster = new this.LayerClass({
+    _createLayerObject() {
+      const LayerClass = this.renderizarComoImagen ? VectorImage : VectorLayer;
+      var ver = true;
+
+      this.olLayerCluster = new LayerClass({
         source: new Cluster({
-          source: this.sourceOriginal,
           distance: this.distancia,
           minDistance: this.distanciaMinima,
+          createCluster: function (point, features) {
+            if (ver) console.log(point, features);
+            ver = false;
+            return new Feature({
+              geometry: point,
+              features: features,
+            });
+          },
+          source: this.sourceOriginal,
         }),
         className: this.className,
         style: styleClusterNoVisible,
       });
-      this.olMap.addLayer(olLayerCluster);
-
-      if (this.sourceOriginal.getUrl() === undefined) {
-        // si la fuente de datos es un archivo
-      } else {
-        // si la fuente de datos es una url
-        this.sourceOriginal.on("featuresloadend", () => {
-          setTimeout(() => {
-            // array de features
-            //olLayerCluster.getSource().getFeatures().map((f) => f.get("features")).flat()
-
-            // array de features clusterizados
-            //olLayerCluster.getSource().getFeatures()
-            const sourceGalleta = HacerGalleta(
-              olLayerCluster.getSource().getFeatures(),
-              this.olMap.getView().getResolution()
-            );
-            console.log("galleta", sourceGalleta.getFeatures());
-
-            this.olMap.addLayer(
-              new this.LayerClass({
-                source: sourceGalleta,
-                className: this.className,
-              })
-            );
-          }, 50);
-        });
-      }
-    },
-    async _createLayerObject() {
-      // this._createClusterLayerObject();
-      const olLayerCluster = new this.LayerClass({
-        source: new Cluster({
-          source: this.sourceOriginal,
-          distance: this.distancia,
-          minDistance: this.distanciaMinima,
-        }),
-        className: this.className,
-        style: styleClusterNoVisible,
-      });
-      this.olMap.addLayer(olLayerCluster);
+      this.olMap.addLayer(this.olLayerCluster);
 
       if (this.sourceOriginal.getUrl() === undefined) {
         // si la fuente de datos es un archivo
@@ -100,14 +76,15 @@ export default {
         this.sourceOriginal.on("featuresloadend", () => {
           setTimeout(() => {
             const sourceGalleta = HacerGalleta(
-              olLayerCluster.getSource().getFeatures(),
-              this.olMap.getView().getResolution()
+              this.olLayerCluster.getSource().getFeatures(),
+              this.olMap.getView().getResolution(),
+              this.estiloCapa.circle.radius
             );
 
             this.actualizarSource(sourceGalleta);
 
             // console.log("galleta", this.olLayer.getSource().getFeatures());
-            this.olMap.removeLayer(olLayerCluster);
+            // this.olMap.removeLayer(this.olLayerCluster);
           });
         });
       }
@@ -115,7 +92,7 @@ export default {
       /** Reemplazar features antes de dibujar los que pasan cómo parámetros */
 
       let vectorSourceVacio = createGeojsonSourceFromObjectJs();
-      this.olLayer = new this.LayerClass({
+      this.olLayer = new LayerClass({
         source: vectorSourceVacio,
         className: this.className,
       });
@@ -140,17 +117,12 @@ export default {
       this._saveAllFeaturesFromSource(vectorSourceVacio);
       this._setStyle();
 
-      /* Redibuja el cluster al mover el mapa
+      // Redibuja el cluster al mover el mapa
       this.olMap.on("moveend", (e) => {
         if (this.visible) {
-          if (this.VM_is_classified) {
-            this._clasificar_v2();
-            this._set_style_class_v2();
-          }
-          this._saveAllFeaturesFromSource(this.olLayer.getSource(), false);
-          this._setStyle();
+          console.log("calcular de nuevo");
         }
-      });*/
+      });
     },
     actualizarSource(sourceNuevo) {
       let vectorSource = this.olLayer.getSource();
@@ -197,20 +169,6 @@ export default {
       this.olLayer.getSource().setMinDistance(newDistancia);
     },
   },
-  computed: {
-    sourceOriginal() {
-      return this.datos !== undefined
-        ? createGeojsonSourceFromObjectJs(this.datos)
-        : createGeojsonSourceFromUrl(this.url);
-    },
-    vectorSource() {
-      return this.datos !== undefined
-        ? createGeojsonSourceFromObjectJs(this.datos)
-        : createGeojsonSourceFromUrl(this.url);
-    },
-    LayerClass() {
-      return this.renderizarComoImagen ? VectorImage : VectorLayer;
-    },
-  },
+  computed: {},
 };
 </script>

@@ -2,7 +2,6 @@ import VectorSource from "ol/source/Vector";
 import GeoJSON from "ol/format/GeoJSON";
 import { Circle as CircleStyle, Fill, Stroke, Style, Text } from "ol/style";
 import Point from "ol/geom/Point";
-import Feature from "ol/Feature";
 
 export const createGeojsonSourceFromObjectJs = JsObject => {
     if (typeof JsObject != "object") {
@@ -21,7 +20,7 @@ export const createGeojsonSourceFromUrl = url => {
     });
 };
 
-export const styleCluster = size =>
+export const styleClusterGenerico = size =>
     new Style({
         image: new CircleStyle({
             radius: size + 5,
@@ -47,15 +46,16 @@ export const styleClusterNoVisible = () =>
         })
     });
 
-export const HacerGalleta = (clusters, pix) => {
+export const HacerGalleta = (clusters, pix, pointRadius) => {
     const sourceGalleta = new VectorSource({});
+    pointRadius = pointRadius + 3;
 
     clusters.forEach(cluster => {
         // datos del feature
         const center = cluster.get("geometry").flatCoordinates;
 
         // param
-        const pointRadius = 8;
+        // const pointRadius = 8;
         var featuresNuevos = [];
 
         const features = cluster.get("features");

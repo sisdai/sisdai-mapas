@@ -294,6 +294,7 @@ export default{
             //if(vectorSource.getFeatures().length>1){
             //if(vectorSource.getUrl()===undefined){
             if(this.datos!==undefined ){
+                // si el origen es de una url
                 if(this.VM_featuresGroup){
                     const objects = geojsonFormat.writeFeaturesObject( vectorSource.getFeatures() )
                     
@@ -319,6 +320,12 @@ export default{
                 }
                 return
             }
+
+            if (this.tipoVis !== undefined) {
+                /** Solo para cisualizaciones de despalazamiento de puntos */
+                this.VM_allFeatures = geojsonFormat.writeFeatures( vectorSource.getFeatures() );
+            }
+
             //console.log("---AQUI ESPERAR LAS FEATURES EN VM_allfeatures")
             let listenerFn = (evento)=>{
 
