@@ -180,7 +180,7 @@ export default {
 
         this.map.set("_reset_view",this.VM_reset_view)
         if(this.VM_reset_view.type=="extent"){
-            this.map.getView().fit(this.extension,{duration:500,padding: this.paddingToExtensionZoom})
+            this.map.getView().fit(this.extension,{padding: this.paddingToExtensionZoom})
         }
 
         //verificar si hay un card contaiener
