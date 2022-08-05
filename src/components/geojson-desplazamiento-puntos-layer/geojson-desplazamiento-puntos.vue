@@ -12,7 +12,6 @@ import Cluster from "ol/source/Cluster";
 import {
   createGeojsonSourceFromObjectJs,
   createGeojsonSourceFromUrl,
-  styleClusterGenerico,
   styleClusterNoVisible,
   HacerGalleta,
 } from "./utiles";
@@ -42,6 +41,7 @@ export default {
           ? createGeojsonSourceFromObjectJs(this.datos)
           : createGeojsonSourceFromUrl(this.url),
       featuresClusterizados: [],
+      nFeaturesVisibles: 0,
     };
   },
   created() {},
@@ -72,6 +72,8 @@ export default {
       });
 
       this.olLayer.set("_realce_hover", this.realceAlPasarMouse);
+
+      this.olLayer.getSource().on("change", this.layerVisibleOnChange);
 
       if (this.VM_is_classified) {
         this._clasificar_v2();
@@ -119,6 +121,19 @@ export default {
       this._saveAllFeaturesFromSource(vectorSource);
       this._setStyle();
     },
+    layerVisibleOnChange(e) {
+      const nActualFeaturesVisibles = e.target.getFeatures().length;
+      // console.log("algo ha cambiado");
+      if (
+        this.nFeaturesVisibles !== 0 &&
+        this.nFeaturesVisibles !== nActualFeaturesVisibles
+      ) {
+        console.log("cambió el numero de features visibles");
+        // this.actualizarSource();
+        // tomar solo lo que se filtre
+      }
+      this.nFeaturesVisibles = nActualFeaturesVisibles;
+    },
   },
   watch: {
     datos: function (newDatos) {
@@ -155,9 +170,9 @@ export default {
       this.actualizarSource();
     },
   },
-  computed: {},
   destroyed() {
     this.sourceCluster.un("change", this.clusterOnChange);
+    this.olLayer.getSource().un("change", this.layerVisibleOnChange);
   },
 };
 </script>

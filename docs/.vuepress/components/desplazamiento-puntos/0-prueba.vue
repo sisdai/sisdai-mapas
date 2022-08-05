@@ -1,27 +1,33 @@
 <template>
-  <DaiTarjetaContenedorMapa :colapsada="false">
+  <DaiTarjetaContenedorMapa :colapsada="false" id="desplazamiento-puntos">
     <template v-slot:header>
-      <p>Selecciona la textura</p>
-      <dai-selector-mapa v-model="metodoSeleccionado">
-        <option
-          v-for="metodo in metodosDeUbicacion"
-          :value="metodo"
-          :key="metodo"
-        >
-          {{ metodo }}
-        </option>
-      </dai-selector-mapa>
+      <div>
+        <p>Selecciona la textura</p>
+        <dai-selector-mapa v-model="metodoSeleccionado">
+          <option
+            v-for="metodo in metodosDeUbicacion"
+            :value="metodo"
+            :key="metodo"
+          >
+            {{ metodo }}
+          </option>
+        </dai-selector-mapa>
+      </div>
 
-      <p>Distancia dentro de la cual se agruparán las entidades.</p>
-      <br />
-      <input
-        class="dai-range"
-        type="range"
-        min="0"
-        max="200"
-        step="1"
-        v-model="distanciaCluster"
-      />
+      <div>
+        <p>
+          Distancia dentro de la cual se agruparán las entidades.
+          {{ distanciaCluster }}
+        </p>
+        <input
+          class="dai-range"
+          type="range"
+          min="0"
+          max="200"
+          step="1"
+          v-model="distanciaCluster"
+        />
+      </div>
 
       <!--p>
         Distancia mínima entre clústeres. No puede ser mayor que la distancia
@@ -36,6 +42,10 @@
         step="1"
         v-model="distanciaMinimaCluster"
       /-->
+      <!--div>
+        <p>Radio de circulos</p>
+        <input type="number" v-model="radioPuntos">
+      </div-->
     </template>
 
     <DaiMapa
@@ -50,11 +60,18 @@
         id="galletar-basico"
         titulo="Capa de galleta"
         url="/comunidad-sargazo.geojson"
-        :estilo-capa="{ circle: { radius: 5 } }"
+        :estilo-capa="{ circle: { radius: radioPuntos } }"
         :reglas-estilo-capa="reglasEstiloCapa"
         :distancia="Number(distanciaCluster)"
         :distanciaMinima="Number(distanciaMinimaCluster)"
         :metodoUbicacion="metodoSeleccionado"
+        :contenidoTooltip="
+          (f) =>
+            `<b>${f.nombre_actor}</b><br>` +
+            `<b>Cargo: </b>${f.cargo_titulo}<br>` +
+            `<b>Sector: </b>${f.sector}<br>` +
+            `<b>Institución: </b>${f.institucion}<br>`
+        "
       />
       <!--
         :datos="require('../capas/centroides-estados.json')"
@@ -134,8 +151,32 @@ export default {
         "cuadricula",
       ],
       metodoSeleccionado: "anillo",
+      radioPuntos: 5,
     };
   },
   mounted() {},
 };
 </script>
+
+<style lang="scss">
+#desplazamiento-puntos {
+  .card-map-header {
+    flex-direction: column;
+    padding: 8px;
+    div {
+      margin: 0;
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      justify-content: space-between;
+
+      .select, input {
+        width: 300px;
+      }
+    }
+  }
+  .ol-tooltipmov {
+    min-width: 200px;
+  }
+}
+</style>
