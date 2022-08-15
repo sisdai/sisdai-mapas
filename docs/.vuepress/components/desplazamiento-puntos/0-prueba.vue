@@ -2,7 +2,7 @@
   <DaiTarjetaContenedorMapa :colapsada="false" id="desplazamiento-puntos">
     <template v-slot:header>
       <div>
-        <p>Selecciona la textura</p>
+        <p>Metodo de desplazamiento</p>
         <dai-selector-mapa v-model="metodoSeleccionado">
           <option
             v-for="metodo in metodosDeUbicacion"
@@ -60,11 +60,13 @@
         id="galletar-basico"
         titulo="Capa de galleta"
         url="/comunidad-sargazo.geojson"
-        :estilo-capa="{ circle: { radius: radioPuntos } }"
-        :reglas-estilo-capa="reglasEstiloCapa"
         :distancia="Number(distanciaCluster)"
         :distanciaMinima="Number(distanciaMinimaCluster)"
         :metodoUbicacion="metodoSeleccionado"
+        :radioPuntoCentro="radioPuntoCentro"
+        :radioPuntosDesplazados="radioPuntosDesplazados"
+        :propsAsignaEstilo="['circle']"
+        :fnAsignaEstilo="fnAsignaEstilo"
         :contenidoTooltip="
           (f) =>
             `<b>${f.nombre_actor}</b><br>` +
@@ -79,25 +81,16 @@
 
         url="/comunidad-sargazo.geojson"
         :reglas-estilo-capa="reglasEstiloCapa"
+        :props-asigna-estilo="['circle']"
+        :fn-asigna-estilo="fnAsignaEstilo"
+        :contenidoTooltip="
+          (f) =>
+            `<b>${f.nombre_actor}</b><br>` +
+            `<b>Cargo: </b>${f.cargo_titulo}<br>` +
+            `<b>Sector: </b>${f.sector}<br>` +
+            `<b>Institución: </b>${f.institucion}<br>`
+        "
       -->
-
-      <!--DaiCapaGeojsonCluster
-        id="cluster-clasificado"
-        titulo="Capa con cluster"
-        :url="$withBase('/centroides-estados.geojson')"
-        :reglas-estilo-capa="{
-          clasificacion: 'linear',
-          columna: 'features_count',
-          propiedadObjetivo: 'proporcion',
-          clases: 4,
-          proporciones: [4, 8, 12, 16],
-        }"
-        :estilo-capa="{
-          circle: {
-            fill: { color: 'green' },
-          },
-        }"
-      /-->
     </DaiMapa>
 
     <template #footer>
@@ -151,10 +144,42 @@ export default {
         "cuadricula",
       ],
       metodoSeleccionado: "anillo",
-      radioPuntos: 5,
+      radioPuntoCentro: 3,
+      radioPuntosDesplazados: 5,
     };
   },
-  mounted() {},
+  methods: {
+    fnAsignaEstilo(f) {
+      // circle.radius
+      if (f.hasOwnProperty("anillo")) {
+        return [
+          {
+            radius: f.anillo.radius,
+            stroke: { color: "gray" },
+          },
+        ];
+      }
+      return [
+        {
+          fill: { color: dic[f.linea_estrategica_conacyt] },
+          radius: f.hasOwnProperty("features") ? this.radioPuntoCentro : this.radioPuntosDesplazados,
+        },
+      ];
+    },
+  },
+};
+
+const dic = {
+  "Contención, recolección y disposición": "#C51228",
+  Normatividad: "#FF5500",
+  "Comunicación y educación": "#DB16A3",
+  "Monitoreo, modelación y alerta temprana": "#7D1DD8",
+  "Origen e importancia ecológica": "#262699",
+  "Impactos socioeconómicos y ambientales": "#438BFF",
+  "Aprovechamiento y usos": "#1263FC",
+  "Cooperación internacional": "#0A7F94",
+  Restauración: "#054C32",
+  "Atención integral": "#42A542",
 };
 </script>
 
@@ -170,7 +195,8 @@ export default {
       width: 100%;
       justify-content: space-between;
 
-      .select, input {
+      .select,
+      input {
         width: 300px;
       }
     }

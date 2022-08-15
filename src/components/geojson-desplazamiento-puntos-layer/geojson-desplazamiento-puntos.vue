@@ -5,15 +5,13 @@ import classificable_layer from "../../mixins/classificable-layer";
 
 import VectorLayer from "ol/layer/Vector";
 import VectorImage from "ol/layer/VectorImage";
-import VectorSource from "ol/source/Vector";
 import GeoJSON from "ol/format/GeoJSON";
-import Cluster from "ol/source/Cluster";
+
+import DisplacedPoints from "@local/ol-displaced-points";
 
 import {
   createGeojsonSourceFromObjectJs,
   createGeojsonSourceFromUrl,
-  styleClusterNoVisible,
-  HacerGalleta,
 } from "./utiles";
 
 export default {
@@ -32,52 +30,59 @@ export default {
       type: String,
       default: "anillo",
     },
+    radioPuntoCentro: {
+      type: Number,
+      default: 6,
+    },
+    radioPuntosDesplazados: {
+      type: Number,
+      default: 6,
+    },
   },
   data: function () {
     return {
-      sourceCluster: undefined,
-      sourceOriginal:
-        this.datos !== undefined
-          ? createGeojsonSourceFromObjectJs(this.datos)
-          : createGeojsonSourceFromUrl(this.url),
-      featuresClusterizados: [],
-      nFeaturesVisibles: 0,
+      // VM_featuresGroup: true,
     };
   },
   created() {},
   methods: {
     _createLayerObject() {
+      // this.VM_is_cluster = true;
+
+      let vectorSource =
+        this.datos !== undefined
+          ? createGeojsonSourceFromObjectJs(this.datos)
+          : createGeojsonSourceFromUrl(this.url);
+
       const LayerClass = this.renderizarComoImagen ? VectorImage : VectorLayer;
 
-      this.sourceCluster = new Cluster({
-        distance: this.distancia,
-        minDistance: this.distanciaMinima,
-        source: this.sourceOriginal,
-        wrapX: false,
-      });
-
-      this.sourceCluster.on("change", this.clusterOnChange);
-
-      const olLayerCluster = new LayerClass({
-        source: this.sourceCluster,
-        className: this.className,
-        style: styleClusterNoVisible,
-      });
-      this.olMap.addLayer(olLayerCluster);
-
-      let vectorSourceVacio = new VectorSource({ wrapX: false });
       this.olLayer = new LayerClass({
-        source: vectorSourceVacio,
+        source: new DisplacedPoints({
+          source: vectorSource,
+          distance: this.distancia,
+          minDistance: this.distanciaMinima,
+          radioCenterPoint: this.radioPuntoCentro,
+          radioDisplacedPoints: this.radioPuntosDesplazados,
+        }),
         className: this.className,
       });
-
       this.olLayer.set("_realce_hover", this.realceAlPasarMouse);
 
-      this.olLayer.getSource().on("change", this.layerVisibleOnChange);
-
       if (this.VM_is_classified) {
-        this._clasificar_v2();
-        this._set_style_class_v2();
+        if (vectorSource.getUrl() === undefined) {
+          this._clasificar_v2();
+          this._set_style_class_v2();
+        } else {
+          vectorSource.on("featuresloadend", () => {
+            setTimeout(() => {
+              //console.log(evento.target.getFeatures())
+              //console.log("cambio el source del layer, evento cachado, geojson.vue")
+              this._clasificar_v2();
+              this._set_style_class_v2();
+              this._setStyle();
+            }, 50);
+          });
+        }
       }
 
       if (this.contenidoTooltip != "none") {
@@ -90,49 +95,8 @@ export default {
         this.olLayer.set("_popup", this.contenidoPopup);
       }
 
-      this._saveAllFeaturesFromSource(vectorSourceVacio);
+      this._saveAllFeaturesFromSource(this.olLayer.getSource());
       this._setStyle();
-    },
-    clusterOnChange(e) {
-      this.featuresClusterizados = e.target.features;
-
-      if (this.featuresClusterizados.length > 0 && this.visible) {
-        // console.log("ha cambiado algo", features);
-
-        this.actualizarSource();
-      }
-    },
-    actualizarSource() {
-      const sourceNuevo = HacerGalleta(
-        this.featuresClusterizados,
-        this.olMap.getView().getResolution(),
-        this.estiloCapa.circle.radius,
-        this.metodoUbicacion
-      );
-
-      let vectorSource = this.olLayer.getSource();
-      vectorSource.clear();
-
-      vectorSource.addFeatures(sourceNuevo.getFeatures());
-      if (this.VM_is_classified) {
-        this._clasificar_v2();
-        this._set_style_class_v2();
-      }
-      this._saveAllFeaturesFromSource(vectorSource);
-      this._setStyle();
-    },
-    layerVisibleOnChange(e) {
-      const nActualFeaturesVisibles = e.target.getFeatures().length;
-      // console.log("algo ha cambiado");
-      if (
-        this.nFeaturesVisibles !== 0 &&
-        this.nFeaturesVisibles !== nActualFeaturesVisibles
-      ) {
-        console.log("cambió el numero de features visibles");
-        // this.actualizarSource();
-        // tomar solo lo que se filtre
-      }
-      this.nFeaturesVisibles = nActualFeaturesVisibles;
     },
   },
   watch: {
@@ -161,18 +125,11 @@ export default {
       }
     },
     distancia: function (newDistancia) {
-      this.sourceCluster.setDistance(newDistancia);
+      this.olLayer.getSource().setDistance(newDistancia);
     },
     distanciaMinima: function (newDistancia) {
-      this.sourceCluster.setMinDistance(newDistancia);
+      this.olLayer.getSource().setMinDistance(newDistancia);
     },
-    metodoUbicacion() {
-      this.actualizarSource();
-    },
-  },
-  destroyed() {
-    this.sourceCluster.un("change", this.clusterOnChange);
-    this.olLayer.getSource().un("change", this.layerVisibleOnChange);
   },
 };
 </script>
