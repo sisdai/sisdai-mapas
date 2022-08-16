@@ -100,7 +100,7 @@ export default {
     },
   },
   watch: {
-    datos: function (newDatos) {
+    datos(newDatos) {
       if (
         newDatos !== undefined &&
         this.olLayer !== null &&
@@ -124,12 +124,24 @@ export default {
         this._setStyle();
       }
     },
-    distancia: function (newDistancia) {
+    distancia(newDistancia) {
       this.olLayer.getSource().setDistance(newDistancia);
     },
-    distanciaMinima: function (newDistancia) {
+    distanciaMinima(newDistancia) {
       this.olLayer.getSource().setMinDistance(newDistancia);
     },
+    metodoUbicacion(newMethod) {
+      this.olLayer
+        .getSource()
+        .setMethodPlacement(dicMetodosDesplazamiento[newMethod]);
+    },
   },
+};
+
+const dicMetodosDesplazamiento = {
+  anillo: "ring",
+  "anillos-consentricos": "concentric-rings",
+  espiral: "spiral",
+  cuadricula: "grid",
 };
 </script>

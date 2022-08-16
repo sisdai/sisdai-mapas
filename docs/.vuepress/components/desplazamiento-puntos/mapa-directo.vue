@@ -33,6 +33,7 @@ export default {
       minDistance: 40,
       radioCenterPoint: radioCentro,
       radioDisplacedPoints: radioPuntos,
+      methodPlacement: 'concentric-rings',
     });
 
     // console.log(obj.getFeatures());
