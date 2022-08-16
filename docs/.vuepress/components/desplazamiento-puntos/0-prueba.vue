@@ -62,7 +62,7 @@
         url="/comunidad-sargazo.geojson"
         :distancia="Number(distanciaCluster)"
         :distanciaMinima="Number(distanciaMinimaCluster)"
-        :metodoUbicacion="metodoSeleccionado"
+        :metodoDesplazamiento="metodoSeleccionado"
         :radioPuntoCentro="radioPuntoCentro"
         :radioPuntosDesplazados="radioPuntosDesplazados"
         :propsAsignaEstilo="['circle']"
@@ -139,7 +139,7 @@ export default {
       distanciaMinimaCluster: 0,
       metodosDeUbicacion: [
         "anillo",
-        "anillos-consentricos",
+        "anillos-concentricos",
         "espiral",
         "cuadricula",
       ],
