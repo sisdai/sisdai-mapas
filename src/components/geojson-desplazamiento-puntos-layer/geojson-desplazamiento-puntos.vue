@@ -61,6 +61,7 @@ export default {
           source: vectorSource,
           distance: this.distancia,
           minDistance: this.distanciaMinima,
+          methodPlacement: dicMetodosDesplazamiento[this.metodoUbicacion],
           radioCenterPoint: this.radioPuntoCentro,
           radioDisplacedPoints: this.radioPuntosDesplazados,
         }),
