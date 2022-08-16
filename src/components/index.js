@@ -7,6 +7,7 @@ import * as DaiXyzLayerOsm from "./xyz-layer-osm"
 import * as DaiXyzLayer from "./xyz-layer"
 import * as DaiGeojsonLayer  from "./geojson-layer"
 import * as DaiCapaGeojsonCluster  from "./geojson-cluster-layer"
+import * as DaiCapaGeojsonDesplazamientoDePuntos  from "./geojson-desplazamiento-puntos-layer"
 import * as DaiCapaGeojsonHexbin from "./geojson-hexbin-layer"
 import * as DaiWmsLayer from "./wms-layer"
 
@@ -26,6 +27,7 @@ export{
     DaiXyzLayerOsm,
     DaiGeojsonLayer,
     DaiCapaGeojsonCluster,
+    DaiCapaGeojsonDesplazamientoDePuntos,
     DaiCapaGeojsonHexbin,
     DaiWmsLayer,
 
