@@ -12,7 +12,7 @@ import GeoJSON from "ol/format/GeoJSON";
 import VectorLayer from "ol/layer/Vector";
 import { Circle, Fill, Stroke, Style } from "ol/style";
 
-import DisplacedPoints from "@local/ol-displaced-points";
+import DisplacedPoints from "ol-displaced-points";
 
 export default {
   created() {},

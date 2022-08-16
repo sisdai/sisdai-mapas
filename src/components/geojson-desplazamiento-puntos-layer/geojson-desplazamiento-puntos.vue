@@ -7,7 +7,7 @@ import VectorLayer from "ol/layer/Vector";
 import VectorImage from "ol/layer/VectorImage";
 import GeoJSON from "ol/format/GeoJSON";
 
-import DisplacedPoints from "@local/ol-displaced-points";
+import DisplacedPoints from "ol-displaced-points";
 
 import {
   createGeojsonSourceFromObjectJs,
