@@ -61,7 +61,7 @@ export default {
           source: vectorSource,
           distance: this.distancia,
           minDistance: this.distanciaMinima,
-          methodPlacement: dicMetodosDesplazamiento[this.metodoDesplazamiento],
+          placementMethod: dicMetodosDesplazamiento[this.metodoDesplazamiento],
           radioCenterPoint: this.radioPuntoCentro,
           radioDisplacedPoints: this.radioPuntosDesplazados,
         }),
@@ -134,7 +134,7 @@ export default {
     metodoDesplazamiento(newMethod) {
       this.olLayer
         .getSource()
-        .setMethodPlacement(dicMetodosDesplazamiento[newMethod]);
+        .setPlacementMethod(dicMetodosDesplazamiento[newMethod]);
     },
   },
 };

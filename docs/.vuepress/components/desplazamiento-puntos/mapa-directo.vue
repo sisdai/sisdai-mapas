@@ -33,7 +33,7 @@ export default {
       minDistance: 40,
       radioCenterPoint: radioCentro,
       radioDisplacedPoints: radioPuntos,
-      methodPlacement: 'concentric-rings',
+      placementMethod: 'concentric-rings',
     });
 
     // console.log(obj.getFeatures());
@@ -45,15 +45,16 @@ export default {
 
     addSourceToMap(map, {
       source: obj,
-      style: (cluster) => {
-        if (cluster.get("anillo")) {
-          return styleRadiusRing(cluster.get("anillo"));
+      style: (f) => {
+        if (f.get("anillo")) {
+          return styleCircle(f.get("anillo").radius);
         }
-        if (cluster.get("features")) {
-          return styleRadiusColor(radioCentro, "red");
+        if (f.get("features")) {
+          return styleCircle(radioCentro, "white", "red");
         }
-        return styleRadiusColor(radioPuntos, "green");
-      },
+
+        return styleCircle(radioPuntos, "white", `#${f.get("cvegeo")}a`);
+      }
     });
   },
 };
@@ -62,32 +63,20 @@ function addSourceToMap(map, optiosSource) {
   map.addLayer(new VectorLayer(optiosSource));
 }
 
-const styleRadiusRing = (ring) => {
-  return new Style({
-    image: new Circle({
-      radius: ring.radius,
-      stroke: new Stroke({
-        color: "black",
-        with: 1,
-      }),
-    }),
-  });
-};
-
-const styleRadiusColor = (radius, color) => {
+function styleCircle(radius, stroke, fill = "#0000") {
   return new Style({
     image: new Circle({
       radius: radius,
       stroke: new Stroke({
-        color: "#fff",
+        color: stroke,
         with: 1,
       }),
       fill: new Fill({
-        color: color,
+        color: fill,
       }),
     }),
   });
-};
+}
 
 function crearMapa(tarjet) {
   return new Map({
