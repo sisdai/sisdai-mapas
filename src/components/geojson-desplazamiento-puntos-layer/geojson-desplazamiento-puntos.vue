@@ -26,7 +26,7 @@ export default {
       type: Number,
       default: 0,
     },
-    metodoUbicacion: {
+    metodoDesplazamiento: {
       type: String,
       default: "anillo",
     },
@@ -61,6 +61,7 @@ export default {
           source: vectorSource,
           distance: this.distancia,
           minDistance: this.distanciaMinima,
+          placementMethod: dicMetodosDesplazamiento[this.metodoDesplazamiento],
           radioCenterPoint: this.radioPuntoCentro,
           radioDisplacedPoints: this.radioPuntosDesplazados,
         }),
@@ -130,17 +131,17 @@ export default {
     distanciaMinima(newDistancia) {
       this.olLayer.getSource().setMinDistance(newDistancia);
     },
-    metodoUbicacion(newMethod) {
+    metodoDesplazamiento(newMethod) {
       this.olLayer
         .getSource()
-        .setMethodPlacement(dicMetodosDesplazamiento[newMethod]);
+        .setPlacementMethod(dicMetodosDesplazamiento[newMethod]);
     },
   },
 };
 
 const dicMetodosDesplazamiento = {
   anillo: "ring",
-  "anillos-consentricos": "concentric-rings",
+  "anillos-concentricos": "concentric-rings",
   espiral: "spiral",
   cuadricula: "grid",
 };
