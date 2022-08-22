@@ -65,6 +65,7 @@
         :metodoDesplazamiento="metodoSeleccionado"
         :radioPuntoCentro="radioPuntoCentro"
         :radioPuntosDesplazados="radioPuntosDesplazados"
+        delimitarGruposPor="codigo_pais"
         :propsAsignaEstilo="['circle']"
         :fnAsignaEstilo="fnAsignaEstilo"
         :contenidoTooltip="
@@ -135,7 +136,7 @@ export default {
           "#42A542",
         ],
       },
-      distanciaCluster: 20,
+      distanciaCluster: 152,
       distanciaMinimaCluster: 0,
       metodosDeUbicacion: [
         "anillo",
@@ -143,7 +144,7 @@ export default {
         "espiral",
         "cuadricula",
       ],
-      metodoSeleccionado: "anillo",
+      metodoSeleccionado: "anillos-concentricos",
       radioPuntoCentro: 3,
       radioPuntosDesplazados: 5,
     };
@@ -151,10 +152,10 @@ export default {
   methods: {
     fnAsignaEstilo(f) {
       // circle.radius
-      if (f.hasOwnProperty("anillo")) {
+      if (f.hasOwnProperty("ring")) {
         return [
           {
-            radius: f.anillo.radius,
+            radius: f.ring.radius,
             stroke: { color: "gray" },
           },
         ];

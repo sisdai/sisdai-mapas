@@ -38,6 +38,9 @@ export default {
       type: Number,
       default: 6,
     },
+    delimitarGruposPor: {
+      type: String,
+    },
   },
   data: function () {
     return {
@@ -62,8 +65,9 @@ export default {
           distance: this.distancia,
           minDistance: this.distanciaMinima,
           placementMethod: dicMetodosDesplazamiento[this.metodoDesplazamiento],
-          radioCenterPoint: this.radioPuntoCentro,
-          radioDisplacedPoints: this.radioPuntosDesplazados,
+          radiusCenterPoint: this.radioPuntoCentro,
+          radiusDisplacedPoints: this.radioPuntosDesplazados,
+          delimiterField: this.delimitarGruposPor,
         }),
         className: this.className,
       });
