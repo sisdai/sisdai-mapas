@@ -15,7 +15,7 @@ import {
 } from "./utiles";
 
 export default {
-  name: "DaiCapaGeojsonDesplazamientoDePuntos",
+  name: "DaiCapaGeojsonPuntosDesplazados",
   mixins: [layer, vector_any, classificable_layer],
   props: {
     distancia: {
@@ -40,6 +40,7 @@ export default {
     },
     delimitarGruposPor: {
       type: String,
+      default: undefined,
     },
   },
   data: function () {
