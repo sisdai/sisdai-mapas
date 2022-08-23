@@ -145,20 +145,20 @@ El url del archivo [geojson](https://geojson.org/), puede ser externo o relativo
 Objeto o array de objetos en formato [geojson](https://geojson.org/) para pasar a la capa del mapa. Si se define, la propiedad `url` se ignora.
 
 #### distancia
-- type: `Number`
-- default: `20`
+- Type: `Number`
+- Default: `20`
 
-Distance in pixels within which features will be clustered together.
+Distancia en píxeles dentro de la cual se agruparán las entidades.
     
 #### distanciaMinima
-- type: `Number`
-- default: `0`
+- Type: `Number`
+- Default: `0`
 
 Distancia mínima en píxeles entre clústeres. Se limitará a la distancia configurada. Por defecto no se garantiza una distancia mínima. Esta configuración se puede utilizar para evitar la superposición de iconos. Como compensación, la posición de la entidad del clúster ya no será el centro de todas sus entidades.
     
 #### metodoDesplazamiento
-- type: `String`
-- default: `'anillo'`
+- Type: `String`
+- Default: `'anillo'`
 
 El mapa toma los puntos que caen en una tolerancia de distancia dada entre sí (grupo) y los ubica alrededor de su baricentro siguiendo diferentes métodos de desplazamiento:
 - `grid`: Coloca todas las características en un círculo cuyo radio depende de la cantidad de características a mostrar.
@@ -167,20 +167,20 @@ El mapa toma los puntos que caen en una tolerancia de distancia dada entre sí (
 - `grid`: Genera una grilla regular con un símbolo de punto en cada intersección.
 
 #### radioPuntoCentro
-- type: `Number`
-- default: `6`
+- Type: `Number`
+- Default: `6`
 
 Radio del punto céntrico, utilizado para la distancia entre el punto céntrico y los puntos desplazados más cercanos.
 
 #### radioPuntosDesplazados
-- type: `Number`
-- default: `6`
+- Type: `Number`
+- Default: `6`
 
 Radio de puntos desplazados, utilizado para la distancia entre cada punto desplazado.
 
 #### delimitarGruposPor
-- type: `String`,
-- default: `undefined`
+- Type: `String`,
+- Default: `undefined`
 
 Si necesita delimitar los clústeres en función de alguna categoría, use el nombre de la columna con la que desea delimitar en el parámetro `delimiterField`.
 
