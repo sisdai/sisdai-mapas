@@ -161,10 +161,10 @@ Distancia mínima en píxeles entre clústeres. Se limitará a la distancia conf
 - Default: `'anillo'`
 
 El mapa toma los puntos que caen en una tolerancia de distancia dada entre sí (grupo) y los ubica alrededor de su baricentro siguiendo diferentes métodos de desplazamiento:
-- `grid`: Coloca todas las características en un círculo cuyo radio depende de la cantidad de características a mostrar.
-- `concentric-rings`: utiliza un conjunto de círculos concéntricos para mostrar las características.
-- `espiral`: Crea una espiral con las características más alejadas del centro del grupo en cada turno.
-- `grid`: Genera una grilla regular con un símbolo de punto en cada intersección.
+- `anillo`: Coloca todas las características en un círculo cuyo radio depende de la cantidad de características a mostrar.
+- `anillos-concentricos`: utiliza un conjunto de círculos concéntricos para mostrar las características.
+- `espiral`: Crea una espiral con las características más alejadas del centro del grupo en cada vuelta.
+- `cuadricula`: Genera una grilla regular con un símbolo de punto en cada intersección.
 
 #### radioPuntoCentro
 - Type: `Number`
