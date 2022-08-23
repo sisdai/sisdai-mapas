@@ -111,6 +111,7 @@ Objeto o array de objetos en formato [geojson](https://geojson.org/) para pasar 
 
 ## dai-capa-geojson-puntos-desplazados
 Componente de capa que utiliza el formato [geojson](https://geojson.org/) como entrada de datos, crea grupos de puntos, cercanos o que tienen la misma ubicación, y los coloca alrededor del baricentro de cada grupo.
+
 ### Uso
 
 ```html{2}
@@ -142,6 +143,46 @@ El url del archivo [geojson](https://geojson.org/), puede ser externo o relativo
 - Default `undefined`
 
 Objeto o array de objetos en formato [geojson](https://geojson.org/) para pasar a la capa del mapa. Si se define, la propiedad `url` se ignora.
+
+#### distancia
+- type: `Number`
+- default: `20`
+
+Distance in pixels within which features will be clustered together.
+    
+#### distanciaMinima
+- type: `Number`
+- default: `0`
+
+Distancia mínima en píxeles entre clústeres. Se limitará a la distancia configurada. Por defecto no se garantiza una distancia mínima. Esta configuración se puede utilizar para evitar la superposición de iconos. Como compensación, la posición de la entidad del clúster ya no será el centro de todas sus entidades.
+    
+#### metodoDesplazamiento
+- type: `String`
+- default: `'anillo'`
+
+El mapa toma los puntos que caen en una tolerancia de distancia dada entre sí (grupo) y los ubica alrededor de su baricentro siguiendo diferentes métodos de desplazamiento:
+- `grid`: Coloca todas las características en un círculo cuyo radio depende de la cantidad de características a mostrar.
+- `concentric-rings`: utiliza un conjunto de círculos concéntricos para mostrar las características.
+- `espiral`: Crea una espiral con las características más alejadas del centro del grupo en cada turno.
+- `grid`: Genera una grilla regular con un símbolo de punto en cada intersección.
+
+#### radioPuntoCentro
+- type: `Number`
+- default: `6`
+
+Radio del punto céntrico, utilizado para la distancia entre el punto céntrico y los puntos desplazados más cercanos.
+
+#### radioPuntosDesplazados
+- type: `Number`
+- default: `6`
+
+Radio de puntos desplazados, utilizado para la distancia entre cada punto desplazado.
+
+#### delimitarGruposPor
+- type: `String`,
+- default: `undefined`
+
+Si necesita delimitar los clústeres en función de alguna categoría, use el nombre de la columna con la que desea delimitar en el parámetro `delimiterField`.
 
 
 ## dai-capa-wms
