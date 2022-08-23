@@ -1,5 +1,5 @@
 <template>
-  <DaiTarjetaContenedorMapa :colapsada="false" id="desplazamiento-puntos">
+  <DaiTarjetaContenedorMapa :colapsada="false" id="puntos-desplazados">
     <template v-slot:header>
       <div>
         <p>Metodo de desplazamiento</p>
@@ -56,7 +56,7 @@
     >
       <DaiCapaXyz />
 
-      <DaiCapaGeojsonDesplazamientoDePuntos
+      <DaiCapaGeojsonPuntosDesplazados
         id="galletar-basico"
         titulo="Capa de galleta"
         url="/comunidad-sargazo.geojson"
@@ -185,7 +185,7 @@ const dic = {
 </script>
 
 <style lang="scss">
-#desplazamiento-puntos {
+#puntos-desplazados {
   .card-map-header {
     flex-direction: column;
     padding: 8px;
