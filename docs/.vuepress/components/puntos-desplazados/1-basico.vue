@@ -1,13 +1,16 @@
-# Puntos desplazados
+<template>
+  <DaiTarjetaContenedorMapa :colapsada="false">
+    <template #header>
+      La metodología de puntos dezplazados crea clusters de puntos, cercanos o
+      que tienen la misma ubicación, y los coloca alrededor del baricentro de
+      cada cluster.
+      <DaiLeyendaMapa :para="['sin-cluster', 'desplazamiento-basico']" />
 
-## Básico
+    </template>
+    <DaiMapa>
+      <DaiCapaXyz />
 
-<puntos-desplazados-1-basico />
-
-```html
-<DaiMapa>
-    <DaiCapaXyz />
-    <DaiCapaGeojson
+      <DaiCapaGeojson
         id="sin-cluster"
         titulo="Capa sin cluster"
         :url="$withBase('/centroides-estados.geojson')"
@@ -18,8 +21,9 @@
             radius: 4,
           },
         }"
-    />
-    <DaiCapaGeojsonPuntosDesplazados
+      />
+      
+      <DaiCapaGeojsonPuntosDesplazados
         id="desplazamiento-basico"
         titulo="Desplazamiento básico"
         :url="$withBase('/centroides-estados.geojson')"
@@ -34,13 +38,7 @@
           },
         }"
         tipoGeometria="Point"
-    />
-</DaiMapa>
-```
-
-## Estilos
-
-## Prueba
-
-<!--puntos-desplazados-mapa-directo /-->
-<puntos-desplazados-0-prueba />
+      />
+    </DaiMapa>
+  </DaiTarjetaContenedorMapa>
+</template>
