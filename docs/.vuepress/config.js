@@ -76,6 +76,7 @@ module.exports = {
             'texturas',
             'texturas-sd',
             'cluster',
+            'puntos-desplazados',
             'mallas-hexagonales'
           ]
         }
