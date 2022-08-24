@@ -96,49 +96,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ({
 
-/***/ "06cf":
-/***/ (function(module, exports, __webpack_require__) {
-
-var DESCRIPTORS = __webpack_require__("83ab");
-var call = __webpack_require__("c65b");
-var propertyIsEnumerableModule = __webpack_require__("d1e7");
-var createPropertyDescriptor = __webpack_require__("5c6c");
-var toIndexedObject = __webpack_require__("fc6a");
-var toPropertyKey = __webpack_require__("a04b");
-var hasOwn = __webpack_require__("1a2d");
-var IE8_DOM_DEFINE = __webpack_require__("0cfb");
-
-// eslint-disable-next-line es-x/no-object-getownpropertydescriptor -- safe
-var $getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
-
-// `Object.getOwnPropertyDescriptor` method
-// https://tc39.es/ecma262/#sec-object.getownpropertydescriptor
-exports.f = DESCRIPTORS ? $getOwnPropertyDescriptor : function getOwnPropertyDescriptor(O, P) {
-  O = toIndexedObject(O);
-  P = toPropertyKey(P);
-  if (IE8_DOM_DEFINE) try {
-    return $getOwnPropertyDescriptor(O, P);
-  } catch (error) { /* empty */ }
-  if (hasOwn(O, P)) return createPropertyDescriptor(!call(propertyIsEnumerableModule.f, O, P), O[P]);
-};
-
-
-/***/ }),
-
-/***/ "07fa":
-/***/ (function(module, exports, __webpack_require__) {
-
-var toLength = __webpack_require__("50c4");
-
-// `LengthOfArrayLike` abstract operation
-// https://tc39.es/ecma262/#sec-lengthofarraylike
-module.exports = function (obj) {
-  return toLength(obj.length);
-};
-
-
-/***/ }),
-
 /***/ "09fd":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -146,40 +103,6 @@ module.exports = function (obj) {
 /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_9_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_9_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_9_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_list_checks_colors_shapes_sizes_values_vue_vue_type_style_index_0_id_59b10d0e_prod_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("95b3");
 /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_9_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_9_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_9_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_list_checks_colors_shapes_sizes_values_vue_vue_type_style_index_0_id_59b10d0e_prod_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_9_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_9_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_9_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_list_checks_colors_shapes_sizes_values_vue_vue_type_style_index_0_id_59b10d0e_prod_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
 /* unused harmony reexport * */
-
-
-/***/ }),
-
-/***/ "0cfb":
-/***/ (function(module, exports, __webpack_require__) {
-
-var DESCRIPTORS = __webpack_require__("83ab");
-var fails = __webpack_require__("d039");
-var createElement = __webpack_require__("cc12");
-
-// Thanks to IE8 for its funny defineProperty
-module.exports = !DESCRIPTORS && !fails(function () {
-  // eslint-disable-next-line es-x/no-object-defineproperty -- required for testing
-  return Object.defineProperty(createElement('div'), 'a', {
-    get: function () { return 7; }
-  }).a != 7;
-});
-
-
-/***/ }),
-
-/***/ "0d51":
-/***/ (function(module, exports) {
-
-var $String = String;
-
-module.exports = function (argument) {
-  try {
-    return $String(argument);
-  } catch (error) {
-    return 'Object';
-  }
-};
 
 
 /***/ }),
@@ -202,103 +125,6 @@ module.exports = function (argument) {
 
 /***/ }),
 
-/***/ "13d2":
-/***/ (function(module, exports, __webpack_require__) {
-
-var fails = __webpack_require__("d039");
-var isCallable = __webpack_require__("1626");
-var hasOwn = __webpack_require__("1a2d");
-var DESCRIPTORS = __webpack_require__("83ab");
-var CONFIGURABLE_FUNCTION_NAME = __webpack_require__("5e77").CONFIGURABLE;
-var inspectSource = __webpack_require__("8925");
-var InternalStateModule = __webpack_require__("69f3");
-
-var enforceInternalState = InternalStateModule.enforce;
-var getInternalState = InternalStateModule.get;
-// eslint-disable-next-line es-x/no-object-defineproperty -- safe
-var defineProperty = Object.defineProperty;
-
-var CONFIGURABLE_LENGTH = DESCRIPTORS && !fails(function () {
-  return defineProperty(function () { /* empty */ }, 'length', { value: 8 }).length !== 8;
-});
-
-var TEMPLATE = String(String).split('String');
-
-var makeBuiltIn = module.exports = function (value, name, options) {
-  if (String(name).slice(0, 7) === 'Symbol(') {
-    name = '[' + String(name).replace(/^Symbol\(([^)]*)\)/, '$1') + ']';
-  }
-  if (options && options.getter) name = 'get ' + name;
-  if (options && options.setter) name = 'set ' + name;
-  if (!hasOwn(value, 'name') || (CONFIGURABLE_FUNCTION_NAME && value.name !== name)) {
-    if (DESCRIPTORS) defineProperty(value, 'name', { value: name, configurable: true });
-    else value.name = name;
-  }
-  if (CONFIGURABLE_LENGTH && options && hasOwn(options, 'arity') && value.length !== options.arity) {
-    defineProperty(value, 'length', { value: options.arity });
-  }
-  try {
-    if (options && hasOwn(options, 'constructor') && options.constructor) {
-      if (DESCRIPTORS) defineProperty(value, 'prototype', { writable: false });
-    // in V8 ~ Chrome 53, prototypes of some methods, like `Array.prototype.values`, are non-writable
-    } else if (value.prototype) value.prototype = undefined;
-  } catch (error) { /* empty */ }
-  var state = enforceInternalState(value);
-  if (!hasOwn(state, 'source')) {
-    state.source = TEMPLATE.join(typeof name == 'string' ? name : '');
-  } return value;
-};
-
-// add fake Function#toString for correct work wrapped methods / constructors with methods like LoDash isNative
-// eslint-disable-next-line no-extend-native -- required
-Function.prototype.toString = makeBuiltIn(function toString() {
-  return isCallable(this) && getInternalState(this).source || inspectSource(this);
-}, 'toString');
-
-
-/***/ }),
-
-/***/ "1626":
-/***/ (function(module, exports) {
-
-// `IsCallable` abstract operation
-// https://tc39.es/ecma262/#sec-iscallable
-module.exports = function (argument) {
-  return typeof argument == 'function';
-};
-
-
-/***/ }),
-
-/***/ "16e6":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_7_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_7_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_normal_vector_vue_vue_type_style_index_1_id_7317e94c_prod_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("c6f3");
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_7_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_7_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_normal_vector_vue_vue_type_style_index_1_id_7317e94c_prod_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_7_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_7_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_normal_vector_vue_vue_type_style_index_1_id_7317e94c_prod_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* unused harmony reexport * */
-
-
-/***/ }),
-
-/***/ "1a2d":
-/***/ (function(module, exports, __webpack_require__) {
-
-var uncurryThis = __webpack_require__("e330");
-var toObject = __webpack_require__("7b0b");
-
-var hasOwnProperty = uncurryThis({}.hasOwnProperty);
-
-// `HasOwnProperty` abstract operation
-// https://tc39.es/ecma262/#sec-hasownproperty
-// eslint-disable-next-line es-x/no-object-hasown -- safe
-module.exports = Object.hasOwn || function hasOwn(it, key) {
-  return hasOwnProperty(toObject(it), key);
-};
-
-
-/***/ }),
-
 /***/ "1a6e":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -310,108 +136,10 @@ module.exports = Object.hasOwn || function hasOwn(it, key) {
 
 /***/ }),
 
-/***/ "1be4":
+/***/ "1ad0":
 /***/ (function(module, exports, __webpack_require__) {
 
-var getBuiltIn = __webpack_require__("d066");
-
-module.exports = getBuiltIn('document', 'documentElement');
-
-
-/***/ }),
-
-/***/ "1d80":
-/***/ (function(module, exports) {
-
-var $TypeError = TypeError;
-
-// `RequireObjectCoercible` abstract operation
-// https://tc39.es/ecma262/#sec-requireobjectcoercible
-module.exports = function (it) {
-  if (it == undefined) throw $TypeError("Can't call method on " + it);
-  return it;
-};
-
-
-/***/ }),
-
-/***/ "23cb":
-/***/ (function(module, exports, __webpack_require__) {
-
-var toIntegerOrInfinity = __webpack_require__("5926");
-
-var max = Math.max;
-var min = Math.min;
-
-// Helper for a popular repeating case of the spec:
-// Let integer be ? ToInteger(index).
-// If integer < 0, let result be max((length + integer), 0); else let result be min(integer, length).
-module.exports = function (index, length) {
-  var integer = toIntegerOrInfinity(index);
-  return integer < 0 ? max(integer + length, 0) : min(integer, length);
-};
-
-
-/***/ }),
-
-/***/ "23e7":
-/***/ (function(module, exports, __webpack_require__) {
-
-var global = __webpack_require__("da84");
-var getOwnPropertyDescriptor = __webpack_require__("06cf").f;
-var createNonEnumerableProperty = __webpack_require__("9112");
-var defineBuiltIn = __webpack_require__("cb2d");
-var defineGlobalProperty = __webpack_require__("6374");
-var copyConstructorProperties = __webpack_require__("e893");
-var isForced = __webpack_require__("94ca");
-
-/*
-  options.target         - name of the target object
-  options.global         - target is the global object
-  options.stat           - export as static methods of target
-  options.proto          - export as prototype methods of target
-  options.real           - real prototype method for the `pure` version
-  options.forced         - export even if the native feature is available
-  options.bind           - bind methods to the target, required for the `pure` version
-  options.wrap           - wrap constructors to preventing global pollution, required for the `pure` version
-  options.unsafe         - use the simple assignment of property instead of delete + defineProperty
-  options.sham           - add a flag to not completely full polyfills
-  options.enumerable     - export as enumerable property
-  options.dontCallGetSet - prevent calling a getter on target
-  options.name           - the .name of the function if it does not match the key
-*/
-module.exports = function (options, source) {
-  var TARGET = options.target;
-  var GLOBAL = options.global;
-  var STATIC = options.stat;
-  var FORCED, target, key, targetProperty, sourceProperty, descriptor;
-  if (GLOBAL) {
-    target = global;
-  } else if (STATIC) {
-    target = global[TARGET] || defineGlobalProperty(TARGET, {});
-  } else {
-    target = (global[TARGET] || {}).prototype;
-  }
-  if (target) for (key in source) {
-    sourceProperty = source[key];
-    if (options.dontCallGetSet) {
-      descriptor = getOwnPropertyDescriptor(target, key);
-      targetProperty = descriptor && descriptor.value;
-    } else targetProperty = target[key];
-    FORCED = isForced(GLOBAL ? key : TARGET + (STATIC ? '.' : '#') + key, options.forced);
-    // contained in target
-    if (!FORCED && targetProperty !== undefined) {
-      if (typeof sourceProperty == typeof targetProperty) continue;
-      copyConstructorProperties(sourceProperty, targetProperty);
-    }
-    // add a flag to not completely full polyfills
-    if (options.sham || (targetProperty && targetProperty.sham)) {
-      createNonEnumerableProperty(sourceProperty, 'sham', true);
-    }
-    defineBuiltIn(target, key, sourceProperty, options);
-  }
-};
-
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -422,24 +150,6 @@ module.exports = function (options, source) {
 /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_9_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_9_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_9_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_vue_vue_type_style_index_0_id_3508e3be_prod_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("6a01");
 /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_9_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_9_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_9_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_vue_vue_type_style_index_0_id_3508e3be_prod_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_9_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_9_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_9_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_vue_vue_type_style_index_0_id_3508e3be_prod_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
 /* unused harmony reexport * */
-
-
-/***/ }),
-
-/***/ "241c":
-/***/ (function(module, exports, __webpack_require__) {
-
-var internalObjectKeys = __webpack_require__("ca84");
-var enumBugKeys = __webpack_require__("7839");
-
-var hiddenKeys = enumBugKeys.concat('length', 'prototype');
-
-// `Object.getOwnPropertyNames` method
-// https://tc39.es/ecma262/#sec-object.getownpropertynames
-// eslint-disable-next-line es-x/no-object-getownpropertynames -- safe
-exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
-  return internalObjectKeys(O, hiddenKeys);
-};
 
 
 /***/ }),
@@ -466,40 +176,6 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 
 /***/ }),
 
-/***/ "2d00":
-/***/ (function(module, exports, __webpack_require__) {
-
-var global = __webpack_require__("da84");
-var userAgent = __webpack_require__("342f");
-
-var process = global.process;
-var Deno = global.Deno;
-var versions = process && process.versions || Deno && Deno.version;
-var v8 = versions && versions.v8;
-var match, version;
-
-if (v8) {
-  match = v8.split('.');
-  // in old Chrome, versions of V8 isn't V8 = Chrome / 10
-  // but their correct versions are not interesting for us
-  version = match[0] > 0 && match[0] < 4 ? 1 : +(match[0] + match[1]);
-}
-
-// BrowserFS NodeJS `process` polyfill incorrectly set `.v8` to `0.0`
-// so check `userAgent` even if `.v8` exists, but 0
-if (!version && userAgent) {
-  match = userAgent.match(/Edge\/(\d+)/);
-  if (!match || match[1] >= 74) {
-    match = userAgent.match(/Chrome\/(\d+)/);
-    if (match) version = +match[1];
-  }
-}
-
-module.exports = version;
-
-
-/***/ }),
-
 /***/ "2f26":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -511,47 +187,10 @@ module.exports = version;
 
 /***/ }),
 
-/***/ "342f":
-/***/ (function(module, exports, __webpack_require__) {
-
-var getBuiltIn = __webpack_require__("d066");
-
-module.exports = getBuiltIn('navigator', 'userAgent') || '';
-
-
-/***/ }),
-
 /***/ "3581":
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
-
-/***/ }),
-
-/***/ "37e8":
-/***/ (function(module, exports, __webpack_require__) {
-
-var DESCRIPTORS = __webpack_require__("83ab");
-var V8_PROTOTYPE_DEFINE_BUG = __webpack_require__("aed9");
-var definePropertyModule = __webpack_require__("9bf2");
-var anObject = __webpack_require__("825a");
-var toIndexedObject = __webpack_require__("fc6a");
-var objectKeys = __webpack_require__("df75");
-
-// `Object.defineProperties` method
-// https://tc39.es/ecma262/#sec-object.defineproperties
-// eslint-disable-next-line es-x/no-object-defineproperties -- safe
-exports.f = DESCRIPTORS && !V8_PROTOTYPE_DEFINE_BUG ? Object.defineProperties : function defineProperties(O, Properties) {
-  anObject(O);
-  var props = toIndexedObject(Properties);
-  var keys = objectKeys(Properties);
-  var length = keys.length;
-  var index = 0;
-  var key;
-  while (length > index) definePropertyModule.f(O, key = keys[index++], props[key]);
-  return O;
-};
-
 
 /***/ }),
 
@@ -562,95 +201,10 @@ exports.f = DESCRIPTORS && !V8_PROTOTYPE_DEFINE_BUG ? Object.defineProperties : 
 
 /***/ }),
 
-/***/ "3a9b":
-/***/ (function(module, exports, __webpack_require__) {
-
-var uncurryThis = __webpack_require__("e330");
-
-module.exports = uncurryThis({}.isPrototypeOf);
-
-
-/***/ }),
-
-/***/ "3bfc":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_9_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_9_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_9_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_normal_vector_vue_vue_type_style_index_0_id_7317e94c_prod_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("b27f");
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_9_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_9_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_9_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_normal_vector_vue_vue_type_style_index_0_id_7317e94c_prod_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_9_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_9_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_9_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_normal_vector_vue_vue_type_style_index_0_id_7317e94c_prod_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
-/* unused harmony reexport * */
-
-
-/***/ }),
-
-/***/ "40d5":
-/***/ (function(module, exports, __webpack_require__) {
-
-var fails = __webpack_require__("d039");
-
-module.exports = !fails(function () {
-  // eslint-disable-next-line es-x/no-function-prototype-bind -- safe
-  var test = (function () { /* empty */ }).bind();
-  // eslint-disable-next-line no-prototype-builtins -- safe
-  return typeof test != 'function' || test.hasOwnProperty('prototype');
-});
-
-
-/***/ }),
-
 /***/ "412f":
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
-
-/***/ }),
-
-/***/ "44ad":
-/***/ (function(module, exports, __webpack_require__) {
-
-var uncurryThis = __webpack_require__("e330");
-var fails = __webpack_require__("d039");
-var classof = __webpack_require__("c6b6");
-
-var $Object = Object;
-var split = uncurryThis(''.split);
-
-// fallback for non-array-like ES3 and non-enumerable old V8 strings
-module.exports = fails(function () {
-  // throws an error in rhino, see https://github.com/mozilla/rhino/issues/346
-  // eslint-disable-next-line no-prototype-builtins -- safe
-  return !$Object('z').propertyIsEnumerable(0);
-}) ? function (it) {
-  return classof(it) == 'String' ? split(it, '') : $Object(it);
-} : $Object;
-
-
-/***/ }),
-
-/***/ "44d2":
-/***/ (function(module, exports, __webpack_require__) {
-
-var wellKnownSymbol = __webpack_require__("b622");
-var create = __webpack_require__("7c73");
-var defineProperty = __webpack_require__("9bf2").f;
-
-var UNSCOPABLES = wellKnownSymbol('unscopables');
-var ArrayPrototype = Array.prototype;
-
-// Array.prototype[@@unscopables]
-// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
-if (ArrayPrototype[UNSCOPABLES] == undefined) {
-  defineProperty(ArrayPrototype, UNSCOPABLES, {
-    configurable: true,
-    value: create(null)
-  });
-}
-
-// add a key to Array.prototype[@@unscopables]
-module.exports = function (key) {
-  ArrayPrototype[UNSCOPABLES][key] = true;
-};
-
 
 /***/ }),
 
@@ -665,107 +219,10 @@ module.exports = function (key) {
 
 /***/ }),
 
-/***/ "485a":
-/***/ (function(module, exports, __webpack_require__) {
-
-var call = __webpack_require__("c65b");
-var isCallable = __webpack_require__("1626");
-var isObject = __webpack_require__("861d");
-
-var $TypeError = TypeError;
-
-// `OrdinaryToPrimitive` abstract operation
-// https://tc39.es/ecma262/#sec-ordinarytoprimitive
-module.exports = function (input, pref) {
-  var fn, val;
-  if (pref === 'string' && isCallable(fn = input.toString) && !isObject(val = call(fn, input))) return val;
-  if (isCallable(fn = input.valueOf) && !isObject(val = call(fn, input))) return val;
-  if (pref !== 'string' && isCallable(fn = input.toString) && !isObject(val = call(fn, input))) return val;
-  throw $TypeError("Can't convert object to primitive value");
-};
-
-
-/***/ }),
-
-/***/ "4930":
-/***/ (function(module, exports, __webpack_require__) {
-
-/* eslint-disable es-x/no-symbol -- required for testing */
-var V8_VERSION = __webpack_require__("2d00");
-var fails = __webpack_require__("d039");
-
-// eslint-disable-next-line es-x/no-object-getownpropertysymbols -- required for testing
-module.exports = !!Object.getOwnPropertySymbols && !fails(function () {
-  var symbol = Symbol();
-  // Chrome 38 Symbol has incorrect toString conversion
-  // `get-own-property-symbols` polyfill symbols converted to object are not Symbol instances
-  return !String(symbol) || !(Object(symbol) instanceof Symbol) ||
-    // Chrome 38-40 symbols are not inherited from DOM collections prototypes to instances
-    !Symbol.sham && V8_VERSION && V8_VERSION < 41;
-});
-
-
-/***/ }),
-
 /***/ "4d21":
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
-
-/***/ }),
-
-/***/ "4d64":
-/***/ (function(module, exports, __webpack_require__) {
-
-var toIndexedObject = __webpack_require__("fc6a");
-var toAbsoluteIndex = __webpack_require__("23cb");
-var lengthOfArrayLike = __webpack_require__("07fa");
-
-// `Array.prototype.{ indexOf, includes }` methods implementation
-var createMethod = function (IS_INCLUDES) {
-  return function ($this, el, fromIndex) {
-    var O = toIndexedObject($this);
-    var length = lengthOfArrayLike(O);
-    var index = toAbsoluteIndex(fromIndex, length);
-    var value;
-    // Array#includes uses SameValueZero equality algorithm
-    // eslint-disable-next-line no-self-compare -- NaN check
-    if (IS_INCLUDES && el != el) while (length > index) {
-      value = O[index++];
-      // eslint-disable-next-line no-self-compare -- NaN check
-      if (value != value) return true;
-    // Array#indexOf ignores holes, Array#includes - not
-    } else for (;length > index; index++) {
-      if ((IS_INCLUDES || index in O) && O[index] === el) return IS_INCLUDES || index || 0;
-    } return !IS_INCLUDES && -1;
-  };
-};
-
-module.exports = {
-  // `Array.prototype.includes` method
-  // https://tc39.es/ecma262/#sec-array.prototype.includes
-  includes: createMethod(true),
-  // `Array.prototype.indexOf` method
-  // https://tc39.es/ecma262/#sec-array.prototype.indexof
-  indexOf: createMethod(false)
-};
-
-
-/***/ }),
-
-/***/ "50c4":
-/***/ (function(module, exports, __webpack_require__) {
-
-var toIntegerOrInfinity = __webpack_require__("5926");
-
-var min = Math.min;
-
-// `ToLength` abstract operation
-// https://tc39.es/ecma262/#sec-tolength
-module.exports = function (argument) {
-  return argument > 0 ? min(toIntegerOrInfinity(argument), 0x1FFFFFFFFFFFFF) : 0; // 2 ** 53 - 1 == 9007199254740991
-};
-
 
 /***/ }),
 
@@ -776,122 +233,10 @@ module.exports = function (argument) {
 
 /***/ }),
 
-/***/ "5692":
-/***/ (function(module, exports, __webpack_require__) {
-
-var IS_PURE = __webpack_require__("c430");
-var store = __webpack_require__("c6cd");
-
-(module.exports = function (key, value) {
-  return store[key] || (store[key] = value !== undefined ? value : {});
-})('versions', []).push({
-  version: '3.24.0',
-  mode: IS_PURE ? 'pure' : 'global',
-  copyright: '© 2014-2022 Denis Pushkarev (zloirock.ru)',
-  license: 'https://github.com/zloirock/core-js/blob/v3.24.0/LICENSE',
-  source: 'https://github.com/zloirock/core-js'
-});
-
-
-/***/ }),
-
-/***/ "56ef":
-/***/ (function(module, exports, __webpack_require__) {
-
-var getBuiltIn = __webpack_require__("d066");
-var uncurryThis = __webpack_require__("e330");
-var getOwnPropertyNamesModule = __webpack_require__("241c");
-var getOwnPropertySymbolsModule = __webpack_require__("7418");
-var anObject = __webpack_require__("825a");
-
-var concat = uncurryThis([].concat);
-
-// all object keys, includes non-enumerable and symbols
-module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
-  var keys = getOwnPropertyNamesModule.f(anObject(it));
-  var getOwnPropertySymbols = getOwnPropertySymbolsModule.f;
-  return getOwnPropertySymbols ? concat(keys, getOwnPropertySymbols(it)) : keys;
-};
-
-
-/***/ }),
-
-/***/ "5926":
-/***/ (function(module, exports, __webpack_require__) {
-
-var trunc = __webpack_require__("b42e");
-
-// `ToIntegerOrInfinity` abstract operation
-// https://tc39.es/ecma262/#sec-tointegerorinfinity
-module.exports = function (argument) {
-  var number = +argument;
-  // eslint-disable-next-line no-self-compare -- NaN check
-  return number !== number || number === 0 ? 0 : trunc(number);
-};
-
-
-/***/ }),
-
-/***/ "59ed":
-/***/ (function(module, exports, __webpack_require__) {
-
-var isCallable = __webpack_require__("1626");
-var tryToString = __webpack_require__("0d51");
-
-var $TypeError = TypeError;
-
-// `Assert: IsCallable(argument) is true`
-module.exports = function (argument) {
-  if (isCallable(argument)) return argument;
-  throw $TypeError(tryToString(argument) + ' is not a function');
-};
-
-
-/***/ }),
-
 /***/ "5aa9":
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
-
-/***/ }),
-
-/***/ "5c6c":
-/***/ (function(module, exports) {
-
-module.exports = function (bitmap, value) {
-  return {
-    enumerable: !(bitmap & 1),
-    configurable: !(bitmap & 2),
-    writable: !(bitmap & 4),
-    value: value
-  };
-};
-
-
-/***/ }),
-
-/***/ "5e77":
-/***/ (function(module, exports, __webpack_require__) {
-
-var DESCRIPTORS = __webpack_require__("83ab");
-var hasOwn = __webpack_require__("1a2d");
-
-var FunctionPrototype = Function.prototype;
-// eslint-disable-next-line es-x/no-object-getownpropertydescriptor -- safe
-var getDescriptor = DESCRIPTORS && Object.getOwnPropertyDescriptor;
-
-var EXISTS = hasOwn(FunctionPrototype, 'name');
-// additional protection from minified / mangled / dropped function names
-var PROPER = EXISTS && (function something() { /* empty */ }).name === 'something';
-var CONFIGURABLE = EXISTS && (!DESCRIPTORS || (DESCRIPTORS && getDescriptor(FunctionPrototype, 'name').configurable));
-
-module.exports = {
-  EXISTS: EXISTS,
-  PROPER: PROPER,
-  CONFIGURABLE: CONFIGURABLE
-};
-
 
 /***/ }),
 
@@ -913,21 +258,13 @@ module.exports = {
 
 /***/ }),
 
-/***/ "6374":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "63f7":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-var global = __webpack_require__("da84");
-
-// eslint-disable-next-line es-x/no-object-defineproperty -- safe
-var defineProperty = Object.defineProperty;
-
-module.exports = function (key, value) {
-  try {
-    defineProperty(global, key, { value: value, configurable: true, writable: true });
-  } catch (error) {
-    global[key] = value;
-  } return value;
-};
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_9_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_9_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_9_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_normal_vector_vue_vue_type_style_index_0_id_bb64cc78_prod_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("ac83");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_9_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_9_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_9_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_normal_vector_vue_vue_type_style_index_0_id_bb64cc78_prod_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_9_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_9_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_9_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_normal_vector_vue_vue_type_style_index_0_id_bb64cc78_prod_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
 
 
 /***/ }),
@@ -950,82 +287,6 @@ module.exports = function (key, value) {
 /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_7_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_7_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_oneOf_1_2_range_style_css_vue_type_style_index_0_id_49997fcc_prod_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("2800");
 /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_7_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_7_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_oneOf_1_2_range_style_css_vue_type_style_index_0_id_49997fcc_prod_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_7_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_7_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_oneOf_1_2_range_style_css_vue_type_style_index_0_id_49997fcc_prod_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
 /* unused harmony reexport * */
-
-
-/***/ }),
-
-/***/ "69f3":
-/***/ (function(module, exports, __webpack_require__) {
-
-var NATIVE_WEAK_MAP = __webpack_require__("7f9a");
-var global = __webpack_require__("da84");
-var uncurryThis = __webpack_require__("e330");
-var isObject = __webpack_require__("861d");
-var createNonEnumerableProperty = __webpack_require__("9112");
-var hasOwn = __webpack_require__("1a2d");
-var shared = __webpack_require__("c6cd");
-var sharedKey = __webpack_require__("f772");
-var hiddenKeys = __webpack_require__("d012");
-
-var OBJECT_ALREADY_INITIALIZED = 'Object already initialized';
-var TypeError = global.TypeError;
-var WeakMap = global.WeakMap;
-var set, get, has;
-
-var enforce = function (it) {
-  return has(it) ? get(it) : set(it, {});
-};
-
-var getterFor = function (TYPE) {
-  return function (it) {
-    var state;
-    if (!isObject(it) || (state = get(it)).type !== TYPE) {
-      throw TypeError('Incompatible receiver, ' + TYPE + ' required');
-    } return state;
-  };
-};
-
-if (NATIVE_WEAK_MAP || shared.state) {
-  var store = shared.state || (shared.state = new WeakMap());
-  var wmget = uncurryThis(store.get);
-  var wmhas = uncurryThis(store.has);
-  var wmset = uncurryThis(store.set);
-  set = function (it, metadata) {
-    if (wmhas(store, it)) throw new TypeError(OBJECT_ALREADY_INITIALIZED);
-    metadata.facade = it;
-    wmset(store, it, metadata);
-    return metadata;
-  };
-  get = function (it) {
-    return wmget(store, it) || {};
-  };
-  has = function (it) {
-    return wmhas(store, it);
-  };
-} else {
-  var STATE = sharedKey('state');
-  hiddenKeys[STATE] = true;
-  set = function (it, metadata) {
-    if (hasOwn(it, STATE)) throw new TypeError(OBJECT_ALREADY_INITIALIZED);
-    metadata.facade = it;
-    createNonEnumerableProperty(it, STATE, metadata);
-    return metadata;
-  };
-  get = function (it) {
-    return hasOwn(it, STATE) ? it[STATE] : {};
-  };
-  has = function (it) {
-    return hasOwn(it, STATE);
-  };
-}
-
-module.exports = {
-  set: set,
-  get: get,
-  has: has,
-  enforce: enforce,
-  getterFor: getterFor
-};
 
 
 /***/ }),
@@ -1070,15 +331,6 @@ module.exports = {
 
 /***/ }),
 
-/***/ "7418":
-/***/ (function(module, exports) {
-
-// eslint-disable-next-line es-x/no-object-getownpropertysymbols -- safe
-exports.f = Object.getOwnPropertySymbols;
-
-
-/***/ }),
-
 /***/ "77ad":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1086,207 +338,6 @@ exports.f = Object.getOwnPropertySymbols;
 /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_9_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_9_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_9_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_wms_vue_vue_type_style_index_0_id_0de20f90_prod_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("385c");
 /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_9_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_9_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_9_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_wms_vue_vue_type_style_index_0_id_0de20f90_prod_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_9_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_9_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_9_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_wms_vue_vue_type_style_index_0_id_0de20f90_prod_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
 /* unused harmony reexport * */
-
-
-/***/ }),
-
-/***/ "7839":
-/***/ (function(module, exports) {
-
-// IE8- don't enum bug keys
-module.exports = [
-  'constructor',
-  'hasOwnProperty',
-  'isPrototypeOf',
-  'propertyIsEnumerable',
-  'toLocaleString',
-  'toString',
-  'valueOf'
-];
-
-
-/***/ }),
-
-/***/ "7b0b":
-/***/ (function(module, exports, __webpack_require__) {
-
-var requireObjectCoercible = __webpack_require__("1d80");
-
-var $Object = Object;
-
-// `ToObject` abstract operation
-// https://tc39.es/ecma262/#sec-toobject
-module.exports = function (argument) {
-  return $Object(requireObjectCoercible(argument));
-};
-
-
-/***/ }),
-
-/***/ "7c73":
-/***/ (function(module, exports, __webpack_require__) {
-
-/* global ActiveXObject -- old IE, WSH */
-var anObject = __webpack_require__("825a");
-var definePropertiesModule = __webpack_require__("37e8");
-var enumBugKeys = __webpack_require__("7839");
-var hiddenKeys = __webpack_require__("d012");
-var html = __webpack_require__("1be4");
-var documentCreateElement = __webpack_require__("cc12");
-var sharedKey = __webpack_require__("f772");
-
-var GT = '>';
-var LT = '<';
-var PROTOTYPE = 'prototype';
-var SCRIPT = 'script';
-var IE_PROTO = sharedKey('IE_PROTO');
-
-var EmptyConstructor = function () { /* empty */ };
-
-var scriptTag = function (content) {
-  return LT + SCRIPT + GT + content + LT + '/' + SCRIPT + GT;
-};
-
-// Create object with fake `null` prototype: use ActiveX Object with cleared prototype
-var NullProtoObjectViaActiveX = function (activeXDocument) {
-  activeXDocument.write(scriptTag(''));
-  activeXDocument.close();
-  var temp = activeXDocument.parentWindow.Object;
-  activeXDocument = null; // avoid memory leak
-  return temp;
-};
-
-// Create object with fake `null` prototype: use iframe Object with cleared prototype
-var NullProtoObjectViaIFrame = function () {
-  // Thrash, waste and sodomy: IE GC bug
-  var iframe = documentCreateElement('iframe');
-  var JS = 'java' + SCRIPT + ':';
-  var iframeDocument;
-  iframe.style.display = 'none';
-  html.appendChild(iframe);
-  // https://github.com/zloirock/core-js/issues/475
-  iframe.src = String(JS);
-  iframeDocument = iframe.contentWindow.document;
-  iframeDocument.open();
-  iframeDocument.write(scriptTag('document.F=Object'));
-  iframeDocument.close();
-  return iframeDocument.F;
-};
-
-// Check for document.domain and active x support
-// No need to use active x approach when document.domain is not set
-// see https://github.com/es-shims/es5-shim/issues/150
-// variation of https://github.com/kitcambridge/es5-shim/commit/4f738ac066346
-// avoid IE GC bug
-var activeXDocument;
-var NullProtoObject = function () {
-  try {
-    activeXDocument = new ActiveXObject('htmlfile');
-  } catch (error) { /* ignore */ }
-  NullProtoObject = typeof document != 'undefined'
-    ? document.domain && activeXDocument
-      ? NullProtoObjectViaActiveX(activeXDocument) // old IE
-      : NullProtoObjectViaIFrame()
-    : NullProtoObjectViaActiveX(activeXDocument); // WSH
-  var length = enumBugKeys.length;
-  while (length--) delete NullProtoObject[PROTOTYPE][enumBugKeys[length]];
-  return NullProtoObject();
-};
-
-hiddenKeys[IE_PROTO] = true;
-
-// `Object.create` method
-// https://tc39.es/ecma262/#sec-object.create
-// eslint-disable-next-line es-x/no-object-create -- safe
-module.exports = Object.create || function create(O, Properties) {
-  var result;
-  if (O !== null) {
-    EmptyConstructor[PROTOTYPE] = anObject(O);
-    result = new EmptyConstructor();
-    EmptyConstructor[PROTOTYPE] = null;
-    // add "__proto__" for Object.getPrototypeOf polyfill
-    result[IE_PROTO] = O;
-  } else result = NullProtoObject();
-  return Properties === undefined ? result : definePropertiesModule.f(result, Properties);
-};
-
-
-/***/ }),
-
-/***/ "7f9a":
-/***/ (function(module, exports, __webpack_require__) {
-
-var global = __webpack_require__("da84");
-var isCallable = __webpack_require__("1626");
-var inspectSource = __webpack_require__("8925");
-
-var WeakMap = global.WeakMap;
-
-module.exports = isCallable(WeakMap) && /native code/.test(inspectSource(WeakMap));
-
-
-/***/ }),
-
-/***/ "825a":
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__("861d");
-
-var $String = String;
-var $TypeError = TypeError;
-
-// `Assert: Type(argument) is Object`
-module.exports = function (argument) {
-  if (isObject(argument)) return argument;
-  throw $TypeError($String(argument) + ' is not an object');
-};
-
-
-/***/ }),
-
-/***/ "83ab":
-/***/ (function(module, exports, __webpack_require__) {
-
-var fails = __webpack_require__("d039");
-
-// Detect IE8's incomplete defineProperty implementation
-module.exports = !fails(function () {
-  // eslint-disable-next-line es-x/no-object-defineproperty -- required for testing
-  return Object.defineProperty({}, 1, { get: function () { return 7; } })[1] != 7;
-});
-
-
-/***/ }),
-
-/***/ "861d":
-/***/ (function(module, exports, __webpack_require__) {
-
-var isCallable = __webpack_require__("1626");
-
-module.exports = function (it) {
-  return typeof it == 'object' ? it !== null : isCallable(it);
-};
-
-
-/***/ }),
-
-/***/ "8925":
-/***/ (function(module, exports, __webpack_require__) {
-
-var uncurryThis = __webpack_require__("e330");
-var isCallable = __webpack_require__("1626");
-var store = __webpack_require__("c6cd");
-
-var functionToString = uncurryThis(Function.toString);
-
-// this helper broken in `core-js@3.4.1-3.4.4`, so we can't use `shared` helper
-if (!isCallable(store.inspectSource)) {
-  store.inspectSource = function (it) {
-    return functionToString(it);
-  };
-}
-
-module.exports = store.inspectSource;
 
 
 /***/ }),
@@ -1313,68 +364,6 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__8bbf__;
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
-
-/***/ }),
-
-/***/ "90e3":
-/***/ (function(module, exports, __webpack_require__) {
-
-var uncurryThis = __webpack_require__("e330");
-
-var id = 0;
-var postfix = Math.random();
-var toString = uncurryThis(1.0.toString);
-
-module.exports = function (key) {
-  return 'Symbol(' + (key === undefined ? '' : key) + ')_' + toString(++id + postfix, 36);
-};
-
-
-/***/ }),
-
-/***/ "9112":
-/***/ (function(module, exports, __webpack_require__) {
-
-var DESCRIPTORS = __webpack_require__("83ab");
-var definePropertyModule = __webpack_require__("9bf2");
-var createPropertyDescriptor = __webpack_require__("5c6c");
-
-module.exports = DESCRIPTORS ? function (object, key, value) {
-  return definePropertyModule.f(object, key, createPropertyDescriptor(1, value));
-} : function (object, key, value) {
-  object[key] = value;
-  return object;
-};
-
-
-/***/ }),
-
-/***/ "94ca":
-/***/ (function(module, exports, __webpack_require__) {
-
-var fails = __webpack_require__("d039");
-var isCallable = __webpack_require__("1626");
-
-var replacement = /#|\.prototype\./;
-
-var isForced = function (feature, detection) {
-  var value = data[normalize(feature)];
-  return value == POLYFILL ? true
-    : value == NATIVE ? false
-    : isCallable(detection) ? fails(detection)
-    : !!detection;
-};
-
-var normalize = isForced.normalize = function (string) {
-  return String(string).replace(replacement, '.').toLowerCase();
-};
-
-var data = isForced.data = {};
-var NATIVE = isForced.NATIVE = 'N';
-var POLYFILL = isForced.POLYFILL = 'P';
-
-module.exports = isForced;
-
 
 /***/ }),
 
@@ -1410,68 +399,13 @@ module.exports = isForced;
 
 /***/ }),
 
-/***/ "9bf2":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "a4b9":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-var DESCRIPTORS = __webpack_require__("83ab");
-var IE8_DOM_DEFINE = __webpack_require__("0cfb");
-var V8_PROTOTYPE_DEFINE_BUG = __webpack_require__("aed9");
-var anObject = __webpack_require__("825a");
-var toPropertyKey = __webpack_require__("a04b");
-
-var $TypeError = TypeError;
-// eslint-disable-next-line es-x/no-object-defineproperty -- safe
-var $defineProperty = Object.defineProperty;
-// eslint-disable-next-line es-x/no-object-getownpropertydescriptor -- safe
-var $getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
-var ENUMERABLE = 'enumerable';
-var CONFIGURABLE = 'configurable';
-var WRITABLE = 'writable';
-
-// `Object.defineProperty` method
-// https://tc39.es/ecma262/#sec-object.defineproperty
-exports.f = DESCRIPTORS ? V8_PROTOTYPE_DEFINE_BUG ? function defineProperty(O, P, Attributes) {
-  anObject(O);
-  P = toPropertyKey(P);
-  anObject(Attributes);
-  if (typeof O === 'function' && P === 'prototype' && 'value' in Attributes && WRITABLE in Attributes && !Attributes[WRITABLE]) {
-    var current = $getOwnPropertyDescriptor(O, P);
-    if (current && current[WRITABLE]) {
-      O[P] = Attributes.value;
-      Attributes = {
-        configurable: CONFIGURABLE in Attributes ? Attributes[CONFIGURABLE] : current[CONFIGURABLE],
-        enumerable: ENUMERABLE in Attributes ? Attributes[ENUMERABLE] : current[ENUMERABLE],
-        writable: false
-      };
-    }
-  } return $defineProperty(O, P, Attributes);
-} : $defineProperty : function defineProperty(O, P, Attributes) {
-  anObject(O);
-  P = toPropertyKey(P);
-  anObject(Attributes);
-  if (IE8_DOM_DEFINE) try {
-    return $defineProperty(O, P, Attributes);
-  } catch (error) { /* empty */ }
-  if ('get' in Attributes || 'set' in Attributes) throw $TypeError('Accessors not supported');
-  if ('value' in Attributes) O[P] = Attributes.value;
-  return O;
-};
-
-
-/***/ }),
-
-/***/ "a04b":
-/***/ (function(module, exports, __webpack_require__) {
-
-var toPrimitive = __webpack_require__("c04e");
-var isSymbol = __webpack_require__("d9b5");
-
-// `ToPropertyKey` abstract operation
-// https://tc39.es/ecma262/#sec-topropertykey
-module.exports = function (argument) {
-  var key = toPrimitive(argument, 'string');
-  return isSymbol(key) ? key : key + '';
-};
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_7_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_7_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_normal_vector_vue_vue_type_style_index_1_id_bb64cc78_prod_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("1ad0");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_7_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_7_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_normal_vector_vue_vue_type_style_index_1_id_bb64cc78_prod_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_7_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_7_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_lib_index_js_vue_loader_options_legend_normal_vector_vue_vue_type_style_index_1_id_bb64cc78_prod_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
 
 
 /***/ }),
@@ -1483,109 +417,10 @@ module.exports = function (argument) {
 
 /***/ }),
 
-/***/ "aed9":
-/***/ (function(module, exports, __webpack_require__) {
-
-var DESCRIPTORS = __webpack_require__("83ab");
-var fails = __webpack_require__("d039");
-
-// V8 ~ Chrome 36-
-// https://bugs.chromium.org/p/v8/issues/detail?id=3334
-module.exports = DESCRIPTORS && fails(function () {
-  // eslint-disable-next-line es-x/no-object-defineproperty -- required for testing
-  return Object.defineProperty(function () { /* empty */ }, 'prototype', {
-    value: 42,
-    writable: false
-  }).prototype != 42;
-});
-
-
-/***/ }),
-
-/***/ "b27f":
+/***/ "ac83":
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
-
-/***/ }),
-
-/***/ "b42e":
-/***/ (function(module, exports) {
-
-var ceil = Math.ceil;
-var floor = Math.floor;
-
-// `Math.trunc` method
-// https://tc39.es/ecma262/#sec-math.trunc
-// eslint-disable-next-line es-x/no-math-trunc -- safe
-module.exports = Math.trunc || function trunc(x) {
-  var n = +x;
-  return (n > 0 ? floor : ceil)(n);
-};
-
-
-/***/ }),
-
-/***/ "b622":
-/***/ (function(module, exports, __webpack_require__) {
-
-var global = __webpack_require__("da84");
-var shared = __webpack_require__("5692");
-var hasOwn = __webpack_require__("1a2d");
-var uid = __webpack_require__("90e3");
-var NATIVE_SYMBOL = __webpack_require__("4930");
-var USE_SYMBOL_AS_UID = __webpack_require__("fdbf");
-
-var WellKnownSymbolsStore = shared('wks');
-var Symbol = global.Symbol;
-var symbolFor = Symbol && Symbol['for'];
-var createWellKnownSymbol = USE_SYMBOL_AS_UID ? Symbol : Symbol && Symbol.withoutSetter || uid;
-
-module.exports = function (name) {
-  if (!hasOwn(WellKnownSymbolsStore, name) || !(NATIVE_SYMBOL || typeof WellKnownSymbolsStore[name] == 'string')) {
-    var description = 'Symbol.' + name;
-    if (NATIVE_SYMBOL && hasOwn(Symbol, name)) {
-      WellKnownSymbolsStore[name] = Symbol[name];
-    } else if (USE_SYMBOL_AS_UID && symbolFor) {
-      WellKnownSymbolsStore[name] = symbolFor(description);
-    } else {
-      WellKnownSymbolsStore[name] = createWellKnownSymbol(description);
-    }
-  } return WellKnownSymbolsStore[name];
-};
-
-
-/***/ }),
-
-/***/ "c04e":
-/***/ (function(module, exports, __webpack_require__) {
-
-var call = __webpack_require__("c65b");
-var isObject = __webpack_require__("861d");
-var isSymbol = __webpack_require__("d9b5");
-var getMethod = __webpack_require__("dc4a");
-var ordinaryToPrimitive = __webpack_require__("485a");
-var wellKnownSymbol = __webpack_require__("b622");
-
-var $TypeError = TypeError;
-var TO_PRIMITIVE = wellKnownSymbol('toPrimitive');
-
-// `ToPrimitive` abstract operation
-// https://tc39.es/ecma262/#sec-toprimitive
-module.exports = function (input, pref) {
-  if (!isObject(input) || isSymbol(input)) return input;
-  var exoticToPrim = getMethod(input, TO_PRIMITIVE);
-  var result;
-  if (exoticToPrim) {
-    if (pref === undefined) pref = 'default';
-    result = call(exoticToPrim, input, pref);
-    if (!isObject(result) || isSymbol(result)) return result;
-    throw $TypeError("Can't convert object to primitive value");
-  }
-  if (pref === undefined) pref = 'number';
-  return ordinaryToPrimitive(input, pref);
-};
-
 
 /***/ }),
 
@@ -1596,237 +431,6 @@ module.exports = function (input, pref) {
 /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_9_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_9_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_9_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_lib_index_js_vue_loader_options_searcher_vue_vue_type_style_index_0_id_4947b33e_prod_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("5aa9");
 /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_9_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_9_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_9_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_lib_index_js_vue_loader_options_searcher_vue_vue_type_style_index_0_id_4947b33e_prod_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_9_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_9_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_9_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_lib_index_js_vue_loader_options_searcher_vue_vue_type_style_index_0_id_4947b33e_prod_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
 /* unused harmony reexport * */
-
-
-/***/ }),
-
-/***/ "c430":
-/***/ (function(module, exports) {
-
-module.exports = false;
-
-
-/***/ }),
-
-/***/ "c65b":
-/***/ (function(module, exports, __webpack_require__) {
-
-var NATIVE_BIND = __webpack_require__("40d5");
-
-var call = Function.prototype.call;
-
-module.exports = NATIVE_BIND ? call.bind(call) : function () {
-  return call.apply(call, arguments);
-};
-
-
-/***/ }),
-
-/***/ "c6b6":
-/***/ (function(module, exports, __webpack_require__) {
-
-var uncurryThis = __webpack_require__("e330");
-
-var toString = uncurryThis({}.toString);
-var stringSlice = uncurryThis(''.slice);
-
-module.exports = function (it) {
-  return stringSlice(toString(it), 8, -1);
-};
-
-
-/***/ }),
-
-/***/ "c6cd":
-/***/ (function(module, exports, __webpack_require__) {
-
-var global = __webpack_require__("da84");
-var defineGlobalProperty = __webpack_require__("6374");
-
-var SHARED = '__core-js_shared__';
-var store = global[SHARED] || defineGlobalProperty(SHARED, {});
-
-module.exports = store;
-
-
-/***/ }),
-
-/***/ "c6f3":
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-
-/***/ "c8ba":
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || new Function("return this")();
-} catch (e) {
-	// This works if the window reference is available
-	if (typeof window === "object") g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-
-/***/ "ca84":
-/***/ (function(module, exports, __webpack_require__) {
-
-var uncurryThis = __webpack_require__("e330");
-var hasOwn = __webpack_require__("1a2d");
-var toIndexedObject = __webpack_require__("fc6a");
-var indexOf = __webpack_require__("4d64").indexOf;
-var hiddenKeys = __webpack_require__("d012");
-
-var push = uncurryThis([].push);
-
-module.exports = function (object, names) {
-  var O = toIndexedObject(object);
-  var i = 0;
-  var result = [];
-  var key;
-  for (key in O) !hasOwn(hiddenKeys, key) && hasOwn(O, key) && push(result, key);
-  // Don't enum bug & hidden keys
-  while (names.length > i) if (hasOwn(O, key = names[i++])) {
-    ~indexOf(result, key) || push(result, key);
-  }
-  return result;
-};
-
-
-/***/ }),
-
-/***/ "caad":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var $ = __webpack_require__("23e7");
-var $includes = __webpack_require__("4d64").includes;
-var fails = __webpack_require__("d039");
-var addToUnscopables = __webpack_require__("44d2");
-
-// FF99+ bug
-var BROKEN_ON_SPARSE = fails(function () {
-  return !Array(1).includes();
-});
-
-// `Array.prototype.includes` method
-// https://tc39.es/ecma262/#sec-array.prototype.includes
-$({ target: 'Array', proto: true, forced: BROKEN_ON_SPARSE }, {
-  includes: function includes(el /* , fromIndex = 0 */) {
-    return $includes(this, el, arguments.length > 1 ? arguments[1] : undefined);
-  }
-});
-
-// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
-addToUnscopables('includes');
-
-
-/***/ }),
-
-/***/ "cb2d":
-/***/ (function(module, exports, __webpack_require__) {
-
-var isCallable = __webpack_require__("1626");
-var definePropertyModule = __webpack_require__("9bf2");
-var makeBuiltIn = __webpack_require__("13d2");
-var defineGlobalProperty = __webpack_require__("6374");
-
-module.exports = function (O, key, value, options) {
-  if (!options) options = {};
-  var simple = options.enumerable;
-  var name = options.name !== undefined ? options.name : key;
-  if (isCallable(value)) makeBuiltIn(value, name, options);
-  if (options.global) {
-    if (simple) O[key] = value;
-    else defineGlobalProperty(key, value);
-  } else {
-    try {
-      if (!options.unsafe) delete O[key];
-      else if (O[key]) simple = true;
-    } catch (error) { /* empty */ }
-    if (simple) O[key] = value;
-    else definePropertyModule.f(O, key, {
-      value: value,
-      enumerable: false,
-      configurable: !options.nonConfigurable,
-      writable: !options.nonWritable
-    });
-  } return O;
-};
-
-
-/***/ }),
-
-/***/ "cc12":
-/***/ (function(module, exports, __webpack_require__) {
-
-var global = __webpack_require__("da84");
-var isObject = __webpack_require__("861d");
-
-var document = global.document;
-// typeof document.createElement is 'object' in old IE
-var EXISTS = isObject(document) && isObject(document.createElement);
-
-module.exports = function (it) {
-  return EXISTS ? document.createElement(it) : {};
-};
-
-
-/***/ }),
-
-/***/ "d012":
-/***/ (function(module, exports) {
-
-module.exports = {};
-
-
-/***/ }),
-
-/***/ "d039":
-/***/ (function(module, exports) {
-
-module.exports = function (exec) {
-  try {
-    return !!exec();
-  } catch (error) {
-    return true;
-  }
-};
-
-
-/***/ }),
-
-/***/ "d066":
-/***/ (function(module, exports, __webpack_require__) {
-
-var global = __webpack_require__("da84");
-var isCallable = __webpack_require__("1626");
-
-var aFunction = function (argument) {
-  return isCallable(argument) ? argument : undefined;
-};
-
-module.exports = function (namespace, method) {
-  return arguments.length < 2 ? aFunction(global[namespace]) : global[namespace] && global[namespace][method];
-};
 
 
 /***/ }),
@@ -1851,28 +455,6 @@ module.exports = function (namespace, method) {
 
 /***/ }),
 
-/***/ "d1e7":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var $propertyIsEnumerable = {}.propertyIsEnumerable;
-// eslint-disable-next-line es-x/no-object-getownpropertydescriptor -- safe
-var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
-
-// Nashorn ~ JDK8 bug
-var NASHORN_BUG = getOwnPropertyDescriptor && !$propertyIsEnumerable.call({ 1: 2 }, 1);
-
-// `Object.prototype.propertyIsEnumerable` method implementation
-// https://tc39.es/ecma262/#sec-object.prototype.propertyisenumerable
-exports.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
-  var descriptor = getOwnPropertyDescriptor(this, V);
-  return !!descriptor && descriptor.enumerable;
-} : $propertyIsEnumerable;
-
-
-/***/ }),
-
 /***/ "d36b":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1891,79 +473,6 @@ exports.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
 
 /***/ }),
 
-/***/ "d9b5":
-/***/ (function(module, exports, __webpack_require__) {
-
-var getBuiltIn = __webpack_require__("d066");
-var isCallable = __webpack_require__("1626");
-var isPrototypeOf = __webpack_require__("3a9b");
-var USE_SYMBOL_AS_UID = __webpack_require__("fdbf");
-
-var $Object = Object;
-
-module.exports = USE_SYMBOL_AS_UID ? function (it) {
-  return typeof it == 'symbol';
-} : function (it) {
-  var $Symbol = getBuiltIn('Symbol');
-  return isCallable($Symbol) && isPrototypeOf($Symbol.prototype, $Object(it));
-};
-
-
-/***/ }),
-
-/***/ "da84":
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(global) {var check = function (it) {
-  return it && it.Math == Math && it;
-};
-
-// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-module.exports =
-  // eslint-disable-next-line es-x/no-global-this -- safe
-  check(typeof globalThis == 'object' && globalThis) ||
-  check(typeof window == 'object' && window) ||
-  // eslint-disable-next-line no-restricted-globals -- safe
-  check(typeof self == 'object' && self) ||
-  check(typeof global == 'object' && global) ||
-  // eslint-disable-next-line no-new-func -- fallback
-  (function () { return this; })() || Function('return this')();
-
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("c8ba")))
-
-/***/ }),
-
-/***/ "dc4a":
-/***/ (function(module, exports, __webpack_require__) {
-
-var aCallable = __webpack_require__("59ed");
-
-// `GetMethod` abstract operation
-// https://tc39.es/ecma262/#sec-getmethod
-module.exports = function (V, P) {
-  var func = V[P];
-  return func == null ? undefined : aCallable(func);
-};
-
-
-/***/ }),
-
-/***/ "df75":
-/***/ (function(module, exports, __webpack_require__) {
-
-var internalObjectKeys = __webpack_require__("ca84");
-var enumBugKeys = __webpack_require__("7839");
-
-// `Object.keys` method
-// https://tc39.es/ecma262/#sec-object.keys
-// eslint-disable-next-line es-x/no-object-keys -- safe
-module.exports = Object.keys || function keys(O) {
-  return internalObjectKeys(O, enumBugKeys);
-};
-
-
-/***/ }),
-
 /***/ "e29c":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1975,27 +484,6 @@ module.exports = Object.keys || function keys(O) {
 
 /***/ }),
 
-/***/ "e330":
-/***/ (function(module, exports, __webpack_require__) {
-
-var NATIVE_BIND = __webpack_require__("40d5");
-
-var FunctionPrototype = Function.prototype;
-var bind = FunctionPrototype.bind;
-var call = FunctionPrototype.call;
-var uncurryThis = NATIVE_BIND && bind.bind(call, call);
-
-module.exports = NATIVE_BIND ? function (fn) {
-  return fn && uncurryThis(fn);
-} : function (fn) {
-  return fn && function () {
-    return call.apply(fn, arguments);
-  };
-};
-
-
-/***/ }),
-
 /***/ "e79b":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2003,48 +491,10 @@ module.exports = NATIVE_BIND ? function (fn) {
 
 /***/ }),
 
-/***/ "e893":
-/***/ (function(module, exports, __webpack_require__) {
-
-var hasOwn = __webpack_require__("1a2d");
-var ownKeys = __webpack_require__("56ef");
-var getOwnPropertyDescriptorModule = __webpack_require__("06cf");
-var definePropertyModule = __webpack_require__("9bf2");
-
-module.exports = function (target, source, exceptions) {
-  var keys = ownKeys(source);
-  var defineProperty = definePropertyModule.f;
-  var getOwnPropertyDescriptor = getOwnPropertyDescriptorModule.f;
-  for (var i = 0; i < keys.length; i++) {
-    var key = keys[i];
-    if (!hasOwn(target, key) && !(exceptions && hasOwn(exceptions, key))) {
-      defineProperty(target, key, getOwnPropertyDescriptor(source, key));
-    }
-  }
-};
-
-
-/***/ }),
-
 /***/ "ecd2":
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
-
-/***/ }),
-
-/***/ "f772":
-/***/ (function(module, exports, __webpack_require__) {
-
-var shared = __webpack_require__("5692");
-var uid = __webpack_require__("90e3");
-
-var keys = shared('keys');
-
-module.exports = function (key) {
-  return keys[key] || (keys[key] = uid(key));
-};
-
 
 /***/ }),
 
@@ -2081,6 +531,7 @@ __webpack_require__.d(__webpack_exports__, "DaiXyzLayer", function() { return /*
 __webpack_require__.d(__webpack_exports__, "DaiXyzLayerOsm", function() { return /* reexport */ xyz_layer_osm_namespaceObject; });
 __webpack_require__.d(__webpack_exports__, "DaiGeojsonLayer", function() { return /* reexport */ geojson_layer_namespaceObject; });
 __webpack_require__.d(__webpack_exports__, "DaiCapaGeojsonCluster", function() { return /* reexport */ geojson_cluster_layer_namespaceObject; });
+__webpack_require__.d(__webpack_exports__, "DaiCapaGeojsonPuntosDesplazados", function() { return /* reexport */ geojson_puntos_desplazados_layer_namespaceObject; });
 __webpack_require__.d(__webpack_exports__, "DaiCapaGeojsonHexbin", function() { return /* reexport */ geojson_hexbin_layer_namespaceObject; });
 __webpack_require__.d(__webpack_exports__, "DaiWmsLayer", function() { return /* reexport */ wms_layer_namespaceObject; });
 __webpack_require__.d(__webpack_exports__, "DaiTopojsonLayer", function() { return /* reexport */ topojson_layer_namespaceObject; });
@@ -2690,6 +1141,13 @@ __webpack_require__.d(geojson_cluster_layer_namespaceObject, "default", function
 __webpack_require__.d(geojson_cluster_layer_namespaceObject, "install", function() { return geojson_cluster_layer_plugin; });
 __webpack_require__.d(geojson_cluster_layer_namespaceObject, "DaiCapaGeojsonCluster", function() { return geojson_cluster; });
 
+// NAMESPACE OBJECT: ./src/components/geojson-puntos-desplazados-layer/index.js
+var geojson_puntos_desplazados_layer_namespaceObject = {};
+__webpack_require__.r(geojson_puntos_desplazados_layer_namespaceObject);
+__webpack_require__.d(geojson_puntos_desplazados_layer_namespaceObject, "default", function() { return geojson_puntos_desplazados_layer; });
+__webpack_require__.d(geojson_puntos_desplazados_layer_namespaceObject, "install", function() { return geojson_puntos_desplazados_layer_plugin; });
+__webpack_require__.d(geojson_puntos_desplazados_layer_namespaceObject, "DaiCapaGeojsonPuntosDesplazados", function() { return geojson_puntos_desplazados; });
+
 // NAMESPACE OBJECT: ./src/components/geojson-hexbin-layer/index.js
 var geojson_hexbin_layer_namespaceObject = {};
 __webpack_require__.r(geojson_hexbin_layer_namespaceObject);
@@ -2770,7 +1228,7 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/map.vue?vue&type=template&id=578c86dd&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"03bf391a-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/map.vue?vue&type=template&id=578c86dd&
 var mapvue_type_template_id_578c86dd_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -2833,9 +1291,6 @@ var mapvue_type_template_id_578c86dd_render = function render() {
 var staticRenderFns = [];
 
 // CONCATENATED MODULE: ./src/components/map/map.vue?vue&type=template&id=578c86dd&
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.includes.js
-var es_array_includes = __webpack_require__("caad");
 
 // CONCATENATED MODULE: ./node_modules/ol/Disposable.js
 /**
@@ -21563,8 +20018,6 @@ const NivelControl = /*@__PURE__*/function (Control) {
 /* harmony default export */ var _zoom_control = (CustomZoomControl);
 
 // CONCATENATED MODULE: ./src/components/map/_invokeTooltips.js
-
-
 /**
  * Invocar el mostrar/ocultar los tooltips dentro del mapa
  * @param {Map} map objeto mapa de Open Layers
@@ -23377,7 +21830,6 @@ var Vector_VectorSource = /** @class */ (function (_super) {
 //# sourceMappingURL=Vector.js.map
 // CONCATENATED MODULE: ./src/components/map/_invokeClicks.js
 
-
 /**
  * Invocar el mostrar/ocultar los tooltips dentro del mapa
  * @param {Map} map objeto mapa de Open Layers
@@ -23508,7 +21960,7 @@ const invoke_clicks = (map, e, component) => {
     feature_selected
   };
 };
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/utils/loader.vue?vue&type=template&id=0e1fa54d&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"03bf391a-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/utils/loader.vue?vue&type=template&id=0e1fa54d&scoped=true&
 var loadervue_type_template_id_0e1fa54d_scoped_true_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -23754,7 +22206,6 @@ var loader_component = normalizeComponent(
 
 /* harmony default export */ var loader = (loader_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/map.vue?vue&type=script&lang=js&
-
 
 
  //import { defaults as defaultControls} from 'ol/control';
@@ -24223,7 +22674,7 @@ function map_plugin(Vue) {
 
 /* harmony default export */ var components_map = (map_plugin);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/card-container/card.vue?vue&type=template&id=6ee45140&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"03bf391a-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/card-container/card.vue?vue&type=template&id=6ee45140&
 var cardvue_type_template_id_6ee45140_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -33932,7 +32383,6 @@ ol_style_FillPattern.prototype.patterns = {
 // CONCATENATED MODULE: ./src/mixins/_json2olstyle.js
 
 
-
 const equivalencias = {
   "fill": {
     class: style_Fill,
@@ -37015,7 +35465,6 @@ function writePolygonGeometry(geometry, opt_options) {
 // CONCATENATED MODULE: ./src/mixins/vector-layer-any.js
 
 
-
 const vector_layer_any_DEFAULT_FILL_COLOR = "gray";
 const DEFAULT_STROKE_COLOR = "white";
 const vector_layer_any_DEFAULT_RADIUS = 7;
@@ -37311,6 +35760,7 @@ const vector_layer_any_DEFAULT_RADIUS = 7;
       //if(vectorSource.getUrl()===undefined){
 
       if (this.datos !== undefined) {
+        // si el origen es de una url
         if (this.VM_featuresGroup) {
           const objects = geojsonFormat.writeFeaturesObject(vectorSource.getFeatures());
           objects.features = objects.features.map(f => {
@@ -37333,6 +35783,11 @@ const vector_layer_any_DEFAULT_RADIUS = 7;
         }
 
         return;
+      }
+
+      if (this.metodoUbicacion !== undefined) {
+        /** Solo para cisualizaciones de despalazamiento de puntos */
+        this.VM_allFeatures = geojsonFormat.writeFeatures(vectorSource.getFeatures());
       } //console.log("---AQUI ESPERAR LAS FEATURES EN VM_allfeatures")
 
 
@@ -58934,7 +57389,6 @@ ss['jenksMatrices'] = function (data, n_classes) {
 // CONCATENATED MODULE: ./src/mixins/_clasificacion_datos.js
 
 
-
 /**
  *  obtiene los cortes para la leyenda y la funcion de estilo de openlayers
  * @param {*} data 
@@ -59149,8 +57603,6 @@ function LABEL_numeroendecimal(numero, decimales) {
 
 
 // CONCATENATED MODULE: ./src/mixins/_prepareClassificableTextures.js
-
-
 const prepararTexturesfromCortes = (cortes, rule, texturaOpcionesIniciales) => {
   const textura_modificable = { ...texturaOpcionesIniciales
   };
@@ -59221,7 +57673,6 @@ const categoricalVariants = [{
   pattern: "wave"
 }];
 // CONCATENATED MODULE: ./src/mixins/classificable-layer.js
-
 
 
 
@@ -66346,6 +64797,1039 @@ function geojson_cluster_layer_plugin(Vue) {
 
 /* harmony default export */ var geojson_cluster_layer = (geojson_cluster_layer_plugin);
 
+// CONCATENATED MODULE: ./node_modules/ol-displaced-points/Cluster.js
+/**
+ * @module ol/source/Cluster
+ */
+var ol_displaced_points_Cluster_extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+
+
+
+
+
+/**
+ * @typedef {Object} Options
+ * @property {import("ol/source/Source").AttributionLike} [attributions] Attributions.
+ * @property {number} [distance=20] Distance in pixels within which features will
+ * be clustered together.
+ * @property {number} [minDistance=0] Minimum distance in pixels between clusters.
+ * Will be capped at the configured distance.
+ * By default no minimum distance is guaranteed. This config can be used to avoid
+ * overlapping icons. As a tradoff, the cluster feature's position will no longer be
+ * the center of all its features.
+ * @property {function(Feature):Point} [geometryFunction]
+ * Function that takes an {@link module:ol/Feature~Feature} as argument and returns an
+ * {@link module:ol/geom/Point~Point} as cluster calculation point for the feature. When a
+ * feature should not be considered for clustering, the function should return
+ * `null`. The default, which works when the underlying source contains point
+ * features only, is
+ * ```js
+ * function(feature) {
+ *   return feature.getGeometry();
+ * }
+ * ```
+ * See {@link module:ol/geom/Polygon~Polygon#getInteriorPoint} for a way to get a cluster
+ * calculation point for polygons.
+ * @property {function(Point, Array<Feature>):Feature} [createCluster]
+ * Function that takes the cluster's center {@link module:ol/geom/Point~Point} and an array
+ * of {@link module:ol/Feature~Feature} included in this cluster. Must return a
+ * {@link module:ol/Feature~Feature} that will be used to render. Default implementation is:
+ * ```js
+ * function(point, features) {
+ *   return new Feature({
+ *     geometry: point,
+ *     features: features
+ *   });
+ * }
+ * ```
+ * @property {VectorSource} [source=null] Source.
+ * @property {boolean} [wrapX=true] Whether to wrap the world horizontally.
+ * @property {string} [delimiterField] Field to delimit clusters.
+ */
+/**
+ * @classdesc
+ * Layer source to cluster vector data. Works out of the box with point
+ * geometries. For other geometry types, or if not all geometries should be
+ * considered for clustering, a custom `geometryFunction` can be defined.
+ *
+ * If the instance is disposed without also disposing the underlying
+ * source `setSource(null)` has to be called to remove the listener reference
+ * from the wrapped source.
+ * @api
+ */
+var ol_displaced_points_Cluster_Cluster = /** @class */ (function (_super) {
+    ol_displaced_points_Cluster_extends(Cluster, _super);
+    /**
+     * @param {Options} options Cluster options.
+     */
+    function Cluster(options) {
+        var _this = _super.call(this, {
+            attributions: options.attributions,
+            wrapX: options.wrapX,
+        }) || this;
+        /**
+         * @type {string|undefined}
+         * @protected
+         */
+        _this.delimiterField = options.delimiterField;
+        /**
+         * @type {number|undefined}
+         * @protected
+         */
+        _this.resolution = undefined;
+        /**
+         * @type {number}
+         * @protected
+         */
+        _this.distance = options.distance !== undefined ? options.distance : 20;
+        /**
+         * @type {number}
+         * @protected
+         */
+        _this.minDistance = options.minDistance || 0;
+        /**
+         * @type {number}
+         * @protected
+         */
+        _this.interpolationRatio = 0;
+        /**
+         * @type {Array<Feature>}
+         * @protected
+         */
+        _this.features = [];
+        /**
+         * @param {Feature} feature Feature.
+         * @return {Point} Cluster calculation point.
+         * @protected
+         */
+        _this.geometryFunction =
+            options.geometryFunction ||
+                function (feature) {
+                    var geometry = /** @type {Point} */ (feature.getGeometry());
+                    assert(geometry.getType() == "Point", 10); // The default `geometryFunction` can only handle `Point` geometries
+                    return geometry;
+                };
+        /**
+         * @type {function(Point, Array<Feature>):Feature}
+         * @private
+         */
+        _this.createCustomCluster_ = options.createCluster;
+        /**
+         * @type {VectorSource|null}
+         * @protected
+         */
+        _this.source = null;
+        /**
+         * @private
+         */
+        _this.boundRefresh_ = _this.refresh.bind(_this);
+        _this.updateDistance(_this.distance, _this.minDistance);
+        _this.setSource(options.source || null);
+        return _this;
+    }
+    /**
+     * Remove all features from the source.
+     * @param {boolean} [opt_fast] Skip dispatching of {@link module:ol/source/VectorEventType~VectorEventType#removefeature} events.
+     * @api
+     */
+    Cluster.prototype.clear = function (opt_fast) {
+        this.features.length = 0;
+        _super.prototype.clear.call(this, opt_fast);
+    };
+    /**
+     * Get the distance in pixels between clusters.
+     * @return {number} Distance.
+     * @api
+     */
+    Cluster.prototype.getDistance = function () {
+        return this.distance;
+    };
+    /**
+     * Get a reference to the wrapped source.
+     * @return {VectorSource|null} Source.
+     * @api
+     */
+    Cluster.prototype.getSource = function () {
+        return this.source;
+    };
+    /**
+     * @param {import("ol/extent").Extent} extent Extent.
+     * @param {number} resolution Resolution.
+     * @param {import("ol/proj/Projection").default} projection Projection.
+     */
+    Cluster.prototype.loadFeatures = function (extent, resolution, projection) {
+        this.source.loadFeatures(extent, resolution, projection);
+        if (resolution !== this.resolution) {
+            this.resolution = resolution;
+            this.refresh();
+        }
+    };
+    /**
+     * Set the distance within which features will be clusterd together.
+     * @param {number} distance The distance in pixels.
+     * @api
+     */
+    Cluster.prototype.setDistance = function (distance) {
+        this.updateDistance(distance, this.minDistance);
+    };
+    /**
+     * Set the minimum distance between clusters. Will be capped at the
+     * configured distance.
+     * @param {number} minDistance The minimum distance in pixels.
+     * @api
+     */
+    Cluster.prototype.setMinDistance = function (minDistance) {
+        this.updateDistance(this.distance, minDistance);
+    };
+    /**
+     * The configured minimum distance between clusters.
+     * @return {number} The minimum distance in pixels.
+     * @api
+     */
+    Cluster.prototype.getMinDistance = function () {
+        return this.minDistance;
+    };
+    /**
+     * Replace the wrapped source.
+     * @param {VectorSource|null} source The new source for this instance.
+     * @api
+     */
+    Cluster.prototype.setSource = function (source) {
+        if (this.source) {
+            this.source.removeEventListener(EventType.CHANGE, this.boundRefresh_);
+        }
+        this.source = source;
+        if (source) {
+            source.addEventListener(EventType.CHANGE, this.boundRefresh_);
+        }
+        this.refresh();
+    };
+    /**
+     * Handle the source changing.
+     */
+    Cluster.prototype.refresh = function () {
+        this.clear();
+        this.cluster();
+        this.addFeatures(this.features);
+    };
+    /**
+     * Update the distances and refresh the source if necessary.
+     * @param {number} distance The new distance.
+     * @param {number} minDistance The new minimum distance.
+     */
+    Cluster.prototype.updateDistance = function (distance, minDistance) {
+        var ratio = distance === 0 ? 0 : Math.min(minDistance, distance) / distance;
+        var changed = distance !== this.distance || this.interpolationRatio !== ratio;
+        this.distance = distance;
+        this.minDistance = minDistance;
+        this.interpolationRatio = ratio;
+        if (changed) {
+            this.refresh();
+        }
+    };
+    /**
+     * @protected
+     */
+    Cluster.prototype.cluster = function () {
+        var _this = this;
+        if (this.resolution === undefined || !this.source) {
+            return;
+        }
+        var extent = createEmpty();
+        var mapDistance = this.distance * this.resolution;
+        var features = this.source.getFeatures();
+        var delimiterField = this.delimiterField;
+        var delimitations = [];
+        features.forEach(function (f) {
+            var type = f.get(delimiterField);
+            if (!delimitations.includes(type))
+                delimitations.push(type);
+        });
+        /** @type {Object<string, true>} */
+        var clustered = {};
+        delimitations.forEach(function (delimitation) {
+            //for (let i = 0; i < features.length; i++) {
+            features.forEach(function (feature) {
+                // const feature = features[i];
+                if (!(getUid(feature) in clustered)) {
+                    var geometry = _this.geometryFunction(feature);
+                    if (geometry) {
+                        var coordinates = geometry.getCoordinates();
+                        createOrUpdateFromCoordinate(coordinates, extent);
+                        extent_buffer(extent, mapDistance, extent);
+                        var neighbors = _this.source
+                            .getFeaturesInExtent(extent)
+                            .filter(function (neighbor) {
+                            var uid = getUid(neighbor);
+                            if (uid in clustered ||
+                                neighbor.get(delimiterField) !== delimitation) {
+                                return false;
+                            }
+                            clustered[uid] = true;
+                            return true;
+                        });
+                        _this.features.push(_this.createCluster(neighbors, extent));
+                    }
+                }
+            });
+        });
+    };
+    /**
+     * @param {Array<Feature>} features Features
+     * @param {import("ol/extent").Extent} extent The searched extent for these features.
+     * @return {Feature} The cluster feature.
+     * @protected
+     */
+    Cluster.prototype.createCluster = function (features, extent) {
+        var centroid = [0, 0];
+        for (var i = features.length - 1; i >= 0; --i) {
+            var geometry_1 = this.geometryFunction(features[i]);
+            if (geometry_1) {
+                add(centroid, geometry_1.getCoordinates());
+            }
+            else {
+                features.splice(i, 1);
+            }
+        }
+        coordinate_scale(centroid, 1 / features.length);
+        var searchCenter = getCenter(extent);
+        var ratio = this.interpolationRatio;
+        var geometry = new geom_Point([
+            centroid[0] * (1 - ratio) + searchCenter[0] * ratio,
+            centroid[1] * (1 - ratio) + searchCenter[1] * ratio,
+        ]);
+        if (this.createCustomCluster_) {
+            return this.createCustomCluster_(geometry, features);
+        }
+        else {
+            return new ol_Feature({
+                geometry: geometry,
+                features: features,
+            });
+        }
+    };
+    return Cluster;
+}(Vector));
+/* harmony default export */ var ol_displaced_points_Cluster = (ol_displaced_points_Cluster_Cluster);
+//# sourceMappingURL=Cluster.js.map
+// CONCATENATED MODULE: ./node_modules/circle-properties/functions.js
+/**
+ * @module functions
+ */
+/**
+ * Calculate the circumference from the radius of a circle.
+ * @param {number} radius The distance from the center of the circle to the circumference.
+ * @returns {number} circumference Boundary measure of the circle or perimeter.
+ */
+function circumferenceFromRadius(radius) {
+    return circumferenceFromDiameter(2 * radius);
+}
+/**
+ * Calculate the circumference from the diameter of a circle.
+ * @param {number} diameter The line measure that passes through the centre of the circle
+ * and touches the two points on the circumference.
+ * @returns {number} circumference Boundary measure of the circle or perimeter.
+ */
+function circumferenceFromDiameter(diameter) {
+    return Math.PI * diameter;
+}
+/**
+ * Calculate the radius from the circumference of a circle.
+ * @param {number} circumference Boundary measure of the circle or perimeter.
+ * @returns {number} radius The distance from the center of the circle to the circumference.
+ */
+function radiusFromCircumference(circumference) {
+    return radiusFromDiameter(diameterFromCircumference(circumference));
+}
+/**
+ * Calculate the radius from the diameter of a circle.
+ * @param {number} diameter The line measure that passes through the centre of the circle
+ * and touches the two points on the circumference.
+ * @returns {number} radius The distance from the center of the circle to the circumference.
+ */
+function radiusFromDiameter(diameter) {
+    return diameter / 2;
+}
+/**
+ * Calculate the diameter from the circumference of a circle.
+ * @param {number} circumference Boundary measure of the circle or perimeter.
+ * @returns {number} diameter The line measure that passes through the centre of the circle
+ * and touches the two points on the circumference.
+ */
+function diameterFromCircumference(circumference) {
+    return circumference / Math.PI;
+}
+/**
+ * Calculate the diameter from the radius of a circle.
+ * @param {number} radius The distance from the center of the circle to the circumference.
+ * @returns {number} diameter The line measure that passes through the centre of the circle
+ * and touches the two points on the circumference.
+ */
+function diameterFromRadius(radius) {
+    return radius * 2;
+}
+//# sourceMappingURL=functions.js.map
+// CONCATENATED MODULE: ./node_modules/circle-properties/Circle.js
+/**
+ * @module Circle
+ */
+
+/**
+ * @typedef {Object} Options
+ * @property {number} circumference Boundary measure of the circle or perimeter.
+ * @property {number} radius The distance from the center of the circle to the circumference.
+ * @property {number} diameter The line measure that passes through the centre of the circle
+ * and touches the two points on the circumference.
+ */
+/**
+ * @classdesc
+ * This library allows obtaining the properties of a geometric circle from any of its
+ * measurements.
+ */
+var Circle_Circle = /** @class */ (function () {
+    /**
+     * @param {Options} options Circle options.
+     */
+    function Circle(options) {
+        /**
+         * @private
+         */
+        this.properties = options;
+    }
+    Object.defineProperty(Circle.prototype, "circumference", {
+        /**
+         * @returns {number} circumference Boundary measure of the circle or perimeter.
+         */
+        get: function () {
+            if (this.properties.circumference)
+                return this.properties.circumference;
+            if (this.properties.radius) {
+                return circumferenceFromRadius(this.properties.radius);
+            }
+            if (this.properties.diameter) {
+                return circumferenceFromDiameter(this.properties.diameter);
+            }
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Circle.prototype, "radius", {
+        /**
+         * @returns {number} radius The distance from the center of the circle to the circumference.
+         */
+        get: function () {
+            if (this.properties.radius)
+                return this.properties.radius;
+            if (this.properties.circumference) {
+                return radiusFromCircumference(this.properties.circumference);
+            }
+            if (this.properties.diameter) {
+                return radiusFromDiameter(this.properties.diameter);
+            }
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Circle.prototype, "diameter", {
+        /**
+         * @returns {number} diameter The line measure that passes through the centre of the circle
+         * and touches the two points on the circumference.
+         */
+        get: function () {
+            if (this.properties.diameter)
+                return this.properties.diameter;
+            if (this.properties.circumference) {
+                return diameterFromCircumference(this.properties.circumference);
+            }
+            if (this.properties.radius) {
+                return diameterFromRadius(this.properties.radius);
+            }
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Circle.prototype, "area", {
+        /**
+         * @returns {number} area Square area of a geometric circle in two dimensions
+         */
+        get: function () {
+            if (this.radius) {
+                return Math.PI * Math.pow(this.radius, 2);
+            }
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return Circle;
+}());
+/* harmony default export */ var circle_properties_Circle = (Circle_Circle);
+//# sourceMappingURL=Circle.js.map
+// CONCATENATED MODULE: ./node_modules/circle-properties/index.js
+/**
+ * @module circle-properties
+ */
+
+/* harmony default export */ var circle_properties = (circle_properties_Circle);
+
+//# sourceMappingURL=index.js.map
+// CONCATENATED MODULE: ./node_modules/ol-displaced-points/DisplacedPoints.js
+/**
+ * @module DisplacedPoints
+ */
+var DisplacedPoints_extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
+
+
+
+
+
+/**
+ * @typedef {Object} Options
+ * @property {string} [placementMethod="ring"] Placement Method:
+ * - `grid`: Places all the features on a circle whose radius depends on the number of
+ * features to display.
+ * - `concentric-rings`: Uses a set of concentric circles to show the features.
+ * - `spiral`: Creates a spiral with the features farthest from the center of the group in
+ * each turn.
+ * - `grid`: Generates a regular grid with a point symbol at each intersection.
+ * @property {number} [radiusCenterPoint=6] centric point radius, used for the distance between
+ * the centric point and the nearest displaced points.
+ * @property {number} [radiusDisplacedPoints=6] displaced points radius, used for the distance
+ * between each displaced point.
+ */
+/**
+ * @classdesc
+ * Displaced Points methodology works to visualize all features of a point layer, even if they
+ * have the same location. To do this, the map takes the points falling in a given Distance
+ * tolerance from each other (cluster) and places them around their barycenter.
+ *
+ * > Note: Displaced Points methodology does not alter feature geometry, meaning that points
+ * are not moved from their position. Changes are only visual, for rendering purpose. Each
+ * barycenter is themselves a cluster with an attribute features that contain the original
+ * features.
+ */
+var DisplacedPoints_DisplacedPoints = /** @class */ (function (_super) {
+    DisplacedPoints_extends(DisplacedPoints, _super);
+    /**
+     * @param {Options} options DisplacedPoints options.
+     */
+    function DisplacedPoints(options) {
+        var _this = _super.call(this, options) || this;
+        /**
+         * @type {string}
+         * @private
+         */
+        _this.placementMethod = options.placementMethod || "ring";
+        /**
+         * @type {number}
+         * @protected
+         */
+        _this.radiusCenterPoint = options.radiusCenterPoint || 6;
+        /**
+         * @type {number}
+         * @protected
+         */
+        _this.radiusDisplacedPoints = options.radiusDisplacedPoints || 6;
+        /**
+         * @type {Array<Feature>}
+         * @protected
+         */
+        _this.displacedFeatures = [];
+        /**
+         * @type {Array<Feature>}
+         * @protected
+         */
+        _this.displacedRings = [];
+        /**
+         * @type {Array<Feature>}
+         * @protected
+         */
+        _this.displacedConnectors = [];
+        return _this;
+    }
+    /**
+     *
+     * @returns {string}
+     */
+    DisplacedPoints.prototype.getPlacementMethod = function () {
+        return this.placementMethod;
+    };
+    /**
+     *
+     * @param {string} placementMethod
+     */
+    DisplacedPoints.prototype.setPlacementMethod = function (placementMethod) {
+        this.placementMethod = placementMethod;
+        this.refresh();
+    };
+    /**
+     * Remove all features from the source.
+     * @param {boolean} [opt_fast] Skip dispatching of {@link module:ol/source/VectorEventType~VectorEventType#removefeature} events.
+     * @api
+     */
+    DisplacedPoints.prototype.clear = function (opt_fast) {
+        this.features.length = 0;
+        this.displacedFeatures = [];
+        this.displacedRings = [];
+        this.displacedConnectors = [];
+        _super.prototype.clear.call(this, opt_fast);
+    };
+    /**
+     * Handle the source changing.
+     */
+    DisplacedPoints.prototype.refresh = function () {
+        this.clear();
+        this.cluster();
+        this.displacedPoints();
+        this.addFeatures(this.allFeatures());
+    };
+    /**
+     *
+     * @returns {Array<Feature>}
+     */
+    DisplacedPoints.prototype.allFeatures = function () {
+        return __spreadArray(__spreadArray(__spreadArray(__spreadArray([], this.displacedConnectors, true), this.displacedRings, true), this.features, true), this.displacedFeatures, true);
+    };
+    /**
+     * @returns {Array<(import("ol/Feature").default)>} All the displaced points and rings
+     * @protected
+     */
+    DisplacedPoints.prototype.displacedPoints = function () {
+        var _this = this;
+        this.features.forEach(function (cluster) {
+            _this.pointsGroup(cluster.get("geometry"), cluster.get("features"));
+        });
+    };
+    /**
+     * @param {import("ol/geom/Point").default} center Cluster centroid point
+     * @param {Array<(import("ol/Feature").default)>} features Clustered features
+     * @returns {Array<(import("ol/Feature").default)>} The displaced points and rings of the group
+     * @protected
+     */
+    DisplacedPoints.prototype.pointsGroup = function (center, features) {
+        if (features.length === 1)
+            return;
+        /**
+         * Teorema de Pitágoras
+         * c² = b² + a²
+         * c = √(b² + a²)
+         * Math.SQRT2 = √(1² + 1²)
+         * Math.SQRT2 = Math.pow(2, 1/2)
+         */
+        /**
+         * Distancia entre el centroide del grupo y cualquiera de sus puntos deslazados si sus diametros
+         * se tocaran
+         * @type {number}
+         */
+        var distanceRadiusCenterAndDisplacedPoints = this.radiusCenterPoint + this.radiusDisplacedPoints;
+        /**
+         * Hipotenusa = Lado opuesto al ángulo recto en un triángulo rectángulo.
+         * @type {number} √((radiusCenterPoint + radiusDisplacedPoints)² + (radiusCenterPoint + radiusDisplacedPoints)²)
+         */
+        var hypotenuseCenterAndPoints = distanceRadiusCenterAndDisplacedPoints * Math.SQRT2;
+        /**
+         * Hipotenusa = Lado opuesto al ángulo recto en un triángulo rectángulo.
+         * @type {number} √(radiusCenterPoint² + radiusCenterPoint²) / 100
+         */
+        var hypotenuseCenter = this.radiusCenterPoint * Math.SQRT2;
+        switch (this.placementMethod) {
+            case "ring":
+                this.Ring(center.getCoordinates(), hypotenuseCenterAndPoints, hypotenuseCenter, features);
+                break;
+            case "concentric-rings":
+                this.ConcentricRings(center.getCoordinates(), hypotenuseCenterAndPoints, hypotenuseCenter, features);
+                break;
+            case "grid":
+                this.Grid(center.getCoordinates(), hypotenuseCenterAndPoints, hypotenuseCenter, features);
+                break;
+            case "spiral":
+                this.Spiral(center.getCoordinates(), hypotenuseCenterAndPoints, hypotenuseCenter, features);
+                break;
+            default:
+                console.error("Metodo de desplazamiento no permitido");
+                break;
+        }
+    };
+    /**
+     *
+     * @param {number} centerCords
+     * @param {number} hypotenuseCenterAndPoints
+     * @param {number} hypotenuseCenter
+     * @param {Array<Feature>} features
+     */
+    DisplacedPoints.prototype.Ring = function (centerCords, hypotenuseCenterAndPoints, hypotenuseCenter, features) {
+        var _this = this;
+        var nFeatures = features.length;
+        var minCircleToFitPoints = new circle_properties({
+            circumference: nFeatures * hypotenuseCenterAndPoints,
+        });
+        var maxDisplacementDistance = Math.max(hypotenuseCenterAndPoints / 2, minCircleToFitPoints.radius);
+        var radiusRing = maxDisplacementDistance + hypotenuseCenter;
+        this.addRing(centerCords, { radius: radiusRing });
+        var radiusRingPix = this.numberToPixelUnits(radiusRing);
+        var angleStep = (2 * Math.PI) / nFeatures;
+        var currentAngle = 0.0;
+        features.forEach(function (feature) {
+            _this.addDisplacedPoints(feature, [
+                centerCords[0] + radiusRingPix * Math.sin(currentAngle),
+                centerCords[1] + radiusRingPix * Math.cos(currentAngle),
+            ]);
+            currentAngle += angleStep;
+        });
+    };
+    DisplacedPoints.prototype.ConcentricRings = function (centerCords, hypotenuseCenterAndPoints, hypotenuseCenter, features) {
+        var nFeatures = features.length;
+        var centerDiagonal = this.radiusCenterPoint;
+        var pointsRemaining = nFeatures;
+        var ringNumber = 1;
+        var firstRingRadius = centerDiagonal / 2.0 + hypotenuseCenterAndPoints / 2.0;
+        var featureIndex = 0;
+        while (pointsRemaining > 0) {
+            var radiusCurrentRing = Math.max(firstRingRadius +
+                (ringNumber - 1) * hypotenuseCenterAndPoints +
+                ringNumber * hypotenuseCenter, 0.0);
+            this.addRing(centerCords, { radius: radiusCurrentRing });
+            var maxPointsCurrentRing = Math.max(Math.floor((2 * Math.PI * radiusCurrentRing) / hypotenuseCenterAndPoints), 1.0);
+            var actualPointsCurrentRing = Math.min(maxPointsCurrentRing, pointsRemaining);
+            var angleStep = (2 * Math.PI) / actualPointsCurrentRing;
+            var radiusCurrentRingPix = this.numberToPixelUnits(radiusCurrentRing);
+            var currentAngle = 0;
+            for (var i = 0; i < actualPointsCurrentRing; ++i) {
+                this.addDisplacedPoints(features[featureIndex], [
+                    centerCords[0] + radiusCurrentRingPix * Math.sin(currentAngle),
+                    centerCords[1] + radiusCurrentRingPix * Math.cos(currentAngle),
+                ]);
+                currentAngle += angleStep;
+                featureIndex++;
+            }
+            pointsRemaining -= actualPointsCurrentRing;
+            ringNumber++;
+        }
+    };
+    DisplacedPoints.prototype.Grid = function (centerCords, hypotenuseCenterAndPoints, hypotenuseCenter, features) {
+        var _this = this;
+        var puntosNuevos = [];
+        var nFeatures = features.length;
+        // var gridRadius = /** @type {double} */ -1.0;
+        var gridSize = -1;
+        var centerDiagonal = this.radiusCenterPoint;
+        var pointsRemaining = nFeatures;
+        gridSize = Math.ceil(Math.sqrt(pointsRemaining));
+        if (pointsRemaining - Math.pow(gridSize - 1, 2) < gridSize)
+            gridSize -= 1;
+        var originalPointRadius = (centerDiagonal / 2 +
+            hypotenuseCenterAndPoints / 2 +
+            hypotenuseCenterAndPoints) /
+            2;
+        var userPointRadius = this.numberToPixelUnits(originalPointRadius + hypotenuseCenter);
+        var yIndex = 0;
+        while (pointsRemaining > 0) {
+            for (var xIndex = 0; xIndex < gridSize && pointsRemaining > 0; xIndex++) {
+                puntosNuevos.push([
+                    centerCords[0] + userPointRadius * xIndex,
+                    centerCords[1] + userPointRadius * yIndex,
+                ]);
+                pointsRemaining--;
+            }
+            yIndex++;
+        }
+        var shiftAmount = (-userPointRadius * (gridSize - 1)) / 2;
+        features.forEach(function (feature, i) {
+            _this.addDisplacedPoints(feature, add(puntosNuevos[i], [shiftAmount, shiftAmount]));
+        });
+    };
+    DisplacedPoints.prototype.Spiral = function (centerCords, hypotenuseCenterAndPoints, hypotenuseCenter, features) {
+        var _this = this;
+        var radiusCurrent;
+        var currentAngle = 0;
+        var diameter = 2 * Math.max(hypotenuseCenterAndPoints, hypotenuseCenter);
+        features.forEach(function (feature) {
+            radiusCurrent = diameter / 2 + (diameter * currentAngle) / (2 * Math.PI);
+            currentAngle = currentAngle + (diameter) / radiusCurrent;
+            var radiusCurrentPix = _this.numberToPixelUnits(radiusCurrent);
+            _this.addDisplacedPoints(feature, [
+                centerCords[0] + radiusCurrentPix * Math.sin(currentAngle),
+                centerCords[1] + radiusCurrentPix * Math.cos(currentAngle),
+            ]);
+        });
+    };
+    DisplacedPoints.prototype.addRing = function (coordinates, options) {
+        this.displacedRings.push(new ol_Feature({
+            geometry: new geom_Point(coordinates),
+            ring: options,
+        }));
+    };
+    DisplacedPoints.prototype.addDisplacedPoints = function (feature, coordinates) {
+        var newFeature = feature.clone();
+        newFeature.setGeometry(new geom_Point(coordinates));
+        this.displacedFeatures.push(newFeature);
+    };
+    /**
+     *
+     * @param {number} number
+     * @returns {number}
+     */
+    DisplacedPoints.prototype.numberToPixelUnits = function (number) {
+        return number * this.resolution;
+    };
+    /**
+     *
+     * @param {number} pixelUnits
+     * @returns {number}
+     */
+    DisplacedPoints.prototype.pixelUnitsToNumber = function (pixelUnits) {
+        return pixelUnits / this.resolution;
+    };
+    return DisplacedPoints;
+}(ol_displaced_points_Cluster));
+/* harmony default export */ var ol_displaced_points_DisplacedPoints = (DisplacedPoints_DisplacedPoints);
+//# sourceMappingURL=DisplacedPoints.js.map
+// CONCATENATED MODULE: ./node_modules/ol-displaced-points/index.js
+/**
+ * @module ol-displaced-points
+ */
+
+/* harmony default export */ var ol_displaced_points = (ol_displaced_points_DisplacedPoints);
+//# sourceMappingURL=index.js.map
+// CONCATENATED MODULE: ./src/components/geojson-puntos-desplazados-layer/utiles.js
+
+
+const utiles_createGeojsonSourceFromObjectJs = JsObject => {
+  if (typeof JsObject != "object") {
+    return new Vector({});
+  }
+
+  return new Vector({
+    features: new format_GeoJSON().readFeatures({ ...JsObject
+    })
+  });
+};
+const utiles_createGeojsonSourceFromUrl = url => {
+  return new Vector({
+    url: url,
+    format: new format_GeoJSON()
+  });
+};
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/geojson-puntos-desplazados-layer/geojson-puntos-desplazados.vue?vue&type=script&lang=js&
+
+
+
+
+
+
+
+
+/* harmony default export */ var geojson_puntos_desplazadosvue_type_script_lang_js_ = ({
+  name: "DaiCapaGeojsonPuntosDesplazados",
+  mixins: [mixins_layer, vector_layer_any, classificable_layer],
+  props: {
+    distancia: {
+      type: Number,
+      default: 20
+    },
+    distanciaMinima: {
+      type: Number,
+      default: 0
+    },
+    metodoDesplazamiento: {
+      type: String,
+      default: "anillo"
+    },
+    radioPuntoCentro: {
+      type: Number,
+      default: 6
+    },
+    radioPuntosDesplazados: {
+      type: Number,
+      default: 6
+    },
+    delimitarGruposPor: {
+      type: String,
+      default: undefined
+    }
+  },
+  data: function () {
+    return {// VM_featuresGroup: true,
+    };
+  },
+
+  created() {},
+
+  methods: {
+    _createLayerObject() {
+      // this.VM_is_cluster = true;
+      let vectorSource = this.datos !== undefined ? utiles_createGeojsonSourceFromObjectJs(this.datos) : utiles_createGeojsonSourceFromUrl(this.url);
+      const LayerClass = this.renderizarComoImagen ? VectorImage : layer_Vector;
+      this.olLayer = new LayerClass({
+        source: new ol_displaced_points({
+          source: vectorSource,
+          distance: this.distancia,
+          minDistance: this.distanciaMinima,
+          placementMethod: dicMetodosDesplazamiento[this.metodoDesplazamiento],
+          radiusCenterPoint: this.radioPuntoCentro,
+          radiusDisplacedPoints: this.radioPuntosDesplazados,
+          delimiterField: this.delimitarGruposPor
+        }),
+        className: this.className
+      });
+      this.olLayer.set("_realce_hover", this.realceAlPasarMouse);
+
+      if (this.VM_is_classified) {
+        if (vectorSource.getUrl() === undefined) {
+          this._clasificar_v2();
+
+          this._set_style_class_v2();
+        } else {
+          vectorSource.on("featuresloadend", () => {
+            setTimeout(() => {
+              //console.log(evento.target.getFeatures())
+              //console.log("cambio el source del layer, evento cachado, geojson.vue")
+              this._clasificar_v2();
+
+              this._set_style_class_v2();
+
+              this._setStyle();
+            }, 50);
+          });
+        }
+      }
+
+      if (this.contenidoTooltip != "none") {
+        this.olLayer.set("_tooltip", this.contenidoTooltip);
+        this.olLayer.set("_tooltip_mov", !this.tooltipEstatico);
+        this.olLayer.set("_tooltip_top", this.tooltipEstaticoMargenSuperior);
+      }
+
+      if (this.contenidoPopup !== "none") {
+        this.olLayer.set("_popup", this.contenidoPopup);
+      }
+
+      this._saveAllFeaturesFromSource(this.olLayer.getSource());
+
+      this._setStyle();
+    }
+
+  },
+  watch: {
+    datos(newDatos) {
+      if (newDatos !== undefined && this.olLayer !== null && this.olLayer !== undefined) {
+        //console.log(this.olLayer,this.olLayer.getSource())
+        let vectorSource = this.olLayer.getSource().getSource();
+        let features = new format_GeoJSON().readFeatures({ ...newDatos
+        });
+        vectorSource.clear(); //if(features.length>0){
+        //console.log("se esta escuchando el cambio de datos, BORRAR ESTE LOG")
+
+        vectorSource.addFeatures(features);
+
+        if (this.VM_is_classified) {
+          this._clasificar_v2();
+
+          this._set_style_class_v2();
+        } //}
+
+
+        this._saveAllFeaturesFromSource(this.olLayer.getSource());
+
+        this._setStyle();
+      }
+    },
+
+    distancia(newDistancia) {
+      this.olLayer.getSource().setDistance(newDistancia);
+    },
+
+    distanciaMinima(newDistancia) {
+      this.olLayer.getSource().setMinDistance(newDistancia);
+    },
+
+    metodoDesplazamiento(newMethod) {
+      this.olLayer.getSource().setPlacementMethod(dicMetodosDesplazamiento[newMethod]);
+    }
+
+  }
+});
+const dicMetodosDesplazamiento = {
+  anillo: "ring",
+  "anillos-concentricos": "concentric-rings",
+  espiral: "spiral",
+  cuadricula: "grid"
+};
+// CONCATENATED MODULE: ./src/components/geojson-puntos-desplazados-layer/geojson-puntos-desplazados.vue?vue&type=script&lang=js&
+ /* harmony default export */ var geojson_puntos_desplazados_layer_geojson_puntos_desplazadosvue_type_script_lang_js_ = (geojson_puntos_desplazadosvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/geojson-puntos-desplazados-layer/geojson-puntos-desplazados.vue
+var geojson_puntos_desplazados_render, geojson_puntos_desplazados_staticRenderFns
+
+
+
+
+/* normalize component */
+
+var geojson_puntos_desplazados_component = normalizeComponent(
+  geojson_puntos_desplazados_layer_geojson_puntos_desplazadosvue_type_script_lang_js_,
+  geojson_puntos_desplazados_render,
+  geojson_puntos_desplazados_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var geojson_puntos_desplazados = (geojson_puntos_desplazados_component.exports);
+// CONCATENATED MODULE: ./src/components/geojson-puntos-desplazados-layer/index.js
+
+
+function geojson_puntos_desplazados_layer_plugin(Vue) {
+  if (geojson_puntos_desplazados_layer_plugin.installed) {
+    return;
+  }
+
+  geojson_puntos_desplazados_layer_plugin.installed = true;
+  Vue.component(geojson_puntos_desplazados.name, geojson_puntos_desplazados);
+}
+
+/* harmony default export */ var geojson_puntos_desplazados_layer = (geojson_puntos_desplazados_layer_plugin);
+
 // CONCATENATED MODULE: ./node_modules/ol/geom/Circle.js
 var geom_Circle_extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -66374,7 +65858,7 @@ var geom_Circle_extends = (undefined && undefined.__extends) || (function () {
  *
  * @api
  */
-var Circle_Circle = /** @class */ (function (_super) {
+var geom_Circle_Circle = /** @class */ (function (_super) {
     geom_Circle_extends(Circle, _super);
     /**
      * @param {!import("../coordinate.js").Coordinate} center Center.
@@ -66613,8 +66097,8 @@ var Circle_Circle = /** @class */ (function (_super) {
  * @function
  * @api
  */
-Circle_Circle.prototype.transform;
-/* harmony default export */ var geom_Circle = (Circle_Circle);
+geom_Circle_Circle.prototype.transform;
+/* harmony default export */ var geom_Circle = (geom_Circle_Circle);
 //# sourceMappingURL=Circle.js.map
 // CONCATENATED MODULE: ./node_modules/ol-ext/geom/GeomUtils.js
 ﻿/*	Copyright (c) 2016 Jean-Marc VIGLINO, 
@@ -69765,7 +69249,7 @@ function topojson_layer_plugin(Vue) {
 
 /* harmony default export */ var topojson_layer = (topojson_layer_plugin);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/legend.vue?vue&type=template&id=3508e3be&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"03bf391a-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/legend.vue?vue&type=template&id=3508e3be&
 var legendvue_type_template_id_3508e3be_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -69940,7 +69424,7 @@ var legendvue_type_template_id_3508e3be_staticRenderFns = [];
     };
   }
 });
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_wms.vue?vue&type=template&id=0de20f90&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"03bf391a-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_wms.vue?vue&type=template&id=0de20f90&scoped=true&
 var _legend_wmsvue_type_template_id_0de20f90_scoped_true_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -69979,7 +69463,7 @@ var _legend_wmsvue_type_template_id_0de20f90_scoped_true_staticRenderFns = [];
 
 // CONCATENATED MODULE: ./src/components/legend-control/_legend_wms.vue?vue&type=template&id=0de20f90&scoped=true&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/utils/checkbox.vue?vue&type=template&id=0d254de0&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"03bf391a-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/utils/checkbox.vue?vue&type=template&id=0d254de0&scoped=true&
 var checkboxvue_type_template_id_0d254de0_scoped_true_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -70170,7 +69654,7 @@ const paramsIncludeInitialFilters = params => {
   }) : [];
   return [hayclases, clasesReturn];
 };
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_info.vue?vue&type=template&id=3da3d72a&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"03bf391a-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_info.vue?vue&type=template&id=3da3d72a&
 var _legend_infovue_type_template_id_3da3d72a_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -70354,7 +69838,7 @@ var _legend_wms_component = normalizeComponent(
 )
 
 /* harmony default export */ var _legend_wms = (_legend_wms_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_loading.vue?vue&type=template&id=0f90614a&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"03bf391a-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_loading.vue?vue&type=template&id=0f90614a&scoped=true&
 var _legend_loadingvue_type_template_id_0f90614a_scoped_true_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -70400,7 +69884,7 @@ var _legend_loading_component = normalizeComponent(
 )
 
 /* harmony default export */ var _legend_loading = (_legend_loading_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_coropleta.vue?vue&type=template&id=5c0f6534&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"03bf391a-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_coropleta.vue?vue&type=template&id=5c0f6534&scoped=true&
 var _legend_coropletavue_type_template_id_5c0f6534_scoped_true_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -70436,7 +69920,7 @@ var _legend_coropletavue_type_template_id_5c0f6534_scoped_true_staticRenderFns =
 
 // CONCATENATED MODULE: ./src/components/legend-control/_legend_coropleta.vue?vue&type=template&id=5c0f6534&scoped=true&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/utils/shape.vue?vue&type=template&id=ff017ec4&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"03bf391a-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/utils/shape.vue?vue&type=template&id=ff017ec4&scoped=true&
 var shapevue_type_template_id_ff017ec4_scoped_true_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -70671,8 +70155,8 @@ var _legend_coropleta_component = normalizeComponent(
 )
 
 /* harmony default export */ var _legend_coropleta = (_legend_coropleta_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_normal_vector.vue?vue&type=template&id=7317e94c&
-var _legend_normal_vectorvue_type_template_id_7317e94c_render = function render() {
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"03bf391a-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_normal_vector.vue?vue&type=template&id=bb64cc78&
+var _legend_normal_vectorvue_type_template_id_bb64cc78_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
@@ -70714,9 +70198,9 @@ var _legend_normal_vectorvue_type_template_id_7317e94c_render = function render(
   }) : _vm._e()], 1);
 };
 
-var _legend_normal_vectorvue_type_template_id_7317e94c_staticRenderFns = [];
+var _legend_normal_vectorvue_type_template_id_bb64cc78_staticRenderFns = [];
 
-// CONCATENATED MODULE: ./src/components/legend-control/_legend_normal_vector.vue?vue&type=template&id=7317e94c&
+// CONCATENATED MODULE: ./src/components/legend-control/_legend_normal_vector.vue?vue&type=template&id=bb64cc78&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_normal_vector.vue?vue&type=script&lang=js&
 
@@ -70733,11 +70217,11 @@ var _legend_normal_vectorvue_type_template_id_7317e94c_staticRenderFns = [];
   },
   computed: {
     classShape: function () {
-      return this.params.content.shape.startsWith("svg:") ? '' : this.params.content.shape;
+      return this.params.content.shape.startsWith("svg:") ? "" : this.params.content.shape;
     },
     backgroundImage: function () {
       return this.$parent.$parent.cmpMap.cmpLayers[this.layerId].usarTexturasEnRelleno ? `url('${convertirNode("fillPattern", { ...this.params.content.texture
-      }).fill.getImage().toDataURL()}'` : 'none';
+      }).fill.getImage().toDataURL()}'` : "none";
     },
     usarTexturas: function () {
       return this.$parent.$parent.cmpMap.cmpLayers[this.layerId].usarTexturasEnRelleno;
@@ -70746,11 +70230,11 @@ var _legend_normal_vectorvue_type_template_id_7317e94c_staticRenderFns = [];
 });
 // CONCATENATED MODULE: ./src/components/legend-control/_legend_normal_vector.vue?vue&type=script&lang=js&
  /* harmony default export */ var legend_control_legend_normal_vectorvue_type_script_lang_js_ = (_legend_normal_vectorvue_type_script_lang_js_); 
-// EXTERNAL MODULE: ./src/components/legend-control/_legend_normal_vector.vue?vue&type=style&index=0&id=7317e94c&prod&lang=scss&
-var _legend_normal_vectorvue_type_style_index_0_id_7317e94c_prod_lang_scss_ = __webpack_require__("3bfc");
+// EXTERNAL MODULE: ./src/components/legend-control/_legend_normal_vector.vue?vue&type=style&index=0&id=bb64cc78&prod&lang=scss&
+var _legend_normal_vectorvue_type_style_index_0_id_bb64cc78_prod_lang_scss_ = __webpack_require__("63f7");
 
-// EXTERNAL MODULE: ./src/components/legend-control/_legend_normal_vector.vue?vue&type=style&index=1&id=7317e94c&prod&lang=css&
-var _legend_normal_vectorvue_type_style_index_1_id_7317e94c_prod_lang_css_ = __webpack_require__("16e6");
+// EXTERNAL MODULE: ./src/components/legend-control/_legend_normal_vector.vue?vue&type=style&index=1&id=bb64cc78&prod&lang=css&
+var _legend_normal_vectorvue_type_style_index_1_id_bb64cc78_prod_lang_css_ = __webpack_require__("a4b9");
 
 // CONCATENATED MODULE: ./src/components/legend-control/_legend_normal_vector.vue
 
@@ -70764,8 +70248,8 @@ var _legend_normal_vectorvue_type_style_index_1_id_7317e94c_prod_lang_css_ = __w
 
 var _legend_normal_vector_component = normalizeComponent(
   legend_control_legend_normal_vectorvue_type_script_lang_js_,
-  _legend_normal_vectorvue_type_template_id_7317e94c_render,
-  _legend_normal_vectorvue_type_template_id_7317e94c_staticRenderFns,
+  _legend_normal_vectorvue_type_template_id_bb64cc78_render,
+  _legend_normal_vectorvue_type_template_id_bb64cc78_staticRenderFns,
   false,
   null,
   null,
@@ -70774,7 +70258,7 @@ var _legend_normal_vector_component = normalizeComponent(
 )
 
 /* harmony default export */ var _legend_normal_vector = (_legend_normal_vector_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_list_checks_colors.vue?vue&type=template&id=7a7364ec&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"03bf391a-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_list_checks_colors.vue?vue&type=template&id=7a7364ec&scoped=true&
 var _legend_list_checks_colorsvue_type_template_id_7a7364ec_scoped_true_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -70808,7 +70292,7 @@ var _legend_list_checks_colorsvue_type_template_id_7a7364ec_scoped_true_staticRe
 
 // CONCATENATED MODULE: ./src/components/legend-control/_legend_list_checks_colors.vue?vue&type=template&id=7a7364ec&scoped=true&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/utils/checkbox-color.vue?vue&type=template&id=0da840d6&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"03bf391a-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/utils/checkbox-color.vue?vue&type=template&id=0da840d6&
 var checkbox_colorvue_type_template_id_0da840d6_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -71000,7 +70484,7 @@ var _legend_list_checks_colors_component = normalizeComponent(
 )
 
 /* harmony default export */ var _legend_list_checks_colors = (_legend_list_checks_colors_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_shapes_sizes_values.vue?vue&type=template&id=6ae65c4e&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"03bf391a-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_shapes_sizes_values.vue?vue&type=template&id=6ae65c4e&scoped=true&
 var _legend_shapes_sizes_valuesvue_type_template_id_6ae65c4e_scoped_true_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -71078,7 +70562,7 @@ var _legend_shapes_sizes_values_component = normalizeComponent(
 )
 
 /* harmony default export */ var _legend_shapes_sizes_values = (_legend_shapes_sizes_values_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_list_checks_colors_shapes_sizes_values.vue?vue&type=template&id=59b10d0e&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"03bf391a-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_list_checks_colors_shapes_sizes_values.vue?vue&type=template&id=59b10d0e&scoped=true&
 var _legend_list_checks_colors_shapes_sizes_valuesvue_type_template_id_59b10d0e_scoped_true_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -71240,7 +70724,7 @@ var _legend_list_checks_colors_shapes_sizes_values_component = normalizeComponen
 )
 
 /* harmony default export */ var _legend_list_checks_colors_shapes_sizes_values = (_legend_list_checks_colors_shapes_sizes_values_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend-list-checks-values.vue?vue&type=template&id=22aa6607&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"03bf391a-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend-list-checks-values.vue?vue&type=template&id=22aa6607&
 var _legend_list_checks_valuesvue_type_template_id_22aa6607_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -71279,7 +70763,7 @@ var _legend_list_checks_values_component = normalizeComponent(
 )
 
 /* harmony default export */ var _legend_list_checks_values = (_legend_list_checks_values_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_list_checks_colors_list_checks_values.vue?vue&type=template&id=7cab729a&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"03bf391a-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/_legend_list_checks_colors_list_checks_values.vue?vue&type=template&id=7cab729a&
 var _legend_list_checks_colors_list_checks_valuesvue_type_template_id_7cab729a_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -71405,7 +70889,6 @@ var legend_item_component = normalizeComponent(
 
 /* harmony default export */ var legend_item = (legend_item_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/legend-control/legend.vue?vue&type=script&lang=js&
-
 
 
 
@@ -71627,7 +71110,7 @@ function legend_control_plugin(Vue) {
 
 /* harmony default export */ var legend_control = (legend_control_plugin);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/selector-control/selector.vue?vue&type=template&id=044f4166&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"03bf391a-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/selector-control/selector.vue?vue&type=template&id=044f4166&scoped=true&
 var selectorvue_type_template_id_044f4166_scoped_true_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -71714,7 +71197,7 @@ function selector_control_plugin(Vue) {
 
 /* harmony default export */ var selector_control = (selector_control_plugin);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/opacity-control/opacity.vue?vue&type=template&id=49997fcc&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"03bf391a-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/opacity-control/opacity.vue?vue&type=template&id=49997fcc&scoped=true&
 var opacityvue_type_template_id_49997fcc_scoped_true_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -71754,7 +71237,6 @@ var opacityvue_type_template_id_49997fcc_scoped_true_staticRenderFns = [];
 // CONCATENATED MODULE: ./src/components/opacity-control/opacity.vue?vue&type=template&id=49997fcc&scoped=true&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/opacity-control/opacity.vue?vue&type=script&lang=js&
-
 
 /* harmony default export */ var opacityvue_type_script_lang_js_ = ({
   name: "DaiOpacidadMapa",
@@ -71863,7 +71345,7 @@ function opacity_control_plugin(Vue) {
 
 /* harmony default export */ var opacity_control = (opacity_control_plugin);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/switcher-control/switcher.vue?vue&type=template&id=d1198544&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"03bf391a-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/switcher-control/switcher.vue?vue&type=template&id=d1198544&
 var switchervue_type_template_id_d1198544_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -72006,7 +71488,7 @@ function switcher_control_plugin(Vue) {
 
 /* harmony default export */ var switcher_control = (switcher_control_plugin);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/searcher-control/searcher.vue?vue&type=template&id=4947b33e&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"03bf391a-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/searcher-control/searcher.vue?vue&type=template&id=4947b33e&scoped=true&
 var searchervue_type_template_id_4947b33e_scoped_true_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -72043,7 +71525,6 @@ var searchervue_type_template_id_4947b33e_scoped_true_staticRenderFns = [];
 // CONCATENATED MODULE: ./src/components/searcher-control/searcher.vue?vue&type=template&id=4947b33e&scoped=true&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/searcher-control/searcher.vue?vue&type=script&lang=js&
-
 
 
 
@@ -72228,7 +71709,7 @@ function searcher_control_plugin(Vue) {
 
 /* harmony default export */ var searcher_control = (searcher_control_plugin);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2c64db1c-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/info-control/info.vue?vue&type=template&id=b1b9d23a&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"03bf391a-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/info-control/info.vue?vue&type=template&id=b1b9d23a&
 var infovue_type_template_id_b1b9d23a_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -72343,6 +71824,7 @@ function info_control_plugin(Vue) {
 
 
 
+
  //controles
 
 
@@ -72436,6 +71918,7 @@ function src_plugin(Vue) {
   Vue.use(xyz_layer_osm_namespaceObject);
   Vue.use(geojson_layer_namespaceObject);
   Vue.use(geojson_cluster_layer_namespaceObject);
+  Vue.use(geojson_puntos_desplazados_layer_namespaceObject);
   Vue.use(geojson_hexbin_layer_namespaceObject);
   Vue.use(wms_layer_namespaceObject);
   Vue.use(topojson_layer_namespaceObject);
@@ -72469,33 +71952,6 @@ function src_plugin(Vue) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
-
-/***/ }),
-
-/***/ "fc6a":
-/***/ (function(module, exports, __webpack_require__) {
-
-// toObject with fallback for non-array-like ES3 strings
-var IndexedObject = __webpack_require__("44ad");
-var requireObjectCoercible = __webpack_require__("1d80");
-
-module.exports = function (it) {
-  return IndexedObject(requireObjectCoercible(it));
-};
-
-
-/***/ }),
-
-/***/ "fdbf":
-/***/ (function(module, exports, __webpack_require__) {
-
-/* eslint-disable es-x/no-symbol -- required for testing */
-var NATIVE_SYMBOL = __webpack_require__("4930");
-
-module.exports = NATIVE_SYMBOL
-  && !Symbol.sham
-  && typeof Symbol.iterator == 'symbol';
-
 
 /***/ }),
 
