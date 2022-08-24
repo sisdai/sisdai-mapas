@@ -7,8 +7,9 @@
 
       <ul>
         <li>
-          <b>anillo</b>: Coloca todas las características en un círculo cuyo
-          radio depende de la cantidad de características a mostrar.
+          <b>anillo</b>: (valor por defecto) Coloca todas las características en
+          un círculo cuyo radio depende de la cantidad de características a
+          mostrar.
         </li>
         <li>
           <b>anillos-concentricos</b>: Utiliza un conjunto de círculos
@@ -46,13 +47,8 @@
         :metodoDesplazamiento="metodoSeleccionado"
         :radioPuntoCentro="4"
         :radioPuntosDesplazados="4"
-        :estilo-capa="{
-          circle: {
-            fill: { color: 'red' },
-            stroke: { color: 'black', width: 1 },
-            radius: 4,
-          },
-        }"
+        :propsAsignaEstilo="['circle']"
+        :fnAsignaEstilo="fnAsignaEstilo"
         tipoGeometria="Point"
       />
     </DaiMapa>
@@ -71,6 +67,43 @@ export default {
         "cuadricula",
       ],
     };
+  },
+  methods: {
+    fnAsignaEstilo(feature) {
+      if (feature.ring) {
+        // estilo para anillos
+        return [
+          {
+            radius: feature.ring.radius,
+            stroke: { color: "back" },
+          },
+        ];
+      }
+
+      if (feature.features && feature.features.length > 1) {
+        // estilo para baricentro (centro del cluster)
+        return [
+          {
+            fill: { color: "gray" },
+            radius: 4,
+          },
+        ];
+      }
+
+      // estilo para puntos desplazados
+      const punto = feature.features
+        ? feature.features[0].getProperties()
+        : feature;
+
+      // console.log(punto.estados_grado_marg);
+      return [
+        {
+          fill: { color: `#${punto["cvegeo"]}a` },
+          radius: 4,
+          stroke: { color: "white" },
+        },
+      ];
+    },
   },
 };
 </script>
