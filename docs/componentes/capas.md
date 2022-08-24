@@ -109,6 +109,82 @@ El url del archivo [geojson](https://geojson.org/), puede ser externo o relativo
 Objeto o array de objetos en formato [geojson](https://geojson.org/) para pasar a la capa del mapa. Si se define, la propiedad `url` se ignora.
 
 
+## dai-capa-geojson-puntos-desplazados
+Componente de capa que utiliza el formato [geojson](https://geojson.org/) como entrada de datos, crea grupos de puntos, cercanos o que tienen la misma ubicación, y los coloca alrededor del baricentro de cada grupo.
+
+### Uso
+
+```html{2}
+<dai-mapa>
+    <dai-capa-geojson-puntos-desplazados url="path/to/file.geojson"/>
+<dai-mapa/>
+```
+
+o
+
+```html{2}
+<dai-mapa>
+    <dai-capa-geojson-puntos-desplazados :datos="variable_objetos_json"/>
+<dai-mapa/>
+```
+### Propiedades
+
+**Las propiedades y metodos extienden de [Mixin layer](#mixin-layer) , [Mixin vector-layer](#mixin-vector-layer) y [Mixin clasificable-layer](#mixin-clasificable-layer )**, y sobreescribe las siguientes:
+
+#### url
+
+- Type: `String`
+- Default: `undefined`
+
+El url del archivo [geojson](https://geojson.org/), puede ser externo o relativo  a las carpetas del proyecto.
+
+#### datos
+- Type: `Object` | `Array<Object>`
+- Default `undefined`
+
+Objeto o array de objetos en formato [geojson](https://geojson.org/) para pasar a la capa del mapa. Si se define, la propiedad `url` se ignora.
+
+#### distancia
+- Type: `Number`
+- Default: `20`
+
+Distancia en píxeles dentro de la cual se agruparán las entidades.
+    
+#### distanciaMinima
+- Type: `Number`
+- Default: `0`
+
+Distancia mínima en píxeles entre clústeres. Se limitará a la distancia configurada. Por defecto no se garantiza una distancia mínima. Esta configuración se puede utilizar para evitar la superposición de iconos. Como compensación, la posición de la entidad del clúster ya no será el centro de todas sus entidades.
+    
+#### metodoDesplazamiento
+- Type: `String`
+- Default: `'anillo'`
+
+El mapa toma los puntos que caen en una tolerancia de distancia dada entre sí (grupo) y los ubica alrededor de su baricentro siguiendo diferentes métodos de desplazamiento:
+- `anillo`: Coloca todas las características en un círculo cuyo radio depende de la cantidad de características a mostrar.
+- `anillos-concentricos`: utiliza un conjunto de círculos concéntricos para mostrar las características.
+- `espiral`: Crea una espiral con las características más alejadas del centro del grupo en cada vuelta.
+- `cuadricula`: Genera una grilla regular con un símbolo de punto en cada intersección.
+
+#### radioPuntoCentro
+- Type: `Number`
+- Default: `6`
+
+Radio del punto céntrico, utilizado para la distancia entre el punto céntrico y los puntos desplazados más cercanos.
+
+#### radioPuntosDesplazados
+- Type: `Number`
+- Default: `6`
+
+Radio de puntos desplazados, utilizado para la distancia entre cada punto desplazado.
+
+#### delimitarGruposPor
+- Type: `String`,
+- Default: `undefined`
+
+Si necesita delimitar los clústeres en función de alguna categoría, use el nombre de la columna con la que desea delimitar en el parámetro `delimiterField`.
+
+
 ## dai-capa-wms
 Componenete para desplegar capas desde servicios wms publicos o privados.
 
