@@ -1,6 +1,6 @@
 {
   "name": "dai-maps",
-  "version": "0.4.7",
+  "version": "0.4.11",
   "private": true,
   "files": [
     "dist/*"
@@ -17,7 +17,7 @@
     "core-js": "^3.17.3",
     "ol": "6.5.0",
     "ol-displaced-points": "^0.3.1",
-    "ol-ext": "^3.2.6",
+    "ol-ext": "git+https://github.com/migueldanto/ol-ext.git#to-install",
     "simple-statistics": "^7.7.0",
     "vue": "^2.6.14"
   },

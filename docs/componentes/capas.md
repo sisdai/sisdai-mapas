@@ -73,6 +73,41 @@ El url del archivo [geojson](https://geojson.org/), puede ser externo o relativo
 
 Objeto o array de objetos en formato [geojson](https://geojson.org/) para pasar a la capa del mapa. Si se define, la propiedad `url` se ignora.
 
+## dai-capa-topojson
+
+Componente de capa que despliega capas en formato [geojson](https://geojson.org/)
+
+### Uso
+
+```html{2}
+<dai-mapa>
+    <dai-capa-topojson url="path/to/file.geojson"/>
+<dai-mapa/>
+```
+
+o
+
+```html{2}
+<dai-mapa>
+    <dai-capa-topojson :datos="variable_objetos_json"/>
+<dai-mapa/>
+```
+### Propiedades
+
+**Las propiedades y metodos extienden de [Mixin layer](#mixin-layer) , [Mixin vector-layer](#mixin-vector-layer) y [Mixin clasificable-layer](#mixin-clasificable-layer )**, y sobreescribe las siguientes:
+
+#### url
+
+- Type: `String`
+- Default: `undefined`
+
+El url del archivo [topojson](https://github.com/topojson/topojson-specification), puede ser externo o relativo  a las carpetas del proyecto.
+
+#### datos
+- Type: `Object` | `Array<Object>`
+- Default `undefined`
+
+Objeto o array de objetos en formato [topojson](https://github.com/topojson/topojson-specification) para pasar a la capa del mapa. Si se define, la propiedad `url` se ignora.
 
 ## dai-capa-geojson-cluster
 Componente de capa para desplegar una agrupacion de puntos apartir de datos en formato [geojson](https://geojson.org/).

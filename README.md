@@ -15,7 +15,7 @@ npm install dai-maps
 
 1.- *Por el momento*
 ```bash
-npm install git+https://usuario:clave_privada@github.com/conacyt-dai/dai-maps.git#version-a-instalar
+npm install git+https://github.com/conacyt-dai/dai-maps.git#version-a-instalar
 ```
 
 2.- 

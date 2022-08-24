@@ -9,6 +9,7 @@ import {
     DaiCapaGeojsonPuntosDesplazados,
     DaiCapaGeojsonHexbin,
     DaiWmsLayer,
+    DaiTopojsonLayer,
 
     DaiLeyendaMapa,
     DaiMapSelector,
@@ -38,6 +39,7 @@ export default function plugin(Vue){
     Vue.use(DaiCapaGeojsonPuntosDesplazados)
     Vue.use(DaiCapaGeojsonHexbin)
     Vue.use(DaiWmsLayer)
+    Vue.use(DaiTopojsonLayer)
 
     Vue.use(DaiLeyendaMapa)
     Vue.use(DaiMapSelector)
@@ -64,6 +66,7 @@ export {
     DaiCapaGeojsonPuntosDesplazados,
     DaiCapaGeojsonHexbin,
     DaiWmsLayer,
+    DaiTopojsonLayer,
 
     DaiLeyendaMapa,
     DaiMapSelector,

@@ -98,6 +98,12 @@ export default {
         zoomOnScroll:{
             type: Boolean,
             default: true
+        },
+        paddingToExtensionZoom: {
+            type: Array,
+            default: function(){
+                return [10,10,10,10]
+            }
         }
     },
     data:function(){
@@ -119,7 +125,7 @@ export default {
     created:function(){
         this.VM_reset_view = this.extension[0] == 0 && this.extension[3] ==0 
             ? {type:"center",value:{zoom:this.zoom,center:this.centro}} 
-            : {type:"extent",value:this.extension};
+            : {type:"extent",value:this.extension, padding:this.paddingToExtensionZoom};
         this.VM_has_niveles = this.niveles.length > 0;
         this.VM_nivel_actual = this.nivelActual
     },
@@ -174,7 +180,7 @@ export default {
 
         this.map.set("_reset_view",this.VM_reset_view)
         if(this.VM_reset_view.type=="extent"){
-            this.map.getView().fit(this.extension,{duration:500,padding: [10, 10, 10, 10]})
+            this.map.getView().fit(this.extension,{padding: this.paddingToExtensionZoom})
         }
 
         //verificar si hay un card contaiener
@@ -320,7 +326,7 @@ export default {
         },
         external_force_reset_view:function(){
             if(this.VM_reset_view.type == "extent"){
-                this.map.getView().fit(this.VM_reset_view.value,{duration:500,padding:[10,10,10,10]})
+                this.map.getView().fit(this.VM_reset_view.value,{duration:500,padding:this.paddingToExtensionZoom})
             }else{
                 this.map.getView().animate(this.VM_reset_view.value)
             }
@@ -438,7 +444,12 @@ export default {
         extension: function(newExtension){
             this.VM_reset_view = newExtension[0] == 0 && newExtension[3] ==0 
             ? {type:"center",value:{zoom:this.zoom,center:this.centro}} 
-            : {type:"extent",value:newExtension};
+            : {type:"extent",value:newExtension, padding:this.paddingToExtensionZoom};
+        },
+        paddingToExtensionZoom: function(newPadding){
+            this.VM_reset_view = this.extension[0] == 0 && this.extension[3] ==0 
+            ? {type:"center",value:{zoom:this.zoom,center:this.centro}} 
+            : {type:"extent",value:this.extension, padding:newPadding};
         },
         "VM_reset_view": function(newResetView){
             this.map.set("_reset_view",newResetView)
