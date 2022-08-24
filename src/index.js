@@ -6,6 +6,7 @@ import {
     DaiXyzLayerOsm,
     DaiGeojsonLayer,
     DaiCapaGeojsonCluster,
+    DaiCapaGeojsonPuntosDesplazados,
     DaiCapaGeojsonHexbin,
     DaiWmsLayer,
     DaiTopojsonLayer,
@@ -35,6 +36,7 @@ export default function plugin(Vue){
     Vue.use(DaiXyzLayerOsm)
     Vue.use(DaiGeojsonLayer)
     Vue.use(DaiCapaGeojsonCluster)
+    Vue.use(DaiCapaGeojsonPuntosDesplazados)
     Vue.use(DaiCapaGeojsonHexbin)
     Vue.use(DaiWmsLayer)
     Vue.use(DaiTopojsonLayer)
@@ -61,6 +63,7 @@ export {
     DaiXyzLayerOsm,
     DaiGeojsonLayer,
     DaiCapaGeojsonCluster,
+    DaiCapaGeojsonPuntosDesplazados,
     DaiCapaGeojsonHexbin,
     DaiWmsLayer,
     DaiTopojsonLayer,
