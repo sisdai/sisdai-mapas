@@ -123,7 +123,7 @@ export default{
         fnAsignaEstilo:{
             type: Function,
             default:function(){
-                return (feature)=>[]
+                return (/*feature*/)=>[]
             }
         },
         tipoGeometria:{
@@ -287,7 +287,7 @@ export default{
             }
             
         },
-        _saveAllFeaturesFromSource:function(vectorSource,initial=true){
+        _saveAllFeaturesFromSource:function(vectorSource, /*initial=true*/){
             
             let geojsonFormat = new GeoJSON()
             //console.log(vectorSource.getUrl(),vectorSource.getSource(),"---")
@@ -450,7 +450,7 @@ export default{
         }
     },
     watch:{
-        usarTexturasEnRelleno:function(nv){
+        usarTexturasEnRelleno:function(/*nv*/){
             if(this.olLayer){
                 this._setStyle()
             }
@@ -465,7 +465,7 @@ export default{
                 this._setStyle()
             }
         },
-        estiloTexturaRelleno:function(nv){
+        estiloTexturaRelleno:function(/*nv*/){
             if(this.olLayer){
                 this._setStyle()
             }
