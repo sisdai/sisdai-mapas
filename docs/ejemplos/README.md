@@ -143,3 +143,32 @@ export default {
     }
 }
 ```
+
+## TopoJSON
+Mapa sobre un TopoJSON como base `<dai-capa-topojson />`
+
+<uso-basico-8-topojson />
+
+```html
+<template>
+    <div class="another-map">
+        <dai-tarjeta-contenedor-mapa>
+            <dai-mapa 
+            :extension="[-118.365119934082,14.5320978164673,-86.7104034423828,32.7186546325684]" 
+            >
+                <dai-capa-topojson 
+                  id="disponibilidad" 
+                  :url="$withBase('/topojson-sample.json')"
+                  :reglas-estilo-capa="{
+                      columna : 'classification',
+                      acomodoCategorias: ['Con disponibilidad', 'Sin disponibilidad'],
+                      propiedadObjetivo: 'relleno',
+                      clases: 2,
+                      colores: ['#00AFB9', '#F07167'],
+                  }"
+                />
+            </dai-mapa>
+        </dai-tarjeta-contenedor-mapa>
+    </div>
+</template>
+```
