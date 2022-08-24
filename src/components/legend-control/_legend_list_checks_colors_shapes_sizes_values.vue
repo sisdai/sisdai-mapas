@@ -107,7 +107,7 @@ export default {
                     let pattern = fillStyle.fill
                     return `url('${pattern.getImage().toDataURL()}'`
                 })
-                :this.cortes_colores.cortes.map(item=>'none')
+                :this.cortes_colores.cortes.map((/*item*/)=>'none')
         },
     }
 }
