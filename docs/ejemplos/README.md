@@ -172,3 +172,8 @@ Mapa sobre un TopoJSON como base `<dai-capa-topojson />`
     </div>
 </template>
 ```
+
+
+## TopoJSON Dinamico
+
+<uso-basico-9-topojson-dinamico />
