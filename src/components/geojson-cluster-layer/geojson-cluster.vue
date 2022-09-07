@@ -78,7 +78,7 @@ export default {
             this._saveAllFeaturesFromSource(this.olLayer.getSource())
             this._setStyle()
             
-            this.olMap.on("moveend",(e)=>{
+            this.olMap.on("moveend",(/*e*/)=>{
                 
                 if(this.visible){
                     

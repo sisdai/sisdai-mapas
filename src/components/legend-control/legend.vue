@@ -117,7 +117,7 @@ export default {
     infos:{
         type: Object, // {capa:"",capa:{contenido:'uno',lado:'derecho'}}
         default: function() {
-            return {}
+            return Object();
         }
     }
   },
@@ -168,7 +168,7 @@ export default {
       });
       this.checkLabelToggleAll();
     },
-    cambioCheckbox: function (event) {
+    cambioCheckbox: function (/*event*/) {
       
       this.toogleAll();
     },
@@ -227,17 +227,17 @@ export default {
   },
   computed:{
         has_header_info:function(){
-            return this.infos.hasOwnProperty(':header:') 
+            return Boolean(this.infos[':header:']);
         },
         content_header_info:function(){
-            if (!this.infos.hasOwnProperty(':header:')){
+            if (!this.infos[':header:']){
                 return ""
             }
             return typeof this.infos[':header:'] === 'string' ? this.infos[':header:'] : this.infos[':header:'].contenido
 
         },
         lado_header_info:function(){
-            if (!this.infos.hasOwnProperty(':header:')){
+            if (!this.infos[':header:']){
                 return "derecho"
             }
             return typeof this.infos[':header:'] === 'string' ? "derecho" : this.infos[':header:'].lado

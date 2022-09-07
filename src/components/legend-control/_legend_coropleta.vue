@@ -118,7 +118,7 @@ export default {
                     let pattern = fillStyle.fill
                     return `url('${pattern.getImage().toDataURL()}'`
                 })
-                :this.params.content.cortes.cortes.map(item=>'none')
+                :this.params.content.cortes.cortes.map((/*item*/)=>'none')
         },
         usarTexturas:function(){
             return this.$parent.$parent.cmpMap.cmpLayers[this.layerId].usarTexturasEnRelleno
