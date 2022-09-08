@@ -174,6 +174,6 @@ Mapa sobre un TopoJSON como base `<dai-capa-topojson />`
 ```
 
 
-## TopoJSON Dinamico
+## TopoJSON dinamico con zoom
 
 <uso-basico-9-topojson-dinamico />
