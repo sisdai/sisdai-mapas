@@ -37,7 +37,10 @@
           columna: 'area_km',
           propiedadObjetivo: 'relleno',
           clases: 2,
-          clasificacionPersonalizada: [[1,2000],[2000,34200]],
+          clasificacionPersonalizada: [
+            [1, 2000],
+            [2000, 34200],
+          ],
           colores: ['#00AFB9', '#F07167'],
         }"
         :useLoader="true"
@@ -57,12 +60,7 @@ export default {
       -118.365119934082, 14.5320978164673, -86.7104034423828, 32.7186546325684,
     ],
     idCapa: "capaTopoJson",
-    datosTopoJson: {
-      type: "Topology",
-      transform: {},
-      arcs: [],
-      objects: {},
-    },
+    datosTopoJson: emptyTopoJSON,
     datosCargados: false,
 
     listaEstados: [],
@@ -95,7 +93,7 @@ export default {
     },
     cargarListaMunicipios() {
       loadLayer(
-        urlMunicipios + `&cql_filter=cve_ent='${this.seleccionEstado}'`
+        `${urlMunicipios}&cql_filter=cve_ent='${this.seleccionEstado}'`
       ).then((data) => {
         this.listaMunicipios = data.features.map(
           (feature) => feature.properties
@@ -152,4 +150,11 @@ async function loadLayer(url) {
   const result = await fetch(url);
   return await result.json();
 }
+
+const emptyTopoJSON = {
+  type: "Topology",
+  transform: {},
+  arcs: [],
+  objects: {},
+};
 </script>
