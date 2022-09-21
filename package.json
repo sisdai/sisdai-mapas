@@ -9,7 +9,7 @@
   "scripts": {
     "build": "vue-cli-service build --target lib src/index.js",
     "lint": "vue-cli-service lint",
-    "docs:serve": "vitepress dev docs",
+    "docs:serve": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "docs:build-nossr": "vuepress buildnossr docs"
   },
@@ -27,8 +27,8 @@
     "eslint-plugin-vue": "^6.2.2",
     "sass": "^1.40.1",
     "sass-loader": "^10",
-    "vitepress": "^1.0.0-alpha.15",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "vuepress": "^1.9.7"
   },
   "eslintConfig": {
     "root": true,
