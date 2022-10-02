@@ -1,5 +1,9 @@
-# Esto es una prueba
+# Pruebas básicas de sisdai-mapas
+
+<prueba />
 
 ```javascript
-...
+console.log('esto es una prueba')
 ```
+
+- <small>vuepress: 32 vulnerabilities (10 moderate, 22 high)</small>

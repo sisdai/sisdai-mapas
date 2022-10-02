@@ -1,6 +1,5 @@
-import * as DaiMaps from "./index"
+import * as DaiMaps from "./index";
 
-export default{
+export default {
     ...DaiMaps,
-    
-}
+};
