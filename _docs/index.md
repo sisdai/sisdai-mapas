@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: conacyt-isotipo.png
+heroImage: conacyt2.png
 tagline: Libreria de vue para construir mapas interactivos
 actionText: Guía de inicio →
 actionLink: /guia/
@@ -11,7 +11,7 @@ actionLink: /guia/
 #  details: Feature 2 Description
 #- title: Feature 3 Title
 #  details: Feature 3 Description
-footer: Made by CONACYT with ❤️
+footer: Made by DAI - CONACYT with ❤️
 ---
 
 v{{ $themeConfig.version }}

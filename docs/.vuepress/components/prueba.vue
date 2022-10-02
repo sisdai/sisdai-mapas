@@ -1,0 +1,3 @@
+<template>
+  <dai-mapa />
+</template>

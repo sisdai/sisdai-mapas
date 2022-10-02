@@ -1,8 +1,8 @@
 # dai-maps
 
-Componentes reutilizables de mapas para la DAI.
+Componentes reutilizables de mapas.
 
-Si contribuyes al codigo de este componente ve a  [esta sección](#contribuir)
+Si quieres contribuyes al código de este componente revisa los [lineamientos de contribución establecidos por salsa](https://salsa.crip.conacyt.mx/guidelines/contribute/)
 
 ## Como empezar
 
@@ -58,3 +58,8 @@ npm run docs:serve
 ```
 
 abrir localhost:8080
+
+
+## Linter de código
+
+Permite definir ciertas reglas para que todos los desarrolladores de ese proyecto las cumplan y las apliquen en el código.
