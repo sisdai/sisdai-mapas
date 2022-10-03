@@ -6,6 +6,7 @@
     "build": "vue-cli-service build --target lib src/index.js",
     "lint": "vue-cli-service lint",
     "format": "prettier . --write",
+    "fld:build": "npm run format && npm run lint && vuepress build docs && npm run build",
     "docs:build": "vuepress build docs",
     "docs:build-nossr": "vuepress buildnossr docs",
     "docs:serve": "vuepress dev docs"
