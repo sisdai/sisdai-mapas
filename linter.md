@@ -44,8 +44,8 @@ Permite configurarse para formatear al guardar cambios ahorrando tiempo y energ�
 npm install --save-dev --save-exact prettier
 ```
 
-- Se agregó el archivo `.prettierrc.js` .
-- Para habilitar el formateo al guardar en VScode, se añadío la configuración en [.vscode/settings.json](./.vscode/settings.json).
+- Se agregó el archivo [.prettierrc.js](./.prettierrc.js).
+- Para habilitar el formateo al guardar en VS Code, se añadío la configuración en [.vscode/settings.json](./.vscode/settings.json).
 - Se agregó el script `prettier . --write` en el package.json para hacer la magia (en caso de que no funcione al guardar) ejecutando:
 
 ```sh
