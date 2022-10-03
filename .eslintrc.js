@@ -7,7 +7,9 @@ module.exports = {
     'plugin:vue/essential',
     'eslint:recommended',
     'plugin:prettier/recommended',
+    'prettier',
   ],
+  plugins: ['html'],
   parserOptions: {
     parser: '@babel/eslint-parser',
   },
