@@ -5,6 +5,7 @@
   "scripts": {
     "build": "vue-cli-service build --target lib src/index.js",
     "lint": "vue-cli-service lint",
+    "format": "prettier . --write",
     "docs:build": "vuepress build docs",
     "docs:build-nossr": "vuepress buildnossr docs",
     "docs:serve": "vuepress dev docs"
