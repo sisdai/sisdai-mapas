@@ -1,11 +1,11 @@
-import MapaPrincipal from "./components/MapaPrincipal";
+import MapaPrincipal from './components/MapaPrincipal'
 
 export default function plugin(Vue) {
-    if (plugin.installed) {
-        return;
-    }
+  if (plugin.installed) {
+    return
+  }
 
-    plugin.installed = true;
+  plugin.installed = true
 
-    Vue.use(MapaPrincipal);
+  Vue.use(MapaPrincipal)
 }
