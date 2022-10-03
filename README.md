@@ -56,11 +56,6 @@ Dentro del componente en el que se desee crear mapas con el diseño Dai mandar a
 ```bash
 npm install
 npm run docs:serve
-
 ```
 
-abrir localhost:8080
-
-## Linter de código
-
-Permite definir ciertas reglas para que todos los desarrolladores de ese proyecto las cumplan y las apliquen en el código.
+Abrir [localhost:8080](localhost:8080)
