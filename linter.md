@@ -12,7 +12,7 @@ Visita [editorconfig.org](https://editorconfig.org) para más información
 
 - Se agregó el archivo [.editorconfig](./.editorconfig)
 
-### ESlint
+## ESlint
 
 Encuentra y soluciona problemas en tu código JavaScript
 
@@ -30,7 +30,7 @@ vue add @vue/cli-plugin-eslint
 
 - Además se habilitaron la opción de formatear al guardar y ejecutar el `linter` en cada `commit`.
 
-### Prettier
+## Prettier
 
 Es un formateador de código que admite muchos lenguajes y se integra con la mayoría de los editores.
 
