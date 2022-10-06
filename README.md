@@ -17,7 +17,7 @@ npm install dai-maps
 1.- _Por el momento_
 
 ```bash
-npm install git+https://github.com/conacyt-dai/dai-maps.git#version-a-instalar
+npm install github:conacyt-dai/dai-maps#version-a-instalar
 ```
 
 2.-
@@ -25,13 +25,13 @@ npm install git+https://github.com/conacyt-dai/dai-maps.git#version-a-instalar
 En el archivo `src/main.js`, importar y registrar el uso de los componentes de esta libreria
 
 ```javascript
+// src/mai.js
+
 import Vue from 'vue'
 import App from './App.vue'
 //agregar la libreria, su css y registrarla en Vue
 import DaiMaps from "dai-maps"
-import "dai-maps/dist/dai-maps.css"
 Vue.use(DaiMaps)
-
 
 new Vue({ ... el codigo de siempre
 ```
