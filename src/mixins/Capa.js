@@ -1,7 +1,6 @@
-<script>
 export default {
   name: 'MixinCapa',
-  inject: ['getMapa'],
+  inject: ['alInicializarElMapa'],
   props: {
     /**
      *
@@ -57,14 +56,17 @@ export default {
   render: () => null,
   created() {
     const _this = this
-    this.getMapa(function (olMapa) {
+    // console.log(_this.mapaEstaIstanciado)
+    this.alInicializarElMapa().then(olMapa => {
       _this.olMapa = olMapa
 
-      setTimeout(() => {
-        _this.crearCapaComoObjeto()
-        _this.agregarCapaAlMapa()
-      }, 20)
+      _this.crearCapaComoObjeto()
+      _this.agregarCapaAlMapa()
+      // console.log(olMapa)
     })
+    /**
+     * Revisar si está instancciado el mapa
+     */
   },
   methods: {
     /**
@@ -85,9 +87,8 @@ export default {
   watch: {},
   destroyed() {
     //eliminar del mapa el layer
-    if (this.olMapa !== null) {
+    if (this.olMapa && this.olCapa) {
       this.olMapa.removeLayer(this.olCapa)
     }
   },
 }
-</script>

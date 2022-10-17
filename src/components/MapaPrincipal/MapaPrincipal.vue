@@ -19,7 +19,15 @@ export default {
   name: 'DaiMapa',
   props,
   data: () => ({
+    /**
+     * objeto que contiene la instancia del mapa
+     */
     mapa: undefined,
+
+    /**
+     * boleano que indica el estatus de instancia del mapa
+     */
+    mapaEstaIstanciado: false,
   }),
   created() {},
   mounted() {
@@ -27,7 +35,7 @@ export default {
   },
   methods: {
     /**
-     *
+     * Instanciamiewnto del maapa como onjeto de la calse ol/Map
      */
     crearMapa() {
       this.mapa = new Map({
@@ -39,6 +47,8 @@ export default {
           projection: this.proyeccion,
         }),
       })
+
+      this.mapaEstaIstanciado = true
     },
 
     /**
@@ -56,6 +66,22 @@ export default {
       }
 
       revisarParaMapa()
+    },
+
+    /**
+     *
+     */
+    alInicializarElMapa() {
+      const _this = this
+      return new Promise(resolve => {
+        function revisarMapa() {
+          if (_this.mapaEstaIstanciado) {
+            resolve(_this.mapa)
+          } else setTimeout(revisarMapa, 50)
+        }
+
+        revisarMapa()
+      })
     },
   },
   watch: {
@@ -75,7 +101,7 @@ export default {
   },
   provide() {
     return {
-      getMapa: this.getMapa,
+      alInicializarElMapa: this.alInicializarElMapa,
     }
   },
 }
