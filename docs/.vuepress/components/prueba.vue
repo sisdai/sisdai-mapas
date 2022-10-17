@@ -1,7 +1,7 @@
 <template>
   <DaiMapa
-    :zoom="5"
-    :centro="[-99, 19]"
+    :zoom="4.6"
+    :centro="[-102, 24]"
   >
     <DaiCapaGeojson />
     <!--DaiCapaXyzOsm /-->

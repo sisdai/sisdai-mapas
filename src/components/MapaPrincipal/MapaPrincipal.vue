@@ -2,7 +2,7 @@
   <div class="dai-contenedor-mapa">
     <div
       class="dai-mapa"
-      ref="mapa"
+      ref="refMapa"
     >
       <slot /><!-- Slot que permite ingresar capas dentro de etiqueta dai-mapa -->
     </div>
@@ -15,32 +15,89 @@ import View from 'ol/View'
 
 import props from './props'
 
+import _mapadereferencia from './_mapadereferencia'
+
+import { ref, toRefs, watch } from 'vue'
+
 export default {
   name: 'DaiMapa',
   props,
-  data: () => ({
+  setup(props) {
+    console.log('hola mapaPrincipal')
     /**
      * objeto que contiene la instancia del mapa
      */
-    mapa: undefined,
+    let mapa = undefined
+
+    /**
+     *
+     */
+    const { zoom } = toRefs(props)
+    watch(zoom, nuevoValor => {
+      if (mapaEstaIstanciado) {
+        mapa.getView().setZoom(nuevoValor)
+      }
+    })
+
+    /**
+     *
+     */
+    const { centro } = toRefs(props)
+    watch(centro, nuevoValor => {
+      if (mapaEstaIstanciado) {
+        mapa.getView().setCenter(nuevoValor)
+      }
+    })
+
+    /**
+     *
+     */
+    const { proyeccion } = props
 
     /**
      * boleano que indica el estatus de instancia del mapa
      */
-    mapaEstaIstanciado: false,
-  }),
-  created() {},
-  mounted() {
-    this.crearMapa()
+    let mapaEstaIstanciado = false
+
+    /**
+     * Instanciamiewnto del maapa como onjeto de la calse ol/Map
+     */
+    function crearMapa(target) {
+      console.log(target, centro.value)
+      mapa = new Map({
+        target,
+        layers: [_mapadereferencia],
+        view: new View({
+          center: centro.value,
+          zoom: zoom.value,
+          projection: proyeccion,
+        }),
+      })
+
+      mapaEstaIstanciado = true
+    }
+
+    /**
+     *
+     */
+    const refMapa = ref(null)
+    watch(refMapa, crearMapa)
+
+    return {
+      refMapa,
+      mapa,
+      mapaEstaIstanciado,
+    }
   },
   methods: {
     /**
      * Instanciamiewnto del maapa como onjeto de la calse ol/Map
      */
     crearMapa() {
+      console.log(this.$refs.refMapa)
       this.mapa = new Map({
-        target: this.$refs.mapa,
-        layers: [],
+        target: this.$refs.refMapa,
+        layers: [_mapadereferencia],
         view: new View({
           center: this.centro,
           zoom: this.zoom,
@@ -82,21 +139,6 @@ export default {
 
         revisarMapa()
       })
-    },
-  },
-  watch: {
-    /**
-     *
-     */
-    centro(nuevoValor) {
-      this.mapa.getView().setCenter(nuevoValor)
-    },
-
-    /**
-     *
-     */
-    zoom(nuevoValor) {
-      this.mapa.getView().setZoom(nuevoValor)
     },
   },
   provide() {
