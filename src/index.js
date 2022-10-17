@@ -1,5 +1,6 @@
 import MapaPrincipal from './components/MapaPrincipal'
 import CapaOSM from './components/capas/OSM'
+import CapaGeoJSON from './components/capas/GeoJSON'
 
 export default function plugin(Vue) {
   if (plugin.installed) {
@@ -11,6 +12,7 @@ export default function plugin(Vue) {
   // componentes
   Vue.use(MapaPrincipal)
   Vue.use(CapaOSM)
+  Vue.use(CapaGeoJSON)
 }
 
 export {
@@ -19,4 +21,5 @@ export {
   // componentes
   MapaPrincipal,
   CapaOSM,
+  CapaGeoJSON,
 }
