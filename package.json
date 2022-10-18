@@ -19,7 +19,7 @@
   "dependencies": {
     "core-js": "^3.17.3",
     "ol": "^7.1.0",
-    "vue": "^2.6.14"
+    "vue": "^2.7.13"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

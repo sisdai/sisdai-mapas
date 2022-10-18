@@ -2,58 +2,69 @@
   <div class="dai-contenedor-mapa">
     <div
       class="dai-mapa"
-      ref="mapa"
-    />
+      ref="refMapa"
+    >
+      <slot /><!-- Slot que permite ingresar capas dentro de etiqueta dai-mapa -->
+    </div>
   </div>
 </template>
 
 <script>
+import { ref, toRefs, watch } from 'vue'
+
 import Map from 'ol/Map'
 import View from 'ol/View'
 
 import props from './props'
-import _mapadereferencia from './_mapadereferencia'
+import usarMapa from '../../composables/usarMapa'
 
 export default {
-  name: 'dai-mapa',
+  name: 'DaiMapa',
   props,
-  data: () => ({
-    mapa: undefined,
-  }),
-  created() {},
-  mounted() {
-    this.crearMapa()
-  },
-  methods: {
-    /**
-     *
-     */
-    crearMapa() {
-      this.mapa = new Map({
-        target: this.$refs.mapa,
-        layers: [_mapadereferencia],
-        view: new View({
-          center: this.centro,
-          zoom: this.zoom,
-          projection: this.proyeccion,
-        }),
-      })
-    },
-  },
-  watch: {
-    /**
-     *
-     */
-    centro(nuevoValor) {
-      this.mapa.getView().setCenter(nuevoValor)
-    },
+  setup(props) {
+    const { centro, zoom } = toRefs(props)
+    const { salvarInstanciaDelMapa, cambiarZoom, cambiarCentro } = usarMapa()
 
     /**
      *
      */
-    zoom(nuevoValor) {
-      this.mapa.getView().setZoom(nuevoValor)
-    },
+    watch(zoom, cambiarZoom)
+
+    /**
+     *
+     */
+    watch(centro, cambiarCentro)
+
+    /**
+     *
+     */
+    const { proyeccion } = props
+
+    /**
+     * Instanciamiewnto del maapa como onjeto de la calse ol/Map
+     */
+    function crearMapa(target) {
+      // console.log(target, centro.value)
+      salvarInstanciaDelMapa(
+        new Map({
+          target,
+          layers: [],
+          view: new View({
+            center: centro.value,
+            zoom: zoom.value,
+            projection: proyeccion,
+          }),
+        })
+      )
+    }
+
+    /**
+     *
+     */
+    const refMapa = ref(null)
+    watch(refMapa, crearMapa)
+
+    return { refMapa }
   },
 }
 </script>
