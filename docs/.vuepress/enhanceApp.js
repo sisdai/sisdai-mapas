@@ -6,6 +6,7 @@
 
 //import "dai-maps/dist/dai-maps.css"
 // import "../../src/styles/main.scss";
+import 'dadsig-css/dist/eni.min.css'
 
 //import DaiMaps from "dai-maps"
 import DaiMaps from '../../src/index.js'
