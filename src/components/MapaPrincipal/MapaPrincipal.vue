@@ -15,39 +15,28 @@ import View from 'ol/View'
 
 import props from './props'
 
-import _mapadereferencia from './_mapadereferencia'
-
 import { ref, toRefs, watch } from 'vue'
+
+import { useMapa } from './../../composables/useMapa'
 
 export default {
   name: 'DaiMapa',
   props,
   setup(props) {
-    console.log('hola mapaPrincipal')
-    /**
-     * objeto que contiene la instancia del mapa
-     */
-    let mapa = undefined
+    // console.log('hola mapaPrincipal')
+    const { salvarInstanciaDelMapa, cambiarZoom, cambiarCentro } = useMapa()
 
     /**
      *
      */
     const { zoom } = toRefs(props)
-    watch(zoom, nuevoValor => {
-      if (mapaEstaIstanciado) {
-        mapa.getView().setZoom(nuevoValor)
-      }
-    })
+    watch(zoom, cambiarZoom)
 
     /**
      *
      */
     const { centro } = toRefs(props)
-    watch(centro, nuevoValor => {
-      if (mapaEstaIstanciado) {
-        mapa.getView().setCenter(nuevoValor)
-      }
-    })
+    watch(centro, cambiarCentro)
 
     /**
      *
@@ -55,26 +44,21 @@ export default {
     const { proyeccion } = props
 
     /**
-     * boleano que indica el estatus de instancia del mapa
-     */
-    let mapaEstaIstanciado = false
-
-    /**
      * Instanciamiewnto del maapa como onjeto de la calse ol/Map
      */
     function crearMapa(target) {
-      console.log(target, centro.value)
-      mapa = new Map({
-        target,
-        layers: [_mapadereferencia],
-        view: new View({
-          center: centro.value,
-          zoom: zoom.value,
-          projection: proyeccion,
-        }),
-      })
-
-      mapaEstaIstanciado = true
+      // console.log(target, centro.value)
+      salvarInstanciaDelMapa(
+        new Map({
+          target,
+          layers: [],
+          view: new View({
+            center: centro.value,
+            zoom: zoom.value,
+            projection: proyeccion,
+          }),
+        })
+      )
     }
 
     /**
@@ -83,68 +67,7 @@ export default {
     const refMapa = ref(null)
     watch(refMapa, crearMapa)
 
-    return {
-      refMapa,
-      mapa,
-      mapaEstaIstanciado,
-    }
-  },
-  methods: {
-    /**
-     * Instanciamiewnto del maapa como onjeto de la calse ol/Map
-     */
-    crearMapa() {
-      console.log(this.$refs.refMapa)
-      this.mapa = new Map({
-        target: this.$refs.refMapa,
-        layers: [_mapadereferencia],
-        view: new View({
-          center: this.centro,
-          zoom: this.zoom,
-          projection: this.proyeccion,
-        }),
-      })
-
-      this.mapaEstaIstanciado = true
-    },
-
-    /**
-     * @param {Function}
-     */
-    getMapa(encontrar) {
-      // console.log('getMapa')
-      const vm = this
-      function revisarParaMapa() {
-        if (vm.mapa) {
-          encontrar(vm.mapa)
-        } else {
-          setTimeout(revisarParaMapa, 50)
-        }
-      }
-
-      revisarParaMapa()
-    },
-
-    /**
-     *
-     */
-    alInicializarElMapa() {
-      const _this = this
-      return new Promise(resolve => {
-        function revisarMapa() {
-          if (_this.mapaEstaIstanciado) {
-            resolve(_this.mapa)
-          } else setTimeout(revisarMapa, 50)
-        }
-
-        revisarMapa()
-      })
-    },
-  },
-  provide() {
-    return {
-      alInicializarElMapa: this.alInicializarElMapa,
-    }
+    return { refMapa }
   },
 }
 </script>

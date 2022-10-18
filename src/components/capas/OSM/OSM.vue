@@ -2,19 +2,22 @@
 import TileLayer from 'ol/layer/Tile'
 import OSM from 'ol/source/OSM'
 
-import MixinCapa from './../../../mixins/Capa'
+import useCapa from './../../../composables/useCapa'
 
 export default {
   name: 'DaiCapaXyzOsm',
-  mixins: [MixinCapa],
-  methods: {
-    crearCapaComoObjeto() {
-      // console.log('editado desde osm')
-      this.olCapa = new TileLayer({
+  setup() {
+    const { salvarCapaComoObjeto } = useCapa()
+
+    salvarCapaComoObjeto(
+      new TileLayer({
         source: new OSM(),
         // className: this.className,
       })
-    },
+    )
+
+    return {}
   },
+  render: () => null,
 }
 </script>
