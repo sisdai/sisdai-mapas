@@ -1,5 +1,10 @@
 // import {  } from 'vue'
 
+import {
+  DEFAULT_FILL_COLOR,
+  DEFAULT_STROKE_COLOR,
+  DEFAULT_RADIUS,
+} from './../defaults/estiloCapa'
 import usarCapa, { props as propsCapa } from './usarCapa'
 
 export const props = {
@@ -20,10 +25,38 @@ export const props = {
     default: undefined,
   },
 
+  /**
+   *
+   */
+  estilo: {
+    type: Object,
+    default: () => ({
+      fill: {
+        color: DEFAULT_FILL_COLOR,
+      },
+      stroke: {
+        width: 1,
+        color: DEFAULT_STROKE_COLOR, // "scale["color"]"
+      },
+      circle: {
+        fill: {
+          color: DEFAULT_FILL_COLOR,
+        },
+        stroke: {
+          color: DEFAULT_STROKE_COLOR,
+          width: 1,
+        },
+        radius: DEFAULT_RADIUS,
+      },
+    }),
+  },
+
   ...propsCapa,
 }
 
 export default function usarCapaVectorial(propsRefs) {
+  // function asignarEstilo(params) {}
+
   return {
     ...usarCapa(propsRefs),
   }

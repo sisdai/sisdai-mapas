@@ -10,32 +10,29 @@
 </template>
 
 <script>
+import { ref, toRefs, watch } from 'vue'
+
 import Map from 'ol/Map'
 import View from 'ol/View'
 
 import props from './props'
-
-import { ref, toRefs, watch } from 'vue'
-
 import usarMapa from '../../composables/usarMapa'
 
 export default {
   name: 'DaiMapa',
   props,
   setup(props) {
-    // console.log('hola mapaPrincipal')
+    const { centro, zoom } = toRefs(props)
     const { salvarInstanciaDelMapa, cambiarZoom, cambiarCentro } = usarMapa()
 
     /**
      *
      */
-    const { zoom } = toRefs(props)
     watch(zoom, cambiarZoom)
 
     /**
      *
      */
-    const { centro } = toRefs(props)
     watch(centro, cambiarCentro)
 
     /**
