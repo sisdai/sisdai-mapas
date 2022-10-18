@@ -15,7 +15,8 @@ import { ref, toRefs, watch } from 'vue'
 import Map from 'ol/Map'
 import View from 'ol/View'
 import AttributionControl from 'ol/control/Attribution'
-import ZoomControl from 'ol/control/Zoom'
+// import ZoomControl from 'ol/control/Zoom'
+import ControlZoomPersonalizado from './../../controls/Zoom'
 // import { defaults as defaultControls } from 'ol/control'
 import 'ol/ol.css'
 
@@ -26,6 +27,7 @@ export default {
   name: 'DaiMapa',
   props,
   setup(props) {
+    const { proyeccion } = props
     const { centro, zoom } = toRefs(props)
     const { salvarInstanciaDelMapa, cambiarZoom, cambiarCentro } = usarMapa()
 
@@ -38,11 +40,6 @@ export default {
      *
      */
     watch(centro, cambiarCentro)
-
-    /**
-     *
-     */
-    const { proyeccion } = props
 
     /**
      * Instanciamiewnto del maapa como onjeto de la calse ol/Map
@@ -59,7 +56,7 @@ export default {
             projection: proyeccion,
           }),
           controls: [
-            new ZoomControl(),
+            new ControlZoomPersonalizado(),
             new AttributionControl({
               collapsible: false,
             }),

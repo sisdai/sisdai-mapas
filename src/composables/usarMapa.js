@@ -42,11 +42,20 @@ export default function usarMapa() {
     }
   }
 
+  /**
+   *
+   * @param {*} olControl
+   */
+  function agregarControl(olControl) {
+    mapaPrincipal.value.addControl(olControl)
+  }
+
   return {
     mapaPrincipal: readonly(mapaPrincipal),
     salvarInstanciaDelMapa,
     cambiarZoom,
     cambiarCentro,
     agregarCapa,
+    agregarControl,
   }
 }
