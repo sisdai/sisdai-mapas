@@ -5,27 +5,27 @@ export const DEFAULT_RADIUS = 7
 export default {
   name: 'MixinCapaVectorial',
   props: {
+    /**
+     * Fuente de datos de una capa GeoJSON
+     */
+    url: {
+      type: String,
+      default: '',
+    },
+
+    /**
+     * Objetos que se convertiran en feature, dependera del tipo de capa la estructura que estos deben tener
+     * (si esta definido source, url se ignora )
+     * */
+    datos: {
+      type: [Array, Object],
+      default: undefined,
+    },
+
+    /**
+     *
+     */
     estiloCapa: {
-      /**
-       * Fuente de datos de una capa GeoJSON
-       */
-      url: {
-        type: String,
-        default: '',
-      },
-
-      /**
-       * Objetos que se convertiran en feature, dependera del tipo de capa la estructura que estos deben tener
-       * (si esta definido source, url se ignora )
-       * */
-      datos: {
-        type: [Array, Object],
-        default: undefined,
-      },
-
-      /**
-       *
-       */
       type: Object,
       default: function () {
         return {
@@ -79,7 +79,7 @@ export default {
   },
   methods: {
     asignarEstilo() {
-      console.log('asignando estilo')
+      // console.log('asignando estilo')
     },
   },
 }
