@@ -13,14 +13,10 @@ import usarCapaVectorial, {
 export default {
   name: 'DaiCapaGeojson',
   props,
-  setup(props) {
-    /**
-     *
-     */
-    const { datos } = toRefs(props)
-    // watch(zoom, cambiarZoom)
+  setup(propsRefs) {
+    const { datos } = toRefs(propsRefs)
 
-    const { salvarCapaComoObjeto } = usarCapaVectorial()
+    const { salvarCapaComoObjeto } = usarCapaVectorial(propsRefs)
 
     salvarCapaComoObjeto(
       new VectorLayer({
