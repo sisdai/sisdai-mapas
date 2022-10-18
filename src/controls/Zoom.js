@@ -8,7 +8,7 @@ export default class ZoomPersonalizado extends Control {
     const options = opt_options || {}
 
     const contenedorZoom = document.createElement('div')
-    contenedorZoom.className = 'dai-zoom'
+    contenedorZoom.className = 'dai-zoom ol-unselectable ol-control'
 
     const botonAcercar = document.createElement('button')
     botonAcercar.className = 'dai-zoom-button'
@@ -17,7 +17,7 @@ export default class ZoomPersonalizado extends Control {
 
     const botonAlejar = document.createElement('button')
     botonAlejar.className = 'dai-zoom-button'
-    botonAlejar.innerHTML = '<span class="dai-icon-alejar" />'
+    botonAlejar.innerHTML = '<span class="icono-restar" />'
     contenedorZoom.appendChild(botonAlejar)
 
     super({
