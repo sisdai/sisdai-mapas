@@ -76,17 +76,34 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="scss">
 .dai-contenedor-mapa {
   min-height: 200px;
   min-width: 200px;
   height: 40vh;
   position: relative;
+
+  .dai-mapa {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #e9e9e9;
+  }
 }
-.dai-mapa {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  background-color: #e9e9e9;
+
+.mapa-control {
+  &.dai-zoom {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    margin: 12px;
+
+    .dai-zoom-boton {
+      margin: 0;
+      &:not(:last-child) {
+        margin-bottom: 6px;
+      }
+    }
+  }
 }
 </style>
