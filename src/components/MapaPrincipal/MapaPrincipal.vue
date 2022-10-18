@@ -14,6 +14,10 @@ import { ref, toRefs, watch } from 'vue'
 
 import Map from 'ol/Map'
 import View from 'ol/View'
+import AttributionControl from 'ol/control/Attribution'
+import ZoomControl from 'ol/control/Zoom'
+// import { defaults as defaultControls } from 'ol/control'
+import 'ol/ol.css'
 
 import props from './props'
 import usarMapa from '../../composables/usarMapa'
@@ -54,6 +58,12 @@ export default {
             zoom: zoom.value,
             projection: proyeccion,
           }),
+          controls: [
+            new ZoomControl(),
+            new AttributionControl({
+              collapsible: false,
+            }),
+          ],
         })
       )
     }
