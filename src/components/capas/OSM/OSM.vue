@@ -2,12 +2,12 @@
 import TileLayer from 'ol/layer/Tile'
 import OSM from 'ol/source/OSM'
 
-import useCapa from './../../../composables/useCapa'
+import usarCapa from '../../../composables/usarCapa'
 
 export default {
   name: 'DaiCapaXyzOsm',
   setup() {
-    const { salvarCapaComoObjeto } = useCapa()
+    const { salvarCapaComoObjeto } = usarCapa()
 
     salvarCapaComoObjeto(
       new TileLayer({

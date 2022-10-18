@@ -1,12 +1,12 @@
 //import { reactive } from 'vue'
 import { watch } from 'vue'
 
-import { useMapa } from './useMapa'
+import usarMapa from './usarMapa'
 
 let olCapa = undefined
 
-export default function useCapa() {
-  const { mapaPrincipal, agregarCapa } = useMapa()
+export default function usarCapa() {
+  const { mapaPrincipal, agregarCapa } = usarMapa()
   watch(mapaPrincipal, () => {
     // console.log('watcher mapaPrincipal')
     agregarCapa(olCapa)

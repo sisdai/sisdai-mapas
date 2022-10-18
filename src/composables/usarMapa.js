@@ -2,7 +2,7 @@ import { ref, readonly } from 'vue'
 
 const mapaPrincipal = ref(undefined)
 
-export function useMapa() {
+export default function usarMapa() {
   /**
    *
    * @param {*} mapaInstanciado

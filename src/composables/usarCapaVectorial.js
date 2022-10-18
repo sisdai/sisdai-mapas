@@ -1,6 +1,6 @@
 // import {  } from 'vue'
 
-import useCapa from './useCapa'
+import usarCapa from './usarCapa'
 
 export const props = {
   /**
@@ -23,6 +23,6 @@ export const props = {
 
 export default function usarCapaVectorial() {
   return {
-    ...useCapa(),
+    ...usarCapa(),
   }
 }

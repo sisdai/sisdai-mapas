@@ -17,14 +17,14 @@ import props from './props'
 
 import { ref, toRefs, watch } from 'vue'
 
-import { useMapa } from './../../composables/useMapa'
+import usarMapa from '../../composables/usarMapa'
 
 export default {
   name: 'DaiMapa',
   props,
   setup(props) {
     // console.log('hola mapaPrincipal')
-    const { salvarInstanciaDelMapa, cambiarZoom, cambiarCentro } = useMapa()
+    const { salvarInstanciaDelMapa, cambiarZoom, cambiarCentro } = usarMapa()
 
     /**
      *
