@@ -3,7 +3,7 @@
     :zoom="4.6"
     :centro="[-102, 24]"
   >
-    <!--DaiCapaGeojson /-->
-    <DaiCapaXyzOsm />
+    <DaiCapaGeojson />
+    <!--DaiCapaXyzOsm /-->
   </DaiMapa>
 </template>

@@ -4,23 +4,25 @@ import VectorLayer from 'ol/layer/Vector'
 import VectorSource from 'ol/source/Vector'
 import GeoJSON from 'ol/format/GeoJSON'
 
-import MixinCapa from './../../../mixins/Capa'
-import MixinCapaVectorial from './../../../mixins/CapaVectorial'
+import useCapa from './../../../composables/useCapa'
 
 export default {
   name: 'DaiCapaGeojson',
-  mixins: [MixinCapa, MixinCapaVectorial],
-  methods: {
-    crearCapaComoObjeto() {
-      this.olCapa = new VectorLayer({
+  // mixins: [MixinCapa, MixinCapaVectorial],
+  setup() {
+    const { salvarCapaComoObjeto } = useCapa()
+
+    salvarCapaComoObjeto(
+      new VectorLayer({
         source: new VectorSource({
           features: new GeoJSON().readFeatures(require('./sample-edos.json')),
         }),
         // className: this.className,
       })
+    )
 
-      this.asignarEstilo()
-    },
+    return {}
   },
+  render: () => null,
 }
 </script>
