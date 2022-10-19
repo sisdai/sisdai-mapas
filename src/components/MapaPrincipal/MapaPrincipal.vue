@@ -23,6 +23,13 @@ import ControlVistaInicial from './../../controls/VistaInicial'
 import props from './props'
 import usarMapa from '../../composables/usarMapa'
 
+/**
+ * Relleno (en píxeles) que se agregará a la extensión de la vista. Los valores en la matriz son
+ * relleno: [superior, derecho, inferior, izquierdo] y solo es aplicable cuando la extensión es
+ * definida.
+ */
+const rellenoAlBordeDeLaExtension = [10, 10, 10, 10]
+
 export default {
   name: 'DaiMapa',
   props,
@@ -46,7 +53,7 @@ export default {
     const controlVistaInicial = new ControlVistaInicial({
       centro,
       extension,
-      rellenoAlBorde: [10, 10, 10, 10],
+      rellenoAlBordeDeLaExtension,
       zoom,
     })
 

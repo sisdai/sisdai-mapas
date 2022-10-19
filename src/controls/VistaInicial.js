@@ -9,9 +9,10 @@ const claseCss = 'vista-inicial'
 /**
  * @typedef {Object} Opciones
  * @property {Number} centro Coordenadas [x, y] del centro inicial de la vista.
- * @property {Array<Number>} extension Coordenadas extremas [x1, y1, x2, y2] de la caja enbolvente
+ * @property {Array<Number>} extension Coordenadas extremas [x1, y1, x2, y2] de la caja envolvente
  * de la vista.
- * @property {Array<Number>} rellenoAlBorde
+ * @property {Array<Number>} rellenoAlBordeDeLaExtension Relleno (en píxeles [superior, derecho,
+ * inferior, izquierdo]) que se agregará a la extensión de la vista.
  * @property {Number} zoom Nivel de zoom de la vista.
  */
 
@@ -68,7 +69,7 @@ export default class VistaInicial extends Control {
      * @type {Array<number>}
      * @protected
      */
-    this.rellenoAlBorde = opciones.rellenoAlBorde
+    this.rellenoAlBordeDeLaExtension = opciones.rellenoAlBordeDeLaExtension
 
     /**
      * @type {number}
@@ -125,7 +126,7 @@ export default class VistaInicial extends Control {
       this.getMap().getView().animate({ zoom: this.zoom, center: this.centro }),
     extension: () =>
       this.getMap().getView().fit(this.extension, {
-        padding: this.rellenoAlBorde,
+        padding: this.rellenoAlBordeDeLaExtension,
         duration: 1000,
       }),
   }
