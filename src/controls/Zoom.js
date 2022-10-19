@@ -1,28 +1,26 @@
-import { Control } from 'ol/control'
+import Control from 'ol/control/Control'
 
+/**
+ *
+ */
 export default class ZoomPersonalizado extends Control {
+  botonAcercar = crearBoton('agregar', this.acercamiento.bind(this))
+  botonAlejar = crearBoton('restar', this.alejamiento.bind(this))
+
   /**
-   * @param {Object} [opt_options] Control options.
+   *
    */
-  constructor(opt_options) {
-    const options = opt_options || {}
-
+  constructor() {
     const contenedorZoom = document.createElement('div')
-    contenedorZoom.className = 'dai-zoom ol-unselectable mapa-control'
-
-    const botonAcercar = zoomBotonConIcono('agregar')
-    contenedorZoom.appendChild(botonAcercar)
-
-    const botonAlejar = zoomBotonConIcono('restar')
-    contenedorZoom.appendChild(botonAlejar)
+    contenedorZoom.className = 'mapa-control dai-zoom ol-unselectable'
 
     super({
       element: contenedorZoom,
-      target: options.target,
+      target: undefined,
     })
 
-    botonAcercar.addEventListener('click', this.acercamiento.bind(this), false)
-    botonAlejar.addEventListener('click', this.alejamiento.bind(this), false)
+    contenedorZoom.appendChild(this.botonAcercar)
+    contenedorZoom.appendChild(this.botonAlejar)
   }
 
   /**
@@ -46,12 +44,14 @@ export default class ZoomPersonalizado extends Control {
 
 /**
  *
- * @param {*} icono
+ * @param {String} icono
+ * @param {Function} accion
  * @returns
  */
-function zoomBotonConIcono(icono) {
+function crearBoton(icono, accion) {
   const boton = document.createElement('button')
   boton.className = 'dai-zoom-boton boton-icono boton-secundario'
   boton.innerHTML = `<span class="icono-${icono}" />`
+  boton.addEventListener('click', accion, false)
   return boton
 }

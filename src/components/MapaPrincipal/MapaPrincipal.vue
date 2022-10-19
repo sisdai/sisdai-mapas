@@ -16,9 +16,11 @@ import Map from 'ol/Map'
 import View from 'ol/View'
 import AttributionControl from 'ol/control/Attribution'
 // import ZoomControl from 'ol/control/Zoom'
-import ControlZoomPersonalizado from './../../controls/Zoom'
 // import { defaults as defaultControls } from 'ol/control'
 import 'ol/ol.css'
+
+import ControlZoomPersonalizado from './../../controls/Zoom'
+import ControlVistaInicial from './../../controls/VistaInicial'
 
 import props from './props'
 import usarMapa from '../../composables/usarMapa'
@@ -57,6 +59,7 @@ export default {
           }),
           controls: [
             new ControlZoomPersonalizado(),
+            new ControlVistaInicial(),
             new AttributionControl({
               collapsible: false,
             }),
@@ -92,18 +95,22 @@ export default {
 }
 
 .mapa-control {
-  &.dai-zoom {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    margin: 12px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  margin: 12px;
 
+  &.dai-zoom {
     .dai-zoom-boton {
       margin: 0;
       &:not(:last-child) {
         margin-bottom: 6px;
       }
     }
+  }
+
+  &.dai-vista-inicial {
+    bottom: 0;
   }
 }
 </style>
