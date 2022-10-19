@@ -1,11 +1,12 @@
 <template>
   <DaiMapa
-    :centro="map.centro"
-    :zoom="map.zoom"
+    :centro="mapa.centro"
+    :extension="mapa.extension"
+    :zoom="mapa.zoom"
   >
     <DaiCapaGeojson
-      :datos="gjsn.edos"
-      :zIndex="gjsn.zIndex"
+      :datos="geojson.edos"
+      :zIndex="geojson.zIndex"
     />
     <DaiCapaXyzOsm :zIndex="osm.zIndex" />
   </DaiMapa>
@@ -14,16 +15,20 @@
 <script>
 import edos from './../public/capas/sample-edos.json'
 
+const extension = [
+  -118.365119934082, 14.5320978164673, -86.7104034423828, 32.7186546325684,
+]
+
 export default {
   data: () => ({
-    map: {
+    mapa: {
       centro: [-102, 24],
+      // extension,
       zoom: 4.5,
     },
-    gjsn: {
+    geojson: {
       edos,
       zIndex: 1,
-      extension: [],
     },
     osm: {
       zIndex: 0,

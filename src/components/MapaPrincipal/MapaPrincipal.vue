@@ -32,13 +32,23 @@ export default {
      */
     const refMapa = ref(null)
 
-    const { centro, zoom } = toRefs(props) // Props reactivos
+    const { centro, extension, zoom } = toRefs(props) // Props reactivos
     const { proyeccion } = props // Props no reactivos
 
     /**
      * Funciones y atributos heredados del composable usarMapa
      */
     const { salvarInstanciaDelMapa, cambiarZoom, cambiarCentro } = usarMapa()
+
+    /**
+     * Objeto control que desencadena la vista inicial
+     */
+    const controlVistaInicial = new ControlVistaInicial({
+      centro,
+      extension,
+      rellenoAlBorde: [10, 10, 10, 10],
+      zoom,
+    })
 
     /**
      * Creación del elemento mapa con atributos definidos
@@ -56,31 +66,34 @@ export default {
         }),
         controls: [
           new ControlZoomPersonalizado(),
-          new ControlVistaInicial(),
+          controlVistaInicial,
           new AttributionControl({
             collapsible: false,
           }),
         ],
       })
 
-      // Agrega propiedades al mapa
-      mapa.set('vistaInicial', {
-        tipo: 'centro',
-        valores: { zoom: zoom, center: centro },
-      })
-
       salvarInstanciaDelMapa(mapa)
     }
-
-    /**
-     * Cambiar el zoom en cuanto la propiedad cambie de valor
-     */
-    watch(zoom, cambiarZoom)
 
     /**
      * Cambiar el centro en cuanto la propiedad cambie de valor
      */
     watch(centro, cambiarCentro)
+
+    /**
+     * Cambiar la extension en cuanto la propiedad cambie de valor, esto proboca que el mapa
+     * ajuste la vista con la extención actual en caso de ser valida.
+     */
+    watch(extension, nuevoValor => {
+      controlVistaInicial.extension = nuevoValor
+      controlVistaInicial.reiniciarVista()
+    })
+
+    /**
+     * Cambiar el zoom en cuanto la propiedad cambie de valor
+     */
+    watch(zoom, cambiarZoom)
 
     /**
      * Ejecutar la creación del mapa en cuanto se inicialice el elemento html

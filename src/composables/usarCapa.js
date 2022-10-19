@@ -44,10 +44,13 @@ export default function usarCapa(propsRefs) {
       : Math.random().toString(36).substring(7)
 
   /**
+   * Observador que verifica cuando la instancia del mapa está lista para para agregar capas.
    *
+   * Como este es un composable de Capa, se ejecutará este observasdor por cada capa que se
+   * registre en el componente.
    */
   watch(mapaPrincipal, () => {
-    // console.log('watcher mapaPrincipal')
+    // console.log('Mapa listo para recibir capas')
     asignarPorps()
     agregarCapa(olCapa)
   })

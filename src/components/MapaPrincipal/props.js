@@ -1,6 +1,8 @@
 export default {
   /**
+   * Coordenadas [x, y] del centro inicial de la vista.
    *
+   * Estas coordenadas deben coincidir con la proyección definida
    */
   centro: {
     type: Array,
@@ -8,7 +10,9 @@ export default {
   },
 
   /**
+   * Coordenadas extremas [x1, y1, x2, y2] de la caja enbolvente de la vista.
    *
+   * Estas coordenadas deben coincidir con la proyección definida
    */
   extension: {
     type: Array,
@@ -16,7 +20,9 @@ export default {
   },
 
   /**
+   * Código de identificación SRS que define la proyección de la vista.
    *
+   * El valor predeterminado es Universal Transversal de Mercator.
    */
   proyeccion: {
     type: String,
@@ -24,7 +30,7 @@ export default {
   },
 
   /**
-   *
+   * Nivel de zoom utilizado para calcular la resolución inicial de la vista.
    */
   zoom: {
     type: Number,

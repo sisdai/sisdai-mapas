@@ -1,11 +1,19 @@
 /**
  * @module controls/VistaInicial
  */
-
 import Control from 'ol/control/Control'
 import { crearContenedorControl, crearBotonControl } from './utiles'
 
 const claseCss = 'vista-inicial'
+
+/**
+ * @typedef {Object} Opciones
+ * @property {Number} centro Coordenadas [x, y] del centro inicial de la vista.
+ * @property {Array<Number>} extension Coordenadas extremas [x1, y1, x2, y2] de la caja enbolvente
+ * de la vista.
+ * @property {Array<Number>} rellenoAlBorde
+ * @property {Number} zoom Nivel de zoom de la vista.
+ */
 
 /**
  * @classdesc
@@ -13,7 +21,7 @@ const claseCss = 'vista-inicial'
  * inicialmente.
  */
 export default class VistaInicial extends Control {
-  constructor() {
+  constructor(opciones) {
     /**
      * Elemento contenedor del control
      * @type {HTMLDivElement}
@@ -29,37 +37,96 @@ export default class VistaInicial extends Control {
     /**
      * Elemento clickable del control
      * @type {HTMLButtonElement}
-     * @protected
+     * @private
      */
     this.botonVistaInicial = crearBotonControl(
       claseCss,
       'mapa-centro',
       this.reiniciarVista.bind(this)
     )
-
     contenedorControl.appendChild(this.botonVistaInicial)
+
+    /**
+     * @type {number}
+     * @protected
+     */
+    this.centro = opciones.centro
+
+    /**
+     * @type {Array<number>}
+     * @protected
+     */
+    this.extension = opciones.extension
+
+    /**
+     * @type {String}
+     * @private
+     */
+    this.tipoDeVista = this.extensionEsValida() ? 'extension' : 'centro'
+
+    /**
+     * @type {Array<number>}
+     * @protected
+     */
+    this.rellenoAlBorde = opciones.rellenoAlBorde
+
+    /**
+     * @type {number}
+     * @protected
+     */
+    this.zoom = opciones.zoom
+
+    /**
+     * Si la vista es de tipo extension, solicitar la vista inical cuando el mapa esté listo
+     */
+    if (this.tipoDeVista === 'extension') {
+      new Promise(resolve => {
+        const _this = this
+        function revisarMapa() {
+          if (_this.getMap()) {
+            resolve()
+          } else setTimeout(revisarMapa, 50)
+        }
+
+        revisarMapa()
+      }).then(() => {
+        this.reiniciarVista()
+      })
+    }
+  }
+
+  /**
+   *
+   * @returns {Boolean}
+   */
+  extensionEsValida() {
+    return Boolean(
+      Number(this.extension.value[0]) !== 0 &&
+        Number(this.extension.value[3]) !== 0
+    )
   }
 
   /**
    * Reinicia la vista que se difinió inicialmente en el mapa
    */
   reiniciarVista() {
-    const vInicial = this.getMap().get('vistaInicial')
-    this.tipoDeVista[vInicial.tipo](vInicial.valores, vInicial.rellenoAlBorde)
+    // const vInicial = this.getMap().get('vistaInicial')
+    this.funcionesPorTipoDeVista[this.tipoDeVista]()
     this.dispatchEvent('reset')
   }
 
   /**
    * Contiene las funciones que reinician la vista dependiendo del tipo de vista
    * @type {Object} [centro|extension]
-   * @private
+   * @protected
    */
-  tipoDeVista = {
-    centro: valores => this.getMap().getView().animate(valores),
-    extension: (valores, rellenoAlBorde) =>
-      this.getMap().getView().fit(valores, {
-        padding: rellenoAlBorde,
-        duration: 500,
+  funcionesPorTipoDeVista = {
+    centro: () =>
+      this.getMap().getView().animate({ zoom: this.zoom, center: this.centro }),
+    extension: () =>
+      this.getMap().getView().fit(this.extension, {
+        padding: this.rellenoAlBorde,
+        duration: 1000,
       }),
   }
 }
