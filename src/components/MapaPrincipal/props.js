@@ -10,6 +10,14 @@ export default {
   /**
    *
    */
+  extension: {
+    type: Array,
+    default: () => [0, 0, 0, 0],
+  },
+
+  /**
+   *
+   */
   proyeccion: {
     type: String,
     default: 'EPSG:4326',

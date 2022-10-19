@@ -1,8 +1,8 @@
 <template>
   <div class="dai-contenedor-mapa">
     <div
-      class="dai-mapa"
       ref="refMapa"
+      class="dai-mapa"
     >
       <slot /><!-- Slot que permite ingresar capas dentro de etiqueta dai-mapa -->
     </div>
@@ -27,25 +27,25 @@ export default {
   name: 'DaiMapa',
   props,
   setup(props) {
-    const { proyeccion } = props
-    const { centro, zoom } = toRefs(props)
+    /**
+     * Referencia al elemento contenedor del mapa
+     */
+    const refMapa = ref(null)
+
+    const { centro, zoom } = toRefs(props) // Props reactivos
+    const { proyeccion } = props // Props no reactivos
+
+    /**
+     * Funciones y atributos heredados del composable usarMapa
+     */
     const { salvarInstanciaDelMapa, cambiarZoom, cambiarCentro } = usarMapa()
 
     /**
-     *
-     */
-    watch(zoom, cambiarZoom)
-
-    /**
-     *
-     */
-    watch(centro, cambiarCentro)
-
-    /**
-     * Instanciamiewnto del maapa como onjeto de la calse ol/Map
+     * Creación del elemento mapa con atributos definidos
+     * @param {HTMLDivElement|String} target elemento html que contendrá el mapa o id de mismo
      */
     function crearMapa(target) {
-      // console.log(target, centro.value)
+      // Instanciamiento del maapa como onjeto de la calse ol/Map
       const mapa = new Map({
         target,
         layers: [],
@@ -63,6 +63,7 @@ export default {
         ],
       })
 
+      // Agrega propiedades al mapa
       mapa.set('vistaInicial', {
         tipo: 'centro',
         valores: { zoom: zoom, center: centro },
@@ -72,9 +73,18 @@ export default {
     }
 
     /**
-     *
+     * Cambiar el zoom en cuanto la propiedad cambie de valor
      */
-    const refMapa = ref(null)
+    watch(zoom, cambiarZoom)
+
+    /**
+     * Cambiar el centro en cuanto la propiedad cambie de valor
+     */
+    watch(centro, cambiarCentro)
+
+    /**
+     * Ejecutar la creación del mapa en cuanto se inicialice el elemento html
+     */
     watch(refMapa, crearMapa)
 
     return { refMapa }
@@ -94,26 +104,6 @@ export default {
     height: 100%;
     position: absolute;
     background-color: #e9e9e9;
-  }
-}
-
-.mapa-control {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  margin: 12px;
-
-  &.dai-zoom {
-    .dai-zoom-boton {
-      margin: 0;
-      &:not(:last-child) {
-        margin-bottom: 6px;
-      }
-    }
-  }
-
-  &.dai-vista-inicial {
-    bottom: 0;
   }
 }
 </style>

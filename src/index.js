@@ -2,6 +2,8 @@ import MapaPrincipal from './components/MapaPrincipal'
 import CapaOSM from './components/capas/OSM'
 import CapaGeoJSON from './components/capas/GeoJSON'
 
+import './styles/controles.scss'
+
 export default function plugin(Vue) {
   if (plugin.installed) {
     return

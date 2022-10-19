@@ -1,5 +1,5 @@
 /**
- * Código útil para la codificación de los controles
+ * @module controls/utiles
  */
 
 /**
