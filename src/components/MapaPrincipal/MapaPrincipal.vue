@@ -15,8 +15,6 @@ import { ref, toRefs, watch } from 'vue'
 import Map from 'ol/Map'
 import View from 'ol/View'
 import AttributionControl from 'ol/control/Attribution'
-// import ZoomControl from 'ol/control/Zoom'
-// import { defaults as defaultControls } from 'ol/control'
 import 'ol/ol.css'
 
 import ControlZoomPersonalizado from '../../controls/ZoomPersonalizado'
@@ -48,24 +46,29 @@ export default {
      */
     function crearMapa(target) {
       // console.log(target, centro.value)
-      salvarInstanciaDelMapa(
-        new Map({
-          target,
-          layers: [],
-          view: new View({
-            center: centro.value,
-            zoom: zoom.value,
-            projection: proyeccion,
+      const mapa = new Map({
+        target,
+        layers: [],
+        view: new View({
+          center: centro.value,
+          zoom: zoom.value,
+          projection: proyeccion,
+        }),
+        controls: [
+          new ControlZoomPersonalizado(),
+          new ControlVistaInicial(),
+          new AttributionControl({
+            collapsible: false,
           }),
-          controls: [
-            new ControlZoomPersonalizado(),
-            new ControlVistaInicial(),
-            new AttributionControl({
-              collapsible: false,
-            }),
-          ],
-        })
-      )
+        ],
+      })
+
+      mapa.set('vistaInicial', {
+        tipo: 'centro',
+        valores: { zoom: zoom, center: centro },
+      })
+
+      salvarInstanciaDelMapa(mapa)
     }
 
     /**

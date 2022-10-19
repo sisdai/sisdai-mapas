@@ -44,8 +44,22 @@ export default class VistaInicial extends Control {
    * Reinicia la vista que se difinió inicialmente en el mapa
    */
   reiniciarVista() {
-    this.getMap()
-      .getView()
-      .animate({ zoom: this.getMap().getView().getZoom() + 1, duration: 250 })
+    const vInicial = this.getMap().get('vistaInicial')
+    this.tipoDeVista[vInicial.tipo](vInicial.valores, vInicial.rellenoAlBorde)
+    this.dispatchEvent('reset')
+  }
+
+  /**
+   * Contiene las funciones que reinician la vista dependiendo del tipo de vista
+   * @type {Object} [centro|extension]
+   * @private
+   */
+  tipoDeVista = {
+    centro: valores => this.getMap().getView().animate(valores),
+    extension: (valores, rellenoAlBorde) =>
+      this.getMap().getView().fit(valores, {
+        padding: rellenoAlBorde,
+        duration: 500,
+      }),
   }
 }
