@@ -1,41 +1,51 @@
+/**
+ * @module controls/VistaInicial
+ */
+
 import Control from 'ol/control/Control'
+import { crearContenedorControl, crearBotonControl } from './utiles'
 
+const claseCss = 'vista-inicial'
+
+/**
+ * @classdesc
+ * Agrega un control personalizado que permite volver a la vista del mapa que se definió
+ * inicialmente.
+ */
 export default class VistaInicial extends Control {
-  botonVistainicial = crearBoton('mapa-centro', this.reiniciarVista.bind(this))
-
   constructor() {
-    const contenedorVistaInicial = document.createElement('div')
-    contenedorVistaInicial.className =
-      'mapa-control dai-vista-inicial ol-unselectable'
+    /**
+     * Elemento contenedor del control
+     * @type {HTMLDivElement}
+     * @private
+     */
+    const contenedorControl = crearContenedorControl(claseCss)
 
     super({
-      element: contenedorVistaInicial,
+      element: contenedorControl,
       target: undefined,
     })
 
-    contenedorVistaInicial.appendChild(this.botonVistainicial)
+    /**
+     * Elemento clickable del control
+     * @type {HTMLButtonElement}
+     * @protected
+     */
+    this.botonVistaInicial = crearBotonControl(
+      claseCss,
+      'mapa-centro',
+      this.reiniciarVista.bind(this)
+    )
+
+    contenedorControl.appendChild(this.botonVistaInicial)
   }
 
   /**
-   *
+   * Reinicia la vista que se difinió inicialmente en el mapa
    */
   reiniciarVista() {
     this.getMap()
       .getView()
       .animate({ zoom: this.getMap().getView().getZoom() + 1, duration: 250 })
   }
-}
-
-/**
- *
- * @param {String} icono
- * @param {Function} accion
- * @returns
- */
-function crearBoton(icono, accion) {
-  const boton = document.createElement('button')
-  boton.className = 'dai-vista-inicial-boton boton-icono boton-secundario'
-  boton.innerHTML = `<span class="icono-${icono}" />`
-  boton.addEventListener('click', accion, false)
-  return boton
 }

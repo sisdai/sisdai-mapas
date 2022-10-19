@@ -19,7 +19,7 @@ import AttributionControl from 'ol/control/Attribution'
 // import { defaults as defaultControls } from 'ol/control'
 import 'ol/ol.css'
 
-import ControlZoomPersonalizado from './../../controls/Zoom'
+import ControlZoomPersonalizado from '../../controls/ZoomPersonalizado'
 import ControlVistaInicial from './../../controls/VistaInicial'
 
 import props from './props'
