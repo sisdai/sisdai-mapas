@@ -18,6 +18,7 @@
   ],
   "dependencies": {
     "core-js": "^3.17.3",
+    "dadsig-css": "github:conacyt-dai/dadsig-css#v0.30.2",
     "ol": "^7.1.0",
     "vue": "^2.7.13"
   },
@@ -34,6 +35,8 @@
     "eslint-plugin-vue": "^8.0.3",
     "lint-staged": "^11.1.2",
     "prettier": "2.7.1",
+    "sass": "^1.55.0",
+    "sass-loader": "^10.3.1",
     "vue-template-compiler": "^2.6.11",
     "vuepress": "^1.9.7",
     "vuepress-html-webpack-plugin": "^3.2.0"
