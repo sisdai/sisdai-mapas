@@ -34,78 +34,62 @@ export default {
   name: 'DaiMapa',
   props,
   setup(props) {
+    const { salvarInstancia, cambiarZoom, cambiarCentro, extraerControl } =
+      usarMapa()
+
     /**
-     * Referencia al elemento contenedor del mapa
+     * Referencia al elemento html contenedor del mapa
      */
     const refMapa = ref(null)
+    watch(refMapa, crearMapa)
 
-    const { centro, extension, zoom } = toRefs(props) // Props reactivos
     const { proyeccion } = props // Props no reactivos
-
-    /**
-     * Funciones y atributos heredados del composable usarMapa
-     */
-    const { salvarInstanciaDelMapa, cambiarZoom, cambiarCentro } = usarMapa()
-
-    /**
-     * Objeto control que desencadena la vista inicial
-     */
-    const controlVistaInicial = new ControlVistaInicial({
-      centro,
-      extension,
-      rellenoAlBordeDeLaExtension,
-      zoom,
-    })
+    const { centro, extension, zoom } = toRefs(props) // Props reactivos
+    watch(centro, cambiarCentro)
+    watch(extension, cambiarExtension)
+    watch(zoom, cambiarZoom)
 
     /**
      * Creación del elemento mapa con atributos definidos
      * @param {HTMLDivElement|String} target elemento html que contendrá el mapa o id de mismo
      */
     function crearMapa(target) {
-      // Instanciamiento del maapa como onjeto de la calse ol/Map
-      const mapa = new Map({
-        target,
-        layers: [],
-        view: new View({
-          center: centro.value,
-          zoom: zoom.value,
-          projection: proyeccion,
-        }),
-        controls: [
-          new ControlZoomPersonalizado(),
-          controlVistaInicial,
-          new AttributionControl({
-            collapsible: false,
+      salvarInstancia(
+        // Instanciamiento del maapa como onjeto de la calse ol/Map
+        new Map({
+          target,
+          layers: [],
+          view: new View({
+            center: centro.value,
+            zoom: zoom.value,
+            projection: proyeccion,
           }),
-        ],
-      })
-
-      salvarInstanciaDelMapa(mapa)
+          controls: [
+            new ControlZoomPersonalizado(),
+            new ControlVistaInicial({
+              centro,
+              extension,
+              rellenoAlBordeDeLaExtension,
+              zoom,
+            }),
+            new AttributionControl({
+              collapsible: false,
+            }),
+          ],
+        })
+      )
     }
 
     /**
-     * Cambiar el centro en cuanto la propiedad cambie de valor
+     * Cambiar la extension, esto proboca que el mapa ajuste la vista con la extención actual
+     * en caso de ser valida.
+     * @param {Array<Number>} extension
      */
-    watch(centro, cambiarCentro)
-
-    /**
-     * Cambiar la extension en cuanto la propiedad cambie de valor, esto proboca que el mapa
-     * ajuste la vista con la extención actual en caso de ser valida.
-     */
-    watch(extension, nuevoValor => {
-      controlVistaInicial.extension = nuevoValor
+    function cambiarExtension(nuevaExtension) {
+      const controlVistaInicial = extraerControl('VistaInicial')
+      controlVistaInicial.extension = nuevaExtension
       controlVistaInicial.reiniciarVista()
-    })
-
-    /**
-     * Cambiar el zoom en cuanto la propiedad cambie de valor
-     */
-    watch(zoom, cambiarZoom)
-
-    /**
-     * Ejecutar la creación del mapa en cuanto se inicialice el elemento html
-     */
-    watch(refMapa, crearMapa)
+    }
 
     return { refMapa }
   },

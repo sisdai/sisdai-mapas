@@ -1,6 +1,7 @@
 /**
  * @module controls/VistaInicial
  */
+
 import Control from 'ol/control/Control'
 import { crearContenedorControl, crearBotonControl } from './utiles'
 
@@ -34,6 +35,13 @@ export default class VistaInicial extends Control {
       element: contenedorControl,
       target: undefined,
     })
+
+    /**
+     * Nombre con el que se podrá extraer el control del mapa.
+     * @type {String}
+     * @protected
+     */
+    this.nombre = 'VistaInicial'
 
     /**
      * Elemento clickable del control
