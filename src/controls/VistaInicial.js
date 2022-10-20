@@ -23,6 +23,12 @@ const claseCss = 'vista-inicial'
  * inicialmente.
  */
 export default class VistaInicial extends Control {
+  /**
+   * Nombre con el que se podrá extraer el control del mapa.
+   * @type {String}
+   */
+  static nombre = 'VistaInicial'
+
   constructor(opciones) {
     /**
      * Elemento contenedor del control
@@ -35,13 +41,6 @@ export default class VistaInicial extends Control {
       element: contenedorControl,
       target: undefined,
     })
-
-    /**
-     * Nombre con el que se podrá extraer el control del mapa.
-     * @type {String}
-     * @protected
-     */
-    this.nombre = 'VistaInicial'
 
     /**
      * Elemento clickable del control
@@ -86,7 +85,7 @@ export default class VistaInicial extends Control {
     this.zoom = opciones.zoom
 
     /**
-     * Si la vista es de tipo extension, solicitar la vista inical cuando el mapa esté listo
+     * Si la vista es de tipo extension, solicitar la vista inical cuando el mapa esté listo.
      */
     if (this.tipoDeVista === 'extension') {
       new Promise(resolve => {

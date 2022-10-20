@@ -86,7 +86,7 @@ export default {
      * @param {Array<Number>} extension
      */
     function cambiarExtension(nuevaExtension) {
-      const controlVistaInicial = extraerControl('VistaInicial')
+      const controlVistaInicial = extraerControl(ControlVistaInicial.nombre)
       controlVistaInicial.extension = nuevaExtension
       controlVistaInicial.reiniciarVista()
     }

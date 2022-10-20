@@ -13,6 +13,12 @@ const claseCss = 'zoom'
  * sobre el mapa.
  */
 export default class ZoomPersonalizado extends Control {
+  /**
+   * Nombre con el que se podrá extraer el control del mapa.
+   * @type {String}
+   */
+  static nombre = 'ZoomPersonalizado'
+
   constructor() {
     /**
      * Elemento contenedor del control
