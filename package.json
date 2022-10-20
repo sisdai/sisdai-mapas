@@ -1,6 +1,6 @@
 {
   "name": "dai-maps",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "private": true,
   "scripts": {
     "build": "vue-cli-service build --target lib src/index.js",
