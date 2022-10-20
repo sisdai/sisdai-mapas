@@ -1,7 +1,28 @@
 /******/ (function() { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 539:
+/***/ 431:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vue_cli_service_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(481);
+/* harmony import */ var _vue_cli_service_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_vue_cli_service_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _vue_cli_service_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(400);
+/* harmony import */ var _vue_cli_service_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_vue_cli_service_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _vue_cli_service_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_vue_cli_service_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ":host,:root{--ol-background-color:#fff;--ol-accent-background-color:#f5f5f5;--ol-subtle-background-color:hsla(0,0%,50%,.25);--ol-partial-background-color:hsla(0,0%,100%,.75);--ol-foreground-color:#333;--ol-subtle-foreground-color:#666;--ol-brand-color:#0af}.ol-box{box-sizing:border-box;border-radius:2px;border:1.5px solid var(--ol-background-color);background-color:var(--ol-partial-background-color)}.ol-mouse-position{top:8px;right:8px;position:absolute}.ol-scale-line{background:var(--ol-partial-background-color);border-radius:4px;bottom:8px;left:8px;padding:2px;position:absolute}.ol-scale-line-inner{border:1px solid var(--ol-subtle-foreground-color);border-top:none;color:var(--ol-foreground-color);font-size:10px;text-align:center;margin:1px;will-change:contents,width;transition:all .25s}.ol-scale-bar{position:absolute;bottom:8px;left:8px}.ol-scale-bar-inner{display:flex}.ol-scale-step-marker{width:1px;height:15px;background-color:var(--ol-foreground-color);float:right;z-index:10}.ol-scale-step-text{bottom:-5px;font-size:10px;z-index:11}.ol-scale-step-text,.ol-scale-text{position:absolute;color:var(--ol-foreground-color);text-shadow:-1.5px 0 var(--ol-partial-background-color),0 1.5px var(--ol-partial-background-color),1.5px 0 var(--ol-partial-background-color),0 -1.5px var(--ol-partial-background-color)}.ol-scale-text{font-size:12px;text-align:center;bottom:25px}.ol-scale-singlebar{position:relative;height:10px;z-index:9;box-sizing:border-box;border:1px solid var(--ol-foreground-color)}.ol-scale-singlebar-even{background-color:var(--ol-subtle-foreground-color)}.ol-scale-singlebar-odd{background-color:var(--ol-background-color)}.ol-unsupported{display:none}.ol-unselectable,.ol-viewport{-webkit-touch-callout:none;-webkit-user-select:none;-moz-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}.ol-viewport canvas{all:unset}.ol-selectable{-webkit-touch-callout:default;-webkit-user-select:text;-moz-user-select:text;user-select:text}.ol-grabbing{cursor:grabbing}.ol-grab{cursor:move;cursor:grab}.ol-control{position:absolute;background-color:var(--ol-subtle-background-color);border-radius:4px}.ol-zoom{top:.5em;left:.5em}.ol-rotate{top:.5em;right:.5em;transition:opacity .25s linear,visibility 0s linear}.ol-rotate.ol-hidden{opacity:0;visibility:hidden;transition:opacity .25s linear,visibility 0s linear .25s}.ol-zoom-extent{top:4.643em;left:.5em}.ol-full-screen{right:.5em;top:.5em}.ol-control button{display:block;margin:1px;padding:0;color:var(--ol-subtle-foreground-color);font-weight:700;text-decoration:none;font-size:inherit;text-align:center;height:1.375em;width:1.375em;line-height:.4em;background-color:var(--ol-background-color);border:none;border-radius:2px}.ol-control button::-moz-focus-inner{border:none;padding:0}.ol-zoom-extent button{line-height:1.4em}.ol-compass{display:block;font-weight:400;will-change:transform}.ol-touch .ol-control button{font-size:1.5em}.ol-touch .ol-zoom-extent{top:5.5em}.ol-control button:focus,.ol-control button:hover{text-decoration:none;outline:1px solid var(--ol-subtle-foreground-color);color:var(--ol-foreground-color)}.ol-zoom .ol-zoom-in{border-radius:2px 2px 0 0}.ol-zoom .ol-zoom-out{border-radius:0 0 2px 2px}.ol-attribution{text-align:right;bottom:.5em;right:.5em;max-width:calc(100% - 1.3em);display:flex;flex-flow:row-reverse;align-items:center}.ol-attribution a{color:var(--ol-subtle-foreground-color);text-decoration:none}.ol-attribution ul{margin:0;padding:1px .5em;color:var(--ol-foreground-color);text-shadow:0 0 2px var(--ol-background-color);font-size:12px}.ol-attribution li{display:inline;list-style:none}.ol-attribution li:not(:last-child):after{content:\" \"}.ol-attribution img{max-height:2em;max-width:inherit;vertical-align:middle}.ol-attribution button{flex-shrink:0}.ol-attribution.ol-collapsed ul{display:none}.ol-attribution:not(.ol-collapsed){background:var(--ol-partial-background-color)}.ol-attribution.ol-uncollapsible{bottom:0;right:0;border-radius:4px 0 0}.ol-attribution.ol-uncollapsible img{margin-top:-.2em;max-height:1.6em}.ol-attribution.ol-uncollapsible button{display:none}.ol-zoomslider{top:4.5em;left:.5em;height:200px}.ol-zoomslider button{position:relative;height:10px}.ol-touch .ol-zoomslider{top:5.5em}.ol-overviewmap{left:.5em;bottom:.5em}.ol-overviewmap.ol-uncollapsible{bottom:0;left:0;border-radius:0 4px 0 0}.ol-overviewmap .ol-overviewmap-map,.ol-overviewmap button{display:block}.ol-overviewmap .ol-overviewmap-map{border:1px solid var(--ol-subtle-foreground-color);height:150px;width:150px}.ol-overviewmap:not(.ol-collapsed) button{bottom:0;left:0;position:absolute}.ol-overviewmap.ol-collapsed .ol-overviewmap-map,.ol-overviewmap.ol-uncollapsible button{display:none}.ol-overviewmap:not(.ol-collapsed){background:var(--ol-subtle-background-color)}.ol-overviewmap-box{border:1.5px dotted var(--ol-subtle-foreground-color)}.ol-overviewmap .ol-overviewmap-box:hover{cursor:move}", ""]);
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ 825:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15,7 +36,28 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_vue_cli_service_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_vue_cli_service_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".dai-contenedor-mapa{min-height:200px;min-width:200px;height:40vh;position:relative}.dai-mapa{width:100%;height:100%;position:absolute;background-color:#e9e9e9}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".dai-contenedor-mapa{min-height:200px;min-width:200px;height:40vh;position:relative}.dai-contenedor-mapa .dai-mapa{width:100%;height:100%;position:absolute;background-color:#e9e9e9}", ""]);
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ 885:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_cli_service_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(481);
+/* harmony import */ var _node_modules_vue_cli_service_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_cli_service_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_vue_cli_service_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(400);
+/* harmony import */ var _node_modules_vue_cli_service_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_cli_service_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_vue_cli_service_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_vue_cli_service_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".mapa-control{position:absolute;display:flex;flex-direction:column;margin:12px}.mapa-control.dai-zoom .dai-zoom-boton{margin:0}.mapa-control.dai-zoom .dai-zoom-boton:not(:last-child){margin-bottom:6px}.mapa-control.dai-vista-inicial{bottom:0}", ""]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -151,19 +193,51 @@ module.exports = function (i) {
 
 /***/ }),
 
-/***/ 825:
+/***/ 640:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(539);
+var content = __webpack_require__(431);
 if(content.__esModule) content = content.default;
 if(typeof content === 'string') content = [[module.id, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
 var add = (__webpack_require__(402)/* ["default"] */ .Z)
-var update = add("066d4be0", content, true, {"sourceMap":false,"shadowMode":false});
+var update = add("a8943b36", content, true, {"sourceMap":false,"shadowMode":false});
+
+/***/ }),
+
+/***/ 558:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(825);
+if(content.__esModule) content = content.default;
+if(typeof content === 'string') content = [[module.id, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = (__webpack_require__(402)/* ["default"] */ .Z)
+var update = add("71715d5e", content, true, {"sourceMap":false,"shadowMode":false});
+
+/***/ }),
+
+/***/ 204:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(885);
+if(content.__esModule) content = content.default;
+if(typeof content === 'string') content = [[module.id, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = (__webpack_require__(402)/* ["default"] */ .Z)
+var update = add("0ad3e3b3", content, true, {"sourceMap":false,"shadowMode":false});
 
 /***/ }),
 
@@ -539,7 +613,7 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-;// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"01092c40-vue-loader-template"}!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/cache-loader/dist/cjs.js??ruleSet[0].use[0]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/MapaPrincipal/MapaPrincipal.vue?vue&type=template&id=75b8a880&
+;// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"41cfcd41-vue-loader-template"}!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/cache-loader/dist/cjs.js??ruleSet[0].use[0]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/MapaPrincipal/MapaPrincipal.vue?vue&type=template&id=3dbc83f7&
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
@@ -21623,24 +21697,289 @@ function createOptionsInternal(options) {
 }
 /* harmony default export */ var ol_Map = (Map_Map);
 
+// EXTERNAL MODULE: ./node_modules/ol/ol.css
+var ol = __webpack_require__(640);
+;// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+  return obj;
+}
+;// CONCATENATED MODULE: ./src/controls/utiles.js
+/**
+ * @module controls/utiles
+ */
+
+/**
+ * Crea un elemento html de tipo div, para usarse como contenedor del control, con las siguientes
+ * características
+ * @param {String} claseCss Clase que distinguirá al elemento contenedor
+ * @returns {HTMLDivElement} Elemento html
+ */
+function crearContenedorControl(claseCss) {
+  const contenedorControl = document.createElement('div');
+  contenedorControl.className = `mapa-control dai-${claseCss} ol-unselectable`;
+  return contenedorControl;
+}
+
+/**
+ * Crea un elemento html de tipo botón con las siguientes características
+ * @param {String} claseCss Clase que distinguirá al elemento, recomendable usar la misma clase
+ * del contenedor
+ * @param {String} icono Icono que se visualizará dentro del botón
+ * @param {Function} accion Función que se desencadenará con el evento click
+ * @returns {HTMLButtonElement} Elemento html
+ */
+function crearBotonControl(claseCss, icono, accion) {
+  const boton = document.createElement('button');
+  boton.className = `dai-${claseCss}-boton boton-icono boton-secundario`;
+  boton.innerHTML = `<span class="icono-${icono}" />`;
+  boton.addEventListener('click', accion, false);
+  return boton;
+}
+;// CONCATENATED MODULE: ./src/controls/ZoomPersonalizado.js
+
+/**
+ * @module controls/ZoomPersonalizado
+ */
+
+
+
+const claseCss = 'zoom';
+
+/**
+ * @classdesc
+ * Agrega un control con iconos y estilos personalizados que permite hacer zoom in y zoom out
+ * sobre el mapa.
+ */
+class ZoomPersonalizado extends control_Control {
+  /**
+   * Nombre con el que se podrá extraer el control del mapa.
+   * @type {String}
+   */
+
+  constructor() {
+    /**
+     * Elemento contenedor del control
+     * @type {HTMLDivElement}
+     * @private
+     */
+    const contenedorControl = crearContenedorControl(claseCss);
+    super({
+      element: contenedorControl,
+      target: undefined
+    });
+
+    /**
+     * Elemento clickable del control
+     * @type {HTMLButtonElement}
+     * @protected
+     */
+    this.botonAcercar = crearBotonControl(claseCss, 'agregar', this.acercamiento.bind(this));
+
+    /**
+     * Elemento clickable del control
+     * @type {HTMLButtonElement}
+     * @protected
+     */
+    this.botonAlejar = crearBotonControl(claseCss, 'restar', this.alejamiento.bind(this));
+    contenedorControl.appendChild(this.botonAcercar);
+    contenedorControl.appendChild(this.botonAlejar);
+  }
+
+  /**
+   * Acerca la vista del mapa por una unidad de zoom
+   */
+  acercamiento() {
+    this.getMap().getView().animate({
+      zoom: this.getMap().getView().getZoom() + 1,
+      duration: 250
+    });
+  }
+
+  /**
+   * Aleja la vista del mapa por una unidad de zoom
+   */
+  alejamiento() {
+    this.getMap().getView().animate({
+      zoom: this.getMap().getView().getZoom() - 1,
+      duration: 250
+    });
+  }
+}
+_defineProperty(ZoomPersonalizado, "nombre", 'ZoomPersonalizado');
+;// CONCATENATED MODULE: ./src/controls/VistaInicial.js
+
+/**
+ * @module controls/VistaInicial
+ */
+
+
+
+const VistaInicial_claseCss = 'vista-inicial';
+
+/**
+ * @typedef {Object} Opciones
+ * @property {Number} centro Coordenadas [x, y] del centro inicial de la vista.
+ * @property {Array<Number>} extension Coordenadas extremas [x1, y1, x2, y2] de la caja envolvente
+ * de la vista.
+ * @property {Array<Number>} rellenoAlBordeDeLaExtension Relleno (en píxeles [superior, derecho,
+ * inferior, izquierdo]) que se agregará a la extensión de la vista.
+ * @property {Number} zoom Nivel de zoom de la vista.
+ */
+
+/**
+ * @classdesc
+ * Agrega un control personalizado que permite volver a la vista del mapa que se definió
+ * inicialmente.
+ */
+class VistaInicial extends control_Control {
+  /**
+   * Nombre con el que se podrá extraer el control del mapa.
+   * @type {String}
+   */
+
+  constructor(opciones) {
+    /**
+     * Elemento contenedor del control
+     * @type {HTMLDivElement}
+     * @private
+     */
+    const contenedorControl = crearContenedorControl(VistaInicial_claseCss);
+    super({
+      element: contenedorControl,
+      target: undefined
+    });
+
+    /**
+     * Elemento clickable del control
+     * @type {HTMLButtonElement}
+     * @private
+     */
+    _defineProperty(this, "funcionesPorTipoDeVista", {
+      centro: () => this.getMap().getView().animate({
+        zoom: this.zoom,
+        center: this.centro
+      }),
+      extension: () => this.getMap().getView().fit(this.extension, {
+        padding: this.rellenoAlBordeDeLaExtension,
+        duration: 1000
+      })
+    });
+    this.botonVistaInicial = crearBotonControl(VistaInicial_claseCss, 'mapa-centro', this.reiniciarVista.bind(this));
+    contenedorControl.appendChild(this.botonVistaInicial);
+
+    /**
+     * @type {number}
+     * @protected
+     */
+    this.centro = opciones.centro;
+
+    /**
+     * @type {Array<number>}
+     * @protected
+     */
+    this.extension = opciones.extension;
+
+    /**
+     * @type {String}
+     * @private
+     */
+    this.tipoDeVista = this.extensionEsValida() ? 'extension' : 'centro';
+
+    /**
+     * @type {Array<number>}
+     * @protected
+     */
+    this.rellenoAlBordeDeLaExtension = opciones.rellenoAlBordeDeLaExtension;
+
+    /**
+     * @type {number}
+     * @protected
+     */
+    this.zoom = opciones.zoom;
+
+    /**
+     * Si la vista es de tipo extension, solicitar la vista inical cuando el mapa esté listo.
+     */
+    if (this.tipoDeVista === 'extension') {
+      new Promise(resolve => {
+        const _this = this;
+        function revisarMapa() {
+          if (_this.getMap()) {
+            resolve();
+          } else setTimeout(revisarMapa, 50);
+        }
+        revisarMapa();
+      }).then(() => {
+        this.reiniciarVista();
+      });
+    }
+  }
+
+  /**
+   *
+   * @returns {Boolean}
+   */
+  extensionEsValida() {
+    return Boolean(Number(this.extension.value[0]) !== 0 && Number(this.extension.value[3]) !== 0);
+  }
+
+  /**
+   * Reinicia la vista que se difinió inicialmente en el mapa
+   */
+  reiniciarVista() {
+    // const vInicial = this.getMap().get('vistaInicial')
+    this.funcionesPorTipoDeVista[this.tipoDeVista]();
+    this.dispatchEvent('reset');
+  }
+
+  /**
+   * Contiene las funciones que reinician la vista dependiendo del tipo de vista
+   * @type {Object} [centro|extension]
+   * @protected
+   */
+}
+_defineProperty(VistaInicial, "nombre", 'VistaInicial');
 ;// CONCATENATED MODULE: ./src/components/MapaPrincipal/props.js
 /* harmony default export */ var props = ({
   /**
+   * Coordenadas [x, y] del centro inicial de la vista.
    *
+   * Estas coordenadas deben coincidir con la proyección definida
    */
   centro: {
     type: Array,
     default: () => [0, 0]
   },
   /**
+   * Coordenadas extremas [x1, y1, x2, y2] de la caja envolvente de la vista.
    *
+   * Estas coordenadas deben coincidir con la proyección definida
+   */
+  extension: {
+    type: Array,
+    default: () => [0, 0, 0, 0]
+  },
+  /**
+   * Código de identificación SRS que define la proyección de la vista.
+   *
+   * El valor predeterminado es Universal Transversal de Mercator.
    */
   proyeccion: {
     type: String,
     default: 'EPSG:4326'
   },
   /**
-   *
+   * Nivel de zoom utilizado para calcular la resolución inicial de la vista.
    */
   zoom: {
     type: Number,
@@ -21648,31 +21987,36 @@ function createOptionsInternal(options) {
   }
 });
 ;// CONCATENATED MODULE: ./src/composables/usarMapa.js
+/**
+ * @module composables/usarMapa
+ */
 
+
+
+/**
+ * Objeto que contendrá la instancia del mapa, declararlo fuera de la función composable hace que
+ * no se genere una nueva variable del mapa cada que se utilice el composable
+ */
 const mapaPrincipal = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.ref)(undefined);
+
+/**
+ * Uso del mapa, la finalidad de este composable es acceder al mapa desde diferentes componentes
+ * o composables
+ * @returns {Function} composable
+ */
 function usarMapa() {
   /**
-   *
-   * @param {*} mapaInstanciado
+   * Guarda el objeto del mapa en una variable reactiva.
+   * @param {import("ol/Map.js").default} mapaInstanciado
    */
-  function salvarInstanciaDelMapa(mapaInstanciado) {
+  function salvarInstancia(mapaInstanciado) {
     // console.log('hola desde el composable del mapa', mapaInstanciado)
     mapaPrincipal.value = mapaInstanciado;
   }
 
   /**
-   *
-   * @param {*} zoom
-   */
-  function cambiarZoom(zoom) {
-    if (mapaPrincipal.value) {
-      mapaPrincipal.value.getView().setZoom(zoom);
-    }
-  }
-
-  /**
-   *
-   * @param {*} centro
+   * Actualiza la coordenada centrica del mapa
+   * @param {Number} centro nueva coordenada centrica
    */
   function cambiarCentro(centro) {
     if (mapaPrincipal.value) {
@@ -21681,20 +22025,42 @@ function usarMapa() {
   }
 
   /**
-   *
-   * @param {*} olCapa
+   * Actualiza el nivel de zoom en el mapa.
+   * @param {Number} zoom nuevo bnivel de zoom
+   */
+  function cambiarZoom(zoom) {
+    if (mapaPrincipal.value) {
+      mapaPrincipal.value.getView().setZoom(zoom);
+    }
+  }
+
+  /**
+   * Agrega una capa a la vista del mapa
+   * @param {import("ol/layer/Layer.js").default} olCapa capa de OpenLayers
    */
   function agregarCapa(olCapa) {
     if (mapaPrincipal.value) {
       mapaPrincipal.value.addLayer(olCapa);
     }
   }
+
+  /**
+   * Devuelve un control por su nombre registrado
+   * @param {String} nombreDelControl
+   * @returns {import("ol/control/Control.js").default|undefined} Control
+   */
+  function extraerControl(nombreDelControl) {
+    if (mapaPrincipal.value) {
+      return mapaPrincipal.value.getControls().getArray().find(control => control.nombre === nombreDelControl);
+    }
+  }
   return {
     mapaPrincipal: (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.readonly)(mapaPrincipal),
-    salvarInstanciaDelMapa,
+    salvarInstancia,
     cambiarZoom,
     cambiarCentro,
-    agregarCapa
+    agregarCapa,
+    extraerControl
   };
 }
 ;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/cache-loader/dist/cjs.js??ruleSet[0].use[0]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/MapaPrincipal/MapaPrincipal.vue?vue&type=script&lang=js&
@@ -21703,58 +22069,81 @@ function usarMapa() {
 
 
 
+
+
+
+
+
+/**
+ * Relleno (en píxeles) que se agregará a la extensión de la vista. Los valores en la matriz son
+ * relleno: [superior, derecho, inferior, izquierdo] y solo es aplicable cuando la extensión es
+ * definida.
+ */
+const rellenoAlBordeDeLaExtension = [10, 10, 10, 10];
 /* harmony default export */ var MapaPrincipalvue_type_script_lang_js_ = ({
   name: 'DaiMapa',
   props: props,
   setup(props) {
     const {
-      centro,
-      zoom
-    } = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.toRefs)(props);
-    const {
-      salvarInstanciaDelMapa,
+      salvarInstancia,
       cambiarZoom,
-      cambiarCentro
+      cambiarCentro,
+      extraerControl
     } = usarMapa();
 
     /**
-     *
+     * Referencia al elemento html contenedor del mapa
      */
+    const refMapa = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.ref)(null);
+    (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.watch)(refMapa, crearMapa);
+    const {
+      proyeccion
+    } = props; // Props no reactivos
+    const {
+      centro,
+      extension,
+      zoom
+    } = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.toRefs)(props); // Props reactivos
+    (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.watch)(centro, cambiarCentro);
+    (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.watch)(extension, cambiarExtension);
     (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.watch)(zoom, cambiarZoom);
 
     /**
-     *
-     */
-    (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.watch)(centro, cambiarCentro);
-
-    /**
-     *
-     */
-    const {
-      proyeccion
-    } = props;
-
-    /**
-     * Instanciamiewnto del maapa como onjeto de la calse ol/Map
+     * Creación del elemento mapa con atributos definidos
+     * @param {HTMLDivElement|String} target elemento html que contendrá el mapa o id de mismo
      */
     function crearMapa(target) {
-      // console.log(target, centro.value)
-      salvarInstanciaDelMapa(new ol_Map({
+      salvarInstancia(
+      // Instanciamiento del maapa como onjeto de la calse ol/Map
+      new ol_Map({
         target,
         layers: [],
         view: new ol_View({
           center: centro.value,
           zoom: zoom.value,
           projection: proyeccion
-        })
+        }),
+        controls: [new ZoomPersonalizado(), new VistaInicial({
+          centro,
+          extension,
+          rellenoAlBordeDeLaExtension,
+          zoom
+        }), new control_Attribution({
+          collapsible: false
+        })]
       }));
     }
 
     /**
-     *
+     * Cambiar la extension, esto proboca que el mapa ajuste la vista con la extención actual
+     * en caso de ser valida.
+     * @param {Array<Number>} extension
      */
-    const refMapa = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.ref)(null);
-    (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.watch)(refMapa, crearMapa);
+    function cambiarExtension(nuevaExtension) {
+      const controlVistaInicial = extraerControl(VistaInicial.nombre);
+      controlVistaInicial.extension = nuevaExtension;
+      controlVistaInicial.reiniciarVista();
+    }
     return {
       refMapa
     };
@@ -21762,9 +22151,9 @@ function usarMapa() {
 });
 ;// CONCATENATED MODULE: ./src/components/MapaPrincipal/MapaPrincipal.vue?vue&type=script&lang=js&
  /* harmony default export */ var MapaPrincipal_MapaPrincipalvue_type_script_lang_js_ = (MapaPrincipalvue_type_script_lang_js_); 
-// EXTERNAL MODULE: ./node_modules/vue-style-loader/index.js??clonedRuleSet-12.use[0]!./node_modules/@vue/cli-service/node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/@vue/cli-service/node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/cli-service/node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[3]!./node_modules/cache-loader/dist/cjs.js??ruleSet[0].use[0]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/MapaPrincipal/MapaPrincipal.vue?vue&type=style&index=0&id=75b8a880&prod&lang=css&
-var MapaPrincipalvue_type_style_index_0_id_75b8a880_prod_lang_css_ = __webpack_require__(825);
-;// CONCATENATED MODULE: ./src/components/MapaPrincipal/MapaPrincipal.vue?vue&type=style&index=0&id=75b8a880&prod&lang=css&
+// EXTERNAL MODULE: ./node_modules/vue-style-loader/index.js??clonedRuleSet-22.use[0]!./node_modules/@vue/cli-service/node_modules/css-loader/dist/cjs.js??clonedRuleSet-22.use[1]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/@vue/cli-service/node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22.use[2]!./node_modules/@vue/cli-service/node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22.use[3]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[4]!./node_modules/cache-loader/dist/cjs.js??ruleSet[0].use[0]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/MapaPrincipal/MapaPrincipal.vue?vue&type=style&index=0&id=3dbc83f7&prod&lang=scss&
+var MapaPrincipalvue_type_style_index_0_id_3dbc83f7_prod_lang_scss_ = __webpack_require__(558);
+;// CONCATENATED MODULE: ./src/components/MapaPrincipal/MapaPrincipal.vue?vue&type=style&index=0&id=3dbc83f7&prod&lang=scss&
 
 ;// CONCATENATED MODULE: ./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/runtime/componentNormalizer.js
 /* globals __VUE_SSR_CONTEXT__ */
@@ -28634,10 +29023,13 @@ function usarCapa(propsRefs) {
   const id = propsRefs.id !== '_default_' ? propsRefs.id : Math.random().toString(36).substring(7);
 
   /**
+   * Observador que verifica cuando la instancia del mapa está lista para para agregar capas.
    *
+   * Como este es un composable de Capa, se ejecutará este observasdor por cada capa que se
+   * registre en el componente.
    */
   (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.watch)(mapaPrincipal, () => {
-    // console.log('watcher mapaPrincipal')
+    // console.log('Mapa listo para recibir capas')
     asignarPorps();
     agregarCapa(olCapa);
   });
@@ -44487,7 +44879,10 @@ function GeoJSON_plugin(Vue) {
 }
 /* harmony default export */ var capas_GeoJSON = (GeoJSON_plugin);
 
+// EXTERNAL MODULE: ./src/styles/controles.scss
+var controles = __webpack_require__(204);
 ;// CONCATENATED MODULE: ./src/index.js
+
 
 
 
