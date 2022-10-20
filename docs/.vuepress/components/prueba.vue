@@ -1,15 +1,26 @@
 <template>
-  <DaiMapa
-    :centro="mapa.centro"
-    :extension="mapa.extension"
-    :zoom="mapa.zoom"
-  >
-    <DaiCapaGeojson
-      :datos="geojson.edos"
-      :zIndex="geojson.zIndex"
-    />
-    <DaiCapaXyzOsm :zIndex="osm.zIndex" />
-  </DaiMapa>
+  <DaiTarjetaContenedoraMapa>
+    <template #encabezadoMapa>EncabezadoMapa</template>
+
+    <template #izquierdaMapa>IzquierdaMapa</template>
+
+    <DaiMapa
+      :centro="mapa.centro"
+      :extension="mapa.extension"
+      :zoom="mapa.zoom"
+    >
+      <DaiCapaGeojson
+        :datos="geojson.edos"
+        :zIndex="geojson.zIndex"
+      />
+
+      <DaiCapaXyzOsm :zIndex="osm.zIndex" />
+    </DaiMapa>
+
+    <template #derechaMapa>DerechaMapa</template>
+
+    <template #pieMapa>PieMapa</template>
+  </DaiTarjetaContenedoraMapa>
 </template>
 
 <script>
