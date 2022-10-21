@@ -12,6 +12,6 @@ export default {
 
 <style lang="scss" scoped>
 .dai-mapa-encabezado {
-  z-index: 99;
+  padding: 16px;
 }
 </style>

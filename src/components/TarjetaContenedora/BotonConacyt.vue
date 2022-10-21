@@ -14,9 +14,11 @@
 
 <style lang="scss" scoped>
 .boton.boton-conacyt {
-  position: absolute;
-  box-sizing: border-box;
-  bottom: 0;
+  // position: absolute;
+  // box-sizing: border-box;
+  // bottom: 0;
   min-height: 40px;
+  height: 40px;
+  max-height: 40px;
 }
 </style>

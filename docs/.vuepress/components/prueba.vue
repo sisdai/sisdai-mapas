@@ -3,12 +3,14 @@
     :centro="mapa.centro"
     :iconoConacytVisible="true"
     :extension="mapa.extension"
+    tema="sencillo"
     :zoom="mapa.zoom"
   >
     <DaiEncabezado>
       Hola este es el encabezado
+      <p>Cómo me gustaría tener más contenido</p>
     </DaiEncabezado>
-    
+
     <DaiCapas>
       <DaiCapaGeojson
         :datos="geojson.edos"
