@@ -4,7 +4,7 @@
       <slot name="encabezadoMapa" />
     </div>
 
-    <span />
+    <span class="no-visible" />
 
     <div class="dai-mapa-contenedor-izquierda">
       <slot name="izquierdaMapa" />
@@ -17,7 +17,7 @@
       <slot name="derechaMapa" />
     </div>
 
-    <span />
+    <span class="no-visible" />
 
     <div class="dai-mapa-contenedor-pie">
       <slot name="pieMapa" />
@@ -40,5 +40,9 @@ export default {
 .dai-mapa-tarjeta-contenedora {
   position: relative;
   padding-bottom: 37px;
+
+  .no-visible {
+    display: none;
+  }
 }
 </style>
