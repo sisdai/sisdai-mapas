@@ -16,6 +16,7 @@
 .boton.boton-conacyt {
   position: absolute;
   box-sizing: border-box;
-  right: inherit;
+  bottom: 0;
+  min-height: 40px;
 }
 </style>

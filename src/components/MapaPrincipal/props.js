@@ -20,6 +20,14 @@ export default {
   },
 
   /**
+   * Ver el icono de Conacyt debajo del mapa
+   */
+  iconoConacytVisible: {
+    type: Boolean,
+    default: true,
+  },
+
+  /**
    * Código de identificación SRS que define la proyección de la vista.
    *
    * El valor predeterminado es Universal Transversal de Mercator.
@@ -27,6 +35,15 @@ export default {
   proyeccion: {
     type: String,
     default: 'EPSG:4326',
+  },
+
+  /**
+   * Tema de la disposición de elemntos de apoyo del mapa (contenedor del header, pie y columnas
+   * laterales)
+   */
+  tema: {
+    type: String,
+    default: '',
   },
 
   /**
