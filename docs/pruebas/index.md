@@ -3,7 +3,10 @@
 <prueba />
 
 ```html
-<DaiMapa tema="algun-tema" :extension="mapa.extension">
+<DaiMapa
+  tema="algun-tema"
+  :extension="mapa.extension"
+>
   <EncabezadoMapa>
     Contenido HTML, Titulos, Controles, uso de leyenda, etc
   </EncabezadoMapa>
@@ -13,7 +16,10 @@
   </IzquierdaMapa>
 
   <Capas>
-    <DaiCapaGeojson :datos="geojson.edos" :zIndex="geojson.zIndex" />
+    <DaiCapaGeojson
+      :datos="geojson.edos"
+      :zIndex="geojson.zIndex"
+    />
 
     <DaiCapaXyzOsm :zIndex="osm.zIndex" />
   </Capas>

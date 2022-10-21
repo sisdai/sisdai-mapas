@@ -1,53 +1,24 @@
 <template>
-  <DaiTarjetaContenedoraMapa>
-    <template #encabezadoMapa>EncabezadoMapa</template>
-
-    <template #izquierdaMapa>IzquierdaMapa</template>
-
-    <DaiMapa
-      :centro="mapa.centro"
-      :extension="mapa.extension"
-      :zoom="mapa.zoom"
-    >
+  <DaiMapa
+    :centro="mapa.centro"
+    :iconoConacytVisible="true"
+    :extension="mapa.extension"
+    :zoom="mapa.zoom"
+  >
+    <DaiEncabezado>
+      Hola este es el encabezado
+    </DaiEncabezado>
+    
+    <DaiCapas>
       <DaiCapaGeojson
         :datos="geojson.edos"
         :zIndex="geojson.zIndex"
       />
 
       <DaiCapaXyzOsm :zIndex="osm.zIndex" />
-    </DaiMapa>
+    </DaiCapas>
 
-    <template #derechaMapa>DerechaMapa</template>
-
-    <template #pieMapa>PieMapa</template>
-
-    <!--DaiMapa tema="algun-tema" :extension="mapa.extension">
-      <EncabezadoMapa>
-        Contenido HTML, Titulos, Controles, uso de leyenda, etc
-      </EncabezadoMapa>
-
-      <IzquierdaMapa>
-        Contenido HTML, Controles, uso de leyenda, scrolables, etc
-      </IzquierdaMapa>
-
-      <Capas>
-        <DaiCapaGeojson
-          :datos="geojson.edos"
-          :zIndex="geojson.zIndex"
-        />
-
-        <DaiCapaXyzOsm :zIndex="osm.zIndex" />
-      </Capas>
-
-      <DerechaMapa>
-        Contenido HTML, Controles, uso de leyenda, scrolables, etc
-      </DerechaMapa>
-
-      <PieMapa>
-        Contenido HTML, Referencias, Controles, uso de leyenda, etc
-      </PieMapa>
-    </DaiMapa-->
-  </DaiTarjetaContenedoraMapa>
+  </DaiMapa>
 </template>
 
 <script>
@@ -61,6 +32,7 @@ export default {
   data: () => ({
     mapa: {
       centro: [-102, 24],
+      iconoConacytVisible: false,
       // extension,
       zoom: 4.5,
     },
