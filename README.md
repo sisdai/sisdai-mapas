@@ -1,5 +1,13 @@
 # dai-maps
 
+> **ADVERTENCIA**
+>
+> El presente proyecto dejará de tener mantenimiento a partir de diciembre del 2022 para después ser archivado y eliminado. Esto en concordancia con 
+> los lineamientos de [SALSA](https://salsa.crip.conacyt.mx/) y de la Estrategia Digital Nacional. Este proyecto se encontrará ahora dentro del grupo de
+> repositorios oficiales de SALSA. Se recomienda a la persona usuaria hacer los cambios pertinentes para usar el proyecto refactorizado y en su 
+> última versión, que se puede encontrar en [aquí](https://github.com/salsa-community/sisdai-mapas).
+
+
 Componentes reutilizables de mapas para la DAI.
 
 Si contribuyes al codigo de este componente ve a  [esta sección](#contribuir)
